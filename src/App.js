@@ -37,6 +37,7 @@ function Layout () {
                                 <MyVotes/>
                             </div>
                     </div>
+
                 </main>
             {/*<main className={'content _container'}>*/}
             {/*    <h2>Добро пожаловать в КриптоВече</h2>*/}
