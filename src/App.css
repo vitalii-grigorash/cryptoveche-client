@@ -1,0 +1,26 @@
+.main {
+    flex: 1 1 auto;
+}
+.main-content  {
+    position: relative;
+    min-height: 70vh;
+}
+.main-content__title {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 125%;
+    font-family: Inter;
+    padding-bottom: 40px;
+}
+.main-content__vote-actual {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*------Адаптивная версия-----------------------------------------------------------------------*/
+@media (max-width: 778px) {
+    .main-content__title {
+        text-align: center;
+        font-size: 26px;
+    }
+}
