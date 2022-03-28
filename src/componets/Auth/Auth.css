@@ -1,25 +1,25 @@
+
 .wrapper {
-    width: 100%;
-    height: 100%;
-    position: fixed;
     top: 0;
     left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    padding-top: 116px;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
-    overflow: auto;
+    overflow: hidden;
 }
 .container {
-    max-width: 1104px;
-    max-height: 792px;
+    max-width: 1280px;
     padding: 0 15px;
     margin: 0 auto;
     box-sizing: content-box;
-
 }
 .main-block {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     font-family: Inter;
 }
@@ -46,6 +46,7 @@
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
+    font-family: Golos;
 }
 .auth__title span {
         padding-right: 8px;
@@ -118,7 +119,9 @@
     border-radius: 4px;
     color: #FFFFFF;
     cursor: pointer;
-
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Golos;
 }
 .form__error {
     position: absolute;
@@ -152,6 +155,7 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 133%;
+    font-family: Golos;
 }
 .reg__button {
     display: flex;
@@ -172,6 +176,8 @@
     background-color: #FFFFFF;
     border-radius: 4px;
     color: #0084FE;
+    font-family: Golos;
+    font-size: 16px;
 }
 
 /*------Чек бокс----------------------------------------------------------------------*/
@@ -234,3 +240,49 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+/*------Адаптивная версия---------------------------------------------------------------------------------------*/
+@media (max-width: 1108px) {
+    .container {
+        max-width: 800px;
+    }
+    .main-block__auth {
+        padding: 20px 80px 20px 20px;
+    }
+   .main-block__reg {
+       padding: 15px 15px 15px 15px;
+   }
+   .auth__title {
+       padding-bottom: 20px;
+   }
+    .auth__title h3 {
+        font-size: 22px;
+    }
+    .main-block__auth {
+        font-size: 14px;
+    }
+    .form__select select {
+        font-size: 14px;
+    }
+    .form__select, .form__login, .form__pass input {
+        max-width: 450px;
+    }
+    .form__button button {
+        height: 40px;
+    }
+    .checkbox_container {
+        font-size: 14px;
+    }
+    .main-block__reg {
+        padding: 20px 20px 20px 20px;
+    }
+    .reg__title {
+        font-size: 16px;
+    }
+    .reg__logo img {
+        width: 180px;
+    }
+    .reg__button span {
+        font-size: 14px;
+    }
+}
+

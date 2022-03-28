@@ -4,8 +4,11 @@
     top: 0;
     z-index: 50;
     background-color: #373C4E;
-    font-family: Inter;
+    font-family: Golos;
+    font-size: 16px;
+    font-weight: 400;
 }
+
 
 .header__container {
     display: flex;
@@ -21,11 +24,11 @@
     display: flex;
     align-items: center;
     gap: 84px;
-    font-size: 16px;
+
 }
 .header__right-block {
     display: flex;
-    gap: 51px
+    gap: 51px;
 }
 .right-block__search {
     display: flex;

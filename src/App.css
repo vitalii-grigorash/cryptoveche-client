@@ -10,7 +10,7 @@
     font-size: 32px;
     font-weight: 600;
     line-height: 125%;
-    font-family: Inter;
+    font-family: Golos;
     padding-bottom: 40px;
 }
 .main-content__vote-actual {
@@ -26,4 +26,11 @@
         text-align: center;
         font-size: 26px;
     }
+}
+
+@font-face {
+    font-family: "Golos";
+    src: url("../src/fonts/Golos-Text_Regular.woff") format('woff');
+    font-style: normal;
+    font-weight: normal;
 }
