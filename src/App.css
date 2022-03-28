@@ -1,6 +1,7 @@
 .main {
     flex: 1 1 auto;
 }
+
 .main-content  {
     position: relative;
     min-height: 70vh;
@@ -16,7 +17,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 16px;
 }
+
 /*------Адаптивная версия-----------------------------------------------------------------------*/
 @media (max-width: 778px) {
     .main-content__title {

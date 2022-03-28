@@ -1,5 +1,5 @@
-/*------Основной блок------------------------------------------------------------------------------------------------*/
-.my-votes-block {
+/*------Контейнер для блока------------------------------------------------------------------------------------------*/
+.my-votes-block-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -9,74 +9,60 @@
     border-radius: 24px;
     padding: 32px 32px 32px 32px;
     max-width: 824px;
+    box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
-.my-votes-block h2 {
+.my-votes-block-wrapper h2 {
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
     padding-bottom: 24px;
     color: #363B4D;
 }
-/*------Блок с кнопкой регистрация ----------------------------------------------------------------------------------*/
-.my-votes-block__reg-form {
+/*------Стили для обоих блоков---------------------------------------------------------------------------------------*/
+.my-votes-block__reg-form, .my-votes-block__vote-form {
     display: flex;
     flex-direction: column;
     gap: 24px;
     color: #363B4D;
-    border: 1px #EEEEEE;
+    border-bottom: 1px #EEEEEE;
     border-style: solid;
-    border-top: none;
-    border-left: none;
-    border-right: none;
     padding-bottom: 24px;
+    max-width: 760px;
 
 }
-.reg-form__status-block {
+.reg-form__status-block, .vote-form__status-block {
     display: flex;
     flex-direction: row;
 }
-.status-block__current-status {
+.status-block__current-status, .vote-form__status-block-current-status {
     display: flex;
     flex-direction: column;
-    padding: 0 24px 0 0;
+    padding: 0 36px 0 0;
     gap: 10px;
     font-size: 12px;
-    color: #363B4D;
 }
 .current-status__registration-in-progress {
-    border: 1px;
-    border-style: solid;
+    border: 1px #4ED4A9 solid;
     border-radius: 8px;
     padding: 8px 20px 8px 20px;
-    border-color: #4ED4A9;
-}
-.current-status__secret {
-    border: 1px;
-    border-style: solid;
-    border-radius: 8px;
-    padding: 8px 20px 8px 20px;
-    border-color: rgba(54, 59, 77, 0.4);
-    max-width: 78px;
-    opacity: 50%;
-}
-.current-status__registration-in-progress li {
     color: #4ED4A9;
 }
+.current-status__secret, .vote-form__status-block-current-status__open {
+    border: 1px rgba(54, 59, 77, 0.4) solid;
+    border-radius: 8px;
+    padding: 8px 20px 8px 20px;
+    max-width: 90px;
+    opacity: 50%;
+}
 
-.status-block__start-vote {
+.status-block__start-vote, .vote-form__status-block-start-vote {
     display: flex;
     flex-direction: column;
-    padding: 0 24px 0 24px;
+    padding: 0 36px 0 36px;
     justify-content: center;
     font-size: 14px;
     gap: 12px;
-    border: 1px;
-    border-style: solid;
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
-    border-color: rgba(54, 59, 77, 0.4);
-
+    border-left: 1px rgba(54, 59, 77, 0.4) solid;
 }
 .status-block__start-vote h5 {
     opacity: 50%;
@@ -84,7 +70,7 @@
 .start-vote__data {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
     color: #363B4D;
 }
 .status-block__materials-vote {
@@ -94,12 +80,7 @@
     padding: 0 24px 0 24px;
     gap: 12px;
     font-size: 14px;
-    border: 1px;
-    border-style: solid;
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
-    border-color: rgba(54, 59, 77, 0.4);
+    border-left: 1px rgba(54, 59, 77, 0.4) solid;
 }
 .status-block__materials-vote select {
     background-color: #FFFFFF;
@@ -111,10 +92,24 @@
     padding: 0 5px 0 0;
 }
 
+.my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 110%;
+}
+.my-votes-block__reg-form h5, .my-votes-block__votes-form h5 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 110%;
+    color: #363B4D;
+    opacity: 50%;
+}
 
+
+/*------Блок с кнопкой регистрация ----------------------------------------------------------------------------------*/
 
 .reg-form__button-reg {
-    width: 213px;
+    max-width: 213px;
     height: 40px;
     background-color: #0084FE;
     color: #FFFFFF;
@@ -125,31 +120,67 @@
     border-radius: 4px;
 }
 /*------Блок с кнопкой проголосовать----------------------------------------------------------------------------------*/
-.my-votes-block__votes-form {
+.vote-form__status-block__current-status__registration-in-progress {
+    border: 1px #0084FE solid;
+    border-radius: 8px;
+    padding: 8px 20px 8px 20px;
+    color: #0084FE;
+}
+
+.vote-form__status-block__checkmark-reg {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
-    color: #363B4D;
+
+    padding: 0 24px 0 24px;
+    font-size: 14px;
+    border-left: 1px rgba(54, 59, 77, 0.4) solid;
+}
+.vote-form__status-block__checkmark-reg img {
+    padding: 0 5px 0 0;
+}
+.vote-form__status-block__checkmark-reg-green {
+    color: #4ED4A9;
 }
 
-.votes-form__current-status {
-    display: flex;
-    flex-direction: row;
+.votes-form__button-vote-cancel-reg {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
 }
-.votes-form__button-votes {
-
+.button-vote {
+    width: 169px;
+    height: 40px;
+    background-color: #0084FE;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+    border-radius: 4px;
 }
-/*------Стили для обоих блоков----------------------------------------------------------------------------------------*/
-.my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 110%;
-}
-
-.my-votes-block__reg-form h5, .my-votes-block__votes-form h5 {
+.cancel-reg {
+    width: 233px;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 16px;
     font-weight: 400;
-    line-height: 110%;
-    color: #363B4D;
-    opacity: 50%;
+    line-height: 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #0084FE;
+    border: 1px #0084FE solid;
 }
+/*------Ccылка со стрелкой ПОКАЗАТЬ ПОЛНОСТЬЮ----------------------------------------------------------------------------------*/
+.my-votes__link-arrow {
+    display: flex;
+    align-items: center;
+    color: #0075FF;
+    gap: 5px;
+}
+.my-votes__link-arrow span {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 124%;
+}
+
+

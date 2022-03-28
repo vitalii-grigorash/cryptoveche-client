@@ -31,3 +31,9 @@ body {
     font-size: 18px;
     background-color: #FBFBFC;
 }
+._container {
+    max-width: 1328px;
+    padding: 0 15px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}

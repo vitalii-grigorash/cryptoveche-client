@@ -6,12 +6,7 @@
     background-color: #373C4E;
     font-family: Inter;
 }
-._container {
-    max-width: 1204px;
-    padding: 0 15px;
-    margin: 0 auto;
-    box-sizing: content-box;
-}
+
 .header__container {
     display: flex;
     justify-content: space-between;

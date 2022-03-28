@@ -7,6 +7,7 @@ import Auth from "./componets/Auth/Auth";
 import CounterBlock from "./componets/CounterBlock/CounterBlock";
 import MyVotes from "./componets/MyVotes/MyVotes";
 import CalendarVotes from "./componets/CalendarVotes/CalendarVotes";
+import ActualBlock from "./componets/ActualBlock/ActualBlock";
 
 
 function App() {
@@ -35,6 +36,7 @@ function Layout () {
                         <CounterBlock/>
                             <div className={'main-content__vote-actual'}>
                                 <MyVotes/>
+                                <ActualBlock/>
                             </div>
                     </div>
 

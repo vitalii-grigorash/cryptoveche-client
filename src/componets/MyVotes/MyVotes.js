@@ -3,18 +3,19 @@ import './MyVotes.css';
 import icon_data from '../../img/MyVotes_data_icon.svg';
 import icon_time from '../../img/MyVotes_icon_time.svg';
 import icon_info from  '../../img/MyVotes_icon_info.svg';
+import icon_arrow from '../../img/MyVotes_icon_arrow.svg';
+import icon_checkmark from '../../img/MyVotes_icon_checkmark.svg';
 
 const MyVotes = () => {
 
     return (
-        <div className={'my-votes-block'}>
-            <h2>Мои голосования</h2>
+        <div className={'my-votes-block-wrapper'}>
+            <h2 className={'m'}>Мои голосования</h2>
             <div className={'my-votes-block__reg-form'}>
                     <h3>Выбор делегатов конференции</h3>
                     <h5>Ученый совет</h5>
                 <div className={'reg-form__status-block'}>
                     <div className={'status-block__current-status'}>
-
                         <div className={'current-status__registration-in-progress'}>
                             <ul><li>Идет регистрация</li></ul>
                         </div>
@@ -40,46 +41,43 @@ const MyVotes = () => {
 
 
             <div className={'my-votes-block__votes-form'}>
+                <div className={'my-votes-block__vote-form'}>
+                    <h3>Название голосования какое-то например довольно длинное чтобы показать, как встанет тексток на две строчки</h3>
+                    <h5>Консорциум СПбГУ</h5>
+                    <div className={'vote-form__status-block'}>
+                        <div className={'vote-form__status-block-current-status'}>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {/*    <h3>Название голосования какое-то например довольно длинное чтобы показать, как встанет тексток на две строчки</h3>*/}
-                {/*    <h5>Консорциум СПбГУ</h5>*/}
-                {/*<div className={'votes-form__current-status'}>*/}
-                {/*    <div>*/}
-                {/*        <span>Регистрация и голосование</span>*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        <span>Начало голосования</span>*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        <span>Вы зарегистрированы</span>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                <div className={'votes-form__button-vote'}>
-                    <button>
+                            <div className={'vote-form__status-block__current-status__registration-in-progress'}>
+                                <ul><li>Регистрация и голосование</li></ul>
+                            </div>
+                            <div className={'vote-form__status-block-current-status__open'}>
+                                <ul><li>Открытое</li></ul></div>
+                        </div>
+                        <div className={'vote-form__status-block-start-vote'}>
+                            <h5>Начало голосования:</h5>
+                            <div className={'start-vote__data'}>
+                                <img alt={''} src={icon_data}/>
+                                <span>5.01.2022</span>
+                                <img alt={''} src={icon_time}/>
+                                <span>18.00</span>
+                            </div>
+                        </div>
+                        <div className={'vote-form__status-block__checkmark-reg'}>
+                            <span className={'vote-form__status-block__checkmark-reg-green'}><img alt={''} src={icon_checkmark}/>Вы зарегистрированы</span>
+                        </div>
+                    </div>
+                <div className={'votes-form__button-vote-cancel-reg'}>
+                    <button className={'button-vote'}>
                         Проголосовать
                     </button>
-                    <button>
+                    <button className={'cancel-reg'}>
                         Отменить регистрацию
                     </button>
                 </div>
             </div>
+            </div>
             <div className={'my-votes__link-arrow'}>
-                <span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span>
+                <span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span><a href={'ссылка на страницу Мои голосования'} target={'_blank'}><img alt={'logo_arrow'} src={icon_arrow}/></a>
             </div>
         </div>
     )
