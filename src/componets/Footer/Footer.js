@@ -20,9 +20,9 @@ const Footer = () => {
                     </div>
                     <div className={'items__block-settings'}>
                         <h3>Настройки</h3>
-                        <span>Язык:<select><option value="value1" selected>Русский</option></select></span>
-                        <span>Размер шрифта:<select><option value="value1" selected>Стандартный</option></select></span>
-                        <span>Часовой пояс:<select><option value="value1" selected>GMT+03:00</option></select></span>
+                        <span>Язык:<select><option>Русский</option></select></span>
+                        <span>Размер шрифта:<select><option>Стандартный</option></select></span>
+                        <span>Часовой пояс:<select><option>GMT+03:00</option></select></span>
                     </div>
                     <div className={'items__block-support'}>
                         <h3>Поддержка</h3>

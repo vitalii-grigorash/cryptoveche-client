@@ -77,7 +77,7 @@ const MyVotes = () => {
             </div>
             </div>
             <div className={'my-votes__link-arrow'}>
-                <span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span><a href={'ссылка на страницу Мои голосования'} target={'_blank'}><img alt={'logo_arrow'} src={icon_arrow}/></a>
+                <a href={'ссылка на страницу Мои голосования'} target={'_blank'}><span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span></a><img alt={'logo_arrow'} src={icon_arrow}/>
             </div>
         </div>
     )
