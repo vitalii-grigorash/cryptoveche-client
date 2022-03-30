@@ -13,11 +13,23 @@
     font-family: Golos;
     padding-bottom: 40px;
 }
-.main-content__vote-actual {
+.main-content__my-votes-actual {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 16px;
+    gap: 16px;
+}
+.main-content__amount-votes-and-calendar-votes {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 51px;
+}
+.gistogramma-and-total-amount {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 /*------Адаптивная версия-----------------------------------------------------------------------*/

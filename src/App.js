@@ -5,10 +5,12 @@ import Header from "./componets/Header/Header";
 import Footer from "./componets/Footer/Footer";
 import Auth from "./componets/Auth/Auth";
 import CounterBlock from "./componets/CounterBlock/CounterBlock";
-import MyVotes from "./componets/MyVotes/MyVotes";
 import CalendarVotes from "./componets/CalendarVotes/CalendarVotes";
 import ActualBlock from "./componets/ActualBlock/ActualBlock";
 import AmountVotesBlock from "./componets/AmountVotesBlock/AmountVotesBlock";
+import MyVotesBlock from "./componets/MyVotesBlock/MyVotesBlock";
+import ObserverCryptoBlock from "./componets/ObserverCryptoBlock/ObserverCryptoBlock";
+
 
 
 function App() {
@@ -35,31 +37,20 @@ function Layout () {
                                 Добро пожаловать в КриптоВече
                             </div>
                         <CounterBlock/>
-                            <div className={'main-content__vote-actual'}>
-                                <MyVotes/>
+                            <div className={'main-content__my-votes-actual'}>
+                                <MyVotesBlock/>
                                 <ActualBlock/>
-
                             </div>
-                        <div>
-                            <div>
-                                <div>
+                        <div className={'main-content__amount-votes-and-calendar-votes'}>
+                            <div className={'gistogramma-and-total-amount'}>
                                     <AmountVotesBlock/>
-                                </div>
-                                <div>
-
-                                </div>
+                                    <ObserverCryptoBlock/>
                             </div>
-                            <div>
-
-                            </div>
-
+                                <CalendarVotes/>
                         </div>
                     </div>
 
                 </main>
-            {/*<main className={'content _container'}>*/}
-            {/*    <h2>Добро пожаловать в КриптоВече</h2>*/}
-            {/*</main>*/}
             <Footer/>
         </div>
     )
