@@ -39,14 +39,12 @@ const MyVotesBlock = () => {
                 <button className={'reg-form__button-reg'}>Зарегистрироваться</button>
             </div>
 
-
             <div className={'my-votes-block__votes-form'}>
                 <div className={'my-votes-block__vote-form'}>
                     <h3>Название голосования какое-то например довольно длинное чтобы показать, как встанет тексток на две строчки</h3>
                     <h5>Консорциум СПбГУ</h5>
                     <div className={'vote-form__status-block'}>
                         <div className={'vote-form__status-block-current-status'}>
-
                             <div className={'vote-form__status-block__current-status__registration-in-progress'}>
                                 <ul><li>Регистрация и голосование</li></ul>
                             </div>

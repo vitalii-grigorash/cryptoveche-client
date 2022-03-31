@@ -3,8 +3,8 @@ import './ActualBlock.css';
 import logo_icon from '../../img/ActualBlock_logo.svg';
 import icon_data from "../../img/MyVotes_data_icon.svg";
 import icon_time from "../../img/MyVotes_icon_time.svg";
-import DiagrammaVote from "./Diagramma/Diagramma";
-import VoteDiagramm from "./Diagramma/Diagramma";
+import DiagrammaVote from "./ActualBlockDiagramm/ActualBlockDiagramm";
+import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
 
 const ActualBlock = () => {
 
@@ -34,7 +34,7 @@ const ActualBlock = () => {
                     </div>
                 </div>
             </div>
-            <VoteDiagramm/>
+            <ActualBlockDiagramm/>
             <button className={'actual-block__button'}>
                 Проголосовать
             </button>
