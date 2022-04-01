@@ -1,5 +1,8 @@
 import React from "react";
 import './CounterBlock.css';
+import count_block_img from '../../img/CountBlock_image.svg';
+
+
 
 
 
@@ -12,24 +15,28 @@ const CounterBlock = () => {
                 <span>
                     голосований
                 </span>
+                <img alt={''} className={'count-block__style-image'} src={count_block_img}/>
             </div>
             <div className={'count-block__style _orange'}>
                     <h3>23 456 789</h3>
                 <span>
                     транзакций
                 </span>
+                <img alt={''} className={'count-block__style-image'} src={count_block_img}/>
             </div>
             <div className={'count-block__style _green'}>
                 <h3>512</h3>
                 <span>
                     организаций
                 </span>
+                <img alt={''} className={'count-block__style-image'} src={count_block_img}/>
             </div>
             <div className={'count-block__style _yellow'}>
                 <h3>12 003</h3>
                 <span>
                     уникальных<p>пользователей</p>
                 </span>
+                <img alt={''} className={'count-block__style-image'} src={count_block_img}/>
             </div>
         </div>
     )

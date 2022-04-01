@@ -108,8 +108,8 @@ a {
     height: 56px;
     padding: 5px 0 5px 10px;
     outline: none;
-}
 
+}
 
 .form__checkbox {
     display: flex;
@@ -201,7 +201,7 @@ a {
     top: 630px
 }
 /*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
-._ibg-image1 {
+.auth-image_1 {
     position: absolute;
     width: 114px;
     height: 220px;
@@ -211,7 +211,7 @@ a {
     z-index: 55;
 }
 
-._ibg-image2 {
+.auth-image_2 {
     position: absolute;
     width: 228px;
     height: 340px;
@@ -220,7 +220,7 @@ a {
     object-fit: cover;
     z-index: 55;
 }
-._ibg-image3 {
+.auth-image_3 {
     position: absolute;
     width: 116px;
     height: 220px;
@@ -229,7 +229,7 @@ a {
     object-fit: cover;
     z-index: 55;
 }
-._ibg-image4 {
+.auth-image_4 {
     position: absolute;
     width: 117px;
     height: 228px;
@@ -238,7 +238,7 @@ a {
     object-fit: cover;
     z-index: 55;
 }
-._ibg-image5 {
+.auth-image_5 {
     position: absolute;
     width: 228px;
     height: 228px;
@@ -247,7 +247,7 @@ a {
     object-fit: cover;
     z-index: 55;
 }
-._ibg-image6 {
+.auth-image_6 {
     position: absolute;
     width: 117px;
     height: 228px;
@@ -256,6 +256,11 @@ a {
     object-fit: cover;
     z-index: 55;
 }
+.auth-image-mobile {
+    display: none;
+
+}
+
 /*------Чек бокс--------------------------------------------------------------------------------------------------*/
 .checkbox_container {
     display: block;
@@ -391,8 +396,8 @@ a {
     .form__select select {
         font-size: 12px;
     }
-    .form__select, .form__login, .form__pass input {
-        max-width: 350px;
+    .form__select input, .form__login input, .form__pass input {
+        width: 300px;
     }
     .form__button button {
         height: 40px;
@@ -445,7 +450,6 @@ a {
         width: 375px;
         z-index: -2;
     }
-
     .auth__title {
         padding-bottom: 10px;
         max-width: 310px;
@@ -504,7 +508,7 @@ a {
         height: 18px;
         width: 18px;
     }
-    ._ibg-image1 {
+    .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
         display: none;
     }
     .main-block__mobile-link-reg {
@@ -514,6 +518,15 @@ a {
         gap: 8px;
         position: absolute;
         font-size: 14px;
-
+    }
+    .auth-image-mobile {
+        display: inherit;
+        position: absolute;
+        width: 300px;
+        height: 250px;
+        top: 0;
+        left: 120px;
+        object-fit: cover;
+        z-index: 55;
     }
 }

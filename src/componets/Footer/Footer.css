@@ -27,12 +27,15 @@
     line-height: 133%;
     max-width: 267px;
     color: #4A4F5F;
+    opacity: 0.7;
 }
 .items__block-settings select {
     font-size: 14px;
     font-weight: 400;
     line-height: 133%;
     background-color: #FBFBFC;
+    color: #4A4F5F;
+
 }
 /*------Адаптивная версия---------------------------------------------------------------------------------------*/
 @media (max-width: 1028px) {
