@@ -23,7 +23,7 @@
     font-family: Inter;
 }
 
-/*------Блок авторизации-------------------------------------------------------------------------*/
+/*------Блок авторизации--------------------------------------------------------------------------------------------*/
 .main-block__auth {
     display: flex;
     flex-direction: column;
@@ -66,8 +66,9 @@
     padding: 5px 0 5px 10px;
     background-color: #FFFFFF;
     font-size: 18px;
-    border-radius: 3px;
-    border: 1px solid #363B4D;
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.9);
+    opacity: 50%;
 
 }
 .form__login {
@@ -77,8 +78,9 @@
     padding-bottom: 48px;
 }
 .form__login input {
-    border-radius: 3px;
-    border: 1px solid #363B4D;
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.9);
+    opacity: 50%;
     height: 40px;
     padding: 5px 0 5px 10px;
     outline: none;
@@ -91,8 +93,9 @@
     padding-bottom: 48px;
 }
 .form__pass input {
-    border-radius: 3px;
-    border: 1px solid #363B4D;
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.9);
+    opacity: 50%;
     height: 40px;
     padding: 5px 0 5px 10px;
     outline: none;
@@ -129,7 +132,7 @@
     color: #FF4970;
 }
 
-/*------Блок регистрации----------------------------------------------------------------------*/
+/*------Блок регистрации--------------------------------------------------------------------------------------------*/
 .main-block__reg {
     position: relative;
     display: flex;
@@ -143,15 +146,15 @@
 .reg__logo {
     display: flex;
     align-self: flex-end;
-    padding-bottom: 400px;
+    padding-bottom: 418px;
     font-size: 32px;
 }
 .reg__title {
     text-align: right;
-    padding-bottom: 32px;
+    padding-bottom: 40px;
     color: #FFFFFF;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 133%;
     font-family: Golos;
 }
@@ -186,6 +189,7 @@
     top: 140px;
     left: 220px;
     object-fit: cover;
+    z-index: 55;
 }
 
 ._ibg-image2 {
@@ -195,6 +199,7 @@
     top: 190px;
     left: 117px;
     object-fit: cover;
+    z-index: 55;
 }
 ._ibg-image3 {
     position: absolute;
@@ -203,6 +208,7 @@
     top: 308px;
     left: 117px;
     object-fit: cover;
+    z-index: 55;
 }
 ._ibg-image4 {
     position: absolute;
@@ -211,6 +217,7 @@
     top: 415px;
     left: 0;
     object-fit: cover;
+    z-index: 55;
 }
 ._ibg-image5 {
     position: absolute;
@@ -219,6 +226,7 @@
     top: 600px;
     right: 140px;
     object-fit: cover;
+    z-index: 55;
 }
 ._ibg-image6 {
     position: absolute;
@@ -227,6 +235,7 @@
     top: 690px;
     left: 200px;
     object-fit: cover;
+    z-index: 55;
 }
 /*------Чек бокс--------------------------------------------------------------------------------------------------*/
 .checkbox_container {
@@ -256,7 +265,6 @@
     border-color: #CACCCF;
     border-style: solid;
     border-width: 1px;
-
 }
 
 .checkbox_container:hover input ~ .checkmark {
@@ -288,7 +296,7 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-/*------Адаптивная версия---------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
 @media (max-width: 1108px) {
     .container {
         max-width: 800px;
@@ -319,6 +327,8 @@
     }
     .checkbox_container {
         font-size: 14px;
+        display: flex;
+        align-items: center;
     }
     .main-block__reg {
         padding: 20px 20px 20px 20px;
@@ -326,11 +336,151 @@
     .reg__title {
         font-size: 16px;
     }
+    .reg__logo {
+        padding-bottom: 380px;
+    }
     .reg__logo img {
         width: 180px;
     }
     .reg__button span {
         font-size: 14px;
     }
+    .checkbox_container {
+        padding-top: 3px;
+    }
 }
+/*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
+@media (max-width: 800px) {
+    .container {
+        max-width: 590px;
+    }
+    .main-block__auth {
+        padding: 15px 70px 15px 15px;
+    }
+    .main-block__reg {
+        padding: 15px 15px 15px 15px;
+    }
+    .auth__title {
+        padding-bottom: 10px;
+    }
+    .auth__title h3 {
+        font-size: 20px;
+    }
+    .main-block__auth {
+        font-size: 12px;
+    }
+    .form__select select {
+        font-size: 12px;
+    }
+    .form__select, .form__login, .form__pass input {
+        max-width: 350px;
+    }
+    .form__button button {
+        height: 40px;
+    }
+    .form__button span {
+        text-align: left;
+    }
 
+    .main-block__reg {
+        padding: 20px 20px 20px 20px;
+    }
+    .reg__title {
+        font-size: 14px;
+    }
+    .reg__logo img {
+        width: 160px;
+    }
+    .reg__button span {
+        font-size: 12px;
+    }
+    .form__select, .form__login, .form__pass {
+        padding-bottom: 32px;
+    }
+    .reg__logo {
+        padding-bottom: 340px;
+    }
+}
+/*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
+@media (max-width: 600px) {
+
+    .container {
+        position: relative;
+        width: 371px;
+        height: 100%;
+        padding: 0 4px;
+    }
+    .main-block__auth {
+        position: absolute;
+        top: 200px;
+        left: 0;
+        padding: 20px 20px 20px 20px;
+        font-size: 12px;
+        max-width: 375px;
+        border-radius: 8px;
+    }
+    .main-block__reg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 100px;
+        border-radius: 0;
+        width: 375px;
+        z-index: -2;
+    }
+
+    .auth__title {
+        padding-bottom: 10px;
+        max-width: 310px;
+    }
+    .auth__title h3 {
+        font-size: 20px;
+    }
+    .form__select {
+        display: none;
+    }
+    .form__login input, .form__pass input {
+        max-width: 311px;
+    }
+    .form__button {
+        padding-bottom: 30px;
+    }
+    .form__button button {
+        height: 40px;
+        font-size: 14px;
+    }
+    .form__button span {
+        text-align: left;
+    }
+    .form__checkbox {
+        padding-bottom: 20px;
+    }
+
+    .reg__title {
+        display: none;
+    }
+
+    .reg__logo img {
+        position: absolute;
+        top: 49px;
+        right: 180px;
+        width: 170px;
+    }
+    .reg__button {
+        display: none;
+    }
+    .reg__button span {
+       display: none;
+    }
+    .form__login, .form__pass {
+        padding-bottom: 20px;
+        max-width: 100%;
+    }
+    .checkbox_container {
+        padding-top: 1px;
+    }
+    .checkmark {
+        height: 18px;
+        width: 18px;
+    }
+}
