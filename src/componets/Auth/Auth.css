@@ -21,6 +21,11 @@
     display: flex;
     flex-direction: row;
     font-family: Inter;
+    position: relative;
+
+}
+a {
+    text-decoration: underline;
 }
 
 /*------Блок авторизации--------------------------------------------------------------------------------------------*/
@@ -33,12 +38,16 @@
     font-size: 18px;
     -webkit-border-top-left-radius: 8px;
     -webkit-border-bottom-left-radius: 8px;
+    box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
+    color: rgba(54, 59, 77, 0.9);
+
 }
 .auth__title {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     padding-bottom: 48px;
+    color: rgba(54, 59, 77, 0.9);
 }
 .auth__title h3 {
     font-weight: 600;
@@ -62,7 +71,7 @@
 }
 .form__select select {
     position: relative;
-    height: 40px;
+    height: 56px;
     padding: 5px 0 5px 10px;
     background-color: #FFFFFF;
     font-size: 18px;
@@ -81,7 +90,7 @@
     border-radius: 8px;
     border: 1px solid rgba(54, 59, 77, 0.9);
     opacity: 50%;
-    height: 40px;
+    height: 56px;
     padding: 5px 0 5px 10px;
     outline: none;
 }
@@ -90,16 +99,17 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-bottom: 48px;
+    padding-bottom: 40px;
 }
 .form__pass input {
     border-radius: 8px;
     border: 1px solid rgba(54, 59, 77, 0.9);
     opacity: 50%;
-    height: 40px;
+    height: 56px;
     padding: 5px 0 5px 10px;
     outline: none;
 }
+
 
 .form__checkbox {
     display: flex;
@@ -125,8 +135,8 @@
 }
 .form__error {
     position: absolute;
-    top: 80px;
-    font-size: 14px;
+    top: 75px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 143%;
     color: #FF4970;
@@ -146,7 +156,7 @@
 .reg__logo {
     display: flex;
     align-self: flex-end;
-    padding-bottom: 418px;
+    padding-bottom: 460px;
     font-size: 32px;
 }
 .reg__title {
@@ -181,7 +191,16 @@
     font-family: Golos;
     font-size: 16px;
 }
-/*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться-------------------------------------------------------------------------------------------*/
+/*------Блок с ссылкой для мобильная версии на страницу регистрации--------------------------------------------------*/
+.main-block__mobile-link-reg {
+    display: none;
+    gap: 8px;
+    position: absolute;
+    font-size: 14px;
+    left: 50px;
+    top: 630px
+}
+/*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
 ._ibg-image1 {
     position: absolute;
     width: 114px;
@@ -223,7 +242,7 @@
     position: absolute;
     width: 228px;
     height: 228px;
-    top: 600px;
+    top: 620px;
     right: 140px;
     object-fit: cover;
     z-index: 55;
@@ -232,7 +251,7 @@
     position: absolute;
     width: 117px;
     height: 228px;
-    top: 690px;
+    top: 720px;
     left: 200px;
     object-fit: cover;
     z-index: 55;
@@ -403,18 +422,17 @@
 }
 /*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
-
     .container {
         position: relative;
-        width: 371px;
+        width: 380px;
         height: 100%;
-        padding: 0 4px;
+        padding: 0 1px;
     }
     .main-block__auth {
         position: absolute;
         top: 200px;
         left: 0;
-        padding: 20px 20px 20px 20px;
+        padding: 20px 20px 20px 30px;
         font-size: 12px;
         max-width: 375px;
         border-radius: 8px;
@@ -423,7 +441,6 @@
         position: absolute;
         top: 0;
         left: 0;
-        right: 100px;
         border-radius: 0;
         width: 375px;
         z-index: -2;
@@ -439,11 +456,9 @@
     .form__select {
         display: none;
     }
-    .form__login input, .form__pass input {
-        max-width: 311px;
-    }
+
     .form__button {
-        padding-bottom: 30px;
+        padding-bottom: 40px;
     }
     .form__button button {
         height: 40px;
@@ -475,6 +490,12 @@
     .form__login, .form__pass {
         padding-bottom: 20px;
         max-width: 100%;
+
+    }
+    .form__login input, .form__pass input {
+        padding: 10px 0 10px 10px;
+        width: 311px;
+        height: 48px;
     }
     .checkbox_container {
         padding-top: 1px;
@@ -482,5 +503,17 @@
     .checkmark {
         height: 18px;
         width: 18px;
+    }
+    ._ibg-image1 {
+        display: none;
+    }
+    .main-block__mobile-link-reg {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        gap: 8px;
+        position: absolute;
+        font-size: 14px;
+
     }
 }

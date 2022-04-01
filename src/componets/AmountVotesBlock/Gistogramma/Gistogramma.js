@@ -74,33 +74,6 @@ const Gistogramma = () => {
     return (
        <div>
             <Chart style={{width: 320, height: 144}}>
-                {/*<ChartCategoryAxis>*/}
-                {/*    <ChartCategoryAxisItem categories={dataVote} tartAngle={45}/>*/}
-
-                {/*<ChartSeries>*/}
-                {/*    <ChartSeriesItem data={firstColumn} type='column' spacing={0.5}/>*/}
-                {/*    <ChartSeriesItem data={secondColumn} type='column' spacing={0.5} field="sales"/>*/}
-                {/*    <ChartSeriesItem data={firstColumn} type='column' spacing={0.5} field="sales"/>*/}
-                {/*    <ChartSeriesItem data={firstColumn} type='column' spacing={0.5} field="sales"/>*/}
-
-                {/*    /!*<ChartSeriesItem data={seriesData} type='column' spacing={1} field="sales" categoryField=0>*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesData} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesData} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesData} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataOne} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataOne} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataOne} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataTwo} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataTwo} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataTwo} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataTwo} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataThree} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataThree} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataThree} type="column" field="sales" categoryField="product" />*!/*/}
-                {/*    /!*<ChartSeriesItem data={seriesDataThree} type="column" field="sales" categoryField="product" />*!/*/}
-
-                {/*</ChartSeries>*/}
-
 
                 <ChartCategoryAxis>
                     <ChartCategoryAxisItem categories={dataVote} startAngle={45}>

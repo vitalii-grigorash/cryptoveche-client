@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarVotes.css';
 
+
 const CalendarVotes = () => {
     const [value, onChange] = useState(new Date());
     const allMonthValues = [
