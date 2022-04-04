@@ -19,18 +19,17 @@ const Auth = () => {
     const [login, setLogin] = useState('')
     const [pass, setPass] = useState('')
     const [Error, setError] = useState('')
-    // const []
-    //
-    //
-    // function showPass () {
-    //     let =
-    // }
+
+
+
     const inputHandler = (e) => {
         setLogin(e.target.value)
         setPass(e.target.value)
         if(login === '' || pass === '')
             setError('Неверно введено имя пользователя или пароль')
+
     }
+
 
  return (
              <div className={'wrapper'}>
@@ -73,19 +72,26 @@ const Auth = () => {
                                     </div>
                                         </div>
                                             <div className={'main-block__reg'}>
-                                                <img alt={''} className={'auth-image_1'} src={bg_image1}/>
-                                                <img alt={''} className={'auth-image_2'} src={bg_image2}/>
-                                                <img alt={''} className={'auth-image_3'} src={bg_image3}/>
-                                                <img alt={''} className={'auth-image_4'} src={bg_image1}/>
-                                                <img alt={''} className={'auth-image_5'} src={bg_image4}/>
-                                                <img alt={''} className={'auth-image_6'} src={bg_image3}/>
-                                                <img alt={''} className={'auth-image-mobile'} src={bg_image_mobile}/>
-                                                <div className={'reg__logo'}><img src={logo} alt="Логотип"/></div>
-                                                <div className={'reg__title'}>Система электронных голосований</div>
-                                                <div className={'reg__button'}><span>Еще нет аккаунта?</span><button>Зарегистрироваться</button></div>
+                                                    <img alt={''} className={'auth-image_1'} src={bg_image1}/>
+                                                    <img alt={''} className={'auth-image_2'} src={bg_image2}/>
+                                                    <img alt={''} className={'auth-image_3'} src={bg_image3}/>
+                                                    <img alt={''} className={'auth-image_4'} src={bg_image1}/>
+                                                    <img alt={''} className={'auth-image_5'} src={bg_image4}/>
+                                                    <img alt={''} className={'auth-image_6'} src={bg_image3}/>
+                                                    <img alt={''} className={'auth-image-mobile'} src={bg_image_mobile}/>
+                                                <div className={'reg__logo'}>
+                                                    <img src={logo} alt="Логотип"/>
+                                                </div>
+                                                <div className={'reg__title'}>
+                                                    Система электронных голосований
+                                                </div>
+                                                <div className={'reg__button'}><
+                                                    span>Еще нет аккаунта?</span>
+                                                    <button>Зарегистрироваться</button>
+                                                </div>
                                         </div>
                                         <div className={'main-block__mobile-link-reg'}>
-                                            <span>Ещё нет аккаунта?</span><span><a href={''}>Зегистрироваться</a></span>
+                                            <span>Ещё нет аккаунта?</span><a href={''}>Зарегистрироваться</a>
                                         </div>
                                </div>
                         </div>

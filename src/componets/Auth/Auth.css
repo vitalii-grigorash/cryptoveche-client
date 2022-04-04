@@ -40,7 +40,6 @@ a {
     -webkit-border-bottom-left-radius: 8px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
     color: rgba(54, 59, 77, 0.9);
-
 }
 .auth__title {
     display: inline-flex;
@@ -108,7 +107,6 @@ a {
     height: 56px;
     padding: 5px 0 5px 10px;
     outline: none;
-
 }
 
 .form__checkbox {
@@ -133,9 +131,10 @@ a {
     font-weight: 500;
     font-family: Golos;
 }
+/*------Сообщение об ошибки--------------------------------------------------------------------------------------------*/
 .form__error {
     position: absolute;
-    top: 75px;
+    top: 95px;
     font-size: 12px;
     font-weight: 400;
     line-height: 143%;
@@ -156,17 +155,19 @@ a {
 .reg__logo {
     display: flex;
     align-self: flex-end;
-    padding-bottom: 460px;
+    padding-bottom: 561px;
     font-size: 32px;
 }
 .reg__title {
+    position: absolute;
     text-align: right;
-    padding-bottom: 40px;
+    top: 560px;
+    right: 32px;
+    padding-bottom: 32px;
     color: #FFFFFF;
     font-size: 24px;
-    font-weight: 500;
-    line-height: 133%;
-    font-family: Golos;
+    font-weight: 700;
+    line-height: 32px;
 }
 
 .reg__button {
@@ -182,23 +183,22 @@ a {
     line-height: 24px;
 }
 .reg__button button {
+    cursor: pointer;
     width: 213px;
     height: 48px;
-    cursor: pointer;
     background-color: #FFFFFF;
     border-radius: 4px;
     color: #0084FE;
+    font-weight: 500;
     font-family: Golos;
     font-size: 16px;
+    line-height: 24px;
+    z-index: 66;
 }
 /*------Блок с ссылкой для мобильная версии на страницу регистрации--------------------------------------------------*/
 .main-block__mobile-link-reg {
     display: none;
-    gap: 8px;
-    position: absolute;
-    font-size: 14px;
-    left: 50px;
-    top: 630px
+
 }
 /*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
 .auth-image_1 {
@@ -215,7 +215,7 @@ a {
     position: absolute;
     width: 228px;
     height: 340px;
-    top: 190px;
+    top: 240px;
     left: 117px;
     object-fit: cover;
     z-index: 55;
@@ -224,7 +224,7 @@ a {
     position: absolute;
     width: 116px;
     height: 220px;
-    top: 308px;
+    top: 358px;
     left: 117px;
     object-fit: cover;
     z-index: 55;
@@ -233,7 +233,7 @@ a {
     position: absolute;
     width: 117px;
     height: 228px;
-    top: 415px;
+    top: 465px;
     left: 0;
     object-fit: cover;
     z-index: 55;
@@ -358,10 +358,19 @@ a {
         padding: 20px 20px 20px 20px;
     }
     .reg__title {
-        font-size: 16px;
+        position: absolute;
+        text-align: right;
+        top: 440px;
+        right: 24px;
+        padding-bottom: 32px;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px;
     }
+
     .reg__logo {
-        padding-bottom: 380px;
+        padding-bottom: 510px;
     }
     .reg__logo img {
         width: 180px;
@@ -410,7 +419,15 @@ a {
         padding: 20px 20px 20px 20px;
     }
     .reg__title {
-        font-size: 14px;
+        position: absolute;
+        text-align: right;
+        top: 400px;
+        right: 24px;
+        padding-bottom: 32px;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px;
     }
     .reg__logo img {
         width: 160px;
@@ -422,7 +439,7 @@ a {
         padding-bottom: 32px;
     }
     .reg__logo {
-        padding-bottom: 340px;
+        padding-bottom: 450px;
     }
 }
 /*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
@@ -437,25 +454,34 @@ a {
         position: absolute;
         top: 200px;
         left: 0;
-        padding: 20px 20px 20px 30px;
-        font-size: 12px;
-        max-width: 375px;
+        padding: 24px 1px 24px 16px;
+        font-size: 16px;
+        width: 375px;
         border-radius: 8px;
     }
     .main-block__reg {
         position: absolute;
         top: 0;
         left: 0;
+        right: 0;
         border-radius: 0;
         width: 375px;
         z-index: -2;
     }
     .auth__title {
-        padding-bottom: 10px;
-        max-width: 310px;
+        padding-bottom: 24px;
+        max-width: 343px;
+        color: rgba(54, 59, 77);
+        opacity: 0.9;
     }
     .auth__title h3 {
-        font-size: 20px;
+        font-size: 26px;
+    }
+    .auth__title span {
+        font-size: 14px;
+    }
+    .auth__title a {
+        font-size: 14px;
     }
     .form__select {
         display: none;
@@ -463,16 +489,31 @@ a {
 
     .form__button {
         padding-bottom: 40px;
+        gap: 12px;
     }
     .form__button button {
-        height: 40px;
-        font-size: 14px;
+        width: 132px;
+        height: 48px;
+        font-size: 16px;
+        font-family: Golos;
+        font-weight: 500;
     }
+
     .form__button span {
-        text-align: left;
+        border: 1px solid #0084FE;
+        width: 199px;
+        height: 48px;
+        border-radius: 4px;
+        text-align: center;
+        padding: 14px 22px 12px 22px;
+        cursor: pointer;
+    }
+    .form__button a {
+        text-decoration: none;
     }
     .form__checkbox {
         padding-bottom: 20px;
+        gap: 25px;
     }
 
     .reg__title {
@@ -482,8 +523,9 @@ a {
     .reg__logo img {
         position: absolute;
         top: 49px;
-        right: 180px;
-        width: 170px;
+        right: 160px;
+        width: 197px;
+        height: 33px;
     }
     .reg__button {
         display: none;
@@ -494,15 +536,16 @@ a {
     .form__login, .form__pass {
         padding-bottom: 20px;
         max-width: 100%;
-
     }
     .form__login input, .form__pass input {
         padding: 10px 0 10px 10px;
-        width: 311px;
+        width: 343px;
         height: 48px;
     }
     .checkbox_container {
         padding-top: 1px;
+        font-size: 16px;
+
     }
     .checkmark {
         height: 18px;
@@ -515,9 +558,11 @@ a {
         display: flex;
         width: 100%;
         text-align: center;
-        gap: 8px;
+        gap: 5px;
         position: absolute;
-        font-size: 14px;
+        font-size: 16px;
+        left: 28px;
+        top: 650px
     }
     .auth-image-mobile {
         display: inherit;
@@ -529,4 +574,15 @@ a {
         object-fit: cover;
         z-index: 55;
     }
+    .form__error {
+        position: absolute;
+        top: 83px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 143%;
+        color: #FF4970;
+    }
+
+
+
 }
