@@ -8,10 +8,11 @@
 }
 .main-content__title {
     font-size: 32px;
-    font-weight: 600;
     line-height: 125%;
-    font-family: Golos;
     padding-bottom: 40px;
+    font-family: Golos;
+    color: rgba(54, 59, 77, 0.9);
+    font-weight: 700;
 }
 .main-content__my-votes-actual {
     display: flex;
@@ -47,12 +48,18 @@
 }
 
 
-
-
-
 @font-face {
     font-family: "Golos";
     src: url("../src/fonts/Golos-Text_Regular.woff") format('woff');
     font-style: normal;
     font-weight: normal;
 }
+
+@font-face {
+    font-family: "Golos";
+    src: url("../src/fonts/Golos-Text_Bold.woff") format('woff');
+    font-style: italic;
+    font-weight: bold;
+}
+
+

@@ -6,6 +6,7 @@ import bg_image2 from '../../img/Auth_img_2.svg';
 import bg_image3 from '../../img/Auth_img_3.svg';
 import bg_image4 from '../../img/Auth_img_4.svg';
 import bg_image_mobile from '../../img/Auth_img_mobile.svg';
+import show_pass_icon from '../../img/Auth_show_pass_icon.svg';
 
 
 
@@ -19,7 +20,16 @@ const Auth = () => {
     const [login, setLogin] = useState('')
     const [pass, setPass] = useState('')
     const [Error, setError] = useState('')
+    const [ typePass, setTypePass ] = useState('password');
 
+
+    const showPass = (e) => {
+        if (typePass === 'password') {
+            setTypePass('text')
+        } else {
+            setTypePass('password')
+        }
+    }
 
 
     const inputHandler = (e) => {
@@ -55,7 +65,8 @@ const Auth = () => {
                                         </div>
                                         <div className={'form__pass'}>
                                             <span>Пароль</span>
-                                            <input onChange={e => {setPass(e.target.value)}} name={pass} value={pass} type={'password'}/>
+                                            <img className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showPass}/>
+                                            <input onChange={e => {setPass(e.target.value)}} name={pass} value={pass} type={typePass}/>
                                             <div className={'form__error'}>{Error}</div>
                                         </div>
                                         <div className={'form__checkbox'}>

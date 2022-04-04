@@ -49,13 +49,18 @@ a {
     color: rgba(54, 59, 77, 0.9);
 }
 .auth__title h3 {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 32px;
     line-height: 40px;
     font-family: Golos;
 }
 .auth__title span {
         padding-right: 8px;
+        font-size: 16px;
+}
+.auth__title a {
+    font-size: 16px;
+
 }
 
 .auth__form {
@@ -108,7 +113,15 @@ a {
     padding: 5px 0 5px 10px;
     outline: none;
 }
-
+.form__pass-show-pass-icon {
+    position: absolute;
+    width: 22px;
+    height: 15px;
+    cursor: pointer;
+    top: 54px;
+    right: 22px;
+    z-index: 22;
+}
 .form__checkbox {
     display: flex;
     flex-direction: column;
@@ -444,26 +457,23 @@ a {
 }
 /*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
+
     .container {
         position: relative;
         width: 380px;
         height: 100%;
-        padding: 0 1px;
     }
     .main-block__auth {
         position: absolute;
-        top: 200px;
+        top: 175px;
         left: 0;
         padding: 24px 1px 24px 16px;
         font-size: 16px;
         width: 375px;
-        border-radius: 8px;
+        border-radius: 16px;
     }
     .main-block__reg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+
         border-radius: 0;
         width: 375px;
         z-index: -2;
@@ -476,6 +486,8 @@ a {
     }
     .auth__title h3 {
         font-size: 26px;
+        font-weight: 700;
+
     }
     .auth__title span {
         font-size: 14px;
@@ -514,6 +526,7 @@ a {
     .form__checkbox {
         padding-bottom: 20px;
         gap: 25px;
+        font-size: 14px;
     }
 
     .reg__title {
@@ -545,6 +558,7 @@ a {
     .checkbox_container {
         padding-top: 1px;
         font-size: 16px;
+        padding-left: 28px;
 
     }
     .checkmark {
@@ -562,7 +576,7 @@ a {
         position: absolute;
         font-size: 16px;
         left: 28px;
-        top: 650px
+        top: 625px;
     }
     .auth-image-mobile {
         display: inherit;
@@ -582,7 +596,11 @@ a {
         line-height: 143%;
         color: #FF4970;
     }
-
-
+    .form__pass-show-pass-icon {
+        cursor: pointer;
+        top: 50px;
+        right: 24px;
+        z-index: 22;
+    }
 
 }
