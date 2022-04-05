@@ -1,0 +1,153 @@
+/*------Контейнер для страницы регистрации-------------------------------------------------------------------------*/
+.wrapper-reg {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.container-reg {
+    max-width: 1280px;
+    padding: 0 15px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}
+.reg-block {
+    display: flex;
+    flex-direction: row;
+    font-family: Inter;
+    position: relative;
+}
+a {
+    text-decoration: underline;
+}
+/*------Блок c логотипом и кнопкой--------------------------------------------------------------------------------------------*/
+.reg-block-logotype {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0075FF;
+    padding: 74px 32px 74px 32px;
+    width: 336px;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+}
+.reg-block-logotype__logo {
+    display: flex;
+    align-self: flex-start;
+    padding-bottom: 528px;
+    font-size: 32px;
+}
+.reg-block-logotype__title {
+    position: absolute;
+    text-align: left;
+    top: 560px;
+    left: 32px;
+    padding-bottom: 32px;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.reg-block-logotype__button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+.reg-block-logotype__button span {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.reg-block-logotype__button button {
+    cursor: pointer;
+    width: 116px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    color: #0084FE;
+    font-weight: 500;
+    font-family: Golos;
+    font-size: 16px;
+    line-height: 24px;
+    z-index: 66;
+}
+/*------Блок с формой регистрации--------------------------------------------------------------------------------------------*/
+.reg-block__reg-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFF;
+    padding: 74px 56px 74px 56px;
+    width: 768px;
+    font-size: 18px;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 8px;
+    box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
+    color: rgba(54, 59, 77, 0.9);
+}
+
+.reg-form__title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 32px;
+    color: rgba(54, 59, 77, 0.9);
+}
+.reg-form__title  h3 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    font-family: Golos;
+}
+.reg-form__title  span {
+    padding-right: 8px;
+    font-size: 16px;
+}
+.reg-form__title  a {
+    font-size: 16px;
+}
+.reg-form__username {
+    display: grid;
+    column-gap: 14px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 88px;
+    opacity: 0.9;
+    color: #363B4D;
+}
+.reg-form__username input {
+    width: 208px;
+    height: 48px;
+    border: 1px solid rgba(54, 59, 77, 0.5);
+    padding: 4px 0 5px 10px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: Inter;
+}
+.box-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.box-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.box-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+

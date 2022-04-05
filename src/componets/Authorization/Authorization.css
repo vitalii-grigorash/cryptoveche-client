@@ -1,0 +1,614 @@
+/*------Контейнер для страницы авторизации-------------------------------------------------------------------------*/
+.wrapper-auth {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.container-auth {
+    max-width: 1280px;
+    padding: 0 15px;
+    margin: 0 auto;
+    box-sizing: content-box;
+}
+.main-block {
+    display: flex;
+    flex-direction: row;
+    font-family: Inter;
+    position: relative;
+
+}
+a {
+    text-decoration: underline;
+}
+
+/*------Блок авторизации--------------------------------------------------------------------------------------------*/
+.main-block__auth {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFF;
+    padding: 74px 56px 74px 56px;
+    width: 768px;
+    font-size: 18px;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+    box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
+    color: rgba(54, 59, 77, 0.9);
+}
+.auth__title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 32px;
+    color: rgba(54, 59, 77, 0.9);
+}
+.auth__title h3 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    font-family: Golos;
+}
+.auth__title span {
+        padding-right: 8px;
+        font-size: 16px;
+}
+.auth__title a {
+    font-size: 16px;
+
+}
+.auth__form {
+    display: flex;
+    flex-direction: column;
+}
+.form__select {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 48px;
+    position: relative;
+}
+.form__select::after {
+    content: url("../../img/Auth_select_row.svg");
+    position: absolute;
+    top: 56px;
+    right: 16px;
+    margin-top: -2px;
+    pointer-events: none;
+}
+.form__select select {
+    position: relative;
+    height: 56px;
+    padding: 5px 0 5px 10px;
+    background-color: #FFFFFF;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.9);
+    opacity: 50%;
+    appearance: none;
+}
+.form__login {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 48px;
+}
+.form__login input {
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.9);
+    opacity: 50%;
+    height: 56px;
+    padding: 5px 0 5px 10px;
+    font-size: 18px;
+    outline: none;
+}
+.form__pass {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 40px;
+}
+.form__pass input {
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.9);
+    opacity: 50%;
+    height: 56px;
+    padding: 5px 0 5px 10px;
+    font-size: 18px;
+    outline: none;
+}
+.form__pass-show-pass-icon {
+    position: absolute;
+    width: 22px;
+    height: 15px;
+    cursor: pointer;
+    top: 54px;
+    right: 22px;
+    z-index: 22;
+}
+.form__checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 48px;
+}
+.form__button {
+    display: inline-flex;
+    gap: 32px;
+    align-items: center;
+}
+.form__button button {
+    background-color: #0075FF;
+    width: 134px;
+    height: 56px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Golos;
+}
+/*------Сообщение об ошибки--------------------------------------------------------------------------------------------*/
+.form__error {
+    position: absolute;
+    top: 95px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 143%;
+    color: #FF4970;
+}
+
+/*------Блок регистрации--------------------------------------------------------------------------------------------*/
+.main-block__reg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0075FF;
+    padding: 74px 32px 74px 36px;
+    width: 336px;
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+}
+.reg__logo {
+    display: flex;
+    align-self: flex-end;
+    padding-bottom: 528px;
+    font-size: 32px;
+}
+.reg__title {
+    position: absolute;
+    text-align: right;
+    top: 560px;
+    right: 32px;
+    padding-bottom: 32px;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.reg__button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+.reg__button span {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.reg__button button {
+    cursor: pointer;
+    width: 213px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    color: #0084FE;
+    font-weight: 500;
+    font-family: Golos;
+    font-size: 16px;
+    line-height: 24px;
+    z-index: 66;
+}
+/*------Блок с ссылкой для мобильная версии на страницу регистрации--------------------------------------------------*/
+.main-block__mobile-link-reg {
+    display: none;
+
+}
+/*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
+.auth-image_1 {
+    position: absolute;
+    width: 114px;
+    height: 220px;
+    top: 140px;
+    left: 220px;
+    object-fit: cover;
+    z-index: 55;
+}
+
+.auth-image_2 {
+    position: absolute;
+    width: 228px;
+    height: 340px;
+    top: 240px;
+    left: 117px;
+    object-fit: cover;
+    z-index: 55;
+}
+.auth-image_3 {
+    position: absolute;
+    width: 116px;
+    height: 220px;
+    top: 358px;
+    left: 117px;
+    object-fit: cover;
+    z-index: 55;
+}
+.auth-image_4 {
+    position: absolute;
+    width: 117px;
+    height: 228px;
+    top: 465px;
+    left: 0;
+    object-fit: cover;
+    z-index: 55;
+}
+.auth-image_5 {
+    position: absolute;
+    width: 228px;
+    height: 228px;
+    top: 610px;
+    right: 140px;
+    object-fit: cover;
+    z-index: 55;
+}
+.auth-image_6 {
+    position: absolute;
+    width: 117px;
+    height: 228px;
+    top: 725px;
+    left: 196px;
+    object-fit: cover;
+    z-index: 55;
+}
+.auth-image-mobile {
+    display: none;
+
+}
+
+/*------Чек бокс--------------------------------------------------------------------------------------------------*/
+.checkbox_container {
+    display: block;
+    position: relative;
+    padding-left: 34px;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+}
+
+.checkbox_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #FFFFFF;
+    border-color: #CACCCF;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.checkbox_container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox_container input:checked ~ .checkmark {
+    background-color: #0084FE;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox_container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox_container .checkmark:after {
+    left: 4px;
+    top: 2px;
+    width: 10px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
+@media (max-width: 1108px) {
+    .container {
+        max-width: 800px;
+    }
+    .main-block__auth {
+        padding: 20px 80px 20px 20px;
+    }
+   .main-block__reg {
+       padding: 15px 15px 15px 15px;
+   }
+   .auth__title {
+       padding-bottom: 20px;
+   }
+    .auth__title h3 {
+        font-size: 22px;
+    }
+    .main-block__auth {
+        font-size: 14px;
+    }
+    .form__select select {
+        font-size: 14px;
+    }
+    .form__select, .form__login, .form__pass input {
+        max-width: 450px;
+    }
+    .form__button button {
+        height: 40px;
+    }
+    .checkbox_container {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+    .main-block__reg {
+        padding: 20px 20px 20px 20px;
+    }
+    .reg__title {
+        position: absolute;
+        text-align: right;
+        top: 440px;
+        right: 24px;
+        padding-bottom: 32px;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+
+    .reg__logo {
+        padding-bottom: 500px;
+    }
+    .reg__logo img {
+        width: 180px;
+    }
+    .reg__button span {
+        font-size: 14px;
+    }
+    .checkbox_container {
+        padding-top: 3px;
+    }
+}
+/*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
+@media (max-width: 800px) {
+    .container {
+        max-width: 590px;
+    }
+    .main-block__auth {
+        padding: 15px 70px 15px 15px;
+    }
+    .main-block__reg {
+        padding: 15px 15px 15px 15px;
+    }
+    .auth__title {
+        padding-bottom: 10px;
+    }
+    .auth__title h3 {
+        font-size: 20px;
+    }
+    .main-block__auth {
+        font-size: 12px;
+    }
+    .form__select select {
+        font-size: 12px;
+    }
+    .form__select input, .form__login input, .form__pass input {
+        width: 300px;
+    }
+    .form__button button {
+        height: 40px;
+    }
+    .form__button span {
+        text-align: left;
+    }
+
+    .main-block__reg {
+        padding: 20px 20px 20px 20px;
+    }
+    .reg__title {
+        position: absolute;
+        text-align: right;
+        top: 400px;
+        right: 24px;
+        padding-bottom: 32px;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+    .reg__logo img {
+        width: 160px;
+    }
+    .reg__button span {
+        font-size: 12px;
+    }
+    .form__select, .form__login, .form__pass {
+        padding-bottom: 32px;
+    }
+    .reg__logo {
+        padding-bottom: 440px;
+    }
+}
+/*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
+@media (max-width: 600px) {
+    .container {
+        position: relative;
+        width: 380px;
+        height: 100%;
+    }
+    .main-block__auth {
+        position: absolute;
+        top: 175px;
+        left: 0;
+        padding: 24px 1px 24px 16px;
+        font-size: 16px;
+        width: 375px;
+        border-radius: 16px;
+    }
+    .main-block__reg {
+
+        border-radius: 0;
+        width: 375px;
+        z-index: -2;
+    }
+    .auth__title {
+        padding-bottom: 24px;
+        max-width: 343px;
+        color: rgba(54, 59, 77);
+        opacity: 0.9;
+    }
+    .auth__title h3 {
+        font-size: 26px;
+        font-weight: 700;
+
+    }
+    .auth__title span {
+        font-size: 14px;
+    }
+    .auth__title a {
+        font-size: 14px;
+    }
+    .form__select {
+        display: none;
+    }
+
+    .form__button {
+        padding-bottom: 40px;
+        gap: 12px;
+    }
+    .form__button button {
+        width: 132px;
+        height: 48px;
+        font-size: 16px;
+        font-family: Golos;
+        font-weight: 500;
+    }
+
+    .form__button span {
+        border: 1px solid #0084FE;
+        width: 199px;
+        height: 48px;
+        border-radius: 4px;
+        text-align: center;
+        padding: 14px 22px 12px 22px;
+        cursor: pointer;
+    }
+    .form__button a {
+        text-decoration: none;
+    }
+    .form__checkbox {
+        padding-bottom: 20px;
+        gap: 25px;
+        font-size: 14px;
+    }
+
+    .reg__title {
+        display: none;
+    }
+    .reg__logo img {
+        position: absolute;
+        top: 49px;
+        right: 160px;
+        width: 197px;
+        height: 33px;
+    }
+    .reg__button {
+        display: none;
+    }
+    .reg__button span {
+       display: none;
+    }
+    .form__login, .form__pass {
+        padding-bottom: 20px;
+        max-width: 100%;
+    }
+    .form__login input, .form__pass input {
+        padding: 10px 0 10px 10px;
+        width: 343px;
+        height: 48px;
+    }
+    .checkbox_container {
+        padding-top: 1px;
+        font-size: 16px;
+        padding-left: 28px;
+
+    }
+    .checkmark {
+        height: 18px;
+        width: 18px;
+    }
+    .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
+        display: none;
+    }
+    .main-block__mobile-link-reg {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        gap: 5px;
+        position: absolute;
+        font-size: 16px;
+        left: 28px;
+        top: 615px;
+    }
+    .auth-image-mobile {
+        display: inherit;
+        position: absolute;
+        width: 300px;
+        height: 250px;
+        top: 0;
+        left: 120px;
+        object-fit: cover;
+        z-index: 55;
+    }
+    .form__error {
+        position: absolute;
+        top: 83px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 143%;
+        color: #FF4970;
+    }
+    .form__pass-show-pass-icon {
+        cursor: pointer;
+        top: 50px;
+        right: 24px;
+        z-index: 22;
+    }
+
+}

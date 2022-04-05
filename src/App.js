@@ -1,15 +1,16 @@
 import './App.css';
-import './componets/Auth/Auth';
+import './componets/Authorization/Authorization';
 import {Route, Switch, Redirect} from "react-router-dom";
 import Header from "./componets/Header/Header";
 import Footer from "./componets/Footer/Footer";
-import Auth from "./componets/Auth/Auth";
+import Authorization from "./componets/Authorization/Authorization";
 import CounterBlock from "./componets/CounterBlock/CounterBlock";
 import CalendarVotes from "./componets/CalendarVotes/CalendarVotes";
 import ActualBlock from "./componets/ActualBlock/ActualBlock";
 import AmountVotesBlock from "./componets/AmountVotesBlock/AmountVotesBlock";
 import MyVotesBlock from "./componets/MyVotesBlock/MyVotesBlock";
 import ObserverCryptoBlock from "./componets/ObserverCryptoBlock/ObserverCryptoBlock";
+import Registration from "./componets/Registration/Registration";
 
 
 
@@ -19,7 +20,8 @@ function App() {
   return (
 <>
       <Switch>
-          <Route path='/home' component={Auth}/>
+          <Route path='/home' component={Authorization}/>
+          <Route path='/regpage' component={Registration}/>
           <Route path='/main' component={Layout}/>
           <Redirect from='/' to = '/home'/>
       </Switch>

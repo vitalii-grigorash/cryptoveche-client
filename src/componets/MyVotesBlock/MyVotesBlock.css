@@ -46,7 +46,7 @@
     display: flex;
     border: 1px #4ED4A9 solid;
     border-radius: 8px;
-    padding: 10px 20px 0 20px;
+    padding: 10px 20px 10px 20px;
     color: #4ED4A9;
 
 }
@@ -127,7 +127,7 @@
 .vote-form__status-block__current-status__registration-in-progress {
     border: 1px #0084FE solid;
     border-radius: 8px;
-    padding: 8px 20px 0 20px;
+    padding: 8px 20px 10px 20px;
     color: #0084FE;
 }
 
@@ -185,6 +185,10 @@
     font-size: 16px;
     font-weight: 300;
     line-height: 124%;
+
+}
+.my-votes__link-arrow a {
+    color: #0075FF;
 }
 
 
