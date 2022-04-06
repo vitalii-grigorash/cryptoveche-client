@@ -14,25 +14,29 @@ const Authorization = () => {
 
     const [login, setLogin] = useState('')
     const [pass, setPass] = useState('')
-    const [Error, setError] = useState('')
-    const [ typePass, setTypePass ] = useState('password');
+    const [error, setError] = useState('')
+    const [changeTypePass, setChangeTypePass] = useState('password');
+    const [inputColor, setInputColor] = useState('_input-border-black')
 
 
-    const showPass = () => {
-        if (typePass === 'password') {
-            setTypePass('text')
+    const showHiddenPass = () => {
+        if (changeTypePass === 'password') {
+            setChangeTypePass('text')
         } else {
-            setTypePass('password')
+            setChangeTypePass('password')
         }
     }
 
 
     const inputHandler = (e) => {
+
         setLogin(e.target.value)
         setPass(e.target.value)
-        if(login === '' || pass === '')
-            setError('Неверно введено имя пользователя или пароль')
 
+        if (login === '' || pass === '') {
+            setError('Неверно введено имя пользователя или пароль')
+            setInputColor('_input-border-red ')
+        }
     }
 
 
@@ -48,21 +52,21 @@ const Authorization = () => {
                                     <div className={'auth__form'}>
                                         <div className={'form__select'}>
                                             <span>Войти как</span>
-                                                    <select name="select">
-                                                        <option value="value1">Голосующий</option>
-                                                        <option value="value2">Голосующий 2</option>
-                                                        <option value="value3">Голосующий 3</option>
-                                                    </select>
+                                            <select name="select">
+                                                <option value="value1">Голосующий</option>
+                                                <option value="value2">Голосующий 2</option>
+                                                <option value="value3">Голосующий 3</option>
+                                            </select>
                                         </div>
                                         <div className={'form__login'}>
                                             <span>Имя пользователя</span>
-                                            <input onChange={e => {setLogin(e.target.value)}} placeholder={'admin@admin.com'} name={login} value={login} type={"text"}/>
+                                            <input className={inputColor} onChange={e => {setLogin(e.target.value)}} placeholder={'admin@admin.com'} name={login} value={login} type={"text"}/>
                                         </div>
                                         <div className={'form__pass'}>
                                             <span>Пароль</span>
-                                            <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showPass}/>
-                                            <input onChange={e => {setPass(e.target.value)}} name={pass} value={pass} type={typePass}/>
-                                            <div className={'form__error'}>{Error}</div>
+                                            <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass}/>
+                                            <input className={inputColor} onChange={e => {setPass(e.target.value)}} name={pass} value={pass} type={changeTypePass}/>
+                                            <div className={'form__error'}>{error}</div>
                                         </div>
                                         <div className={'form__checkbox'}>
                                             <span><a href={'link'}>Забыли пароль?</a></span>
@@ -72,7 +76,7 @@ const Authorization = () => {
                                             </label>
                                         </div>
                                         <div className={'form__button'}>
-                                            <button onClick={e => inputHandler(e)} type={"submit"}>Войти</button>
+                                            <button onClick={e => inputHandler(e)} type={'button'}>Войти</button>
                                             <span><a href={'link'}>Войти через ЕСИА</a></span>
                                         </div>
                                     </div>

@@ -46,7 +46,7 @@ a {
 .reg-block-logotype__title {
     position: absolute;
     text-align: left;
-    top: 560px;
+    top: 530px;
     left: 32px;
     padding-bottom: 32px;
     color: #FFFFFF;
@@ -92,62 +92,344 @@ a {
     -webkit-border-bottom-right-radius: 8px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
     color: rgba(54, 59, 77, 0.9);
+    gap: 32px;
 }
 
 .reg-form__title {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 32px;
     color: rgba(54, 59, 77, 0.9);
 }
-.reg-form__title  h3 {
+.reg-form__title h3 {
     font-weight: 700;
     font-size: 32px;
     line-height: 40px;
     font-family: Golos;
 }
-.reg-form__title  span {
+.reg-form__title span {
     padding-right: 8px;
     font-size: 16px;
 }
-.reg-form__title  a {
+.reg-form__title a {
     font-size: 16px;
+    color: #0075FF;
 }
+/*------Форма регистрации ФИО-------------------------------------------------------------------------------------------*/
 .reg-form__username {
     display: grid;
     column-gap: 14px;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 88px;
     opacity: 0.9;
     color: #363B4D;
+    position: relative;
 }
 .reg-form__username input {
     width: 208px;
     height: 48px;
-    border: 1px solid rgba(54, 59, 77, 0.5);
-    padding: 4px 0 5px 10px;
+    /*border: 1px solid rgba(54, 59, 77, 0.5);*/
+    padding: 4px 5px 5px 15px;
     border-radius: 8px;
     outline: none;
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
     font-family: Inter;
-}
-.box-1 {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-.box-2 {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-.box-3 {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    color: rgba(54, 59, 77, 0.9);
 }
 
+.username-forms {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.username-forms span {
+    position: relative;
+}
 
+.username-forms__red-star-icon__family {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    top: 0;
+    left: 89px;
+}
+.username-forms__red-star-icon__name {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    top: 0;
+    left: 42px;
+}
+
+/*------Форма регистрации E-mail--------------------------------------------------------------------------------------------*/
+.reg-form__e-mail {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 16px;
+}
+.reg-form__e-mail input {
+    width: 100%;
+    height: 48px;
+    /*border: 1px solid rgba(54, 59, 77, 0.5);*/
+    padding: 4px 5px 5px 15px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: Inter;
+    color: rgba(54, 59, 77, 0.9);
+}
+.reg-form__e-mail span {
+    position: relative;
+}
+.reg-form__e-mail__red-star-icon{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    top: 0;
+    left: 58px;
+}
+/*------Форма регистрации пароля--------------------------------------------------------------------------------------------*/
+.reg-form__password {
+    display: grid;
+    position: relative;
+    column-gap: 13px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 88px;
+    opacity: 0.9;
+    color: #363B4D;
+}
+.reg-form__password input {
+    width: 320px;
+    height: 48px;
+    /*border: 1px solid rgba(54, 59, 77, 0.5);*/
+    padding: 4px 5px 5px 15px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: Inter;
+    color: rgba(54, 59, 77, 0.9);
+}
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+.password-form span {
+    position: relative;
+}
+.reg-form__password__red-star-icon {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    top: 0;
+    left: 182px;
+}
+.reg-form__password__red-star-icon-repeat-pass {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    top: 0;
+    left: 170px;
+}
+
+.reg-form__show-pass-icon {
+    position: absolute;
+    width: 22px;
+    height: 15px;
+    cursor: pointer;
+    top: 50px;
+    right: 22px;
+    z-index: 22;
+}
+.reg-form__hidden-pass-icon {
+    position: absolute;
+    width: 22px;
+    height: 19px;
+    cursor: pointer;
+    top: 48px;
+    right: 22px;
+    z-index: 22;
+}
+/*------Форма выбора часового пояса-------------------------------------------------------------------------------------*/
+.reg-form__select-time-zone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+.reg-form__select-time-zone select {
+   background-color: white;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: Inter;
+    appearance: none;
+}
+.reg-form__select-time-zone::after {
+    content: url("../../img/Auth_select_row.svg");
+    position: absolute;
+    top: 0;
+    right: 410px;
+    margin-top: -2px;
+    pointer-events: none;
+}
+.reg-form__select-time-zone span {
+    z-index: 3;
+}
+/*------Форма c чекбоксом---------------------------------------------------------------------------------------------*/
+.reg-form__checkbox {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 34px;
+    z-index: 88;
+}
+.reg-form__checkbox span {
+    font-size: 18px;
+    line-height: 156%;
+    font-weight: 400;
+}
+.reg-form__checkbox a {
+    color: #0084FE;
+}
+/*------Кнопка зарегистрироваться--------------------------------------------------------------------------------------*/
+.reg-form__button button {
+    cursor: pointer;
+    width: 234px;
+    height: 56px;
+    background-color: #0084FE;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-family: Golos;
+    font-size: 18px;
+    line-height: 24px;
+}
+.reg-form__button button:hover {
+    background-color: #FFFFFF;
+    color: #0084FE;
+    border: 1px #0084FE solid;
+
+}
+/*-------Бордер для input при ошибках в запрлнении форм----------------------------------------------------------------*/
+._input-border-black-reg-page {
+    border: 1px solid rgba(54, 59, 77, 0.5);
+}
+/*------- Cообщения об ошибке в заполнении форм---------------------------------------------------------------*/
+.reg-block__error-message {
+    position: absolute;
+    top: 84px;
+    right: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 143%;
+    color: #FF4970;
+    opacity: 0.9;
+}
+/*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
+@media (max-width: 1108px) {
+    .container-reg {
+        max-width: 800px;
+    }
+    .reg-block-logotype {
+        width: 300px;
+    }
+    .reg-form__title h3 {
+        font-size: 28px;
+    }
+    .reg-form__title span {
+        font-size: 14px;
+    }
+    .reg-form__title a {
+        font-size: 14px;
+    }
+    .reg-block__reg-form {
+        width: 500px;
+        padding: 25px 25px;
+        gap: 25px;
+    }
+    .reg-block-logotype {
+        padding: 35px 25px;
+    }
+    .reg-block-logotype__logo {
+        padding-bottom: 433px;
+    }
+    .reg-form__username {
+        grid-template-rows: 75px;
+    }
+    .reg-form__username input {
+        width: 140px;
+        height: 40px;
+    }
+   .username-forms, .reg-form__e-mail, .reg-form__password {
+       font-size: 16px;
+   }
+   .reg-form__e-mail input {
+       height: 40px;
+   }
+
+   .password-form input {
+       width: 220px;
+       height: 40px;
+   }
+   .reg-block-logotype__title {
+       top: 430px;
+       font-size: 20px;
+       left: 22px;
+   }
+   .reg-form__checkbox span {
+       font-size: 14px;
+   }
+   .reg-form__select-time-zone span {
+       font-size: 16px;
+   }
+    .reg-block__error-message {
+        top: 78px;
+        font-size: 12px;
+    }
+    .reg-form__select-time-zone::after {
+        right: 230px;
+
+    }
+}
+/*------Адаптивная версия(805px)--------------------------------------------------------------------------------------*/
+@media (max-width: 805px) {
+    .container-reg {
+        position: relative;
+        width: 380px;
+        height: 100%;
+    }
+    .reg-block__reg-form {
+        position: absolute;
+        top: 175px;
+        left: 0;
+        padding: 24px 1px 24px 16px;
+        font-size: 16px;
+        width: 375px;
+        border-radius: 16px;
+    }
+    .reg-block-logotype {
+        border-radius: 0;
+        width: 375px;
+        z-index: -2;
+    }
+    .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
+        display: none;
+    }
+
+}

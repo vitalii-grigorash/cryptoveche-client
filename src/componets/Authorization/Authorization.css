@@ -27,7 +27,6 @@
 a {
     text-decoration: underline;
 }
-
 /*------Блок авторизации--------------------------------------------------------------------------------------------*/
 .main-block__auth {
     display: flex;
@@ -60,7 +59,7 @@ a {
 }
 .auth__title a {
     font-size: 16px;
-
+    color: #0075FF;
 }
 .auth__form {
     display: flex;
@@ -100,7 +99,6 @@ a {
 }
 .form__login input {
     border-radius: 8px;
-    border: 1px solid rgba(54, 59, 77, 0.9);
     opacity: 50%;
     height: 56px;
     padding: 5px 0 5px 10px;
@@ -116,7 +114,6 @@ a {
 }
 .form__pass input {
     border-radius: 8px;
-    border: 1px solid rgba(54, 59, 77, 0.9);
     opacity: 50%;
     height: 56px;
     padding: 5px 0 5px 10px;
@@ -138,10 +135,16 @@ a {
     gap: 40px;
     padding-bottom: 48px;
 }
+.form__checkbox a {
+    color: #0075FF;
+}
 .form__button {
     display: inline-flex;
     gap: 32px;
     align-items: center;
+}
+.form__button a {
+    color: #0075FF;
 }
 .form__button button {
     background-color: #0075FF;
@@ -154,14 +157,10 @@ a {
     font-weight: 500;
     font-family: Golos;
 }
-/*------Сообщение об ошибки--------------------------------------------------------------------------------------------*/
-.form__error {
-    position: absolute;
-    top: 95px;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 143%;
-    color: #FF4970;
+.form__button button:hover {
+    background-color: #FFFFFF;
+    color: #0075FF;
+    border: 1px #0075FF solid;
 }
 
 /*------Блок регистрации--------------------------------------------------------------------------------------------*/
@@ -218,10 +217,26 @@ a {
     line-height: 24px;
     z-index: 66;
 }
+
+/*------Сообщение об ошибки--------------------------------------------------------------------------------------------*/
+.form__error {
+    position: absolute;
+    top: 95px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 143%;
+    color: #FF4970;
+}
+._input-border-black {
+    border: 1px solid rgba(54, 59, 77, 0.9);
+}
+._input-border-red {
+    border: 1px solid #FF4970;
+}
+
 /*------Блок с ссылкой для мобильная версии на страницу регистрации--------------------------------------------------*/
 .main-block__mobile-link-reg {
     display: none;
-
 }
 /*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
 .auth-image_1 {
@@ -345,7 +360,7 @@ a {
 }
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
 @media (max-width: 1108px) {
-    .container {
+    .container-auth {
         max-width: 800px;
     }
     .main-block__auth {
@@ -407,7 +422,7 @@ a {
 }
 /*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
-    .container {
+    .container-auth {
         max-width: 590px;
     }
     .main-block__auth {
@@ -467,7 +482,7 @@ a {
 }
 /*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
-    .container {
+    .container-auth {
         position: relative;
         width: 380px;
         height: 100%;
@@ -482,7 +497,6 @@ a {
         border-radius: 16px;
     }
     .main-block__reg {
-
         border-radius: 0;
         width: 375px;
         z-index: -2;
@@ -509,7 +523,7 @@ a {
     }
 
     .form__button {
-        padding-bottom: 40px;
+        padding-bottom: 52px;
         gap: 12px;
     }
     .form__button button {
@@ -533,7 +547,7 @@ a {
         text-decoration: none;
     }
     .form__checkbox {
-        padding-bottom: 20px;
+        padding-bottom: 24px;
         gap: 25px;
         font-size: 14px;
     }
@@ -586,6 +600,10 @@ a {
         left: 28px;
         top: 615px;
     }
+    .main-block__mobile-link-reg a {
+        color: #0075FF;
+    }
+
     .auth-image-mobile {
         display: inherit;
         position: absolute;

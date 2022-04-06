@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './Registration.css';
 import logo from "../../img/Auth_logo_crypto_veche.svg";
 import bg_image1 from "../../img/Auth_img_1.svg";
@@ -6,8 +6,59 @@ import bg_image2 from "../../img/Auth_img_2.svg";
 import bg_image3 from "../../img/Auth_img_3.svg";
 import bg_image4 from "../../img/Auth_img_4.svg";
 import bg_image_mobile from "../../img/Auth_img_mobile.svg";
+import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
+import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
+import red_star_icon from '../../img/Registration_red_start_icon.svg';
 
 const Registration = () => {
+
+    const [surname, setSurname] = useState('')
+    const [name, setName] = useState('')
+    const [secondName, setSecondName] = useState('')
+    const [email, setEmail] = useState('')
+    const [passReg, setPassReg] = useState('')
+    const [repeatPass, setRepeatPass] = useState('')
+    const [errorUserName, setErrorUserName] = useState('')
+    const [errorEmail, setErrorEmail] = useState('')
+    const [errorPassReg, setErrorPassReg] = useState('')
+    const [changeTypePass, setChangeTypePass] = useState('password');
+    const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page')
+    const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page')
+    const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
+
+
+    const showHiddenPass = () => {
+        if (changeTypePass === 'password') {
+            setChangeTypePass('text')
+        } else {
+            setChangeTypePass('password')
+        }
+    }
+
+
+     function inputHandlerRegPage() {
+
+        // setSurname(e.target.value)
+        // setName(e.target.value)
+        // setSecondName(e.target.value)
+        // setEmail(e.target.value)
+        // setPassReg(e.target.value)
+        // setRepeatPass(e.target.value)
+
+        if (surname === '' || name === '' || secondName === '') {
+                setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
+                setChangeBorderInputUsername('_input-border-red');
+
+        } if (email === '') {
+                setErrorEmail('Неверный формат почты');
+                setChangeBorderInputEmail('_input-border-red');
+
+        } if (passReg !== repeatPass) {
+                setErrorPassReg('Пароли не совпадают');
+                setChangeBorderInputPass('_input-border-red');
+        }
+    }
+
 
     return (
         <div className={'wrapper-reg'}>
@@ -27,35 +78,73 @@ const Registration = () => {
                         <div className={'reg-block-logotype__title'}>
                             Система электронных голосований
                         </div>
-                        <div className={'reg-block-logotype__button'}><
-                            span>Уже есть аккаунт?</span>
+                        <div className={'reg-block-logotype__button'}>
+                            <span>Уже есть аккаунт?</span>
                             <button>Войти</button>
                         </div>
-
                     </div>
                     <div className={'reg-block__reg-form'}>
                         <div className={'reg-form__title'}>
                             <h3>Регистрация</h3>
-                            <div><span>РУС</span><a href={''}>ENG</a></div>
+                            <div><span>РУС</span><a href={'en'}>ENG</a></div>
                         </div>
                         <div className={'reg-form__username'}>
-                            <div className={'box-1'}>
-                                <span>Фамилия</span>
-                                <input type={"text"}/>
+                            <div className={'username-forms'}>
+                                <span>Фамилия<img alt={'иконка звездочка'} className={'username-forms__red-star-icon__family'} src={red_star_icon}/></span>
+                                <input className={changeBorderInputUsername} onChange={e => {setSurname(e.target.value)}} type={"text"}/>
                             </div>
-                            <div className={'box-2'}>
-                                <span>Имя</span>
-                                <input type={"text"}/>
+                            <div className={'username-forms'}>
+                                <span>Имя<img alt={'иконка звездочка'} className={'username-forms__red-star-icon__name'} src={red_star_icon}/></span>
+                                <input className={changeBorderInputUsername} onChange={e => {setName(e.target.value)}} type={"text"}/>
                             </div>
-                            <div className={'box-3'}>
+                            <div className={'username-forms'}>
                                 <span>Отчество</span>
-                                <input type={"text"}/>
+                                <input className={changeBorderInputUsername} onChange={e => {setSecondName(e.target.value)}} type={"text"}/>
                             </div>
+                            <div className={'reg-block__error-message'}>{errorUserName}</div>
                         </div>
-
+                        <div className={'reg-form__e-mail'}>
+                            <span>E-mail<img alt={'иконка звездочка'} className={'reg-form__e-mail__red-star-icon'} src={red_star_icon}/></span>
+                            <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => {setEmail(e.target.value)}}/>
+                            <div className={'reg-block__error-message'}>{errorEmail}</div>
+                        </div>
+                        <div className={'reg-form__password'}>
+                            <div className={'password-form'}>
+                                <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass}/>
+                                <span>Придумайте пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon'} src={red_star_icon}/></span>
+                                <input className={changeBorderInputPass} type={changeTypePass} onChange={e => {setPassReg(e.target.value)}}/>
+                            </div>
+                            <div className={'password-form'}>
+                                <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon}/>
+                                <span>Повторите пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon}/></span>
+                                <input className={changeBorderInputPass} type={'text'} onChange={e => {setRepeatPass(e.target.value)}}/>
+                            </div>
+                            <div className={'reg-block__error-message '}>{errorPassReg}</div>
+                        </div>
+                        <div className={'reg-form__select-time-zone'}>
+                            <span>Выберите часовой пояс</span>
+                            <select className={'select-1'}>
+                                <option></option>
+                                <option>UTC−11 Самоа</option>
+                                <option>UTC−10 США(Гавайи)</option>
+                                <option>UTC−9 США(Аляска)</option>
+                                <option>UTC−8 США(Невада)</option>
+                                <option>UTC−7 США(Айдахо)</option>
+                                <option>UTC−6 Центральноамериканское время</option>
+                            </select>
+                        </div>
+                        <div className={'reg-form__checkbox'}>
+                            <label className={'checkbox_container'}>
+                                <input type="checkbox" value="yes"/>
+                                <span className={'checkmark'}/>
+                            </label>
+                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса</span>
+                        </div>
+                        <div className={'reg-form__button'}>
+                            <button type={'button'} onClick={event => inputHandlerRegPage()}>Зарегистрироваться</button>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )
