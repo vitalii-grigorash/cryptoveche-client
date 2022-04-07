@@ -19,16 +19,24 @@ const RegistrationSecondPageMobile = () => {
     const [repeatPass, setRepeatPass] = useState('')
     const [errorEmail, setErrorEmail] = useState('')
     const [errorPassReg, setErrorPassReg] = useState('')
-    const [changeTypePass, setChangeTypePass] = useState('password');
+    const [changeTypePassFirst, setChangeTypePassFirst] = useState('password');
+    const [changeTypePassSecond, setChangeTypePassSecond] = useState('password');
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page')
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
 
 
-    const showHiddenPass = () => {
-        if (changeTypePass === 'password') {
-            setChangeTypePass('text')
+    const showHiddenPassFirstField = () => {
+        if (changeTypePassFirst === 'password') {
+            setChangeTypePassFirst('text')
         } else {
-            setChangeTypePass('password')
+            setChangeTypePassFirst('password')
+        }
+    }
+    const showHiddenPassSecondField = () => {
+        if (changeTypePassSecond === 'password') {
+            setChangeTypePassSecond('text')
+        } else {
+            setChangeTypePassSecond('password')
         }
     }
 
@@ -83,14 +91,14 @@ const RegistrationSecondPageMobile = () => {
                         </div>
                         <div className={'reg-form__password'}>
                             <div className={'password-form'}>
-                                <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass}/>
+                                <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPassFirstField}/>
                                 <span>Придумайте пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon'} src={red_star_icon}/></span>
-                                <input className={changeBorderInputPass} type={changeTypePass} onChange={e => {setPassReg(e.target.value)}}/>
+                                <input className={changeBorderInputPass} type={changeTypePassFirst} onChange={e => {setPassReg(e.target.value)}}/>
                             </div>
                             <div className={'password-form'}>
-                                <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon}/>
+                                <img alt={'иконка скрыть пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPassSecondField}/>
                                 <span>Повторите пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon}/></span>
-                                <input className={changeBorderInputPass} type={'text'} onChange={e => {setRepeatPass(e.target.value)}}/>
+                                <input className={changeBorderInputPass} type={changeTypePassSecond} onChange={e => {setRepeatPass(e.target.value)}}/>
                             </div>
                             <div className={'reg-block__error-message '}>{errorPassReg}</div>
                         </div>
@@ -99,10 +107,10 @@ const RegistrationSecondPageMobile = () => {
                                 <input type="checkbox" value="yes"/>
                                 <span className={'checkmark'}/>
                             </label>
-                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса</span>
+                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button'}>
-                            <span>Шаг 2 из 2</span>
+                            <span>Шаг 2 из 2, почти готово</span>
                             <button type={'button'} onClick={e => inputHandlerRegPage(e)}>Зарегистрироваться</button>
                         </div>
                     </div>

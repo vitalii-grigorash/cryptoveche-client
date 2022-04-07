@@ -148,7 +148,7 @@ const Registration = () => {
                                 <input type="checkbox" value="yes"/>
                                 <span className={'checkmark'}/>
                             </label>
-                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса</span>
+                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button __reg-block-show'}>
                             <button type={'button'} onClick={e => inputHandlerRegPage(e)}>Зарегистрироваться</button>
