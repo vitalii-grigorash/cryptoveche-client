@@ -36,14 +36,14 @@ const Registration = () => {
     }
 
 
-     function inputHandlerRegPage() {
+     const inputHandlerRegPage = (e) => {
 
-        // setSurname(e.target.value)
-        // setName(e.target.value)
-        // setSecondName(e.target.value)
-        // setEmail(e.target.value)
-        // setPassReg(e.target.value)
-        // setRepeatPass(e.target.value)
+        setSurname(e.target.value)
+        setName(e.target.value)
+        setSecondName(e.target.value)
+        setEmail(e.target.value)
+        setPassReg(e.target.value)
+        setRepeatPass(e.target.value)
 
         if (surname === '' || name === '' || secondName === '') {
                 setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
@@ -122,7 +122,7 @@ const Registration = () => {
                             <div className={'reg-block__error-message '}>{errorPassReg}</div>
                         </div>
                         <div className={'reg-form__select-time-zone'}>
-                            <span>Выберите часовой пояс</span>
+                            <span>Выберите часовой пояс<img alt={'иконка звездочка'} className={'reg-form__select-time-zone__red-star-icon'} src={red_star_icon}/></span>
                             <select className={'select-1'}>
                                 <option></option>
                                 <option>UTC−11 Самоа</option>
@@ -141,8 +141,12 @@ const Registration = () => {
                             <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса</span>
                         </div>
                         <div className={'reg-form__button'}>
-                            <button type={'button'} onClick={event => inputHandlerRegPage()}>Зарегистрироваться</button>
+                            <button type={'button'} onClick={e => inputHandlerRegPage(e)}>Зарегистрироваться</button>
                         </div>
+                    </div>
+                    <div className={'reg-block__button-next-page'}>
+                        <span>Шаг 1 из 2</span>
+                        <button type={"submit"}>Продолжить</button>
                     </div>
                 </div>
             </div>

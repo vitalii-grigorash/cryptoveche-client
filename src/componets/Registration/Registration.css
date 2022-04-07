@@ -292,6 +292,9 @@ a {
 .reg-form__select-time-zone span {
     z-index: 3;
 }
+.reg-form__select-time-zone__red-star-icon {
+     display: none;
+}
 /*------Форма c чекбоксом---------------------------------------------------------------------------------------------*/
 .reg-form__checkbox {
     display: flex;
@@ -326,11 +329,15 @@ a {
     border: 1px #0084FE solid;
 
 }
-/*-------Бордер для input при ошибках в запрлнении форм----------------------------------------------------------------*/
-._input-border-black-reg-page {
-    border: 1px solid rgba(54, 59, 77, 0.5);
+/*-------Блок с кнопкой Продожить для мобильной версии----------------------------------------------------------------*/
+.reg-block__button-next-page {
+    display: none;
 }
-/*------- Cообщения об ошибке в заполнении форм---------------------------------------------------------------*/
+/*-------Бордер для input при ошибках в заполнении форм----------------------------------------------------------------*/
+._input-border-black-reg-page {
+    border: 1px solid rgba(54, 59, 77, 0.3);
+}
+/*------- Cообщения об ошибке в заполнении форм----------------------------------------------------------------------*/
 .reg-block__error-message {
     position: absolute;
     top: 84px;
@@ -404,7 +411,6 @@ a {
     }
     .reg-form__select-time-zone::after {
         right: 230px;
-
     }
 }
 /*------Адаптивная версия(805px)--------------------------------------------------------------------------------------*/
@@ -414,22 +420,144 @@ a {
         width: 380px;
         height: 100%;
     }
+
     .reg-block__reg-form {
         position: absolute;
-        top: 175px;
+        top: 69px;
         left: 0;
-        padding: 24px 1px 24px 16px;
+        padding: 24px 16px 24px 16px;
         font-size: 16px;
         width: 375px;
         border-radius: 16px;
+        gap: 24px;
+        height: 667px;
     }
+
+    .reg-form__title h3 {
+        font-size: 26px;
+    }
+
     .reg-block-logotype {
         border-radius: 0;
         width: 375px;
-        z-index: -2;
     }
-    .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
+
+    .reg-block-logotype__logo img {
+        position: absolute;
+        top: 25px;
+        left: 17px;
+        width: 197px;
+        height: 33px;
+    }
+
+    .reg-block-logotype__button {
+        position: absolute;
+        font-size: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        top: 620px;
+        left: 80px;
+        z-index: 1;
+        color: #0075FF;
+        gap: 6px;
+    }
+
+    .reg-block-logotype__button span {
+        color: rgba(54, 59, 77, 0.9);
+    }
+
+    .reg-block-logotype__button button {
+        width: 47px;
+        height: 24px;
+    }
+
+    .reg-form__username {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .username-forms {
+        gap: 10px;
+    }
+
+    .username-forms input {
+        width: 100%;
+        height: 48px;
+        padding: 10px 16px 10px 16px;
+        font-size: 16px;
+    }
+
+    .reg-form__e-mail, .reg-form__password, .reg-form__button, .reg-form__checkbox, .reg-block-logotype__title {
         display: none;
     }
 
+    .reg-form__select-time-zone select {
+        top: 24px;
+        width: 100%;
+        height: 48px;
+        border: 1px solid rgba(54, 59, 77, 0.3);
+        border-radius: 8px;
+        font-size: 14px;
+        padding: 10px 16px 10px 16px;
+    }
+
+    .reg-form__select-time-zone::after {
+        top: 40px;
+        right: 23px;
+    }
+    .reg-form__select-time-zone__red-star-icon {
+        display: inherit;
+        position: absolute;
+        top: 0;
+        left: 190px;
+
+
+    }
+
+    .username-forms__red-star-icon__family {
+        left: 78px;
+    }
+
+    .username-forms__red-star-icon__name {
+        left: 38px;
+    }
+
+    .reg-form__select-time-zone::after {
+        top: 40px;
+        right: 23px;
+    }
+
+    .reg-block__button-next-page {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        text-align: center;
+        top: 530px;
+        left: 16px;
+        right: 20px;
+        gap: 8px;
+        font-family: Inter;
+    }
+
+    .reg-block__button-next-page span {
+        color: rgba(54, 59, 77, 0.4);
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 400;
+    }
+
+    .reg-block__button-next-page button {
+        background-color: #0084FE;
+        border-radius: 4px;
+        width: 343px;
+        height: 48px;
+        color: #FFFFFF;
+        font-family: Golos;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        cursor: pointer;
+    }
 }
