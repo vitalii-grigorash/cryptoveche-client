@@ -11,6 +11,8 @@ import AmountVotesBlock from "./componets/AmountVotesBlock/AmountVotesBlock";
 import MyVotesBlock from "./componets/MyVotesBlock/MyVotesBlock";
 import ObserverCryptoBlock from "./componets/ObserverCryptoBlock/ObserverCryptoBlock";
 import Registration from "./componets/Registration/Registration";
+import RegistrationSecondPageMobile from "./componets/Registration/RegistrationSecondPageMobile/RegistrationSecondPageMobile";
+
 
 
 
@@ -22,6 +24,7 @@ function App() {
       <Switch>
           <Route path='/home' component={Authorization}/>
           <Route path='/regpage' component={Registration}/>
+          <Route path='/reg-second-page' component={RegistrationSecondPageMobile}/>
           <Route path='/main' component={Layout}/>
           <Redirect from='/' to = '/home'/>
       </Switch>

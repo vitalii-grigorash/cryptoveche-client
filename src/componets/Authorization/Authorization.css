@@ -612,7 +612,7 @@ a {
         top: 0;
         left: 120px;
         object-fit: cover;
-        z-index: 55;
+
     }
     .form__error {
         position: absolute;

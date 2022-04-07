@@ -26,7 +26,16 @@
 a {
     text-decoration: underline;
 }
-/*------Блок c логотипом и кнопкой--------------------------------------------------------------------------------------------*/
+/*------Модификаторы для скрытия элементов при адаптиве под мобильные устройства---------------------------------------*/
+.__reg-block-show {
+    display: inherit;
+}
+
+.__reg-block-hidden {
+    display: none;
+}
+
+/*------Блок c логотипом и кнопкой--------------------------------------------------------------------------------------*/
 .reg-block-logotype {
     position: relative;
     display: flex;
@@ -413,7 +422,7 @@ a {
         right: 230px;
     }
 }
-/*------Адаптивная версия(805px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
 @media (max-width: 805px) {
     .container-reg {
         position: relative;
@@ -489,10 +498,6 @@ a {
         font-size: 16px;
     }
 
-    .reg-form__e-mail, .reg-form__password, .reg-form__button, .reg-form__checkbox, .reg-block-logotype__title {
-        display: none;
-    }
-
     .reg-form__select-time-zone select {
         top: 24px;
         width: 100%;
@@ -512,8 +517,6 @@ a {
         position: absolute;
         top: 0;
         left: 190px;
-
-
     }
 
     .username-forms__red-star-icon__family {
@@ -534,7 +537,7 @@ a {
         flex-direction: column;
         position: absolute;
         text-align: center;
-        top: 530px;
+        top: 525px;
         left: 16px;
         right: 20px;
         gap: 8px;
@@ -547,7 +550,6 @@ a {
         line-height: 22px;
         font-weight: 400;
     }
-
     .reg-block__button-next-page button {
         background-color: #0084FE;
         border-radius: 4px;
@@ -559,5 +561,8 @@ a {
         font-weight: 600;
         line-height: 24px;
         cursor: pointer;
+    }
+    .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
+        display: none;
     }
 }

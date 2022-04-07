@@ -90,11 +90,15 @@ const Registration = () => {
                         </div>
                         <div className={'reg-form__username'}>
                             <div className={'username-forms'}>
-                                <span>Фамилия<img alt={'иконка звездочка'} className={'username-forms__red-star-icon__family'} src={red_star_icon}/></span>
+                                <span>Фамилия
+                                    <img alt={'иконка звездочка'} className={'username-forms__red-star-icon__family'} src={red_star_icon}/>
+                                </span>
                                 <input className={changeBorderInputUsername} onChange={e => {setSurname(e.target.value)}} type={"text"}/>
                             </div>
                             <div className={'username-forms'}>
-                                <span>Имя<img alt={'иконка звездочка'} className={'username-forms__red-star-icon__name'} src={red_star_icon}/></span>
+                                <span>Имя
+                                    <img alt={'иконка звездочка'} className={'username-forms__red-star-icon__name'} src={red_star_icon}/>
+                                </span>
                                 <input className={changeBorderInputUsername} onChange={e => {setName(e.target.value)}} type={"text"}/>
                             </div>
                             <div className={'username-forms'}>
@@ -103,20 +107,26 @@ const Registration = () => {
                             </div>
                             <div className={'reg-block__error-message'}>{errorUserName}</div>
                         </div>
-                        <div className={'reg-form__e-mail'}>
-                            <span>E-mail<img alt={'иконка звездочка'} className={'reg-form__e-mail__red-star-icon'} src={red_star_icon}/></span>
+                        <div className={'reg-form__e-mail __reg-block-show'}>
+                            <span>E-mail
+                                <img alt={'иконка звездочка'} className={'reg-form__e-mail__red-star-icon'} src={red_star_icon}/>
+                            </span>
                             <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => {setEmail(e.target.value)}}/>
                             <div className={'reg-block__error-message'}>{errorEmail}</div>
                         </div>
-                        <div className={'reg-form__password'}>
+                        <div className={'reg-form__password __reg-block-show'}>
                             <div className={'password-form'}>
                                 <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass}/>
-                                <span>Придумайте пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon'} src={red_star_icon}/></span>
+                                <span>Придумайте пароль
+                                    <img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon'} src={red_star_icon}/>
+                                </span>
                                 <input className={changeBorderInputPass} type={changeTypePass} onChange={e => {setPassReg(e.target.value)}}/>
                             </div>
                             <div className={'password-form'}>
                                 <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon}/>
-                                <span>Повторите пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon}/></span>
+                                <span>Повторите пароль
+                                    <img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon}/>
+                                </span>
                                 <input className={changeBorderInputPass} type={'text'} onChange={e => {setRepeatPass(e.target.value)}}/>
                             </div>
                             <div className={'reg-block__error-message '}>{errorPassReg}</div>
@@ -133,14 +143,14 @@ const Registration = () => {
                                 <option>UTC−6 Центральноамериканское время</option>
                             </select>
                         </div>
-                        <div className={'reg-form__checkbox'}>
+                        <div className={'reg-form__checkbox __reg-block-show'}>
                             <label className={'checkbox_container'}>
                                 <input type="checkbox" value="yes"/>
                                 <span className={'checkmark'}/>
                             </label>
                             <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса</span>
                         </div>
-                        <div className={'reg-form__button'}>
+                        <div className={'reg-form__button __reg-block-show'}>
                             <button type={'button'} onClick={e => inputHandlerRegPage(e)}>Зарегистрироваться</button>
                         </div>
                     </div>

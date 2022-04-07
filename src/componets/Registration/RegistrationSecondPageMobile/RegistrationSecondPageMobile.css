@@ -1,0 +1,23 @@
+
+/*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
+@media (max-width: 805px) {
+
+    .__modificator-reg-block-logotype-height {
+        height: 667px;
+    }
+    .__reg-block-show {
+        display: none;
+    }
+    .__reg-block-hidden{
+        display: inherit;
+    }
+    .__modificator-reg-form__title-padding-right {
+        padding-right: 24px;
+    }
+    .reg-form__title-row-icon {
+        position: absolute;
+            top: 40px;
+            left: 19px;
+    }
+
+}
