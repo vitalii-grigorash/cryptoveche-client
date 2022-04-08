@@ -8,7 +8,6 @@ import bg_image_mobile from "../../../img/Auth_img_mobile.svg";
 import logo from "../../../img/Auth_logo_crypto_veche.svg";
 import red_star_icon from "../../../img/Registration_red_start_icon.svg";
 import show_pass_icon from "../../../img/Auth_show_pass_icon.svg";
-import hidden_pass_icon from "../../../img/Auth_hidden_pass.svg";
 import row_icon_title from '../../../img/Registration_row_icon.svg';
 
 const RegistrationSecondPageMobile = () => {
@@ -80,7 +79,7 @@ const RegistrationSecondPageMobile = () => {
                     </div>
                     <div className={'reg-block__reg-form'}>
                         <div className={'reg-form__title'}>
-                            <a href={'row'}><img alt={'иконка звездочка'} className={'reg-form__title-row-icon'} src={row_icon_title}/></a>
+                            <a href={'row'}><img alt={'стрелочка ссылка'} className={'reg-form__title-row-icon'} src={row_icon_title}/></a>
                             <h3 className={'__modificator-reg-form__title-padding-right'}>Регистрация</h3>
                             <div><span>РУС</span><a href={'en'}>ENG</a></div>
                         </div>
@@ -100,7 +99,7 @@ const RegistrationSecondPageMobile = () => {
                                 <span>Повторите пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon}/></span>
                                 <input className={changeBorderInputPass} type={changeTypePassSecond} onChange={e => {setRepeatPass(e.target.value)}}/>
                             </div>
-                            <div className={'reg-block__error-message '}>{errorPassReg}</div>
+                            <div className={'reg-block__error-message __modificator-reg-block__error-message-mobile '}>{errorPassReg}</div>
                         </div>
                         <div className={'reg-form__checkbox'}>
                             <label className={'checkbox_container'}>

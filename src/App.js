@@ -12,6 +12,7 @@ import MyVotesBlock from "./componets/MyVotesBlock/MyVotesBlock";
 import ObserverCryptoBlock from "./componets/ObserverCryptoBlock/ObserverCryptoBlock";
 import Registration from "./componets/Registration/Registration";
 import RegistrationSecondPageMobile from "./componets/Registration/RegistrationSecondPageMobile/RegistrationSecondPageMobile";
+import AuthorizationForgetPassword from "./componets/AuthorizationForgetPassword/AuthorizationForgetPassword";
 
 
 
@@ -23,6 +24,7 @@ function App() {
 <>
       <Switch>
           <Route path='/home' component={Authorization}/>
+          <Route path='/forget-password' component={AuthorizationForgetPassword}/>
           <Route path='/regpage' component={Registration}/>
           <Route path='/reg-second-page' component={RegistrationSecondPageMobile}/>
           <Route path='/main' component={Layout}/>

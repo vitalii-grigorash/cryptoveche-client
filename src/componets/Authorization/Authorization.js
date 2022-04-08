@@ -69,7 +69,7 @@ const Authorization = () => {
                                             <div className={'form__error'}>{error}</div>
                                         </div>
                                         <div className={'form__checkbox'}>
-                                            <span><a href={'link'}>Забыли пароль?</a></span>
+                                            <span><a href={'/forget-password'} target={'_blank'}>Забыли пароль?</a></span>
                                             <label className={'checkbox_container'}>
                                                 <input type="checkbox" value="yes"/>Запомнить меня
                                                 <span className={'checkmark'}/>

@@ -1,4 +1,3 @@
-
 /*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
 @media (max-width: 805px) {
     .__modificator-reg-block-logotype-height {
@@ -13,4 +12,8 @@
     .__modificator-reg-form__title-padding-right {
         padding-right: 24px;
         }
+    .__modificator-reg-block__error-message-mobile {
+        top: 169px;
+    }
+
 }
