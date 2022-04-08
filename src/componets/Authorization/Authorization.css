@@ -241,38 +241,31 @@ a {
 /*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
 .auth-image_1 {
     position: absolute;
-    width: 114px;
-    height: 220px;
-    top: 140px;
-    left: 220px;
+    width: 342px;
+    height: 432px;
+    top: 188px;
+    left: 112px;
     object-fit: cover;
-    z-index: 55;
+    z-index: 5;
 }
 
-.auth-image_2 {
-    position: absolute;
-    width: 228px;
-    height: 340px;
-    top: 240px;
-    left: 117px;
-    object-fit: cover;
-    z-index: 55;
-}
 .auth-image_3 {
     position: absolute;
-    width: 116px;
-    height: 220px;
-    top: 358px;
-    left: 117px;
+    top: 22px;
+    left: 78px;
     object-fit: cover;
-    z-index: 55;
 }
+.auth-image_3 img {
+    width: 600px;
+    height: 800px;
+}
+
 .auth-image_4 {
     position: absolute;
     width: 117px;
     height: 228px;
-    top: 465px;
-    left: 0;
+    top: 498px;
+    right: 224px;
     object-fit: cover;
     z-index: 55;
 }
@@ -280,20 +273,12 @@ a {
     position: absolute;
     width: 228px;
     height: 228px;
-    top: 610px;
-    right: 140px;
+    top: 600px;
+    right: 110px;
     object-fit: cover;
     z-index: 55;
 }
-.auth-image_6 {
-    position: absolute;
-    width: 117px;
-    height: 228px;
-    top: 725px;
-    left: 196px;
-    object-fit: cover;
-    z-index: 55;
-}
+
 .auth-image-mobile {
     display: none;
 

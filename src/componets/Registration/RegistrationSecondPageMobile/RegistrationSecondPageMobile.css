@@ -1,18 +1,18 @@
 /*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
 @media (max-width: 805px) {
-    .__modificator-reg-block-logotype-height {
+    ._modificator-reg-block-logotype-height {
         height: 667px;
     }
-    .__reg-block-show {
+    ._reg-block-show {
         display: none;
     }
-    .__reg-block-hidden {
+    ._reg-block-hidden {
         display: inherit;
     }
-    .__modificator-reg-form__title-padding-right {
+    ._modificator-reg-form__title-padding-right {
         padding-right: 24px;
         }
-    .__modificator-reg-block__error-message-mobile {
+    ._modificator-reg-block__error-message-mobile {
         top: 169px;
     }
 

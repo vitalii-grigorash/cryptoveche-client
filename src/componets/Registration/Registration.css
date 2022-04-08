@@ -27,11 +27,11 @@ a {
     text-decoration: underline;
 }
 /*------Модификаторы для скрытия элементов при адаптиве под мобильные устройства---------------------------------------*/
-.__reg-block-show {
+._reg-block-show {
     display: inherit;
 }
 
-.__reg-block-hidden {
+._reg-block-hidden {
     display: none;
 }
 
@@ -603,7 +603,7 @@ a {
     .password-form {
         gap: 10px;
     }
-    .reg-form__show-pass-icon, reg-form__hidden-pass-icon {
+    .reg-form__show-pass-icon, .reg-form__hidden-pass-icon {
         top: 44px;
     }
     .reg-form__checkbox {

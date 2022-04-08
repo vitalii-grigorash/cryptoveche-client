@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import './Authorization.css';
 import logo from '../../img/Auth_logo_crypto_veche.svg';
-import bg_image1 from '../../img/Auth_img_1.svg';
-import bg_image2 from '../../img/Auth_img_2.svg';
-import bg_image3 from '../../img/Auth_img_3.svg';
-import bg_image4 from '../../img/Auth_img_4.svg';
+import bg_image1 from "../../img/Auth_img1.svg";
+import bg_image2 from "../../img/Auth_img2.svg";
+import bg_image3 from '../../img/Auth_img3.svg';
+import bg_image4 from '../../img/Auth_img4.svg';
 import bg_image_mobile from '../../img/Auth_img_mobile.svg';
 import show_pass_icon from '../../img/Auth_show_pass_icon.svg';
 
@@ -82,13 +82,15 @@ const Authorization = () => {
                                     </div>
                                         </div>
                                             <div className={'main-block__reg'}>
-                                                    <img alt={''} className={'auth-image_1'} src={bg_image1}/>
-                                                    <img alt={''} className={'auth-image_2'} src={bg_image2}/>
-                                                    <img alt={''} className={'auth-image_3'} src={bg_image3}/>
-                                                    <img alt={''} className={'auth-image_4'} src={bg_image1}/>
-                                                    <img alt={''} className={'auth-image_5'} src={bg_image4}/>
-                                                    <img alt={''} className={'auth-image_6'} src={bg_image3}/>
-                                                    <img alt={''} className={'auth-image-mobile'} src={bg_image_mobile}/>
+                                                <img alt={'изображение'} className={'auth-image_4'} src={bg_image1}/>
+                                                <img alt={'изображение'} className={'auth-image_5'} src={bg_image2}/>
+                                                <div className={'auth-image_1'}>
+                                                    <img alt={'изображение'} src={bg_image3}/>
+                                                </div>
+                                                <div className={'auth-image_3'}>
+                                                    <img alt={'изображение'} src={bg_image4}/>
+                                                </div>
+                                                    <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile}/>
                                                 <div className={'reg__logo'}>
                                                     <img src={logo} alt="Логотип"/>
                                                 </div>

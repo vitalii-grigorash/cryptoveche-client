@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import './Registration.css';
 import logo from "../../img/Auth_logo_crypto_veche.svg";
-import bg_image1 from "../../img/Auth_img_1.svg";
-import bg_image2 from "../../img/Auth_img_2.svg";
-import bg_image3 from "../../img/Auth_img_3.svg";
-import bg_image4 from "../../img/Auth_img_4.svg";
+import bg_image1 from "../../img/Auth_img1.svg";
+import bg_image2 from "../../img/Auth_img2.svg";
+import bg_image3 from '../../img/Auth_img3.svg';
+import bg_image4 from '../../img/Auth_img4.svg';
 import bg_image_mobile from "../../img/Auth_img_mobile.svg";
 import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
 import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
@@ -65,13 +65,15 @@ const Registration = () => {
             <div className={'container-reg'}>
                 <div className={'reg-block'}>
                     <div className={'reg-block-logotype'}>
-                        <img alt={''} className={'auth-image_1'} src={bg_image1}/>
-                        <img alt={''} className={'auth-image_2'} src={bg_image2}/>
-                        <img alt={''} className={'auth-image_3'} src={bg_image3}/>
-                        <img alt={''} className={'auth-image_4'} src={bg_image1}/>
-                        <img alt={''} className={'auth-image_5'} src={bg_image4}/>
-                        <img alt={''} className={'auth-image_6'} src={bg_image3}/>
-                        <img alt={''} className={'auth-image-mobile'} src={bg_image_mobile}/>
+                            <img alt={'изображение'} className={'auth-image_4'} src={bg_image1}/>
+                            <img alt={'изображение'} className={'auth-image_5'} src={bg_image2}/>
+                        <div className={'auth-image_1'}>
+                            <img alt={'изображение'} src={bg_image3}/>
+                        </div>
+                        <div className={'auth-image_3'}>
+                            <img alt={'изображение'} src={bg_image4}/>
+                        </div>
+                            <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile}/>
                         <div className={'reg-block-logotype__logo'}>
                             <img src={logo} alt="Логотип"/>
                         </div>
@@ -107,14 +109,14 @@ const Registration = () => {
                             </div>
                             <div className={'reg-block__error-message'}>{errorUserName}</div>
                         </div>
-                        <div className={'reg-form__e-mail __reg-block-show'}>
+                        <div className={'reg-form__e-mail _reg-block-show'}>
                             <span>E-mail
                                 <img alt={'иконка звездочка'} className={'reg-form__e-mail__red-star-icon'} src={red_star_icon}/>
                             </span>
                             <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => {setEmail(e.target.value)}}/>
                             <div className={'reg-block__error-message'}>{errorEmail}</div>
                         </div>
-                        <div className={'reg-form__password __reg-block-show'}>
+                        <div className={'reg-form__password _reg-block-show'}>
                             <div className={'password-form'}>
                                 <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass}/>
                                 <span>Придумайте пароль
@@ -143,14 +145,14 @@ const Registration = () => {
                                 <option>UTC−6 Центральноамериканское время</option>
                             </select>
                         </div>
-                        <div className={'reg-form__checkbox __reg-block-show'}>
+                        <div className={'reg-form__checkbox _reg-block-show'}>
                             <label className={'checkbox_container'}>
                                 <input type="checkbox" value="yes"/>
                                 <span className={'checkmark'}/>
                             </label>
-                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
+                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>.Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
-                        <div className={'reg-form__button __reg-block-show'}>
+                        <div className={'reg-form__button _reg-block-show'}>
                             <button type={'button'} onClick={e => inputHandlerRegPage(e)}>Зарегистрироваться</button>
                         </div>
                     </div>

@@ -1,9 +1,5 @@
 import React, {useState} from "react";
 import './RegistrationSecondPageMobile.css';
-import bg_image1 from "../../../img/Auth_img_1.svg";
-import bg_image2 from "../../../img/Auth_img_2.svg";
-import bg_image3 from "../../../img/Auth_img_3.svg";
-import bg_image4 from "../../../img/Auth_img_4.svg";
 import bg_image_mobile from "../../../img/Auth_img_mobile.svg";
 import logo from "../../../img/Auth_logo_crypto_veche.svg";
 import red_star_icon from "../../../img/Registration_red_start_icon.svg";
@@ -59,15 +55,9 @@ const RegistrationSecondPageMobile = () => {
     return (
 
         <div className={'wrapper-reg'}>
-            <div className={'container-reg __reg-block-hidden'}>
+            <div className={'container-reg _reg-block-hidden'}>
                 <div className={'reg-block'}>
-                    <div className={'reg-block-logotype __modificator-reg-block-logotype-height'}>
-                        <img alt={''} className={'auth-image_1'} src={bg_image1}/>
-                        <img alt={''} className={'auth-image_2'} src={bg_image2}/>
-                        <img alt={''} className={'auth-image_3'} src={bg_image3}/>
-                        <img alt={''} className={'auth-image_4'} src={bg_image1}/>
-                        <img alt={''} className={'auth-image_5'} src={bg_image4}/>
-                        <img alt={''} className={'auth-image_6'} src={bg_image3}/>
+                    <div className={'reg-block-logotype _modificator-reg-block-logotype-height'}>
                         <img alt={''} className={'auth-image-mobile'} src={bg_image_mobile}/>
                         <div className={'reg-block-logotype__logo'}>
                             <img src={logo} alt="Логотип"/>
@@ -80,7 +70,7 @@ const RegistrationSecondPageMobile = () => {
                     <div className={'reg-block__reg-form'}>
                         <div className={'reg-form__title'}>
                             <a href={'row'}><img alt={'стрелочка ссылка'} className={'reg-form__title-row-icon'} src={row_icon_title}/></a>
-                            <h3 className={'__modificator-reg-form__title-padding-right'}>Регистрация</h3>
+                            <h3 className={'_modificator-reg-form__title-padding-right'}>Регистрация</h3>
                             <div><span>РУС</span><a href={'en'}>ENG</a></div>
                         </div>
                         <div className={'reg-form__e-mail'}>
@@ -99,7 +89,7 @@ const RegistrationSecondPageMobile = () => {
                                 <span>Повторите пароль<img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon}/></span>
                                 <input className={changeBorderInputPass} type={changeTypePassSecond} onChange={e => {setRepeatPass(e.target.value)}}/>
                             </div>
-                            <div className={'reg-block__error-message __modificator-reg-block__error-message-mobile '}>{errorPassReg}</div>
+                            <div className={'reg-block__error-message _modificator-reg-block__error-message-mobile '}>{errorPassReg}</div>
                         </div>
                         <div className={'reg-form__checkbox'}>
                             <label className={'checkbox_container'}>
