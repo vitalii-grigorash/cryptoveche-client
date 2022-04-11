@@ -87,7 +87,7 @@ a {
     font-family: Golos;
     font-size: 16px;
     line-height: 24px;
-    z-index: 66;
+    z-index: 2;
 }
 /*------Блок с формой регистрации--------------------------------------------------------------------------------------------*/
 .reg-block__reg-form {
@@ -331,6 +331,7 @@ a {
     font-family: Golos;
     font-size: 18px;
     line-height: 24px;
+    z-index: 5;
 }
 .reg-form__button button:hover {
     background-color: #FFFFFF;

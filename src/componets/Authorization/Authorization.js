@@ -82,18 +82,20 @@ const Authorization = () => {
                                     </div>
                                         </div>
                                             <div className={'main-block__reg'}>
-                                                <img alt={'изображение'} className={'auth-image_4'} src={bg_image1}/>
-                                                <img alt={'изображение'} className={'auth-image_5'} src={bg_image2}/>
-                                                <div className={'auth-image_1'}>
-                                                    <img alt={'изображение'} src={bg_image3}/>
-                                                </div>
-                                                <div className={'auth-image_3'}>
-                                                    <img alt={'изображение'} src={bg_image4}/>
-                                                </div>
-                                                    <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile}/>
-                                                <div className={'reg__logo'}>
-                                                    <img src={logo} alt="Логотип"/>
-                                                </div>
+
+                                                    <img alt={'изображение'} className={'auth-image_4'} src={bg_image1}/>
+                                                    <img alt={'изображение'} className={'auth-image_5'} src={bg_image2}/>
+                                                    <div className={'auth-image_1'}>
+                                                        <img alt={'изображение'} src={bg_image3}/>
+                                                    </div>
+                                                    <div className={'auth-image_3'}>
+                                                        <img alt={'изображение'} src={bg_image4}/>
+                                                    </div>
+                                                        <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile}/>
+                                                    <div className={'reg__logo'}>
+                                                        <img src={logo} alt="Логотип"/>
+                                                    </div>
+
                                                 <div className={'reg__title'}>
                                                     Система электронных голосований
                                                 </div>

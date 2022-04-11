@@ -22,7 +22,6 @@
     flex-direction: row;
     font-family: Inter;
     position: relative;
-
 }
 a {
     text-decoration: underline;
@@ -239,6 +238,7 @@ a {
     display: none;
 }
 /*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
+
 .auth-image_1 {
     position: absolute;
     width: 342px;
@@ -246,7 +246,7 @@ a {
     top: 188px;
     left: 112px;
     object-fit: cover;
-    z-index: 5;
+    z-index: 1;
 }
 
 .auth-image_3 {
@@ -267,7 +267,7 @@ a {
     top: 498px;
     right: 224px;
     object-fit: cover;
-    z-index: 55;
+    z-index: 1;
 }
 .auth-image_5 {
     position: absolute;
@@ -276,7 +276,7 @@ a {
     top: 600px;
     right: 110px;
     object-fit: cover;
-    z-index: 55;
+    z-index: 1;
 }
 
 .auth-image-mobile {

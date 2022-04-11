@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Registration.css';
 import logo from "../../img/Auth_logo_crypto_veche.svg";
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -9,6 +9,8 @@ import bg_image_mobile from "../../img/Auth_img_mobile.svg";
 import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
 import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
 import red_star_icon from '../../img/Registration_red_start_icon.svg';
+import RegistrationModal from "./RegistrationModal/RegistrationModal";
+
 
 const Registration = () => {
 
@@ -25,6 +27,16 @@ const Registration = () => {
     const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page')
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page')
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
+    const [modalActive, setModalActive] = useState(false);
+
+   // useEffect(() => {
+   //     if (name === '22') {
+   //         setModalActive(true)
+   //     } else {
+   //         setModalActive(false)
+   //     }
+   // } , [setName])
+
 
 
     const showHiddenPass = () => {
@@ -38,26 +50,34 @@ const Registration = () => {
 
      const inputHandlerRegPage = (e) => {
 
-        setSurname(e.target.value)
-        setName(e.target.value)
-        setSecondName(e.target.value)
-        setEmail(e.target.value)
-        setPassReg(e.target.value)
-        setRepeatPass(e.target.value)
+         setSurname(e.target.value)
+         setName(e.target.value)
+         setSecondName(e.target.value)
+         setEmail(e.target.value)
+         setPassReg(e.target.value)
+         setRepeatPass(e.target.value)
 
-        if (surname === '' || name === '' || secondName === '') {
-                setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
-                setChangeBorderInputUsername('_input-border-red');
 
-        } if (email === '') {
-                setErrorEmail('Неверный формат почты');
-                setChangeBorderInputEmail('_input-border-red');
+         if (surname === '' || name === '' || secondName === '') {
+             setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
+             setChangeBorderInputUsername('_input-border-red');
 
-        } if (passReg !== repeatPass) {
-                setErrorPassReg('Пароли не совпадают');
-                setChangeBorderInputPass('_input-border-red');
-        }
+         }
+         if (email === '') {
+             setErrorEmail('Неверный формат почты');
+             setChangeBorderInputEmail('_input-border-red');
+
+         }
+         if (passReg !== repeatPass || passReg === '' || repeatPass === '') {
+             setErrorPassReg('Пароли не совпадают');
+             setChangeBorderInputPass('_input-border-red');
+         } else {
+             setModalActive(true)
+         }
+
     }
+
+
 
 
     return (
@@ -153,15 +173,17 @@ const Registration = () => {
                             <span>Ознакомлен с <a href={'politic'}>Политикой</a>.Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button _reg-block-show'}>
-                            <button type={'button'} onClick={e => inputHandlerRegPage(e)}>Зарегистрироваться</button>
+                            <button type={'button'} onClick={e => { inputHandlerRegPage(e); setModalActive(true)}}>Зарегистрироваться</button>
                         </div>
                     </div>
+                    {/*-Кнопка для мобильной версии-*/}
                     <div className={'reg-block__button-next-page'}>
                         <span>Шаг 1 из 2</span>
                         <button type={"submit"}>Продолжить</button>
                     </div>
                 </div>
             </div>
+            <RegistrationModal active={modalActive} setActive={setModalActive}/>
         </div>
     )
 }
