@@ -13,6 +13,7 @@ import ObserverCryptoBlock from "./componets/ObserverCryptoBlock/ObserverCryptoB
 import Registration from "./componets/Registration/Registration";
 import RegistrationSecondPageMobile from "./componets/Registration/RegistrationSecondPageMobile/RegistrationSecondPageMobile";
 import AuthorizationForgetPassword from "./componets/AuthorizationForgetPassword/AuthorizationForgetPassword";
+import AuthorizationSetPassword from "./componets/AuthorizationSetPassword/AuthorizationSetPassword";
 
 
 
@@ -25,7 +26,8 @@ function App() {
       <Switch>
           <Route path='/home' component={Authorization}/>
           <Route path='/forget-password' component={AuthorizationForgetPassword}/>
-          <Route path='/regpage' component={Registration}/>
+          <Route path='/set-password' component={AuthorizationSetPassword}/>
+          <Route path='/reg-page' component={Registration}/>
           <Route path='/reg-second-page' component={RegistrationSecondPageMobile}/>
           <Route path='/main' component={Layout}/>
           <Redirect from='/' to = '/home'/>
