@@ -7,9 +7,13 @@ import bg_image4 from "../../img/Auth_img4.svg";
 import bg_image_mobile from "../../img/Auth_img_mobile.svg";
 import logo from "../../img/Auth_logo_crypto_veche.svg";
 import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
+import AuthorizationSetPasswordModal from "../AuthorizationSetPasswordModal/AuthorizationSetPasswordModal";
 
 const AuthorizationSetPassword = () => {
 
+    const [modalActive, setModalActive] = useState(false);
+    const [newPass, setNewPass] = useState('');
+    const [repeatNewPass, setRepeatNewPass] = useState('');
     const [changeTypePassFirst, setChangeTypePassFirst] = useState('password');
     const [changeTypePassSecond, setChangeTypePassSecond] = useState('password');
 
@@ -30,6 +34,17 @@ const AuthorizationSetPassword = () => {
         }
     }
 
+    const setNewPassword = (e) => {
+
+
+        if (newPass === '' || repeatNewPass === '') {
+            alert('Поля не заполнены')
+        } else {
+            setModalActive(true)
+        }
+
+    }
+
 
 
     return (
@@ -45,16 +60,16 @@ const AuthorizationSetPassword = () => {
                             <div className={'form__password'}>
                                 <img alt={'иконка показать пароль'} className={'form__password__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPassFirstField}/>
                                 <span>Новый пароль</span>
-                                <input placeholder={'12345678'} type={changeTypePassFirst} />
+                                <input placeholder={'12345678'} type={changeTypePassFirst} onChange={e => {setNewPass(e.target.value)}}/>
                             </div>
                             <div className={'form__password'}>
                                 <img alt={'иконка показать пароль'} className={'form__password__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPassSecondField}/>
                                 <span>Повторите новый пароль</span>
-                                <input placeholder={'12345678'} type={changeTypePassSecond}/>
+                                <input placeholder={'12345678'} type={changeTypePassSecond} onChange={e => {setRepeatNewPass(e.target.value)}}/>
                             </div>
                         </div>
                         <div className={'auth__button-save'}>
-                            <button type={'submit'}>Сохранить</button>
+                            <button type={'submit'} onClick={e => {setNewPassword(e)}}>Сохранить</button>
                         </div>
                     </div>
                     <div className={'main-block__reg _modificator-main-block__reg-padding '}>
@@ -77,7 +92,7 @@ const AuthorizationSetPassword = () => {
                     </div>
                 </div>
             </div>
-
+            <AuthorizationSetPasswordModal active={modalActive} setActive={setModalActive}/>
         </div>
     )
 

@@ -1,19 +1,18 @@
 import React from "react";
 import './AuthorizationForgetPasswordModal.css';
+import {useHistory} from "react-router-dom";
 
 
-const AuthorizationForgetPasswordModal = ({active, setActive}) => {
+const AuthorizationForgetPasswordModal = ({active}) => {
 
-     function linkAuthPage() {
-         window.location.assign('/home');
-     }
+    const linkMainPage = useHistory();
 
     return (
-        <div className={active ? 'auth-forget-pass-modal active' : 'auth-forget-pass-modal'} onClick={() => setActive(false)}>
-            <div className={'auth-forget-pass-modal__content'} onClick={e => e.stopPropagation()}>
+        <div className={active ? 'auth-forget-pass-modal active' : 'auth-forget-pass-modal'}>
+            <div className={'auth-forget-pass-modal__content'}>
                 <h1>Почти готово!</h1>
                 <span>На вашу электронную почту отправлена инструкция по смене пароля</span>
-              <button onClick={(e) => linkAuthPage(e)}>На страницу входа</button>
+              <button type={'button'} onClick={() => { linkMainPage.push('/home')}}>На страницу входа</button>
             </div>
         </div>
     )

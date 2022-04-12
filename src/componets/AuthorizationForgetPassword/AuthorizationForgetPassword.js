@@ -14,12 +14,23 @@ import AuthorizationForgetPasswordModal from "../AuthorizationForgetPasswordModa
 const AuthorizationForgetPassword = () => {
 
     const [modalActive, setModalActive] = useState(false);
+    const [act, setAct] = useState(false);
+
+
+    const activeModalWindow = () => {
+        setModalActive(true)
+    }
+
+    const hiddenMainBlock = () => {
+               setAct(true)   
+
+    }
 
     return (
         <div className={'wrapper-auth'}>
             <div className={'container-auth'}>
                 <div className={'main-block _modificator-main-block__height'}>
-                    <div className={'main-block__auth _modificator-main-block__auth-padding'}>
+                    <div className={act ? 'main-block__auth _modificator-main-block__auth-padding active' : 'main-block__auth _modificator-main-block__auth-padding'}>
                         <a href={'row'}><img alt={'стрелочка ссылка'} className={'auth__link-row-icon'} src={row_link}/></a>
                         <div className={'auth__title _modificator-auth__title-padding-left'}>
                                 <h3>Забыли пароль?</h3>
@@ -32,10 +43,10 @@ const AuthorizationForgetPassword = () => {
                                 </div>
                                 </div>
                                 <div className={'auth__button'}>
-                                    <button type={'submit'} onClick={() => setModalActive(true)}>Отправить</button>
+                                    <button type={'submit'} onClick={() => {activeModalWindow()}}>Отправить</button>
                                 </div>
                                 <div className={'auth__button-mobile'}>
-                                    <button className={'button-ready-mobile'} type={'submit'}>Готово</button>
+                                    <button className={'button-ready-mobile'} type={'submit'} onClick={() => {activeModalWindow()}}>Готово</button>
                                 </div>
                             </div>
                             <div className={'main-block__reg _modificator-main-block__reg-padding '}>
@@ -55,9 +66,9 @@ const AuthorizationForgetPassword = () => {
                                         Система электронных голосований
                                     </div>
                             </div>
-                    </div>
+                      </div>
                 </div>
-             <AuthorizationForgetPasswordModal active={modalActive} setActive={setModalActive}/>
+             <AuthorizationForgetPasswordModal active={modalActive}/>
         </div>
     )
 

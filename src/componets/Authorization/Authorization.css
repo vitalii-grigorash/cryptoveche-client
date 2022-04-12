@@ -246,7 +246,7 @@ a {
     top: 188px;
     left: 112px;
     object-fit: cover;
-    z-index: 1;
+
 }
 
 .auth-image_3 {
@@ -267,7 +267,7 @@ a {
     top: 498px;
     right: 224px;
     object-fit: cover;
-    z-index: 1;
+
 }
 .auth-image_5 {
     position: absolute;
@@ -276,7 +276,7 @@ a {
     top: 600px;
     right: 110px;
     object-fit: cover;
-    z-index: 1;
+
 }
 
 .auth-image-mobile {

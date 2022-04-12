@@ -29,15 +29,6 @@ const Registration = () => {
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
     const [modalActive, setModalActive] = useState(false);
 
-   // useEffect(() => {
-   //     if (name === '22') {
-   //         setModalActive(true)
-   //     } else {
-   //         setModalActive(false)
-   //     }
-   // } , [setName])
-
-
 
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
@@ -48,33 +39,20 @@ const Registration = () => {
     }
 
 
-     const inputHandlerRegPage = (e) => {
+     const inputHandlerRegPage = () => {
 
-         setSurname(e.target.value)
-         setName(e.target.value)
-         setSecondName(e.target.value)
-         setEmail(e.target.value)
-         setPassReg(e.target.value)
-         setRepeatPass(e.target.value)
-
-
-         if (surname === '' || name === '' || secondName === '') {
+         if ((surname === '' || name === '' || secondName === '')) {
              setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
              setChangeBorderInputUsername('_input-border-red');
-
-         }
-         if (email === '') {
+         } else if (email === '') {
              setErrorEmail('Неверный формат почты');
              setChangeBorderInputEmail('_input-border-red');
-
-         }
-         if (passReg !== repeatPass || passReg === '' || repeatPass === '') {
+         } else if (passReg !== repeatPass || passReg === '' || repeatPass === '') {
              setErrorPassReg('Пароли не совпадают');
              setChangeBorderInputPass('_input-border-red');
          } else {
              setModalActive(true)
          }
-
     }
 
 
@@ -173,7 +151,7 @@ const Registration = () => {
                             <span>Ознакомлен с <a href={'politic'}>Политикой</a>.Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button _reg-block-show'}>
-                            <button type={'button'} onClick={e => { inputHandlerRegPage(e); setModalActive(true)}}>Зарегистрироваться</button>
+                            <button type={'button'} onClick={e => {inputHandlerRegPage(e)}}>Зарегистрироваться</button>
                         </div>
                     </div>
                     {/*-Кнопка для мобильной версии-*/}
@@ -183,7 +161,7 @@ const Registration = () => {
                     </div>
                 </div>
             </div>
-            <RegistrationModal active={modalActive} setActive={setModalActive}/>
+            <RegistrationModal active={modalActive}/>
         </div>
     )
 }
