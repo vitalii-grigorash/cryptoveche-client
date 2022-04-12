@@ -12,7 +12,7 @@ const AuthorizationForgetPasswordModal = ({active}) => {
             <div className={'auth-forget-pass-modal__content'}>
                 <h1>Почти готово!</h1>
                 <span>На вашу электронную почту отправлена инструкция по смене пароля</span>
-              <button type={'button'} onClick={() => { linkMainPage.push('/home')}}>На страницу входа</button>
+              <button type={'button'} onClick={() => { linkMainPage.push('/main')}}>На страницу входа</button>
             </div>
         </div>
     )

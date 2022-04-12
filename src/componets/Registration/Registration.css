@@ -309,7 +309,7 @@ a {
     display: flex;
     flex-direction: row;
     padding-bottom: 34px;
-    z-index: 88;
+    z-index: 8;
 }
 .reg-form__checkbox span {
     font-size: 18px;
@@ -445,7 +445,7 @@ a {
         width: 375px;
         border-radius: 16px;
         gap: 24px;
-        height: 667px;
+        height: 612px;
     }
     .reg-form__title h3 {
         font-size: 26px;
@@ -611,7 +611,6 @@ a {
       padding-bottom: 0;
 
     }
-
     .reg-form__checkbox span {
         font-size: 16px;
         line-height: 22px;

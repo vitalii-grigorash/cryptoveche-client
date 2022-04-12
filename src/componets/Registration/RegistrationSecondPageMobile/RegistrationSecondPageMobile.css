@@ -1,3 +1,5 @@
+
+
 /*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
 @media (max-width: 805px) {
     ._modificator-reg-block-logotype-height {
@@ -14,6 +16,16 @@
         }
     ._modificator-reg-block__error-message-mobile {
         top: 169px;
+    }
+    .reg-block__reg-form.active {
+        display: none;
+
+    }
+
+    ._modificator-reg-block-logotype__logo-top {
+        position: absolute;
+        top: 2px;
+        left: 0;
     }
 
 }

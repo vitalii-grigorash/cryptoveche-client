@@ -24,13 +24,13 @@ function App() {
   return (
 <>
       <Switch>
-          <Route path='/home' component={Authorization}/>
+          <Route path='/main' component={Authorization}/>
           <Route path='/forget-password' component={AuthorizationForgetPassword}/>
           <Route path='/set-password' component={AuthorizationSetPassword}/>
           <Route path='/reg-page' component={Registration}/>
           <Route path='/reg-second-page' component={RegistrationSecondPageMobile}/>
-          <Route path='/main' component={Layout}/>
-          <Redirect from='/' to = '/home'/>
+          <Route path='/nome' component={Layout}/>
+          <Redirect from='/' to = '/main'/>
       </Switch>
 </>
   );

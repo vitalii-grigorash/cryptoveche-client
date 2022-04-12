@@ -16,7 +16,7 @@ const AuthorizationSetPassword = () => {
     const [repeatNewPass, setRepeatNewPass] = useState('');
     const [changeTypePassFirst, setChangeTypePassFirst] = useState('password');
     const [changeTypePassSecond, setChangeTypePassSecond] = useState('password');
-
+    const [hideBlock, setHideBlock] = useState(false);
 
 
     const showHiddenPassFirstField = () => {
@@ -34,11 +34,20 @@ const AuthorizationSetPassword = () => {
         }
     }
 
-    const setNewPassword = (e) => {
+    function getWight() {
+        let dlinna = document.getElementById('container-auth').clientWidth
+        return dlinna;
+    }
 
 
-        if (newPass === '' || repeatNewPass === '') {
+
+    const setNewPassword = () => {
+
+        if ((newPass === '' || repeatNewPass === '')) {
             alert('Поля не заполнены')
+        } else if(getWight() < 600) {
+            setHideBlock(true)
+            setModalActive(true)
         } else {
             setModalActive(true)
         }
@@ -49,9 +58,9 @@ const AuthorizationSetPassword = () => {
 
     return (
         <div className={'wrapper-auth'}>
-            <div className={'container-auth'}>
+            <div id={'container-auth'} className={'container-auth'}>
                 <div className={'main-block _modificator-main-block__height'}>
-                    <div className={'main-block__auth _modificator-main-block__auth-set-pass-padding'}>
+                    <div className={hideBlock ? 'main-block__auth active _modificator-main-block__auth-set-pass-padding' : 'main-block__auth _modificator-main-block__auth-set-pass-padding'}>
                         <div className={'auth__title  _modificator-auth__title-padding-bottom'}>
                             <h3>Установка пароля</h3>
                             <div><span>РУС</span><a href={'en'}>ENG</a></div>
@@ -92,7 +101,7 @@ const AuthorizationSetPassword = () => {
                     </div>
                 </div>
             </div>
-            <AuthorizationSetPasswordModal active={modalActive} setActive={setModalActive}/>
+            <AuthorizationSetPasswordModal active={modalActive}/>
         </div>
     )
 

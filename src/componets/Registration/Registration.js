@@ -10,6 +10,7 @@ import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
 import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
 import red_star_icon from '../../img/Registration_red_start_icon.svg';
 import RegistrationModal from "./RegistrationModal/RegistrationModal";
+import {useHistory} from "react-router-dom";
 
 
 const Registration = () => {
@@ -29,6 +30,7 @@ const Registration = () => {
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
     const [modalActive, setModalActive] = useState(false);
 
+    const linkRegSecondPage = useHistory();
 
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
@@ -39,7 +41,7 @@ const Registration = () => {
     }
 
 
-     const inputHandlerRegPage = () => {
+     const completeProcessRegistration = () => {
 
          if ((surname === '' || name === '' || secondName === '')) {
              setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
@@ -55,9 +57,6 @@ const Registration = () => {
          }
     }
 
-
-
-
     return (
         <div className={'wrapper-reg'}>
             <div className={'container-reg'}>
@@ -72,7 +71,7 @@ const Registration = () => {
                             <img alt={'изображение'} src={bg_image4}/>
                         </div>
                             <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile}/>
-                        <div className={'reg-block-logotype__logo'}>
+                        <div className={'reg-block-logotype__logo _modificator-reg-block-logotype__logo-top'}>
                             <img src={logo} alt="Логотип"/>
                         </div>
                         <div className={'reg-block-logotype__title'}>
@@ -151,13 +150,13 @@ const Registration = () => {
                             <span>Ознакомлен с <a href={'politic'}>Политикой</a>.Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button _reg-block-show'}>
-                            <button type={'button'} onClick={e => {inputHandlerRegPage(e)}}>Зарегистрироваться</button>
+                            <button type={'button'} onClick={e => {completeProcessRegistration(e)}}>Зарегистрироваться</button>
                         </div>
                     </div>
                     {/*-Кнопка для мобильной версии-*/}
                     <div className={'reg-block__button-next-page'}>
                         <span>Шаг 1 из 2</span>
-                        <button type={"submit"}>Продолжить</button>
+                        <button type={"submit"} onClick={() => linkRegSecondPage.push('/reg-second-page')}>Продолжить</button>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,6 @@
     opacity: 1;
     transform: scale(1);
     pointer-events: all;
-
 }
 /*------Стилизация самого модального окна-----------------------------------------------------------------------------*/
 .registration-modal__content {
@@ -31,16 +30,53 @@
     height: 222px;
     border-radius: 8px;
     background-color: #FFFFFF;
+    position: relative;
 }
 /*------Стилизация заголовка модального окна--------------------------------------------------------------------------*/
-.registration-modal__content h1 {
+.content__title {
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(54, 59, 77, 0.9);
+
+}
+.content__title h3 {
+    font-family: Golos;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 34px;
+}
+.title__language {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    font-family: Inter;
+}
+.title__language a {
+    color: #0084FE;
+}
+
+/*------Стилизация сообщения модально окна--------------------------------------------------------------------------*/
+.registration-modal__content h4 {
     font-family: 'Golos';
     font-weight: 500;
     font-size: 22px;
     line-height: 30px;
     color: rgba(54, 59, 77, 0.9);
 }
-
+.title__checkmark {
+    display: none;
+    position: absolute;
+    top: 82px;
+    left: 20px;
+    width: 18px;
+    height: 14px;
+}
 /*------Стилизация кнопки модального окна-----------------------------------------------------------------------------*/
 .registration-modal__content button {
     font-family: 'Golos';
@@ -53,4 +89,39 @@
     color: #FFFFFF;
     background-color: #0084FE;
     cursor: pointer;
+}
+/*------ Адаптивная версия--------------------------------------------------------------------------------------------*/
+@media (max-width: 800px) {
+    .registration-modal {
+        display: flex;
+        height: 667px;
+        top: 238px;
+        pointer-events: none;
+        background-color: inherit;
+    }
+
+    .registration-modal__content {
+        gap: 14px;
+        height: 202px;
+        width: 380px;
+        padding: 24px 16px 26px 16px;
+        align-items: center;
+    }
+    .content__title {
+        display: flex;
+    }
+    .registration-modal__content h4 {
+        font-size: 16px;
+        line-height: 34px;
+        font-weight: 600;
+    }
+    .registration-modal__content button {
+        width: 343px;
+        height: 48px;
+        font-size: 16px;
+    }
+    .title__checkmark {
+        display: inherit;
+    }
+
 }
