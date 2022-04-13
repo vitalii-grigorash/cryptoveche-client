@@ -1,3 +1,4 @@
+/*------Основ------------------------------------------------------------------------------------------*/
 .footer {
     position: relative;
 }
@@ -32,7 +33,6 @@
 }
 .items__block-support {
     text-align: left;
-
 }
 .items__block-settings select {
     font-size: 16px;
@@ -42,7 +42,7 @@
     color: #4A4F5F;
 
 }
-/*------Адаптивная версия---------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(1028px)-------------------------------------------------------------------------------------*/
 @media (max-width: 1028px) {
     .items__block-settings select{
         font-size: 12px;
@@ -57,7 +57,7 @@
 .items__block-map-site h3, .items__block-settings h3, .items__block-support h3 {
     font-size: 18px;
 }
-
+/*------Адаптивная версия(824px)---------------------------------------------------------------------------------------*/
 @media (max-width: 824px) {
     .items__block-logo, .items__block-map-site, .items__block-settings, .items__block-support {
         display: flex;
@@ -71,7 +71,6 @@
     }
 }
 @media (max-width: 568px) {
-
     .footer__items {
         display: flex;
         flex-direction: column;

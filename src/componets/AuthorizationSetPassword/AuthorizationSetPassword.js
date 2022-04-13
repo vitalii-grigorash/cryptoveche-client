@@ -33,19 +33,17 @@ const AuthorizationSetPassword = () => {
             setChangeTypePassSecond('password')
         }
     }
-
-    function getWight() {
-        let dlinna = document.getElementById('container-auth').clientWidth
-        return dlinna;
+//-------Функция для получения ширины div и затем передаем результат в функцию setNewPassword, которая уже позволяет скрыть блок div толко в мобильной версии-----//
+    const getWidthBlock = (width) => {
+        width = document.getElementById('container-auth').clientWidth
+        return width;
     }
-
-
 
     const setNewPassword = () => {
 
         if ((newPass === '' || repeatNewPass === '')) {
             alert('Поля не заполнены')
-        } else if(getWight() < 600) {
+        } else if (getWidthBlock() < 600) {
             setHideBlock(true)
             setModalActive(true)
         } else {

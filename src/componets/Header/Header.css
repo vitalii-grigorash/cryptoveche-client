@@ -1,3 +1,4 @@
+/*------Основной стиль для header-------------------------------------------------------------------------------------*/
 .header {
     width: 100%;
     left: 0;
@@ -8,8 +9,6 @@
     font-size: 16px;
     font-weight: 400;
 }
-
-
 .header__container {
     display: flex;
     justify-content: space-between;
@@ -19,54 +18,70 @@
     position: relative;
     margin-bottom: 40px;
 }
-
-.header__left-block {
+/*------Стилизация блока с логотипом----------------------------------------------------------------------------------*/
+.header__logotype-block {
     display: flex;
     align-items: center;
     gap: 84px;
-
 }
-.header__right-block {
+.header__logotype-block a {
+    text-decoration: none;
+    color: #FFFFFF;;
+}
+/*------Стилизация общего блока с иконками поиск, настройки, личный кабинет-------------------------------------------*/
+.header__general-block-search-settings-lk {
     display: flex;
     gap: 51px;
 }
-.right-block__search {
+/*------Стилизация блока с иконкой поиск------------------------------------------------------------------------------*/
+.general-block-search-settings-lk__search {
     display: flex;
     gap: 11px;
 }
-.right-block__iconclient {
+/*------Стилизация блока с иконкой личный кабинет---------------------------------------------------------------------*/
+.general-block-search-settings-lk__iconclient {
     display: flex;
     gap: 11px;
     align-items: center;
 }
-/*------Адаптивная версия---------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(992px)---------------------------------------------------------------------------------------*/
 @media (max-width: 992px) {
     .header {
         font-size: 14px;
     }
-    .header__left-block {
+    .header__logotype-block {
         font-size: 14px;
     }
 }
+/*------Адаптивная версия(782px)---------------------------------------------------------------------------------------*/
 @media (max-width: 782px) {
-    .right-block__search span {
+    .general-block-search-settings-lk__search  span {
         display: none;
     }
-    .right-block__iconclient span {
+    .general-block-search-settings-lk__iconclient span {
         display: none;
     }
 }
+/*------Адаптивная версия(660px)---------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
-    .right-block__search span {
+    .general-block-search-settings-lk__search span {
         display: none;
     }
-   .header__left-block {
+   .header__logotype-block {
        gap: 30px;
    }
 }
+/*------Адаптивная версия(520px)---------------------------------------------------------------------------------------*/
 @media (max-width: 520px) {
-    .header__left-block span {
+    .header__logotype-block span {
         display: none;
     }
 }
+/*------Адаптивная версия(375px)---------------------------------------------------------------------------------------*/
+@media (max-width: 376px) {
+    .header__container {
+        display: none;
+    }
+}
+
 

@@ -23,6 +23,7 @@ const CalendarVotes = () => {
 
     const [selectedDate, setSelectedDate] = useState();
     const [calendarText, setCalendarText] = useState(`Дата не назначена`);
+
     const handleDateChange = (value) => {
         setSelectedDate(value);
         setCalendarText(`Выбранная дата ${value.toDateString()}`);
@@ -64,7 +65,7 @@ const CalendarVotes = () => {
                 </div>
             </div>
             <div>
-                <h2 className="calander-details">{calendarText}</h2>
+
                 <Calendar
                     onClickMonth={handleMonthChange}
                     onClickYear={handleYearChange}

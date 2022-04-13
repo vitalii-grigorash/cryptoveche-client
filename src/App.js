@@ -29,7 +29,7 @@ function App() {
           <Route path='/set-password' component={AuthorizationSetPassword}/>
           <Route path='/reg-page' component={Registration}/>
           <Route path='/reg-second-page' component={RegistrationSecondPageMobile}/>
-          <Route path='/nome' component={Layout}/>
+          <Route path='/home' component={Layout}/>
           <Redirect from='/' to = '/main'/>
       </Switch>
 </>

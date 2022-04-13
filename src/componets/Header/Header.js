@@ -9,28 +9,28 @@ import logo_header from '../../img/Header_logo.svg';
 const Header = () => {
 
     return (
-        <div>
-           <header className={'header'}>
-               <div className={'header__container _container'}>
-                       <div className={'header__left-block'}>
-                           <img alt={'Logo'} src={logo_header}/>
-                           <span>Главная</span>
-                           <span>Голосование</span>
-                        </div>
-                       <div className={'header__right-block'}>
-                           <div className={'right-block__search'}>
-                                <img alt={'icon-search'} src={search_icon}/>
-                                <span>Поиск</span>
+            <div>
+               <header className={'header'}>
+                   <div className={'header__container _container'}>
+                           <div className={'header__logotype-block'}>
+                               <img alt={'Logo'} src={logo_header}/>
+                               <span><a href={'/home'}>Главная</a></span>
+                               <span><a href={'/home'}>Голосование</a></span>
+                            </div>
+                           <div className={'header__general-block-search-settings-lk'}>
+                               <div className={'general-block-search-settings-lk__search'}>
+                                   <a href={'/home'}><img alt={'icon-search'} src={search_icon}/></a>
+                                    <span>Поиск</span>
+                               </div>
+                               <a href={'/home'}><img alt={'settings__icon'} src={settings}/></a>
+                               <div className={'general-block-search-settings-lk__iconclient'}>
+                                   <a href={'/home'}><img alt={'logo_client'} src={icon_client}/></a>
+                                   <span>Иванова А.А.</span>
+                               </div>
                            </div>
-                                <img alt={'settings__icon'} src={settings}/>
-                           <div className={'right-block__iconclient'}>
-                               <img alt={'logo_client'} src={icon_client}/>
-                               <span>Иванова А.А.</span>
-                           </div>
-                       </div>
-               </div>
-           </header>
-        </div>
+                    </div>
+               </header>
+            </div>
     )
 
 }
