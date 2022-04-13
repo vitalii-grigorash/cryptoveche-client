@@ -64,13 +64,56 @@ const CalendarVotes = () => {
                     </ul>
                 </div>
             </div>
-            <div>
-
-                <Calendar
-                    onClickMonth={handleMonthChange}
-                    onClickYear={handleYearChange}
-                    onChange={handleDateChange}
-                    value={selectedDate} className={'calendar'}/>
+            <div className={'calendar'}>
+                <table className={'calendar__table-horizontal-line'}>
+                        <tr className={'table-horizontal-line__border-bottom'}>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    <tr className={'table-horizontal-line__border-bottom'}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr className={'table-horizontal-line__border-bottom'}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr className={'table-horizontal-line__border-bottom'}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <table className={'calendar__table-vertical-line'}>
+                    <tr className={'table-vertical-line__border-right'}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <Calendar/>
             </div>
         </div>
     );

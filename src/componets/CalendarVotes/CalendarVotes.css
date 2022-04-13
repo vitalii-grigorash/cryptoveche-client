@@ -19,7 +19,7 @@
     color: #363B4D;
 }
 
-/*------Стили для блока "Начало и конец регистрацич"------------------------------------------------------------------------------------------*/
+/*------Стили для блока "Начало и конец регистрацич"-------------------------------------------------------------------*/
 .calendar-container__run-end-vote {
     display: flex;
     flex-direction: row;
@@ -54,7 +54,35 @@
     font-weight: 400;
 }
 
-/*------Cтили для календаря------------------------------------------------------------------------------------------*/
+/*------Cтилизация cетки календаря-------------------------------------------------------------------------------------*/
+.calendar {
+    position: relative;
+}
+.calendar__table-horizontal-line {
+    position: absolute;
+    top: 107px;
+    left: 0;
+    border-spacing: 0;
+}
+.table-horizontal-line__border-bottom td {
+    width: 595px;
+    height: 65px;
+    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
+}
+.calendar__table-vertical-line {
+    position: absolute;
+    top: 60px;
+    left: 3px;
+    border-spacing: 0;
+}
+
+.table-vertical-line__border-right td {
+    width: 84px;
+    height: 345px;
+    border-right: 1px solid rgba(54, 59, 77, 0.2);
+}
+
+/*------Cтилизация календаря-----------------------------------------------------------------------------------------*/
 .react-calendar {
     font-family: Inter;
     border: white;
@@ -63,19 +91,16 @@
 .react-calendar__year-view__months__month {
 
 }
-
 .react-calendar__month-view__weekdays {
-    border-bottom: 1px solid;
-    border-color: rgba(54, 59, 77, 0.3);
-    font-size: 18px;
-    color: rgba(54, 59, 77, 0.4);
+    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
+
 }
 .react-calendar__navigation__label {
     font-size: 18px;
 }
-
 .react-calendar__month-view__weekdays__weekday {
     padding: 0 24px 24px 24px;
+    /*border-right: 1px solid rgba(54, 59, 77, 0.3);*/
 }
 .react-calendar__navigation__label {
     max-width: 265px;
@@ -86,9 +111,18 @@
 .react-calendar__month-view__days__day {
     padding: 24px 24px;
     font-size: 18px;
-    color: rgba(54, 59, 77, 0.9);
+    opacity: 0.7;
+    z-index: 3;
 }
 .react-calendar__month-view__weekdays__weekday abbr {
     text-decoration: none;
-
+    font-size: 18px;
+    color: rgba(54, 59, 77, 0.4);
+    font-weight: 400;
+}
+.react-calendar__navigation__label {
+    color: rgba(54, 59, 77, 0.9);
+}
+.react-calendar__navigation__label::first-letter {
+    text-transform: capitalize;
 }
