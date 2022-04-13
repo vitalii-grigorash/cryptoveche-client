@@ -5,38 +5,13 @@ import './CalendarVotes.css';
 
 
 const CalendarVotes = () => {
-    const [value, onChange] = useState(new Date());
-    const allMonthValues = [
-        "Январь",
-        "Февраль",
-        "Март",
-        "Апрель",
-        "Май",
-        "Июнь",
-        "Июль",
-        "Август",
-        "Сентябрь",
-        "Oктябрь",
-        "Ноябрь",
-        "Декабрь"
-    ];
 
-    const [selectedDate, setSelectedDate] = useState();
-    const [calendarText, setCalendarText] = useState(`Дата не назначена`);
-
-    const handleDateChange = (value) => {
-        setSelectedDate(value);
-        setCalendarText(`Выбранная дата ${value.toDateString()}`);
-    };
-    const handleYearChange = (value) => {
-        const yearValue = value.getFullYear();
-        setCalendarText(`${yearValue} Year  is selected`);
-    };
-    const handleMonthChange = (value) => {
-        const monthValue = allMonthValues[value.getMonth()];
-        setCalendarText(`${monthValue} Month  is selected`);
-    };
-
+     function showDay () {
+         let i = 1;
+         return (
+             console.log(i + i + 3)
+         );
+    }
 
 
     return (
@@ -113,7 +88,7 @@ const CalendarVotes = () => {
                         <td></td>
                     </tr>
                 </table>
-                <Calendar/>
+                <Calendar onClickMonth={() => {showDay()}}/>
             </div>
         </div>
     );
