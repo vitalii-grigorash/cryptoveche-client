@@ -6,15 +6,9 @@ import './CalendarVotes.css';
 
 const CalendarVotes = () => {
 
-     function showDay () {
-         let i = 1;
-         return (
-             console.log(i + i + 3)
-         );
-    }
-
 
     return (
+
         <div className={'calendar-container'}>
             <h1>Календарь голосования</h1>
             <div className={'calendar-container__run-end-vote'}>
@@ -39,57 +33,7 @@ const CalendarVotes = () => {
                     </ul>
                 </div>
             </div>
-            <div className={'calendar'}>
-                <table className={'calendar__table-horizontal-line'}>
-                        <tr className={'table-horizontal-line__border-bottom'}>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    <tr className={'table-horizontal-line__border-bottom'}>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr className={'table-horizontal-line__border-bottom'}>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr className={'table-horizontal-line__border-bottom'}>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-                <table className={'calendar__table-vertical-line'}>
-                    <tr className={'table-vertical-line__border-right'}>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-                <Calendar onClickMonth={() => {showDay()}}/>
-            </div>
+                <Calendar />
         </div>
     );
 }

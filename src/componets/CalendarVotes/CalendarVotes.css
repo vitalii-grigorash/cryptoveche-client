@@ -8,9 +8,10 @@
     border-radius: 24px;
     padding: 32px 32px 39px 32px;
     width: 100%;
-    max-height: 648px;
+    height: 100%;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
+
 .calendar-container h1 {
     font-family: Golos;
     font-size: 24px;
@@ -18,7 +19,6 @@
     font-weight: 600;
     color: #363B4D;
 }
-
 /*------Стили для блока "Начало и конец регистрацич"-------------------------------------------------------------------*/
 .calendar-container__run-end-vote {
     display: flex;
@@ -31,7 +31,7 @@
     flex-direction: column;
 }
 .run-end-vote li {
-    padding-bottom: 16px;
+    padding: 0 0 16px 0;
 }
 .__li-color-blue {
     color: #49B3FF;
@@ -54,45 +54,20 @@
     font-weight: 400;
 }
 
-/*------Cтилизация cетки календаря-------------------------------------------------------------------------------------*/
-.calendar {
-    position: relative;
-}
-.calendar__table-horizontal-line {
-    position: absolute;
-    top: 107px;
-    left: 0;
-    border-spacing: 0;
-}
-.table-horizontal-line__border-bottom td {
-    width: 595px;
-    height: 65px;
-    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
-}
-.calendar__table-vertical-line {
-    position: absolute;
-    top: 60px;
-    left: 3px;
-    border-spacing: 0;
-}
-
-.table-vertical-line__border-right td {
-    width: 84px;
-    height: 345px;
-    border-right: 1px solid rgba(54, 59, 77, 0.2);
-}
-
 /*------Cтилизация календаря-----------------------------------------------------------------------------------------*/
 .react-calendar {
     font-family: Inter;
     border: white;
     width: 100%;
 }
-
-.react-calendar__month-view__weekdays {
-    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
-
+.react-calendar .react-calendar__month-view__days button {
+    border-right: 1px rgba(54, 59, 77, 0.4) solid;
+    border-top: 1px rgba(54, 59, 77, 0.4) solid;
 }
+.react-calendar button:nth-child(7n) {
+    border-right: none;
+}
+
 .react-calendar button:enabled:hover {
     cursor: inherit;
 }
@@ -103,30 +78,29 @@
     max-width: 265px;
     color: rgba(54, 59, 77, 0.9);
 }
-.react-calendar__navigation {
-    cursor: inherit;
-}
+
 .react-calendar__navigation button:enabled:hover {
     background: none;
     pointer-events: none;
-
 }
-/*.react-calendar__tile:enabled:hover {*/
-/*    background: none;*/
-/*}*/
+
 .react-calendar__month-view__weekdays__weekday {
     padding: 0 24px 24px 24px;
-    /*border-right: 1px solid rgba(54, 59, 77, 0.3);*/
+    border-right: 1px solid rgba(54, 59, 77, 0.2);
+}
+.react-calendar__month-view__weekdays__weekday:last-child {
+    border: none;
 }
 
 .react-calendar__navigation {
     justify-content: center;
+    cursor: pointer;
 }
 .react-calendar__month-view__days__day {
     padding: 24px 24px;
     font-size: 18px;
     opacity: 0.7;
-    z-index: 3;
+    /*z-index: 3;*/
     pointer-events: none;
 }
 
@@ -140,7 +114,6 @@
 .react-calendar__navigation__label::first-letter {
     text-transform: capitalize;
 }
-/*.react-calendar__tile--active:enabled:focus {*/
-/*    background: none;*/
-/*    pointer-events: none;*/
-/*}*/
+.react-calendar__tile--now {
+    background: #0084FE;
+}
