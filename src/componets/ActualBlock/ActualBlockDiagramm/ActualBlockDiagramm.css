@@ -1,0 +1,55 @@
+/*------Общий стиль для всего блока----------------------------------------------------------------------------------*/
+.diagramm-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+}
+.diagramm-container__info {
+    position: absolute;
+    left: 155px;
+    top: 140px;
+}
+.diagramm-container__info h3 {
+    font-size: 60px;
+    line-height: 70px;
+    font-family: Golos;
+    color: #4ED4A9;
+    font-weight: 600;
+}
+.diagramm-container__info p {
+    font-size: 14px;
+    line-height: 94%;
+    font-family: Inter;
+    color: rgba(54, 59, 77, 0.6);
+    font-weight: 400;
+}
+/*------Стили для кругов диаграммы-----------------------------------------------------------------------------------*/
+.circle__one {
+    fill: none;
+    stroke-width: 5;
+    stroke: #4ED4A9;
+    stroke-dasharray: 46.2 4.7;
+    stroke-dashoffset: 15;
+
+}
+.circle__two {
+    fill: none;
+    stroke-width: 5;
+    stroke: #F9C521;
+    stroke-dasharray: 54 100;
+    stroke-dashoffset: -32;
+}
+/*------Стилт для стеролочек-кнопок----------------------------------------------------------------------------------*/
+.diagramm-container__row-button-right {
+    position: absolute;
+    right: 0;
+}
+
+.diagramm-container__row-button-left {
+    transform: rotate(180deg);
+    position: absolute;
+    left: 0;
+}
+

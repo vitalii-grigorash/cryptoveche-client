@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarVotes.css';
@@ -12,6 +12,7 @@ const CalendarVotes = () => {
         <div className={'calendar-container'}>
             <h1>Календарь голосования</h1>
             <div className={'calendar-container__run-end-vote'}>
+
                 <div className={'run-end-vote'}>
                     <ul>
                         <li className={'__li-color-blue '}>
@@ -33,7 +34,17 @@ const CalendarVotes = () => {
                     </ul>
                 </div>
             </div>
-                <Calendar />
+            <div className={'calendar-block'}>
+                <div className={'blue__circle'}>
+                </div>
+                <div className={'orange__circle'}>
+                </div>
+                <div className={'green__circle'}>
+                </div>
+                <div className={'red__circle'}>
+                </div>
+                <Calendar/>
+            </div>
         </div>
     );
 }

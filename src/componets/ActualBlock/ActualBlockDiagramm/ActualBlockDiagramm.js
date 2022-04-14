@@ -1,46 +1,24 @@
 import React from "react";
 import './ActualBlockDiagramm.css';
-import {
-    Chart,
-    ChartLegend,
-    ChartSeries,
-    ChartSeriesItem,
-} from "@progress/kendo-react-charts";
-import "hammerjs";
-import data from './data-circle.json';
-
-const donutCenterRenderer = () => (
-        <span>
-      <h3 style={{fontSize: 35, color: "#4ED4A9"}}>55%<p style={{fontSize: 15, color: '#363B4D'}}>время прошло</p></h3>
-  </span>
-    );
+import row_icon_button from '../../../img/ActualBlockDiagramm_row.svg';
 
 
 const ActualBlockDiagramm = () => {
 
 
     return (
-        <div>
-            <Chart donutCenterRender={donutCenterRenderer} className={'diag'}>
-                <ChartSeries>
-                    <ChartSeriesItem
-                       size={50}
-                        type="donut"
-                        data={data}
-                        categoryField="kind"
-                        field="share"
-                        gap={10}
-                        >
-                        {/*<ChartSeriesLabels*/}
-                        {/*    padding={3}*/}
-                        {/*    color={'none'}*/}
-                        {/*    background='none'*/}
-                        {/*    content={''}/>*/}
-                    </ChartSeriesItem>
-                </ChartSeries>
-                <ChartLegend visible={false}/>
-            </Chart>
-        </div>
+            <div className={'diagramm-container'}>
+                <a href={'link'}><img className={'diagramm-container__row-button-left'} src={row_icon_button} alt={'кнопка стрелка'}/></a>
+                <a href={'link'}><img className={'diagramm-container__row-button-right'} src={row_icon_button} alt={'кнопка стрелка'}/></a>
+                <span className={'diagramm-container__info'}>
+                   <h3>55%</h3>
+                    <p>времени прошло</p>
+                </span>
+                    <svg className={'diagramm-circle'} width={600} height={370} viewBox={'0 0 50 50'}>
+                        <circle className={'circle__one'} r={18} cx={'50%'} cy={'50%'}/>
+                        <circle className={'circle__two'} r={18} cx={'50%'} cy={'50%'}/>
+                    </svg>
+            </div>
     )
 }
 

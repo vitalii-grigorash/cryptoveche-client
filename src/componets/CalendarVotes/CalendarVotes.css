@@ -45,7 +45,6 @@
 .__li-color-red {
     color: #FF4970;
 }
-
 .run-end-vote span {
     color: #363B4D;
     font-family: Inter;
@@ -53,8 +52,49 @@
     line-height: 124%;
     font-weight: 400;
 }
+/*------Кружки событий для календаря--------------------------------------------------------------------------------*/
+.blue__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 203px;
+    top: 225px;
+    background-color: #49B3FF;
+}
+
+.orange__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 210px;
+    top: 355px;
+    background-color: #FF8A00;
+}
+.green__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 217px;
+    top: 225px;
+    background-color: #4ED4A9;
+}
+.red__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 40px;
+    top: 225px;
+    background-color: #FF4970;
+}
 
 /*------Cтилизация календаря-----------------------------------------------------------------------------------------*/
+.calendar-block {
+    position: relative;
+}
 .react-calendar {
     font-family: Inter;
     border: white;
@@ -115,5 +155,5 @@
     text-transform: capitalize;
 }
 .react-calendar__tile--now {
-    background: #0084FE;
+    background: #CACCCF;
 }
