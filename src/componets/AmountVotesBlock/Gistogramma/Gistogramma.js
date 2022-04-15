@@ -73,15 +73,14 @@ const Gistogramma = () => {
 
     return (
        <div>
-            <Chart style={{width: 320, height: 144}}>
-
+            <Chart style={{width: 340, height: 144}} >
                 <ChartCategoryAxis>
                     <ChartCategoryAxisItem categories={dataVote} startAngle={45}>
                     </ChartCategoryAxisItem>
                 </ChartCategoryAxis>
-                <ChartSeries>
+                <ChartSeries >
                     <ChartLegend position={'top'} orientation={'horizontal'} />
-                    <ChartSeriesItem type="bar" data={firstColumn} />
+                    <ChartSeriesItem type="column" data={firstColumn} />
                     <ChartSeriesItem type="column" data={secondColumn} />
                     <ChartSeriesItem type="column" data={threeColumn} />
                     <ChartSeriesItem type="column" data={fourColumn} />

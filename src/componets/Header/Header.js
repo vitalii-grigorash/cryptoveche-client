@@ -1,16 +1,30 @@
 import React from "react";
 import './Header.css';
 import search_icon from '../../img/Header_search_icon.png';
+import search_icon_mobile from '../../img/Header_search_icon_mobile.svg';
 import settings from '../../img/Header_settings_icon.png';
 import icon_client from '../../img/Header_lk_icon.png';
 import logo_header from '../../img/Header_logo.svg';
+import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
 
 
 const Header = () => {
 
+
+
+
     return (
             <div>
                <header className={'header'}>
+                   <div className={'header-burger-menu'}>
+                       <nav>
+                           <div className={'header-burger-menu__button'}>
+
+                           </div>
+                       </nav>
+                       <img alt={'иконка поиска'} src={search_icon_mobile}/>
+                      <input placeholder={'Поиск'} className={'header-burger-menu__input-search'} type={'text'}/>
+                   </div>
                    <div className={'header__container _container'}>
                            <div className={'header__logotype-block'}>
                                <img alt={'Logo'} src={logo_header}/>
@@ -30,6 +44,7 @@ const Header = () => {
                            </div>
                     </div>
                </header>
+                <HeaderBurgerMenu/>
             </div>
     )
 

@@ -18,6 +18,40 @@
     position: relative;
     margin-bottom: 40px;
 }
+/*------Стилизация блока с бургер-меню и формой для поиска в мобильной версии-----------------------------------------*/
+.header-burger-menu {
+    position: absolute;
+    width: 100%;
+    display: none;
+    flex-direction: row;
+    gap: 15px;
+    z-index: 4;
+    padding: 16px 16px 16px 16px;
+}
+.header-burger-menu__button {
+    width: 32px;
+    height: 32px;
+    background-color: #373C4E;
+    border-radius: 100%;
+}
+.header-burger-menu__input-search {
+    width: 100%;
+    height: 32px;
+    background-color: rgba(54, 59, 77, 0.05);
+    border-radius: 4px;
+    outline: none;
+    padding: 7px 0 7px 40px;
+    color: rgba(54, 59, 77, 0.6)
+}
+.header-burger-menu img {
+     position: absolute;
+     z-index: 5;
+     top: 26px;
+     left: 79px;
+}
+
+
+
 /*------Стилизация блока с логотипом----------------------------------------------------------------------------------*/
 .header__logotype-block {
     display: flex;
@@ -80,7 +114,21 @@
 /*------Адаптивная версия(375px)---------------------------------------------------------------------------------------*/
 @media (max-width: 376px) {
     .header__container {
+        min-height: 64px;
+        margin-bottom: 8px;
+        background-color: #FBFBFC;
+    }
+    .header__general-block-search-settings-lk {
         display: none;
+    }
+    .header-burger-menu {
+        display: flex;
+        align-items: center;
+    }
+    .general-block-search-settings-lk__search {
+        position: absolute;
+        z-index: 333;
+
     }
 }
 

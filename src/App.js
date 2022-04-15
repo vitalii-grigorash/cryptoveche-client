@@ -43,7 +43,7 @@ function Layout () {
                 <main className={'main'}>
                     <div className={'main-content _container'}>
                             <div className={'main-content__title'}>
-                                Добро пожаловать в КриптоВече
+                                Добро пожаловать в КриптоВече!
                             </div>
                         <CounterBlock/>
                             <div className={'main-content__my-votes-actual'}>
