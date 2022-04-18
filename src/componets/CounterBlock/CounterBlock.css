@@ -11,8 +11,8 @@
 .count-block__style {
     display: flex;
     position: relative;
-    width: 100vw;
-    max-height: 128px;
+    width: 320px;
+    height: 128px;
     border-radius: 16px;
     flex-direction: column;
     font-size: 16px;
@@ -35,7 +35,6 @@
     top: 0;
     right: 0;
     object-fit: cover;
-
 }
 
 ._blue {
@@ -50,8 +49,12 @@
 ._yellow {
     background-color: #F9C521;
 }
-/*------Адаптивная версия-----------------------------------------------------------------------------------*/
+/*------Адаптивная версия(1170px)--------------------------------------------------------------------------------------------*/
 @media (max-width: 1170px) {
+    .count-block {
+        padding-bottom: 24px;
+    }
+
     .count-block__style {
         font-size: 14px;
         height: 90px;
@@ -61,9 +64,10 @@
         font-size: 18px;
     }
 }
+/*------Адаптивная версия(1032px)--------------------------------------------------------------------------------------*/
 @media (max-width: 1032px) {
     .count-block__style {
-        height: 70px;
+        height: 96px;
         padding: 0 15px;
         justify-content: center;
         align-items: center;
@@ -73,27 +77,29 @@
         font-size: 18px;
     }
 }
+/*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
     .count-block {
         position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
+        display: inline-flex;
         padding-bottom: 24px;
+        gap: 8px;
     }
     .count-block__style {
         display: block;
-        width: 160px;
-        padding: 10px 10px 10px 10px;
-        font-size: 10px;
-        height: 60px;
-    }
-    .main-content__title {
-        display: block;
+        padding: 24px 16px;
+        height: 96px;
+        width: 152px;
     }
     .count-block__style h3 {
-        font-size: 12px;
+        font-size: 20px;
     }
-
+    .count-block__style span {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .count-block__style-image {
+        width: 75px;
+        height: 96px;
+    }
 }

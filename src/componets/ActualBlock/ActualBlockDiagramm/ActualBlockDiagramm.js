@@ -14,7 +14,7 @@ const ActualBlockDiagramm = () => {
                    <h3>55%</h3>
                     <p>времени прошло</p>
                 </span>
-                    <svg className={'diagramm-circle'} width={600} height={370} viewBox={'0 0 50 50'}>
+                    <svg className={'diagramm-circle'} viewBox={'0 0 50 50'}>
                         <circle className={'circle__one'} r={18} cx={'50%'} cy={'50%'}/>
                         <circle className={'circle__two'} r={18} cx={'50%'} cy={'50%'}/>
                     </svg>

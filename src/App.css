@@ -34,20 +34,34 @@
 }
 
 /*------Адаптивная версия-------------------------------------------------------------------------------------*/
-@media (max-width: 778px) {
+@media (max-width: 830px) {
     .main-content__title {
         text-align: center;
         font-size: 26px;
     }
+    .main-content__my-votes-actual {
+        gap: 6px;
+    }
+
 }
-@media (max-width: 400px) {
+@media (max-width: 420px) {
     .main-content__title {
         text-align: left;
         font-size: 24px;
         padding-bottom: 24px;
-
+    }
+    .main-content__my-votes-actual {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
     }
 }
+
+
+
+
+
+
 
 
 

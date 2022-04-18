@@ -26,6 +26,10 @@
     font-weight: 400;
 }
 /*------Стили для кругов диаграммы-----------------------------------------------------------------------------------*/
+.diagramm-circle {
+  width: 600px;
+  height: 370px;
+}
 .circle__one {
     fill: none;
     stroke-width: 5;
@@ -41,7 +45,7 @@
     stroke-dasharray: 54 100;
     stroke-dashoffset: -32;
 }
-/*------Стилт для стеролочек-кнопок----------------------------------------------------------------------------------*/
+/*------Стили для стеролочек-кнопок----------------------------------------------------------------------------------*/
 .diagramm-container__row-button-right {
     position: absolute;
     right: 0;
@@ -52,4 +56,25 @@
     position: absolute;
     left: 0;
 }
+/*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
+    .diagramm-container {
+        justify-content: center;
+    }
+    .diagramm-circle {
+        height: 187px;
 
+    }
+    .diagramm-container__info {
+        top: 60px;
+        left: 115px;
+    }
+    .diagramm-container__info h3 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .diagramm-container__info p {
+        font-size: 10px;
+        Line-height: 132%
+    }
+}

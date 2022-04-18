@@ -75,7 +75,7 @@ const MyVotesBlock = () => {
             </div>
             </div>
             <div className={'my-votes__link-arrow'}>
-                <a href={'ссылка на страницу Мои голосования'} target={'_blank'}><span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span></a><img alt={'logo_arrow'} src={icon_arrow}/>
+                <a href={'ссылка на страницу Мои голосования'} target={'_blank'}><span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span></a><a href={'/home'}><img alt={'logo_arrow'} src={icon_arrow}/></a>
             </div>
         </div>
     )
