@@ -4,7 +4,9 @@ import burger_menu_logo from "../../img/HeaderBurgerMenu_logo.svg";
 import burger_menu_icon_search from '../../img/HeaderBurgerMenu_icon_search.svg';
 
 
-const HeaderBurgerMenu = ({header, items, active, setActive}) => {
+const HeaderBurgerMenu = ({active, setActive}) => {
+
+
 
     return (
         <div className={active ? 'burger-menu active' : 'burger-menu'} onClick={() => setActive(false)}>
@@ -21,6 +23,10 @@ const HeaderBurgerMenu = ({header, items, active, setActive}) => {
                 </div>
                 <div className={'burger-menu__toggle-font'}>
                     <span>Увеличить шрифт</span>
+                    <label className={'toggle-font__button'}>
+                        <input type={"checkbox"}/>
+                        <span className={'toggle-font__slider'}/>
+                    </label>
                 </div>
                 <div className={'burger-menu__politic-support'}>
                     <span>Политика конфидициальности</span>
