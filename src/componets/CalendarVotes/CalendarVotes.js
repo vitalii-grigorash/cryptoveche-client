@@ -9,7 +9,7 @@ const CalendarVotes = () => {
 
     return (
 
-        <div className={'calendar-container'}>
+        <div className={'calendar-container main-content__elem1'}>
             <h1>Календарь голосования</h1>
             <div className={'calendar-container__run-end-vote'}>
 

@@ -1,4 +1,6 @@
+/*------Основной стиль для блока Обозреватель криптовече-------------------------------------------------------------*/
 .observer-crypto-block-wrapper {
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -14,18 +16,72 @@
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
-    color: #363B4D;
+    color: rgba(54, 59, 77, 0.9);
+
 }
 .observer-crypto-block-wrapper h3 {
     font-family: Inter;
     font-size: 18px;
     font-weight: 400;
     line-height: 129%;
-    color: #363B4D;
+    color: rgba(54, 59, 77, 0.9);
 }
-.my-votes__link-arrow__link-page-observer {
+/*------Стилизация для ссылки на страницу обезреватель криптоывече---------------------------------------------------*/
+.observer-crypto-block__link-arrow {
+    display: flex;
+    align-items: center;
+    color: #0075FF;
+    gap: 5px;
+    font-family: Inter;
+}
+
+.observer-crypto-block__link-arrow  a {
+    color: #0075FF;
+}
+.observer-crypto-block__link-arrow__link-page-observer {
     font-family: Inter;
     font-size: 16px;
     color: #0084FE;
     font-weight: 300;
+}
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
+    .observer-crypto-block-wrapper {
+        width: 402px;
+        height: 471px;
+        gap: 15px;
+    }
+    .observer-crypto-block-wrapper h2 {
+        font-size: 21px;
+    }
+    .observer-crypto-block-wrapper h3 {
+        font-size: 16px;
+        line-height: 134%;
+    }
+    .observer-crypto-block__image-block {
+        width: 311px;
+        height: 201px;
+    }
+    /*------Доп классы для замены местами элементов в мобильнй верссии------------------------------------------------*/
+    .observer-crypto__elem1{order: 0}
+    .observer-crypto__elem2{order: 2}
+    .observer-crypto__elem3{order: 1}
+    .observer-crypto__elem4{order: 3}
+
+    .observer-crypto-block__link-arrow__link-page-observer {
+        font-size: 14px;
+    }
+    .observer-crypto-block__link-arrow  a {
+        text-decoration: none;
+
+    }
+}
+
+/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
+@media (max-width: 420px) {
+    .observer-crypto-block-wrapper {
+        width: 343px;
+        padding: 16px 16px 23px 16px;
+    }
+
 }

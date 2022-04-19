@@ -10,7 +10,7 @@ const AmountVotesBlock = () => {
 
     return (
 
-        <div className={'amount-votes-wrapper'}>
+        <div className={'amount-votes-wrapper main-content__elem3'}>
             <h3>Количество голосующих</h3>
             <h4>Динамика голосующих по дням</h4>
             <div className={'amount-votes__gistogramma-and-total-amount'}>

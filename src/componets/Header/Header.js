@@ -6,6 +6,7 @@ import settings from '../../img/Header_settings_icon.png';
 import icon_client from '../../img/Header_lk_icon.png';
 import logo_header from '../../img/Header_logo.svg';
 import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
+import {Link} from "react-router-dom";
 
 
 
@@ -30,8 +31,8 @@ const Header = () => {
                    <div className={'header__container _container'}>
                            <div className={'header__logotype-block'}>
                                <img alt={'Logo'} src={logo_header}/>
-                               <span><a href={'/home'}>Главная</a></span>
-                               <span><a href={'/home'}>Голосование</a></span>
+                               <Link to={'/home'}><span>Главная</span></Link>
+                               <Link to={'votes-page'}><span>Голосование</span></Link>
                             </div>
                            <div className={'header__general-block-search-settings-lk'}>
                                <div className={'general-block-search-settings-lk__search'}>

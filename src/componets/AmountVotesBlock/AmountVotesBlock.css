@@ -48,3 +48,48 @@
     line-height: 142%;
 
 }
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
+    .amount-votes-wrapper {
+       width: 402px;
+        height: 271px;
+        padding: 16px 0 24px 16px;
+    }
+    .amount-votes-wrapper h3 {
+      display: none;
+    }
+    .amount-votes-wrapper h4 {
+        font-size: 21px;
+        color: rgba(54, 59, 77);
+        font-family: Golos;
+    }
+    .amount-votes__gistogramma-and-total-amount {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .total-amount h1 {
+        font-size: 35px;
+    }
+}
+/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
+@media (max-width: 420px) {
+    .amount-votes-wrapper {
+        width: 343px;
+        height: 271px;
+    }
+
+    .my-votes-block__reg-form, .my-votes-block__votes-form {
+        display: none;
+    }
+    .my-votes__link-arrow span {
+        display: none;
+
+    }
+    .my-votes__link-arrow img {
+        position: absolute;
+        top: 20px;
+        right: 27px;
+    }
+
+}

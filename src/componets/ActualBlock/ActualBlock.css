@@ -86,7 +86,7 @@
 @media (max-width: 830px) {
     .actual-block-wrapper {
         padding: 16px 16px 16px 16px;
-        height: 469px;
+
         width: 343px;
     }
     .actual-block-wrapper__title {
@@ -111,5 +111,11 @@
         bottom: 20px;
         left: 16px;
         width: 311px;
+    }
+}
+/*------Адаптивная версия(1156px)--------------------------------------------------------------------------------------*/
+@media (max-width: 420px) {
+    .actual-block-wrapper {
+        height: 469px;
     }
 }

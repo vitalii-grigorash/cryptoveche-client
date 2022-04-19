@@ -15,7 +15,7 @@
     line-height: 32px;
     font-weight: 600;
     padding-bottom: 24px;
-    color: #363B4D;
+    color: rgba(54, 59, 77, 0.9);
     font-family: Golos;
 }
 /*------Стили для обоих блоков---------------------------------------------------------------------------------------*/
@@ -188,7 +188,7 @@
 .my-votes__link-arrow a {
     color: #0075FF;
 }
-/*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {
     .my-votes-block-wrapper {
         width: 440px;
@@ -238,13 +238,11 @@
     .my-votes-block-wrapper {
         width: 343px;
         height: 61px;
-
     }
     .my-votes-block__reg-form, .my-votes-block__votes-form {
        display: none;
     }
     .my-votes__link-arrow span {
-        display: none;
 
     }
     .my-votes__link-arrow img {

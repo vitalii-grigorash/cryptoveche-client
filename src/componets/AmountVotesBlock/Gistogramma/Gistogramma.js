@@ -73,7 +73,7 @@ const Gistogramma = () => {
 
     return (
        <div>
-            <Chart style={{width: 340, height: 144}} >
+            <Chart className={'gistogramma-size'}>
                 <ChartCategoryAxis>
                     <ChartCategoryAxisItem categories={dataVote} startAngle={45}>
                     </ChartCategoryAxisItem>

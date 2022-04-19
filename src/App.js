@@ -1,6 +1,6 @@
 import './App.css';
 import './componets/Authorization/Authorization';
-import {Route, Switch, Redirect} from "react-router-dom";
+import {Route, Routes, Outlet} from "react-router-dom";
 import Header from "./componets/Header/Header";
 import Footer from "./componets/Footer/Footer";
 import Authorization from "./componets/Authorization/Authorization";
@@ -14,6 +14,9 @@ import Registration from "./componets/Registration/Registration";
 import RegistrationSecondPageMobile from "./componets/Registration/RegistrationSecondPageMobile/RegistrationSecondPageMobile";
 import AuthorizationForgetPassword from "./componets/AuthorizationForgetPassword/AuthorizationForgetPassword";
 import AuthorizationSetPassword from "./componets/AuthorizationSetPassword/AuthorizationSetPassword";
+import ScanQRMobile from "./componets/ScanQRMobile/ScanQRMobile";
+import VotesPageBlock from "./componets/VotesPageBlock/VotesPageBlock";
+import HomePage from "./componets/HomePage/HomePage";
 
 
 
@@ -22,17 +25,21 @@ function App() {
 
 
   return (
-<>
-      <Switch>
-          <Route path='/main' component={Authorization}/>
-          <Route path='/forget-password' component={AuthorizationForgetPassword}/>
-          <Route path='/set-password' component={AuthorizationSetPassword}/>
-          <Route path='/reg-page' component={Registration}/>
-          <Route path='/reg-second-page' component={RegistrationSecondPageMobile}/>
-          <Route path='/home' component={Layout}/>
-          <Redirect from='/' to = '/main'/>
-      </Switch>
-</>
+
+            <Routes>
+                <Route>
+                    <Route path={'/main'} element={<Authorization/>}/>
+                    <Route path={'/forget-password'} element={<AuthorizationForgetPassword/>}/>
+                    <Route path={'/set-password'} element={<AuthorizationSetPassword/>}/>
+                    <Route path={'/reg-page'} element={<Registration/>}/>
+                    <Route path={'/reg-second-page'} element={<RegistrationSecondPageMobile/>}/>
+                </Route>
+
+                      <Route path={'home'} element={<Layout/>}>
+                      <Route index element={<HomePage/>}/>
+                          <Route path={'votes-page'} element={<VotesPageBlock/>}/>
+                </Route>
+            </Routes>
   );
 }
 
@@ -42,23 +49,8 @@ function Layout () {
             <Header/>
                 <main className={'main'}>
                     <div className={'main-content _container'}>
-                            <div className={'main-content__title'}>
-                                Добро пожаловать в КриптоВече!
-                            </div>
-                        <CounterBlock/>
-                            <div className={'main-content__my-votes-actual'}>
-                                <MyVotesBlock/>
-                                <ActualBlock/>
-                            </div>
-                        <div className={'main-content__amount-votes-and-calendar-votes'}>
-                            <div className={'gistogramma-and-total-amount'}>
-                                    <AmountVotesBlock/>
-                                    <ObserverCryptoBlock/>
-                            </div>
-                                <CalendarVotes/>
-                        </div>
+                        <Outlet/>
                     </div>
-
                 </main>
             <Footer/>
         </div>

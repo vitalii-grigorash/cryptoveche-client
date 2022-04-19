@@ -56,17 +56,16 @@
     position: absolute;
     left: 0;
 }
-/*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {
     .diagramm-container {
         justify-content: center;
     }
     .diagramm-circle {
-        height: 187px;
-
+        height: 290px;
     }
     .diagramm-container__info {
-        top: 60px;
+        top: 110px;
         left: 115px;
     }
     .diagramm-container__info h3 {
@@ -76,5 +75,15 @@
     .diagramm-container__info p {
         font-size: 10px;
         Line-height: 132%
+    }
+}
+/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
+@media (max-width: 420px) {
+    .diagramm-circle {
+        height: 187px;
+    }
+    .diagramm-container__info {
+        top: 60px;
+        left: 115px;
     }
 }

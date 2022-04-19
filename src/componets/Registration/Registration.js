@@ -10,7 +10,7 @@ import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
 import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
 import red_star_icon from '../../img/Registration_red_start_icon.svg';
 import RegistrationModal from "./RegistrationModal/RegistrationModal";
-import {useHistory} from "react-router-dom";
+import {useHistory, useNavigate} from "react-router-dom";
 
 
 const Registration = () => {
@@ -30,7 +30,7 @@ const Registration = () => {
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
     const [modalActive, setModalActive] = useState(false);
 
-    const linkRegSecondPage = useHistory();
+    const linkRegSecondPage = useNavigate();
 
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
@@ -156,7 +156,7 @@ const Registration = () => {
                     {/*-Кнопка для мобильной версии-*/}
                     <div className={'reg-block__button-next-page'}>
                         <span>Шаг 1 из 2</span>
-                        <button type={"submit"} onClick={() => linkRegSecondPage.push('/reg-second-page')}>Продолжить</button>
+                        <button type={"submit"} onClick={() => linkRegSecondPage('/reg-second-page')}>Продолжить</button>
                     </div>
                 </div>
             </div>
