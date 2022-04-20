@@ -21,8 +21,61 @@
     justify-content: space-between;
     padding-bottom: 27px;
 }
+/*------Cтилизация для общего блока с кнопками фильтры, сортировка и пагинация----------------------------------------*/
+.votes-page-block__navigation-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+/*------Cтилизация общего блока для select, переключения между страницами и поиска в таблице --------------------------*/
+.navigation-menu__pagination-search-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    height: 40px;
+    font-size: 16px;
+    font-family: Golos;
+    color: rgba(54, 59, 77, 0.9);
+
+}
+/*------Cтилизация для выбора показа количества элементов-------------------------------------------------------------*/
+.pagination-search-block__show-page {
+    display: flex;
+    align-items: center;
+    border-right: 1px rgba(54, 59, 77, 0.3) solid;
+    padding-right: 20px;
+    height: 24px;
+    opacity: 60%;
+}
+.pagination-search-block__show-page select {
+    background-color: #FBFBFC;
+    width: 20px;
+}
+/*------Cтилизация для переключения страниц-----------------------------------------------------------------------*/
+.pagination-search-block__change-page {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 60%;
+    border-right: 1px rgba(54, 59, 77, 0.3) solid;
+    padding-right: 20px;
+    height: 24px;
+}
+.pagination-search-block__change-page i {
+    font-weight: 100;
+}
+
+/*------Cтилизация для поиска по таблице-------------------------------------------------------------------------*/
+.pagination-search-block__search-table {
+    display: flex;
+    gap: 12px;
+    opacity: 60%;
+}
+
 /*------Cтилизация блока c кнопками фильтры и сортировка-------------------------------------------------------------*/
-.votes-page-block__block-buttons {
+.navigation-menu__block-buttons {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -38,6 +91,7 @@
     font-size: 16px;
     border: 1px #0084FE solid;
     border-radius: 4px;
+    cursor: pointer;
 }
 .block-buttons__filters-button img {
     padding-right: 14px;
@@ -51,6 +105,7 @@
     padding: 8px;
     border: 1px #0084FE solid;
     border-radius: 4px;
+    cursor: pointer;
 }
 .block-buttons__sort-button img {
     padding-right: 13px;
@@ -61,5 +116,31 @@
     width: 100%;
     height: 1772px;
     border-radius: 16px;
+    padding: 32px 32px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
+}
+/*-----Стилизация заголовка основного контента -------------------------------------------------------------------------*/
+.votes-page-block__main-content-tiile {
+    display: flex;
+    gap: 48px;
+    font-family: Golos;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(54, 59, 77, 0.9);
+    border-bottom: 1px #EEEEEE solid;
+
+}
+.main-content-title__active-votes, .main-content-title__archive-votes {
+    padding-bottom: 8px;
+}
+
+.main-content-title__active-votes:hover {
+    border-bottom: 2px #0084FE solid;
+    cursor: pointer;
+}
+
+.main-content-title__archive-votes:hover {
+    border-bottom: 2px #0084FE solid;
+    cursor: pointer;
 }
