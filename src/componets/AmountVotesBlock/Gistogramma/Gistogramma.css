@@ -1,6 +1,19 @@
 .gistogramma-size {
-    width: 340px;
-    height: 144px;
+    rotate: 180deg;
+    height: 100px;
+}
+.gistogramma-size__date {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 142%;
+    color: #333333;
+    opacity: 50%;
+}
+.gistogramma-size rect {
+    color: #0084FE;
 }
 /*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {

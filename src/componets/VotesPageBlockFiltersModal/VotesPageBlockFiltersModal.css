@@ -1,7 +1,7 @@
 /*------Основной стиль для модального окна----------------------------------------------------------------------------*/
 .filters-modal {
     width: 60vw;
-    height: 57vh;
+    height: 544px;
     background-color: #FFFFFF;
     position: fixed;
     top: 290px;
@@ -21,7 +21,7 @@
     transform: scale(1);
     pointer-events: all;
 }
-/*------Стилизация для контента модального окан------------------------------------------------------------------------*/
+/*------Стилизация для контента модального окна------------------------------------------------------------------------*/
 .filters-modal__content {
     display: flex;
     width: 100%;
@@ -32,6 +32,7 @@
     position: relative;
     transform: scale(0.5);
     transition: 0.4s all;
+    gap: 32px;
 }
 .filters-modal__content.active {
     transform: scale(1);
@@ -40,20 +41,23 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    color: #363B4D;
-    opacity: 90%;
-    font-family: Golos;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 24px;
-    padding-bottom: 24px;
 }
 .filters-modal__content-title img {
     cursor: pointer;
     width: 15px;
     height: 15px;
 }
-/*------Стилизация для чекбоксов по статусу голосования---------------------------------------------------------------*/
+/*------Общий стиль для названия блоков с чекбоксами, датами начали регистрации и голосования--------------------------*/
+.filters-modal__content h3 {
+    color: #363B4D;
+    opacity: 90%;
+    font-family: Golos;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+/*------Стилизация для div c чекбоксами по статусу голосования--------------------------------------------------------*/
 .filters-modal__content-checkboxes-status-vote {
     display: flex;
     flex-wrap: wrap;
@@ -64,7 +68,7 @@
     font-size: 18px;
     color: #363B4D;
     opacity: 90%;
-    padding-bottom: 32px;
+
 }
 .checkbox-status-vote {
     display: flex;
@@ -72,5 +76,77 @@
     align-items: center;
     gap: 16px;
 }
-/*------Стилизация для чекбоксов по типу голосования---------------------------------------------------------------*/
+/*------Стилизация для div c чекбоксами по типу голосования------------------------------------------------------------*/
+.filters-modal__content-checkboxes-type-vote {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+}
+.content-checkboxes-type-vote {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    font-family: Golos;
+    gap: 24px;
+    line-height: 110%;
+    font-size: 18px;
+    color: #363B4D;
+    opacity: 90%;
+}
+.checkbox-type-vote {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 16px;
+ }
+/*------Общие стиля для div с датой начала регистрации,div с датой начала голосования---------------------------------*/
+.filters-modal__content-date-start-reg, .filters-modal__content-date-start-vote {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.content-date-start-reg, .content-date-start-vote {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 110%;
+    color: #363B4D;
+    opacity: 90%;
+}
+.content-date-start-reg__start-select-date, .content-date-start-vote__start-select-date {
+    outline: none;
+    font-size: 13px;
+    border: 1px rgba(54, 59, 77, 0.3) solid;
+    border-radius: 8px;
+    padding: 12px 12px 12px 12px;
+    width: 142px;
+    height: 48px;
+    opacity: 90%;
+    font-family: Inter;
+}
+.content-date-start-reg__end-select-date, .content-date-start-vote__end-select-date {
+    outline: none;
+    font-size: 13px;
+    border: 1px rgba(54, 59, 77, 0.3) solid;
+    border-radius: 8px;
+    padding: 12px 12px 12px 12px;
+    width: 129px;
+    height: 48px;
+    opacity: 90%;
+    font-family: Inter;
+}
+/*------Чек бокс------------------------------------------------------------------------------------------------------*/
+._checkbox-border-color {
+    border-color: #0084FE;
+}
+
+
+
+
+
 

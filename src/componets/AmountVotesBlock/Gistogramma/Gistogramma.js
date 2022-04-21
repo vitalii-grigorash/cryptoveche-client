@@ -42,6 +42,10 @@ const Gistogramma = () => {
         [5, 12, 16, 21]
     ];
 
+
+
+
+
     // const secondColumn =
     //     [11, 163, 16, 20, 26, 44
     //         // [11, 3, 36, 11, 4],
@@ -73,22 +77,35 @@ const Gistogramma = () => {
 
     return (
        <div>
-            <Chart className={'gistogramma-size'}>
-                <ChartCategoryAxis>
-                    <ChartCategoryAxisItem categories={dataVote} startAngle={45}>
-                    </ChartCategoryAxisItem>
-                </ChartCategoryAxis>
-                <ChartSeries >
-                    <ChartLegend position={'top'} orientation={'horizontal'} />
-                    <ChartSeriesItem type="column" data={firstColumn} />
-                    <ChartSeriesItem type="column" data={secondColumn} />
-                    <ChartSeriesItem type="column" data={threeColumn} />
-                    <ChartSeriesItem type="column" data={fourColumn} />
-                    <ChartSeriesItem type="column" data={fiveColumn} />
-                    <ChartSeriesItem type="column" data={sixColumn} />
-                    <ChartLegend/>
-                </ChartSeries>
-            </Chart>
+            {/*<Chart className={'gistogramma-size'}>*/}
+            {/*    <ChartCategoryAxis>*/}
+            {/*        <ChartCategoryAxisItem categories={dataVote} startAngle={45}>*/}
+            {/*        </ChartCategoryAxisItem>*/}
+            {/*    </ChartCategoryAxis>*/}
+            {/*    <ChartSeries >*/}
+            {/*        <ChartLegend position={'top'} orientation={'horizontal'} />*/}
+            {/*        <ChartSeriesItem type="column" data={firstColumn} />*/}
+            {/*        <ChartSeriesItem type="column" data={secondColumn} />*/}
+            {/*        <ChartSeriesItem type="column" data={threeColumn} />*/}
+            {/*        <ChartSeriesItem type="column" data={fourColumn} />*/}
+            {/*        <ChartSeriesItem type="column" data={fiveColumn} />*/}
+            {/*        <ChartSeriesItem type="column" data={sixColumn} />*/}
+            {/*        <ChartLegend/>*/}
+            {/*    </ChartSeries>*/}
+            {/*</Chart>*/}
+           <svg className={'gistogramma-size'}>
+               <rect width="10" height="100" x="1" y="6" rx="22" ry="0" />
+               <rect width="10" height="80" x="14" y="6" rx="22" ry="0" />
+               <rect width="10" height="55" x="27" y="6" rx="0" ry="0" />
+               <rect width="10" height="100" x="40" y="6" rx="0" ry="0" />
+
+           </svg>
+           <div className={'gistogramma-size__date'}>
+               <span>25.01</span>
+               <span>25.01</span>
+               <span>25.01</span>
+               <span>25.01</span>
+           </div>
         </div>
     )
 }
