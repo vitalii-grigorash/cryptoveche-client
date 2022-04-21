@@ -34,7 +34,6 @@ function App() {
                     <Route path={'/reg-page'} element={<Registration/>}/>
                     <Route path={'/reg-second-page'} element={<RegistrationSecondPageMobile/>}/>
                 </Route>
-
                       <Route path={'home'} element={<Layout/>}>
                       <Route index element={<HomePage/>}/>
                           <Route path={'votes-page'} element={<VotesPageBlock/>}/>

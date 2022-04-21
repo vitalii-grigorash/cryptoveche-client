@@ -7,7 +7,7 @@
     color: rgba(54, 59, 77, 0.9);
     padding-bottom: 32px;
 }
-/*------Cтилизация блока со стрелкой о переходе на страницу Голосования------------------------------------------------*/
+/*------Cтилизация блока со стрелкой о переходе на страницу Голосования-----------------------------------------------*/
 .votes-page-block__page-info {
     display: flex;
     flex-direction: row;
@@ -28,7 +28,7 @@
     justify-content: space-between;
 
 }
-/*------Cтилизация общего блока для select, переключения между страницами и поиска в таблице --------------------------*/
+/*------Cтилизация общего блока для select, переключения между страницами и поиска в таблице -------------------------*/
 .navigation-menu__pagination-search-block {
     display: flex;
     flex-direction: row;
@@ -53,7 +53,7 @@
     background-color: #FBFBFC;
     width: 20px;
 }
-/*------Cтилизация для переключения страниц-----------------------------------------------------------------------*/
+/*------Cтилизация для переключения страниц--------------------------------------------------------------------------*/
 .pagination-search-block__change-page {
     display: flex;
     align-items: center;
@@ -67,14 +67,14 @@
     font-weight: 100;
 }
 
-/*------Cтилизация для поиска по таблице-------------------------------------------------------------------------*/
+/*------Cтилизация для поиска по таблице-----------------------------------------------------------------------------*/
 .pagination-search-block__search-table {
     display: flex;
     gap: 12px;
     opacity: 60%;
 }
 
-/*------Cтилизация блока c кнопками фильтры и сортировка-------------------------------------------------------------*/
+/*------Cтилизация блока c кнопками фильтры и сортировка--------------------------------------------------------------*/
 .navigation-menu__block-buttons {
     display: flex;
     flex-direction: row;
@@ -95,6 +95,7 @@
 }
 .block-buttons__filters-button img {
     padding-right: 14px;
+
 }
 .block-buttons__sort-button {
     width: 177px;
@@ -109,17 +110,18 @@
 }
 .block-buttons__sort-button img {
     padding-right: 13px;
+    vertical-align: middle;
 }
-/*------Cтилизация блока основного контента--------------------------------------------------------------------------*/
+/*------Cтилизация блока основного контента---------------------------------------------------------------------------*/
 .votes-page-block__main-content {
     background-color: #FFFFFF;
     width: 100%;
-    height: 1772px;
+    height: 700px;
     border-radius: 16px;
     padding: 32px 32px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
-/*-----Стилизация заголовка основного контента -------------------------------------------------------------------------*/
+/*-----Стилизация заголовка основного контента -----------------------------------------------------------------------*/
 .votes-page-block__main-content-tiile {
     display: flex;
     gap: 48px;
@@ -129,12 +131,11 @@
     line-height: 32px;
     color: rgba(54, 59, 77, 0.9);
     border-bottom: 1px #EEEEEE solid;
-
 }
 .main-content-title__active-votes, .main-content-title__archive-votes {
     padding-bottom: 8px;
+    border-bottom: 2px #FFFFFF solid;
 }
-
 .main-content-title__active-votes:hover {
     border-bottom: 2px #0084FE solid;
     cursor: pointer;

@@ -6,7 +6,6 @@
     top: 0;
     left: 0;
     transform: translate(-100%);
-
 }
 .burger-menu.active {
     transform: scale(1);
@@ -123,7 +122,6 @@ input:checked + .toggle-font__slider:before {
     transform: translateX(21px);
 }
 
-
 /*------Стилизация для блока с политикой конф-ти и support--------------------------------------------------------------*/
 .burger-menu__politic-support {
     display: flex;
@@ -157,7 +155,7 @@ input:checked + .toggle-font__slider:before {
     left: 20px;
     opacity: 40%;
 }
-
+/*------Адаптивная версия(420px)-------------------------------------------------------------------------------------*/
 @media (max-width: 420px) {
    .blur {
        width: 100vw;
