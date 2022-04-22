@@ -36,7 +36,7 @@
 .gistogramma-and-total-amount__row-procent {
     position: absolute;
     top: 0;
-    left: 290px;
+    left: 285px;
     font-family: Golos;
     font-size: 16px;
     font-weight: 400;
@@ -85,6 +85,9 @@
     .total-amount h1 {
         font-size: 35px;
     }
+    .gistogramma-and-total-amount__row-procent {
+        top: 75px;
+    }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
 @media (max-width: 420px) {
@@ -105,5 +108,12 @@
         top: 20px;
         right: 27px;
     }
-
+    .total-amount {
+        gap: 4px;
+    }
+    .gistogramma-and-total-amount__row-procent {
+        top: 60px;
+        left: 245px;
+        font-size: 14px;
+    }
 }

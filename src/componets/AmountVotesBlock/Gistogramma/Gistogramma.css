@@ -12,7 +12,6 @@
     padding-top: 15px;
 }
 
-
 /*------Стилизация для div с датами-------------------------------------------------------------------------------*/
 .gistogramma-block__date {
     display: flex;
@@ -25,15 +24,13 @@
     opacity: 50%;
 }
 
-/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
-@media (max-width: 830px) {
-    .gistogramma-size {
-        width: 300px;
-        height: 124px;
-    }
-}
+/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
 @media (max-width: 420px) {
-    .gistogramma-size {
-        height: 111px;
+    .gistogramma-block__stylization {
+        width: 248px;
+    }
+    .gistogramma-block__date {
+        width: 248px;
+        font-size: 13px;
     }
 }
