@@ -1,14 +1,6 @@
 import React from "react";
 import './Gistogramma.css';
-import "hammerjs";
-import {
-    Chart,
-    ChartCategoryAxis,
-    ChartCategoryAxisItem,
-    ChartLegend,
-    ChartSeries,
-    ChartSeriesItem
-} from "@progress/kendo-react-charts";
+
 
 const Gistogramma = () => {
 
@@ -76,35 +68,36 @@ const Gistogramma = () => {
     ];
 
     return (
-       <div>
-            {/*<Chart className={'gistogramma-size'}>*/}
-            {/*    <ChartCategoryAxis>*/}
-            {/*        <ChartCategoryAxisItem categories={dataVote} startAngle={45}>*/}
-            {/*        </ChartCategoryAxisItem>*/}
-            {/*    </ChartCategoryAxis>*/}
-            {/*    <ChartSeries >*/}
-            {/*        <ChartLegend position={'top'} orientation={'horizontal'} />*/}
-            {/*        <ChartSeriesItem type="column" data={firstColumn} />*/}
-            {/*        <ChartSeriesItem type="column" data={secondColumn} />*/}
-            {/*        <ChartSeriesItem type="column" data={threeColumn} />*/}
-            {/*        <ChartSeriesItem type="column" data={fourColumn} />*/}
-            {/*        <ChartSeriesItem type="column" data={fiveColumn} />*/}
-            {/*        <ChartSeriesItem type="column" data={sixColumn} />*/}
-            {/*        <ChartLegend/>*/}
-            {/*    </ChartSeries>*/}
-            {/*</Chart>*/}
-           <svg className={'gistogramma-size'}>
-               <rect width="10" height="100" x="1" y="6" rx="22" ry="0" />
-               <rect width="10" height="80" x="14" y="6" rx="22" ry="0" />
-               <rect width="10" height="55" x="27" y="6" rx="0" ry="0" />
-               <rect width="10" height="100" x="40" y="6" rx="0" ry="0" />
+       <div className={'gistogramma-block'}>
 
+           <svg className={'gistogramma-block__stylization'}>
+               <rect width="10" height="100" fill={'#0084FE'}  x="0" y="6" rx="0" ry="0" />
+               <rect width="10" height="55" fill={'#87CEFA'} x="14" y="6" rx="0" ry="0" />
+               <rect width="10" height="100" fill={'#87CEFA'} x="28" y="6" rx="0" ry="0" />
+               <rect width="10" height="50" fill={'#87CEFA'} x="42" y="6" rx="0" ry="0" />
+               <rect width="10" height="50" fill={'#0084FE'} x="56" y="6" rx="0" ry="0" />
+               <rect width="10" height="100" fill={'#87CEFA'} x="70" y="6" rx="0" ry="0" />
+               <rect width="10" height="80" fill={'#87CEFA'} x="84" y="6" rx="0" ry="0" />
+               <rect width="10" height="50" fill={'#87CEFA'} x="98" y="6" rx="0" ry="0" />
+               <rect width="10" height="68" fill={'#0084FE'} x="112" y="6" rx="0" ry="0" />
+               <rect width="10" height="48" fill={'#87CEFA'} x="126" y="6" rx="0" ry="0" />
+               <rect width="10" height="78" fill={'#87CEFA'} x="140" y="6" rx="0" ry="0" />
+               <rect width="10" height="48" fill={'#87CEFA'} x="154" y="6" rx="0" ry="0" />
+               <rect width="10" height="41" fill={'#0084FE'} x="168" y="6" rx="0" ry="0" />
+               <rect width="10" height="31" fill={'#87CEFA'} x="182" y="6" rx="0" ry="0" />
+               <rect width="10" height="49" fill={'#87CEFA'} x="196" y="6" rx="0" ry="0" />
+               <rect width="10" height="89" fill={'#87CEFA'} x="210" y="6" rx="0" ry="0" />
+               <rect width="10" height="91" fill={'#0084FE'} x="224" y="6" rx="0" ry="0" />
+               <rect width="10" height="79" fill={'#87CEFA'} x="238" y="6" rx="0" ry="0" />
+               <rect width="10" height="49" fill={'#87CEFA'} x="252" y="6" rx="0" ry="0" />
+               <rect width="10" height="69" fill={'#87CEFA'} x="266" y="6" rx="0" ry="0" />
+               <rect width="10" height="59" fill={'#0084FE'}  x="280" y="6" rx="0" ry="0" />
            </svg>
-           <div className={'gistogramma-size__date'}>
+           <div className={'gistogramma-block__date'}>
                <span>25.01</span>
-               <span>25.01</span>
-               <span>25.01</span>
-               <span>25.01</span>
+               <span>25.02</span>
+               <span>25.03</span>
+               <span>25.04</span>
            </div>
         </div>
     )

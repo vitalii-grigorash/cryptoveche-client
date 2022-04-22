@@ -25,12 +25,23 @@
     color: rgba(54, 59, 77, 0.6);
     padding-bottom: 8px;
 }
-/*------Гистограмма и количество голосующих людей ежедневно------------------------------------------------------------------------------------------*/
+/*------Гистограмма и количество голосующих людей ежедневно------------------------------------------------------------*/
 .amount-votes__gistogramma-and-total-amount {
     display: flex;
+    position: relative;
     flex-direction: row;
     align-items: center;
-    gap: 34px;
+    gap: 70px;
+}
+.gistogramma-and-total-amount__row-procent {
+    position: absolute;
+    top: 0;
+    left: 290px;
+    font-family: Golos;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #4ED4A9;
 }
 
 .total-amount {
@@ -38,6 +49,7 @@
     flex-direction: column;
     font-family: Inter;
     color: rgba(54, 59, 77, 0.6);
+    gap: 15px;
 }
 .total-amount h1 {
     font-weight: 900;
@@ -47,6 +59,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 142%;
+    white-space: nowrap;
 
 }
 /*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
