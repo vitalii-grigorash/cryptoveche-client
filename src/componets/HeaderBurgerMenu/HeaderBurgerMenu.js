@@ -2,6 +2,7 @@ import React from "react";
 import './HeaderBurgerMenu.css';
 import burger_menu_logo from "../../img/HeaderBurgerMenu_logo.svg";
 import burger_menu_icon_search from '../../img/HeaderBurgerMenu_icon_search.svg';
+import {Link} from "react-router-dom";
 
 
 const HeaderBurgerMenu = ({active, setActive}) => {
@@ -17,9 +18,9 @@ const HeaderBurgerMenu = ({active, setActive}) => {
                     <div><a href={'ru'}>РУС</a><span>ENG</span></div>
                 </div>
                 <div className={'burger-menu__link-page'}>
-                    <a href={'/home'}>Главная</a>
-                    <a href={'/home'}>Голосования</a>
-                    <a href={'/home'}>Мой профиль</a>
+                    <a href={'main'}>Главная</a>
+                    <a href={'/main/votes-page'}>Голосования</a>
+                    <a href={'main'}>Мой профиль</a>
                 </div>
                 <div className={'burger-menu__toggle-font'}>
                     <span>Увеличить шрифт</span>

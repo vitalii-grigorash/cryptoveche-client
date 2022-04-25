@@ -7,6 +7,7 @@ import bg_image3 from '../../img/Auth_img3.svg';
 import bg_image4 from '../../img/Auth_img4.svg';
 import bg_image_mobile from '../../img/Auth_img_mobile.svg';
 import show_pass_icon from '../../img/Auth_show_pass_icon.svg';
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -17,6 +18,7 @@ const Authorization = () => {
     const [error, setError] = useState('')
     const [changeTypePass, setChangeTypePass] = useState('password');
     const [inputColor, setInputColor] = useState('_input-border-black')
+    const linkButtonRegPage = useNavigate();
 
 
     const showHiddenPass = () => {
@@ -77,12 +79,11 @@ const Authorization = () => {
                                         </div>
                                         <div className={'form__button'}>
                                             <button onClick={e => inputHandler(e)} type={'button'}>Войти</button>
-                                            <span><a href={'link'}>Войти через ЕСИА</a></span>
+                                            <span><a href={'https://esia.gosuslugi.ru/login/'} target={'_blank'}>Войти через ЕСИА</a></span>
                                         </div>
                                     </div>
                                         </div>
                                             <div className={'main-block__reg'}>
-
                                                     <img alt={'изображение'} className={'auth-image_4'} src={bg_image1}/>
                                                     <img alt={'изображение'} className={'auth-image_5'} src={bg_image2}/>
                                                     <div className={'auth-image_1'}>
@@ -101,11 +102,11 @@ const Authorization = () => {
                                                 </div>
                                                 <div className={'reg__button'}>
                                                     <span>Еще нет аккаунта?</span>
-                                                    <button>Зарегистрироваться</button>
+                                                    <button onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</button>
                                                 </div>
                                         </div>
                                         <div className={'main-block__mobile-link-reg'}>
-                                            <span>Ещё нет аккаунта?</span><a href={'link'}>Зарегистрироваться</a>
+                                            <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
                                         </div>
                                </div>
                         </div>

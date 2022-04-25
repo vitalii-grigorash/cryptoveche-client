@@ -30,21 +30,13 @@
   width: 600px;
   height: 370px;
 }
+/*------При-увеличении dashoffset у green, надо уменьшать dasharray у желтого-------------------------------------------*/
 .circle__one {
     fill: none;
     stroke-width: 5;
-    stroke: #4ED4A9;
-    /*stroke-dasharray: 46.2 4.7;*/
-    stroke-dashoffset: 15;
 }
-.circle__two {
-    fill: none;
-    stroke-width: 5;
-    stroke: #F9C521;
-    /*stroke-dasharray: 54 100;*/
-    stroke-dashoffset: -32;
-}
-/*------Стили для стеролочек-кнопок----------------------------------------------------------------------------------*/
+
+/*------Стили для стрелочек-кнопок----------------------------------------------------------------------------------*/
 .diagramm-container__row-button-right {
     position: absolute;
     right: 0;

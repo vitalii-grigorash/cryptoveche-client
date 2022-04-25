@@ -15,8 +15,8 @@ import RegistrationSecondPageMobile from "./componets/Registration/RegistrationS
 import AuthorizationForgetPassword from "./componets/AuthorizationForgetPassword/AuthorizationForgetPassword";
 import AuthorizationSetPassword from "./componets/AuthorizationSetPassword/AuthorizationSetPassword";
 import ScanQRMobile from "./componets/ScanQRMobile/ScanQRMobile";
-import VotesPageBlock from "./componets/VotesPageBlock/VotesPageBlock";
-import HomePage from "./componets/HomePage/HomePage";
+import VotesPage from "./componets/VotesPage/VotesPage";
+import MainPage from "./componets/MainPage/MainPage";
 
 
 
@@ -28,15 +28,15 @@ function App() {
 
             <Routes>
                 <Route>
-                    <Route path={'/main'} element={<Authorization/>}/>
+                    <Route path={'/auth'} element={<Authorization/>}/>
                     <Route path={'/forget-password'} element={<AuthorizationForgetPassword/>}/>
                     <Route path={'/set-password'} element={<AuthorizationSetPassword/>}/>
                     <Route path={'/reg-page'} element={<Registration/>}/>
                     <Route path={'/reg-second-page'} element={<RegistrationSecondPageMobile/>}/>
                 </Route>
-                      <Route path={'home'} element={<Layout/>}>
-                      <Route index element={<HomePage/>}/>
-                          <Route path={'votes-page'} element={<VotesPageBlock/>}/>
+                      <Route path={'main'} element={<Layout/>}>
+                      <Route index element={<MainPage/>}/>
+                          <Route path={'votes-page'} element={<VotesPage/>}/>
                 </Route>
             </Routes>
   );

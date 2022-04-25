@@ -32,17 +32,17 @@ const Header = () => {
                    <div className={'header__container _container'}>
                            <div className={'header__logotype-block'}>
                                <img alt={'Logo'} src={logo_header}/>
-                               <Link to={'/home'}><span>Главная</span></Link>
+                               <Link to={'/main'}><span>Главная</span></Link>
                                <Link to={'votes-page'}><span>Голосование</span></Link>
                             </div>
                            <div className={'header__general-block-search-settings-lk'}>
                                <div className={'general-block-search-settings-lk__search'}>
-                                   <a href={'/home'}><img alt={'icon-search'} src={search_icon}/></a>
+                                   <a href={'/main'}><img alt={'icon-search'} src={search_icon}/></a>
                                     <span>Поиск</span>
                                </div>
-                               <a href={'/home'}><img alt={'settings__icon'} src={settings}/></a>
+                               <a href={'/main'}><img alt={'settings__icon'} src={settings}/></a>
                                <div className={'general-block-search-settings-lk__iconclient'}>
-                                   <a href={'/home'}><img alt={'logo_client'} src={icon_client}/></a>
+                                   <a href={'/main'}><img alt={'logo_client'} src={icon_client}/></a>
                                    <span>Иванова А.А.</span>
                                </div>
                            </div>

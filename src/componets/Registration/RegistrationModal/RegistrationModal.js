@@ -16,7 +16,7 @@ const RegistrationModal = ({active}) => {
                     <div className={'title__language'}><span>РУС</span><a href={'en'}>ENG</a></div>
                 </div>
                 <h4><img className={'title__checkmark'} alt={'зеленая галочка'} src={icon_checkmark}/>Вы успешно прошли регистрацию!</h4>
-                <button type={'button'} onClick={() => { linkMainPage('/main')}}>На главную</button>
+                <button type={'button'} onClick={() => { linkMainPage('/auth')}}>На главную</button>
             </div>
         </div>
     )

@@ -1,0 +1,43 @@
+/*------Основной контейнер---------------------------------------------------------------------------------------------*/
+.votes-page-active-votes__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0 24px 0;
+    gap: 24px;
+    border-bottom: 1px rgba(54, 59, 77, 0.1) solid;
+}
+
+/*---------Cтилизация заголовка------------------------------------------------------------------------------------*/
+.active-votes__title {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.active-votes__title h2 {
+    font-family: Golos;
+    font-size: 18px;
+    color: rgba(54, 59, 77, 0.9);
+    font-weight: 400;
+    line-height: 110%;
+}
+.active-votes__title h3 {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(54, 59, 77, 0.6);
+    line-height: 24px;
+}
+.active-votes__title-timezone {
+    display: inline-flex;
+    gap: 9px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 118%;
+    color: rgba(54, 59, 77, 0.6);
+}
+/*---------Cтилизация блока со статусами и датой регистрации-----------------------------------------------------------*/
+.active-votes__status-and-start-reg-start-vote {
+    display: flex;
+    flex-direction: row;
+}

@@ -15,7 +15,8 @@ const AmountVotesBlock = () => {
                 <h3>Количество голосующих</h3>
                 <h4>Динамика голосующих по дням</h4>
                 <div className={'amount-votes__gistogramma-and-total-amount'}>
-                    <span className={'gistogramma-and-total-amount__row-procent'}><img alt={'стрелочка повышения процента'} src={gistogramma_procent_row_icon}/>10%</span>
+                        <img className={'gistogramma-and-total-amount__row'} alt={'стрелочка повышения процента'} src={gistogramma_procent_row_icon}/>
+                        <span className={'gistogramma-and-total-amount__procent'}>10%</span>
                     <Gistogramma/>
                     <div className={'total-amount'}>
                         <h1>1259</h1>

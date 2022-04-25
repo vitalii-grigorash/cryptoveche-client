@@ -33,15 +33,20 @@
     align-items: center;
     gap: 70px;
 }
-.gistogramma-and-total-amount__row-procent {
+.gistogramma-and-total-amount__procent {
     position: absolute;
     top: 0;
-    left: 285px;
+    left: 310px;
     font-family: Golos;
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
     color: #4ED4A9;
+}
+.gistogramma-and-total-amount__row {
+    position: absolute;
+    top: 4px;
+    left: 287px;
 }
 
 .total-amount {
@@ -85,8 +90,11 @@
     .total-amount h1 {
         font-size: 35px;
     }
-    .gistogramma-and-total-amount__row-procent {
+    .gistogramma-and-total-amount__procent {
         top: 75px;
+    }
+    .gistogramma-and-total-amount__row {
+        top: 80px;
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
@@ -111,9 +119,14 @@
     .total-amount {
         gap: 4px;
     }
-    .gistogramma-and-total-amount__row-procent {
-        top: 60px;
-        left: 245px;
+    .gistogramma-and-total-amount__procent {
+        top: 65px;
+        left: 268px;
         font-size: 14px;
     }
+    .gistogramma-and-total-amount__row {
+        top: 69px;
+        left: 247px;
+    }
+
 }
