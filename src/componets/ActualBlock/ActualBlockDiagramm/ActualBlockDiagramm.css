@@ -31,7 +31,7 @@
   height: 370px;
 }
 /*------При-увеличении dashoffset у green, надо уменьшать dasharray у желтого-------------------------------------------*/
-.circle__one {
+.circle__style {
     fill: none;
     stroke-width: 5;
 }
