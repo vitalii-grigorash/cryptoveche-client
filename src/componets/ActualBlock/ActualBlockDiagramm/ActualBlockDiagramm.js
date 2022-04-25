@@ -7,19 +7,19 @@ const ActualBlockDiagramm = () => {
 
      let sectorCircle = 0.55;
 
-    function drawCircles(radius, k , colorsCircle) {
+    function drawCircles(radius, sectorCircle, colorsCircle) {
 
         let circleFull = 2 * Math.PI * radius;
         let gapBetweenCircle = sectorCircle === 1 ? 0 : 1;
-        let circleFill = circleFull * k;
+        let circleFill = circleFull * sectorCircle;
         let circleEmpty = circleFull - circleFill;
-        let cOffset = circleFull / 4;
+        let circleOffset = circleFull / 4;
 
 
         return (
             <svg className={'diagramm-circle'} viewBox={'0 0 50 50'}>
-                <circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[0]} strokeDasharray={(circleFill - gapBetweenCircle) + ' ' + circleEmpty} strokeDashoffset={cOffset}/>
-                <circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[1]} strokeDasharray={(circleEmpty - gapBetweenCircle) + ' ' + circleFill } strokeDashoffset={cOffset - circleFill + gapBetweenCircle/2}/>
+                <circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[0]} strokeDasharray={(circleFill - gapBetweenCircle) + ' ' + circleEmpty} strokeDashoffset={circleOffset}/>
+                <circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[1]} strokeDasharray={(circleEmpty - gapBetweenCircle) + ' ' + circleFill } strokeDashoffset={circleOffset - circleFill + gapBetweenCircle/2}/>
             </svg>
     )
     }

@@ -34,6 +34,10 @@
 .reg-form__status-block, .vote-form__status-block {
     display: flex;
     flex-direction: row;
+    font-family: Inter;
+    max-height: 56px;
+
+
 }
 .status-block__current-status, .vote-form__status-block-current-status {
     display: flex;
@@ -41,24 +45,26 @@
     padding: 0 36px 0 0;
     gap: 10px;
     font-size: 12px;
+    font-family: Inter;
 }
 .current-status__registration-in-progress {
     display: flex;
     border: 1px #4ED4A9 solid;
     border-radius: 8px;
-    padding: 10px 20px 10px 20px;
+    padding: 5px 12px 5px 24px;
     color: #4ED4A9;
+    font-family: Inter;
 
 }
 .current-status__secret, .vote-form__status-block-current-status__open {
     border: 1px rgba(54, 59, 77, 0.4) solid;
     border-radius: 8px;
-    padding: 8px 20px 20px 20px;
-    max-height: 20px;
+    padding: 5px 20px 10px 20px;
+    max-height: 24px;
     max-width: 90px;
     opacity: 50%;
+    font-family: Inter;
 }
-
 .status-block__start-vote, .vote-form__status-block-start-vote {
     display: flex;
     flex-direction: column;
@@ -67,8 +73,9 @@
     font-size: 14px;
     gap: 12px;
     border-left: 1px rgba(54, 59, 77, 0.4) solid;
+    font-family: Inter;
 }
-.status-block__start-vote h5 {
+.status-block__start-vote h4, .vote-form__status-block-start-vote h4 {
     opacity: 50%;
 }
 .start-vote__data {
@@ -85,6 +92,7 @@
     gap: 12px;
     font-size: 14px;
     border-left: 1px rgba(54, 59, 77, 0.4) solid;
+
 }
 .status-block__materials-vote select {
     background-color: #FFFFFF;
@@ -110,7 +118,7 @@
 }
 
 
-/*------Блок с кнопкой регистрация ----------------------------------------------------------------------------------*/
+/*------Стилизация кнопки зарегистрироваться ------------------------------------------------------------------------*/
 .reg-form__button-reg {
     max-width: 213px;
     height: 40px;
@@ -122,11 +130,11 @@
     cursor: pointer;
     border-radius: 4px;
 }
-/*------Блок с кнопкой проголосовать----------------------------------------------------------------------------------*/
+/*------Стилизация статуса регистрации и голосования -------------------------------------------------------------------*/
 .vote-form__status-block__current-status__registration-in-progress {
     border: 1px #0084FE solid;
     border-radius: 8px;
-    padding: 8px 20px 10px 20px;
+    padding: 5px 12px 5px 24px;
     color: #0084FE;
 }
 
@@ -135,6 +143,7 @@
     padding: 0 24px 0 24px;
     font-size: 14px;
     border-left: 1px rgba(54, 59, 77, 0.4) solid;
+    font-family: Inter;
 }
 .vote-form__status-block__checkmark-reg img {
     padding: 0 5px 0 0;
@@ -142,7 +151,7 @@
 .vote-form__status-block__checkmark-reg-green {
     color: #4ED4A9;
 }
-
+/*------Блок с кнопкой проголосовать----------------------------------------------------------------------------------*/
 .votes-form__button-vote-cancel-reg {
         display: flex;
         flex-direction: row;

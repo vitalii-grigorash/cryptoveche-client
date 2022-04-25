@@ -9,6 +9,7 @@ import votes_page_change_row_right from '../../img/VotesPageBlock_change_page_ro
 import VotesPageFiltersModal from "../VotesPageFiltersModal/VotesPageFiltersModal";
 import VotesPageSortingModal from "../VotesPageSortingModal/VotesPageSortingModal";
 import VotesPageActiveVotes from "../VotesPageActiveVotes/VotesPageActiveVotes";
+import {activeVotesData} from "../../activevotesdata";
 
 
 const VotesPage = () => {
@@ -45,13 +46,31 @@ const VotesPage = () => {
                     </div>
                 </div>
                 <div className={'votes-page-block__main-content'}>
-                    <div className={'votes-page-block__main-content-tiile'}>
+                    <div className={'votes-page-block__main-content-title'}>
                         <div className={'main-content-title__active-votes'}><h2 >Активные голосования</h2></div>
                         <h2 className={'main-content-title__archive-votes'}>Архивные голосования</h2>
                     </div>
-                    <VotesPageActiveVotes/>
-                    <VotesPageActiveVotes/>
-                    <VotesPageActiveVotes/>
+                    {
+                        activeVotesData.map((item) => {
+                            return(
+                            <VotesPageActiveVotes
+                                    key={item.id}
+                                    id={item.id}
+                                    titleVoteData={item.titleVoteData}
+                                    regStatus={item.regStatus}
+                                    voteStatus={item.voteStatus}
+                                    startDateReg={item.startDateReg}
+                                    startTimeReg={item.startTimeReg}
+                                    startDateVote={item.startDateVote}
+                                    startTimeVote={item.startTimeVote}
+                                    currentStatus={item.currentStatus}/>
+                        )
+
+                    })
+                    }
+                    <div className={'votes-page-block__main-content-show-more-button'}>
+                        <span>ПОКАЗАТЬ ЕЩЁ</span>
+                    </div>
                 </div>
                 {/*<div className={'navigation-menu__pagination-search-block'}>*/}
                 {/*    <div className={'pagination-search-block__show-page'}><span>Показывать на странице: 25</span>*/}

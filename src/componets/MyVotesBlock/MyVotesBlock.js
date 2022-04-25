@@ -23,7 +23,7 @@ const MyVotesBlock = () => {
                                 <ul><li>Тайное</li></ul></div>
                     </div>
                     <div className={'status-block__start-vote'}>
-                        <h5>Начало голосования:</h5>
+                        <h4>Начало голосования:</h4>
                         <div className={'start-vote__data'}>
                             <img alt={''} src={icon_data}/>
                             <span>5.01.2022</span>
@@ -52,7 +52,7 @@ const MyVotesBlock = () => {
                                 <ul><li>Открытое</li></ul></div>
                         </div>
                         <div className={'vote-form__status-block-start-vote'}>
-                            <h5>Начало голосования:</h5>
+                            <h4>Начало голосования:</h4>
                             <div className={'start-vote__data'}>
                                 <img alt={''} src={icon_data}/>
                                 <span>5.01.2022</span>

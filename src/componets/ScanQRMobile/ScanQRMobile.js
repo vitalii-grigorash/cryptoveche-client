@@ -6,7 +6,7 @@ const ScanQRMobile = () => {
 
     return (
         <div className={'scan-qr-code-wrapper'}>
-            <span>Сканировать QR-код</span><img alt={'иконка qr-кода'} src={qr_code_icon}></img>
+            <span>Сканировать QR-код</span><img alt={'иконка qr-кода'} src={qr_code_icon}/>
         </div>
     )
 

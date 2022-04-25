@@ -5,13 +5,13 @@ import icon_data from "../../img/MyVotes_data_icon.svg";
 import icon_time from "../../img/MyVotes_icon_time.svg";
 import icon_checkmark from "../../img/MyVotes_icon_checkmark.svg";
 
-const VotesPageActiveVotes = () => {
+const VotesPageActiveVotes = (props) => {
 
     return (
 
         <div className={'votes-page-active-votes__wrapper'}>
             <div className={'active-votes__title'}>
-                <h2>Выбор делегатов конференции в Ученый Совет СПбГУ и еще парочка слов чтобы совсем уже было длинно</h2>
+                <h2>{props.titleVoteData}</h2>
                 <h3>Ученый совет</h3>
                 <div className={'active-votes__title-timezone'}>
                      <img alt={'иконка часы'} src={votes_active_page_icon_time}/><span>(UTC+3) Россия - Москва</span>
@@ -20,33 +20,32 @@ const VotesPageActiveVotes = () => {
             <div className={'active-votes__status-and-start-reg-start-vote'}>
                     <div className={'vote-form__status-block-current-status'}>
                         <div className={'vote-form__status-block__current-status__registration-in-progress'}>
-                            <ul><li>Ожидание регистрации</li></ul>
+                            <ul><li>{props.regStatus}</li></ul>
                         </div>
                         <div className={'vote-form__status-block-current-status__open'}>
-                            <ul><li>Открытое</li></ul></div>
+                            <ul><li>{props.voteStatus}</li></ul></div>
                     </div>
-
                     <div className={'vote-form__status-block-start-vote'}>
-                        <h5>Начало регистрации:</h5>
+                        <h4>Начало регистрации:</h4>
                         <div className={'start-vote__data'}>
-                            <img alt={''} src={icon_data}/>
-                            <span>5.01.2022</span>
-                            <img alt={''} src={icon_time}/>
-                            <span>18.00</span>
+                            <img alt={'иконка календарь'} src={icon_data}/>
+                            <span>{props.startDateReg}</span>
+                            <img alt={'иконка время'} src={icon_time}/>
+                            <span>{props.startTimeReg}</span>
                         </div>
                     </div>
-
                 <div className={'vote-form__status-block-start-vote'}>
-                    <h5>Начало голосования:</h5>
+                    <h4>Начало голосования:</h4>
                     <div className={'start-vote__data'}>
-                        <img alt={''} src={icon_data}/>
-                        <span>5.01.2022</span>
-                        <img alt={''} src={icon_time}/>
-                        <span>18.00</span>
+                        <img alt={'иконка календарь'} src={icon_data}/>
+                        <span>{props.startDateVote}</span>
+                        <img alt={'иконка время'} src={icon_time}/>
+                        <span>{props.startTimeVote}</span>
                     </div>
                 </div>
                 <div className={'vote-form__status-block__checkmark-reg'}>
-                    <span className={'vote-form__status-block__checkmark-reg-green'}><img alt={''} src={icon_checkmark}/>Ожидайте регистрации</span>
+                    <span className={'vote-form__status-block__checkmark-reg-green'}>
+                        <img alt={'икона текущего статуса регистарции'} src={icon_checkmark}/>{props.currentStatus}</span>
                 </div>
             </div>
         </div>

@@ -122,7 +122,7 @@
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
 /*-----Стилизация заголовка основного контента -----------------------------------------------------------------------*/
-.votes-page-block__main-content-tiile {
+.votes-page-block__main-content-title {
     display: flex;
     gap: 48px;
     font-family: Golos;
@@ -145,3 +145,15 @@
     border-bottom: 2px #0084FE solid;
     cursor: pointer;
 }
+/*-----Стилизация кнопки ПОКАЗАТЬ ЕЩЁ---------------------------------------------------------------------------------*/
+.votes-page-block__main-content-show-more-button {
+    color: #0084FE;
+    line-height: 124%;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 300;
+    width: 100%;
+    padding-top: 24px;
+    cursor: pointer;
+}
+
