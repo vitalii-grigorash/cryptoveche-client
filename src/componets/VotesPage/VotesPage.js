@@ -9,7 +9,7 @@ import votes_page_change_row_right from '../../img/VotesPageBlock_change_page_ro
 import VotesPageFiltersModal from "../VotesPageFiltersModal/VotesPageFiltersModal";
 import VotesPageSortingModal from "../VotesPageSortingModal/VotesPageSortingModal";
 import VotesPageActiveVotes from "../VotesPageActiveVotes/VotesPageActiveVotes";
-import {activeVotesData} from "../../activevotesdata";
+import {activeVotesData} from "../../activeVotesData";
 
 
 const VotesPage = () => {
@@ -63,7 +63,7 @@ const VotesPage = () => {
                                     startTimeReg={item.startTimeReg}
                                     startDateVote={item.startDateVote}
                                     startTimeVote={item.startTimeVote}
-                                    currentStatus={item.currentStatus}/>
+                                    confirmStatus={item.confirmStatus}/>
                         )
 
                     })

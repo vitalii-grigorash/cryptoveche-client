@@ -29,81 +29,13 @@
     padding-bottom: 24px;
     max-width: 760px;
     font-family: Inter;
-
 }
 .reg-form__status-block, .vote-form__status-block {
     display: flex;
     flex-direction: row;
     font-family: Inter;
     max-height: 56px;
-
-
 }
-.status-block__current-status, .vote-form__status-block-current-status {
-    display: flex;
-    flex-direction: column;
-    padding: 0 36px 0 0;
-    gap: 10px;
-    font-size: 12px;
-    font-family: Inter;
-}
-.current-status__registration-in-progress {
-    display: flex;
-    border: 1px #4ED4A9 solid;
-    border-radius: 8px;
-    padding: 5px 12px 5px 24px;
-    color: #4ED4A9;
-    font-family: Inter;
-
-}
-.current-status__secret, .vote-form__status-block-current-status__open {
-    border: 1px rgba(54, 59, 77, 0.4) solid;
-    border-radius: 8px;
-    padding: 5px 20px 10px 20px;
-    max-height: 24px;
-    max-width: 90px;
-    opacity: 50%;
-    font-family: Inter;
-}
-.status-block__start-vote, .vote-form__status-block-start-vote {
-    display: flex;
-    flex-direction: column;
-    padding: 0 36px 0 36px;
-    justify-content: center;
-    font-size: 14px;
-    gap: 12px;
-    border-left: 1px rgba(54, 59, 77, 0.4) solid;
-    font-family: Inter;
-}
-.status-block__start-vote h4, .vote-form__status-block-start-vote h4 {
-    opacity: 50%;
-}
-.start-vote__data {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #363B4D;
-}
-.status-block__materials-vote {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 24px 0 24px;
-    gap: 12px;
-    font-size: 14px;
-    border-left: 1px rgba(54, 59, 77, 0.4) solid;
-
-}
-.status-block__materials-vote select {
-    background-color: #FFFFFF;
-}
-.materials-vote__red {
-    color: #FF4970;
-}
-.status-block__materials-vote span img {
-    padding: 0 5px 0 0;
-}
-
 .my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
     font-size: 18px;
     font-weight: 400;
@@ -116,7 +48,6 @@
     color: #363B4D;
     opacity: 50%;
 }
-
 
 /*------Стилизация кнопки зарегистрироваться ------------------------------------------------------------------------*/
 .reg-form__button-reg {
@@ -131,12 +62,6 @@
     border-radius: 4px;
 }
 /*------Стилизация статуса регистрации и голосования -------------------------------------------------------------------*/
-.vote-form__status-block__current-status__registration-in-progress {
-    border: 1px #0084FE solid;
-    border-radius: 8px;
-    padding: 5px 12px 5px 24px;
-    color: #0084FE;
-}
 
 .vote-form__status-block__checkmark-reg {
     display: flex;
@@ -213,18 +138,7 @@
     .my-votes-block__reg-form h5, .my-votes-block__votes-form h5 {
         font-size: 13px;
     }
-    .status-block__current-status, .vote-form__status-block-current-status {
-        gap: 4px;
-        padding-right: 5px;
-    }
-    .current-status__registration-in-progress,.current-status__secret, .vote-form__status-block__current-status__registration-in-progress, .vote-form__status-block-current-status__open  {
-        padding: 5px 10px 5px 20px;
-        font-size: 10px;
-    }
-    .status-block__start-vote, .vote-form__status-block-start-vote, .status-block__materials-vote, .vote-form__status-block__checkmark-reg {
-        padding: 0 10px 0 10px;
-        font-size: 10px;
-    }
+
     .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
         font-size: 10px;
     }
@@ -242,7 +156,7 @@
         font-size: 14px;
     }
 }
-/*------Адаптивная версия(378px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
 @media (max-width: 420px) {
     .my-votes-block-wrapper {
         width: 343px;
