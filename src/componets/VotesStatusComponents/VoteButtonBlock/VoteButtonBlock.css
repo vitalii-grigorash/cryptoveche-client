@@ -1,0 +1,16 @@
+.vote-button-block {
+
+}
+.vote-button-block__button {
+    width: 233px;
+    height: 40px;
+    border: 1px #0084FE solid;
+    border-radius: 4px;
+    background-color: white;
+    color: #0084FE;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Golos;
+    line-height: 24px;
+    font-weight: 400;
+}

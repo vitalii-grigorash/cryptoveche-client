@@ -6,7 +6,6 @@ import icon_time from "../../../img/MyVotes_icon_time.svg";
 const StartDateVote = ({startDateVote, startTimeVote}) => {
 
     return (
-
             <div className={'status-block__start-vote'}>
                 <h4>Начало голосования:</h4>
                 <div className={'start-vote__data'}>
@@ -16,7 +15,6 @@ const StartDateVote = ({startDateVote, startTimeVote}) => {
                     <span>{startTimeVote}</span>
                 </div>
             </div>
-
     )
 }
 

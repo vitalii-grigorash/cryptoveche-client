@@ -30,7 +30,7 @@ export const activeVotesData = [
     startTimeReg: '10.00',
     startDateVote: '18.03.2022',
     startTimeVote: '14.00',
-    confirmStatus: 'Вы не зарегистрированы'
+    confirmStatus: 'Вы зарегистрированы'
 },
 
 ]

@@ -4,8 +4,8 @@ import './CurrentStatusVote.css';
 const CurrentStatusVote = ({regStatus, voteStatus}) => {
 
 
-    return (
 
+    return (
             <div className={'status-block__current-status'}>
                 <div className={'current-status__registration-in-progress'}>
                     <ul><li>{regStatus}</li></ul>

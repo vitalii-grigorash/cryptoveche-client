@@ -1,6 +1,5 @@
 .votes-page-block__wrapper {
-    padding-bottom: 10.5em;
-
+    padding-bottom: 112px;
 }
 /*------Cтилизация заголовка------------------------------------------------------------------------------------------*/
 .votes-page-block__wrapper-title {
@@ -30,52 +29,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
 
-}
-/*------Cтилизация общего блока для select, переключения между страницами и поиска в таблице -------------------------*/
-.navigation-menu__pagination-search-block {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 32px;
-    height: 40px;
-    font-size: 16px;
-    font-family: Golos;
-    color: rgba(54, 59, 77, 0.9);
-
-}
-/*------Cтилизация для выбора показа количества элементов-------------------------------------------------------------*/
-.pagination-search-block__show-page {
-    display: flex;
-    align-items: center;
-    border-right: 1px rgba(54, 59, 77, 0.3) solid;
-    padding-right: 20px;
-    height: 24px;
-    opacity: 60%;
-}
-.pagination-search-block__show-page select {
-    background-color: #FBFBFC;
-    width: 20px;
-}
-/*------Cтилизация для переключения страниц--------------------------------------------------------------------------*/
-.pagination-search-block__change-page {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 60%;
-    border-right: 1px rgba(54, 59, 77, 0.3) solid;
-    padding-right: 20px;
-    height: 24px;
-}
-.pagination-search-block__change-page i {
-    font-weight: 100;
-}
-
-/*------Cтилизация для поиска по таблице-----------------------------------------------------------------------------*/
-.pagination-search-block__search-table {
-    display: flex;
-    gap: 12px;
-    opacity: 60%;
 }
 
 /*------Cтилизация блока c кнопками фильтры и сортировка--------------------------------------------------------------*/

@@ -14,6 +14,7 @@ import MainPage from "./componets/MainPage/MainPage";
 
 
 
+
 function App() {
 
 
@@ -39,17 +40,15 @@ function Layout () {
     return (
         <div className="App">
             <Header/>
-                <main className={'main'}>
-                    <div className={'main-content _container'}>
-                        <Outlet/>
-                    </div>
-                </main>
+            <main className={'main'}>
+                <div className={'main-content _container'}>
+                    <Outlet/>
+                </div>
+            </main>
             <Footer/>
         </div>
     )
 }
-
-
 
 
 export default App;
