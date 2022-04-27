@@ -6,6 +6,8 @@ import DetailsVotesPageStatusPossibleRevoteCancelReg
     from "../DetailsVotesPageStatusPossibleRevoteCancelReg/DetailsVotesPageStatusPossibleRevoteCancelReg";
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
+import DetailsVotesPageListStartRegStartVote
+    from "../DetailsVotesPageListStartRegStartVote/DetailsVotesPageListStartRegStartVote";
 
 
 const DetailsVotesPageGeneralInformation = () => {
@@ -36,7 +38,7 @@ const DetailsVotesPageGeneralInformation = () => {
                     <DetailsVotesPageStatusPossibleRevoteCancelReg/>
                 </div>
                 </div>
-
+                    <DetailsVotesPageListStartRegStartVote/>
 
 
 

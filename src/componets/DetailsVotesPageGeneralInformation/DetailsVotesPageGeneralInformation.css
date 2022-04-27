@@ -44,13 +44,14 @@
 .details-votes-page-general-info__main-content {
     display: flex;
     flex-direction: row;
-    gap: 121px;
     height: 100%;
+    width: 100%;
+    justify-content: space-between;
 }
 /*-----Стилизация div для статусов рег-ции и голосования-------------------------------------------------------------*/
 .details-votes-page-general-info__main-content-current-status-vote {
     display: flex;
-    width: 100%;
+
     flex-direction: column;
     gap: 34px;
 }
