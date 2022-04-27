@@ -10,6 +10,7 @@ import AuthorizationForgetPassword from "./componets/AuthorizationForgetPassword
 import AuthorizationSetPassword from "./componets/AuthorizationSetPassword/AuthorizationSetPassword";
 import VotesPage from "./componets/VotesPage/VotesPage";
 import MainPage from "./componets/MainPage/MainPage";
+import DetailsVotesPage from "./componets/DetailsVotesPage/DetailsVotesPage";
 
 
 
@@ -31,6 +32,7 @@ function App() {
                       <Route path={'main'} element={<Layout/>}>
                       <Route index element={<MainPage/>}/>
                           <Route path={'votes-page'} element={<VotesPage/>}/>
+                          <Route path={'votes-page-details-voting'} element={<DetailsVotesPage/>}/>
                 </Route>
             </Routes>
   );

@@ -1,0 +1,30 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
+.details-votes-page__wrapper {
+    padding-bottom: 112px;
+    font-family: Golos;
+}
+/*------Cтилизация заголовка------------------------------------------------------------------------------------------*/
+.details-votes-page__wrapper-title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    color: rgba(54, 59, 77, 0.9);
+    padding-bottom: 32px;
+}
+/*------Cтилизация информации о странице-----------------------------------------------------------------------------*/
+.details-votes-page__wrapper-page-info {
+    display: flex;
+    flex-direction: row;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 40%;
+    font-size: 14px;
+    gap: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 100%;
+    padding-bottom: 27px;
+}
+/*------Cтилизация блока основного контента---------------------------------------------------------------------------*/
+.details-votes-page__main-content {
+
+}
