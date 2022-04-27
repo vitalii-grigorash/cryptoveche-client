@@ -31,7 +31,6 @@ export const activeVotesData = [
     startDateVote: '18.03.2022',
     startTimeVote: '14.00',
     confirmStatus: 'Вы зарегистрированы'
-},
-
+}
 ]
 

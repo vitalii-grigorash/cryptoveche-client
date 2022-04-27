@@ -9,7 +9,6 @@
     line-height: 40px;
     font-weight: 600;
     color: rgba(54, 59, 77, 0.9);
-    padding-bottom: 32px;
 }
 /*------Cтилизация блока со стрелкой о переходе на страницу Голосования-----------------------------------------------*/
 .votes-page-block__page-info {
@@ -31,18 +30,17 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-
 }
 
 /*------Cтилизация блока c кнопками фильтры и сортировка--------------------------------------------------------------*/
-.navigation-menu__block-buttons {
+.navigation-menu__select-buttons {
     display: flex;
     flex-direction: row;
     align-content: center;
     gap: 14px;
     padding-bottom: 24px;
 }
-.block-buttons__filters-button {
+.select-buttons__filters-button {
     width: 154px;
     height: 40px;
     background-color: #FBFBFC;
@@ -53,11 +51,11 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.block-buttons__filters-button img {
+.select-buttons__filters-button img {
     padding-right: 14px;
 
 }
-.block-buttons__sort-button {
+.select-buttons__sort-button {
     width: 177px;
     height: 40px;
     background-color: #FBFBFC;
@@ -68,7 +66,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.block-buttons__sort-button img {
+.select-buttons__sort-button img {
     padding-right: 13px;
     vertical-align: middle;
 }
@@ -82,8 +80,8 @@
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 
 }
-/*-----Стилизация заголовка основного контента -----------------------------------------------------------------------*/
-.votes-page-block__main-content-title {
+/*-----Стилизация кнопок-переключателей основного контента ------------------------------------------------------------*/
+.votes-page-block__main-content-switch-buttons {
     display: flex;
     gap: 48px;
     font-family: Golos;
@@ -93,16 +91,16 @@
     color: rgba(54, 59, 77, 0.9);
     border-bottom: 1px #EEEEEE solid;
 }
-.main-content-title__active-votes, .main-content-title__archive-votes {
+.main-content-switch-buttons__active-votes, .main-content-switch-buttons__archive-votes {
     padding-bottom: 8px;
     border-bottom: 2px #FFFFFF solid;
 }
-.main-content-title__active-votes:hover {
+.main-content-switch-buttons__active-votes:hover {
     border-bottom: 2px #0084FE solid;
     cursor: pointer;
 }
 
-.main-content-title__archive-votes:hover {
+.main-content-switch-buttons__archive-votes:hover {
     border-bottom: 2px #0084FE solid;
     cursor: pointer;
 }

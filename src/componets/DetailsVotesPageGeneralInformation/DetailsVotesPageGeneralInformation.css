@@ -1,0 +1,80 @@
+/*-----Основной контейнер---------------------------------------------------------------------------------------------*/
+.details-votes-page-general-info__wrapper {
+    height: 100%;
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    box-shadow: 0 3px 16px rgba(54, 58, 72, 0.08);
+    padding: 32px 32px 40px 32px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+}
+.main-content-current-status-vote__title {
+    font-weight: 600;
+
+}
+/*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
+.details-votes-page-general-info__switch-buttons {
+    display: flex;
+    gap: 48px;
+    font-family: Golos;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    color: rgba(54, 59, 77, 0.9);
+    border-bottom: 1px #EEEEEE solid;
+
+
+}
+.details-votes-page-general-info__switch-buttons-active-votes, .details-votes-page-general-info__switch-buttons-archive-votes {
+    padding-bottom: 8px;
+    border-bottom: 2px #FFFFFF solid;
+}
+.details-votes-page-general-info__switch-buttons-active-votes:hover {
+    border-bottom: 2px #0084FE solid;
+    cursor: pointer;
+}
+
+.details-votes-page-general-info__switch-buttons-archive-votes:hover {
+    border-bottom: 2px #0084FE solid;
+    cursor: pointer;
+}
+/*-----Общий контейнер для двух div со статусами и датами рег-ции и голосования---------------------------------------*/
+.details-votes-page-general-info__main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 121px;
+    height: 100%;
+}
+/*-----Стилизация div для статусов рег-ции и голосования-------------------------------------------------------------*/
+.details-votes-page-general-info__main-content-current-status-vote {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 34px;
+}
+/*-----Стилизация div для статусов рег-ции и голосоваия-------------------------------------------------------------*/
+.main-content-current-status-vote__status-vote-possible-revote {
+    display: flex;
+    flex-direction: row;
+}
+.main-content-current-status-vote__status-vote-possible-revote:first-child {
+    border-left: 1px gray solid;
+
+}
+
+/*-----Стилизация кнопки зарегистрироваться---------------------------------------------------------------------------*/
+.details-votes-page-general-info__reg-button {
+    max-width: 213px;
+    max-height: 48px;
+    background-color: #0084FE;
+    border-radius: 4px;
+    padding: 12px 24px 12px 24px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: Golos;
+    line-height: 24px;
+    cursor: pointer;
+    font-weight: 500;
+}

@@ -3,9 +3,14 @@ import './DetailsVotesPage.css';
 import votes_page_row_icon from "../../img/VotesPageBlock_icon_row.svg";
 import DetailsVotesPageDataTimeEndRegStartVote
     from "../DetailsVotesPageDateTimeEndRegStartVote/DetailsVotesPageDataTimeEndRegStartVote";
+import DetailsVotesPageGeneralInformation
+    from "../DetailsVotesPageGeneralInformation/DetailsVotesPageGeneralInformation";
+
 
 
 const DetailsVotesPage = () => {
+
+
 
     return (
         <div className={'details-votes-page__wrapper'}>
@@ -14,9 +19,10 @@ const DetailsVotesPage = () => {
                 <img alt={'иконка стрелка'} src={votes_page_row_icon}/>
                 <span>Детали голосования</span>
             </div>
-            <h1 className={'details-votes-page__wrapper-title'}>Детали голосования</h1>
-            <div className={'details-votes-page__main-content'}>
-                <DetailsVotesPageDataTimeEndRegStartVote/>
+                <h1 className={'details-votes-page__wrapper-title'}>Детали голосования</h1>
+                <div className={'details-votes-page__main-content'}>
+                    <DetailsVotesPageDataTimeEndRegStartVote/>
+                    <DetailsVotesPageGeneralInformation/>
             </div>
 
         </div>

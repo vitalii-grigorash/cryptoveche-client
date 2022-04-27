@@ -1,0 +1,23 @@
+.details-votes-page-status-possible-revote-cancelreg__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+    border-left: 1px solid rgba(54, 59, 77, 0.2);
+    padding-left: 24px;
+}
+.details-votes-page-status-possible-revote-cancelreg__possible-revote {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 8px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.6);
+}
+.details-votes-page-status-possible-revote-cancelreg__possible-revote span {
+    color: black;
+
+}
+

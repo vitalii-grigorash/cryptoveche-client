@@ -34,6 +34,7 @@
     gap: 16px;
     font-family: Golos;
     color: rgba(54, 59, 77, 0.9);
+
 }
 .datetime-info__end-registration-start-vote h2 {
     font-size: 32px;
@@ -46,12 +47,23 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 26px;
+    padding-top: 14px;
+
 }
-/*------Cтилизация div с -------------------------------------------*/
+/*------Cтилизация div с ------------------------------------------------------------------------------------------*/
 
 .datetime-info__range {
     width: 100%;
+
 }
 
+._color-range-orange::-moz-range-track {
+   background: #FF8A00;
+    height: 6px;
+}
+._color-range-green::-moz-range-track {
+    background: #4ED4A9;
+    height: 6px;
+}
 
 
