@@ -46,10 +46,10 @@ const VotesPage = () => {
                                     titleVoteData={item.titleVoteData}
                                     regStatus={item.regStatus}
                                     voteStatus={item.voteStatus}
-                                    startDateReg={item.startDateReg}
-                                    startTimeReg={item.startTimeReg}
-                                    startDateVote={item.startDateVote}
-                                    startTimeVote={item.startTimeVote}
+                                    DateReg={item.DateReg}
+                                    TimeReg={item.TimeReg}
+                                    DateVote={item.DateVote}
+                                    TimeVote={item.TimeVote}
                                     confirmStatus={item.confirmStatus}/>
                         )
                     })

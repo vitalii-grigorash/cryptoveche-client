@@ -1,5 +1,6 @@
 .status-block__materials-vote {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     padding: 0 24px 0 24px;
@@ -11,7 +12,15 @@
 }
 .status-block__materials-vote select {
     background-color: #FFFFFF;
+    position: absolute;
+    top: 33px;
+    left: 198px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
+
+
 .materials-vote__red {
     color: #FF4970;
 }

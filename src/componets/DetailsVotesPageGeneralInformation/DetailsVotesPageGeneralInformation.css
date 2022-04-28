@@ -10,10 +10,7 @@
     width: 100%;
     gap: 24px;
 }
-.main-content-current-status-vote__title {
-    font-weight: 600;
 
-}
 /*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
 .details-votes-page-general-info__switch-buttons {
     display: flex;
@@ -47,6 +44,10 @@
     height: 100%;
     width: 100%;
     justify-content: space-between;
+    padding-bottom: 16px;
+}
+.main-content-current-status-vote__title {
+    font-weight: 600;
 }
 /*-----Стилизация div для статусов рег-ции и голосования-------------------------------------------------------------*/
 .details-votes-page-general-info__main-content-current-status-vote {

@@ -31,7 +31,7 @@ const MyVotesBlock = () => {
                         <h5>Ученый совет</h5>
                     <div className={'reg-form__status-block'}>
                         <CurrentStatusVote regStatus={myVotesRegStatus} voteStatus={myVotesVoteStatus}/>
-                        <StartDateVote startDateVote={myVotesStartDateVote} startTimeVote={myVotesStartTimeVote}/>
+                        <StartDateVote DateVote={myVotesStartDateVote} TimeVote={myVotesStartTimeVote}/>
                         <ConfirmRegMaterialsVote confirmStatus={myVotesConfirmStatus}/>
                     </div>
                     <button className={'reg-form__button-reg'}>Зарегистрироваться</button>
@@ -42,7 +42,7 @@ const MyVotesBlock = () => {
                         <h5>Консорциум СПбГУ</h5>
                         <div className={'vote-form__status-block'}>
                             <CurrentStatusVote regStatus={runVotesRegStatus} voteStatus={runVotesVoteStatus}/>
-                            <StartDateVote startDateVote={runVotesStartDateVote} startTimeVote={runVotesStartTimeVote}/>
+                            <StartDateVote DateVote={runVotesStartDateVote} TimeVote={runVotesStartTimeVote}/>
                             <ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus}/>
                         </div>
                     <div className={'votes-form__button-vote-cancel-reg'}>

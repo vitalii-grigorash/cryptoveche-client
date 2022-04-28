@@ -2,7 +2,7 @@ import React from "react";
 import './HeaderBurgerMenu.css';
 import burger_menu_logo from "../../img/HeaderBurgerMenu_logo.svg";
 import burger_menu_icon_search from '../../img/HeaderBurgerMenu_icon_search.svg';
-import {Link} from "react-router-dom";
+
 
 
 const HeaderBurgerMenu = ({active, setActive}) => {

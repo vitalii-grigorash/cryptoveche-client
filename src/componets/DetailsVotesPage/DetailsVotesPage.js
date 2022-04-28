@@ -1,8 +1,7 @@
 import React from "react";
 import './DetailsVotesPage.css';
 import votes_page_row_icon from "../../img/VotesPageBlock_icon_row.svg";
-import DetailsVotesPageDataTimeEndRegStartVote
-    from "../DetailsVotesPageDateTimeEndRegStartVote/DetailsVotesPageDataTimeEndRegStartVote";
+import DetailsVotesPageDaysEndRegStartVote from '.././DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote';
 import DetailsVotesPageGeneralInformation
     from "../DetailsVotesPageGeneralInformation/DetailsVotesPageGeneralInformation";
 
@@ -21,7 +20,7 @@ const DetailsVotesPage = () => {
             </div>
                 <h1 className={'details-votes-page__wrapper-title'}>Детали голосования</h1>
                 <div className={'details-votes-page__main-content'}>
-                    <DetailsVotesPageDataTimeEndRegStartVote/>
+                    <DetailsVotesPageDaysEndRegStartVote/>
                     <DetailsVotesPageGeneralInformation/>
             </div>
 

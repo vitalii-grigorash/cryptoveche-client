@@ -4,10 +4,10 @@ export const activeVotesData = [
     titleVoteData: 'Выбор делегатов конференции в Ученый Совет СПбГУ и еще парочка слов чтобы совсем уже было длинно',
     regStatus: 'Ожидание регистрации',
     voteStatus: 'Открытое',
-    startDateReg: '5.01.2022',
-    startTimeReg: '13.00',
-    startDateVote: '5.01.2022',
-    startTimeVote: '17.00',
+    DateReg: '5.01.2022',
+    TimeReg: '13.00',
+    DateVote: '5.01.2022',
+    TimeVote: '17.00',
     confirmStatus: 'Ожидайте регистрации'
   },
   {
@@ -15,10 +15,10 @@ export const activeVotesData = [
     titleVoteData: 'Выбор делегатов конференции',
     regStatus: ' Идет регистрация',
     voteStatus: 'Открытое',
-    startDateReg: '8.01.2022',
-    startTimeReg: '12.00',
-    startDateVote: '15.01.2022',
-    startTimeVote: '12.00',
+    DateReg: '8.01.2022',
+    TimeReg: '12.00',
+    DateVote: '15.01.2022',
+    TimeVote: '12.00',
     confirmStatus: 'Вы не зарегистрированы'
   },
   {
@@ -26,10 +26,10 @@ export const activeVotesData = [
     titleVoteData: 'Выбор делегатов конференции в Ученый Совет СПбГУ и еще парочка слов чтобы совсем уже было длинно',
     regStatus: 'Идет голосование',
     voteStatus: 'Тайное',
-    startDateReg: '16.03.2022',
-    startTimeReg: '10.00',
-    startDateVote: '18.03.2022',
-    startTimeVote: '14.00',
+    DateReg: '16.03.2022',
+    TimeReg: '10.00',
+    DateVote: '18.03.2022',
+    TimeVote: '14.00',
     confirmStatus: 'Вы зарегистрированы'
 }
 ]

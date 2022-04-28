@@ -7,7 +7,7 @@ import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterial
 import VoteButtonBlock from "../VotesStatusComponents/VoteButtonBlock/VoteButtonBlock";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
 
-const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, startDateReg, startTimeReg, startDateVote, startTimeVote, confirmStatus}) => {
+const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, DateReg, TimeReg, DateVote, TimeVote, confirmStatus}) => {
 
     return (
 
@@ -18,8 +18,8 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, startDateRe
                 <div className={'active-votes__status-and-start-reg-start-vote'}>
                  <div className={'status-and-start-reg-start-vote'}>
                     <CurrentStatusVote regStatus={regStatus} voteStatus={voteStatus}/>
-                    <StartDateRegVote startDateReg={startDateReg} startTimeReg={startTimeReg}/>
-                    <StartDateVote startDateVote={startDateVote} startTimeVote={startTimeVote}/>
+                    <StartDateRegVote DateReg={DateReg} TimeReg={TimeReg}/>
+                    <StartDateVote DateVote={DateVote} TimeVote={TimeVote}/>
                     <ConfirmRegMaterialsVote confirmStatus={confirmStatus}/>
                  </div>
                     <VoteButtonBlock/>

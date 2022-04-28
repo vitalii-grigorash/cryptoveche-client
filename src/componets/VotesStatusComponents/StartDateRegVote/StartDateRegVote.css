@@ -11,9 +11,3 @@
 .status-block__start-reg h4 {
     opacity: 50%;
 }
-.start-reg__data {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #363B4D;
-}

@@ -11,12 +11,6 @@
 .status-block__start-vote h4 {
     opacity: 50%;
 }
-.start-vote__data {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #363B4D;
-}
 
 
 @media (max-width: 830px) {

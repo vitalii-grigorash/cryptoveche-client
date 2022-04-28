@@ -4,6 +4,6 @@ export const detailsVotesPageGenerealInfoData = [
         titleVoteData: 'Выбор делегатов конференции в Ученый Совет СПбГУ',
         regStatus: 'Идет голосование',
         voteStatus: 'Тайное',
-        confirmStatus: 'Вы зарегистрированы'
+        confirmStatus: 'Вы не зарегистрированы'
 }
 ]
