@@ -4,16 +4,15 @@
     flex-direction: column;
     justify-content: space-between;
 
-
 }
-/*-----Стлизация общего div для элементов-------------------------------------------------------------------------------------*/
+/*-----Стлизация общего div для элементов------------------------------------------------------------------------------*/
 .details-votes-page-list-start-reg-start-vote__main-content{
     display: flex;
     gap: 16px;
     border-left: 1px rgba(54, 59, 77, 0.2) solid;
     font-size: 14px;
     line-height: 24px;
-    padding-left: 48px;
+    padding-left: 2vw;
     font-family: Inter;
 
 }
@@ -23,11 +22,9 @@
     flex-direction: column;
     gap: 8px;
     color: rgba(54, 59, 77, 0.6);
+    white-space: nowrap;
 
 }
-/*-----Стилизация div для -------------------------------------------------------------------------*/
-
-
 
 /*-----Стилизация div со статусом голосования-------------------------------------------------------------------------*/
 .datetime-status-reg-vote__status-color-item {
@@ -41,6 +38,7 @@
 ._days-colors-block-red {
     background-color: rgba(255, 73, 112, 0.2);
     color: #FF4970;
+
 }
 ._days-colors-block-green {
     background-color: rgba(78, 212, 169, 0.2);

@@ -49,6 +49,9 @@
 .main-content-current-status-vote__title {
     font-weight: 600;
 }
+.status-vote-possible-revote__add-border-right {
+    border-right: 1px rgba(54, 59, 77, 0.2) solid;
+}
 /*-----Стилизация div для статусов рег-ции и голосования-------------------------------------------------------------*/
 .details-votes-page-general-info__main-content-current-status-vote {
     display: flex;
@@ -61,10 +64,10 @@
     display: flex;
     flex-direction: row;
 }
-.main-content-current-status-vote__status-vote-possible-revote:first-child {
+.main-content-current-status-vote__status-vote-possible-revote:nth-child(1) {
     border-left: 1px gray solid;
-
 }
+
 
 /*-----Стилизация кнопки зарегистрироваться---------------------------------------------------------------------------*/
 .details-votes-page-general-info__reg-button {

@@ -1,7 +1,7 @@
 import React from "react";
 import './DetailsVotesPageListStartRegStartVote.css';
-import DataTimeReg from "../VotesStatusComponents/StartDateRegVote/DataTimeReg";
-import DataTimeVote from "../VotesStatusComponents/StartDateVote/DataTimeVote";
+import DataTime from '../VotesStatusComponents/DateTime/DateTime';
+
 
 const DetailsVotesPageListStartRegStartVote = () => {
 
@@ -17,10 +17,10 @@ const DetailsVotesPageListStartRegStartVote = () => {
                             <span>Конец голосования:</span>
                         </div>
                         <div className={'main-content__datetime-status-reg-vote'}>
-                            <span><DataTimeReg DateReg={'05.01.2022'} TimeReg={'18.00'}/></span>
-                            <span><DataTimeReg DateReg={'05.01.2022'} TimeReg={'18.00'}/></span>
-                            <span><DataTimeVote DateVote={'05.01.2022'} TimeVote={'18.00'}/></span>
-                            <span><DataTimeVote DateVote={'05.01.2022'} TimeVote={'18.00'}/></span>
+                            <span><DataTime dateTimeDate={'05.01.2022'} dateTimeWatch={'18.00'}/></span>
+                            <span><DataTime dateTimeDate={'05.01.2022'} dateTimeWatch={'18.00'}/></span>
+                            <span><DataTime dateTimeDate={'05.01.2022'} dateTimeWatch={'18.00'}/></span>
+                            <span><DataTime dateTimeDate={'05.01.2022'} dateTimeWatch={'18.00'}/></span>
                         </div>
                         <div className={'main-content__datetime-status-reg-vote'}>
                             <span className={'datetime-status-reg-vote__status-color-item _days-colors-block-red'}>2 дня назад</span>

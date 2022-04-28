@@ -1,14 +1,15 @@
 import React from "react";
 import './StartDateVote.css';
-import DataTimeVote from "./DataTimeVote";
+import DateTime from "../DateTime/DateTime";
 
 
-const StartDateVote = ({DateVote, TimeVote}) => {
+
+const StartDateVote = ({dateTimeDate, dateTimeWatch}) => {
 
     return (
             <div className={'status-block__start-vote'}>
                 <h4>Начало голосования:</h4>
-                <DataTimeVote DateVote={DateVote} TimeVote={TimeVote}/>
+                <DateTime dateTimeDate={dateTimeDate} dateTimeWatch={dateTimeWatch}/>
             </div>
     )
 }

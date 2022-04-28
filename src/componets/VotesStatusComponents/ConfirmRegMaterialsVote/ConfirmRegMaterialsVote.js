@@ -8,7 +8,7 @@ const ConfirmRegMaterialsVote = ({confirmStatus}) => {
 
             <div className={'status-block__materials-vote'}>
                 <span className={'materials-vote__red'}><img alt={'иконка статуса регистрации'} src={icon_info}/>{confirmStatus}</span>
-                <span className={'dddd'}>Материалы голосования<select><option></option></select></span>
+                <div className={'materials-vote__select'}><span>Материалы голосования</span><select><option></option></select></div>
             </div>
 
     )

@@ -1,25 +1,28 @@
+/*---------Основной контейнер-----------------------------------------------------------------------------------------*/
 .status-block__materials-vote {
     display: flex;
-    position: relative;
     flex-direction: column;
-    justify-content: center;
-    padding: 0 24px 0 24px;
+    justify-content: space-between;
+    /*padding: 10px 24px 0 24px;*/
+    padding: 8px 24px 3px 24px;
     gap: 12px;
     font-size: 14px;
-    border-left: 1px rgba(54, 59, 77, 0.4) solid;
+    /*border-left: 1px rgba(54, 59, 77, 0.4) solid;*/
     font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
 }
+.materials-vote__select {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    /*padding-bottom: 10px;*/
+}
 .status-block__materials-vote select {
     background-color: #FFFFFF;
-    position: absolute;
-    top: 33px;
-    left: 198px;
     width: 18px;
     height: 18px;
     cursor: pointer;
 }
-
 
 .materials-vote__red {
     color: #FF4970;
@@ -27,7 +30,7 @@
 .status-block__materials-vote span img {
     padding: 0 5px 0 0;
 }
-
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {
     .my-votes-block-wrapper {
         width: 440px;

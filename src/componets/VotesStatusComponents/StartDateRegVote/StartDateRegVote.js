@@ -1,16 +1,17 @@
 import React from "react";
 import './StartDateRegVote.css';
-import DataTimeReg from "./DataTimeReg";
+import DataTime from "../DateTime/DateTime";
 
 
 
-const StartDateRegVote = ({DateReg, TimeReg}) => {
+
+const StartDateRegVote = ({dateTimeDate, dateTimeWatch}) => {
 
     return  (
 
             <div className={'status-block__start-reg'}>
                 <h4>Начало регистрации:</h4>
-                <DataTimeReg DateReg={DateReg} TimeReg={TimeReg}/>
+                <DataTime dateTimeDate={dateTimeDate} dateTimeWatch={dateTimeWatch}/>
             </div>
 
     )

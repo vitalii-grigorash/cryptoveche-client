@@ -5,6 +5,7 @@ import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/Curren
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import {myVotesBlockData} from '../../myVotesBlockData';
+import {Link} from "react-router-dom";
 
 const MyVotesBlock = () => {
 
@@ -31,8 +32,8 @@ const MyVotesBlock = () => {
                         <h5>Ученый совет</h5>
                     <div className={'reg-form__status-block'}>
                         <CurrentStatusVote regStatus={myVotesRegStatus} voteStatus={myVotesVoteStatus}/>
-                        <StartDateVote DateVote={myVotesStartDateVote} TimeVote={myVotesStartTimeVote}/>
-                        <ConfirmRegMaterialsVote confirmStatus={myVotesConfirmStatus}/>
+                        <StartDateVote dateTimeDate={myVotesStartDateVote} dateTimeWatch={myVotesStartTimeVote}/>
+                        <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={myVotesConfirmStatus}/></div>
                     </div>
                     <button className={'reg-form__button-reg'}>Зарегистрироваться</button>
                 </div>
@@ -42,21 +43,22 @@ const MyVotesBlock = () => {
                         <h5>Консорциум СПбГУ</h5>
                         <div className={'vote-form__status-block'}>
                             <CurrentStatusVote regStatus={runVotesRegStatus} voteStatus={runVotesVoteStatus}/>
-                            <StartDateVote DateVote={runVotesStartDateVote} TimeVote={runVotesStartTimeVote}/>
-                            <ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus}/>
+                            <StartDateVote dateTimeDate={runVotesStartDateVote} dateTimeWatch={runVotesStartTimeVote}/>
+                            <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus}/></div>
                         </div>
-                    <div className={'votes-form__button-vote-cancel-reg'}>
-                        <button className={'button-vote'}>
-                            Проголосовать
-                        </button>
-                        <button className={'cancel-reg'}>
-                            Отменить регистрацию
-                        </button>
-                    </div>
-                </div>
+                        <div className={'votes-form__button-vote-cancel-reg'}>
+                            <button className={'button-vote'}>
+                                Проголосовать
+                            </button>
+                            <button className={'cancel-reg'}>
+                                Отменить регистрацию
+                            </button>
+                        </div>
+                     </div>
                 </div>
                 <div className={'my-votes__link-arrow'}>
-                    <a href={'/main'}><span>ПОКАЗАТЬ ПОЛНОСТЬЮ</span></a><a href={'/main'}><img alt={'logo_arrow'} src={icon_arrow}/></a>
+                    <span><Link to={'/main/votes-page-details-voting'}>ПОКАЗАТЬ ПОЛНОСТЬЮ</Link></span>
+                    <span><Link to={'/main/votes-page-details-voting'}><img alt={'logo_arrow'} src={icon_arrow}/></Link></span>
                 </div>
             </div>
     )
