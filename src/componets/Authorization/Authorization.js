@@ -96,7 +96,6 @@ const Authorization = () => {
                                                     <div className={'reg__logo'}>
                                                         <img src={logo} alt="Логотип"/>
                                                     </div>
-
                                                 <div className={'reg__title'}>
                                                     Система электронных голосований
                                                 </div>
@@ -104,7 +103,7 @@ const Authorization = () => {
                                                     <span>Еще нет аккаунта?</span>
                                                     <button onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</button>
                                                 </div>
-                                        </div>
+                                            </div>
                                         <div className={'main-block__mobile-link-reg'}>
                                             <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
                                         </div>

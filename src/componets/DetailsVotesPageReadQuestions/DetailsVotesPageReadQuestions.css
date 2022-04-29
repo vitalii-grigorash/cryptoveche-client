@@ -1,3 +1,4 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper {
    display: flex;
     flex-direction: column;
@@ -7,10 +8,96 @@
     border-radius: 24px;
     gap: 32px;
 }
+/*------Заголовок основного контейнера--------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper-title {
     font-family: Golos;
     font-size: 24px;
     font-weight: 600;
     color: #4A4F5F;
 }
+/*------Стилизация для div с вопросом---------------------------------------------------------------------------------*/
+.details-votes-page-read-questions__question-block {
+   display: flex;
+   flex-direction: column;
+    gap: 32px;
+    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
+    padding-bottom: 16px;
+    font-family: Inter;
+    width: 100%;
+ }
 
+.question-block__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.question-block__title h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.9);
+}
+.question-block__title h5 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.4);
+}
+.question-block__title span {
+    color: rgba(54, 59, 77, 0.9);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.question-block__title select {
+    background-color: #FFFFFF;
+    width: 20px;
+    cursor: pointer;
+}
+/*------Стилизация для div списка с вариантами ответов----------------------------------------------------------------*/
+.question-block__list-questions ul {
+    display: table;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.9);
+    list-style-image: url("../../img/DetailsVotesPageReadQuestions_icon_for_list.svg");
+
+}
+.question-block__list-questions li {
+    list-style-position: inside;
+    padding-bottom: 16px;
+}
+.question-block__list-questions span {
+    padding-left: 12px;
+}
+
+/*------Стилизация для блока с чекбоксам------------------------------------------------------------------------------*/
+.question-block__select-checkboxes-block {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    gap: 40px;
+    color: rgba(54, 59, 77, 0.9);
+    font-size: 18px;
+}
+.select-checkboxes-block__header {
+    display: grid;
+   
+    grid-template-columns: 342px 128px 128px 128px;
+    grid-template-rows: 24px;
+    text-align: center;
+    color: rgba(54, 59, 77, 0.9);
+    font-size: 18px;
+    gap: 40px;
+    padding-left: 170px;
+}
+.select-checkboxes-block__list-question-checkbox {
+    display: inline-grid;
+    grid-template-columns: 280px 128px 128px 128px;
+    grid-template-rows: 24px;
+    gap: 40px;
+}
+.list-question-checkbox {
+    width: 24px;
+    height: 24px;
+}
