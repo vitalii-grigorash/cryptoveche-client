@@ -8,6 +8,7 @@ import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/Curren
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import DetailsVotesPageListStartRegStartVote
     from "../DetailsVotesPageListStartRegStartVote/DetailsVotesPageListStartRegStartVote";
+import RegistrationButton from "../ButtonsComponets/RegistrationButton";
 
 
 const DetailsVotesPageGeneralInformation = () => {
@@ -44,7 +45,7 @@ const DetailsVotesPageGeneralInformation = () => {
 
 
                 </div>
-                <button className={'details-votes-page-general-info__reg-button'}>Зарегистрироваться</button>
+                <RegistrationButton/>
             </div>
     )
 

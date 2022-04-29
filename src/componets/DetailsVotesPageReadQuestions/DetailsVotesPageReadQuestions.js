@@ -1,7 +1,10 @@
 import React from "react";
 import './DetailsVotesPageReadQuestions.css';
+import ListQuestionsCheckbox from "./ListQuestionsCheckbox/ListQuestionsCheckbox";
+import RegistrationButton from "../ButtonsComponets/RegistrationButton";
 
 const DetailsVotesPageReadQuestions = () => {
+
 
     return (
             <div className={'details-votes-page-read-questions__wrapper'}>
@@ -24,8 +27,6 @@ const DetailsVotesPageReadQuestions = () => {
                         </ul>
                     </div>
                 </div>
-
-
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>
                         <h3>2. Как должен происходить процесс выбора делегатов конференции?</h3>
@@ -36,11 +37,9 @@ const DetailsVotesPageReadQuestions = () => {
                         <ul type={"square"}>
                             <li><span>Только через КриптоВече</span></li>
                             <li><span>На общем собрании</span></li>
-
                         </ul>
                     </div>
                 </div>
-
 
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>
@@ -71,43 +70,23 @@ const DetailsVotesPageReadQuestions = () => {
                         </ul>
                     </div>
                 </div>
-
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>
                         <h3>5. Выберите кандидата на позицию делегата Ученого Совета СПбГУ. </h3>
                         <h5>Выберите один из вариантов ответа напротив каждого кандидата</h5>
                         <span>Материалы вопроса<select><option></option></select></span>
                     </div>
-                    <div className={'select-checkboxes-block__header'}>
-                        <span>Против</span>
+                    <div className={'select-checkboxes-block__header-columns'}>
+                        <span/>
+                        <span>Прoтив</span>
                         <span>Воздержаться</span>
                         <span>За</span>
                     </div>
                     <div className={'question-block__select-checkboxes-block'}>
-                        <div className={'select-checkboxes-block__list-question-checkbox'}>
-                            <span>Вариант один какой-то</span>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                        </div>
-                        <div className={'select-checkboxes-block__list-question-checkbox'}>
-                            <span>А вот и второй</span>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                        </div>
-                        <div className={'select-checkboxes-block__list-question-checkbox'}>
-                            <span>Некий третий варик</span>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                        </div>
-                        <div className={'select-checkboxes-block__list-question-checkbox'}>
-                            <span>Довольно длинный четвертый</span>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                            <input className={'list-question-checkbox'} type={'checkbox'} disabled={true}/>
-                        </div>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Вариант один какой-то'} typeCheck={'checkbox'}/>
+                        <ListQuestionsCheckbox checkBoxNameRow={'А вот и второй'} typeCheck={'checkbox'}/>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Некий третий варик'} typeCheck={'checkbox'}/>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Довольно длинный четвертый'} typeCheck={'checkbox'}/>
                     </div>
                 </div>
                 <div className={'details-votes-page-read-questions__question-block'}>
@@ -116,8 +95,20 @@ const DetailsVotesPageReadQuestions = () => {
                         <h5>Выберите один из вариантов ответа напротив каждого кандидата</h5>
                         <span>Материалы вопроса<select><option></option></select></span>
                     </div>
-
+                    <div className={'select-checkboxes-block__header-columns'}>
+                        <span/>
+                        <span>Прoтив</span>
+                        <span>Воздержаться</span>
+                        <span>За</span>
+                    </div>
+                    <div className={'question-block__select-checkboxes-block'}>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Людвиг ван Бетховен'} typeCheck={'radio'}/>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Гендальф'} typeCheck={'radio'}/>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Вольфганг Амадей Моцарт очень длинное здесь что-то должно быть'} typeCheck={'radio'}/>
+                        <ListQuestionsCheckbox checkBoxNameRow={'Моргенштерн'} typeCheck={'radio'}/>
+                    </div>
                 </div>
+                <RegistrationButton/>
             </div>
     )
 }
