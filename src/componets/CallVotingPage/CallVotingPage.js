@@ -20,12 +20,10 @@ import TitleVotesDetailsCallVotingProfile
                 secondLetter={'Голосование по повестке'}
                 titleName={'Голосование по повестке'}/>
              <h2 className={'call-voting-page__wrapper-title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h2>
-             <button className={'call-voting-page__'}>Детали голосования</button>
+             <button className={'call-voting-page__details-btn'}>Детали голосования</button>
                 <DetailsVotesPageDaysEndRegStartVote/>
-             <div className={'call-voting-page__main-content'}>
 
 
-             </div>
          </div>
      )
  }
