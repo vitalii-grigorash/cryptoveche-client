@@ -1,35 +1,17 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .votes-page-block__wrapper {
-    padding-bottom: 112px;
+    padding-bottom: 68px;
+
 }
-/*------Cтилизация заголовка------------------------------------------------------------------------------------------*/
-.votes-page-block__wrapper-title {
-    font-size: 32px;
-    font-family: Golos;
-    line-height: 40px;
-    font-weight: 600;
-    color: rgba(54, 59, 77, 0.9);
-}
-/*------Cтилизация блока со стрелкой о переходе на страницу Голосования-----------------------------------------------*/
-.votes-page-block__page-info {
-    display: flex;
-    flex-direction: row;
-    color: rgba(54, 59, 77, 0.9);
-    opacity: 40%;
-    font-family: Golos;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    width: 184px;
-    justify-content: space-between;
-    padding-bottom: 27px;
-}
+
 /*------Cтилизация для общего блока с кнопками фильтры, сортировка и пагинация----------------------------------------*/
 .votes-page-block__navigation-menu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+    padding: 20px 0 0 0;
+
 }
 
 /*------Cтилизация блока c кнопками фильтры и сортировка--------------------------------------------------------------*/

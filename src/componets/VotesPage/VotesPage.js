@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import './VotesPage.css';
-import votes_page_row_icon from '../../img/VotesPageBlock_icon_row.svg';
 import votes_page_filters_icon from '../../img/VotesPageBlock_filter_icon.svg';
 import votes_page_sort_icon from '../../img/VotesPageBlock_sort_icon.svg';
 import VotesPageFiltersModal from "../VotesPageFiltersModal/VotesPageFiltersModal";
@@ -8,6 +7,9 @@ import VotesPageSortingModal from "../VotesPageSortingModal/VotesPageSortingModa
 import VotesPageActiveVotes from "../VotesPageActiveVotes/VotesPageActiveVotes";
 import {activeVotesData} from "../../activeVotesData";
 import VotesPagePaginationTableSearch from "../VotesPagePaginationTableSearch/VotesPagePaginationTableSearch";
+import TitleVotesDetailsCallVotingProfile
+    from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
+
 
 
 
@@ -19,12 +21,10 @@ const VotesPage = () => {
 
     return (
             <div className={'votes-page-block__wrapper'}>
-                <div className={'votes-page-block__page-info'}>
-                    <span>Главная</span>
-                    <img alt={'иконка стрелка'} src={votes_page_row_icon}/>
-                    <span>Голосования</span>
-                </div>
-                    <h1 className={'votes-page-block__wrapper-title'}>Голосования</h1>
+                <TitleVotesDetailsCallVotingProfile
+                    firstLetter={'Главная'}
+                    secondLetter={'Голосования'}
+                    titleName={'Голосования'}/>
                 <div className={'votes-page-block__navigation-menu'}>
                     <div className={'navigation-menu__select-buttons'}>
                             <button type={'button'} className={'select-buttons__filters-button'} onClick={() => setFiltersModalActive(true)}><img alt={'иконка фильтры'} src={votes_page_filters_icon}/>Фильтры</button>

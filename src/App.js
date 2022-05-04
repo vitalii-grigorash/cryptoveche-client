@@ -12,6 +12,7 @@ import VotesPage from "./componets/VotesPage/VotesPage";
 import MainPage from "./componets/MainPage/MainPage";
 import DetailsVotesPage from "./componets/DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageReadQuestions from "./componets/DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
+import CallVotingPage from "./componets/CallVotingPage/CallVotingPage";
 
 
 
@@ -35,6 +36,7 @@ function App() {
                           <Route path={'votes-page'} element={<VotesPage/>}/>
                           <Route path={'votes-page-details-voting'} element={<DetailsVotesPage/>}/>
                           <Route path={'votes-page-read-questions'} element={<DetailsVotesPageReadQuestions/>}/>
+                          <Route path={'call-voting-page'} element={<CallVotingPage/>}/>
                 </Route>
             </Routes>
   );

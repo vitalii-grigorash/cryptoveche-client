@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import './Authorization.css';
 import logo from '../../img/Auth_logo_crypto_veche.svg';
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -17,9 +17,9 @@ const Authorization = () => {
     const [pass, setPass] = useState('')
     const [error, setError] = useState('')
     const [changeTypePass, setChangeTypePass] = useState('password');
-    const [inputColor, setInputColor] = useState('_input-border-black')
     const linkButtonRegPage = useNavigate();
-
+    const refBorderRedLogin = useRef();
+    const refBorderRedPass = useRef();
 
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
@@ -37,7 +37,9 @@ const Authorization = () => {
 
         if (login === '' || pass === '') {
             setError('Неверно введено имя пользователя или пароль')
-            setInputColor('_input-border-red ')
+            refBorderRedLogin.current.style.border = '1px solid red';
+            refBorderRedPass.current.style.border = '1px solid red';
+
         }
     }
 
@@ -62,12 +64,12 @@ const Authorization = () => {
                                         </div>
                                         <div className={'form__login'}>
                                             <span>Имя пользователя</span>
-                                            <input className={inputColor} onChange={e => {setLogin(e.target.value)}} placeholder={'admin@admin.com'} name={login} value={login} type={"text"}/>
+                                            <input ref={refBorderRedLogin} onChange={e => {setLogin(e.target.value)}} placeholder={'admin@admin.com'} name={login} value={login} type={"text"}/>
                                         </div>
                                         <div className={'form__pass'}>
                                             <span>Пароль</span>
                                             <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass}/>
-                                            <input className={inputColor} onChange={e => {setPass(e.target.value)}} name={pass} value={pass} type={changeTypePass}/>
+                                            <input ref={refBorderRedPass} onChange={e => {setPass(e.target.value)}} name={pass} value={pass} type={changeTypePass}/>
                                             <div className={'form__error'}>{error}</div>
                                         </div>
                                         <div className={'form__checkbox'}>

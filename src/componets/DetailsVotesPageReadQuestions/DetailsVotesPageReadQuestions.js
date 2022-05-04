@@ -3,6 +3,7 @@ import './DetailsVotesPageReadQuestions.css';
 import ListQuestionsCheckbox from "./ListQuestionsCheckbox/ListQuestionsCheckbox";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton";
 
+
 const DetailsVotesPageReadQuestions = () => {
 
 
@@ -40,7 +41,6 @@ const DetailsVotesPageReadQuestions = () => {
                         </ul>
                     </div>
                 </div>
-
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>
                         <h3>3. Выберите кандидата на позицию делегата Ученого Совета СПбГУ.</h3>

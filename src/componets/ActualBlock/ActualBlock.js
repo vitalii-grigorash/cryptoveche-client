@@ -37,7 +37,7 @@ const ActualBlock = () => {
             <button className={'actual-block__button'}>
                 Проголосовать
             </button>
-        </div>
+            </div>
     )
 }
 
