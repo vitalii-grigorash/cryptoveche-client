@@ -1,7 +1,7 @@
 import React from "react";
 import './DetailsVotesPageReadQuestions.css';
 import ListQuestionsCheckbox from "./ListQuestionsCheckbox/ListQuestionsCheckbox";
-import RegistrationButton from "../ButtonsComponets/RegistrationButton";
+import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 
 
 const DetailsVotesPageReadQuestions = () => {

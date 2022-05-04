@@ -3,11 +3,12 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    padding-bottom: 112px;
 }
 /*------Стилизация заголовка------------------------------------------------------------------------------------------*/
 .call-voting-page__wrapper-title {
     font-family: Golos;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 24px;
     color: rgba(54, 59, 77, 0.9);
     line-height: 32px;
