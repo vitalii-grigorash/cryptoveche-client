@@ -1,7 +1,9 @@
 import React from "react";
 import './CallVotingPageQuestionCard.css';
 import CallVotingPageVoteButton from "../ButtonsComponets/CallVotingPageVoteButton/CallVotingPageVoteButton";
-import CallVotingPageCheckboxAnswer from "../CallVotingPageCheckboxAnswer/CallVotingPageCheckboxAnswer";
+import CallVotingPageCheckboxRow from "../CallVotingPageCheckboxRow/CallVotingPageCheckboxRow";
+import CallVotingPageCheckboxColumns from "../CallVotingPageCheckboxColumns/CallVotingPageCheckboxColumns";
+import CallVotingPageCheckboxTable from "../CallVotingPageCheckboxTable/CallVotingPageCheckboxTable";
 
 const CallVotingPageQuestionCard = ({titleName}) => {
 
@@ -14,9 +16,10 @@ const CallVotingPageQuestionCard = ({titleName}) => {
                         <span className={'call-voting-page-question-card__materials'}>Материалы вопроса<select><option></option></select></span>
                     </div>
                     <div className={'call-voting-page-question-card__main-content'}>
-                        <CallVotingPageCheckboxAnswer labelCheckbox={'Да'}/>
-                        <CallVotingPageCheckboxAnswer labelCheckbox={'Нет'}/>
-                        <CallVotingPageCheckboxAnswer labelCheckbox={'Дайте подумать'}/>
+                        {/*<CallVotingPageCheckboxRow labelCheckbox={'Да'}/>*/}
+                        {/*<CallVotingPageCheckboxRow labelCheckbox={'Нет'}/>*/}
+                        {/*<CallVotingPageCheckboxRow labelCheckbox={'Дайте подумать'}/>*/}
+                       <CallVotingPageCheckboxTable/>
                     </div>
                     <CallVotingPageVoteButton/>
             </div>

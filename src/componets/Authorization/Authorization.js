@@ -8,6 +8,7 @@ import bg_image4 from '../../img/Auth_img4.svg';
 import bg_image_mobile from '../../img/Auth_img_mobile.svg';
 import show_pass_icon from '../../img/Auth_show_pass_icon.svg';
 import {useNavigate} from "react-router-dom";
+import CallVotingPageCheckboxRow from "../CallVotingPageCheckboxRow/CallVotingPageCheckboxRow";
 
 
 
