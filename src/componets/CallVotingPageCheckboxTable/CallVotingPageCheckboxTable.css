@@ -1,21 +1,20 @@
 .call-voting-page-check-table__wrapper {
-    display: grid;
-    grid-template-columns: 25% 40%;
-    grid-template-rows: 70%;
-
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 50px;
 }
 .call-voting-page-check-table__name-variants {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    justify-content: flex-start;
-    width: 100%;
-
+    justify-content: flex-end;
 }
 .call-voting-page-check-table__columns-checkbox {
    display: flex;
     flex-direction: row;
-    width: 100%;
     justify-content: space-evenly;
     gap: 40px;
+    width: 50%;
 }

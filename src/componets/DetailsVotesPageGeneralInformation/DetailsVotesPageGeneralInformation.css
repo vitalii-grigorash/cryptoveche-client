@@ -11,32 +11,7 @@
     gap: 24px;
 }
 
-/*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
-.details-votes-page-general-info__switch-buttons {
-    display: flex;
-    gap: 48px;
-    font-family: Golos;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 32px;
-    color: rgba(54, 59, 77, 0.9);
-    border-bottom: 1px #EEEEEE solid;
 
-
-}
-.details-votes-page-general-info__switch-buttons-active-votes, .details-votes-page-general-info__switch-buttons-archive-votes {
-    padding-bottom: 8px;
-    border-bottom: 2px #FFFFFF solid;
-}
-.details-votes-page-general-info__switch-buttons-active-votes:hover {
-    border-bottom: 2px #0084FE solid;
-    cursor: pointer;
-}
-
-.details-votes-page-general-info__switch-buttons-archive-votes:hover {
-    border-bottom: 2px #0084FE solid;
-    cursor: pointer;
-}
 /*-----Общий контейнер для двух div со статусами и датами рег-ции и голосования---------------------------------------*/
 .details-votes-page-general-info__main-content {
     display: flex;

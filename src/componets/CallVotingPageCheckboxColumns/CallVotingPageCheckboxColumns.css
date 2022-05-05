@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 40px;
     justify-content: center;
-    height: 100%;
+    min-height: 290px;
 }
 .call-voting-page-check-columns__wrapper span {
     font-family: Inter;
@@ -17,5 +17,4 @@
     flex-direction: column;
     gap: 60px;
     align-items: center;
-
 }

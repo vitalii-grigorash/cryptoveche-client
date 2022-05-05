@@ -2,6 +2,8 @@ import React from "react";
 import './DetailsVotesPageReadQuestions.css';
 import ListQuestionsCheckbox from "./ListQuestionsCheckbox/ListQuestionsCheckbox";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
+import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
+
 
 
 const DetailsVotesPageReadQuestions = () => {
@@ -9,10 +11,7 @@ const DetailsVotesPageReadQuestions = () => {
 
     return (
             <div className={'details-votes-page-read-questions__wrapper'}>
-                <div className={'details-votes-page-general-info__switch-buttons'}>
-                    <h2 className={'details-votes-page-general-info__switch-buttons-active-votes'}>Общая информация</h2>
-                    <h2 className={'details-votes-page-general-info__switch-buttons-archive-votes'}>Ознакомиться с вопросами</h2>
-                </div>
+                <VotesAndDetailsPageSwitchButtons/>
                     <h1 className={'details-votes-page-read-questions__wrapper-title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>

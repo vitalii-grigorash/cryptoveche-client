@@ -9,6 +9,7 @@ import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterial
 import DetailsVotesPageListStartRegStartVote
     from "../DetailsVotesPageListStartRegStartVote/DetailsVotesPageListStartRegStartVote";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
+import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
 
 
 const DetailsVotesPageGeneralInformation = () => {
@@ -23,11 +24,7 @@ const DetailsVotesPageGeneralInformation = () => {
 
     return (
             <div className={'details-votes-page-general-info__wrapper'}>
-                <div className={'details-votes-page-general-info__switch-buttons'}>
-                    <h2 className={'details-votes-page-general-info__switch-buttons-active-votes'}>Общая информация</h2>
-                    <h2 className={'details-votes-page-general-info__switch-buttons-archive-votes'}>Ознакомиться с вопросами</h2>
-                </div>
-
+                <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true}/>
                 <div className={'details-votes-page-general-info__main-content'}>
                     <div className={'details-votes-page-general-info__main-content-current-status-vote'}>
                         <span className={'main-content-current-status-vote__title'}>

@@ -9,6 +9,7 @@ import {activeVotesData} from "../../activeVotesData";
 import VotesPagePaginationTableSearch from "../VotesPagePaginationTableSearch/VotesPagePaginationTableSearch";
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
+import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
 
 
 
@@ -33,10 +34,8 @@ const VotesPage = () => {
                 <VotesPagePaginationTableSearch/>
                 </div>
                 <div className={'votes-page-block__main-content'}>
-                    <div className={'votes-page-block__main-content-switch-buttons'}>
-                        <h2 className={'main-content-switch-buttons__active-votes'}>Активные голосования</h2>
-                        <h2 className={'main-content-switch-buttons__archive-votes'}>Архивные голосования</h2>
-                    </div>
+                    <VotesAndDetailsPageSwitchButtons hiddenGeneralBtn={true} hiddenReadQuestion={true} hiddenResultBtn={true} hiddenBulletinBtn={true}/>
+
                     {
                         activeVotesData.map((item) => {
                             return(

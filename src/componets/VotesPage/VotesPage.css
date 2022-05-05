@@ -3,7 +3,6 @@
     padding-bottom: 68px;
 
 }
-
 /*------Cтилизация для общего блока с кнопками фильтры, сортировка и пагинация----------------------------------------*/
 .votes-page-block__navigation-menu {
     display: flex;
@@ -62,30 +61,7 @@
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 
 }
-/*-----Стилизация кнопок-переключателей основного контента ------------------------------------------------------------*/
-.votes-page-block__main-content-switch-buttons {
-    display: flex;
-    gap: 48px;
-    font-family: Golos;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 32px;
-    color: rgba(54, 59, 77, 0.9);
-    border-bottom: 1px #EEEEEE solid;
-}
-.main-content-switch-buttons__active-votes, .main-content-switch-buttons__archive-votes {
-    padding-bottom: 8px;
-    border-bottom: 2px #FFFFFF solid;
-}
-.main-content-switch-buttons__active-votes:hover {
-    border-bottom: 2px #0084FE solid;
-    cursor: pointer;
-}
 
-.main-content-switch-buttons__archive-votes:hover {
-    border-bottom: 2px #0084FE solid;
-    cursor: pointer;
-}
 /*-----Стилизация кнопки ПОКАЗАТЬ ЕЩЁ---------------------------------------------------------------------------------*/
 .votes-page-block__main-content-show-more-button {
     color: #0084FE;
