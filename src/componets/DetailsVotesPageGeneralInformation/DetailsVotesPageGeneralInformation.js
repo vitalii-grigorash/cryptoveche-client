@@ -24,25 +24,21 @@ const DetailsVotesPageGeneralInformation = () => {
 
     return (
             <div className={'details-votes-page-general-info__wrapper'}>
-                <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true}/>
+                <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true} hiddenResultBtn={true} hiddenBulletinBtn={true}/>
                 <div className={'details-votes-page-general-info__main-content'}>
                     <div className={'details-votes-page-general-info__main-content-current-status-vote'}>
                         <span className={'main-content-current-status-vote__title'}>
                             <VotesPageTitleTimeZone titleVoteData={generalInfoTitle}/>
                         </span>
-                <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
-                    <CurrentStatusVote regStatus={generalInfoRegStatus} voteStatus={generalInfoVoteStatus}/>
-                    <ConfirmRegMaterialsVote confirmStatus={generalInfoConfirmReg}/>
-                    <DetailsVotesPageStatusPossibleRevoteCancelReg/>
-                </div>
-                </div>
-                    <DetailsVotesPageListStartRegStartVote/>
-
-
-
-
-                </div>
-                <RegistrationButton/>
+                        <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
+                            <CurrentStatusVote regStatus={generalInfoRegStatus} voteStatus={generalInfoVoteStatus}/>
+                            <ConfirmRegMaterialsVote confirmStatus={generalInfoConfirmReg}/>
+                            <DetailsVotesPageStatusPossibleRevoteCancelReg/>
+                        </div>
+                        </div>
+                            <DetailsVotesPageListStartRegStartVote/>
+                        </div>
+                    <RegistrationButton/>
             </div>
     )
 

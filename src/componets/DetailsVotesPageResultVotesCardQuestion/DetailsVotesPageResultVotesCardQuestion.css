@@ -1,0 +1,101 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
+.details-votes-page-result-votes-card__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: Inter;
+}
+/*------Стилизация заголовка-------------------------------------------------------------------------------------------*/
+.details-votes-page-result-votes-card__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.details-votes-page-result-votes-card__title h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(54, 59, 77, 0.9);
+    line-height: 24px;
+}
+
+.details-votes-page-result-votes-card__title h5 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0.4;
+}
+
+/*------Стилизация кнопок иконок---------------------------------------------------------------------------------------*/
+.details-votes-page-result-votes-card__switch-table-gistogramma {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+.switch-table-gistogramma__gistogramma {
+    background: url("../../img/DetailsVotesPageResult_noactive_gistogram_icon.svg") no-repeat;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.switch-table-gistogramma__table {
+     background: url("../../img/DetailsVotesPageResult_noactive_table_icon.svg") no-repeat;
+     width: 48px;
+     height: 48px;
+    cursor: pointer;
+ }
+ .switch-table-gistogramma__gistogramma:hover {
+     background: url("../../img/DetailsVotesPageResult_active_gistogram_icon.svg") no-repeat;
+     width: 48px;
+     height: 48px;
+ }
+.switch-table-gistogramma__table:hover {
+    background: url("../../img/DetailsVotesPageResult_active_table_icon.svg") no-repeat;
+    width: 48px;
+    height: 48px;
+}
+/*------Всплывающая подсказка для кнопок иконок-----------------------------------------------------------------------*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+/* Текст подсказки */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 159px;
+    background: rgba(61, 72, 87, 0.9);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 4px 12px 4px 12px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
+    /* Расположите текст подсказки */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    /* Исчезают в подсказке */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+/* Подсказка стрелка */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Отображение текста подсказки при наведении курсора мыши на контейнер подсказки */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

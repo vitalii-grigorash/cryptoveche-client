@@ -11,7 +11,7 @@ const DetailsVotesPageReadQuestions = () => {
 
     return (
             <div className={'details-votes-page-read-questions__wrapper'}>
-                <VotesAndDetailsPageSwitchButtons/>
+                <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true} hiddenBulletinBtn={true} hiddenResultBtn={true}/>
                     <h1 className={'details-votes-page-read-questions__wrapper-title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>
