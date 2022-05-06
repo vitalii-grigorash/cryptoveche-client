@@ -1,0 +1,17 @@
+.card-question-graph-column__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 19px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: rgba(54, 59, 77, 0.9);
+}
+.card-question-graph-column__color-square {
+    width: 10px;
+    height: 10px;
+    background: #4569FF;
+    opacity: 0.5;
+}

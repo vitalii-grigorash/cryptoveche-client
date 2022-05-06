@@ -4,6 +4,8 @@ import table_icon from '../../img/DetailsVotesPageResult_noactive_table_icon.svg
 import gistogramma_icon from '../../img/DetailsVotesPageResult_noactive_gistogram_icon.svg'
 import DetailsVotesPageResultVotesCardQuestionTable
     from "../DetailsVotesPageResultVotesCardQuestionTable/DetailsVotesPageResultVotesCardQuestionTable";
+import DetailsVotesPageResultVotesCardQuestionGraph
+    from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraph";
 
 
 
@@ -27,6 +29,7 @@ const DetailsVotesPageResultVotesCardQuestion = () => {
 
             </div>
             <DetailsVotesPageResultVotesCardQuestionTable/>
+            <DetailsVotesPageResultVotesCardQuestionGraph/>
         </div>
     )
 }

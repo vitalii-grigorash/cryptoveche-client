@@ -6,7 +6,8 @@ const DetailsVotesPageResultVotesCardQuestionTable = () => {
     return (
 
         <div className={'details-votes-page-result-card-table__wrapper'}>
-            <table className={'table'}>
+            <table className={'details-votes-page-result-card-table__table'}>
+                <tbody>
                 <tr>
                     <th>Вариант ответа</th>
                     <th>Результат</th>
@@ -31,6 +32,7 @@ const DetailsVotesPageResultVotesCardQuestionTable = () => {
                     <td>Недействительные бюллетени</td>
                     <td>24</td>
                 </tr>
+                </tbody>
             </table>
         </div>
     )

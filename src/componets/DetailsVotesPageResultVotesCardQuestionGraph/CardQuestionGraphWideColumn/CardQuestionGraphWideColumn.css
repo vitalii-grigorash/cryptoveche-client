@@ -1,0 +1,11 @@
+.card-question-graph-wide-column__wrapper {
+   position: absolute;
+    top: 1px;
+}
+.card-question-graph-wide-column__columns {
+    rotate: 180deg;
+    opacity: 20%;
+    padding-top: 15px;
+    height: 400px;
+
+}
