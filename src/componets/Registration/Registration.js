@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './Registration.css';
 import logo from "../../img/Auth_logo_crypto_veche.svg";
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -10,7 +10,7 @@ import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
 import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
 import red_star_icon from '../../img/Registration_red_start_icon.svg';
 import RegistrationModal from "./RegistrationModal/RegistrationModal";
-import {useHistory, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const Registration = () => {

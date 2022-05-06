@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    padding-bottom: 112px;
 }
 /*-----Стилизация для основного контента------------------------------------------------------------------------------*/
 .details-votes-page-result-votes__main-content {

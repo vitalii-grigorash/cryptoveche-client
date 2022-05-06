@@ -16,6 +16,8 @@ const DetailsVotesPageResultVotes = () => {
                 <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true}/>
                 <h1 className={'details-votes-page-result-votes__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                 <DetailsVotesPageResultVotesCardQuestion/>
+                <DetailsVotesPageResultVotesCardQuestion/>
+                <DetailsVotesPageResultVotesCardQuestion/>
             </div>
         </div>
     )

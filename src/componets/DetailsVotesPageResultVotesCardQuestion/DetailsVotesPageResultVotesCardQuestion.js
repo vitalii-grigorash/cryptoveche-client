@@ -16,13 +16,13 @@ const DetailsVotesPageResultVotesCardQuestion = () => {
                 <h5>Необходимо выбрать ровно 1</h5>
             </div>
             <div className={'details-votes-page-result-votes-card__switch-table-gistogramma'}>
-                <div className="tooltip">
+                <div className={'tooltip'}>
                     <div className={'switch-table-gistogramma__gistogramma'}></div>
-                    <span className="tooltiptext">Показать графиком</span>
+                    <span className={'tooltiptext'}>Показать графиком</span>
                 </div>
-                <div className="tooltip">
+                <div className={'tooltip'}>
                     <div className={'switch-table-gistogramma__table'}></div>
-                    <span className="tooltiptext">Показать таблицей</span>
+                    <span className={'tooltiptext'}>Показать таблицей</span>
                 </div>
 
             </div>
