@@ -2,6 +2,7 @@ import React from "react";
 import './DetailsVotesPageResultVotesCardQuestionGraph.css';
 import CardQuestionGraphNameColumn from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumn";
 import CardQuestionGraphWideColumn from "./CardQuestionGraphWideColumn/CardQuestionGraphWideColumn";
+import CardQuestionGraphThinColumn from "./CardQuestionGraphThinColumn/CardQuestionGraphThinColumn";
 
 const DetailsVotesPageResultVotesCardQuestionGraph = () => {
 
@@ -21,10 +22,10 @@ const DetailsVotesPageResultVotesCardQuestionGraph = () => {
                                 <tr><td></td></tr>
                                     <td></td>
                         </table>
-                    <CardQuestionGraphWideColumn/>
-                    <CardQuestionGraphWideColumn/>
-                    <CardQuestionGraphWideColumn/>
-
+                    {/*<CardQuestionGraphWideColumn/>*/}
+                    <CardQuestionGraphThinColumn/>
+                    <CardQuestionGraphThinColumn/>
+                    <CardQuestionGraphThinColumn/>
                 </div>
                 <div className={'details-votes-page-result-card-graph__column-list'}>
                     <CardQuestionGraphNameColumn nameColumn={'Только через КриптоВече'}/>

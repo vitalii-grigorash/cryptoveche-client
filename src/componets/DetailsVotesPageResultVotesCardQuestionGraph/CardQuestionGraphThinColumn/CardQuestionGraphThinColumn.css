@@ -1,39 +1,33 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
-.card-question-graph-wide-column__wrapper {
+.card-question-graph-thin-column__wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
-    padding-right: 32px;
     height: 100%;
     justify-content: end;
+    width: 136px;
+    align-items: center;
 }
 /*------Стилизация колонки графика------------------------------------------------------------------------------------*/
-
-.card-question-graph-wide-column__columns {
-    width: 64px;
+.card-question-graph-thin-column__columns {
+    width: 60%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
 }
-.card-question-graph-wide-column__column-svg {
+.card-question-graph-thin-column__column-svg {
     rotate: 180deg;
-    opacity: 0.5;
+    opacity: 0.6;
     height: 280px;
+    margin-right: 4px;
 }
-
-
-/*.card-question-graph-wide-column__column {*/
-/*    width: 64px;*/
-/*    height: 257px;*/
-/*    background: #4569FF;*/
-/*    opacity: 0.5;*/
-/*}*/
 /*------Имя колонки---------------------------------------------------------------------------------------------------*/
-.card-question-graph-wide-column__name-column {
+.card-question-graph-thin-column__name-column {
     position: absolute;
     top: 101%;
     color: rgba(54, 59, 77, 0.6);
     font-size: 14px;
-    line-height: 28px;
+    line-height: 20px;
     font-weight: 400;
+    text-align: center;
+
 }
