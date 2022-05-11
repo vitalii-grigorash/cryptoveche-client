@@ -22,6 +22,8 @@ const DetailsVotesPageResultVotesCardQuestionGraph = () => {
                                     <td></td>
                         </table>
                     <CardQuestionGraphWideColumn/>
+                    <CardQuestionGraphWideColumn/>
+                    <CardQuestionGraphWideColumn/>
 
                 </div>
                 <div className={'details-votes-page-result-card-graph__column-list'}>

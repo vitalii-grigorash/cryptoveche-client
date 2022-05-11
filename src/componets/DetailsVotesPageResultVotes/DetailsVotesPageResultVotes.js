@@ -5,6 +5,8 @@ import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageResultVotesCardQuestion
     from "../DetailsVotesPageResultVotesCardQuestion/DetailsVotesPageResultVotesCardQuestion";
+import DetailsVotesPageResultVotesWaitingResults
+    from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 
 const DetailsVotesPageResultVotes = () => {
 
@@ -16,8 +18,7 @@ const DetailsVotesPageResultVotes = () => {
                 <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true}/>
                 <h1 className={'details-votes-page-result-votes__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                 <DetailsVotesPageResultVotesCardQuestion/>
-                <DetailsVotesPageResultVotesCardQuestion/>
-                <DetailsVotesPageResultVotesCardQuestion/>
+                {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
             </div>
         </div>
     )
