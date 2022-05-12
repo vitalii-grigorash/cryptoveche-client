@@ -20,7 +20,8 @@ const CardQuestionVerticalGraph = () => {
                 <tr><td></td></tr>
                 <td></td>
             </table>
-            <CardQuestionVerticalGraphThinColumn/>
+            <CardQuestionVerticalGraphWideColumn/>
+            {/*<CardQuestionVerticalGraphThinColumn/>*/}
         </div>
     )
 }

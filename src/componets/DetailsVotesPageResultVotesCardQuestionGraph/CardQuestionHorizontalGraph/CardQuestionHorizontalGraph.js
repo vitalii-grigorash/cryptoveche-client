@@ -1,7 +1,5 @@
 import React from "react";
 import './CardQuestionHorizontalGraph.css';
-import CardQuestionVerticalGraphThinColumn
-    from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
 import CardQuestionHorizontalGraphColumn from "../CardQuestionHorizontalGraphColumn/CardQuestionHorizontalGraphColumn";
 
 const CardQuestionHorizontalGraph = () => {
@@ -22,8 +20,7 @@ const CardQuestionHorizontalGraph = () => {
                     <tr><td></td></tr>
                     <td></td>
                 </table>
-              <CardQuestionHorizontalGraphColumn/>
-
+                <CardQuestionHorizontalGraphColumn/>
             </div>
 
     )

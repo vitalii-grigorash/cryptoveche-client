@@ -5,7 +5,7 @@ import row_icon_button from '../../../img/ActualBlockDiagramm_row.svg';
 
 const ActualBlockDiagramm = () => {
 
-     let sectorCircle = 0.55;
+     let sectorCircle = 0.3;
 
     function drawCircles(radius, sectorCircle, colorsCircle) {
 

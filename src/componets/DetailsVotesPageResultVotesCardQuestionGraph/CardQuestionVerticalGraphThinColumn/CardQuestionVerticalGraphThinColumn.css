@@ -14,12 +14,12 @@
     width: 136px;
     justify-content: center;
     gap: 4px;
+    height: 100%;
 }
 .card-question-vertical-graph-thin-column__column-svg {
     rotate: 180deg;
-    height: 280px;
+    height: 100%;
     width: 28px;
-
 }
 
 /*------Имя колонки---------------------------------------------------------------------------------------------------*/

@@ -14,6 +14,7 @@ import DetailsVotesPage from "./componets/DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageReadQuestions from "./componets/DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
 import CallVotingPage from "./componets/CallVotingPage/CallVotingPage";
 import DetailsVotesPageResultVotes from "./componets/DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
+import DetailsVotesPageMyBulletin from "./componets/DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
 
 
 
@@ -39,6 +40,7 @@ function App() {
                           <Route path={'votes-page-read-questions'} element={<DetailsVotesPageReadQuestions/>}/>
                           <Route path={'call-voting-page'} element={<CallVotingPage/>}/>
                           <Route path={'votes-page-details-result'} element={<DetailsVotesPageResultVotes/>}/>
+                          <Route path={'votes-page-details-my-bulletin'} element={<DetailsVotesPageMyBulletin/>}/>
                 </Route>
             </Routes>
   );
