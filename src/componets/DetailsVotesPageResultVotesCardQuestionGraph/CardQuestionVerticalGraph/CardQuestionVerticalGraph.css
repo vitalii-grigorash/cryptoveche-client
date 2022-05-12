@@ -1,0 +1,25 @@
+/*------Стилизация вертикальной сетки для графика--------------------------------------------------------------------*/
+.card-question-vertical-graph__vertical-grid {
+    width: 45%;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.vertical-grid__position-table {
+    position: absolute;
+    border-left: 1px solid rgba(54, 59, 77, 0.05);
+    border-bottom: 1px solid rgba(54, 59, 77, 0.05);
+    border-top: 1px solid rgba(54, 59, 77, 0.05);
+    max-height: 320px;
+    width: 568px;
+
+}
+
+.vertical-grid__position-table td {
+    border-bottom: 1px solid rgba(54, 59, 77, 0.05);
+    height: 32px;
+}
+.vertical-grid__position-table td:nth-child(10) {
+    border: none;
+}

@@ -7,7 +7,7 @@ const DetailsVotesPageResultVotesWaitingResults = () => {
     return (
 
         <div className={'details-votes-page-result-waiting-results__wrapper'}>
-            <img className={''} alt={'картинка'} src={waiting_result_img}/>
+            <img alt={'картинка'} src={waiting_result_img}/>
             <span>Результаты голосования пока что находятся в обработке. Пожалуйста, зайдите в этот раздел позднее.</span>
         </div>
     )

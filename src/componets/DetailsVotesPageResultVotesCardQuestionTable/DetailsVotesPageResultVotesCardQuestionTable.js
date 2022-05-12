@@ -1,11 +1,11 @@
 import React from "react";
 import './DetailsVotesPageResultVotesCardQuestionTable.css';
 
-const DetailsVotesPageResultVotesCardQuestionTable = () => {
+const DetailsVotesPageResultVotesCardQuestionTable = ({hiddenTable}) => {
 
     return (
 
-        <div className={'details-votes-page-result-card-table__wrapper'}>
+        <div className={'details-votes-page-result-card-table__wrapper'} hidden={hiddenTable}>
             <table className={'details-votes-page-result-card-table__table'}>
                 <tbody>
                 <tr>

@@ -47,7 +47,7 @@ const Header = () => {
                                </div>
                            </div>
                     </div>
-               </header>
+                </header>
                 <HeaderBurgerMenu active={burgerMenuActive} setActive={setBurgerMenuActive}/>
             </div>
     )

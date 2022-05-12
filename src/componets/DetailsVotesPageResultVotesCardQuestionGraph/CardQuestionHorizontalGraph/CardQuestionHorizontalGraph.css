@@ -1,0 +1,31 @@
+/*------Стилизация горизонтальной сетки для графика------------------------------------------------------------------*/
+.card-question-horizontal-graph__horizontal-grid {
+    width: 45%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: 95px;
+
+}
+.horizontal-grid__position-table {
+    position: absolute;
+    border-left: 1px solid rgba(54, 59, 77, 0.05);
+    border-bottom: 1px solid rgba(54, 59, 77, 0.05);
+    border-top: 1px solid rgba(54, 59, 77, 0.05);
+    height: 513px;
+    width: 376px;
+    rotate: -90deg;
+    top: -75px;
+    left: 74px;
+    object-fit: cover;
+
+}
+
+.horizontal-grid__position-table td {
+    border-bottom: 1px solid rgba(54, 59, 77, 0.05);
+    height: 50px;
+}
+.horizontal-grid__position-table td:nth-child(10) {
+    border: none;
+}
