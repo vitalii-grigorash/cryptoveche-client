@@ -9,16 +9,18 @@ const CardQuestionHorizontalGraph = () => {
 
             <div className={'card-question-horizontal-graph__horizontal-grid'}>
                 <table className={'horizontal-grid__position-table'}>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <tr><td></td></tr>
-                    <td></td>
+                   <tbody>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <td></td>
+                   </tbody>
                 </table>
                 <CardQuestionHorizontalGraphColumn/>
             </div>

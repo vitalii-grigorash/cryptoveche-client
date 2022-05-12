@@ -42,7 +42,7 @@ const Header = () => {
                                </div>
                                <a href={'/main'}><img alt={'settings__icon'} src={settings}/></a>
                                <div className={'general-block-search-settings-lk__iconclient'}>
-                                   <a href={'/main'}><img alt={'logo_client'} src={icon_client}/></a>
+                                   <Link to={'my-profile'}><img alt={'logo_client'} src={icon_client}/></Link>
                                    <span>Иванова А.А.</span>
                                </div>
                            </div>

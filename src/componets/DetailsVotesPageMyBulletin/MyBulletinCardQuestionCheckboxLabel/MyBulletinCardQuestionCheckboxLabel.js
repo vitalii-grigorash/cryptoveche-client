@@ -6,7 +6,7 @@ const MyBulletinCardQuestionCheckboxLabel = ({checkboxLabel, activeChecked, acti
     return (
          <div className={'my-bulletin-card-question-check__wrapper'}>
             <label className={'checkbox_container'}>
-                <input type="checkbox" value="yes" checked={activeChecked} disabled={activeDisable}/>{checkboxLabel}
+                <input type="checkbox" value="yes" defaultChecked={activeChecked} disabled={activeDisable}/>{checkboxLabel}
                 <span className={'checkmark'}/>
             </label>
          </div>

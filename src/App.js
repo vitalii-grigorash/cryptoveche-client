@@ -15,6 +15,7 @@ import DetailsVotesPageReadQuestions from "./componets/DetailsVotesPageReadQuest
 import CallVotingPage from "./componets/CallVotingPage/CallVotingPage";
 import DetailsVotesPageResultVotes from "./componets/DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import DetailsVotesPageMyBulletin from "./componets/DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
+import MyProfilePage from "./componets/ MyProfilePage/ MyProfilePage";
 
 
 
@@ -41,6 +42,7 @@ function App() {
                           <Route path={'call-voting-page'} element={<CallVotingPage/>}/>
                           <Route path={'votes-page-details-result'} element={<DetailsVotesPageResultVotes/>}/>
                           <Route path={'votes-page-details-my-bulletin'} element={<DetailsVotesPageMyBulletin/>}/>
+                          <Route path={'my-profile'} element={<MyProfilePage/>}/>
                 </Route>
             </Routes>
   );

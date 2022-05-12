@@ -18,7 +18,7 @@ const DetailsVotesPageMyBulletin = () => {
                     <MyBulletinCardQuestion/>
                     <MyBulletinCardQuestion/>
                     <MyBulletinCardQuestion/>
-                    
+                <button className={'details-votes-page-my-bulletin__revote-button'}>Переголосовать</button>
                 </div>
             </div>
     )
