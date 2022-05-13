@@ -8,12 +8,30 @@
 }
 .my-profile-page__main-content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
     grid-auto-flow: dense;
     column-gap: 16px;
     row-gap: 16px;
+    align-items: start;
 }
+.grid-item_1 {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+.grid-item_2 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+.grid-item_3 {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+.grid-item_4 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
 
 /*-----Cтилизация кнопочки---------------------------------------------------------------------------------------------*/
 .my-profile-page__save-change-button {
@@ -26,4 +44,5 @@
     line-height: 124%;
     color: rgba(54, 59, 77, 0.35);
     cursor: pointer;
+    height: 48px;
 }
