@@ -4,7 +4,7 @@ import './CardQuestionHorizontalGraphColumn.css';
 
 const CardQuestionHorizontalGraphColumn = () => {
 
-    let widthRectOneColumn = 384;
+    let widthRectOneColumn = 385;
     let widthRectTwoColumn = 96;
 
     function movingTextOneColumn () {
