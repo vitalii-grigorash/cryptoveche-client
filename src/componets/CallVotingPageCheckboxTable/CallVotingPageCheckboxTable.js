@@ -14,13 +14,12 @@ const CallVotingPageCheckboxTable = () => {
                 <CallVotingPageCheckboxTableVariantAnswer variantName={'А вот и второй'}/>
                 <CallVotingPageCheckboxTableVariantAnswer variantName={'Некий третий варик'}/>
                 <CallVotingPageCheckboxTableVariantAnswer variantName={'Довольно длинный четвертый'}/>
-
-
             </div>
             <div className={'call-voting-page-check-table__columns-checkbox'}>
                 <CallVotingPageCheckboxColumns nameColumns={'Против'}/>
                 <CallVotingPageCheckboxColumns nameColumns={'Воздержаться'}/>
                 <CallVotingPageCheckboxColumns nameColumns={'За'}/>
+
 
             </div>
         </div>

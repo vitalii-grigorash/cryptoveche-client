@@ -13,7 +13,6 @@ const CallVotingPageCheckboxColumns = ({nameColumns}) => {
                 <CallVotingPageCheckboxRow/>
                 <CallVotingPageCheckboxRow/>
                 <CallVotingPageCheckboxRow/>
-
             </div>
         </div>
     )

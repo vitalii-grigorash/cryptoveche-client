@@ -16,10 +16,10 @@ const CallVotingPageQuestionCard = ({titleName}) => {
                         <span className={'call-voting-page-question-card__materials'}>Материалы вопроса<select><option></option></select></span>
                     </div>
                     <div className={'call-voting-page-question-card__main-content'}>
-                        {/*<CallVotingPageCheckboxRow labelCheckbox={'Да'}/>*/}
-                        {/*<CallVotingPageCheckboxRow labelCheckbox={'Нет'}/>*/}
-                        {/*<CallVotingPageCheckboxRow labelCheckbox={'Дайте подумать'}/>*/}
-                       <CallVotingPageCheckboxTable/>
+                        <CallVotingPageCheckboxRow labelCheckbox={'Да'}/>
+                        <CallVotingPageCheckboxRow labelCheckbox={'Нет'}/>
+                        <CallVotingPageCheckboxRow labelCheckbox={'Дайте подумать'}/>
+                       {/*<CallVotingPageCheckboxTable/>*/}
                     </div>
                     <CallVotingPageVoteButton/>
             </div>

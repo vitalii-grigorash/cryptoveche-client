@@ -1,3 +1,4 @@
+/*-----Основной контейнер--------------------------------------------------------------------------------------------*/
 .call-voting-page-check-columns__wrapper {
    display: flex;
     flex-direction: column;
@@ -5,6 +6,7 @@
     justify-content: center;
     min-height: 290px;
 }
+/*-----Cтилизация формы-----------------------------------------------------------------------------------------------*/
 .call-voting-page-check-columns__wrapper span {
     font-family: Inter;
     color: rgba(54, 59, 77, 0.9);

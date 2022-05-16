@@ -13,16 +13,16 @@ const MyProfilePage = () => {
             <div className={'my-profile-page__wrapper'}>
                 <TitleVotesDetailsCallVotingProfile firstLetter={'Главная'} secondLetter={'Мой профиль'} titleName={'Мой профиль'}/>
                    <div className={'my-profile-page__main-content'}>
-                       <div className={'grid-item_1'}>
+                       <div className={'main-content__grid-item_1'}>
                             <MyProfilePagePersonalData/>
                        </div>
-                       <div className={'grid-item_2'}>
+                       <div className={'main-content__grid-item_2'}>
                              <MyProfilePageAdditionalSettings/>
                        </div>
-                       <div className={'grid-item_3'}>
+                       <div className={'main-content__grid-item_3'}>
                            <CalendarVotes/>
                        </div>
-                       <div className={'grid-item_4'}>
+                       <div className={'main-content__grid-item_4'}>
                            <MyProfilePageSetPassword/>
                        </div>
                    </div>

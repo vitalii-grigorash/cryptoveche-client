@@ -15,24 +15,23 @@
     row-gap: 16px;
     align-items: start;
 }
-.grid-item_1 {
+.main-content__grid-item_1 {
     grid-column: span 1;
     grid-row: span 2;
 }
-.grid-item_2 {
+.main-content__grid-item_2 {
     grid-column: span 1;
     grid-row: span 1;
 }
-.grid-item_3 {
+.main-content__grid-item_3 {
     grid-column: span 1;
     grid-row: span 2;
+    max-height: 664px;
 }
-.grid-item_4 {
+.main-content__grid-item_4 {
     grid-column: span 1;
     grid-row: span 1;
 }
-
-
 /*-----Cтилизация кнопочки---------------------------------------------------------------------------------------------*/
 .my-profile-page__save-change-button {
     max-width: 224px;

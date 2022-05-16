@@ -10,6 +10,7 @@ import VotesPagePaginationTableSearch from "../VotesPagePaginationTableSearch/Vo
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
+import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 
 
 
@@ -26,6 +27,7 @@ const VotesPage = () => {
                     firstLetter={'Главная'}
                     secondLetter={'Голосования'}
                     titleName={'Голосования'}/>
+                <img className={'votes-page-block__qr-cod'} alt={'qr-код'} src={qr_cod_icon}/>
                 <div className={'votes-page-block__navigation-menu'}>
                     <div className={'navigation-menu__select-buttons'}>
                             <button type={'button'} className={'select-buttons__filters-button'} onClick={() => setFiltersModalActive(true)}><img alt={'иконка фильтры'} src={votes_page_filters_icon}/>Фильтры</button>

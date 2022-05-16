@@ -1,20 +1,58 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .title-for-votes-call-profile__title {
     font-size: 32px;
-    font-family: Golos;
+    font-family: Inter;
     line-height: 40px;
     font-weight: 600;
     color: rgba(54, 59, 77, 0.9);
-
 }
+/*------Контейнер для div c инф о странице и стрелкой-----------------------------------------------------------------*/
 .title-for-votes-call-profile__page-info {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     color: rgba(54, 59, 77, 0.9);
+    font-family: Inter;
+    gap: 16px;
+    padding-bottom: 20px;
+}
+.page-info__info-and-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
     opacity: 0.4;
-    font-family: Golos;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    gap: 16px;
-    padding-bottom: 20px;
+}
+.page-info__link-back-row {
+    display: none;
+}
+.page-info__link-back-row img {
+    padding-top: 4px;
+}
+
+/*------Адаптивная версия(420px)---------------------------------------------------------------------------------------*/
+@media (max-width: 420px) {
+    .title-for-votes-call-profile__title {
+         font-size: 26px;
+         font-weight: 500;
+         line-height: 108%;
+
+    }
+    .page-info__link-back-row {
+        display: flex;
+        flex-direction: row;
+        gap: 11px;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 121%;
+        color:  rgba(54, 59, 77, 0.4)
+    }
+    .page-info__info-and-row {
+        display: none;
+    }
+    .title-for-votes-call-profile__page-info {
+        padding-bottom: 17px;
+    }
 }

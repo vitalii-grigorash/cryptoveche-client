@@ -44,4 +44,11 @@
     gap: 12px;
     opacity: 60%;
 }
+/*------Адаптивная версия(420px)---------------------------------------------------------------------------------------*/
+@media (max-width: 820px) {
+    .navigation-menu__pagination-search-block {
+       display: none;
+    }
+
+}
 

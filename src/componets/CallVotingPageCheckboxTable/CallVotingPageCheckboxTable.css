@@ -1,16 +1,20 @@
+/*-----Основной контейнер----------------------------------------------------------------------------------------------*/
 .call-voting-page-check-table__wrapper {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
     gap: 50px;
 }
+/*-----Стиизация div  вариантами---------------------------------------------------------------------------------------*/
 .call-voting-page-check-table__name-variants {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    padding-top: 72px;
 }
+/*-----Стиизация div с чекбоксами--------------------------------------------------------------------------------------*/
 .call-voting-page-check-table__columns-checkbox {
    display: flex;
     flex-direction: row;

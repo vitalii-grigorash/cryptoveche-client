@@ -9,6 +9,7 @@
     font-family: Inter;
     max-height: 304px;
     background: #FFFFFF;
+    max-width: 656px;
 }
 .my-profile-page-add-settings__wrapper h3{
     font-size: 24px;
@@ -22,6 +23,7 @@
     gap: 16px;
     flex-direction: column;
     color: rgba(54, 59, 77, 0.9);
+    width: 100%;
 }
 .my-profile-page-add-settings__form select {
     padding: 12px 0 12px 24px;
@@ -32,6 +34,7 @@
     font-size: 18px;
     font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
+    width: 100%;
 }
 .my-profile-page-add-settings__form option {
 

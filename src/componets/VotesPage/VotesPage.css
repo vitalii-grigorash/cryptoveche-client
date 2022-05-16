@@ -1,7 +1,10 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .votes-page-block__wrapper {
     padding-bottom: 68px;
-
+    position: relative;
+}
+.votes-page-block__qr-cod {
+    display: none;
 }
 /*------Cтилизация для общего блока с кнопками фильтры, сортировка и пагинация----------------------------------------*/
 .votes-page-block__navigation-menu {
@@ -10,7 +13,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 0 0 0;
-
 }
 
 /*------Cтилизация блока c кнопками фильтры и сортировка--------------------------------------------------------------*/
@@ -59,9 +61,7 @@
     border-radius: 16px;
     padding: 32px 32px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
-
 }
-
 /*-----Стилизация кнопки ПОКАЗАТЬ ЕЩЁ---------------------------------------------------------------------------------*/
 .votes-page-block__main-content-show-more-button {
     color: #0084FE;
@@ -72,5 +72,26 @@
     width: 100%;
     padding-top: 24px;
     cursor: pointer;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 815px) {
+    .votes-page-block__main-content {
+        padding: 16px 16px;
+    }
+}
+@media (max-width: 420px) {
+    .votes-page-block__main-content-show-more-button {
+        display: none;
+    }
+}
+@media (max-width: 380px) {
+    .votes-page-block__qr-cod {
+        display: block;
+        position: absolute;
+        top: 29px;
+        right: 0;
+        cursor: pointer;
+    }
+
 }
 
