@@ -1,0 +1,10 @@
+._active-vote-bnt {
+    display: inline-flex;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 650px) {
+    ._mobile-active-vote-bnt {
+        display: none;
+
+    }
+}

@@ -44,8 +44,14 @@
     gap: 12px;
     opacity: 60%;
 }
-/*------Адаптивная версия(420px)---------------------------------------------------------------------------------------*/
-@media (max-width: 820px) {
+/*------Адаптивная версия--------------------------------------------------------------------------------------------*/
+@media (max-width: 1160px) {
+    .navigation-menu__pagination-search-block {
+        font-size: 12px;
+    }
+
+}
+@media (max-width: 900px) {
     .navigation-menu__pagination-search-block {
        display: none;
     }

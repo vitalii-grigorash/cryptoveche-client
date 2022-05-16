@@ -82,8 +82,8 @@
     .footer__items {
         display: flex;
         flex-direction: column;
-        gap: 35px;
-        padding: 40px 15px 60px 15px;
+        gap: 17px;
+        padding: 21px 15px 135px 15px;
     }
     .items__block-map-site, .items__block-settings, .items__block-support {
         border-bottom: 1px solid rgba(54, 59, 77, 0.4);
@@ -92,12 +92,13 @@
     }
 
     .items__block-logo span {
-        display: flex;
-        flex-direction: column;
         position: absolute;
-        top: 620px;
+        text-align: left;
+        top: 497px;
         bottom: 0;
-        text-align: center;
+        max-width: 202px;
+        line-height: 22px;
+        padding-bottom: 16px;
     }
 
     .items__block-map-site h3, .items__block-settings h3, .items__block-support h3 {

@@ -1,0 +1,15 @@
+._mobile-active-vote-bnt {
+    display: none;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 650px) {
+    ._mobile-active-vote-bnt {
+        display: inherit;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 114%;
+    }
+    ._active-vote-bnt {
+        display: none;
+    }
+}

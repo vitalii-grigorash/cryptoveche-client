@@ -8,9 +8,6 @@
 }
 /*------Контейнер для div c инф о странице и стрелкой-----------------------------------------------------------------*/
 .title-for-votes-call-profile__page-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     color: rgba(54, 59, 77, 0.9);
     font-family: Inter;
     gap: 16px;
@@ -38,7 +35,6 @@
          font-size: 26px;
          font-weight: 500;
          line-height: 108%;
-
     }
     .page-info__link-back-row {
         display: flex;

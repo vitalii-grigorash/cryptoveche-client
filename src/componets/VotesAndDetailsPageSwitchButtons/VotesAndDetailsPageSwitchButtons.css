@@ -1,20 +1,42 @@
 /*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
 .votes-and-details-page-switch-buttons__wrapper {
     display: flex;
-    font-family: Golos;
+    font-family: Inter;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 32px;
     color: rgba(54, 59, 77, 0.9);
     border-bottom: 1px #EEEEEE solid;
-
 }
 .votes-and-details-page-switch-buttons__button {
     padding-bottom: 8px;
     border-bottom: 2px #FFFFFF solid;
     margin-right: 48px;
+    cursor: pointer;
+
 }
 .votes-and-details-page-switch-buttons__button:hover {
     border-bottom: 2px #0084FE solid;
-    cursor: pointer;
+
 }
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 650px) {
+    .votes-and-details-page-switch-buttons__wrapper {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 114%;
+    }
+}
+@media (max-width: 420px) {
+    .votes-and-details-page-switch-buttons__wrapper {
+        border-bottom: 2px #FFFFFF solid;
+    }
+    .votes-and-details-page-switch-buttons__button {
+        margin-right: 24px;
+    }
+    .votes-and-details-page-switch-buttons__button:hover {
+        border-bottom: 2px #0084FE solid;
+        cursor: pointer;
+    }
+}
+

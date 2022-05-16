@@ -28,3 +28,10 @@
     display: flex;
     flex-direction: row;
 }
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+
+@media (max-width: 420px) {
+    .votes-page-active-votes__wrapper {
+        padding: 8px 0 24px 0;
+    }
+}
