@@ -30,6 +30,15 @@
 }
 
 /*------Адаптивная версия(420px)---------------------------------------------------------------------------------------*/
+@media (max-width: 660px) {
+    .title-for-votes-call-profile__title {
+        font-size: 28px;
+    }
+    .title-for-votes-call-profile__page-info {
+        padding-bottom: 17px;
+    }
+}
+
 @media (max-width: 420px) {
     .title-for-votes-call-profile__title {
          font-size: 26px;

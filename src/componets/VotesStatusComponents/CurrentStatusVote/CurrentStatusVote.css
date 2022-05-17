@@ -7,6 +7,8 @@
     font-size: 12px;
     font-family: Inter;
     border-right: 1px rgba(54, 59, 77, 0.2) solid;
+    justify-content: center;
+
 }
 .current-status__registration-in-progress {
     display: flex;
@@ -22,7 +24,6 @@
     max-height: 24px;
     max-width: 90px;
     opacity: 50%;
-
 }
 
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
@@ -87,5 +88,7 @@
         top: 20px;
         right: 27px;
     }
-
+    .status-block__current-status {
+        flex-direction: row;
+    }
 }

@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*padding: 10px 24px 0 24px;*/
     padding: 8px 24px 3px 24px;
     gap: 12px;
     font-size: 14px;
@@ -15,7 +14,7 @@
     display: flex;
     flex-direction: row;
     gap: 8px;
-    /*padding-bottom: 10px;*/
+
 }
 .status-block__materials-vote select {
     background-color: #FFFFFF;
@@ -24,73 +23,34 @@
     cursor: pointer;
 }
 
-.materials-vote__red {
+.materials-vote__color-status {
     color: #FF4970;
+
 }
 .status-block__materials-vote span img {
-    padding: 0 5px 0 0;
+    padding-right: 5px;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 830px) {
-    .my-votes-block-wrapper {
-        width: 440px;
-        padding: 16px 16px 16px 16px;
-    }
-    .my-votes-block-wrapper h2 {
-        font-size: 21px;
-        padding-bottom: 8px;
-    }
-    .my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
-        font-size: 14px;
-    }
-    .my-votes-block__reg-form h5, .my-votes-block__votes-form h5 {
-        font-size: 13px;
-    }
-    .status-block__current-status, .vote-form__status-block-current-status {
-        gap: 4px;
-        padding-right: 5px;
-    }
-    .current-status__registration-in-progress,.current-status__secret, .vote-form__status-block__current-status__registration-in-progress, .vote-form__status-block-current-status__open  {
-        padding: 5px 10px 5px 20px;
-        font-size: 10px;
-    }
-    .status-block__start-vote, .vote-form__status-block-start-vote, .status-block__materials-vote, .vote-form__status-block__checkmark-reg {
-        padding: 0 10px 0 10px;
-        font-size: 10px;
-    }
-    .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
-        font-size: 10px;
-    }
-    .reg-form__button-reg, .button-vote {
-        width: 150px;
-        height: 40px;
-        font-size: 12px;
-    }
-    .cancel-reg {
-        width: 200px;
-        height: 40px;
-        font-size: 12px;
-    }
-    .my-votes__link-arrow span {
-        font-size: 14px;
+@media (max-width: 1012px) {
+    .status-block__materials-vote {
+        white-space: nowrap;
+        padding: 12px 0 4px 24px;
     }
 }
-/*------Адаптивная версия(378px)--------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
-    .my-votes-block-wrapper {
-        width: 343px;
-        height: 61px;
+@media (max-width: 890px) {
+    .status-block__materials-vote {
+        white-space: nowrap;
+        font-size: 10px;
+        padding: 12px 0 15px 10px;
     }
-    .my-votes-block__reg-form, .my-votes-block__votes-form {
+    .materials-vote__select {
+        display: block;
+    }
+}
+@media (max-width: 600px) {
+    .materials-vote__select {
         display: none;
     }
-    .my-votes__link-arrow span {
-
-    }
-    .my-votes__link-arrow img {
-        position: absolute;
-        top: 20px;
-        right: 27px;
-    }
-
 }
+
+

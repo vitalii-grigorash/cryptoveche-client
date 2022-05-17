@@ -78,12 +78,12 @@
 
     }
 }
-@media (max-width: 470px) {
+@media (max-width: 615px) {
     .footer__items {
         display: flex;
         flex-direction: column;
         gap: 17px;
-        padding: 21px 15px 135px 15px;
+        padding: 21px 15px 15px 15px;
     }
     .items__block-map-site, .items__block-settings, .items__block-support {
         border-bottom: 1px solid rgba(54, 59, 77, 0.4);

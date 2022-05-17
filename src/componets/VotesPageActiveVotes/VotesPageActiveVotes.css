@@ -24,14 +24,22 @@
     border-left: 1px rgba(54, 59, 77, 0.2) solid;
 
 }
-.status-and-start-reg-start-vote {
+ .status-and-start-reg-start-vote {
     display: flex;
     flex-direction: row;
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 1240px) {
+    .active-votes__status-and-start-reg-start-vote {
+        display: block;
+    }
+    .status-and-start-reg-start-vote {
+        padding-bottom: 20px;
+    }
+}
 
 @media (max-width: 420px) {
     .votes-page-active-votes__wrapper {
-        padding: 8px 0 24px 0;
+        padding: 8px 0 16px 0;
     }
 }

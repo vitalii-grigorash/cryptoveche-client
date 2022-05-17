@@ -11,3 +11,11 @@
 .status-block__start-reg h4 {
     opacity: 50%;
 }
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 890px) {
+    .status-block__start-reg {
+        padding: 0 10px 0 10px;
+        font-size: 10px;
+    }
+
+}
