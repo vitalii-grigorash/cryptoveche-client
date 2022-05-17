@@ -1,6 +1,14 @@
 .start-reg__data {
     display: flex;
+    font-family: Inter;
     align-items: center;
     gap: 9px;
     color: #363B4D;
+}
+@media (max-width: 420px) {
+    .start-reg__data {
+        font-size: 13px;
+        gap: 6px;
+    }
+
 }

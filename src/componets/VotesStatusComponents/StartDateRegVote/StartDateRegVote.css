@@ -17,5 +17,14 @@
         padding: 0 10px 0 10px;
         font-size: 10px;
     }
+}
+@media (max-width: 420px) {
+    .status-block__start-reg {
+        padding: 0 8px 0 0;
+    }
+    .status-block__start-reg h4 {
+        font-size: 14px;
+        white-space: nowrap;
+    }
 
 }

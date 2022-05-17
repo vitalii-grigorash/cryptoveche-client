@@ -1,11 +1,11 @@
 /*------Основной стиль для модального окна----------------------------------------------------------------------------*/
 .filters-modal {
-    width: 60vw;
-    height: 544px;
+    position: absolute;
+    max-width: 1104px;
+    max-height: 544px;
     background-color: #FFFFFF;
-    position: fixed;
-    top: 290px;
-    left: 290px;
+    top: 175px;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,6 +15,7 @@
     transition: 0.5s;
     box-shadow: 0 4px 8px 0 rgba(54, 59, 77, 0.1);
     transform: translate(-100%);
+
 }
 .filters-modal.active {
     opacity: 1;

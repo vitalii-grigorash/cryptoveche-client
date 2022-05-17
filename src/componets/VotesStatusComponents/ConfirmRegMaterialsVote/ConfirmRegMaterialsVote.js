@@ -6,8 +6,10 @@ const ConfirmRegMaterialsVote = ({confirmStatus}) => {
 
     return (
             <div className={'status-block__materials-vote'}>
-                <span className={'materials-vote__color-status'}><img alt={'иконка статуса регистрации'} src={icon_info}/>{confirmStatus}</span>
-                <div className={'materials-vote__select'}><span>Материалы голосования</span><select><option></option></select></div>
+                <div className={'materials-vote__status-icon'}>
+                    <span><img className={'status-icon__color-icon'} alt={'иконка статуса регистрации'} src={icon_info}/></span><span className={'status-icon__color-status'}>{confirmStatus}</span>
+                </div>
+                    <div className={'materials-vote__select'}><span>Материалы голосования</span><select><option></option></select></div>
             </div>
     )
 

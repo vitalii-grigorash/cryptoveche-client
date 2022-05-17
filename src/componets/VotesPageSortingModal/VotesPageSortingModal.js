@@ -55,6 +55,10 @@ const VotesPageSortingModal = ({active, setActive}) => {
                             <img alt={'иконка сортировки на увеличение'} src={sorting_modal_increase_bnt}/>
                         </div>
                     </div>
+                    <div className={'sorting-modal__mobile-buttons'}>
+                        <button type={"button"} className={'sorting-modal__mobile-buttons-default-filter'}>Сбросить фильтры</button>
+                        <button type={"button"} className={'sorting-modal__mobile-buttons-apply'}>Применить</button>
+                    </div>
                 </div>
             </div>
     )

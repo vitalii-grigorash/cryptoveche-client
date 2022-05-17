@@ -63,20 +63,6 @@
     cursor: pointer;
     border-radius: 4px;
 }
-/*------Стилизация статуса регистрации и голосования -------------------------------------------------------------------*/
-/*.vote-form__status-block__checkmark-reg {*/
-/*    display: flex;*/
-/*    padding: 0 24px 0 24px;*/
-/*    font-size: 14px;*/
-/*    border-left: 1px rgba(54, 59, 77, 0.4) solid;*/
-/*    font-family: Inter;*/
-/*}*/
-/*.vote-form__status-block__checkmark-reg img {*/
-/*    padding: 0 5px 0 0;*/
-/*}*/
-/*.vote-form__status-block__checkmark-reg-green {*/
-/*    color: #4ED4A9;*/
-/*}*/
 /*------Блок с кнопкой проголосовать----------------------------------------------------------------------------------*/
 .votes-form__button-vote-cancel-reg {
         display: flex;
@@ -115,6 +101,7 @@
     color: #0075FF;
     gap: 5px;
     font-family: Inter;
+
 }
 .my-votes__link-arrow span {
     font-size: 16px;
@@ -167,11 +154,11 @@
         width: 343px;
         height: 61px;
     }
-    .my-votes-block__reg-form, .my-votes-block__votes-form {
-       display: none;
-    }
     .my-votes__link-arrow span {
-
+        display: block;
+    }
+    .my-votes-block__reg-form, .my-votes-block__votes-form {
+        display: none;
     }
     .my-votes__link-arrow img {
         position: absolute;

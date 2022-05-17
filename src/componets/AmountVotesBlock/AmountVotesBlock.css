@@ -103,19 +103,6 @@
         width: 343px;
         height: 271px;
     }
-
-    .my-votes-block__reg-form, .my-votes-block__votes-form {
-        display: none;
-    }
-    .my-votes__link-arrow span {
-        display: none;
-
-    }
-    .my-votes__link-arrow img {
-        position: absolute;
-        top: 20px;
-        right: 27px;
-    }
     .total-amount {
         gap: 4px;
     }

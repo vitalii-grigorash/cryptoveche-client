@@ -17,35 +17,23 @@
         padding: 0 10px 0 10px;
         font-size: 10px;
     }
-
 }
-
 @media (max-width: 830px) {
-
-    .my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
-        font-size: 14px;
-    }
-
-    .my-votes-block__reg-form h5, .my-votes-block__votes-form h5 {
-        font-size: 13px;
-    }
-
-    .status-block__current-status, .vote-form__status-block-current-status {
-        gap: 4px;
-        padding-right: 5px;
-    }
-
-    .current-status__registration-in-progress, .current-status__secret, .vote-form__status-block__current-status__registration-in-progress, .vote-form__status-block-current-status__open {
-        padding: 5px 10px 5px 20px;
-        font-size: 10px;
-    }
-
     .status-block__start-vote {
         padding: 0 10px 0 10px;
         font-size: 10px;
     }
-
     .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
         font-size: 10px;
+    }
+}
+@media (max-width: 420px) {
+    .status-block__start-vote {
+        padding: 0 10px 0 8px;
+        border-left: 1px rgba(54, 59, 77, 0.2) solid;
+    }
+    .status-block__start-vote h4 {
+        font-size: 14px;
+        white-space: nowrap;
     }
 }

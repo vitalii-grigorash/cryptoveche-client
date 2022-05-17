@@ -18,8 +18,10 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
                 <div className={'active-votes__status-and-start-reg-start-vote'}>
                  <div className={'status-and-start-reg-start-vote'}>
                      <CurrentStatusVote regStatus={regStatus} voteStatus={voteStatus}/>
-                    <StartDateRegVote dateTimeDate={dateTimeDate} dateTimeWatch={dateTimeWatch}/>
-                    <StartDateVote dateTimeDate={dateTimeDate1} dateTimeWatch={dateTimeWatch1}/>
+                     <div className={'status-and-start-reg-start-vote__reg-vote-date'}>
+                        <StartDateRegVote dateTimeDate={dateTimeDate} dateTimeWatch={dateTimeWatch}/>
+                        <StartDateVote dateTimeDate={dateTimeDate1} dateTimeWatch={dateTimeWatch1}/>
+                     </div>
                      <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={confirmStatus}/></div>
                  </div>
                     <VoteButtonBlock/>

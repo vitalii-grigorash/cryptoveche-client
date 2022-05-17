@@ -117,6 +117,9 @@
 }
 /*------Адаптивная версия(782px)--------------------------------------------------------------------------------------*/
 @media (max-width: 782px) {
+    .header__logotype-block {
+        gap: 40px;
+    }
     .general-block-search-settings-lk__search  span {
         display: none;
     }

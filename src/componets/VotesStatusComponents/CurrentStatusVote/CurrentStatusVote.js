@@ -10,7 +10,7 @@ const CurrentStatusVote = ({regStatus, voteStatus}) => {
                 <div className={'current-status__registration-in-progress'}>
                     <ul><li>{regStatus}</li></ul>
                 </div>
-                <div className={'current-status__secret'}>
+                <div className={'current-status__types-vote'}>
                     <ul><li>{voteStatus}</li></ul></div>
             </div>
 
