@@ -13,7 +13,7 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
 
             <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>
-                 <VotesPageTitleTimeZone titleVoteData={titleVoteData}/>
+                 <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
                 </span>
                 <div className={'active-votes__status-and-start-reg-start-vote'}>
                  <div className={'status-and-start-reg-start-vote'}>
@@ -22,7 +22,8 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
                         <StartDateRegVote dateTimeDate={dateTimeDate} dateTimeWatch={dateTimeWatch}/>
                         <StartDateVote dateTimeDate={dateTimeDate1} dateTimeWatch={dateTimeWatch1}/>
                      </div>
-                     <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={confirmStatus}/></div>
+                     <div className={'status-and-start-reg-start-vote__add-border-left'}>
+                         <ConfirmRegMaterialsVote confirmStatus={confirmStatus}/></div>
                  </div>
                     <VoteButtonBlock/>
                 </div>

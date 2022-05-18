@@ -28,7 +28,7 @@ const DetailsVotesPageGeneralInformation = () => {
                 <div className={'details-votes-page-general-info__main-content'}>
                     <div className={'details-votes-page-general-info__main-content-current-status-vote'}>
                         <span className={'main-content-current-status-vote__title'}>
-                            <VotesPageTitleTimeZone titleVoteData={generalInfoTitle}/>
+                            <VotesPageTitleTimeZone titleVoteData={generalInfoTitle} nameTimezone={'Часовой пояс: UTC+3'}/>
                         </span>
                         <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
                             <CurrentStatusVote regStatus={generalInfoRegStatus} voteStatus={generalInfoVoteStatus}/>

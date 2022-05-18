@@ -12,3 +12,9 @@
     cursor: pointer;
     font-weight: 500;
 }
+/*---------Адаптивная версия------------------------------------------------------------------------------------------*/
+@media (max-width: 600px) {
+    .details-votes-page-general-info__reg-button {
+        max-width: 100%;
+    }
+}

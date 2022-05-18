@@ -2,7 +2,6 @@
 .details-votes-page-status-possible-revote-cancelreg__wrapper {
     display: flex;
     flex-direction: column;
-
     gap: 8px;
     border-left: 1px solid rgba(54, 59, 77, 0.2);
     padding-left: 24px;
@@ -20,6 +19,24 @@
 }
 .details-votes-page-status-possible-revote-cancelreg__possible-revote span {
     color: black;
+}
+@media (max-width: 890px) {
+    .details-votes-page-status-possible-revote-cancelreg__wrapper {
+        justify-content: center;
+        padding-left: 12px;
+    }
+    .details-votes-page-status-possible-revote-cancelreg__possible-revote {
+        font-size: 10px;
+    }
+}
 
+@media (max-width: 600px) {
+    .details-votes-page-status-possible-revote-cancelreg__wrapper {
+       padding: 0;
+        border: none;
+    }
+    .details-votes-page-status-possible-revote-cancelreg__possible-revote {
+        font-size: 14px;
+    }
 }
 

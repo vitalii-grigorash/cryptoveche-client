@@ -2,6 +2,7 @@
 .active-votes__title {
     display: flex;
     flex-direction: column;
+    gap: 3px;
 }
 .active-votes__title h2 {
     font-family: Inter;
@@ -16,7 +17,7 @@
     font-weight: 400;
     color: rgba(54, 59, 77, 0.6);
     line-height: 24px;
-    padding-bottom: 16px;
+    padding-bottom: 12px;
 }
 /*---------Cтилизация контейнера--------------------------------------------------------------------------------------*/
 .active-votes__title-timezone {
@@ -36,10 +37,16 @@
         font-weight: 500;
         padding-bottom: 8px;
     }
-    .active-votes__title h3 {
-        padding-bottom: 0;
-    }
-    .active-votes__title-timezone {
+
+}
+@media (max-width: 600px) {
+    .title-timezone__time-icon {
         display: none;
+    }
+    .active-votes__title h3 {
+        padding-bottom: 4px;
+    }
+    .active-votes__title {
+        gap: 4px;
     }
 }

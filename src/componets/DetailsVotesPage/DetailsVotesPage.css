@@ -15,7 +15,11 @@
     gap: 32px;
 }
 @media (max-width: 670px) {
+    .details-votes-page__main-content {
+        gap: 16px;
+    }
     .details-votes-page__wrapper {
         gap: 16px;
+        padding-bottom: 16px;
     }
 }

@@ -22,7 +22,7 @@ const DetailsVotesPageListStartRegStartVote = () => {
                             <span><DataTime dateTimeDate={'05.01.2022'} dateTimeWatch={'18.00'}/></span>
                             <span><DataTime dateTimeDate={'05.01.2022'} dateTimeWatch={'18.00'}/></span>
                         </div>
-                        <div className={'main-content__datetime-status-reg-vote'}>
+                        <div className={'main-content__datetime-status-reg-vote _hidden-datetime-status-reg-vote'}>
                             <span className={'datetime-status-reg-vote__status-color-item _days-colors-block-red'}>2 дня назад</span>
                             <span className={'datetime-status-reg-vote__status-color-item _days-colors-block-red'}>сегодня</span>
                             <span className={'datetime-status-reg-vote__status-color-item _days-colors-block-green'}>сегодня</span>
