@@ -16,8 +16,9 @@ const VotesPageFiltersModal = ({active, setActive}) => {
                     <div className={'filters-modal__content-checkboxes-status-vote'}>
                         <div className={'checkbox-status-vote'}>
                             <label className={'checkbox_container'}>
-                                <input type="checkbox" value="yes"/>Идет голосование
+                                <input type="checkbox" value="yes"/>
                                 <span className={'checkmark _checkbox-border-color'}/>
+                                <p>Идет голосование</p>
                             </label>
                         </div>
                         <div className={'checkbox-status-vote'}>

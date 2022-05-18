@@ -14,17 +14,17 @@ const DetailsVotesPage = () => {
 
 
     return (
-        <div className={'details-votes-page__wrapper'}>
-            <TitleVotesDetailsCallVotingProfile
-                firstLetter={'КлиентКриптовече'}
-                secondLetter={'Детали голосования'}
-                titleName={'Детали голосования'}/>
-                <div className={'details-votes-page__main-content'}>
-                    <DetailsVotesPageDaysEndRegStartVote/>
-                    <DetailsVotesPageGeneralInformation/>
+            <div className={'details-votes-page__wrapper'}>
+                <TitleVotesDetailsCallVotingProfile
+                    firstLetter={'КлиентКриптовече'}
+                    secondLetter={'Детали голосования'}
+                    titleName={'Детали голосования'}
+                    mobileLetter={'Назад к списку голосований'}/>
+                    <div className={'details-votes-page__main-content'}>
+                        <DetailsVotesPageDaysEndRegStartVote/>
+                        <DetailsVotesPageGeneralInformation/>
+                </div>
             </div>
-
-        </div>
     )
 
 }

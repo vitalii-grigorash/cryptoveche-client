@@ -1,0 +1,12 @@
+._mobile-read-questions-bnt {
+    display: none;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 670px) {
+    ._mobile-read-questions-bnt {
+        display: inherit;
+    }
+    ._read-questions-bnt {
+        display: none;
+    }
+}

@@ -5,9 +5,7 @@
 @media (max-width: 670px) {
     ._mobile-active-vote-bnt {
         display: inherit;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 114%;
+
     }
     ._active-vote-bnt {
         display: none;

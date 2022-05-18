@@ -29,7 +29,8 @@ const VotesPage = () => {
                 <TitleVotesDetailsCallVotingProfile
                     firstLetter={'Главная'}
                     secondLetter={'Голосования'}
-                    titleName={'Голосования'}/>
+                    titleName={'Голосования'}
+                    mobileLetter={'Назад на главную'}/>
                 <img className={'votes-page-block__qr-cod'} alt={'qr-код'} src={qr_cod_icon}/>
                 <div className={'votes-page-block__navigation-menu'}>
                     <div className={'navigation-menu__select-buttons'}>

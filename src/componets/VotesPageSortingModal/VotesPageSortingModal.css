@@ -90,7 +90,6 @@
         left: -1px;
         width: 375px;
         max-height: 397px;
-        border-radius: 16px;
         position: fixed;
     }
     .sorting-modal__content {

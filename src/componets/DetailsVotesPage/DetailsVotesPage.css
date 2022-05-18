@@ -14,3 +14,8 @@
     flex-direction: column;
     gap: 32px;
 }
+@media (max-width: 670px) {
+    .details-votes-page__wrapper {
+        gap: 16px;
+    }
+}
