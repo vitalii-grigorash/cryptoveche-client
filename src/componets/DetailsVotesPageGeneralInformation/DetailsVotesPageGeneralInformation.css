@@ -56,13 +56,12 @@
 }
 @media (max-width: 590px) {
     .details-votes-page-general-info__wrapper {
-        padding: 16px 4px 24px 16px;
-        gap: 16px;
+        padding: 16px 16px 24px 16px;
+        gap: 24px;
     }
     .main-content-current-status-vote__status-vote-possible-revote{
         display: grid;
         row-gap: 8px;
-
     }
 }
 

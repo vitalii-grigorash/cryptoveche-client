@@ -20,6 +20,7 @@
 .details-votes-page-status-possible-revote-cancelreg__possible-revote span {
     color: black;
 }
+/*----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 890px) {
     .details-votes-page-status-possible-revote-cancelreg__wrapper {
         justify-content: center;
@@ -32,7 +33,7 @@
 
 @media (max-width: 600px) {
     .details-votes-page-status-possible-revote-cancelreg__wrapper {
-       padding: 0;
+        padding: 0;
         border: none;
     }
     .details-votes-page-status-possible-revote-cancelreg__possible-revote {

@@ -64,8 +64,11 @@
 @media (max-width: 590px) {
     ._hidden-datetime-status-reg-vote {
         display: none;
-
     }
-
+    .details-votes-page-list-start-reg-start-vote__main-content {
+        border-top: 1px rgba(54, 59, 77, 0.2) solid;
+        padding: 16px 0 16px 0;
+        border-bottom: 1px rgba(54, 59, 77, 0.2) solid;
+    }
 }
 

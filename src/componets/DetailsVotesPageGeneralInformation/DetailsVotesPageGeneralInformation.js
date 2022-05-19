@@ -10,6 +10,7 @@ import DetailsVotesPageListStartRegStartVote
     from "../DetailsVotesPageListStartRegStartVote/DetailsVotesPageListStartRegStartVote";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
+import MaterialsVote from "../VotesStatusComponents/MaterialsVote/MaterialsVote";
 
 
 const DetailsVotesPageGeneralInformation = () => {
@@ -38,6 +39,7 @@ const DetailsVotesPageGeneralInformation = () => {
                         </div>
                             <DetailsVotesPageListStartRegStartVote/>
                         </div>
+                    <MaterialsVote/>
                     <RegistrationButton/>
             </div>
     )
