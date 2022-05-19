@@ -1,0 +1,66 @@
+/*-----Основной контейнер---------------------------------------------------------------------------------------------*/
+.details-votes-page-list-start-end-reg-vote__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/*-----Стлизация общего div для элементов------------------------------------------------------------------------------*/
+.details-votes-page-list-start-end-reg-vote__main-content {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    gap: 16px;
+    border-left: 1px rgba(54, 59, 77, 0.2) solid;
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 2vw;
+    font-family: Inter;
+}
+/*-----Стилизация div для блоков с датой и временем и названием голосования--------------------------------------------*/
+.main-content__datetime-status-reg-vote {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: rgba(54, 59, 77, 0.6);
+}
+/*-----Стилизация div для цветных блоков со статусом------------------------------------------------------------------*/
+.main-content__datetime-status-reg-vote-color-day {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: rgba(54, 59, 77, 0.6);
+    white-space: nowrap;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 1320px) {
+    .details-votes-page-list-start-end-reg-vote__main-content {
+        border: none;
+        padding-left: 0;
+    }
+}
+@media (max-width: 890px) {
+    .main-content__datetime-status-reg-vote {
+        font-size: 10px;
+    }
+}
+@media (max-width: 590px) {
+    .main-content__datetime-status-reg-vote {
+        font-size: 14px;
+    }
+    .main-content__datetime-status-reg-vote {
+        display: none;
+    }
+    .main-content__datetime-status-reg-vote-color-day  {
+        display: none;
+    }
+    .details-votes-page-list-start-end-reg-vote__main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        border-top: 1px rgba(54, 59, 77, 0.2) solid;
+        padding: 16px 0 16px 0;
+        border-bottom: 1px rgba(54, 59, 77, 0.2) solid;
+    }
+
+}
+

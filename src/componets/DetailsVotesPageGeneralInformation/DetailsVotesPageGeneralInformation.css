@@ -10,7 +10,6 @@
     width: 100%;
     gap: 24px;
 }
-
 /*-----Общий контейнер для двух div со статусами и датами рег-ции и голосования---------------------------------------*/
 .details-votes-page-general-info__main-content {
     display: flex;
@@ -29,7 +28,6 @@
 /*-----Стилизация div для статусов рег-ции и голосования-------------------------------------------------------------*/
 .details-votes-page-general-info__main-content-current-status-vote {
     display: flex;
-
     flex-direction: column;
     gap: 34px;
 }
@@ -40,6 +38,13 @@
 }
 .main-content-current-status-vote__status-vote-possible-revote:nth-child(1) {
     border-left: 1px gray solid;
+}
+/*-----Доп стили для скрытия блоков мобильной версии------------------------------------------------------------------*/
+._hidden-materials-vote {
+    display: none;
+}
+._show-possible-cancel-block {
+    display: none;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1320px) {
@@ -54,14 +59,24 @@
         padding-bottom: 0;
     }
 }
-@media (max-width: 590px) {
+@media (max-width: 600px) {
     .details-votes-page-general-info__wrapper {
         padding: 16px 16px 24px 16px;
         gap: 24px;
     }
-    .main-content-current-status-vote__status-vote-possible-revote{
+    .main-content-current-status-vote__status-vote-possible-revote {
         display: grid;
         row-gap: 8px;
+    }
+
+    ._hidden-materials-vote {
+        display: block;
+    }
+    ._hidden-possible-cancel-block {
+        display: none;
+    }
+    ._show-possible-cancel-block{
+        display: block;
     }
 }
 

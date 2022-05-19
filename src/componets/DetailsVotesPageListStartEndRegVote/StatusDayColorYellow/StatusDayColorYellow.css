@@ -1,0 +1,10 @@
+.status-day-color__yellow-color-item {
+    text-align: center;
+    height: 24px;
+    border-radius: 24px;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 2px 12px 2px 12px;
+    background-color: rgba(255, 138, 0, 0.2);
+    color: #FF8A00;
+}

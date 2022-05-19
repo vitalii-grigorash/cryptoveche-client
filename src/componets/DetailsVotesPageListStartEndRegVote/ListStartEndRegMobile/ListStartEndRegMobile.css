@@ -1,0 +1,19 @@
+.list-start-end-reg-mobile__wrapper {
+    display: none;
+}
+.list-start-end-reg-mobile__name-start-end-reg {
+    font-size: 14px;
+    color: #363B4D;
+    opacity: 0.5;
+}
+.list-start-end-reg-mobile__position-datetime {
+    display: inline-flex;
+    gap: 8px;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 590px) {
+    .list-start-end-reg-mobile__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}

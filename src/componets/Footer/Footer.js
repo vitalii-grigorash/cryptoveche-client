@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css';
-import logo from '../../img/Footer_logo.svg';
+import logo_footer from '../../img/Footer_logo.svg';
 import {Link} from "react-router-dom";
 
 
@@ -11,7 +11,7 @@ const Footer = () => {
             <footer className="footer">
                 <div className="footer__items _container">
                    <div className={'items__block-logo'}>
-                       <div><img alt={'logo'} src={logo}/></div>
+                       <div><img alt={'logo'} src={logo_footer}/></div>
                        <span>©2019-2022.Система разработана Центром технологий распределенных реестров СПбГУ.<p>Все права защищены.</p></span>
                    </div>
                     <div className={'items__block-map-site'}>

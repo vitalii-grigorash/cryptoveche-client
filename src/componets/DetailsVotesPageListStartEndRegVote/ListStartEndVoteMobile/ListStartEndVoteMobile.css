@@ -1,0 +1,19 @@
+.list-start-end-vote-mobile__wrapper {
+    display: none;
+}
+.list-start-end-vote-mobile__name-start-end-vote {
+    font-size: 14px;
+    color: #363B4D;
+    opacity: 0.5;
+}
+.list-start-end-vote-mobile__position-datetime {
+    display: inline-flex;
+    gap: 8px;
+}
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 590px) {
+    .list-start-end-vote-mobile__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}

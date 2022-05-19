@@ -1,8 +1,9 @@
 import React from "react";
 import './DetailsVotesPageReadQuestions.css';
-import ListQuestionsCheckbox from "./ListQuestionsCheckbox/ListQuestionsCheckbox";
+import ListQuestionsCheckbox from "../DetailsVotesPageReadQuestionsCard/ListQuestionsCheckbox/ListQuestionsCheckbox";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
+import DetailsVotesPageReadQuestionsCard from "../DetailsVotesPageReadQuestionsCard/DetailsVotesPageReadQuestionsCard";
 
 
 
@@ -13,65 +14,11 @@ const DetailsVotesPageReadQuestions = () => {
             <div className={'details-votes-page-read-questions__wrapper'}>
                 <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true} hiddenBulletinBtn={true} hiddenResultBtn={true}/>
                     <h1 className={'details-votes-page-read-questions__wrapper-title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
-                <div className={'details-votes-page-read-questions__question-block'}>
-                    <div className={'question-block__title'}>
-                        <h3>1. Согласны ли вы с решением №576?</h3>
-                        <h5>Необходимо выбрать ровно 1</h5>
-                        <span>Материалы вопроса<select><option></option></select></span>
-                    </div>
-                    <div className={'question-block__list-questions'}>
-                        <ul type={"square"}>
-                            <li><span>Да</span></li>
-                            <li><span>Нет</span></li>
-                            <li><span>Дайте подумать</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={'details-votes-page-read-questions__question-block'}>
-                    <div className={'question-block__title'}>
-                        <h3>2. Как должен происходить процесс выбора делегатов конференции?</h3>
-                        <h5>Необходимо выбрать ровно 1</h5>
-                        <span>Материалы вопроса<select><option></option></select></span>
-                    </div>
-                    <div className={'question-block__list-questions'}>
-                        <ul type={"square"}>
-                            <li><span>Только через КриптоВече</span></li>
-                            <li><span>На общем собрании</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={'details-votes-page-read-questions__question-block'}>
-                    <div className={'question-block__title'}>
-                        <h3>3. Выберите кандидата на позицию делегата Ученого Совета СПбГУ.</h3>
-                        <h5>Голосование выражается оставлением (голосование “за”) или зачеркиванием (голосование “против”) ФИО кандидатуры. Оставляется не более одной кандидатуры. В противном случае бюллетень считается недействительным. </h5>
-                        <span>Материалы вопроса<select><option></option></select></span>
-                    </div>
-                    <div className={'question-block__list-questions'}>
-                        <ul type={"square"}>
-                            <li><span>Тимошина</span></li>
-                            <li><span>Кириллов</span></li>
-                            <li><span>Петрунин</span></li>
-                            <li><span>Лейн</span></li>
-                        </ul>
-                    </div>
-                </div>
+                <DetailsVotesPageReadQuestionsCard/>
 
                 <div className={'details-votes-page-read-questions__question-block'}>
                     <div className={'question-block__title'}>
-                        <h3>4. Понравилось ли Вам голосовать через КриптоВече?</h3>
-                        <h5>Необходимо выбрать ровно 1</h5>
-                        <span>Материалы вопроса<select><option></option></select></span>
-                    </div>
-                    <div className={'question-block__list-questions'}>
-                        <ul type={"square"}>
-                            <li><span>Только через КриптоВече</span></li>
-                            <li><span>На общем собрании</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={'details-votes-page-read-questions__question-block'}>
-                    <div className={'question-block__title'}>
-                        <h3>5. Выберите кандидата на позицию делегата Ученого Совета СПбГУ. </h3>
+                        <h3>5. Выберите кандидата на позицию делегата Ученого Совета СПбГУ.</h3>
                         <h5>Выберите один из вариантов ответа напротив каждого кандидата</h5>
                         <span>Материалы вопроса<select><option></option></select></span>
                     </div>
