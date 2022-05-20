@@ -1,5 +1,5 @@
 /*------Стилизация для div с вопросом---------------------------------------------------------------------------------*/
-.details-votes-page-read-questions__question-block {
+.read-questions-card-list__list-question-block {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid rgba(54, 59, 77, 0.2);
@@ -7,31 +7,31 @@
     font-family: Inter;
     width: 100%;
 }
-.question-block__title {
+.list-question-block__title {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding-bottom: 32px;
 }
-.question-block__title h3 {
+.list-question-block__title h3 {
     font-size: 18px;
     font-weight: 600;
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
 }
-.question-block__title h5 {
+.list-question-block__title h5 {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     color: rgba(54, 59, 77, 0.4);
 }
-.question-block__title span {
+.list-question-block__title span {
     color: rgba(54, 59, 77, 0.9);
     font-size: 14px;
     font-weight: 400;
     line-height: 24px;
 }
-.question-block__title select {
+.list-question-block__title select {
     background-color: #FFFFFF;
     width: 20px;
     cursor: pointer;
@@ -39,16 +39,16 @@
 
 /*------Адаптивная версия(800px)---------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
-    .question-block__title {
+    .list-question-block__title {
         gap: 8px;
         padding-bottom: 16px;
     }
-    .question-block__title h3 {
+    .list-question-block__title h3 {
         font-size: 16px;
         font-weight: 500;
     }
 
-    .question-block__title h5 {
+    .list-question-block__title h5 {
         font-size: 12px;
         font-weight: 500;
 

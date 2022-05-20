@@ -7,11 +7,11 @@ const ReadQuestionsCardCheckbox = ({checkBoxNameRow, typeCheck}) => {
 
 
     return (
-            <div className={'select-checkboxes-block__list-question-checkbox'}>
-                <div className={'list-question-checkbox__name-question'}>{checkBoxNameRow}</div>
-                <input className={'list-question-checkbox'} type={typeCheck} disabled={true}/>
-                <input className={'list-question-checkbox'} type={typeCheck} disabled={true}/>
-                <input className={'list-question-checkbox'} type={typeCheck} disabled={true}/>
+            <div className={'card-checkbox__list-answer'}>
+                <div className={'list-answer__name-question'}>{checkBoxNameRow}</div>
+                <input className={'list-answer-checkbox'} type={typeCheck} disabled={true}/>
+                <input className={'list-answer-checkbox'} type={typeCheck} disabled={true}/>
+                <input className={'list-answer-checkbox'} type={typeCheck} disabled={true}/>
             </div>
 
     )

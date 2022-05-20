@@ -30,10 +30,10 @@ const DetailsVotesPageReadQuestions = () => {
                     nameSelectAnswerQuestion={'Выберите ровно 1'}/>
                 <DetailsVotesPageReadQuestionsCardCheckbox
                     nameQuestionCard={'5. Выберите кандидата на позицию делегата Ученого Совета СПбГУ.'}
-                    nameSelectAnswerQuestion={'Выберите один из вариантов ответа напротив каждого кандидата'}/>
+                    nameSelectAnswerQuestion={'Выберите один из вариантов ответа напротив каждого кандидата'} typeCheck={'checkbox'} nameFirstColumn={'Против'} nameSecondColumn={'Воздержаться'} nameThirdColumn={'За'}/>
                 <DetailsVotesPageReadQuestionsCardCheckbox
                     nameQuestionCard={'6. Выберите лучшего композитора мира'}
-                    nameSelectAnswerQuestion={'Выберите один из вариантов ответа напротив каждого кандидата'}/>
+                    nameSelectAnswerQuestion={'Выберите один из вариантов ответа напротив каждого кандидата'} typeCheck={'radio'} nameFirstColumn={'За'} nameSecondColumn={'Против'} nameThirdColumn={'Воздержаться'}/>
                 <RegistrationButton/>
             </div>
     )

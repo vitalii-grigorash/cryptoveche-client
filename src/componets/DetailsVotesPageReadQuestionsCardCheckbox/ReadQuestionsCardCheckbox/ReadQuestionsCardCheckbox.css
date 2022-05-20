@@ -1,15 +1,31 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
-.select-checkboxes-block__list-question-checkbox {
+.card-checkbox__list-answer {
     display: grid;
     grid-template-columns: 31% 14% 14% 20%;
     grid-auto-rows: auto;
     gap: 40px;
 }
-.list-question-checkbox__name-question {
+.list-answer__name-question {
     word-wrap: break-word;
     line-height: 28px;
 }
-.list-question-checkbox {
+.list-answer-checkbox {
     width: 24px;
     height: 24px;
+}
+/*------Адаптивная версия(800px)---------------------------------------------------------------------------------------*/
+@media (max-width: 800px) {
+    .list-answer__name-question {
+        word-wrap: break-word;
+        line-height: 22px;
+    }
+}
+@media (max-width: 560px) {
+    .card-checkbox__list-answer {
+        grid-template-columns: 136px 18% 18% 20%;
+    }
+    .list-answer-checkbox {
+        width: 20px;
+        height: 20px;
+    }
 }

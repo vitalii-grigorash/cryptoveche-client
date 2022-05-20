@@ -6,7 +6,7 @@ const ReadQuestionsCardList = ({nameCardList}) => {
 
     return (
            <>
-                <ul className={'question-block__list-questions'} type={"square"}>
+                <ul className={'card-list__list-answer'} type={"square"}>
                     <li><span>{nameCardList}</span></li>
                 </ul>
            </>
