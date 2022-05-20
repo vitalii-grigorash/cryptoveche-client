@@ -19,8 +19,6 @@ const CallVotingPageCheckboxTable = () => {
                 <CallVotingPageCheckboxColumns nameColumns={'Против'}/>
                 <CallVotingPageCheckboxColumns nameColumns={'Воздержаться'}/>
                 <CallVotingPageCheckboxColumns nameColumns={'За'}/>
-
-
             </div>
         </div>
     )

@@ -1,0 +1,15 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
+.select-checkboxes-block__list-question-checkbox {
+    display: grid;
+    grid-template-columns: 31% 14% 14% 20%;
+    grid-auto-rows: auto;
+    gap: 40px;
+}
+.list-question-checkbox__name-question {
+    word-wrap: break-word;
+    line-height: 28px;
+}
+.list-question-checkbox {
+    width: 24px;
+    height: 24px;
+}

@@ -16,77 +16,22 @@
     font-weight: 600;
     color: #4A4F5F;
 }
-/*------Стилизация для div с вопросом---------------------------------------------------------------------------------*/
-.details-votes-page-read-questions__question-block {
-   display: flex;
-   flex-direction: column;
-    gap: 32px;
-    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
-    padding-bottom: 16px;
-    font-family: Inter;
-    width: 100%;
- }
+/*------Адаптивная версия(824px)---------------------------------------------------------------------------------------*/
+@media (max-width: 800px) {
+    .details-votes-page-read-questions__wrapper {
+        padding: 16px 16px;
+    }
+    .details-votes-page-read-questions__wrapper-title {
+        font-size: 20px;
+    }
+}
+@media (max-width: 800px) {
+    .details-votes-page-read-questions__wrapper {
+        gap: 20px;
+        margin-bottom: 16px;
+    }
+    .details-votes-page-read-questions__wrapper-title {
+        display: none;
+    }
 
-.question-block__title {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-.question-block__title h3 {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 24px;
-    color: rgba(54, 59, 77, 0.9);
-}
-.question-block__title h5 {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: rgba(54, 59, 77, 0.4);
-}
-.question-block__title span {
-    color: rgba(54, 59, 77, 0.9);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-}
-.question-block__title select {
-    background-color: #FFFFFF;
-    width: 20px;
-    cursor: pointer;
-}
-/*------Стилизация для div списка с вариантами ответов----------------------------------------------------------------*/
-.question-block__list-questions ul {
-    display: table;
-    font-size: 18px;
-    line-height: 24px;
-    color: rgba(54, 59, 77, 0.9);
-    list-style-image: url("../../img/DetailsVotesPageReadQuestions_icon_for_list.svg");
-
-}
-.question-block__list-questions li {
-    list-style-position: inside;
-    padding-bottom: 16px;
-}
-.question-block__list-questions span {
-    padding-left: 12px;
-}
-
-/*------Стилизация для блока с чекбоксам------------------------------------------------------------------------------*/
-.question-block__select-checkboxes-block {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 16px;
-    gap: 40px;
-    color: rgba(54, 59, 77, 0.9);
-    font-size: 18px;
-}
-.select-checkboxes-block__header-columns {
-    display: grid;
-    grid-template-columns: 26% 10% 10% 20%;
-    grid-template-rows: 24px;
-    text-align: center;
-    color: rgba(54, 59, 77, 0.9);
-    font-size: 18px;
-    gap: 40px;
 }
