@@ -1,6 +1,7 @@
 import React from "react";
 import './DetailsVotesPageReadQuestionsCardList.css';
 import ReadQuestionsCardList from "./ReadQuestionsCardList/ReadQuestionsCardList";
+import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
 
 const DetailsVotesPageReadQuestionsCardList = ({nameQuestionCard, nameSelectAnswerQuestion}) => {
@@ -10,7 +11,7 @@ const DetailsVotesPageReadQuestionsCardList = ({nameQuestionCard, nameSelectAnsw
                 <div className={'list-question-block__title'}>
                     <h3>{nameQuestionCard}</h3>
                     <h5>{nameSelectAnswerQuestion}</h5>
-                    <span>Материалы вопроса<select><option></option></select></span>
+                    <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                 </div>
                     <ReadQuestionsCardList nameCardList={'Да'}/>
                     <ReadQuestionsCardList nameCardList={'Нет'}/>

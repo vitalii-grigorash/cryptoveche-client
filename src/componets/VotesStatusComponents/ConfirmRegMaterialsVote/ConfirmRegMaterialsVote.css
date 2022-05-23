@@ -26,16 +26,15 @@
 @media (max-width: 1012px) {
     .status-block__materials-vote {
         white-space: nowrap;
-
     }
 }
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        /*padding: 12px 10px 15px 10px;*/
+        padding: 12px 10px 15px 10px;
     }
     .materials-vote__status-icon {
-        font-size: 10px;
+        font-size: 11px;
     }
 
 }

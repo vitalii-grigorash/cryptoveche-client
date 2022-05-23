@@ -1,6 +1,7 @@
 import React from "react";
 import './DetailsVotesPageReadQuestionsCardCheckbox.css';
 import ReadQuestionsCardCheckbox from "./ReadQuestionsCardCheckbox/ReadQuestionsCardCheckbox";
+import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
 const DetailsVotesPageReadQuestionsCardCheckbox = ({nameQuestionCard, nameSelectAnswerQuestion, typeCheck, nameFirstColumn, nameSecondColumn, nameThirdColumn}) => {
 
@@ -9,7 +10,7 @@ const DetailsVotesPageReadQuestionsCardCheckbox = ({nameQuestionCard, nameSelect
                 <div className={'checkbox-question-block__title'}>
                     <h3>{nameQuestionCard}</h3>
                     <h5>{nameSelectAnswerQuestion}</h5>
-                    <span>Материалы вопроса<select><option></option></select></span>
+                    <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                 </div>
                 <div className={'checkbox-question-block__select-checkboxes-block'}>
                     <div className={'checkbox-question-block__header-columns'}>

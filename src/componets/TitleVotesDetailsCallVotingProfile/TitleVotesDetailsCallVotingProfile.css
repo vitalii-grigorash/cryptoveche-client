@@ -29,7 +29,7 @@
     padding-top: 4px;
 }
 
-/*------Адаптивная версия(420px)---------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(660px)---------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
     .title-for-votes-call-profile__title {
         font-size: 28px;
@@ -38,12 +38,11 @@
         padding-bottom: 17px;
     }
 }
-
 @media (max-width: 420px) {
     .title-for-votes-call-profile__title {
          font-size: 26px;
          font-weight: 500;
-         line-height: 108%;
+         line-height: 131%;
     }
     .page-info__link-back-row {
         display: flex;

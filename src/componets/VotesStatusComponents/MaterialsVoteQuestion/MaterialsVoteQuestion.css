@@ -1,0 +1,31 @@
+/*---------Основной контейнер-----------------------------------------------------------------------------------------*/
+.materials-vote-question__wrapper {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(54, 59, 77, 0.9);
+}
+.materials-vote-question__wrapper select {
+    background-color: #FFFFFF;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 890px) {
+    .materials-vote-question__wrapper {
+        font-size: 11px;
+    }
+    .materials-vote-question__wrapper {
+        display: block;
+    }
+}
+@media (max-width: 600px) {
+    .materials-vote-question__wrapper {
+      font-size: 14px;
+    }
+    .materials-vote-question__wrapper select {
+        margin-left: 4px;
+    }
+
+}

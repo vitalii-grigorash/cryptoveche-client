@@ -8,6 +8,14 @@
     padding: 32px 32px 40px 32px;
     font-family: Inter;
     gap: 24px;
+}
+/*------Стилизация для div основгого контента-------------------------------------------------------------------------*/
+.call-voting-page-question-card__main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: rgba(54, 59, 77, 0.9);
+    padding-bottom: 10px;
 
 }
 /*------Стилизация для заголовка--------------------------------------------------------------------------------------*/
@@ -17,7 +25,6 @@
     gap: 16px;
     border-bottom: 1px solid rgba(54, 59, 77, 0.2);
     padding-bottom: 24px;
-
 }
 .call-voting-page-question-card__title h3 {
     font-size: 18px;
@@ -27,6 +34,7 @@
 }
 .call-voting-page-question-card__select-answer {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     font-size: 16px;
     font-weight: 400;
@@ -37,24 +45,27 @@
 .call-voting-page-question-card__select-answer span:first-child {
     padding-right: 16px;
     border-right: 1px solid rgba(54, 59, 77, 0.3)
-
 }
 
-.call-voting-page-question-card__materials {
-    color: rgba(54, 59, 77, 0.9);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-}
-.call-voting-page-question-card__title select {
-    background-color: #FFFFFF;
-    width: 20px;
-    cursor: pointer;
-}
-/*------Стилизация для div основгого контента-------------------------------------------------------------------------*/
-.call-voting-page-question-card__main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 670px) {
+    .call-voting-page-question-card__wrapper {
+        gap: 16px;
+        padding: 16px 16px 24px 16px;
+    }
+    .call-voting-page-question-card__title {
+        gap: 8px;
+        padding-bottom: 16px;
+    }
+    .call-voting-page-question-card__title h3 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .call-voting-page-question-card__select-answer {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .call-voting-page-question-card__main-content label {
+        font-size: 16px;
+    }
 }

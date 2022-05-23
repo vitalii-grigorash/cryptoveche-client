@@ -8,11 +8,8 @@
 @media (max-width: 890px) {
     .start-reg__data {
         font-size: 10px;
-
     }
-
 }
-
 @media (max-width: 420px) {
     .start-reg__data {
         font-size: 13px;

@@ -6,16 +6,17 @@
     padding-bottom: 112px;
 }
 /*------Стилизация заголовка------------------------------------------------------------------------------------------*/
-.call-voting-page__wrapper-title {
-    font-family: Golos;
+.call-voting-page-title__title {
+    font-family: Inter;
     font-weight: 600;
     font-size: 24px;
     color: rgba(54, 59, 77, 0.9);
     line-height: 32px;
-
 }
+
+
 /*------Стилизаци кнопки детали голосования---------------------------------------------------------------------------*/
-.call-voting-page__details-btn {
+.call-voting-page-title__details-btn {
     max-width: 210px;
     max-height: 40px;
     padding: 8px 24px 8px 24px;
@@ -26,4 +27,37 @@
     font-size: 16px;
     line-height: 24px;
     cursor: pointer;
+}
+/*------Синиее сообщение ДЕТЕЛИ ГОЛОСОВАНИЯ для мобильной версии------------------------------------------------------*/
+.call-voting-page-title__details-icon {
+    display: none;
+    color: #0075FF;
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 12px;
+}
+.call-voting-page-title__details-icon img {
+    padding-right: 9px;
+}
+/*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 670px) {
+    .call-voting-page__wrapper {
+        padding-bottom: 2px;
+        gap: 16px;
+    }
+    .call-voting-page-title__title {
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 138%;
+    }
+}
+@media (max-width: 420px) {
+    .call-voting-page-title__details-btn  {
+        display: none;
+    }
+    .call-voting-page-title__details-icon {
+        display: block;
+        color: #0075FF;
+        font-weight: 300;
+    }
 }

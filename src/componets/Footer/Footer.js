@@ -32,6 +32,7 @@ const Footer = () => {
                         <span>support@dltc.ru</span>
                     </div>
                 </div>
+                <span className={'items__block-logo_mobile-position'}>©2019-2022.Система разработана Центром технологий распределенных реестров СПбГУ.<p>Все права защищены.</p></span>
             </footer>
         </div>
     )

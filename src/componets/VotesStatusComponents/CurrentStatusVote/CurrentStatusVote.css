@@ -42,7 +42,7 @@
     }
     .current-status__registration-in-progress, .current-status__types-vote {
         padding: 5px 10px 5px 20px;
-        font-size: 8px;
+        font-size: 10px;
     }
 
 }

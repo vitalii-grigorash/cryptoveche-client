@@ -10,7 +10,7 @@ import DetailsVotesPageListStartEndRegVote
     from "../DetailsVotesPageListStartEndRegVote/DetailsVotesPageListStartEndRegVote";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
-import MaterialsVote from "../VotesStatusComponents/MaterialsVote/MaterialsVote";
+import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import DetailsVotesPageMobileModal from "../DetailsVotesPageMobileModal/DetailsVotesPageMobileModal";
 
 
@@ -44,7 +44,7 @@ const DetailsVotesPageGeneralInformation = () => {
                             </span>
                         </div>
                         <div className={'_hidden-materials-vote'}>
-                            <MaterialsVote/>
+                            <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'}/>
                         </div>
                 <RegistrationButton/>
                 <DetailsVotesPageMobileModal/>

@@ -82,6 +82,10 @@
     .checkbox-question-block__title span {
        display: none;
     }
+    .checkbox-question-block__title select {
+        display: none;
+    }
+
 }
 @media (max-width: 560px) {
     .checkbox-question-block__header-columns {

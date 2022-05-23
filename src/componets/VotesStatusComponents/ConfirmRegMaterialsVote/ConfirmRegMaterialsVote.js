@@ -1,7 +1,7 @@
 import React from "react";
 import './ConfirmRegMaterialsVote.css';
 import icon_info from "../../../img/MyVotes_icon_info.svg";
-import MaterialsVote from "../MaterialsVote/MaterialsVote";
+import MaterialsVoteQuestion from "../MaterialsVoteQuestion/MaterialsVoteQuestion";
 
 const ConfirmRegMaterialsVote = ({confirmStatus}) => {
 
@@ -11,7 +11,7 @@ const ConfirmRegMaterialsVote = ({confirmStatus}) => {
                     <span><img className={'status-icon__color-icon'} alt={'иконка статуса регистрации'} src={icon_info}/></span><span className={'status-icon__color-status'}>{confirmStatus}</span>
                 </div>
                 <div className={'materials-vote__hidden-materials'}>
-                    <MaterialsVote/>
+                    <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'}/>
                 </div>
             </div>
     )
