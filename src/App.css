@@ -11,30 +11,9 @@
     font-size: 32px;
     line-height: 125%;
     padding-bottom: 40px;
-    font-family: Golos;
+    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
-    font-weight: 700;
-}
-/*------Стилизация для компонентов Мои голосования и Актуальное-------------------------------------------------------*/
-.main-content__my-votes-actual {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: 16px;
-    gap: 16px;
-}
-/*------Стилизация для компонентов Количество голосующих и Календарь голосования-------------------------------------*/
-.main-content__amount-votes-and-calendar-votes {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    padding-bottom: 51px;
-}
-/*------Стилизация для компонентов Гистограмма и Обозреватель криптовече---------------------------------------------*/
-.gistogramma-and-observer-cryptoveche {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    font-weight: 600;
 }
 
 /*------Адаптивная версия--------------------------------------------------------------------------------------------*/

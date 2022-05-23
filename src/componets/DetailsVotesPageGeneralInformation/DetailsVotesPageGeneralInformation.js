@@ -11,6 +11,7 @@ import DetailsVotesPageListStartEndRegVote
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
 import MaterialsVote from "../VotesStatusComponents/MaterialsVote/MaterialsVote";
+import DetailsVotesPageMobileModal from "../DetailsVotesPageMobileModal/DetailsVotesPageMobileModal";
 
 
 const DetailsVotesPageGeneralInformation = () => {
@@ -46,6 +47,7 @@ const DetailsVotesPageGeneralInformation = () => {
                             <MaterialsVote/>
                         </div>
                 <RegistrationButton/>
+                <DetailsVotesPageMobileModal/>
             </div>
     )
 

@@ -1,0 +1,42 @@
+/*------Стилизация для компонентов Мои голосования и Актуальное-------------------------------------------------------*/
+.main-content__my-votes-actual {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    gap: 16px;
+}
+/*------Стилизация для компонентов Количество голосующих и Календарь голосования-------------------------------------*/
+.main-content__amount-votes-and-calendar-votes {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 51px;
+}
+/*------Стилизация для компонентов Гистограмма и Обозреватель криптовече---------------------------------------------*/
+.gistogramma-and-observer-cryptoveche {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+/*------Адаптивная версия--------------------------------------------------------------------------------------------*/
+@media (max-width: 420px) {
+
+    .main-content__title {
+        text-align: left;
+        font-size: 24px;
+        padding-bottom: 24px;
+    }
+    .main-content__my-votes-actual {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+    .main-content__amount-votes-and-calendar-votes {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .main-content__elem1{order: 0}
+    .main-content__elem2{order: 2}
+    .main-content__elem3{order: 1}
+}

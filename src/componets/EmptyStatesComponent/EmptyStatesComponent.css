@@ -1,0 +1,26 @@
+.empty-states-component_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: Inter;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: rgba(54, 59, 77, 0.9);
+}
+
+.empty-states-component_wrapper img {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+@media (max-width: 780px) {
+    .empty-states-component_wrapper {
+       gap: 16px;
+       font-size: 16px;
+        line-height: 17px;
+    }
+}

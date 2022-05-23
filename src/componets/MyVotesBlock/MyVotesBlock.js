@@ -47,12 +47,8 @@ const MyVotesBlock = () => {
                             <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus}/></div>
                         </div>
                         <div className={'votes-form__button-vote-cancel-reg'}>
-                            <button className={'button-vote'}>
-                                Проголосовать
-                            </button>
-                            <button className={'cancel-reg'}>
-                                Отменить регистрацию
-                            </button>
+                            <button className={'button-vote'}>Проголосовать</button>
+                            <button className={'cancel-reg'}>Отменить регистрацию</button>
                         </div>
                      </div>
                 </div>
