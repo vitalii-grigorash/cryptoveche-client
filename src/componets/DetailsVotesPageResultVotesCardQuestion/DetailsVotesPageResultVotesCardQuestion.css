@@ -20,7 +20,6 @@
     color: rgba(54, 59, 77, 0.9);
     line-height: 24px;
 }
-
 .details-votes-page-result-votes-card__title h5 {
     font-size: 16px;
     font-weight: 400;
@@ -43,19 +42,20 @@
 
 .switch-table-gistogramma__table {
      background: url("../../img/DetailsVotesPageResult_noactive_table_icon.svg") no-repeat;
+     cursor: pointer;
      width: 48px;
      height: 48px;
-    cursor: pointer;
+
  }
  .switch-table-gistogramma__gistogramma:hover {
-     background: url("../../img/DetailsVotesPageResult_active_gistogram_icon.svg") no-repeat;
-     width: 48px;
-     height: 48px;
+       background: url("../../img/DetailsVotesPageResult_active_gistogram_icon.svg");
+       width: 48px;
+       height: 48px;
  }
 .switch-table-gistogramma__table:hover {
-    background: url("../../img/DetailsVotesPageResult_active_table_icon.svg") no-repeat;
-    width: 48px;
-    height: 48px;
+        background: url("../../img/DetailsVotesPageResult_active_table_icon.svg") no-repeat;
+        width: 48px;
+        height: 48px;
 }
 /*------Всплывающая подсказка для кнопок иконок-----------------------------------------------------------------------*/
 .tooltip {
@@ -101,4 +101,54 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 790px) {
+    .details-votes-page-result-votes-card__wrapper {
+        gap: 16px;
+        padding-bottom: 16px;
+    }
+    .details-votes-page-result-votes-card__title {
+        gap: 8px;
+    }
+    .details-votes-page-result-votes-card__title h3 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .details-votes-page-result-votes-card__title h5 {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .switch-table-gistogramma__gistogramma {
+        background: url("../../img/DetailsVotesPageResult_noactive_gistogram_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__table {
+        background: url("../../img/DetailsVotesPageResult_noactive_table_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__gistogramma:hover {
+        background: url("../../img/DetailsVotesPageResult_active_gistogram_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__table:hover {
+        background: url("../../img/DetailsVotesPageResult_active_table_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .tooltip .tooltiptext {
+        font-size: 10px;
+        width: 120px;
+        left: 150%;
+        padding: 2px 2px;
+    }
+    .tooltip .tooltiptext::after {
+        top: 100%;
+        left: 70%;
+        margin-left: -41px;
+    }
+
 }

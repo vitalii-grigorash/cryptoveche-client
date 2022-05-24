@@ -13,11 +13,12 @@ const DetailsVotesPageResultVotes = () => {
     return (
 
         <div className={'details-votes-page-result-votes__wrapper'}>
-            <TitleVotesDetailsCallVotingProfile firstLetter={'КлиентКриптовече'} secondLetter={'Детали голосования'} titleName={'Детали голосования'}/>
+            <TitleVotesDetailsCallVotingProfile firstLetter={'КлиентКриптовече'} secondLetter={'Детали голосования'} titleName={'Детали голосования'} mobileLetter={'Назад к списку голосований'}/>
             <div className={'details-votes-page-result-votes__main-content'}>
                 <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true}/>
                 <h1 className={'details-votes-page-result-votes__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
-                <DetailsVotesPageResultVotesCardQuestion/>
+                <DetailsVotesPageResultVotesCardQuestion titleName={'1. Согласны ли вы с решением №576?'} answerSelected={'Выберите ровно 1'}/>
+                <DetailsVotesPageResultVotesCardQuestion titleName={'2. Как должен происходить процесс выбора делегатов конференции?'} answerSelected={'Выберите ровно 1'}/>
                 {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
             </div>
         </div>

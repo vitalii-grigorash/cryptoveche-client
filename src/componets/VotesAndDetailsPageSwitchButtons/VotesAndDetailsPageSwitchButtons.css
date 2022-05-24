@@ -13,20 +13,26 @@
     border-bottom: 2px #FFFFFF solid;
     margin-right: 48px;
     cursor: pointer;
-
 }
 .votes-and-details-page-switch-buttons__button:hover {
     border-bottom: 2px #0084FE solid;
 
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
-@media (max-width: 650px) {
+@media (max-width: 1020px) {
     .votes-and-details-page-switch-buttons__wrapper {
         font-size: 16px;
         font-weight: 500;
         line-height: 114%;
+        white-space: nowrap;
     }
 }
+@media (max-width: 800px) {
+    .votes-and-details-page-switch-buttons__wrapper {
+        overflow: auto;
+    }
+}
+
 @media (max-width: 420px) {
     .votes-and-details-page-switch-buttons__wrapper {
         border-bottom: 2px #FFFFFF solid;

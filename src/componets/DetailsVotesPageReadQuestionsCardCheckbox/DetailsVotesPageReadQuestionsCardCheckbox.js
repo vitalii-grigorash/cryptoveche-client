@@ -3,7 +3,7 @@ import './DetailsVotesPageReadQuestionsCardCheckbox.css';
 import ReadQuestionsCardCheckbox from "./ReadQuestionsCardCheckbox/ReadQuestionsCardCheckbox";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
-const DetailsVotesPageReadQuestionsCardCheckbox = ({nameQuestionCard, nameSelectAnswerQuestion, typeCheck, nameFirstColumn, nameSecondColumn, nameThirdColumn}) => {
+const DetailsVotesPageReadQuestionsCardCheckbox = ({checkBoxNameRow, nameQuestionCard, nameSelectAnswerQuestion, typeCheck, nameFirstColumn, nameSecondColumn, nameThirdColumn}) => {
 
     return (
             <div className={'read-questions-card-checkbox__checkbox-question-block'}>
@@ -19,7 +19,7 @@ const DetailsVotesPageReadQuestionsCardCheckbox = ({nameQuestionCard, nameSelect
                         <span>{nameSecondColumn}</span>
                         <span>{nameThirdColumn}</span>
                     </div>
-                    <ReadQuestionsCardCheckbox checkBoxNameRow={'Вариант один какой-то'} typeCheck={typeCheck}/>
+                    <ReadQuestionsCardCheckbox checkBoxNameRow={checkBoxNameRow} typeCheck={typeCheck}/>
                     <ReadQuestionsCardCheckbox checkBoxNameRow={'А вот и второй'} typeCheck={typeCheck}/>
                     <ReadQuestionsCardCheckbox checkBoxNameRow={'Вольфганг Амадей Моцарт очень длинное здесь что-то должно быть'} typeCheck={typeCheck}/>
                     <ReadQuestionsCardCheckbox checkBoxNameRow={'А вот и второй'} typeCheck={typeCheck}/>

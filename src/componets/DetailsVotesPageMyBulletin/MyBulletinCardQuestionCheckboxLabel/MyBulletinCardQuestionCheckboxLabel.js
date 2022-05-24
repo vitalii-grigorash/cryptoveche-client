@@ -12,5 +12,4 @@ const MyBulletinCardQuestionCheckboxLabel = ({checkboxLabel, activeChecked, acti
          </div>
     )
 }
-
 export default MyBulletinCardQuestionCheckboxLabel;

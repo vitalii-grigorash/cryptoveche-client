@@ -26,3 +26,7 @@
 .details-votes-page-result-card-table__table th:last-child {
     border-right: none;
 }
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 790px) {
+
+}

@@ -95,7 +95,6 @@ const AuthorizationSetPassword = () => {
                         <div className={'reg__title _modificator-reg__title-set-pass-top'}>
                             Система электронных голосований
                         </div>
-
                     </div>
                 </div>
             </div>

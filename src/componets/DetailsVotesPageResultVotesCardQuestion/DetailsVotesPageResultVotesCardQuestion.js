@@ -7,15 +7,15 @@ import DetailsVotesPageResultVotesCardQuestionGraph
 
 
 
-const DetailsVotesPageResultVotesCardQuestion = () => {
+const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected, hiddenTable, hiddenGraph}) => {
 
 
 
     return (
             <div className={'details-votes-page-result-votes-card__wrapper'}>
                 <div className={'details-votes-page-result-votes-card__title'}>
-                    <h3>1. Согласны ли вы с решением №576?</h3>
-                    <h5>Необходимо выбрать ровно 1</h5>
+                    <h3>{titleName}</h3>
+                    <h5>{answerSelected}</h5>
                 </div>
                 <div className={'details-votes-page-result-votes-card__switch-table-gistogramma'}>
                     <div className={'tooltip'}>
@@ -27,8 +27,8 @@ const DetailsVotesPageResultVotesCardQuestion = () => {
                         <span className={'tooltiptext'}>Показать таблицей</span>
                     </div>
                 </div>
-                {/*<DetailsVotesPageResultVotesCardQuestionTable/>*/}
-                <DetailsVotesPageResultVotesCardQuestionGraph/>
+                <DetailsVotesPageResultVotesCardQuestionTable hiddenTable={hiddenTable}/>
+                {/*<DetailsVotesPageResultVotesCardQuestionGraph hiddenGraph={hiddenGraph}/>*/}
             </div>
     )
 }
