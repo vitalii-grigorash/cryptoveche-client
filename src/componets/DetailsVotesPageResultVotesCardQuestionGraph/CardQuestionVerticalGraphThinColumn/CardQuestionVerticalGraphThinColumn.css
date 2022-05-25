@@ -27,9 +27,20 @@
     position: absolute;
     top: 101%;
     color: rgba(54, 59, 77, 0.6);
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
     font-weight: 400;
     text-align: center;
-
+}
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 815px) {
+    .card-question-vertical-graph-thin-column__columns {
+        width: 95px;
+    }
+    .card-question-vertical-graph-thin-column__name-column {
+        font-size: 12px;
+    }
+    .card-question-vertical-graph-thin-column__column-svg {
+        width: 16px;
+    }
 }

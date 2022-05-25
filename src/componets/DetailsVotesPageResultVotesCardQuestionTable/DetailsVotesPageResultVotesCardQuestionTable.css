@@ -22,11 +22,18 @@
     font-size: 16px;
     width: 738px;
     opacity: 0.9;
+    font-weight: 500;
 }
 .details-votes-page-result-card-table__table th:last-child {
     border-right: none;
 }
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 790px) {
-
+    .details-votes-page-result-card-table__table th {
+        font-size: 14px;
+        padding: 16px 16px;
+    }
+    .details-votes-page-result-card-table__table td {
+        padding: 15px 0 15px 15px;
+    }
 }

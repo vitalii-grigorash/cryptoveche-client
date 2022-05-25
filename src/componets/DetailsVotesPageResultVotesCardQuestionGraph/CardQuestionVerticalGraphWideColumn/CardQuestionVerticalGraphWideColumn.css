@@ -31,3 +31,12 @@
     line-height: 28px;
     font-weight: 400;
 }
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 810px) {
+    .card-question-vertical-graph-wide-column__wrapper {
+        padding-right: 0;
+    }
+    .card-question-vertical-graph-wide-column__column-svg {
+        width: 32px;
+    }
+}

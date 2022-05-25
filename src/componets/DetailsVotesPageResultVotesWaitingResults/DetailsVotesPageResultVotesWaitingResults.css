@@ -7,3 +7,15 @@
     font-weight: 400;
     line-height: 28px;
 }
+.details-votes-page-result-waiting-results__wrapper img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+/*------Адаптивная версия(1028px)-------------------------------------------------------------------------------------*/
+@media (max-width: 1028px) {
+    .details-votes-page-result-waiting-results__wrapper {
+        font-size: 16px;
+        line-height: 26px;
+    }
+}

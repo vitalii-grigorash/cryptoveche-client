@@ -3,12 +3,29 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    width: 100%;
     max-height: 60px;
-
+    max-width: 500px;
 }
 .card-question-horizontal-graph-column__column-svg {
-    width: 100%;
+    width: 500px;
     height: 100%;
 }
+.card-question-horizontal-graph-column__column-svg rect {
+    max-width: 200px;
+}
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 960px) {
+    .card-question-horizontal-graph-column__column-svg text {
+       font-size: 12px;
+    }
+    .card-question-horizontal-graph-column__column-svg text {
+        font-size: 10px;
+    }
+    .card-question-horizontal-graph-column__column-svg rect {
+        height: 16px;
+    }
+    .card-question-horizontal-graph-column__columns {
+        height: 40px;
+    }
 
+}

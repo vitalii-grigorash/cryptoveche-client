@@ -1,37 +1,23 @@
 import React from "react";
 import './DetailsVotesPageResultVotesCardQuestionTable.css';
+import CardQuestionCellsTable from "./CardQuestionCellsTable/CardQuestionCellsTable";
 
-const DetailsVotesPageResultVotesCardQuestionTable = ({hiddenTable}) => {
+const DetailsVotesPageResultVotesCardQuestionTable = () => {
 
     return (
 
-        <div className={'details-votes-page-result-card-table__wrapper'} hidden={hiddenTable}>
+        <div className={'details-votes-page-result-card-table__wrapper'}>
             <table className={'details-votes-page-result-card-table__table'}>
                 <tbody>
                 <tr>
                     <th>Вариант ответа</th>
                     <th>Результат</th>
                 </tr>
-                <tr>
-                    <td>Да</td>
-                    <td>240</td>
-                </tr>
-                <tr>
-                    <td>Нет</td>
-                    <td>96</td>
-                </tr>
-                <tr>
-                    <td>Дайте подумать</td>
-                    <td>48</td>
-                </tr>
-                <tr>
-                    <td>Согласен частично</td>
-                    <td>72</td>
-                </tr>
-                <tr>
-                    <td>Недействительные бюллетени</td>
-                    <td>24</td>
-                </tr>
+                <CardQuestionCellsTable varinantAnswer={'Да'} result={'240'}/>
+                <CardQuestionCellsTable varinantAnswer={'Нет'} result={'96'}/>
+                <CardQuestionCellsTable varinantAnswer={'Дайте подумать'} result={'48'}/>
+                <CardQuestionCellsTable varinantAnswer={'Согласен частично'} result={'72'}/>
+                <CardQuestionCellsTable varinantAnswer={'Недействительные бюллетени'} result={'24'}/>
                 </tbody>
             </table>
         </div>

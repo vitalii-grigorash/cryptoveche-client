@@ -23,6 +23,9 @@ const CardQuestionHorizontalGraph = () => {
                    </tbody>
                 </table>
                 <CardQuestionHorizontalGraphColumn/>
+                <CardQuestionHorizontalGraphColumn/>
+
+
             </div>
 
     )

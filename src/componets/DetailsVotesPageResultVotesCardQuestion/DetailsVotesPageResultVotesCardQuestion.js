@@ -27,8 +27,8 @@ const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected, hid
                         <span className={'tooltiptext'}>Показать таблицей</span>
                     </div>
                 </div>
-                <DetailsVotesPageResultVotesCardQuestionTable hiddenTable={hiddenTable}/>
-                {/*<DetailsVotesPageResultVotesCardQuestionGraph hiddenGraph={hiddenGraph}/>*/}
+                {/*<DetailsVotesPageResultVotesCardQuestionTable/>*/}
+                <DetailsVotesPageResultVotesCardQuestionGraph/>
             </div>
     )
 }

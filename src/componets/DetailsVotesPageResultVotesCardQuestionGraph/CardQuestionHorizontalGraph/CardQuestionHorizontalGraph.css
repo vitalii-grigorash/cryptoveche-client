@@ -12,18 +12,51 @@
     border-left: 1px solid rgba(54, 59, 77, 0.05);
     border-bottom: 1px solid rgba(54, 59, 77, 0.05);
     border-top: 1px solid rgba(54, 59, 77, 0.05);
-    height: 513px;
+    max-height: 513px;
     width: 376px;
     rotate: -90deg;
     top: -75px;
     left: 74px;
-    object-fit: cover;
+    /*width: 568px;*/
 }
-
 .horizontal-grid__position-table td {
     border-bottom: 1px solid rgba(54, 59, 77, 0.05);
     height: 50px;
 }
 .horizontal-grid__position-table td:nth-child(10) {
     border: none;
+}
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 960px) {
+    .card-question-horizontal-graph__horizontal-grid {
+        margin-right: 90px;
+    }
+    .horizontal-grid__position-table td {
+        height: 40px;
+    }
+    .horizontal-grid__position-table {
+        max-height: 513px;
+        width: 376px;
+        rotate: -90deg;
+        top: -22px;
+        left: 23px;
+        /*width: 568px;*/
+    }
+}
+@media (max-width: 760px) {
+    .card-question-horizontal-graph__horizontal-grid {
+        height: 237px;
+        width: 100%;
+        overflow: scroll;
+    }
+    .horizontal-grid__position-table td {
+        height: 24px;
+    }
+    .horizontal-grid__position-table {
+       width: 237px;
+    }
+    .horizontal-grid__position-table {
+        top: -22px;
+        left: 16px;
+    }
 }

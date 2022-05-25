@@ -15,3 +15,11 @@
     background: #4569FF;
     opacity: 0.5;
 }
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 810px) {
+    .card-question-graph-column__wrapper  {
+        gap: 8px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+}

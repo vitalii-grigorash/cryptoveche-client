@@ -4,11 +4,11 @@ import CardQuestionGraphNameColumn from "./CardQuestionGraphNameColumn/CardQuest
 import CardQuestionVerticalGraph from "./CardQuestionVerticalGraph/CardQuestionVerticalGraph";
 import CardQuestionHorizontalGraph from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraph";
 
-const DetailsVotesPageResultVotesCardQuestionGraph = ({hiddenGraph}) => {
+const DetailsVotesPageResultVotesCardQuestionGraph = () => {
 
 
     return (
-            <div className={'details-votes-page-result-card-graph__wrapper'} hidden={hiddenGraph}>
+            <div className={'details-votes-page-result-card-graph__wrapper'}>
                <CardQuestionHorizontalGraph/>
                {/* <CardQuestionVerticalGraph/>*/}
                 <div className={'details-votes-page-result-card-graph__column-list'}>
