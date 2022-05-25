@@ -45,18 +45,23 @@
 }
 @media (max-width: 760px) {
     .card-question-horizontal-graph__horizontal-grid {
-        height: 237px;
+        height: 187px;
         width: 100%;
-        overflow: scroll;
     }
     .horizontal-grid__position-table td {
         height: 24px;
     }
     .horizontal-grid__position-table {
        width: 237px;
+
     }
     .horizontal-grid__position-table {
         top: -22px;
         left: 16px;
+    }
+}
+@media (max-width: 530px) {
+    .card-question-horizontal-graph__horizontal-grid {
+        overflow: auto;
     }
 }

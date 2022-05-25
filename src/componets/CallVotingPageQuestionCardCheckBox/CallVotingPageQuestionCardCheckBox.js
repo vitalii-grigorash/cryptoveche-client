@@ -29,7 +29,6 @@ const CallVotingPageQuestionCardCheckBox = ({titleName, chooseAnswer, answerSele
                     </div>
                     <CallVotingPageVoteButton/>
                 </div>
-
     )
 }
 

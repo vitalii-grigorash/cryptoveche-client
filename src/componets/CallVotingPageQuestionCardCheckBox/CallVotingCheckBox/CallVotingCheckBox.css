@@ -52,12 +52,12 @@
     display: block;
 }
 .call-voting-checkbox__container .call-voting-checkbox__checkmark:after {
-    left: 5px;
-    top: 4px;
-    width: 10px;
+    left: 6px;
+    top: 5px;
+    width: 8px;
     height: 10px;
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 1px 1px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);

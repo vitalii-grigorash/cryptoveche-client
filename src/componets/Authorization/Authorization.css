@@ -229,12 +229,6 @@ a {
     line-height: 143%;
     color: #FF4970;
 }
-/*._input-border-black {*/
-/*    border: 1px solid rgba(54, 59, 77, 0.9);*/
-/*}*/
-/*._input-border-red {*/
-/*    border: 1px solid #FF4970;*/
-/*}*/
 
 /*------Блок с ссылкой для мобильная версии на страницу регистрации--------------------------------------------------*/
 .main-block__mobile-link-reg {
@@ -336,12 +330,12 @@ a {
 }
 
 .checkbox_container .checkmark:after {
-    left: 4px;
-    top: 2px;
-    width: 10px;
-    height: 10px;
+    left: 5px;
+    top: 3px;
+    width: 8px;
+    height: 8px;
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 1px 1px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
