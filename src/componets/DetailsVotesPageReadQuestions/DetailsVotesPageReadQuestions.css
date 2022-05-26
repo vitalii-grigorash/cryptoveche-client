@@ -1,13 +1,19 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper {
-   display: flex;
+    padding-bottom: 104px;
+    font-family: Inter;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.details-votes-page-read-questions__main-content {
+    display: flex;
     flex-direction: column;
     padding: 32px 32px 32px 40px;
     background-color: #FFFFFF;
     box-shadow: 0 3px 16px rgba(54, 58, 72, 0.08);
     border-radius: 24px;
     gap: 32px;
-    margin-bottom: 104px;
 }
 /*------Заголовок основного контейнера--------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper-title {
@@ -19,14 +25,19 @@
 /*------Адаптивная версия(824px)---------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
     .details-votes-page-read-questions__wrapper {
+        padding-bottom: 0;
+        gap: 16px;
+    }
+    .details-votes-page-read-questions__main-content {
         padding: 16px 16px;
     }
     .details-votes-page-read-questions__wrapper-title {
         font-size: 20px;
     }
+
 }
 @media (max-width: 800px) {
-    .details-votes-page-read-questions__wrapper {
+    .details-votes-page-read-questions__main-content {
         gap: 20px;
         margin-bottom: 16px;
     }

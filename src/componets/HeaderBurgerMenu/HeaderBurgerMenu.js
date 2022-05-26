@@ -18,9 +18,9 @@ const HeaderBurgerMenu = ({active, setActive}) => {
                         <div><a href={'ru'}>РУС</a><span>ENG</span></div>
                     </div>
                     <div className={'burger-menu__link-page'}>
-                        <a href={'main'}>Главная</a>
+                        <a href={'/main'}>Главная</a>
                         <a href={'/main/votes-page'}>Голосования</a>
-                        <a href={'main'}>Мой профиль</a>
+                        <a href={'/main/my-profile'}>Мой профиль</a>
                     </div>
                     <div className={'burger-menu__toggle-font'}>
                         <span>Увеличить шрифт</span>

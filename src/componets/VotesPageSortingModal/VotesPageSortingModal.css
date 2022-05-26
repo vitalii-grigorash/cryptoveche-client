@@ -34,6 +34,7 @@
 }
 .sorting-modal__content.active {
     transform: scale(1);
+
 }
 .sorting-modal__content-title {
     display: flex;
@@ -95,12 +96,14 @@
     .sorting-modal__content {
         padding: 24px 16px;
         gap: 18px;
+
     }
     .sorting-modal__content-title h3 {
         font-size: 12px;
         line-height: 18px;
         color: rgba(54, 59, 77, 0.4);
         padding-bottom: 0;
+        font-weight: 400;
     }
     .sorting-modal__types-sort {
         font-size: 14px;

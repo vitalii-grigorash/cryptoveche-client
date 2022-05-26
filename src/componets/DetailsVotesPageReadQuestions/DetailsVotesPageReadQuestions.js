@@ -6,6 +6,10 @@ import DetailsVotesPageReadQuestionsCardList from "../DetailsVotesPageReadQuesti
 
 import DetailsVotesPageReadQuestionsCardCheckbox
     from "../DetailsVotesPageReadQuestionsCardCheckbox/DetailsVotesPageReadQuestionsCardCheckbox";
+import TitleVotesDetailsCallVotingProfile
+    from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
+import DetailsVotesPageDaysEndRegStartVote
+    from "../DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote";
 
 
 
@@ -13,7 +17,10 @@ const DetailsVotesPageReadQuestions = () => {
 
 
     return (
-            <div className={'details-votes-page-read-questions__wrapper'}>
+          <div className={'details-votes-page-read-questions__wrapper'}>
+              <TitleVotesDetailsCallVotingProfile titleName={'Детали голосования'} firstLetter={'КлиентКриптовече'} secondLetter={'Детали голосования'} mobileLetter={'Назад к списку голосований'}/>
+              <DetailsVotesPageDaysEndRegStartVote/>
+              <div className={'details-votes-page-read-questions__main-content'}>
                 <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true} hiddenBulletinBtn={true} hiddenResultBtn={true}/>
                     <h1 className={'details-votes-page-read-questions__wrapper-title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                 <DetailsVotesPageReadQuestionsCardList
@@ -38,6 +45,7 @@ const DetailsVotesPageReadQuestions = () => {
                     nameSelectAnswerQuestion={'Выберите один из вариантов ответа напротив каждого кандидата'} typeCheck={'radio'} nameFirstColumn={'За'} nameSecondColumn={'Против'} nameThirdColumn={'Воздержаться'}/>
                 <RegistrationButton/>
             </div>
+          </div>
     )
 }
 

@@ -2,20 +2,20 @@
 .my-profile-page-add-settings__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 32px;
     padding: 32px 32px 40px 32px;
     box-shadow: 0 6px 16px 0 rgba(54, 58, 72, 0.07);
     border-radius: 24px;
     font-family: Inter;
     max-height: 304px;
     background: #FFFFFF;
-    max-width: 656px;
+    /*max-width: 656px;*/
 }
 .my-profile-page-add-settings__wrapper h3 {
     font-size: 24px;
     font-weight: 600;
     line-height: 110%;
     color: rgba(54, 59, 77, 0.9);
+    padding-bottom: 32px;
 }
 /*-----Стилизация для формы--------------------------------------------------------------------------------------------*/
 .my-profile-page-add-settings__form {
@@ -24,6 +24,7 @@
     flex-direction: column;
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
+    padding-bottom: 32px;
 }
 .my-profile-page-add-settings__form select {
     padding: 12px 0 12px 24px;
@@ -49,13 +50,14 @@
 @media (max-width: 1070px) {
     .my-profile-page-add-settings__wrapper {
         padding: 16px 16px 24px 16px;
-        gap: 16px;
+
     }
     .my-profile-page-add-settings__wrapper h3 {
         font-size: 21px;
         font-weight: 500;
         line-height: 138%;
         color: rgba(54, 59, 77, 0.9);
+        padding-bottom: 16px;
     }
     .my-profile-page-add-settings__form select {
         padding: 0 40px 0 16px;
@@ -69,7 +71,7 @@
     }
     .my-profile-page-add-settings__form {
         gap: 6px;
-
+        padding-bottom: 24px;
     }
 
 }

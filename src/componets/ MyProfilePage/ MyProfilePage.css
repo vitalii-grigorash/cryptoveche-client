@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
 }
 .my-profile-page__main-content {
     display: grid;
@@ -49,7 +50,7 @@
 /*-----Cтилизация кнопочки Выйти из профиля---------------------------------------------------------------------------*/
 .my-profile-page__exit-button-profile {
     display: none;
-    max-width: 343px;
+    width: 100%;
     min-height: 40px;
     background: #FF4970;
     padding: 8px 108px 8px 108px;
@@ -75,14 +76,12 @@
         align-items: stretch;
         gap: 7px;
     }
-
 }
 @media (max-width: 420px) {
     .my-profile-page__wrapper {
         gap: 24px;
-    }
-    .my-profile-page__wrapper {
         padding-bottom: 48px;
+
     }
     .my-profile-page__exit-button-profile {
       display: block;
@@ -101,5 +100,4 @@
     .main-content__grid-item_2{order: 3}
     .main-content__grid-item_3{order: 4}
     .main-content__grid-item_4{order: 1}
-
 }
