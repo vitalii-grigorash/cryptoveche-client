@@ -10,7 +10,6 @@
 .title-for-votes-call-profile__page-info {
     color: rgba(54, 59, 77, 0.9);
     font-family: Inter;
-    gap: 16px;
     padding-bottom: 20px;
 }
 .page-info__info-and-row {
@@ -32,7 +31,7 @@
 /*------Адаптивная версия(660px)---------------------------------------------------------------------------------------*/
 @media (max-width: 810px) {
     .title-for-votes-call-profile__title {
-        font-size: 28px;
+        font-size: 26px;
     }
     .title-for-votes-call-profile__page-info {
         padding-bottom: 17px;

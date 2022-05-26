@@ -20,8 +20,16 @@
     gap: 16px;
 }
 /*------Адаптивная версия--------------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 830px) {
+    .main-content__my-votes-actual {
+        gap: 6px;
+    }
+    .main-content__amount-votes-and-calendar-votes {
+        gap: 6px;
+    }
 
+}
+@media (max-width: 420px) {
     .main-content__title {
         text-align: left;
         font-size: 24px;

@@ -11,7 +11,7 @@
     background: #FFFFFF;
     max-width: 656px;
 }
-.my-profile-page-add-settings__wrapper h3{
+.my-profile-page-add-settings__wrapper h3 {
     font-size: 24px;
     font-weight: 600;
     line-height: 110%;
@@ -35,7 +35,41 @@
     font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
+    cursor: pointer;
+}
+.my-profile-page-add-settings__form label {
+    font-size: 18px;
+    color: rgba(54, 59, 77, 0.9);
+    line-height: 24px;
+    font-weight: 400;
 }
 .my-profile-page-add-settings__form option {
+}
+/*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1070px) {
+    .my-profile-page-add-settings__wrapper {
+        padding: 16px 16px 24px 16px;
+        gap: 16px;
+    }
+    .my-profile-page-add-settings__wrapper h3 {
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 138%;
+        color: rgba(54, 59, 77, 0.9);
+    }
+    .my-profile-page-add-settings__form select {
+        padding: 0 40px 0 16px;
+        height: 40px;
+        word-wrap: break-word;
+        font-size: 16px;
+    }
+    .my-profile-page-add-settings__form label {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .my-profile-page-add-settings__form {
+        gap: 6px;
+
+    }
 
 }

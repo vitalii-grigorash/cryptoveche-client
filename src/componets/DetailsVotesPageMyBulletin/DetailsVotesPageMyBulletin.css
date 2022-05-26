@@ -37,13 +37,15 @@
     .details-votes-page-my-bulletin__wrapper {
         padding-bottom: 0;
         gap: 16px;
+        overflow: auto;
+        text-overflow: clip;
+        max-height: 990px;;
     }
     .details-votes-page-my-bulletin__title {
       display: none;
     }
     .details-votes-page-my-bulletin__main-content {
         padding: 20px 16px 16px 16px;
-        overflow: scroll;
         gap: 16px;
     }
     .details-votes-page-my-bulletin__revote-button {

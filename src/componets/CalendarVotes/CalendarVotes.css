@@ -161,11 +161,11 @@
 @media (max-width: 830px) {
     .calendar-container {
         padding: 16px 16px 16px 16px;
-        width: 370px;
+        min-width: 370px;
         height: 380px;
-        gap: 16px;
+        gap: 8px;
     }
-    .calendar-container h1 {
+    .calendar-container h1 {   width: 370px;
         font-size: 21px;
     }
     .calendar-container__run-end-vote {
@@ -175,7 +175,7 @@
         font-size: 12px;
     }
     .react-calendar {
-        width: 350px;
+        min-width: 300px;
     }
     .react-calendar__viewContainer {
         width: 100%;
@@ -207,6 +207,7 @@
 }
 @media (max-width: 420px) {
     .calendar-container {
-        width: 343px;
+        min-width: 343px;
     }
+
 }

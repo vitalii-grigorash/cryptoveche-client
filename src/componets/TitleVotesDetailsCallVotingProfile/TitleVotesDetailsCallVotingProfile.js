@@ -5,7 +5,7 @@ import row_link_back from '../../img/TitleVotesDetailsLinkRow.svg';
 import {Link} from "react-router-dom";
 
 
-const TitleVotesDetailsCallVotingProfile = ({firstLetter, secondLetter, titleName, mobileLetter}) => {
+const TitleVotesDetailsCallVotingProfile = ({firstLetter, secondLetter, titleName, mobileLetter, hiddenRowBack}) => {
 
     return (
             <div className={'title-for-votes-call-profile__wrapper'}>
@@ -16,7 +16,7 @@ const TitleVotesDetailsCallVotingProfile = ({firstLetter, secondLetter, titleNam
                         <span>{secondLetter}</span>
                     </div>
                     <div className={'page-info__link-back-row'}>
-                        <span><Link to={'/main'}><img alt={'стрелка для возврата'} src={row_link_back}/></Link></span>
+                        <span><Link to={'/main'}><img alt={'стрелка для возврата'} src={row_link_back} hidden={hiddenRowBack}/></Link></span>
                         <span>{mobileLetter}</span>
                     </div>
                 </div>

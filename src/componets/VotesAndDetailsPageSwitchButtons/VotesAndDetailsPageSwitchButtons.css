@@ -29,7 +29,8 @@
 }
 @media (max-width: 800px) {
     .votes-and-details-page-switch-buttons__wrapper {
-        overflow: auto;
+        overflow: hidden;
+        text-overflow: inherit;
     }
 }
 

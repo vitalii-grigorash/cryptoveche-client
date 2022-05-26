@@ -1,0 +1,23 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
+.my-bulletin-card-checkbox__list-answer {
+    display: grid;
+    grid-template-columns: 31% 14% 14% 20%;
+    grid-auto-rows: auto;
+    gap: 40px;
+}
+.my-bulletin-card-checkbox__name-question {
+    overflow-wrap: break-word;
+    line-height: 28px;
+}
+/*------Адаптивная версия(800px)---------------------------------------------------------------------------------------*/
+@media (max-width: 800px) {
+    .my-bulletin-card-checkbox__name-question {
+        overflow-wrap: break-word;
+        line-height: 22px;
+    }
+}
+@media (max-width: 560px) {
+    .my-bulletin-card-checkbox__list-answer {
+        grid-template-columns: 136px 18% 18% 20%;
+    }
+}

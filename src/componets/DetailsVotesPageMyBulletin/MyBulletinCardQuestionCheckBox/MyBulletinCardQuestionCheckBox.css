@@ -20,15 +20,7 @@
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
 }
-.my-bulletin-card-question-check__select-answer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: rgba(54, 59, 77, 0.4);
-}
+
 .my-bulletin-card-question-check__select-answer span:first-child {
     padding-right: 16px;
     border-right: 1px solid rgba(54, 59, 77, 0.3)
@@ -58,7 +50,7 @@
         font-size: 16px;
         overflow: scroll;
     }
-    .cmy-bulletin-card-question-check__header-columns {
+    .my-bulletin-card-question-check__header-columns {
         font-size: 16px;
     }
 }
@@ -68,11 +60,9 @@
         grid-template-columns: 121px 13% 23% 16%;
     }
 
-}
-@media (max-width: 670px) {
     .my-bulletin-card-question-check__wrapper {
         gap: 16px;
-        padding: 16px 16px 24px 16px;
+
     }
     .my-bulletin-card-question-check__title {
         gap: 8px;
@@ -82,9 +72,6 @@
         font-size: 16px;
         font-weight: 500;
     }
-    .my-bulletin-card-question-check__select-answer {
-        font-size: 12px;
-        line-height: 20px;
-    }
+
 
 }

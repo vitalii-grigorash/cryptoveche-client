@@ -109,12 +109,12 @@
     .items__block-logo_mobile-position {
         display: block;
         margin: 0 15px;
+        padding-bottom: 16px;
     }
     .items__block-map-site h3, .items__block-settings h3, .items__block-support h3 {
         font-size: 16px;
         font-weight: 500;
     }
-
 }
 @media (max-width: 420px) {
     .footer__items {
@@ -124,5 +124,4 @@
         border-top: 1px solid rgba(54, 59, 77, 0.4);
         padding-top: 21px;
     }
-
 }

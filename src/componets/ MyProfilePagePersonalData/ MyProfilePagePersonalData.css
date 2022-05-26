@@ -8,12 +8,20 @@
     border-radius: 24px;
     font-family: Inter;
     background: #FFFFFF;
-
+    min-width: 300px;
 }
-.my-profile-page-personal-data__wrapper h3{
+/*-----Cтилизация заголовка-----------------------------------------------------------------------------------------------*/
+.my-profile-page-personal-data__title {
     font-size: 24px;
     font-weight: 600;
     line-height: 110%;
+    color: rgba(54, 59, 77, 0.9);
+}
+.my-profile-page-personal-data__title-mobile {
+    display: none;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 138%;
     color: rgba(54, 59, 77, 0.9);
 }
 /*-----Cтилизация формы-----------------------------------------------------------------------------------------------*/
@@ -22,23 +30,71 @@
     gap: 24px;
     flex-direction: column;
 }
-
 .my-profile-page-personal-data__form-input {
     display: flex;
     gap: 16px;
     flex-direction: column;
     color: rgba(54, 59, 77, 0.9);
-
 }
-
 .my-profile-page-personal-data__form-input input {
     width: 100%;
     max-height: 48px;
     padding: 12px 0 12px 24px;
     outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(54, 59, 77, 0.9);
     border-radius: 8px;
     border: 1px rgba(54, 59, 77, 0.3) solid;
+}
+.my-profile-page-personal-data__form-input label {
     font-size: 18px;
-    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
+}
+/*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1070px) {
+    .my-profile-page-personal-data__wrapper {
+        padding: 16px 16px 24px 16px;
+    }
+    .my-profile-page-personal-data__title {
+        font-size: 21px;
+        font-weight: 500;
+    }
+    .my-profile-page-personal-data__form {
+        gap: 16px;
+    }
+    .my-profile-page-personal-data__form-input {
+        gap: 8px;
+    }
+    .my-profile-page-personal-data__form-input input {
+        font-size: 16px;
+        line-height: 22px;
+        height: 40px;
+    }
+    .my-profile-page-personal-data__form-input label {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+@media (max-width: 420px) {
+    .my-profile-page-personal-data__wrapper {
+        gap: 16px;
+    }
+    .my-profile-page-personal-data__form-input input {
+        padding: 10px 0 10px 16px;
+    }
+    .my-profile-page-personal-data__title {
+        display: none;
+    }
+    .my-profile-page-personal-data__title-mobile {
+        display: block;
+    }
+    .my-profile-page-personal-data__form {
+        padding-bottom: 16px;
+    }
+    .__my-profile-page-personal-date__hidden-e-mail {
+        display: none;
+    }
 }

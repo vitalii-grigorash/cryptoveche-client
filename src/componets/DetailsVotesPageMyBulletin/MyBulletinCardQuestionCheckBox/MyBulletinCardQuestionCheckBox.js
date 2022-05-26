@@ -1,6 +1,7 @@
 import React from "react";
 import './MyBulletinCardQuestionCheckBox.css';
 import CallVotingCheckBox from "../../CallVotingPageQuestionCardCheckBox/CallVotingCheckBox/CallVotingCheckBox";
+import MyBulletinCardCheckBox from "./MyBulletinCardCheckBox/MyBulletinCardCheckBox";
 
 
 const MyBulletinCardQuestionCheckBox = ({titleName, nameFirstColumn, nameSecondColumn, nameThirdColumn}) => {
@@ -17,10 +18,10 @@ const MyBulletinCardQuestionCheckBox = ({titleName, nameFirstColumn, nameSecondC
                         <span>{nameSecondColumn}</span>
                         <span>{nameThirdColumn}</span>
                     </div>
-                    <CallVotingCheckBox checkBoxNameRow={'Только через КриптоВече'}/>
-                    <CallVotingCheckBox checkBoxNameRow={'На общем собрании'}/>
-                    <CallVotingCheckBox checkBoxNameRow={'Третий варентос'}/>
-                    <CallVotingCheckBox checkBoxNameRow={'Очень совсем уж динный четвертый чтобы стыдно было такие варианты давать блин'}/>
+                        <MyBulletinCardCheckBox checkBoxNameMyBulletin={'Только через КриптоВече'} activeChecked={true} activeDisable={true}/>
+                        <MyBulletinCardCheckBox checkBoxNameMyBulletin={'На общем собрании'}/>
+                        <MyBulletinCardCheckBox checkBoxNameMyBulletin={'Третий варентос'} activeChecked={true} activeDisable={true}/>
+                        <MyBulletinCardCheckBox checkBoxNameMyBulletin={'Очень совсем уж динный четвертый чтобы стыдно было такие варианты давать блин'}/>
                 </div>
             </div>
     )
