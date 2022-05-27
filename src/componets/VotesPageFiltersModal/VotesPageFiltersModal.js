@@ -41,14 +41,28 @@ const VotesPageFiltersModal = ({active, setActive}) => {
                         <h3>По дате начала регистрации</h3>
                         <h4>Дата начала регистрации</h4>
                         <div className={'content-date-start-reg'}>
-                            <span>с</span><input type={'date'} className={'content-date-start-reg__start-select-date'}/>по<input type={"date"} className={'content-date-start-reg__end-select-date'}/><span>По возрастанию</span><img alt={'кнопка по возрастанию'} src={filter_modal_increment_button}/>
+                            <div className={'content-date-start-reg__select-dates'}>
+                                <span>с</span>
+                                    <input type={'date'} className={'content-date-start-reg__start-select-date'}/>по
+                                    <input type={"date"} className={'content-date-start-reg__end-select-date'}/>
+                            </div>
+                            <div className={'content-date-start-reg__increment-bnt'}>
+                                <span>По возрастанию</span><img alt={'кнопка по возрастанию'} src={filter_modal_increment_button}/>
+                            </div>
                         </div>
                     </div>
                     <div className={'filters-modal__content-date-start-vote'}>
                         <h3>По дате начала голосования</h3>
                         <h4>Дата начала голосования</h4>
                         <div className={'content-date-start-vote'}>
-                            <span>с</span><input type={'date'} className={'content-date-start-vote__start-select-date'}/>по<input type={"date"} className={'content-date-start-reg__end-select-date'}/><span>По возрастанию</span><img alt={'кнопка по возрастанию'} src={filter_modal_increment_button}/>
+                            <div className={'content-date-start-reg__select-dates'}>
+                                <span>с</span>
+                                <input type={'date'} className={'content-date-start-vote__start-select-date'}/>по
+                                <input type={"date"} className={'content-date-start-vote__end-select-date'}/>
+                            </div>
+                            <div className={'content-date-start-reg__increment-bnt'}>
+                                 <span>По возрастанию</span><img alt={'кнопка по возрастанию'} src={filter_modal_increment_button}/>
+                            </div>
                         </div>
                     </div>
                 </div>

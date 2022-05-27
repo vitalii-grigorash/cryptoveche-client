@@ -107,9 +107,19 @@
     flex-direction: column;
     gap: 24px;
 }
+.content-date-start-reg__select-dates {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.content-date-start-reg__increment-bnt {
+     display: flex;
+     gap: 16px;
+     align-items: center;
+
+}
 .content-date-start-reg, .content-date-start-vote {
     display: flex;
-    align-items: center;
     flex-direction: row;
     gap: 16px;
     font-size: 18px;
@@ -164,10 +174,10 @@
 }
 @media (max-width: 580px) {
     .filters-modal {
-        top: 170px;
+        top: 220px;
     }
     .filters-modal__content-title img {
-     display: none;
+        display: none;
     }
     .filters-modal__content-title-mobile {
         display: flex;
@@ -176,6 +186,7 @@
     }
     .filters-modal__content-checkboxes-status-vote {
         gap: 8px;
+        min-width: 500px;
     }
     .content-checkboxes-type-vote {
         gap: 8px;
@@ -191,10 +202,20 @@
     .filters-modal__content h3 {
         display: none;
     }
+    .content-date-start-reg__start-select-date, .content-date-start-vote__start-select-date, .content-date-start-reg__end-select-date, .content-date-start-reg__end-select-date {
+        width: 135px;
+        height: 38px;
+        padding: 8px 12px 8px 12px;
+    }
+    .content-date-start-reg, .content-date-start-vote {
+        font-size: 16px;
+        flex-direction: column-reverse;
+    }
+
 }
 @media (max-width: 420px) {
     .filters-modal {
-        top: 20px;
+        top: 45px;
         left: -14px;
     }
     .filters-modal__content {

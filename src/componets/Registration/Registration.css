@@ -347,6 +347,9 @@ a {
 ._input-border-black-reg-page {
     border: 1px solid rgba(54, 59, 77, 0.3);
 }
+._input-border-red {
+    border: 1px solid red;
+}
 /*------- Cообщения об ошибке в заполнении форм----------------------------------------------------------------------*/
 .reg-block__error-message {
     position: absolute;

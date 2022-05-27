@@ -31,6 +31,7 @@ const Registration = () => {
     const [modalActive, setModalActive] = useState(false);
 
     const linkRegSecondPage = useNavigate();
+    const linkButtonBackPage = useNavigate();
 
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
@@ -79,7 +80,7 @@ const Registration = () => {
                         </div>
                         <div className={'reg-block-logotype__button'}>
                             <span>Уже есть аккаунт?</span>
-                            <button>Войти</button>
+                            <button onClick={() => linkButtonBackPage('/auth')}>Войти</button>
                         </div>
                     </div>
                     <div className={'reg-block__reg-form'}>

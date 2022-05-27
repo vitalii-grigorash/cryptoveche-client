@@ -8,9 +8,11 @@ import TitleVotesDetailsCallVotingProfile
 import CallVotingPageQuestionCardList from "../CallVotingPageQuestionCardList/CallVotingPageQuestionCardList";
 import CallVotingPageQuestionCardCheckBox
     from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
+import {useNavigate} from "react-router-dom";
 
  const CallVotingPage = () => {
 
+     const linkDetailsPage = useNavigate();
 
 
      return (
@@ -21,7 +23,7 @@ import CallVotingPageQuestionCardCheckBox
                     titleName={'Голосование по повестке'} mobileLetter={'Назад на главную'}/>
                  <div className={'call-voting-page__title'}>
                      <h2 className={'call-voting-page-title__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h2>
-                     <button className={'call-voting-page-title__details-btn'}>Детали голосования</button>
+                     <button className={'call-voting-page-title__details-btn'} onClick={() => linkDetailsPage('/main/votes-page-details-voting')}>Детали голосования</button>
                      <span className={'call-voting-page-title__details-icon'}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
                      <DetailsVotesPageDaysEndRegStartVote/>

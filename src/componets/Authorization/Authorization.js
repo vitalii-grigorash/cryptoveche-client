@@ -19,6 +19,7 @@ const Authorization = () => {
     const [error, setError] = useState('')
     const [changeTypePass, setChangeTypePass] = useState('password');
     const linkButtonRegPage = useNavigate();
+    const linkButtonMainPage = useNavigate();
     const refBorderRedLogin = useRef();
     const refBorderRedPass = useRef();
 
@@ -40,7 +41,8 @@ const Authorization = () => {
             setError('Неверно введено имя пользователя или пароль')
             refBorderRedLogin.current.style.border = '1px solid red';
             refBorderRedPass.current.style.border = '1px solid red';
-
+        } else {
+            linkButtonMainPage('/main')
         }
     }
 

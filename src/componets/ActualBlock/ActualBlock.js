@@ -4,8 +4,11 @@ import logo_icon from '../../img/ActualBlock_logo.svg';
 import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
 import DataTime from "../VotesStatusComponents/DateTime/DateTime";
 import EmptyStatesComponent from "../EmptyStatesComponent/EmptyStatesComponent";
+import {useNavigate} from "react-router-dom";
 
 const ActualBlock = () => {
+
+    const linkButtonMyBulliten = useNavigate();
 
     return (
         <div className={'actual-block-wrapper'}>
@@ -24,7 +27,7 @@ const ActualBlock = () => {
                 </div>
             </div>
                 <ActualBlockDiagramm/>
-                <button className={'actual-block__button'}>
+                <button className={'actual-block__button'} onClick={() => linkButtonMyBulliten('call-voting-page')}>
                     Проголосовать
                 </button>
             {/*<EmptyStatesComponent/>*/}
