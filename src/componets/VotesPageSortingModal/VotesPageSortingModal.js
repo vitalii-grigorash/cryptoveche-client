@@ -1,6 +1,6 @@
 import React from "react";
 import './VotesPageSortingModal.css';
-import sorting_modal_close_button from "../../img/VotesPageBlockFilterModal_close_button .svg";
+import sorting_modal_close_button from "../../img/VotesPageBlockFilterModal_close_button.svg";
 import sorting_modal_decrease_btn from '../../img/VotesPageBlockSortModal_decrease_btn.svg';
 import sorting_modal_increase_bnt from '../../img/VotesPageBlockSortModal_increase_btn.svg';
 

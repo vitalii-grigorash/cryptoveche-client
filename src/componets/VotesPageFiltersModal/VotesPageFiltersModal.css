@@ -4,7 +4,7 @@
     max-width: 1104px;
     max-height: 544px;
     background-color: #FFFFFF;
-    top: 175px;
+    top: 155px;
     left: 0;
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@
     transform: scale(1);
     pointer-events: all;
 }
-/*------Стилизация для контента модального окна------------------------------------------------------------------------*/
+/*------Стилизация для контента модального окна-----------------------------------------------------------------------*/
 .filters-modal__content {
     display: flex;
     font-family: Inter;
@@ -34,10 +34,12 @@
     transform: scale(0.5);
     transition: 0.4s all;
     gap: 32px;
+    box-shadow: 0 4px 8px 0 rgba(54, 59, 77, 0.1);
 }
 .filters-modal__content.active {
     transform: scale(1);
 }
+/*------Стилизация для заголовка--------------------------------------------------------------------------------------*/
 .filters-modal__content-title {
     display: flex;
     justify-content: space-between;
@@ -48,7 +50,19 @@
     width: 15px;
     height: 15px;
 }
-/*------Общий стиль для названия блоков с чекбоксами, датами начали регистрации и голосования--------------------------*/
+.filters-modal__content-title-mobile {
+    display: none;
+    width: 88vw;
+    font-size: 12px;
+    color: rgba(54, 59, 77, 0.4);
+    line-height: 18px;
+}
+.filters-modal__content-title-mobile img {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+}
+/*------Общий стиль для названия блоков с чекбоксами, датами начали регистрации и голосования-------------------------*/
 .filters-modal__content h3 {
     color: #363B4D;
     opacity: 90%;
@@ -56,7 +70,10 @@
     font-weight: 600;
     line-height: 24px;
 }
+.filters-modal__content h4 {
+    display: none;
 
+}
 /*------Стилизация для div c чекбоксами по статусу голосования--------------------------------------------------------*/
 .filters-modal__content-checkboxes-status-vote {
     display: flex;
@@ -67,20 +84,12 @@
     font-size: 18px;
     color: #363B4D;
     opacity: 90%;
-
-}
-.checkbox-status-vote {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
 }
 /*------Стилизация для div c чекбоксами по типу голосования------------------------------------------------------------*/
 .filters-modal__content-checkboxes-type-vote {
     display: flex;
     flex-direction: column;
     gap: 24px;
-
 }
 .content-checkboxes-type-vote {
     display: flex;
@@ -92,12 +101,6 @@
     color: #363B4D;
     opacity: 90%;
 }
-.checkbox-type-vote {
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     gap: 16px;
- }
 /*------Общие стиля для div с датой начала регистрации,div с датой начала голосования---------------------------------*/
 .filters-modal__content-date-start-reg, .filters-modal__content-date-start-vote {
     display: flex;
@@ -137,32 +140,84 @@
     opacity: 90%;
     font-family: Inter;
 }
-/*------Чек бокс------------------------------------------------------------------------------------------------------*/
-._checkbox-border-color {
-    border-color: #0084FE;
-}
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 1070px) {
     .filters-modal {
-        position: fixed;
-        top: 40px;
+        top: 170px;
+    }
+}
+@media (max-width: 820px) {
+    .filters-modal {
+        top: 170px;
     }
     .filters-modal__content {
         gap: 24px;
     }
-    .checkbox-status-vote input {
-      display: none;
+    .filters-modal__content h3 {
+        font-size: 16px;
+        font-weight: 500;
     }
-    .checkbox-status-vote span {
+    .filters-modal__content-title img {
+        width: 12px;
+        height: 12px;
+    }
+}
+@media (max-width: 580px) {
+    .filters-modal {
+        top: 170px;
+    }
+    .filters-modal__content-title img {
+     display: none;
+    }
+    .filters-modal__content-title-mobile {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 24px;
+    }
+    .filters-modal__content-checkboxes-status-vote {
+        gap: 8px;
+    }
+    .content-checkboxes-type-vote {
+        gap: 8px;
+    }
+    .filters-modal__content h4 {
+        display: inherit;
+        color: #363B4D;
+        opacity: 90%;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+    }
+    .filters-modal__content h3 {
         display: none;
     }
-    .checkbox-status-vote p {
-        background: #0075FF;
-        color: #FFFFFF;
-        font-size: 14px;
-        padding: 4px 12px 4px 12px;
-        height: 30px;
-        border-radius: 8px;
+}
+@media (max-width: 420px) {
+    .filters-modal {
+        top: 20px;
+        left: -14px;
+    }
+    .filters-modal__content {
+       padding: 24px 0 8px 16px;
+        box-shadow: none;
+        gap: normal;
+    }
+    .filters-modal__content h4 {
+        padding-bottom: 16px;
+    }
+    .filters-modal__content-checkboxes-status-vote {
+        padding-bottom: 24px;
+    }
+   .filters-modal__content-checkboxes-type-vote {
+        gap: normal;
+        padding-bottom: 24px;
+    }
+   .filters-modal__content-date-start-reg {
+       gap: normal;
+       padding-bottom: 24px;
+   }
+    .filters-modal__content-date-start-vote {
+        gap: normal;
     }
 }
 
