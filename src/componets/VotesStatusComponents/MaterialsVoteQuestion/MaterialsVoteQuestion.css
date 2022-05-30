@@ -11,6 +11,7 @@
     cursor: pointer;
     margin-left: 4px;
 }
+
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 890px) {
     .materials-vote-question__wrapper {

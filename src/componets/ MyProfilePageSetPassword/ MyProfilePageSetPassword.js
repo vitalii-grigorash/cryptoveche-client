@@ -12,15 +12,17 @@ const MyProfilePageSetPassword = () => {
                     <div className={'my-profile-page-set-pass__form-input __my-profile-page-set-pass-hidden'}>
                         <label>Пароль</label>
                         <input type={"password"}/>
-                        <img className={'my-profile-page-set-pass__form-input-icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password}/>
+                        <img className={'my-profile-page-set-pass__icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password}/>
                     </div>
                     <div className={'my-profile-page-set-pass__form-input'}>
                         <label>Новый пароль</label>
                         <input type={"password"}/>
+                        <img className={'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password}/>
                     </div>
-                    <div className={'my-profile-page-set-pass__form-input'}>
+                    <div className={'my-profile-page-set-pass__form-input '}>
                         <label>Повторите новый пароль</label>
                         <input type={"password"}/>
+                        <img className={'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password}/>
                     </div>
                 </div>
                 <button className={'my-profile-page__save-change-button'}>Сохранить изменения</button>

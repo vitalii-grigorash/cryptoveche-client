@@ -162,7 +162,7 @@
     .calendar-container {
         padding: 16px 16px 16px 16px;
         min-width: 370px;
-        height: 380px;
+        /*height: 380px;*/
         gap: 8px;
     }
     .calendar-container h1 {   width: 370px;

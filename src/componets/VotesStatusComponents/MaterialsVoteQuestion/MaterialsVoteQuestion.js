@@ -9,7 +9,7 @@ const MaterialsVoteQuestion = ({materialsVoteQuestion}) => {
     return (
             <div className={'materials-vote-question__wrapper'}>
                 <span>{materialsVoteQuestion}</span>
-                <select>
+                <select >
                 </select>
             </div>
     )

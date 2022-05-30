@@ -37,6 +37,7 @@
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
     cursor: pointer;
+    text-indent: -4px;
 }
 .my-profile-page-add-settings__form label {
     font-size: 18px;
@@ -45,6 +46,7 @@
     font-weight: 400;
 }
 .my-profile-page-add-settings__form option {
+    text-align: left;
 }
 /*------Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 1070px) {
