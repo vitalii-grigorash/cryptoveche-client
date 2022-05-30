@@ -27,6 +27,7 @@
  .status-and-start-reg-start-vote {
     display: flex;
     flex-direction: row;
+    height: 56px;
 }
 .status-and-start-reg-start-vote__reg-vote-date {
     display: flex;
@@ -40,14 +41,16 @@
     }
     .status-and-start-reg-start-vote {
         padding-bottom: 20px;
+        height: 75px;
     }
 }
-@media (max-width: 590px) {
+@media (max-width: 600px) {
     .status-and-start-reg-start-vote {
         display: grid;
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
         row-gap: 16px;
+        height: 100%;
     }
     .status-and-start-reg-start-vote__add-border-left {
         border: none;

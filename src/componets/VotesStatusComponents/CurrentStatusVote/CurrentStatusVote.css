@@ -8,7 +8,6 @@
     font-family: Inter;
     border-right: 1px rgba(54, 59, 77, 0.2) solid;
     justify-content: center;
-
 }
 .current-status__registration-in-progress {
     display: flex;
@@ -30,6 +29,7 @@
 @media (max-width: 890px) {
     .status-block__current-status {
         padding-right: 12px;
+        font-size: 10px;
     }
 }
 @media (max-width: 830px) {
