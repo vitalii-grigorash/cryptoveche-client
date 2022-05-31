@@ -1,0 +1,21 @@
+.calendar-votes-timetable-day__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.calendar-votes-timetable-day__calendar-date {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(54, 59, 77, 0.9);
+    line-height: 136%;
+}
+.calendar-votes-timetable-day__day-week {
+    display: flex;
+    gap: 6px;
+}
+.calendar-votes-timetable-day__day-week {
+    color: rgba(54, 59, 77, 0.6);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}

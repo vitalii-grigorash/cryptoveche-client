@@ -18,40 +18,22 @@
     line-height: 32px;
     font-weight: 600;
     color: rgba(54, 59, 77, 0.9);
+    padding-bottom: 32px;
 }
 /*------Стили для блока "Начало и конец регистрацич"-------------------------------------------------------------------*/
 .calendar-container__run-end-vote {
     display: flex;
     flex-direction: row;
     gap: 32px;
-    padding: 0 20px 0 20px;
+    padding: 0 20px 32px 20px;
 }
 .run-end-vote {
     display: flex;
     flex-direction: column;
+    gap: 16px;
 }
-.run-end-vote li {
-    padding: 0 0 16px 0;
-}
-.__li-color-blue {
-    color: #49B3FF;
-}
-.__li-color-orange {
-    color: #FF8A00;
-}
-.__li-color-green {
-    color: #4ED4A9;
-}
-.__li-color-red {
-    color: #FF4970;
-}
-.run-end-vote span {
-    color: #363B4D;
-    font-family: Inter;
-    font-size: 16px;
-    line-height: 124%;
-    font-weight: 400;
-}
+
+
 /*------Кружки событий для календаря--------------------------------------------------------------------------------*/
 .blue__circle {
     width: 8px;
