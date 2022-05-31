@@ -52,19 +52,3 @@
 
 
 
-
-@font-face {
-    font-family: "Golos";
-    src: url("../src/fonts/Golos-Text_Regular.woff") format('woff');
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "Golos";
-    src: url("../src/fonts/Golos-Text_Bold.woff") format('woff');
-    font-style: italic;
-    font-weight: bold;
-}
-
-

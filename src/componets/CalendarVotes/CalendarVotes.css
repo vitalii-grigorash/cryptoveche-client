@@ -13,7 +13,7 @@
 }
 
 .calendar-container h1 {
-    font-family: Golos;
+    font-family: Inter;
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
@@ -140,7 +140,7 @@
     font-size: 18px;
     opacity: 0.7;
     /*z-index: 3;*/
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .react-calendar__month-view__weekdays__weekday abbr {

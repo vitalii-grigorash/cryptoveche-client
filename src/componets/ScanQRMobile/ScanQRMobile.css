@@ -11,8 +11,9 @@
     padding: 14px 6px 13px 16px;
 }
 .scan-qr-code-wrapper span {
-    font-family: Golos;
+    font-family: Inter;
     font-size: 21px;
+    font-weight: 500;
     line-height: 29px;
     white-space: nowrap;
     color: rgba(54, 59, 77, 0.9);

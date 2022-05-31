@@ -113,6 +113,7 @@
 }
 .my-votes__link-arrow a {
     color: #0075FF;
+    text-decoration: none;
 }
 .my-votes__link-arrow img {
 

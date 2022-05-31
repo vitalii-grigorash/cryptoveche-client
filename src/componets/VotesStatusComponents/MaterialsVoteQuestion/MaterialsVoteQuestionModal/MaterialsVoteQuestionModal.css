@@ -21,7 +21,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    gap: 24px;
+    gap: 20px;
     padding: 32px 24px 24px 24px;
     flex-direction: column;
     background-color: #FFFFFF;
@@ -37,23 +37,51 @@
     font-size: 18px;
     line-height: 133%;
     opacity: 0.9;
-    white-space: nowrap;
+    max-width: 380px;
 }
 /*------Стилизация для div с документами------------------------------------------------------------------------------*/
 .materials-vote-question-modal__document-icons {
     display: inline-flex;
     flex-direction: row;
-    min-width: 453px;
+    max-width: 453px;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
 }
+.materials-vote-question-modal__document-icons span {
+     word-wrap: break-word;
+     font-size: 18px;
+     max-width: 310px;
+     line-height: 24px;
+     color: rgba(54, 59, 77, 0.9);
+}
+
 /*------Стилизация для div с иконками--------------------------------------------------------------------------------*/
 .document-icons__icons-block {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     gap: 8px;
+    padding-left: 70px;
 }
 .document-icons__icons-block img {
     cursor: pointer;
+}
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 1210px) {
+    .materials-vote-question-modal__wrapper.active {
+        left: -210px;
+    }
+    .materials-vote-question-modal__content {
+        padding: 16px 16px;
+        gap: 16px;
+    }
+    .materials-vote-question-modal__document-icons  {
+        font-size: 14px;
+        min-width: 333px;
+    }
+    .materials-vote-question-modal__document-icons span {
+        font-size: 14px;
+    }
+    .materials-vote-question-modal__content a {
+        font-size: 14px;
+    }
 }

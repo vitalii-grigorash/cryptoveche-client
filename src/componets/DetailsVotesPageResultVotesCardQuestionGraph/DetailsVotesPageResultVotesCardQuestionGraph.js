@@ -9,8 +9,8 @@ const DetailsVotesPageResultVotesCardQuestionGraph = () => {
 
     return (
             <div className={'details-votes-page-result-card-graph__wrapper'}>
-               {/*<CardQuestionHorizontalGraph/>*/}
-                <CardQuestionVerticalGraph/>
+               <CardQuestionHorizontalGraph/>
+               {/* <CardQuestionVerticalGraph/>*/}
                 <div className={'details-votes-page-result-card-graph__column-list'}>
                     <CardQuestionGraphNameColumn nameColumn={'Только через КриптоВече'}/>
                     <CardQuestionGraphNameColumn nameColumn={'На общем собрании'}/>

@@ -25,7 +25,6 @@
     color: #FF4970;
 
 }
-
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
     .status-block__materials-vote {
@@ -46,6 +45,7 @@
      .status-block__materials-vote {
          padding: 12px 0 0 0;
          font-size: 14px;
+         grid-template-rows: 1fr;
      }
     .materials-vote__status-icon {
         font-size: 14px;

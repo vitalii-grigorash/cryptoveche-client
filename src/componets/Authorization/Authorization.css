@@ -47,10 +47,10 @@ a {
     color: rgba(54, 59, 77, 0.9);
 }
 .auth__title h3 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 32px;
     line-height: 40px;
-    font-family: Golos;
+    font-family: Inter;
 }
 .auth__title span {
         padding-right: 8px;
@@ -111,7 +111,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-bottom: 40px;
+    padding-bottom: 24px;
 }
 .form__pass input {
     border-radius: 8px;
@@ -157,7 +157,7 @@ a {
     cursor: pointer;
     font-size: 18px;
     font-weight: 500;
-    font-family: Golos;
+    font-family: Inter;
 }
 .form__button button:hover {
     background-color: #FFFFFF;
@@ -179,7 +179,7 @@ a {
 .reg__logo {
     display: flex;
     align-self: flex-end;
-    padding-bottom: 528px;
+    padding-bottom: 512px;
     font-size: 32px;
 }
 .reg__title {
@@ -214,7 +214,7 @@ a {
     border-radius: 4px;
     color: #0084FE;
     font-weight: 500;
-    font-family: Golos;
+    font-family: Inter;
     font-size: 16px;
     line-height: 24px;
     z-index: 66;
@@ -390,7 +390,7 @@ a {
     }
 
     .reg__logo {
-        padding-bottom: 500px;
+        padding-bottom: 485px;
     }
     .reg__logo img {
         width: 180px;
@@ -512,7 +512,7 @@ a {
         width: 132px;
         height: 48px;
         font-size: 16px;
-        font-family: Golos;
+        font-family: Inter;
         font-weight: 500;
     }
 

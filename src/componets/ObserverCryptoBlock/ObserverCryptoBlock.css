@@ -12,7 +12,7 @@
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
 .observer-crypto-block-wrapper h2 {
-    font-family: Golos;
+    font-family: Inter;
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
@@ -37,6 +37,7 @@
 
 .observer-crypto-block__link-arrow  a {
     color: #0075FF;
+    text-decoration: none;
 }
 .observer-crypto-block__link-arrow__link-page-observer {
     font-family: Inter;

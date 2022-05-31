@@ -84,7 +84,7 @@ a {
     border-radius: 4px;
     color: #0084FE;
     font-weight: 500;
-    font-family: Golos;
+    font-family: Inter;
     font-size: 16px;
     line-height: 24px;
     z-index: 2;
@@ -111,10 +111,11 @@ a {
     color: rgba(54, 59, 77, 0.9);
 }
 .reg-form__title h3 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 32px;
     line-height: 40px;
-    font-family: Golos;
+    font-family: Inter;
+    color: rgba(54, 59, 77, 0.9);
 }
 .reg-form__title span {
     padding-right: 8px;
@@ -328,7 +329,7 @@ a {
     border-radius: 4px;
     color: #FFFFFF;
     font-weight: 600;
-    font-family: Golos;
+    font-family: Inter;
     font-size: 18px;
     line-height: 24px;
     z-index: 5;
@@ -546,7 +547,6 @@ a {
         top: 40px;
         right: 23px;
     }
-
     .reg-block__button-next-page {
         display: flex;
         flex-direction: column;
@@ -558,7 +558,6 @@ a {
         gap: 8px;
         font-family: Inter;
     }
-
     .reg-block__button-next-page span {
         color: rgba(54, 59, 77, 0.4);
         font-size: 14px;
@@ -571,7 +570,7 @@ a {
         width: 343px;
         height: 48px;
         color: #FFFFFF;
-        font-family: Golos;
+        font-family: Inter;
         font-size: 16px;
         font-weight: 600;
         line-height: 24px;
