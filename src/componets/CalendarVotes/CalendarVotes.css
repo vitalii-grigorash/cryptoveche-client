@@ -24,15 +24,16 @@
 .calendar-container__run-end-vote {
     display: flex;
     flex-direction: row;
-    gap: 32px;
-    padding: 0 20px 32px 20px;
+    gap: 16px;
+    padding: 0 0 32px 0;
+    font-size: 16px;
+    line-height: 24px;
 }
 .run-end-vote {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
-
 
 /*------Кружки событий для календаря--------------------------------------------------------------------------------*/
 .blue__circle {
@@ -147,12 +148,12 @@
         /*height: 380px;*/
         gap: 8px;
     }
-    .calendar-container h1 {   width: 370px;
+    .calendar-container h1 {
+        width: 370px;
         font-size: 21px;
+        padding-bottom: 16px;
     }
-    .calendar-container__run-end-vote {
-        gap: 25px;
-    }
+
     .calendar-container__run-end-vote span {
         font-size: 12px;
     }
@@ -186,10 +187,16 @@
     .red__circle, .blue__circle, .green__circle, .orange__circle {
         display: none;
     }
+    .run-end-vote {
+        gap: 8px;
+    }
 }
 @media (max-width: 420px) {
     .calendar-container {
         min-width: 343px;
+    }
+    .calendar-container__run-end-vote {
+     padding: 0 0 16px 0;
     }
 
 }

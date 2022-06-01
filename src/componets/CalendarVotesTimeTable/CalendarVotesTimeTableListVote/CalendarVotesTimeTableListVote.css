@@ -1,0 +1,28 @@
+.calendar-votes-timetable-list__wrapper {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+.calendar-votes-timetable-list__time-event {
+    display: flex;
+    flex-direction: column;
+
+}
+.calendar-votes-timetable-list__time-vote {
+    font-size: 16px;
+    color: rgba(54, 59, 77, 0.9);
+    font-weight: 400;
+    line-height: 24px;
+}
+.calendar-votes-timetable-list__event-reg-vote {
+    font-size: 12px;
+    line-height: 25px;
+    width: 140px;
+}
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
+    .calendar-votes-timetable-list__event-reg-vote {
+        font-size: 12px;
+        line-height: 27px;
+        width: 140px;
+    }
+}

@@ -1,0 +1,33 @@
+.calendar-votes-start-end-reg-vote__wrapper {
+    position: relative;
+    min-width: 180px;
+    white-space: nowrap;
+}
+.calendar-votes-start-end-reg-vote__name-event {
+    color: #363B4D;
+    font-family: Inter;
+    font-weight: 400;
+    margin-left: 16px;
+}
+.color__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 172px;
+    top: 9px;
+}
+/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
+    .color__circle {
+        right: 130px;
+        width: 6px;
+        height: 6px;
+        top: 11px;
+    }
+    .calendar-votes-start-end-reg-vote__wrapper {
+        position: relative;
+        min-width: 130px;
+        white-space: nowrap;
+    }
+}
