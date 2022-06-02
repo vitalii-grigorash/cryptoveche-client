@@ -8,7 +8,8 @@ export const activeVotesData = [
     TimeReg: '13.00',
     DateVote: '5.01.2022',
     TimeVote: '17.00',
-    confirmStatus: 'Ожидайте регистрации'
+    confirmStatus: 'Ожидайте регистрации',
+    nameRegButton: 'Зарегистрироваться'
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ export const activeVotesData = [
     TimeReg: '12.00',
     DateVote: '15.01.2022',
     TimeVote: '12.00',
-    confirmStatus: 'Вы не зарегистрированы'
+    confirmStatus: 'Вы не зарегистрированы',
+    nameRegButton: 'Отменить регистрацию'
   },
   {
   id: 3,
@@ -30,7 +32,8 @@ export const activeVotesData = [
     TimeReg: '10.00',
     DateVote: '18.03.2022',
     TimeVote: '14.00',
-    confirmStatus: 'Вы зарегистрированы'
+    confirmStatus: 'Вы зарегистрированы',
+    nameRegButton: 'Зарегистрироваться'
 }
 ]
 

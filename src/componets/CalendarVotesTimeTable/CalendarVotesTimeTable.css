@@ -33,9 +33,15 @@
     z-index: 5;
 }
 /*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1070px) {
+    .calendar-votes-timetable__title-row span  {
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 138%;
+    }
+}
 @media (max-width: 420px) {
     .calendar-votes-timetable__hidden-border {
         top: 140px;
-
     }
 }

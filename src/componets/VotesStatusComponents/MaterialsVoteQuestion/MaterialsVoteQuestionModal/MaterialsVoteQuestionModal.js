@@ -3,7 +3,7 @@ import './MaterialsVoteQuestionModal.css';
 import load_doc_icon from '../../../../img/Materials_vote_modal_load_icon.svg';
  import show_doc from '../../../../img/Materials_vote_modal_show_doc_icon.svg';
 
-const MaterialsVoteQuestionModal = ({active, setActive}) => {
+const MaterialsVoteQuestionModal = ({active}) => {
 
     return (
             <div className={active ? 'materials-vote-question-modal__wrapper active' : 'materials-vote-question-modal__wrapper'}>

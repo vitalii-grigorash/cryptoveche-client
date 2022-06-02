@@ -16,7 +16,6 @@
 }
 .votes-and-details-page-switch-buttons__button:hover {
     border-bottom: 2px #0084FE solid;
-
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1020px) {

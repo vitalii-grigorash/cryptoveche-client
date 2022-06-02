@@ -14,6 +14,7 @@ import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
 import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
+import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 
 
 
@@ -52,20 +53,22 @@ const VotesPage = () => {
                     {
                         activeVotesData.map((item) => {
                             return(
-                            <VotesPageActiveVotes
-                                    key={item.id}
-                                    id={item.id}
-                                    titleVoteData={item.titleVoteData}
-                                    regStatus={item.regStatus}
-                                    voteStatus={item.voteStatus}
-                                    dateTimeDate={item.DateReg}
-                                    dateTimeWatch={item.TimeReg}
-                                    dateTimeDate1={item.DateVote}
-                                    dateTimeWatch1={item.TimeVote}
-                                    confirmStatus={item.confirmStatus}/>
-                        )
-                    })
+                                <VotesPageActiveVotes
+                                        key={item.id}
+                                        id={item.id}
+                                        titleVoteData={item.titleVoteData}
+                                        regStatus={item.regStatus}
+                                        voteStatus={item.voteStatus}
+                                        dateTimeDate={item.DateReg}
+                                        dateTimeWatch={item.TimeReg}
+                                        dateTimeDate1={item.DateVote}
+                                        dateTimeWatch1={item.TimeVote}
+                                        confirmStatus={item.confirmStatus}
+                                        nameRegButton={item.nameRegButton}/>
+                            )
+                         })
                     }
+                    <VotesPageArchiveVotes/>
                     <div className={'votes-page-block__main-content-show-more-button'}>
                         <span>ПОКАЗАТЬ ЕЩЁ</span>
                     </div>

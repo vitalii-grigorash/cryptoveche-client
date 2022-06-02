@@ -19,3 +19,16 @@
     font-weight: 400;
     line-height: 24px;
 }
+/*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1070px) {
+    .calendar-votes-timetable-day__calendar-date {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 128%;
+    }
+    .calendar-votes-timetable-day__day-week {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+}

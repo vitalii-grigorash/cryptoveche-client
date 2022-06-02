@@ -9,8 +9,8 @@ const CalendarVotesTimeTable = ({hiddenTimeTable}) => {
 
 
     return (
-            <div className={'calendar-votes-timetable__wrapper'} hidden={hiddenTimeTable}>
-                <div className={'calendar-votes-timetable__title-row'}>
+            <div className={'calendar-votes-timetable__wrapper'}>
+                <div className={'calendar-votes-timetable__title-row'} hidden={hiddenTimeTable}>
                     <img alt={'стрелка'} src={calendar_row_back}/>
                     <span>Календарь голосований</span>
                 </div>

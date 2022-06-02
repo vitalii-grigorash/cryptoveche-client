@@ -1,7 +1,9 @@
 import React from "react";
 import './ArchiveVoteBtn.css';
+import {useNavigate} from "react-router-dom";
 
 const ArchiveVoteBtn = ({hidden}) => {
+
 
 
     return (

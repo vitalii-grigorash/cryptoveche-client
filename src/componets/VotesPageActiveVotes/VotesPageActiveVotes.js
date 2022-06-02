@@ -4,10 +4,10 @@ import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/Curren
 import StartDateRegVote from "../VotesStatusComponents/StartDateRegVote/StartDateRegVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
-import VoteButtonBlock from "../VotesStatusComponents/VoteButtonBlock/VoteButtonBlock";
+import VotePageBtnRegister from "../VotesStatusComponents/VotePageBtnRegister/VotePageBtnRegister";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
 
-const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus}) => {
+const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton}) => {
 
     return (
             <div className={'votes-page-active-votes__wrapper'}>
@@ -24,7 +24,11 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
                      <div className={'status-and-start-reg-start-vote__add-border-left'}>
                          <ConfirmRegMaterialsVote confirmStatus={confirmStatus}/></div>
                  </div>
-                    <VoteButtonBlock/>
+                    <div className={'votes-page-active-votes__buttons'}>
+                        <VotePageBtnRegister nameRegButton={nameRegButton}/>
+
+                    </div>
+
                 </div>
             </div>
     )

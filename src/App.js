@@ -16,6 +16,7 @@ import CallVotingPage from "./componets/CallVotingPage/CallVotingPage";
 import DetailsVotesPageResultVotes from "./componets/DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import DetailsVotesPageMyBulletin from "./componets/DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
 import MyProfilePage from "./componets/ MyProfilePage/ MyProfilePage";
+import VotesPageArchiveVotes from "./componets/VotesPageArchiveVotes/VotesPageArchiveVotes";
 
 
 

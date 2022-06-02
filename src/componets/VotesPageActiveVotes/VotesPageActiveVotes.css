@@ -6,7 +6,6 @@
     gap: 24px;
     border-bottom: 1px rgba(54, 59, 77, 0.1) solid;
 }
-
 .votes-page-active-votes__wrapper-title {
     font-weight: 400;
 }
@@ -32,6 +31,13 @@
 .status-and-start-reg-start-vote__reg-vote-date {
     display: flex;
     flex-direction: row;
+
+}
+/*-----Блок с кнопками------------------------------------------------------------------------------------------------*/
+.votes-page-active-votes__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
