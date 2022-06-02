@@ -9,13 +9,13 @@ const CalendarVotesTimeTableListVote = ({colorCircle, eventName, timeEventRegVot
 
     return (
             <div className={'calendar-votes-timetable-list__wrapper'}>
-                <div className={'calendar-votes-timetable-list__time-event'}>
+                <div className={'calendar-votes-timetable-list__time-and-event'}>
                     <span className={'calendar-votes-timetable-list__time-vote'}>{timeEventRegVote}</span>
                     <span className={'calendar-votes-timetable-list__event-reg-vote'}>
                         <CalendarVotesStartEndRegVoteEvent colorCircle={colorCircle} eventName={eventName}/>
                     </span>
                 </div>
-                    <span>{votingTheme}</span>
+                    <span className={'calendar-votes-timetable-list__voting-theme'}>{votingTheme}</span>
             </div>
     )
 }
