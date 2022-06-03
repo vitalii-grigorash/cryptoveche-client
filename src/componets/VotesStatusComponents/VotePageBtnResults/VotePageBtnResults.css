@@ -1,0 +1,13 @@
+.vote-page-button-results {
+    min-width: 138px;
+    min-height: 40px;
+    padding: 8px 24px 8px 24px;
+    border: 1px #0084FE solid;
+    border-radius: 4px;
+    background-color: white;
+    color: #0084FE;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}

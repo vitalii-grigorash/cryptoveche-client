@@ -14,14 +14,12 @@
 .diagramm-container__info h3 {
     font-size: 60px;
     line-height: 70px;
-    font-family: Inter;
     color: #4ED4A9;
     font-weight: 600;
 }
 .diagramm-container__info p {
     font-size: 14px;
     line-height: 94%;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.6);
     font-weight: 400;
 }

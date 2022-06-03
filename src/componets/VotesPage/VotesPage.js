@@ -19,10 +19,12 @@ import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVote
 
 
 
+
 const VotesPage = () => {
 
     const [filtersModalActive, setFiltersModalActive] = useState(false);
     const [sortingModalActive, setSortingModalActive] = useState(false);
+
 
 
     return (

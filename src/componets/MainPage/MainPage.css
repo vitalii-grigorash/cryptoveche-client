@@ -1,3 +1,10 @@
+.main-content__title {
+    font-size: 32px;
+    line-height: 125%;
+    padding-bottom: 40px;
+    color: rgba(54, 59, 77, 0.9);
+    font-weight: 600;
+}
 /*------Стилизация для компонентов Мои голосования и Актуальное-------------------------------------------------------*/
 .main-content__my-votes-actual {
     display: flex;
@@ -27,13 +34,14 @@
     .main-content__amount-votes-and-calendar-votes {
         gap: 6px;
     }
-
 }
 @media (max-width: 420px) {
     .main-content__title {
         text-align: left;
-        font-size: 24px;
+        font-size: 26px;
         padding-bottom: 24px;
+        font-weight: 500;
+        line-height: 131%;
     }
     .main-content__my-votes-actual {
         display: flex;

@@ -5,14 +5,12 @@
     gap: 3px;
 }
 .active-votes__title h2 {
-    font-family: Inter;
     font-size: 18px;
     color: rgba(54, 59, 77, 0.9);
     line-height: 110%;
     padding-bottom: 24px;
 }
 .active-votes__title h3 {
-    font-family: Inter;
     font-size: 16px;
     font-weight: 400;
     color: rgba(54, 59, 77, 0.6);
@@ -23,7 +21,6 @@
 .active-votes__title-timezone {
     display: inline-flex;
     gap: 9px;
-    font-family: Inter;
     font-size: 14px;
     font-weight: 400;
     line-height: 118%;

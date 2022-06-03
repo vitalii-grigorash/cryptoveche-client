@@ -5,7 +5,6 @@
     max-height: 176px;
     background: rgba(54, 59, 77, 0.1);
     left: 0;
-    font-family: Inter;
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -84,4 +83,19 @@
     .materials-vote-question-modal__content a {
         font-size: 14px;
     }
+}
+@media (max-width: 420px) {
+    .materials-vote-question-modal__wrapper.active {
+        left: -25px;
+    }
+    .materials-vote-question-modal__document-icons span  {
+        font-size: 12px;
+    }
+    .materials-vote-question-modal__content a {
+        font-size: 12px;
+    }
+    .document-icons__icons-block {
+        padding-left: 0;
+    }
+
 }

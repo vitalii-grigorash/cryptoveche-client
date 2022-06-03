@@ -4,7 +4,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     font-size: 12px;
-    font-family: Inter;
     row-gap: 4px;
     /*display: flex;*/
     /*flex-direction: column;*/

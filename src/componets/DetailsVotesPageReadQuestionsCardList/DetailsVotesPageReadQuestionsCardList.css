@@ -4,7 +4,6 @@
     flex-direction: column;
     border-bottom: 1px solid rgba(54, 59, 77, 0.2);
     padding-bottom: 16px;
-    font-family: Inter;
     width: 100%;
 }
 .list-question-block__title {

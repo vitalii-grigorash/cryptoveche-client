@@ -1,7 +1,6 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .title-for-votes-call-profile__title {
     font-size: 32px;
-    font-family: Inter;
     line-height: 40px;
     font-weight: 600;
     color: rgba(54, 59, 77, 0.9);
@@ -9,7 +8,6 @@
 /*------Контейнер для div c инф о странице и стрелкой-----------------------------------------------------------------*/
 .title-for-votes-call-profile__page-info {
     color: rgba(54, 59, 77, 0.9);
-    font-family: Inter;
     padding-bottom: 20px;
 }
 .page-info__info-and-row {

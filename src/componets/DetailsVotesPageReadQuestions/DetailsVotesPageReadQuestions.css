@@ -1,7 +1,6 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper {
     padding-bottom: 104px;
-    font-family: Inter;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -17,7 +16,6 @@
 }
 /*------Заголовок основного контейнера--------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper-title {
-    font-family: Inter;
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;

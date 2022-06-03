@@ -14,7 +14,6 @@
     font-size: 14px;
     line-height: 24px;
     padding-left: 2vw;
-    font-family: Inter;
 }
 /*-----Стилизация div для блоков с датой и временем и названием голосования--------------------------------------------*/
 .main-content__datetime-status-reg-vote {

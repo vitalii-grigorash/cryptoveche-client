@@ -5,7 +5,6 @@
     padding: 32px 32px 40px 32px;
     box-shadow: 0 6px 16px 0 rgba(54, 58, 72, 0.07);
     border-radius: 24px;
-    font-family: Inter;
     max-height: 304px;
     background: #FFFFFF;
     /*max-width: 656px;*/
@@ -33,7 +32,6 @@
     background: #FFFFFF;
     border: 1px rgba(54, 59, 77, 0.3) solid;
     font-size: 18px;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
     cursor: pointer;

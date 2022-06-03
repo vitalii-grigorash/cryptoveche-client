@@ -1,6 +1,5 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
 .my-bulletin-card-list__wrapper {
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
 }
 .my-bulletin-card-list__wrapper label {

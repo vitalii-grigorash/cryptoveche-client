@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
-    font-family: Inter;
     gap: 24px;
     border-bottom: 1px rgba(54, 59, 77, 0.2) solid;
 }

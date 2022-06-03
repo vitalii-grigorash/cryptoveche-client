@@ -17,21 +17,17 @@
     font-weight: 600;
     color: rgba(54, 59, 77, 0.9);
     gap: 12px;
-    font-family: Inter;
 }
-
 .actual-block-wrapper h3 {
     font-size: 18px;
     font-weight: 500;
     line-height: 110%;
     color: rgba(54, 59, 77, 0.9);
-    font-family: Inter;
 }
 /*------Блок с датой начала и конца голосования----------------------------------------------------------------------*/
 .actual-block__start--end-vote {
     display: flex;
     flex-direction: row;
-    font-family: Inter;
 }
 .actual-block__start--end-vote h5 {
     font-size: 14px;
@@ -79,6 +75,8 @@
     }
     .actual-block-wrapper__title {
         font-size: 21px;
+        line-height: 29px;
+        font-weight: 500;
     }
     .actual-block-wrapper h3 {
         font-size: 16px;

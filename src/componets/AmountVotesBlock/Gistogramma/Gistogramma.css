@@ -17,13 +17,11 @@
     display: flex;
     width: 290px;
     justify-content: space-between;
-    font-family: Inter;
     font-size: 14px;
     line-height: 142%;
     color: #333333;
     opacity: 50%;
 }
-
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
 @media (max-width: 420px) {
     .gistogramma-block__stylization {

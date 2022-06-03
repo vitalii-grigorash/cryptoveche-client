@@ -1,7 +1,6 @@
 /*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
 .votes-and-details-page-switch-buttons__wrapper {
     display: flex;
-    font-family: Inter;
     font-size: 20px;
     font-weight: 500;
     line-height: 32px;

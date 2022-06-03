@@ -1,7 +1,6 @@
 .details-votes-page-result-waiting-results__wrapper {
     display: grid;
     gap: 24px;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
     font-size: 18px;
     font-weight: 400;

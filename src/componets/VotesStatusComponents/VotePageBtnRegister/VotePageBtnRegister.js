@@ -6,7 +6,7 @@ const  VotePageBtnRegister = ({nameRegButton}) => {
 
     return (
         <div>
-            <button className={'vote-page-button-register__wrapper'}>{nameRegButton}</button>
+            <button className={'vote-page-button-register'}>{nameRegButton}</button>
         </div>
     )
 

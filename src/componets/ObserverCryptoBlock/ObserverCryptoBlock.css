@@ -1,6 +1,5 @@
 /*------Основной стиль для блока Обозреватель криптовече-------------------------------------------------------------*/
 .observer-crypto-block-wrapper {
-
     position: relative;
     display: flex;
     flex-direction: column;
@@ -12,15 +11,12 @@
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
 .observer-crypto-block-wrapper h2 {
-    font-family: Inter;
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
     color: rgba(54, 59, 77, 0.9);
-
 }
 .observer-crypto-block-wrapper h3 {
-    font-family: Inter;
     font-size: 18px;
     font-weight: 400;
     line-height: 129%;
@@ -32,7 +28,6 @@
     align-items: center;
     color: #0075FF;
     gap: 5px;
-    font-family: Inter;
 }
 
 .observer-crypto-block__link-arrow  a {
@@ -40,7 +35,6 @@
     text-decoration: none;
 }
 .observer-crypto-block__link-arrow__link-page-observer {
-    font-family: Inter;
     font-size: 16px;
     color: #0084FE;
     font-weight: 300;
@@ -54,6 +48,8 @@
     }
     .observer-crypto-block-wrapper h2 {
         font-size: 21px;
+        line-height: 29px;
+        font-weight: 500;
     }
     .observer-crypto-block-wrapper h3 {
         font-size: 16px;

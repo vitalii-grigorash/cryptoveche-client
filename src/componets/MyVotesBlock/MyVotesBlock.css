@@ -16,7 +16,6 @@
     font-weight: 600;
     padding-bottom: 24px;
     color: rgba(54, 59, 77, 0.9);
-    font-family: Inter;
 }
 /*------Стили для обоих блоков---------------------------------------------------------------------------------------*/
 .my-votes-block__reg-form, .my-votes-block__vote-form {
@@ -28,12 +27,10 @@
     border-style: solid;
     padding-bottom: 24px;
     max-width: 760px;
-    font-family: Inter;
 }
 .reg-form__status-block, .vote-form__status-block {
     display: flex;
     flex-direction: row;
-    font-family: Inter;
     max-height: 56px;
 }
 .my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
@@ -53,7 +50,6 @@
 }
 /*------Стилизация кнопки зарегистрироваться ------------------------------------------------------------------------*/
 .reg-form__button-reg {
-    font-family: Inter;
     max-width: 213px;
     height: 40px;
     background-color: #0084FE;
@@ -72,7 +68,6 @@
         align-items: center;
 }
 .button-vote {
-    font-family: Inter;
     width: 169px;
     height: 40px;
     background-color: #0084FE;
@@ -84,7 +79,6 @@
     border-radius: 4px;
 }
 .cancel-reg {
-    font-family: Inter;
     width: 233px;
     height: 40px;
     background-color: #FFFFFF;
@@ -103,8 +97,6 @@
     align-items: center;
     color: #0075FF;
     gap: 5px;
-    font-family: Inter;
-
 }
 .my-votes__link-arrow span {
     font-size: 16px;
@@ -126,7 +118,9 @@
     }
     .my-votes-block-wrapper h2 {
         font-size: 21px;
+        line-height: 144%;
         padding-bottom: 8px;
+        font-weight: 500;
     }
     .my-votes-block__votes-form {
         padding-bottom: 0;

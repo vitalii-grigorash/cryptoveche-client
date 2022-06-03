@@ -6,7 +6,6 @@
     background-color: #FFFFFF;
     top: 160px;
     left: 165px;
-    font-family: Inter;
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -63,7 +62,6 @@
     width: 100%;
 }
 .sorting-modal__types-sort span {
-    font-family: Inter;
     font-weight: 400;
     line-height: 110%;
     color: #363B4D;

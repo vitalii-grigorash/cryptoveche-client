@@ -8,42 +8,6 @@
     position: relative;
     min-height: 70vh;
 }
-.main-content__title {
-    font-size: 32px;
-    line-height: 125%;
-    padding-bottom: 40px;
-    font-family: Inter;
-    color: rgba(54, 59, 77, 0.9);
-    font-weight: 600;
-}
-
-/*------Адаптивная версия--------------------------------------------------------------------------------------------*/
-@media (max-width: 830px) {
-    .main-content__title {
-        text-align: center;
-        font-size: 26px;
-    }
-}
-/*------Адаптивная версия--------------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
-    .main-content__title {
-        text-align: left;
-        font-size: 24px;
-        padding-bottom: 24px;
-    }
-    .main-content__my-votes-actual {
-        display: flex;
-        flex-direction: column;
-        gap: 11px;
-    }
-    .main-content__amount-votes-and-calendar-votes {
-        flex-direction: column;
-        gap: 16px;
-    }
-    .main-content__elem1{order: 0}
-    .main-content__elem2{order: 2}
-    .main-content__elem3{order: 1}
-}
 
 
 

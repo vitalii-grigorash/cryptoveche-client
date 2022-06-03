@@ -16,7 +16,8 @@ import CallVotingPage from "./componets/CallVotingPage/CallVotingPage";
 import DetailsVotesPageResultVotes from "./componets/DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import DetailsVotesPageMyBulletin from "./componets/DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
 import MyProfilePage from "./componets/ MyProfilePage/ MyProfilePage";
-import VotesPageArchiveVotes from "./componets/VotesPageArchiveVotes/VotesPageArchiveVotes";
+import {ChangeActArchVoteProvider} from "./componets/VotesPage/ChangeActArchVoteContext/ChangeActArchVoteContext";
+
 
 
 
@@ -26,7 +27,7 @@ function App() {
 
 
   return (
-
+            <ChangeActArchVoteProvider>
             <Routes>
                 <Route>
                     <Route path={'/auth'} element={<Authorization/>}/>
@@ -46,6 +47,7 @@ function App() {
                           <Route path={'my-profile'} element={<MyProfilePage/>}/>
                 </Route>
             </Routes>
+            </ChangeActArchVoteProvider>
   );
 }
 

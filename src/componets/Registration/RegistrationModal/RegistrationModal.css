@@ -43,7 +43,6 @@
 
 }
 .content__title h3 {
-    font-family: Inter;
     font-size: 26px;
     font-weight: 600;
     line-height: 34px;
@@ -55,7 +54,6 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    font-family: Inter;
 }
 .title__language a {
     color: #0084FE;
@@ -63,7 +61,6 @@
 
 /*------Стилизация сообщения модально окна--------------------------------------------------------------------------*/
 .registration-modal__content h4 {
-    font-family: Inter;
     font-weight: 500;
     font-size: 22px;
     line-height: 30px;
@@ -79,7 +76,6 @@
 }
 /*------Стилизация кнопки модального окна-----------------------------------------------------------------------------*/
 .registration-modal__content button {
-    font-family: Inter;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;

@@ -74,7 +74,6 @@
 .votes-page-block__main-content-show-more-button {
     color: #0084FE;
     line-height: 124%;
-    font-family: Inter;
     font-size: 16px;
     font-weight: 300;
     width: 100%;
@@ -95,7 +94,6 @@
     .select-buttons__mobile-filters-sort-button {
         display: flex;
         background: none;
-        font-family: Inter;
         font-size: 15px;
         line-height: 121%;
         font-weight: 400;

@@ -20,7 +20,6 @@
 .reg-block {
     display: flex;
     flex-direction: row;
-    font-family: Inter;
     position: relative;
 }
 a {
@@ -84,7 +83,6 @@ a {
     border-radius: 4px;
     color: #0084FE;
     font-weight: 500;
-    font-family: Inter;
     font-size: 16px;
     line-height: 24px;
     z-index: 2;
@@ -114,7 +112,6 @@ a {
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
 }
 .reg-form__title span {
@@ -145,7 +142,6 @@ a {
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
 }
 
@@ -192,7 +188,6 @@ a {
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
 }
 .reg-form__e-mail span {
@@ -226,7 +221,6 @@ a {
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
-    font-family: Inter;
     color: rgba(54, 59, 77, 0.9);
 }
 .password-form {
@@ -288,7 +282,6 @@ a {
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
-    font-family: Inter;
     appearance: none;
 }
 .reg-form__select-time-zone::after {
@@ -329,7 +322,6 @@ a {
     border-radius: 4px;
     color: #FFFFFF;
     font-weight: 600;
-    font-family: Inter;
     font-size: 18px;
     line-height: 24px;
     z-index: 5;
@@ -556,7 +548,6 @@ a {
         left: 16px;
         right: 20px;
         gap: 8px;
-        font-family: Inter;
     }
     .reg-block__button-next-page span {
         color: rgba(54, 59, 77, 0.4);
@@ -570,7 +561,6 @@ a {
         width: 343px;
         height: 48px;
         color: #FFFFFF;
-        font-family: Inter;
         font-size: 16px;
         font-weight: 600;
         line-height: 24px;

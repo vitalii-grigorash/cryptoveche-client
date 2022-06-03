@@ -6,7 +6,6 @@
     box-shadow: 0 3px 16px rgba(54, 58, 72, 0.08);
     padding: 16px 24px 24px 24px;
     display: flex;
-    font-family: Inter;
     flex-direction: row;
     width: 100%;
 }

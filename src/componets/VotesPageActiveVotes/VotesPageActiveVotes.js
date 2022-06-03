@@ -6,10 +6,16 @@ import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote"
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import VotePageBtnRegister from "../VotesStatusComponents/VotePageBtnRegister/VotePageBtnRegister";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
+import {useActArchVoteContext} from "../VotesPage/ChangeActArchVoteContext/ChangeActArchVoteContext";
 
-const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton}) => {
+const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton, hiddenActive}) => {
+
+    const hide = useActArchVoteContext()
+
+    if (hide) return null
 
     return (
+            <div hidden={hiddenActive}>
             <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>
                  <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
@@ -30,6 +36,7 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
                     </div>
 
                 </div>
+            </div>
             </div>
     )
 

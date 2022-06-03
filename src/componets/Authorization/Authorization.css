@@ -20,7 +20,6 @@
 .main-block {
     display: flex;
     flex-direction: row;
-    font-family: Inter;
     position: relative;
 }
 a {
@@ -50,7 +49,6 @@ a {
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
-    font-family: Inter;
 }
 .auth__title span {
         padding-right: 8px;
@@ -157,7 +155,6 @@ a {
     cursor: pointer;
     font-size: 18px;
     font-weight: 500;
-    font-family: Inter;
 }
 .form__button button:hover {
     background-color: #FFFFFF;
@@ -214,7 +211,6 @@ a {
     border-radius: 4px;
     color: #0084FE;
     font-weight: 500;
-    font-family: Inter;
     font-size: 16px;
     line-height: 24px;
     z-index: 66;
@@ -512,7 +508,6 @@ a {
         width: 132px;
         height: 48px;
         font-size: 16px;
-        font-family: Inter;
         font-weight: 500;
     }
 
