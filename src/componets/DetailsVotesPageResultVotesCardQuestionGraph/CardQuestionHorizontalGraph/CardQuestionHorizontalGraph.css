@@ -9,9 +9,7 @@
 }
 .horizontal-grid__position-table {
     position: absolute;
-    border-left: 1px solid rgba(54, 59, 77, 0.05);
     border-bottom: 1px solid rgba(54, 59, 77, 0.05);
-    border-top: 1px solid rgba(54, 59, 77, 0.05);
     max-height: 513px;
     width: 376px;
     rotate: -90deg;
@@ -20,7 +18,8 @@
     /*width: 568px;*/
 }
 .horizontal-grid__position-table td {
-    border-bottom: 1px solid rgba(54, 59, 77, 0.05);
+    border-top: 1px solid rgba(54, 59, 77, 0.05);
+    border-left: 1px solid rgba(54, 59, 77, 0.05);
     height: 50px;
 }
 .horizontal-grid__position-table td:nth-child(10) {

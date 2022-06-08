@@ -16,6 +16,12 @@
 .votes-and-details-page-switch-buttons__button:hover {
     border-bottom: 2px #0084FE solid;
 }
+.active-votes-and-details-page-switch-buttons__button {
+    padding-bottom: 8px;
+    border-bottom: 2px #0084FE solid;
+    margin-right: 48px;
+    cursor: pointer
+}
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1020px) {
     .votes-and-details-page-switch-buttons__wrapper {

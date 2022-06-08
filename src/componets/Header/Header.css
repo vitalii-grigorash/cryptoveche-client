@@ -84,7 +84,7 @@
 .header__logotype-block {
     display: flex;
     align-items: center;
-    gap: 84px;
+    gap: 64px;
 }
 .header__logotype-block a {
     text-decoration: none;

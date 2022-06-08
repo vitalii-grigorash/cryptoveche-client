@@ -7,15 +7,16 @@ import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterial
 import VotePageBtnRegister from "../VotesStatusComponents/VotePageBtnRegister/VotePageBtnRegister";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
 import {useActArchVoteContext} from "../VotesPage/ChangeActArchVoteContext/ChangeActArchVoteContext";
+import VotePageBtnVoting from "../VotesStatusComponents/VotePageBtnVoting/VotePageBtnVoting";
 
-const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton, hiddenActive}) => {
+const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton}) => {
 
     const hide = useActArchVoteContext()
 
     if (hide) return null
 
     return (
-            <div hidden={hiddenActive}>
+
             <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>
                  <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
@@ -31,13 +32,12 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
                          <ConfirmRegMaterialsVote confirmStatus={confirmStatus}/></div>
                  </div>
                     <div className={'votes-page-active-votes__buttons'}>
+                        <VotePageBtnVoting/>
                         <VotePageBtnRegister nameRegButton={nameRegButton}/>
-
                     </div>
-
                 </div>
             </div>
-            </div>
+
     )
 
 }

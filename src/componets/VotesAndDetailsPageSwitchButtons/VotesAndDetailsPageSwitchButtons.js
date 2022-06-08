@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import './VotesAndDetailsPageSwitchButtons.css';
 import GeneraInfoBtn from "./GeneraInfoBtn/GeneraInfoBtn";
 import ReadQuestionsBtn from "./ReadQuestionsBtn/ReadQuestionsBtn";
@@ -8,9 +8,15 @@ import ResultBtn from "./ResultBtn/ResultBtn";
 import MyBulletinBtn from "./ MyBulletinBtn/ MyBulletinBtn";
 
 const VotesAndDetailsPageSwitchButtons = ({hiddenGeneralBtn, hiddenReadQuestion, hiddenActiveBtn, hiddenArchiveBtn, hiddenResultBtn, hiddenBulletinBtn}) => {
+
+
+     const switchBtnRef = useRef()
+
+
+
     return (
 
-            <div className={'votes-and-details-page-switch-buttons__wrapper'}>
+            <div ref={switchBtnRef} className={'votes-and-details-page-switch-buttons__wrapper'}>
                 <ActiveVoteBtn hidden={hiddenActiveBtn}/>
                 <ArchiveVoteBtn hidden={hiddenArchiveBtn}/>
                 <GeneraInfoBtn hidden={hiddenGeneralBtn}/>

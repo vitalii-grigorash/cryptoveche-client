@@ -1,0 +1,25 @@
+.vote-page-button-voting__btn {
+    min-width: 168px;
+    min-height: 40px;
+    padding: 8px 24px 8px 24px;
+    border: 1px #0084FE solid;
+    border-radius: 4px;
+    background-color: white;
+    color: #0084FE;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 820px) {
+    .vote-page-button-voting__btn {
+        width: 180px;
+        font-size: 12px;
+    }
+}
+@media (max-width: 720px) {
+    .vote-page-button-voting__btn {
+       display: none;
+    }
+}

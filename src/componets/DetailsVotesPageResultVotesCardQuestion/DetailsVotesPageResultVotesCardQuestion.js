@@ -7,7 +7,7 @@ import DetailsVotesPageResultVotesCardQuestionGraph
 
 
 
-const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected, hiddenTable, hiddenGraph}) => {
+const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected}) => {
 
 
 

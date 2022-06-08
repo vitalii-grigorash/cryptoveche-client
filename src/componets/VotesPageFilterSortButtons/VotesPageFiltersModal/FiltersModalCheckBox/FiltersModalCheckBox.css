@@ -1,0 +1,89 @@
+/*------Основной стиль-----------------------------------------------------------------------------------------------*/
+.checkbox-status-vote {
+    display: inline-flex;
+    align-content: center;
+}
+/*------Стилизация чебокса--------------------------------------------------------------------------------------------*/
+.checkbox-status-vote_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #FFFFFF;
+    border-color: #0084FE;
+    border-style: solid;
+    border-width: 1px;
+}
+.checkbox-status-vote_container{
+    display: block;
+    position: relative;
+    padding-left: 34px;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+}
+.checkbox-status-vote_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkbox-status-vote_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #0084FE;;
+}
+
+.checkbox-status-vote_container input:checked ~ .checkbox-status-vote_checkmark {
+    background-color: #0084FE;
+}
+
+.checkbox-status-vote_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-status-vote_container input:checked ~ .checkbox-status-vote_checkmark:after {
+    display: block;
+}
+.checkbox-status-vote_container .checkbox-status-vote_checkmark:after {
+    left: 4px;
+    top: 3px;
+    width: 8px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 790px) {
+    .checkbox-status-vote_container {
+        display: none;
+    }
+    .checkbox-status-vote span {
+        background: #FFFFFF;
+        font-size: 14px;
+        line-height: 22px;
+        color: #363B4D;
+        padding: 4px 12px 4px 12px;
+        border-radius: 8px;
+        box-shadow: 0 1px 8px rgba(54, 59, 77, 0.1);
+    }
+    .checkbox-status-vote span:hover {
+       background: #0075FF;
+        font-size: 14px;
+        line-height: 22px;
+        color: #FFFFFF;
+        padding: 4px 12px 4px 12px;
+        border-radius: 8px;
+    }
+}

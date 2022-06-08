@@ -35,6 +35,7 @@ function App() {
                     <Route path={'/set-password'} element={<AuthorizationSetPassword/>}/>
                     <Route path={'/reg-page'} element={<Registration/>}/>
                     <Route path={'/reg-second-page'} element={<RegistrationSecondPageMobile/>}/>
+                    <Route path={'/'} element={<Authorization/>}/>
                 </Route>
                       <Route path={'main'} element={<Layout/>}>
                       <Route index element={<MainPage/>}/>

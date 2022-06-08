@@ -30,7 +30,7 @@ const AuthorizationForgetPassword = () => {
                 <div className={'container-auth'}>
                     <div className={'main-block _modificator-main-block__height'}>
                         <div className={hideBlock ? 'main-block__auth _modificator-main-block__auth-padding active' : 'main-block__auth _modificator-main-block__auth-padding'}>
-                            <a href={'row'}><img alt={'стрелочка ссылка'} className={'auth__link-row-icon'} src={row_link}/></a>
+                            <a href={'/auth'}><img alt={'стрелочка ссылка'} className={'auth__link-row-icon'} src={row_link}/></a>
                             <div className={'auth__title _modificator-auth__title-padding-left'}>
                                     <h3>Забыли пароль?</h3>
                                 <div><span>РУС</span><a href={'en'}>ENG</a></div>
