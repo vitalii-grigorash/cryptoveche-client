@@ -9,7 +9,6 @@
 .votes-page-active-votes__wrapper-title {
     font-weight: 400;
 }
-
 /*---------Cтилизация блока со статусами и датой регистрации-----------------------------------------------------------*/
 .active-votes__status-and-start-reg-start-vote {
     display: flex;

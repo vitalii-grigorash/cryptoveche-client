@@ -55,7 +55,13 @@ const VotesPage = () => {
                             )
                          })
                     }
-                    <VotesPageArchiveVotes/>
+                    <VotesPageArchiveVotes titleVoteData={'Выбор делегатов конференции в Ученый Совет СПбГУ и еще парочка слов чтобы совсем уже было длинно'}
+                                            regStatus={'Регистрация'}
+                                           voteStatus={'Тайное'}
+                                           dateTimeWatch={'12:00'}
+                                           dateTimeDate={'03.10.2022'}
+                                           dateTimeDate1={'03.10.2022'}
+                                            dateTimeWatch1={'15:00'} confirmStatus={'Регистрация завершина'}/>
                     <div className={'votes-page-block__main-content-show-more-button'}>
                         <span>ПОКАЗАТЬ ЕЩЁ</span>
                     </div>

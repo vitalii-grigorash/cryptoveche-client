@@ -19,7 +19,7 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
 
             <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>
-                 <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
+                     <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
                 </span>
                 <div className={'active-votes__status-and-start-reg-start-vote'}>
                  <div className={'status-and-start-reg-start-vote'}>

@@ -8,12 +8,12 @@
     line-height: 28px;
     color: rgba(54, 59, 77, 0.9);
 }
-.card-question-graph-column__color-square {
-    width: 10px;
-    height: 10px;
-    background: #4569FF;
-    opacity: 0.5;
-}
+/*.card-question-graph-column__color-square {*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*    !*background: #4569FF;*!*/
+/*    opacity: 0.5;*/
+/*}*/
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 810px) {
     .card-question-graph-column__wrapper  {

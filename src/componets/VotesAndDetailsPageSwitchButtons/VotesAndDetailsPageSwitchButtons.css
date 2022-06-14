@@ -20,7 +20,7 @@
     padding-bottom: 8px;
     border-bottom: 2px #0084FE solid;
     margin-right: 48px;
-    cursor: pointer
+    cursor: pointer;
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1020px) {

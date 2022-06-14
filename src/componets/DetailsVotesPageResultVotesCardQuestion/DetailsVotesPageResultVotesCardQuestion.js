@@ -4,10 +4,14 @@ import DetailsVotesPageResultVotesCardQuestionTable
     from "../DetailsVotesPageResultVotesCardQuestionTable/DetailsVotesPageResultVotesCardQuestionTable";
 import DetailsVotesPageResultVotesCardQuestionGraph
     from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraph";
+import {useToggleActVote, useToggleArchVote} from "../VotesPage/ChangeActArchVoteContext/ChangeActArchVoteContext";
 
 
 
 const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected}) => {
+
+    const toggleAct = useToggleActVote();
+    const toggleArch = useToggleArchVote()
 
 
 
@@ -19,11 +23,11 @@ const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected}) =>
                 </div>
                 <div className={'details-votes-page-result-votes-card__switch-table-gistogramma'}>
                     <div className={'tooltip'}>
-                        <div className={'switch-table-gistogramma__gistogramma'}></div>
+                        <div onClick={toggleArch} className={'switch-table-gistogramma__gistogramma'}></div>
                         <span className={'tooltiptext'}>Показать графиком</span>
                     </div>
                     <div className={'tooltip'}>
-                        <div className={'switch-table-gistogramma__table'}></div>
+                        <div onClick={toggleAct} className={'switch-table-gistogramma__table'}></div>
                         <span className={'tooltiptext'}>Показать таблицей</span>
                     </div>
                 </div>

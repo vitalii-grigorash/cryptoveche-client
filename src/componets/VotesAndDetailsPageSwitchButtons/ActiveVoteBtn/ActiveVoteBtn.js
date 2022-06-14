@@ -4,35 +4,54 @@ import {useToggleActVote} from "../../VotesPage/ChangeActArchVoteContext/ChangeA
 
 
 
-
-
 const ActiveVoteBtn = ({hidden}) => {
 
     const toggleAct = useToggleActVote();
-    const fixedBorderRef = useRef(null);
+    const [styleBtn, setStyleBtn] = useState(true)
 
 
-        // btn.addEventListener('click', (e) => {
-        //     console.log('fff');
-        // });
 
-    // useEffect(() => {
-    //           const changeBorder = fixedBorderRef;
+    useEffect(() => {
+        const remoteBorder = () => {
+            if (styleBtn === true) {
+                setStyleBtn(false)
+            }
+        }
+            document.addEventListener('click', remoteBorder);
+            console.log('remote')
+         return function () {
+                document.removeEventListener('click', remoteBorder)
+         }
+    },[styleBtn]);
+
+    const addBorder = () => {
+        if (styleBtn === false) {
+            setStyleBtn(true)
+            console.log(styleBtn)
+        }
+
+    }
+
+
+    //     const addBorder = () => {
+    //         if (styleBtn === false) {
+    //             setStyleBtn(true)
+    //             console.log('add')
+    //         }
+    //     }
     //
-    //         function clickHand () {
-    //             changeBorder.current.className = ('active-votes-and-details-page-switch-buttons__button')
+    // useEffect(() => {
+    //     const remoteBorder = () => {
+    //         if (styleBtn === true) {
+    //             setStyleBtn(false)
     //         }
-    //         changeBorder.current.addEventListener('click', clickHand)
-    //          return function () {
-    //              document.removeEventListener('click', clickHand);
-    //              changeBorder.current.className = ('votes-and-details-page-switch-buttons__button')
-    //         }
-    //     });
-
+    //         document.addEventListener('click', remoteBorder)
+    //     }
+    // }, [styleBtn]);
 
     return (
             <div>
-                <h2 ref={fixedBorderRef} className={'votes-and-details-page-switch-buttons__button'} hidden={hidden} onClick={toggleAct}>Активные <span className={'_active-vote-bnt _mobile-active-vote-bnt'}>голосования</span></h2>
+                <h2 className={styleBtn ? 'active-votes-and-details-page-switch-buttons__button' : 'votes-and-details-page-switch-buttons__button'} onClick={() => {toggleAct(); addBorder();}} hidden={hidden}>Активные <span className={'_active-vote-bnt _mobile-active-vote-bnt'}>голосования</span></h2>
             </div>
     )
 }

@@ -10,13 +10,12 @@ import MyBulletinBtn from "./ MyBulletinBtn/ MyBulletinBtn";
 const VotesAndDetailsPageSwitchButtons = ({hiddenGeneralBtn, hiddenReadQuestion, hiddenActiveBtn, hiddenArchiveBtn, hiddenResultBtn, hiddenBulletinBtn}) => {
 
 
-     const switchBtnRef = useRef()
 
 
 
     return (
 
-            <div ref={switchBtnRef} className={'votes-and-details-page-switch-buttons__wrapper'}>
+            <div className={'votes-and-details-page-switch-buttons__wrapper'}>
                 <ActiveVoteBtn hidden={hiddenActiveBtn}/>
                 <ArchiveVoteBtn hidden={hiddenArchiveBtn}/>
                 <GeneraInfoBtn hidden={hiddenGeneralBtn}/>
