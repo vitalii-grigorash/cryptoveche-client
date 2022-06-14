@@ -13,8 +13,7 @@ const MaterialsVoteQuestion = ({materialsVoteQuestion}) => {
             <div className={'materials-vote-question__wrapper'}>
                 <span>{materialsVoteQuestion}</span>
                 <div className={'materials-vote-question__select'} onClick={() => setMaterialsModalActive(!materialsModalActive)}>
-                    <select>
-                    </select>
+                    <select></select>
                 </div>
                 <MaterialsVoteQuestionModal active={materialsModalActive} setActive={setMaterialsModalActive}/>
             </div>

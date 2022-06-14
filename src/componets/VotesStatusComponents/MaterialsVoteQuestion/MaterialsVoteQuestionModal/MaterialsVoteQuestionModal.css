@@ -84,6 +84,12 @@
         font-size: 14px;
     }
 }
+
+@media (max-width: 820px) {
+    .materials-vote-question-modal__wrapper.active {
+        left: -100px;
+    }
+}
 @media (max-width: 420px) {
     .materials-vote-question-modal__wrapper.active {
         left: -25px;

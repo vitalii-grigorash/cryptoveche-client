@@ -18,7 +18,7 @@ const VotesPageArchiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDa
 
 
     return (
-            <div className={'votes-page-archive-votes__wrapper'}>
+            <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>
                      <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
                 </span>

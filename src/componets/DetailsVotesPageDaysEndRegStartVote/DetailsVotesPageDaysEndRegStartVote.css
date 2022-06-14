@@ -47,10 +47,11 @@
 }
 /*------Cтилизация div с цветным ползунком отсчета дней---------------------------------------------------------------*/
 .datetime-info__range {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    -webkit-appearance: slider-horizontal;
+    /*-moz-appearance: initial;*/
+    /*appearance: initial;*/
     width: 100%;
+    pointer-events: none;
 }
 .datetime-info__range-orange::-moz-range-progress {
     background: #FF8A00;

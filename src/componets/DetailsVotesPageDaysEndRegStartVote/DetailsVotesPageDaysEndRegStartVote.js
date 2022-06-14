@@ -25,5 +25,4 @@ const DetailsVotesPageDaysEndRegStartVote = () => {
     )
 
 }
-
 export default DetailsVotesPageDaysEndRegStartVote;

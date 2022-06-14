@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-bottom: 32px;
+    padding-bottom: 16px;
 }
 .list-question-block__title h3 {
     font-size: 18px;
@@ -32,7 +32,7 @@
 }
 .list-question-block__title select {
     background-color: #FFFFFF;
-    width: 20px;
+
     cursor: pointer;
 }
 
