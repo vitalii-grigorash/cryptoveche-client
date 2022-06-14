@@ -127,7 +127,6 @@
     }
     .my-votes-block__reg-form h3, .my-votes-block__votes-form h3 {
         font-size: 14px;
-
     }
     .my-votes-block__reg-form h5, .my-votes-block__votes-form h5 {
         font-size: 13px;
@@ -147,6 +146,12 @@
     }
     .my-votes__link-arrow span {
         font-size: 14px;
+    }
+    .reg-form__status-block {
+        max-height: 50px;
+    }
+    .vote-form__status-block {
+        max-height: 50px;
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
