@@ -13,7 +13,7 @@
     content: url("../../../img/Materials_vote_row.svg");
     position: absolute;
     margin-top: -16px;
-    margin-left: 9vw;
+    padding-left: 10rem;
     cursor: pointer;
 }
 .materials-vote-question__select select {
