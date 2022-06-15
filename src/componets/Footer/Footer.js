@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className={'items__block-map-site'}>
                         <h3>Карта сайта</h3>
                         <Link to={'/main'}><span>Главная</span></Link>
-                        <Link to={'votes-page'}><span>Голосование</span></Link>
+                        <Link to={'/votes-page'}><span>Голосование</span></Link>
                         <span>Мой профиль</span>
                     </div>
                     <div className={'items__block-settings'}>

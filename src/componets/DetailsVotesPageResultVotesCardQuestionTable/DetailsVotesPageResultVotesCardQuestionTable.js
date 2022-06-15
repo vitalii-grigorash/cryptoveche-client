@@ -1,13 +1,11 @@
 import React from "react";
 import './DetailsVotesPageResultVotesCardQuestionTable.css';
 import CardQuestionCellsTable from "./CardQuestionCellsTable/CardQuestionCellsTable";
-import {useActArchVoteContext} from "../VotesPage/ChangeActArchVoteContext/ChangeActArchVoteContext";
+
 
 const DetailsVotesPageResultVotesCardQuestionTable = () => {
 
-    const hide = useActArchVoteContext()
 
-    if (hide) return null
 
     return (
             <div className={'details-votes-page-result-card-table__wrapper'}>

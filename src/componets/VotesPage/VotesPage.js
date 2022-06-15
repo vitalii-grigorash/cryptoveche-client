@@ -1,25 +1,30 @@
 import React, {useState} from "react";
 import './VotesPage.css';
-import votes_page_filters_icon from '../../img/VotesPageBlock_filter_icon.svg';
-import votes_page_sort_icon from '../../img/VotesPageBlock_sort_icon.svg';
-import votes_page_mobile_filters_icon from '../../img/VotesPageBlock_mobile_filter_icon.svg';
-import votes_page_mobile_sort_icon from '../../img/VotesPageBlock_mobile_sort_icon.svg';
-import mobile_filters_sort_red_circle from '../../img/VotesPageBlock_red_cicrle.svg';
-import VotesPageFiltersModal from "../VotesPageFilterSortButtons/VotesPageFiltersModal/VotesPageFiltersModal";
-import VotesPageSortingModal from "../VotesPageFilterSortButtons/VotesPageSortingModal/VotesPageSortingModal";
 import VotesPageActiveVotes from "../VotesPageActiveVotes/VotesPageActiveVotes";
 import {activeVotesData} from "../../activeVotesData";
 import VotesPagePaginationTableSearch from "../VotesPagePaginationTableSearch/VotesPagePaginationTableSearch";
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
-import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
 import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 import VotesPageFilterSortButtons from "../VotesPageFilterSortButtons/VotesPageFilterSortButtons";
 
 
 
+
 const VotesPage = () => {
+
+    const [btnActiveVotes, setBtnActiveVotes] = useState(true)
+    const [btnArchiveVotes, setBtnArchiveVotes] = useState(false)
+
+    function toggleActiveHide () {
+        setBtnActiveVotes(true)
+        setBtnArchiveVotes(false)
+        }
+    function toggleArchiveShow () {
+        setBtnActiveVotes(false)
+        setBtnArchiveVotes(true)
+    }
 
 
 
@@ -36,11 +41,19 @@ const VotesPage = () => {
                   <VotesPagePaginationTableSearch/>
                 </div>
                 <div className={'votes-page-block__main-content'}>
-                    <VotesAndDetailsPageSwitchButtons hiddenGeneralBtn={true} hiddenReadQuestion={true} hiddenResultBtn={true} hiddenBulletinBtn={true}/>
-                    {
-                        activeVotesData.map((item) => {
-                            return(
-                                <VotesPageActiveVotes
+                    <div className={'votes-page-switch-buttons'}>
+                        <div>
+                            <h2 onClick={() => {toggleActiveHide()}} className={btnActiveVotes ? 'active-votes-page-switch-buttons__button' : 'votes-page-switch-buttons__button'}>Активные <span className={'_active-vote-bnt _mobile-active-vote-bnt'}>голосования</span></h2>
+                        </div>
+                        <div>
+                            <h2 onClick={() => {toggleArchiveShow()}} className={btnArchiveVotes ? 'active-votes-page-switch-buttons__button' : 'votes-page-switch-buttons__button'}>Архивные <span className={'_active-vote-bnt _mobile-active-vote-bnt'}>голосования</span></h2>
+                        </div>
+                    </div>
+                    {btnActiveVotes && (
+                        <>
+                        {activeVotesData.map((item) => (
+
+                                    <VotesPageActiveVotes
                                         key={item.id}
                                         id={item.id}
                                         titleVoteData={item.titleVoteData}
@@ -52,9 +65,12 @@ const VotesPage = () => {
                                         dateTimeWatch1={item.TimeVote}
                                         confirmStatus={item.confirmStatus}
                                         nameRegButton={item.nameRegButton}/>
-                            )
-                         })
-                    }
+                                )
+                            )}
+                        </>
+                    )}
+                    {btnArchiveVotes && (
+                        <>
                     <VotesPageArchiveVotes titleVoteData={'Выбор делегатов конференции в Ученый Совет СПбГУ и еще парочка слов чтобы совсем уже было длинно'}
                                             regStatus={'Регистрация'}
                                            voteStatus={'Тайное'}
@@ -62,6 +78,9 @@ const VotesPage = () => {
                                            dateTimeDate={'03.10.2022'}
                                            dateTimeDate1={'03.10.2022'}
                                             dateTimeWatch1={'15:00'} confirmStatus={'Регистрация завершина'}/>
+                    </>
+                        )}
+
                     <div className={'votes-page-block__main-content-show-more-button'}>
                         <span>ПОКАЗАТЬ ЕЩЁ</span>
                     </div>
@@ -70,5 +89,4 @@ const VotesPage = () => {
             </div>
     )
 }
-
 export default VotesPage;

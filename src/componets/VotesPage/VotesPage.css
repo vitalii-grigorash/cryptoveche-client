@@ -14,6 +14,36 @@
     align-items: center;
     padding: 20px 0 0 0;
 }
+/*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
+.votes-page-switch-buttons {
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(54, 59, 77, 0.9);
+    border-bottom: 1px #EEEEEE solid;
+}
+.votes-page-switch-buttons__button {
+    padding-bottom: 8px;
+    border-bottom: 2px #FFFFFF solid;
+    margin-right: 48px;
+    cursor: pointer;
+}
+.votes-page-switch-buttons__button:hover {
+    border-bottom: 2px #0084FE solid;
+}
+.active-votes-page-switch-buttons__button {
+    padding-bottom: 8px;
+    border-bottom: 2px #0084FE solid;
+    margin-right: 48px;
+    cursor: pointer;
+}
+._active-vote-bnt {
+    display: inline-flex;
+}
+._mobile-active-vote-bnt {
+    display: inline-flex;
+}
 /*------Cтилизация блока основного контента---------------------------------------------------------------------------*/
 .votes-page-block__main-content {
     background-color: #FFFFFF;
@@ -34,11 +64,36 @@
     cursor: pointer;
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
+@media (max-width: 1020px) {
+    .votes-page-switch-buttons {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 114%;
+        white-space: nowrap;
+    }
+}
 @media (max-width: 815px) {
     .votes-page-block__main-content {
         padding: 16px 16px;
     }
 }
+@media (max-width: 800px) {
+    .votes-page-switch-buttons {
+        overflow: hidden;
+        text-overflow: inherit;
+    }
+}
+@media (max-width: 670px) {
+    ._mobile-active-vote-bnt {
+        display: none;
+    }
+    ._mobile-active-vote-bnt {
+            display: inherit;
+    }
+    ._active-vote-bnt {
+            display: none;
+        }
+    }
 @media (max-width: 420px) {
     .navigation-menu__select-buttons {
         padding-bottom: 14px;
@@ -53,6 +108,16 @@
         position: absolute;
         top: 29px;
         right: 0;
+        cursor: pointer;
+    }
+    .votes-page-switch-buttons {
+        border-bottom: 2px #FFFFFF solid;
+    }
+    .votes-page-switch-buttons__button {
+        margin-right: 24px;
+    }
+    .votes-page-switch-buttons__button:hover {
+        border-bottom: 2px #0084FE solid;
         cursor: pointer;
     }
 }

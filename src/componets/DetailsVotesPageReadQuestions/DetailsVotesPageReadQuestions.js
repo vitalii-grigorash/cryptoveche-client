@@ -1,15 +1,11 @@
 import React from "react";
 import './DetailsVotesPageReadQuestions.css';
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
-import VotesAndDetailsPageSwitchButtons from "../VotesAndDetailsPageSwitchButtons/VotesAndDetailsPageSwitchButtons";
 import DetailsVotesPageReadQuestionsCardList from "../DetailsVotesPageReadQuestionsCardList/DetailsVotesPageReadQuestionsCardList";
-
 import DetailsVotesPageReadQuestionsCardCheckbox
     from "../DetailsVotesPageReadQuestionsCardCheckbox/DetailsVotesPageReadQuestionsCardCheckbox";
-import TitleVotesDetailsCallVotingProfile
-    from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
-import DetailsVotesPageDaysEndRegStartVote
-    from "../DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote";
+
+
 
 
 
@@ -17,11 +13,7 @@ const DetailsVotesPageReadQuestions = () => {
 
 
     return (
-          <div className={'details-votes-page-read-questions__wrapper'}>
-              <TitleVotesDetailsCallVotingProfile titleName={'Детали голосования'} firstLetter={'КлиентКриптовече'} secondLetter={'Детали голосования'} mobileLetter={'Назад к списку голосований'}/>
-              <DetailsVotesPageDaysEndRegStartVote/>
               <div className={'details-votes-page-read-questions__main-content'}>
-                <VotesAndDetailsPageSwitchButtons hiddenActiveBtn={true} hiddenArchiveBtn={true} hiddenBulletinBtn={true} hiddenResultBtn={true}/>
                     <h1 className={'details-votes-page-read-questions__wrapper-title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                 <DetailsVotesPageReadQuestionsCardList
                     nameQuestionCard={'1. Согласны ли вы с решением №576?'}
@@ -45,7 +37,6 @@ const DetailsVotesPageReadQuestions = () => {
                     nameSelectAnswerQuestion={'Выберите один из вариантов ответа напротив каждого кандидата'} typeCheck={'radio'} nameFirstColumn={'За'} nameSecondColumn={'Против'} nameThirdColumn={'Воздержаться'}/>
                 <RegistrationButton/>
             </div>
-          </div>
     )
 }
 

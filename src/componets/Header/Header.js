@@ -43,7 +43,7 @@ const Header = () => {
                                <a href={'/main'}><img alt={'settings__icon'} src={settings}/></a>
                                <div className={'general-block-search-settings-lk__iconclient'}>
                                    <Link to={'my-profile'}><img alt={'logo_client'} src={icon_client}/></Link>
-                                   <span>Иванова А.А.</span>
+                                    <Link to={'my-profile'}><span>Иванова А.А.</span></Link>
                                </div>
                            </div>
                     </div>

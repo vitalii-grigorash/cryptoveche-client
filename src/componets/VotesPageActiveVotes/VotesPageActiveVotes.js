@@ -6,14 +6,11 @@ import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote"
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import VotePageBtnRegister from "../VotesStatusComponents/VotePageBtnRegister/VotePageBtnRegister";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
-import {useActArchVoteContext} from "../VotesPage/ChangeActArchVoteContext/ChangeActArchVoteContext";
 import VotePageBtnVoting from "../VotesStatusComponents/VotePageBtnVoting/VotePageBtnVoting";
 
 const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton}) => {
 
-    const hide = useActArchVoteContext()
 
-    if (hide) return null
 
     return (
 

@@ -4,7 +4,6 @@
     flex-direction: column;
     gap: 32px;
     padding-bottom: 112px;
-
 }
 /*-----Стилизация для основного контента------------------------------------------------------------------------------*/
 .details-votes-page-result-votes__main-content {
@@ -22,7 +21,52 @@
     font-weight: 600;
     line-height: 32px;
 }
+/*-----Стилизация кнопок-переключателей--------------- ---------------------------------------------------------------*/
+.results-page-switch-buttons {
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(54, 59, 77, 0.9);
+    border-bottom: 1px #EEEEEE solid;
+}
+.results-page-switch-buttons__button {
+    padding-bottom: 8px;
+    border-bottom: 2px #FFFFFF solid;
+    margin-right: 48px;
+    cursor: pointer;
+}
+.results-page-switch-buttons__button:hover {
+    border-bottom: 2px #0084FE solid;
+}
+.active-results-page-switch-buttons__button {
+    padding-bottom: 8px;
+    border-bottom: 2px #0084FE solid;
+    margin-right: 48px;
+    cursor: pointer;
+}
+._mobile-read-questions-bnt {
+    display: none;
+}
+._read-questions-bnt {
+    display: initial;
+}
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1020px) {
+    .results-page-switch-buttons {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 114%;
+        white-space: nowrap;
+    }
+}
+@media (max-width: 800px) {
+    .results-page-switch-buttons {
+        overflow: hidden;
+        text-overflow: inherit;
+    }
+}
+
 @media (max-width: 810px) {
     .details-votes-page-result-votes__main-content {
         gap: 16px;
@@ -40,5 +84,25 @@
     }
     .details-votes-page-result-votes__main-content {
         padding: 16px 16px;
+    }
+}
+@media (max-width: 670px) {
+    ._mobile-read-questions-bnt {
+        display: inherit;
+    }
+    ._read-questions-bnt {
+        display: none;
+    }
+}
+@media (max-width: 420px) {
+    .results-page-switch-buttons {
+        border-bottom: 2px #FFFFFF solid;
+    }
+    .results-page-switch-buttons__button {
+        margin-right: 24px;
+    }
+    .results-page-switch-buttons__button:hover {
+        border-bottom: 2px #0084FE solid;
+        cursor: pointer;
     }
 }
