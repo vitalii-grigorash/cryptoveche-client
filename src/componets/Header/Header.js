@@ -49,20 +49,13 @@ const Header = (props) => {
                             <a href={'/'}><img alt={'icon-search'} src={search_icon} /></a>
                             <span>Поиск</span>
                         </div>
-                        <a><img alt={'settings__icon'} src={settings} onClick={handleLogout} /></a>
-                        <div className={'general-block-search-settings-lk__iconclient'}>
-                            <Link to={'my-profile'}><img alt={'logo_client'} src={icon_client} /></Link>
-                            <Link to={'my-profile'}><span>{userName}</span></Link>
-                            <img alt={'icon-search'} src={search_icon} />
-                            <span>Поиск</span>
-                        </div>
                         <div className={'general-block-search-settings-lk__settings'}>
                             <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings} />
                             <HeaderSettingsModal active={modalSettings} setActive={setModalSettings} />
                         </div>
                         <div className={'general-block-search-settings-lk__iconclient'}>
                             <span onClick={() => setModalProfileExitActive(!modalProfileExitActive)}><img alt={'logo_client'} src={icon_client} />Иванова А.А.</span>
-                            <HeaderMyProfileModal active={modalProfileExitActive} setActive={setModalProfileExitActive} />
+                            <HeaderMyProfileModal active={modalProfileExitActive} setActive={setModalProfileExitActive} handleLogout={handleLogout}/>
                         </div>
                     </div>
                 </div>
