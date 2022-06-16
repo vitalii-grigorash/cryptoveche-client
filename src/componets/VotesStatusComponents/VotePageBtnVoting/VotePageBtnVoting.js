@@ -10,7 +10,7 @@ const VotePageBtnVoting = () => {
 
     return (
             <div className={'vote-page-button-voting'}>
-                <button className={'vote-page-button-voting__btn'} onClick={() => linkCallVotingPage('/main/call-voting-page')}>Проголосовать</button>
+                <button className={'vote-page-button-voting__btn'} onClick={() => linkCallVotingPage('/call-voting-page')}>Проголосовать</button>
             </div>
     )
 }
