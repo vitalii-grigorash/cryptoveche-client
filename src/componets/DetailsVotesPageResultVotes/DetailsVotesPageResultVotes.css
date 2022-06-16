@@ -97,8 +97,12 @@
 @media (max-width: 420px) {
     .results-page-switch-buttons {
         border-bottom: 2px #FFFFFF solid;
+        overflow: auto;
     }
     .results-page-switch-buttons__button {
+        margin-right: 24px;
+    }
+    .active-results-page-switch-buttons__button {
         margin-right: 24px;
     }
     .results-page-switch-buttons__button:hover {

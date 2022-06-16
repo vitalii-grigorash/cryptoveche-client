@@ -5,11 +5,11 @@
     position: relative;
 }
 .gistogramma-block__stylization {
-    rotate: 180deg;
     height: 100px;
     max-width: 290px;
     opacity: 20%;
     padding-top: 15px;
+    transform: rotate(180deg);
 }
 
 /*------Стилизация для div с датами-------------------------------------------------------------------------------*/
