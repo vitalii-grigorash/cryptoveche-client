@@ -10,7 +10,12 @@ import {Link} from "react-router-dom";
 
 
 
-const Header = () => {
+const Header = (props) => {
+
+    const {
+        handleLogout,
+        userName
+    } = props;
 
     const [burgerMenuActive, setBurgerMenuActive] = useState(false);
 
@@ -32,18 +37,18 @@ const Header = () => {
                    <div className={'header__container _container'}>
                            <div className={'header__logotype-block'}>
                                <img alt={'Logo'} src={logo_header}/>
-                               <Link to={'/main'}><span>Главная</span></Link>
+                               <Link to={'/'}><span>Главная</span></Link>
                                <Link to={'votes-page'}><span>Голосование</span></Link>
                             </div>
                            <div className={'header__general-block-search-settings-lk'}>
                                <div className={'general-block-search-settings-lk__search'}>
-                                   <a href={'/main'}><img alt={'icon-search'} src={search_icon}/></a>
+                                   <a href={'/'}><img alt={'icon-search'} src={search_icon}/></a>
                                     <span>Поиск</span>
                                </div>
-                               <a href={'/main'}><img alt={'settings__icon'} src={settings}/></a>
+                               <a><img alt={'settings__icon'} src={settings} onClick={handleLogout}/></a>
                                <div className={'general-block-search-settings-lk__iconclient'}>
                                    <Link to={'my-profile'}><img alt={'logo_client'} src={icon_client}/></Link>
-                                    <Link to={'my-profile'}><span>Иванова А.А.</span></Link>
+                                    <Link to={'my-profile'}><span>{userName}</span></Link>
                                </div>
                            </div>
                     </div>

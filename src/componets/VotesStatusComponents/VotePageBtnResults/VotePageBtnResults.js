@@ -9,7 +9,7 @@ const VotePageBtnResults = () => {
 
     return (
         <div>
-            <button className={'vote-page-button-results'} onClick={() => linkResultPage('/votes-page/result-vote')}>Результаты</button>
+            <button className={'vote-page-button-results'} onClick={() => linkResultPage('/result-vote')}>Результаты</button>
         </div>
     )
 }
