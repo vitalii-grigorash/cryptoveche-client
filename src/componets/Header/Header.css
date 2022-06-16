@@ -99,16 +99,25 @@
 .general-block-search-settings-lk__search {
     display: flex;
     gap: 11px;
+    align-items: center;
+    cursor: pointer;
+}
+/*------Стилизация блока с иконкой настройки---------------------------------------------------------------------*/
+.general-block-search-settings-lk__settings {
+    position: relative;
+}
+.general-block-search-settings-lk__settings img {
+    cursor: pointer;
 }
 /*------Стилизация блока с иконкой личный кабинет---------------------------------------------------------------------*/
 .general-block-search-settings-lk__iconclient {
+    position: relative;
+}
+.general-block-search-settings-lk__iconclient span {
     display: flex;
     gap: 11px;
     align-items: center;
-}
-.general-block-search-settings-lk__iconclient a {
-    color: #FFFFFF;
-    text-decoration: none;
+    cursor: pointer;
 }
 /*------Адаптивная версия(992px)--------------------------------------------------------------------------------------*/
 @media (max-width: 992px) {
@@ -119,7 +128,7 @@
         font-size: 14px;
     }
 }
-/*------Адаптивная версия(782px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия--------------------------------------------------------------------------------------*/
 @media (max-width: 815px) {
     .header__logotype-block {
         gap: 40px;
@@ -127,9 +136,7 @@
     .general-block-search-settings-lk__search  span {
         display: none;
     }
-    .general-block-search-settings-lk__iconclient span {
-        display: none;
-    }
+
 }
 /*------Адаптивная версия(660px)--------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
@@ -137,8 +144,11 @@
         display: none;
     }
    .header__logotype-block {
-       gap: 30px;
+       gap: 24px;
    }
+    .header__general-block-search-settings-lk {
+        gap: 32px;
+}
 }
 /*------Адаптивная версия(520px)--------------------------------------------------------------------------------------*/
 @media (max-width: 520px) {

@@ -5,6 +5,7 @@
     max-height: 176px;
     background: rgba(54, 59, 77, 0.1);
     left: 0;
+    top: 120px;
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -14,7 +15,6 @@
     transform: scale(1);
     pointer-events: all;
 }
-
 /*------Стилизация для контента модального окна------------------------------------------------------------------------*/
 .materials-vote-question-modal__content {
     display: flex;

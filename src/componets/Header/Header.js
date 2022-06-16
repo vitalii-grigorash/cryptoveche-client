@@ -7,12 +7,16 @@ import icon_client from '../../img/Header_lk_icon.png';
 import logo_header from '../../img/Header_logo.svg';
 import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
 import {Link} from "react-router-dom";
+import HeaderMyProfileModal from "./HeaderMyProfileModal/HeaderMyProfileModal";
+import HeaderSettingsModal from "./HeaderSettingsModal/HeaderSettingsModal";
 
 
 
 const Header = () => {
 
     const [burgerMenuActive, setBurgerMenuActive] = useState(false);
+    const [modalProfileExitActive, setModalProfileExitActive] = useState(false);
+    const [modalSettings, setModalSettings] = useState(false);
 
 
     return (
@@ -37,13 +41,16 @@ const Header = () => {
                             </div>
                            <div className={'header__general-block-search-settings-lk'}>
                                <div className={'general-block-search-settings-lk__search'}>
-                                   <a href={'/main'}><img alt={'icon-search'} src={search_icon}/></a>
+                                    <img alt={'icon-search'} src={search_icon}/>
                                     <span>Поиск</span>
                                </div>
-                               <a href={'/main'}><img alt={'settings__icon'} src={settings}/></a>
+                               <div className={'general-block-search-settings-lk__settings'}>
+                                    <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings}/>
+                                   <HeaderSettingsModal active={modalSettings} setActive={setModalSettings}/>
+                               </div>
                                <div className={'general-block-search-settings-lk__iconclient'}>
-                                   <Link to={'my-profile'}><img alt={'logo_client'} src={icon_client}/></Link>
-                                    <Link to={'my-profile'}><span>Иванова А.А.</span></Link>
+                                    <span onClick={() => setModalProfileExitActive(!modalProfileExitActive)}><img alt={'logo_client'} src={icon_client}/>Иванова А.А.</span>
+                                   <HeaderMyProfileModal active={modalProfileExitActive} setActive={setModalProfileExitActive}/>
                                </div>
                            </div>
                     </div>
