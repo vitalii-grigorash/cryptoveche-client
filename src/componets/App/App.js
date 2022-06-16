@@ -122,7 +122,6 @@ function App() {
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-
             <div className="App">
                 {isLoggedIn && (
                     <Header

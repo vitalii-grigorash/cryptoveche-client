@@ -46,7 +46,7 @@ const Header = (props) => {
                     </div>
                     <div className={'header__general-block-search-settings-lk'}>
                         <div className={'general-block-search-settings-lk__search'}>
-                            <a href={'/'}><img alt={'icon-search'} src={search_icon} /></a>
+                            <a><img alt={'icon-search'} src={search_icon} /></a>
                             <span>Поиск</span>
                         </div>
                         <div className={'general-block-search-settings-lk__settings'}>
@@ -54,7 +54,7 @@ const Header = (props) => {
                             <HeaderSettingsModal active={modalSettings} setActive={setModalSettings} />
                         </div>
                         <div className={'general-block-search-settings-lk__iconclient'}>
-                            <span onClick={() => setModalProfileExitActive(!modalProfileExitActive)}><img alt={'logo_client'} src={icon_client} />Иванова А.А.</span>
+                            <span onClick={() => setModalProfileExitActive(!modalProfileExitActive)}><img alt={'logo_client'} src={icon_client} />{userName}</span>
                             <HeaderMyProfileModal active={modalProfileExitActive} setActive={setModalProfileExitActive} handleLogout={handleLogout}/>
                         </div>
                     </div>
