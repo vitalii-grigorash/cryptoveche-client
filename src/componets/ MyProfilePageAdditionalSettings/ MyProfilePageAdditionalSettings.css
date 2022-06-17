@@ -26,7 +26,7 @@
     padding-bottom: 32px;
 }
 .my-profile-page-add-settings__form select {
-    padding: 12px 0 12px 24px;
+    padding: 12px 0 12px 16px;
     max-height: 48px;
     border-radius: 8px;
     background: #FFFFFF;
@@ -35,7 +35,7 @@
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
     cursor: pointer;
-    text-indent: -4px;
+    text-indent: 1px;
 }
 .my-profile-page-add-settings__form label {
     font-size: 18px;
