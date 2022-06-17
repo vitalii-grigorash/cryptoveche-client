@@ -2,8 +2,8 @@ import React from "react";
 import './CallVotingPageQuestionCard.css';
 import CallVotingPageVoteButton from "../ButtonsComponets/CallVotingPageVoteButton/CallVotingPageVoteButton";
 import CallVotingPageCheckboxRow from "../CallVotingPageCheckboxRow/CallVotingPageCheckboxRow";
-import CallVotingPageCheckboxColumns from "../CallVotingPageCheckboxColumns/CallVotingPageCheckboxColumns";
-import CallVotingPageCheckboxTable from "../CallVotingPageCheckboxTable/CallVotingPageCheckboxTable";
+// import CallVotingPageCheckboxColumns from "../CallVotingPageCheckboxColumns/CallVotingPageCheckboxColumns";
+// import CallVotingPageCheckboxTable from "../CallVotingPageCheckboxTable/CallVotingPageCheckboxTable";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
 const CallVotingPageQuestionCard = ({titleName, chooseAnswer, answerSelected}) => {

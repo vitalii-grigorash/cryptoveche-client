@@ -1,7 +1,7 @@
 import React from "react";
 import './HeaderSettingsModal.css';
 import header_modal_plus_icon from '../../../img/HeaderSettingsModal_icon_plus.svg';
-import header_modal_minus_icon from '../../../img/HeaderSettingsModal_icon_minus.svg.svg';
+// import header_modal_minus_icon from '../../../img/HeaderSettingsModal_icon_minus.svg.svg';
 
 const HeaderSettingsModal = ({active}) => {
 

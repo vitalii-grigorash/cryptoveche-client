@@ -46,7 +46,7 @@ const Header = (props) => {
                     </div>
                     <div className={'header__general-block-search-settings-lk'}>
                         <div className={'general-block-search-settings-lk__search'}>
-                            <a><img alt={'icon-search'} src={search_icon} /></a>
+                            <img alt={'icon-search'} src={search_icon} />
                             <span>Поиск</span>
                         </div>
                         <div className={'general-block-search-settings-lk__settings'}>

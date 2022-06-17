@@ -2,7 +2,7 @@ import React from "react";
 import './DetailsVotesPageResultVotesCardQuestionGraph.css';
 import CardQuestionGraphNameColumn from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumn";
 import CardQuestionVerticalGraph from "./CardQuestionVerticalGraph/CardQuestionVerticalGraph";
-import CardQuestionHorizontalGraph from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraph";
+// import CardQuestionHorizontalGraph from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraph";
 
 
 const DetailsVotesPageResultVotesCardQuestionGraph = () => {
