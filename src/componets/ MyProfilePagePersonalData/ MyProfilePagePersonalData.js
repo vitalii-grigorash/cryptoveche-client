@@ -3,6 +3,8 @@ import './ MyProfilePagePersonalData.css';
 
 const MyProfilePagePersonalData = () => {
 
+
+
     return (
             <div className={'my-profile-page-personal-data__wrapper'}>
                 <h3 className={'my-profile-page-personal-data__title'}>Личные данные</h3>
