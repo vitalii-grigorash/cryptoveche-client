@@ -77,7 +77,7 @@
 .filters-modal__content-checkboxes-status-vote {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    /* justify-content: start; */
     gap: 24px;
     line-height: 110%;
     font-size: 18px;
@@ -93,7 +93,7 @@
 .content-checkboxes-type-vote {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    /* justify-content: start; */
     gap: 24px;
     line-height: 110%;
     font-size: 18px;

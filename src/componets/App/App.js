@@ -118,7 +118,8 @@ function App() {
                 logout();
             }
         }
-    }, []);
+        // eslint-disable-next-line
+    }, [navigate, pathname]);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>

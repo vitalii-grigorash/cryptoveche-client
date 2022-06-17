@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import './Authorization.css';
 import logo from '../../img/Auth_logo_crypto_veche.svg';
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -21,7 +22,6 @@ const Authorization = (props) => {
     const password = Validation();
     const [changeTypePass, setChangeTypePass] = useState('password');
     const linkButtonRegPage = useNavigate();
-    const linkButtonForgot = useNavigate();
     const refBorderRedLogin = useRef();
     const refBorderRedPass = useRef();
 
@@ -48,17 +48,9 @@ const Authorization = (props) => {
                     <div className={'main-block__auth'}>
                         <div className={'auth__title'}>
                             <h3>Авторизация</h3>
-                            <div><span>РУС</span><a>ENG</a></div>
+                            <div><span>РУС</span>ENG</div>
                         </div>
                         <div className={'auth__form'}>
-                            <div className={'form__select'}>
-                                <span>Войти как</span>
-                                <select name="select">
-                                    <option value="value1">Голосующий</option>
-                                    <option value="value2">Голосующий 2</option>
-                                    <option value="value3">Голосующий 3</option>
-                                </select>
-                            </div>
                             <div className={'form__login'}>
                                 <span>Имя пользователя</span>
                                 <input
@@ -86,7 +78,7 @@ const Authorization = (props) => {
                                 <div className={'form__error'}>{authError}</div>
                             </div>
                             <div className={'form__checkbox'}>
-                                <span><a onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</a></span>
+                                <span><Link to={'/forget-password'}>Забыли пароль?</Link></span>
                                 <label className={'checkbox_container'}>
                                     <input type="checkbox" value="yes" />Запомнить меня
                                     <span className={'checkmark'} />
@@ -94,7 +86,7 @@ const Authorization = (props) => {
                             </div>
                             <div className={'form__button'}>
                                 <button onClick={inputHandler} type={'button'}>Войти</button>
-                                <span><a href={'https://esia.gosuslugi.ru/login/'} target={'_blank'}>Войти через ЕСИА</a></span>
+                                <span><a href='https://esia.gosuslugi.ru/login/' target={'_blank'} rel="noreferrer">Войти через ЕСИА</a></span>
                             </div>
                         </div>
                     </div>
@@ -120,7 +112,7 @@ const Authorization = (props) => {
                         </div>
                     </div>
                     <div className={'main-block__mobile-link-reg'}>
-                        <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
+                        <span>Ещё нет аккаунта?</span><Link to={'/reg-page'}>Зарегистрироваться</Link>
                     </div>
                 </div>
             </div>
@@ -129,4 +121,3 @@ const Authorization = (props) => {
 };
 
 export default Authorization;
-
