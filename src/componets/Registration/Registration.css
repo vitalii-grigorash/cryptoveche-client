@@ -92,7 +92,7 @@ a {
     display: flex;
     flex-direction: column;
     background-color: #FFFF;
-    padding: 74px 56px 74px 56px;
+    padding: 65px 56px;
     width: 768px;
     font-size: 18px;
     -webkit-border-top-right-radius: 10px;
@@ -153,7 +153,6 @@ a {
 .username-forms span {
     position: relative;
 }
-
 .username-forms__red-star-icon__family {
     position: absolute;
     width: 8px;
@@ -268,6 +267,86 @@ a {
     z-index: 22;
 }
 /*------Форма выбора часового пояса-------------------------------------------------------------------------------------*/
+/* Переделал */
+.reg-form__time-zone-main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0 0;
+}
+.reg-form__time-zone-heading {
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 0.9;
+    margin: 0 auto 0 0;
+}
+.reg-form__time-zone-heading_span {
+    color: #FF4970;
+}
+.reg-form__time-zone-select-container {
+    display: flex;
+    position: relative;
+    width: 320px;
+    height: 48px;
+    margin: 16px auto 0 0;
+    border: 0.5px solid rgba(54, 59, 77, 0.3);
+    box-sizing: border-box;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.reg-form__time-zone-select-value {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 0.9;
+    margin: auto auto auto 24px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.reg-form__time-zone-select-arrow {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    margin: auto 24px auto auto;
+}
+.reg-form__time-zone-options-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: #FFFFFF;
+    overflow-y: scroll;
+    top: 58px;
+    left: -1px;
+    width: 320px;
+    max-height: 200px;
+    box-shadow: 0px 4px 8px rgba(54, 59, 77, 0.1);
+    border: 0.5px solid rgba(54, 59, 77, 0.2);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 24px 24px;
+    cursor: default;
+    z-index: 9;
+}
+.reg-form__time-zone-options-container::-webkit-scrollbar {
+    width: 4px;
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+.reg-form__time-zone-options-container::-webkit-scrollbar-thumb {
+    background: #CFD4DD;
+    border-radius: 4px;
+}
+.reg-form__time-zone-option {
+    line-height: 24px;
+    color: #363B4D;
+    opacity: 0.9;
+    margin: 24px auto 0 0;
+}
+.reg-form__time-zone-option:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
 .reg-form__select-time-zone {
     display: flex;
     flex-direction: row;
@@ -302,7 +381,6 @@ a {
 .reg-form__checkbox {
     display: flex;
     flex-direction: row;
-    padding-bottom: 34px;
     z-index: 8;
 }
 .reg-form__checkbox span {
@@ -627,6 +705,26 @@ a {
         width: 343px;
         height: 48px;
         font-size: 16px;
-
+    }
+    .reg-form__time-zone-select-container {
+        width: 343px;
+        height: 48px;
+        margin: 8px auto 0 0;
+    }
+    .reg-form__time-zone-select-value {
+        margin: auto auto auto 16px;
+        max-width: 285px;
+    }
+    .reg-form__time-zone-select-arrow {
+        margin: auto 16px auto auto;
+    }
+    .reg-form__time-zone-options-container {
+        left: -2px;
+        width: 345px;
+        max-height: 150px;
+        padding: 0 16px 16px;
+    }
+    .reg-form__time-zone-option {
+        margin: 16px auto 0 0;
     }
 }

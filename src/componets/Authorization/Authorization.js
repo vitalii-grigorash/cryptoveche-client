@@ -48,7 +48,7 @@ const Authorization = (props) => {
                     <div className={'main-block__auth'}>
                         <div className={'auth__title'}>
                             <h3>Авторизация</h3>
-                            <div><span>РУС</span>ENG</div>
+                            <div><span>РУС</span><a href="/#">ENG</a></div>
                         </div>
                         <div className={'auth__form'}>
                             <div className={'form__login'}>

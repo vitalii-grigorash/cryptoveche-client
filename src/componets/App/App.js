@@ -66,13 +66,13 @@ function App() {
         setCurrentUser({});
         navigate('/auth');
     }
-
     function handleLogin(email, password) {
         if (email === '' || password === '') {
             setAuthError('Необходмо заполнить все поля');
         } else {
             Auth.authorize(email, password)
                 .then((res) => {
+                    console.log(res);
                     if (res.status === 'failure') {
                         setAuthError('Неправильное имя пользователя или пароль');
                     } else {
@@ -121,6 +121,17 @@ function App() {
         // eslint-disable-next-line
     }, [navigate, pathname]);
 
+    function handleRegister(registerData) {
+        console.log(registerData);
+        Auth.registration(registerData)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            })
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
@@ -141,7 +152,11 @@ function App() {
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
                             <Route path='/set-password' element={<AuthorizationSetPassword />} />
-                            <Route path='/reg-page' element={<Registration />} />
+                            <Route path='/reg-page'
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                />}
+                            />
                             <Route path='/reg-second-page' element={<RegistrationSecondPageMobile />} />
                             <Route exact path='/' element={<MainPage />} />
                             <Route exact path='/call-voting-page' element={<CallVotingPage />} />
