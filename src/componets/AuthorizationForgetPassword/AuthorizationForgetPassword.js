@@ -33,7 +33,7 @@ const AuthorizationForgetPassword = () => {
                             <a href={'/auth'}><img alt={'стрелочка ссылка'} className={'auth__link-row-icon'} src={row_link}/></a>
                             <div className={'auth__title _modificator-auth__title-padding-left'}>
                                     <h3>Забыли пароль?</h3>
-                                <div><span>РУС</span><a href={'en'}>ENG</a></div>
+                                <div><span>РУС</span><span>ENG</span></div>
                                 </div>
                                     <span className={'auth__description'}>Пожалуйста, укажите e-mail, который Вы использовали для входа в личный кабинет, и мы пришлем Вам ссылку для смены пароля.</span>
                                 <div className={'auth__form'}>
