@@ -44,8 +44,7 @@ const Registration = () => {
 
 
     const completeProcessRegistration = () => {
-
-        if ((surname === '' || name === '' || secondName === '')) {
+        if ((lastName === '' || name === '')) {
             setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
             setChangeBorderInputUsername('_input-border-red');
         } else if (email === '') {
@@ -56,6 +55,14 @@ const Registration = () => {
             setChangeBorderInputPass('_input-border-red');
         } else {
             setModalActive(true)
+            handleRegister({
+                email: email,
+                password: passReg,
+                first_name: name,
+                second_name: secondName,
+                last_name: lastName,
+                utc_offset: timeZoneValue
+            });
         }
     }
 
@@ -91,15 +98,11 @@ const Registration = () => {
                         </div>
                         <div className={'reg-form__username'}>
                             <div className={'username-forms'}>
-                                <span>Фамилия
-                                    <img alt={'иконка звездочка'} className={'username-forms__red-star-icon__family'} src={red_star_icon} />
-                                </span>
-                                <input className={changeBorderInputUsername} onChange={e => { setSurname(e.target.value) }} type={"text"} />
+                                <span>Фамилия <span className="reg-form__time-zone-heading_span">*</span></span>
+                                <input className={changeBorderInputUsername} onChange={e => { setLastName(e.target.value) }} type={"text"} />
                             </div>
                             <div className={'username-forms'}>
-                                <span>Имя
-                                    <img alt={'иконка звездочка'} className={'username-forms__red-star-icon__name'} src={red_star_icon} />
-                                </span>
+                                <span>Имя <span className="reg-form__time-zone-heading_span">*</span></span>
                                 <input className={changeBorderInputUsername} onChange={e => { setName(e.target.value) }} type={"text"} />
                             </div>
                             <div className={'username-forms'}>
@@ -109,25 +112,19 @@ const Registration = () => {
                             <div className={'reg-block__error-message'}>{errorUserName}</div>
                         </div>
                         <div className={'reg-form__e-mail _reg-block-show'}>
-                            <span>E-mail
-                                <img alt={'иконка звездочка'} className={'reg-form__e-mail__red-star-icon'} src={red_star_icon} />
-                            </span>
+                            <span>E-mail <span className="reg-form__time-zone-heading_span">*</span></span>
                             <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => { setEmail(e.target.value) }} />
                             <div className={'reg-block__error-message'}>{errorEmail}</div>
                         </div>
                         <div className={'reg-form__password _reg-block-show'}>
                             <div className={'password-form'}>
                                 <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
-                                <span>Придумайте пароль
-                                    <img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon'} src={red_star_icon} />
-                                </span>
+                                <span>Придумайте пароль <span className="reg-form__time-zone-heading_span">*</span></span>
                                 <input className={changeBorderInputPass} type={changeTypePass} onChange={e => { setPassReg(e.target.value) }} />
                             </div>
                             <div className={'password-form'}>
                                 <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon} />
-                                <span>Повторите пароль
-                                    <img alt={'иконка звездочка'} className={'reg-form__password__red-star-icon-repeat-pass'} src={red_star_icon} />
-                                </span>
+                                <span>Повторите пароль <span className="reg-form__time-zone-heading_span">*</span></span>
                                 <input className={changeBorderInputPass} type={'text'} onChange={e => { setRepeatPass(e.target.value) }} />
                             </div>
                             <div className={'reg-block__error-message '}>{errorPassReg}</div>
