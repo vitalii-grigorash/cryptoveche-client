@@ -101,9 +101,8 @@ a {
     -webkit-border-bottom-right-radius: 8px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
     color: rgba(54, 59, 77, 0.9);
-    gap: 32px;
+    gap: 24px;
 }
-
 .reg-form__title {
     display: inline-flex;
     align-items: center;
@@ -131,7 +130,7 @@ a {
     display: grid;
     column-gap: 14px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 88px;
+    grid-template-rows: 108px;
     opacity: 0.9;
     color: #363B4D;
     position: relative;
@@ -141,21 +140,32 @@ a {
     height: 48px;
     /*border: 1px solid rgba(54, 59, 77, 0.5);*/
     padding: 4px 5px 5px 15px;
+    box-sizing: border-box;
     border-radius: 8px;
-    outline: none;
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
     color: rgba(54, 59, 77, 0.9);
+    margin: 16px 0 0;
 }
-
 .username-forms {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 .username-forms span {
     position: relative;
+}
+.reg-form__input-error {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #FF4970;
+    opacity: 0.9;
+    max-width: 208px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 4px auto 0 0;
 }
 .username-forms__red-star-icon__family {
     position: absolute;
@@ -429,11 +439,15 @@ a {
     position: absolute;
     top: 84px;
     right: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 143%;
     color: #FF4970;
     opacity: 0.9;
+    max-width: 646px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
 @media (max-width: 1108px) {
@@ -455,7 +469,7 @@ a {
     .reg-block__reg-form {
         width: 500px;
         padding: 25px 25px;
-        gap: 25px;
+        gap: 20px;
     }
     .reg-block-logotype {
         padding: 35px 25px;
@@ -464,11 +478,12 @@ a {
         padding-bottom: 433px;
     }
     .reg-form__username {
-        grid-template-rows: 75px;
+        grid-template-rows: 85px;
     }
     .reg-form__username input {
         width: 140px;
         height: 40px;
+        margin: 8px 0 0;
     }
    .username-forms, .reg-form__e-mail, .reg-form__password {
        font-size: 16px;
@@ -495,6 +510,7 @@ a {
     .reg-block__error-message {
         top: 78px;
         font-size: 12px;
+        max-width: 450px;
     }
     .reg-form__select-time-zone::after {
         right: 230px;
@@ -504,6 +520,24 @@ a {
     }
     .reg-form__hidden-pass-icon {
         top: 44px;
+    }
+    .reg-form__input-error {
+        font-size: 10px;
+        line-height: 12px;
+        max-width: 140px;
+    }
+    .reg-form__time-zone-select-container {
+        width: 320px;
+        height: 40px;
+        margin: 8px auto 0 0;
+    }
+    .reg-form__time-zone-select-value {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .reg-form__time-zone-heading {
+        font-size: 16px;
+        line-height: 20px;
     }
 }
 /*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
@@ -521,7 +555,7 @@ a {
         font-size: 16px;
         width: 375px;
         border-radius: 16px;
-        gap: 24px;
+        gap: 0px;
         height: 612px;
     }
     .reg-form__title h3 {
@@ -568,7 +602,7 @@ a {
     .reg-form__username {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 4px;
     }
 
     .username-forms {
@@ -658,7 +692,7 @@ a {
         left: 19px;
     }
     .reg-form__e-mail {
-        gap: 10px;
+        gap: 14px;
     }
     .reg-form__e-mail input {
         width: 100%;
@@ -668,7 +702,7 @@ a {
     .reg-form__password {
         display: flex;
         flex-direction: column;
-        gap: 19px;
+        gap: 0px;
     }
     .reg-form__password input {
         width: 100%;
@@ -677,6 +711,7 @@ a {
     }
     .password-form {
         gap: 10px;
+        margin: 18px 0 22px;
     }
     .reg-form__show-pass-icon, .reg-form__hidden-pass-icon {
         top: 44px;
@@ -698,6 +733,7 @@ a {
         text-align: center;
         width: 100%;
         gap: 8px;
+        margin: 16px 0 0;
     }
     .reg-form__button span {
         color: rgba(54, 59, 77, 0.4);
@@ -709,6 +745,9 @@ a {
         width: 343px;
         height: 48px;
         font-size: 16px;
+    }
+    .reg-form__time-zone-heading {
+        margin: 14px auto 0 0;
     }
     .reg-form__time-zone-select-container {
         width: 343px;

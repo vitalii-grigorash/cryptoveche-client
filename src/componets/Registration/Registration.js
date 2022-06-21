@@ -12,28 +12,32 @@ import RegistrationModal from "./RegistrationModal/RegistrationModal";
 import { useNavigate } from "react-router-dom";
 import optionRow from '../../img/INPUT-ICONS-24-ARROW.svg';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
-
+import { Validation } from '../../utils/Validation';
 
 const Registration = (props) => {
 
     const {
-        handleRegister
+        handleRegister,
+        handlePolicyAccept,
+        isPolicyAccept,
+        modalActive,
+        emailErrorMessage,
+        changeBorderInputEmail,
+        hideRegisterModal
     } = props;
 
-    const [lastName, setLastName] = useState('');
-    const [name, setName] = useState('');
-    const [secondName, setSecondName] = useState('');
-    const [email, setEmail] = useState('');
-    const [passReg, setPassReg] = useState('');
-    const [repeatPass, setRepeatPass] = useState('');
-    const [errorUserName, setErrorUserName] = useState('');
-    const [errorEmail, setErrorEmail] = useState('');
+    const firstName = Validation();
+    const secondName = Validation();
+    const lastName = Validation();
+    const email = Validation();
+    const password = Validation();
+    const repeatPassword = Validation();
+
     const [errorPassReg, setErrorPassReg] = useState('');
     const [changeTypePass, setChangeTypePass] = useState('password');
-    const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page');
-    const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
+    const [changeTypeRepeatPass, setChangeTypeRepeatPass] = useState('password');
+    // const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page');
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page');
-    const [modalActive, setModalActive] = useState(false);
     const [timeZoneLocation, setTimeZoneLocation] = useState('(UTC+3) Россия - Москва - московское время');
     const [timeZoneValue, setTimeZoneValue] = useState(3);
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
@@ -62,26 +66,31 @@ const Registration = (props) => {
         }
     }
 
-    const completeProcessRegistration = () => {
-        if ((lastName === '' || name === '')) {
-            setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
-            setChangeBorderInputUsername('_input-border-red');
-        } else if (email === '') {
-            setErrorEmail('Неверный формат почты');
-            setChangeBorderInputEmail('_input-border-red');
-        } else if (passReg !== repeatPass || passReg === '' || repeatPass === '') {
+    const showHiddenRepeatPass = () => {
+        if (changeTypeRepeatPass === 'password') {
+            setChangeTypeRepeatPass('text')
+        } else {
+            setChangeTypeRepeatPass('password')
+        }
+    }
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        // setChangeBorderInputUsername('_input-border-red');
+        if (password.value !== repeatPassword.value) {
             setErrorPassReg('Пароли не совпадают');
             setChangeBorderInputPass('_input-border-red');
         } else {
-            setModalActive(true)
             handleRegister({
-                email: email,
-                password: passReg,
-                first_name: name,
-                second_name: secondName,
-                last_name: lastName,
+                email: email.value,
+                password: password.value,
+                first_name: firstName.value,
+                second_name: secondName.value,
+                last_name: lastName.value,
                 utc_offset: timeZoneValue
             });
+            setErrorPassReg('');
+            setChangeBorderInputPass('_input-border-black-reg-page');
         }
     }
 
@@ -110,7 +119,7 @@ const Registration = (props) => {
                             <button onClick={() => linkButtonBackPage('/auth')}>Войти</button>
                         </div>
                     </div>
-                    <div className={'reg-block__reg-form'}>
+                    <form className={'reg-block__reg-form'} onSubmit={handleSubmit}>
                         <div className={'reg-form__title'}>
                             <h3>Регистрация</h3>
                             <div><span>РУС</span><span>ENG</span></div>
@@ -118,38 +127,95 @@ const Registration = (props) => {
                         <div className={'reg-form__username'}>
                             <div className={'username-forms'}>
                                 <span>Фамилия <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputUsername} onChange={e => { setLastName(e.target.value) }} type={"text"} />
+                                <input
+                                    type="text"
+                                    className='_input-border-black-reg-page'
+                                    id="register-last-name-input"
+                                    name="lastNameRegister"
+                                    maxLength="40"
+                                    pattern="[A-Za-zа-яёА-ЯЁ -]{1,}"
+                                    required
+                                    value={lastName.value}
+                                    onChange={lastName.onChange}
+                                />
+                                <span id="register-last-name-input-error" className="reg-form__input-error">{lastName.errorMessage}</span>
                             </div>
                             <div className={'username-forms'}>
                                 <span>Имя <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputUsername} onChange={e => { setName(e.target.value) }} type={"text"} />
+                                <input
+                                    type="text"
+                                    className='_input-border-black-reg-page'
+                                    id="register-first-name-input"
+                                    name="firstNameRegister"
+                                    maxLength="40"
+                                    pattern="[A-Za-zа-яёА-ЯЁ -]{1,}"
+                                    required
+                                    value={firstName.value}
+                                    onChange={firstName.onChange}
+                                />
+                                <span id="register-first-name-input-error" className="reg-form__input-error">{firstName.errorMessage}</span>
                             </div>
                             <div className={'username-forms'}>
                                 <span>Отчество</span>
-                                <input className={changeBorderInputUsername} onChange={e => { setSecondName(e.target.value) }} type={"text"} />
+                                <input
+                                    type="text"
+                                    className='_input-border-black-reg-page'
+                                    name="secondNameRegister"
+                                    maxLength="40"
+                                    pattern="[A-Za-zа-яёА-ЯЁ -]{1,}"
+                                    value={secondName.value}
+                                    onChange={secondName.onChange}
+                                />
                             </div>
-                            <div className={'reg-block__error-message'}>{errorUserName}</div>
                         </div>
                         <div className={'reg-form__e-mail _reg-block-show'}>
                             <span>E-mail <span className="reg-form__time-zone-heading_span">*</span></span>
-                            <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => { setEmail(e.target.value) }} />
-                            <div className={'reg-block__error-message'}>{errorEmail}</div>
+                            <input
+                                type="email"
+                                className={changeBorderInputEmail}
+                                id="register-email-input"
+                                name="emailRegister"
+                                placeholder='user@user.com'
+                                minLength="5"
+                                maxLength="45"
+                                required
+                                value={email.value}
+                                onChange={email.onChange}
+                            />
+                            <div id="register-email-input-error" className='reg-block__error-message'>{emailErrorMessage}</div>
                         </div>
                         <div className={'reg-form__password _reg-block-show'}>
                             <div className={'password-form'}>
-                                <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
+                                <img alt={'иконка показать пароль'} className={'reg-form__hidden-pass-icon'} src={changeTypePass === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPass} />
                                 <span>Придумайте пароль <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputPass} type={changeTypePass} onChange={e => { setPassReg(e.target.value) }} />
+                                <input
+                                    type={changeTypePass}
+                                    className={changeBorderInputPass}
+                                    name="passwordRegister"
+                                    minLength="8"
+                                    maxLength="64"
+                                    required
+                                    value={password.value}
+                                    onChange={password.onChange}
+                                />
                             </div>
                             <div className={'password-form'}>
-                                <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon} />
+                                <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={changeTypeRepeatPass === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenRepeatPass} />
                                 <span>Повторите пароль <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputPass} type={'text'} onChange={e => { setRepeatPass(e.target.value) }} />
+                                <input
+                                    type={changeTypeRepeatPass}
+                                    className={changeBorderInputPass}
+                                    name="repeatPasswordRegister"
+                                    minLength="8"
+                                    maxLength="64"
+                                    value={repeatPassword.value}
+                                    onChange={repeatPassword.onChange}
+                                />
                             </div>
                             <div className={'reg-block__error-message '}>{errorPassReg}</div>
                         </div>
                         <div className={'reg-form__time-zone-main-container'}>
-                            <p className="reg-form__time-zone-heading">Выберите часовой пояс <span className="reg-form__time-zone-heading_span">*</span></p>
+                            <p className="reg-form__time-zone-heading">Выберите часовой пояс</p>
                             <div className="reg-form__time-zone-select-container" onClick={handleTimeZoneOptionsOpen}>
                                 <p className="reg-form__time-zone-select-value">{timeZoneLocation}</p>
                                 <img className="reg-form__time-zone-select-arrow" src={optionRow} alt="Стрелочка открытия меню" />
@@ -164,15 +230,19 @@ const Registration = (props) => {
                         </div>
                         <div className={'reg-form__checkbox _reg-block-show'}>
                             <label className={'checkbox_container'}>
-                                <input type="checkbox" value="yes" />
+                                <input
+                                    type="checkbox"
+                                    checked={isPolicyAccept}
+                                    onChange={handlePolicyAccept}
+                                />
                                 <span className={'checkmark'} />
                             </label>
                             <span>Ознакомлен с <a href={'https://dltc.spbu.ru/'} target="_blank" rel="noreferrer">Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button _reg-block-show'}>
-                            <button type={'button'} onClick={e => { completeProcessRegistration(e) }}>Зарегистрироваться</button>
+                            <button type='submit'>Зарегистрироваться</button>
                         </div>
-                    </div>
+                    </form>
                     {/*-Кнопка для мобильной версии-*/}
                     <div className={'reg-block__button-next-page'}>
                         <span>Шаг 1 из 2</span>
@@ -180,7 +250,10 @@ const Registration = (props) => {
                     </div>
                 </div>
             </div>
-            <RegistrationModal active={modalActive} />
+            <RegistrationModal
+                active={modalActive}
+                hideRegisterModal={hideRegisterModal}
+            />
         </div>
     )
 }
