@@ -42,89 +42,84 @@ const Authorization = (props) => {
     }
 
     return (
-        <div className={'wrapper-auth'}>
-            <div className={'container-auth'}>
-                <div className={'main-block'}>
-                    <div className={'main-block__auth'}>
-                        <div className={'auth__title'}>
-                            <h3>Авторизация</h3>
-                            <div><span>РУС</span><a>ENG</a></div>
-                        </div>
-                        <div className={'auth__form'}>
-                            <div className={'form__select'}>
-                                <span>Войти как</span>
-                                <select name="select">
-                                    <option value="value1">Голосующий</option>
-                                    <option value="value2">Голосующий 2</option>
-                                    <option value="value3">Голосующий 3</option>
-                                </select>
+            <div className={'wrapper-auth'}>
+                <div className={'container-auth'}>
+                    <div className={'main-block'}>
+                        <div className={'main-block__auth'}>
+                            <div className={'auth__title'}>
+                                <h3>Авторизация</h3>
+                                <div><span>РУС</span><span>ENG</span></div>
                             </div>
-                            <div className={'form__login'}>
-                                <span>Имя пользователя</span>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder={'admin@admin.com'}
-                                    required
-                                    value={email.value}
-                                    onChange={email.onChange}
-                                    ref={refBorderRedLogin}
-                                />
-                            </div>
-                            <div className={'form__pass'}>
-                                <span>Пароль</span>
-                                <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
-                                <input
-                                    type={changeTypePass}
-                                    name="password"
-                                    placeholder='Введите пароль'
-                                    required
-                                    value={password.value}
-                                    onChange={password.onChange}
-                                    ref={refBorderRedPass}
-                                />
-                                <div className={'form__error'}>{authError}</div>
-                            </div>
-                            <div className={'form__checkbox'}>
-                                <span><a onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</a></span>
-                                <label className={'checkbox_container'}>
-                                    <input type="checkbox" value="yes" />Запомнить меня
-                                    <span className={'checkmark'} />
-                                </label>
-                            </div>
-                            <div className={'form__button'}>
-                                <button onClick={inputHandler} type={'button'}>Войти</button>
-                                <span><a href={'https://esia.gosuslugi.ru/login/'} target={'_blank'}>Войти через ЕСИА</a></span>
+                            <div className={'auth__form'}>
+                                <div className={'form__login'}>
+                                    <span>Имя пользователя</span>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder={'admin@admin.com'}
+                                        required
+                                        value={email.value}
+                                        onChange={email.onChange}
+                                        ref={refBorderRedLogin}
+                                    />
+                                </div>
+                                <div className={'form__pass'}>
+                                    <span>Пароль</span>
+                                    <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
+                                    <input
+                                        type={changeTypePass}
+                                        name="password"
+                                        placeholder='Введите пароль'
+                                        required
+                                        value={password.value}
+                                        onChange={password.onChange}
+                                        ref={refBorderRedPass}
+                                    />
+                                    <div className={'form__error'}>{authError}</div>
+                                </div>
+                                <div className={'form__checkbox'}>
+                                    <div className={'checkbox__link-forget-pass-login-secretary'}>
+                                        <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</span>
+                                        <a href={'https://admin.cryptoveche.local'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
+                                    </div>
+                                    <label className={'checkbox_container'}>
+                                        <input type="checkbox" value="yes"/>Запомнить меня
+                                        <span className={'checkmark'}/>
+                                    </label>
+                                </div>
+                                <div className={'form__button'}>
+                                    <button onClick={inputHandler} type={'button'}>Войти</button>
+                                    <a href={'https://esia.gosuslugi.ru/login/'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти через ЕСИА</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={'main-block__reg'}>
-                        <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
-                        <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
-                        <div className={'auth-image_1'}>
-                            <img alt={'изображение'} src={bg_image3} />
+                        <div className={'main-block__reg'}>
+                            <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
+                            <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
+                            <div className={'auth-image_1'}>
+                                <img alt={'изображение'} src={bg_image3} />
+                            </div>
+                            <div className={'auth-image_3'}>
+                                <img alt={'изображение'} src={bg_image4} />
+                            </div>
+                            <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile} />
+                            <div className={'reg__logo'}>
+                                <img src={logo} alt="Логотип" />
+                            </div>
+                            <div className={'reg__title'}>
+                                Система электронных голосований
+                            </div>
+                            <div className={'reg__button'}>
+                                <span>Еще нет аккаунта?</span>
+                                <button onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</button>
+                            </div>
                         </div>
-                        <div className={'auth-image_3'}>
-                            <img alt={'изображение'} src={bg_image4} />
+                        <div className={'main-block__mobile-link-reg'}>
+                            <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
                         </div>
-                        <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile} />
-                        <div className={'reg__logo'}>
-                            <img src={logo} alt="Логотип" />
-                        </div>
-                        <div className={'reg__title'}>
-                            Система электронных голосований
-                        </div>
-                        <div className={'reg__button'}>
-                            <span>Еще нет аккаунта?</span>
-                            <button onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</button>
-                        </div>
-                    </div>
-                    <div className={'main-block__mobile-link-reg'}>
-                        <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
                     </div>
                 </div>
             </div>
-        </div>
     )
 };
 
