@@ -3,7 +3,7 @@ import './ActualBlock.css';
 import logo_icon from '../../img/ActualBlock_logo.svg';
 import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
 import DataTime from "../VotesStatusComponents/DateTime/DateTime";
-import EmptyStatesComponent from "../EmptyStatesComponent/EmptyStatesComponent";
+// import EmptyStatesComponent from "../EmptyStatesComponent/EmptyStatesComponent";
 import {useNavigate} from "react-router-dom";
 
 const ActualBlock = () => {

@@ -4,8 +4,8 @@ import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageResultVotesCardQuestion
     from "../DetailsVotesPageResultVotesCardQuestion/DetailsVotesPageResultVotesCardQuestion";
-import DetailsVotesPageResultVotesWaitingResults
-    from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
+// import DetailsVotesPageResultVotesWaitingResults
+//     from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import DetailsVotesPageGeneralInformation
     from "../DetailsVotesPageGeneralInformation/DetailsVotesPageGeneralInformation";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
