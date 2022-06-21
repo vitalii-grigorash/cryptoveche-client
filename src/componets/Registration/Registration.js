@@ -8,9 +8,10 @@ import bg_image4 from '../../img/Auth_img4.svg';
 import bg_image_mobile from "../../img/Auth_img_mobile.svg";
 import show_pass_icon from "../../img/Auth_show_pass_icon.svg";
 import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
-import red_star_icon from '../../img/Registration_red_start_icon.svg';
 import RegistrationModal from "./RegistrationModal/RegistrationModal";
 import { useNavigate } from "react-router-dom";
+import optionRow from '../../img/INPUT-ICONS-24-ARROW.svg';
+import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 
 
 const Registration = () => {
