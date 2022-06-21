@@ -14,25 +14,45 @@ import optionRow from '../../img/INPUT-ICONS-24-ARROW.svg';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 
 
-const Registration = () => {
+const Registration = (props) => {
 
-    const [surname, setSurname] = useState('')
-    const [name, setName] = useState('')
-    const [secondName, setSecondName] = useState('')
-    const [email, setEmail] = useState('')
-    const [passReg, setPassReg] = useState('')
-    const [repeatPass, setRepeatPass] = useState('')
-    const [errorUserName, setErrorUserName] = useState('')
-    const [errorEmail, setErrorEmail] = useState('')
-    const [errorPassReg, setErrorPassReg] = useState('')
+    const {
+        handleRegister
+    } = props;
+
+    const [lastName, setLastName] = useState('');
+    const [name, setName] = useState('');
+    const [secondName, setSecondName] = useState('');
+    const [email, setEmail] = useState('');
+    const [passReg, setPassReg] = useState('');
+    const [repeatPass, setRepeatPass] = useState('');
+    const [errorUserName, setErrorUserName] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassReg, setErrorPassReg] = useState('');
     const [changeTypePass, setChangeTypePass] = useState('password');
-    const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page')
-    const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page')
-    const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page')
+    const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page');
+    const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
+    const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page');
     const [modalActive, setModalActive] = useState(false);
+    const [timeZoneLocation, setTimeZoneLocation] = useState('(UTC+3) Россия - Москва - московское время');
+    const [timeZoneValue, setTimeZoneValue] = useState(3);
+    const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
 
     const linkRegSecondPage = useNavigate();
     const linkButtonBackPage = useNavigate();
+
+    function onSelectTimeZoneClick(location) {
+        setTimeZoneValue(location.VALUE);
+        setTimeZoneLocation(location.LABEL);
+    }
+
+    function handleTimeZoneOptionsOpen() {
+        if (isTimeZoneOptionsOpen) {
+            setTimeZoneOptionsOpen(false);
+        } else {
+            setTimeZoneOptionsOpen(true);
+        }
+    }
 
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
@@ -147,7 +167,7 @@ const Registration = () => {
                                 <input type="checkbox" value="yes" />
                                 <span className={'checkmark'} />
                             </label>
-                            <span>Ознакомлен с <a href={'politic'}>Политикой</a>.Подтверждаю принадлежность мне указанного электронного адреса.</span>
+                            <span>Ознакомлен с <a href={'https://dltc.spbu.ru/'} target="_blank" rel="noreferrer">Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={'reg-form__button _reg-block-show'}>
                             <button type={'button'} onClick={e => { completeProcessRegistration(e) }}>Зарегистрироваться</button>
