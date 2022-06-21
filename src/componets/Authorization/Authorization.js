@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import './Authorization.css';
 import logo from '../../img/Auth_logo_crypto_veche.svg';
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -22,6 +21,7 @@ const Authorization = (props) => {
     const password = Validation();
     const [changeTypePass, setChangeTypePass] = useState('password');
     const linkButtonRegPage = useNavigate();
+    const linkButtonForgot = useNavigate();
     const refBorderRedLogin = useRef();
     const refBorderRedPass = useRef();
 
@@ -78,15 +78,18 @@ const Authorization = (props) => {
                                 <div className={'form__error'}>{authError}</div>
                             </div>
                             <div className={'form__checkbox'}>
-                                <span><Link to={'/forget-password'}>Забыли пароль?</Link></span>
+                                <div className={'checkbox__link-forget-pass-login-secretary'}>
+                                    <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</span>
+                                    <a href={'https://admin.cryptoveche.local'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
+                                </div>
                                 <label className={'checkbox_container'}>
-                                    <input type="checkbox" value="yes" />Запомнить меня
-                                    <span className={'checkmark'} />
+                                    <input type="checkbox" value="yes"/>Запомнить меня
+                                    <span className={'checkmark'}/>
                                 </label>
                             </div>
                             <div className={'form__button'}>
                                 <button onClick={inputHandler} type={'button'}>Войти</button>
-                                <span><a href='https://esia.gosuslugi.ru/login/' target={'_blank'} rel="noreferrer">Войти через ЕСИА</a></span>
+                                <a href={'https://esia.gosuslugi.ru/login/'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти через ЕСИА</a>
                             </div>
                         </div>
                     </div>
@@ -112,7 +115,7 @@ const Authorization = (props) => {
                         </div>
                     </div>
                     <div className={'main-block__mobile-link-reg'}>
-                        <span>Ещё нет аккаунта?</span><Link to={'/reg-page'}>Зарегистрироваться</Link>
+                        <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
                     </div>
                 </div>
             </div>

@@ -113,7 +113,7 @@ const Registration = (props) => {
                     <div className={'reg-block__reg-form'}>
                         <div className={'reg-form__title'}>
                             <h3>Регистрация</h3>
-                            <div><span>РУС</span><a href={'en'}>ENG</a></div>
+                            <div><span>РУС</span><span>ENG</span></div>
                         </div>
                         <div className={'reg-form__username'}>
                             <div className={'username-forms'}>

@@ -42,6 +42,7 @@ a {
     background-color: #0075FF;
     padding: 74px 32px 74px 32px;
     width: 336px;
+    max-height: 788px;
     -webkit-border-top-left-radius: 8px;
     -webkit-border-bottom-left-radius: 8px;
 }
@@ -94,6 +95,7 @@ a {
     background-color: #FFFF;
     padding: 65px 56px;
     width: 768px;
+    max-height: 788px;
     font-size: 18px;
     -webkit-border-top-right-radius: 10px;
     -webkit-border-bottom-right-radius: 8px;
@@ -117,10 +119,12 @@ a {
 .reg-form__title span {
     padding-right: 8px;
     font-size: 16px;
+    cursor: pointer;
 }
-.reg-form__title a {
+.reg-form__title span:last-child {
     font-size: 16px;
     color: #0075FF;
+    text-decoration: underline;
 }
 /*------Форма регистрации ФИО-------------------------------------------------------------------------------------------*/
 .reg-form__username {
@@ -247,7 +251,6 @@ a {
     top: 0;
     left: 170px;
 }
-
 .reg-form__show-pass-icon {
     position: absolute;
     width: 22px;
@@ -353,24 +356,24 @@ a {
     align-items: center;
     position: relative;
 }
+
 .reg-form__select-time-zone select {
    background-color: white;
     position: absolute;
-    left: 0;
-    top: 10px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    appearance: none;
+    left: 180px;
+    top: 2px;
+    cursor: pointer;
+    outline: none;
+    width: 60px;
 }
-.reg-form__select-time-zone::after {
-    content: url("../../img/Auth_select_row.svg");
-    position: absolute;
-    top: 0;
-    right: 410px;
-    margin-top: -2px;
-    pointer-events: none;
-}
+/*.reg-form__select-time-zone::after {*/
+/*    content: url("../../img/Auth_select_row.svg");*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 410px;*/
+/*    margin-top: -2px;*/
+/*    pointer-events: none;*/
+/*}*/
 .reg-form__select-time-zone span {
     z-index: 3;
 }
@@ -512,7 +515,7 @@ a {
     }
     .reg-block__reg-form {
         position: absolute;
-        top: 69px;
+        top: 70px;
         left: 0;
         padding: 24px 16px 24px 16px;
         font-size: 16px;
@@ -528,6 +531,7 @@ a {
     .reg-block-logotype {
         border-radius: 0;
         width: 375px;
+        height: 300px;
     }
 
     .reg-block-logotype__logo img {
@@ -580,13 +584,13 @@ a {
 
     .reg-form__select-time-zone select {
         top: 24px;
+        left: 0;
         width: 100%;
         height: 48px;
         border: 1px solid rgba(54, 59, 77, 0.3);
         border-radius: 8px;
         font-size: 14px;
         padding: 10px 16px 10px 16px;
-
     }
 
     .reg-form__select-time-zone::after {

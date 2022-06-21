@@ -33,6 +33,7 @@ a {
     background-color: #FFFF;
     padding: 74px 56px 74px 56px;
     width: 768px;
+    max-height: 664px;
     font-size: 18px;
     -webkit-border-top-left-radius: 8px;
     -webkit-border-bottom-left-radius: 8px;
@@ -52,43 +53,20 @@ a {
     line-height: 40px;
 }
 .auth__title span {
-        padding-right: 8px;
-        font-size: 16px;
+    padding-right: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
-.auth__title a {
+.auth__title span:last-child {
     font-size: 16px;
     color: #0075FF;
+    text-decoration: underline;
 }
 .auth__form {
     display: flex;
     flex-direction: column;
 }
-.form__select {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-bottom: 48px;
-    position: relative;
-}
-.form__select::after {
-    content: url("../../img/Auth_select_row.svg");
-    position: absolute;
-    top: 56px;
-    right: 16px;
-    margin-top: -2px;
-    pointer-events: none;
-}
-.form__select select {
-    position: relative;
-    height: 56px;
-    padding: 5px 0 5px 10px;
-    background-color: #FFFFFF;
-    font-size: 18px;
-    border-radius: 8px;
-    border: 1px solid rgba(54, 59, 77, 0.9);
-    opacity: 50%;
-    appearance: none;
-}
+
 .form__login {
     display: flex;
     flex-direction: column;
@@ -103,7 +81,6 @@ a {
     font-size: 18px;
     outline: none;
     border: 1px solid rgba(54, 59, 77, 0.9);
-
 }
 .form__pass {
     position: relative;
@@ -162,7 +139,6 @@ a {
     color: #0075FF;
     border: 1px #0075FF solid;
 }
-
 /*------Блок регистрации--------------------------------------------------------------------------------------------*/
 .main-block__reg {
     position: relative;
@@ -177,13 +153,13 @@ a {
 .reg__logo {
     display: flex;
     align-self: flex-end;
-    padding-bottom: 512px;
+    padding-bottom: 382px;
     font-size: 32px;
 }
 .reg__title {
     position: absolute;
     text-align: right;
-    top: 560px;
+    top: 400px;
     right: 32px;
     padding-bottom: 32px;
     color: #FFFFFF;
@@ -191,7 +167,6 @@ a {
     font-weight: 700;
     line-height: 32px;
 }
-
 .reg__button {
     display: flex;
     flex-direction: column;
@@ -232,15 +207,13 @@ a {
     display: none;
 }
 /*------Стилизация картинок-фигур в блоке с кнопкой зарегистрироваться--------------------------------------------------*/
-
 .auth-image_1 {
     position: absolute;
     width: 342px;
     height: 432px;
-    top: 188px;
+    top: 150px;
     left: 112px;
     object-fit: cover;
-
 }
 
 .auth-image_3 {
@@ -258,7 +231,7 @@ a {
     position: absolute;
     width: 117px;
     height: 228px;
-    top: 498px;
+    top: 458px;
     right: 224px;
     object-fit: cover;
 
@@ -267,7 +240,7 @@ a {
     position: absolute;
     width: 228px;
     height: 228px;
-    top: 600px;
+    top: 560px;
     right: 110px;
     object-fit: cover;
 
@@ -275,7 +248,16 @@ a {
 
 .auth-image-mobile {
     display: none;
-
+}
+/*------Стилизация ссылок забыть пароль и войти как секретарь--------------------------------------------------------------------------------------------------*/
+.link-forget-pass {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.checkbox__link-forget-pass-login-secretary {
+    display: inline-flex;
+    justify-content: space-between;
+    /*margin: 0 5px;*/
 }
 
 /*------Чек бокс--------------------------------------------------------------------------------------------------*/
@@ -337,13 +319,15 @@ a {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
 @media (max-width: 1108px) {
     .container-auth {
         max-width: 800px;
     }
     .main-block__auth {
-        padding: 20px 80px 20px 20px;
+        /*padding: 20px 80px 20px 20px;*/
+        padding: 32px 32px;
     }
    .main-block__reg {
        padding: 15px 15px 15px 15px;
@@ -372,12 +356,12 @@ a {
         align-items: center;
     }
     .main-block__reg {
-        padding: 20px 20px 20px 20px;
+        padding: 32px 32px;
     }
     .reg__title {
         position: absolute;
         text-align: right;
-        top: 440px;
+        top: 340px;
         right: 24px;
         padding-bottom: 32px;
         color: #FFFFFF;
@@ -387,7 +371,7 @@ a {
     }
 
     .reg__logo {
-        padding-bottom: 485px;
+        padding-bottom: 355px;
     }
     .reg__logo img {
         width: 180px;
@@ -431,14 +415,13 @@ a {
     .form__button span {
         text-align: left;
     }
-
     .main-block__reg {
         padding: 20px 20px 20px 20px;
     }
     .reg__title {
         position: absolute;
         text-align: right;
-        top: 400px;
+        top: 300px;
         right: 24px;
         padding-bottom: 32px;
         color: #FFFFFF;
@@ -456,10 +439,10 @@ a {
         padding-bottom: 32px;
     }
     .reg__logo {
-        padding-bottom: 440px;
+        padding-bottom: 320px;
     }
 }
-/*------Адаптивная версия(590px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(600px)--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
     .container-auth {
         position: relative;
@@ -489,18 +472,13 @@ a {
     .auth__title h3 {
         font-size: 26px;
         font-weight: 700;
-
     }
     .auth__title span {
         font-size: 14px;
     }
-    .auth__title a {
+    .auth__title span:last-child {
         font-size: 14px;
     }
-    .form__select {
-        display: none;
-    }
-
     .form__button {
         padding-bottom: 52px;
         gap: 12px;
@@ -606,5 +584,7 @@ a {
         right: 24px;
         z-index: 22;
     }
-
+    .checkbox__link-forget-pass-login-secretary {
+        margin-right: 10px;
+    }
 }
