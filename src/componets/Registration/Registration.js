@@ -42,7 +42,6 @@ const Registration = () => {
         }
     }
 
-
     const completeProcessRegistration = () => {
         if ((lastName === '' || name === '')) {
             setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
