@@ -7,6 +7,7 @@ import bg_image3 from '../../img/Auth_img3.svg';
 import bg_image4 from '../../img/Auth_img4.svg';
 import bg_image_mobile from '../../img/Auth_img_mobile.svg';
 import show_pass_icon from '../../img/Auth_show_pass_icon.svg';
+import hidden_pass_icon from '../../img/Auth_hidden_pass.svg';
 import { useNavigate } from "react-router-dom";
 import { Validation } from '../../utils/Validation';
 
@@ -67,7 +68,7 @@ const Authorization = (props) => {
                             </div>
                             <div className={'form__pass'}>
                                 <span>Пароль</span>
-                                <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
+                                <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={changeTypePass === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPass} />
                                 <input
                                     type={changeTypePass}
                                     name="password"

@@ -32,7 +32,7 @@ function App() {
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
 
-    function hideRegisterModal () {
+    function hideRegisterModal() {
         setModalActive(false);
     }
 
@@ -126,7 +126,7 @@ function App() {
             if (
                 pathname === '/auth' ||
                 pathname === '/forget-password' ||
-                pathname === '/set-password' ||
+                pathname === '/reset' ||
                 pathname === '/reg-page' ||
                 pathname === '/reg-second-page'
             ) {
@@ -152,7 +152,6 @@ function App() {
         if (isPolicyAccept) {
             Auth.registration(registerData)
                 .then((res) => {
-                    console.log(res);
                     if (res.text === 'User has already exist') {
                         setChangeBorderInputEmail('_input-border-red');
                         setEmailErrorMessage('Пользователь с данным email уже существует');
@@ -191,7 +190,7 @@ function App() {
                                 />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                            <Route path='/set-password' element={<AuthorizationSetPassword />} />
+                            <Route path='/reset' element={<AuthorizationSetPassword />} />
                             <Route path='/reg-page'
                                 element={<Registration
                                     handleRegister={handleRegister}

@@ -2,6 +2,25 @@ import { options } from '../config';
 
 const API_URL = options.apiUrl;
 
+export const getFullConfig = () => {
+    return fetch(`https://client.cryptoveche.local/fullConfig`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(data => data)
+        .catch((err) => {
+            throw new Error(err.message);
+        });
+}
+
 export const authorize = (email, password) => {
     return fetch(`${API_URL}/auth`, {
         method: 'POST',
@@ -65,6 +84,53 @@ export const registration = (userData) => {
             }
             else if (err.status === 401) {
                 throw new Error('Пользователь с таким email уже существует');
+            }
+        });
+};
+
+export const sendEmailForgetPassword = (email) => {
+    return fetch(`${API_URL}/users/reset/init/${email}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(data => data)
+        .catch((err) => {
+            throw new Error(err.message);
+        });
+};
+
+export const resetUserPassword = (token, password) => {
+    return fetch(`${API_URL}/users/password/${token}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            password: password
+        })
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then((data) => {
+            return data;
+        })
+        .catch((err) => {
+            if (err.status === 500) {
+                throw new Error('Сервер временно недоступен');
+            } else {
+                console.log(err);
             }
         });
 };
