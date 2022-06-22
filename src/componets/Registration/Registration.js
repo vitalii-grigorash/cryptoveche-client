@@ -53,7 +53,6 @@ const Registration = (props) => {
             setTimeZoneOptionsOpen(true);
         }
     }
-
     const showHiddenPass = () => {
         if (changeTypePass === 'password') {
             setChangeTypePass('text')

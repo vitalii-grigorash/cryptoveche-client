@@ -5,7 +5,7 @@
     display: flex;
     /* align-items: end; */
     justify-content: center;
-    border: 1px solid red;
+
 }
 .vertical-grid__position-table {
     position: absolute;

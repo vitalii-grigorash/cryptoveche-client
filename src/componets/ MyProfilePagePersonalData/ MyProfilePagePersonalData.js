@@ -1,48 +1,39 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './ MyProfilePagePersonalData.css';
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-import {options} from "../../config";
 
 
 
 const MyProfilePagePersonalData = () => {
 
-    const API_URL = options.apiUrl;
     const currentUser = React.useContext(CurrentUserContext);
-                console.log(currentUser)
+                // console.log(currentUser)
+
 
      const [firstName, setFirstName] = useState('')
-     // const userId = currentUser.id
+     const userId = currentUser.id
 
 
+    const updateUser = () => {
+         let item = {
+             last_name: firstName
+         }
+         fetch(`https://client.cryptoveche.local:443/api/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item.last_name)
+        })
+             .then(res => res.json())
+             .then(data => {
+                 console.log('Success:', data);
+             })
+             .catch((error) => {
+                 console.error('Error:', error);
+             });
+    }
 
-    // function updateUser() {
-    //      let item = {firstName, userId}
-    //      fetch(`${API_URL}/users/${userId}`, {
-    //          method: 'PUT',
-    //          headers: {
-    //              'Content-Type': 'application/json'
-    //          },
-    //          body: JSON.stringify( {
-    //             last_name: item.firstName
-    //          })
-    //     })
-    //          .then(res => res.ok ? res : Promise.reject(res))
-    //          .then((res) => {
-    //              if (res.ok) {
-    //                  return res.json();
-    //              }
-    //          })
-    //          .then((data) => {
-    //              return data;
-    //          })
-    //          .catch((err) => {
-    //              console.log(err);
-    //              if (err.status === 500) {
-    //                  throw new Error('Сервер временно недоступен');
-    //              }
-    //          });
-    // }
 
     return (
             <div className={'my-profile-page-personal-data__wrapper'}>
@@ -66,7 +57,7 @@ const MyProfilePagePersonalData = () => {
                         <input type={"text"}/>
                     </div>
                 </div>
-                 <button className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+                 <button onClick={() => {updateUser()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
             </div>
     )
 }
