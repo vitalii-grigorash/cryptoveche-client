@@ -29,11 +29,19 @@ a {
 ._reg-block-show {
     display: inherit;
 }
-
+/*._reg-block-show.active {*/
+/*    display: inherit;*/
+/*}*/
 ._reg-block-hidden {
     display: none;
 }
-
+.reg-form__title-row-icon {
+    display: none;
+}
+.reg-form__title-row-icon.active {
+    display: initial;
+    cursor: pointer;
+}
 /*------Блок c логотипом и кнопкой--------------------------------------------------------------------------------------*/
 .reg-block-logotype {
     position: relative;
@@ -49,15 +57,14 @@ a {
 .reg-block-logotype__logo {
     display: flex;
     align-self: flex-start;
-    padding-bottom: 528px;
+    padding-bottom: 548px;
     font-size: 32px;
 }
 .reg-block-logotype__title {
     position: absolute;
     text-align: left;
-    top: 530px;
+    top: 572px;
     left: 32px;
-    padding-bottom: 32px;
     color: #FFFFFF;
     font-size: 24px;
     font-weight: 700;
@@ -136,6 +143,9 @@ a {
     color: #363B4D;
     position: relative;
 }
+.reg-form__username.active {
+    display: none;
+}
 .reg-form__username input {
     width: 208px;
     height: 48px;
@@ -181,6 +191,9 @@ a {
     flex-direction: column;
     gap: 16px;
 }
+.reg-form__e-mail.active {
+    display: flex;
+}
 .reg-form__e-mail input {
     width: 100%;
     height: 48px;
@@ -213,6 +226,9 @@ a {
     grid-template-rows: 88px;
     opacity: 0.9;
     color: #363B4D;
+}
+.reg-form__password.active {
+    display: flex;
 }
 .reg-form__password input {
     width: 320px;
@@ -276,6 +292,9 @@ a {
     flex-direction: column;
     margin: 0 auto 0 0;
 }
+.reg-form__time-zone-main-container.active {
+    display: none;
+}
 .reg-form__time-zone-heading {
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
@@ -323,7 +342,7 @@ a {
     left: -1px;
     width: 320px;
     max-height: 200px;
-    box-shadow: 0px 4px 8px rgba(54, 59, 77, 0.1);
+    box-shadow: 0 4px 8px rgba(54, 59, 77, 0.1);
     border: 0.5px solid rgba(54, 59, 77, 0.2);
     border-radius: 4px;
     box-sizing: border-box;
@@ -366,14 +385,6 @@ a {
     outline: none;
     width: 60px;
 }
-/*.reg-form__select-time-zone::after {*/
-/*    content: url("../../img/Auth_select_row.svg");*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    right: 410px;*/
-/*    margin-top: -2px;*/
-/*    pointer-events: none;*/
-/*}*/
 .reg-form__select-time-zone span {
     z-index: 3;
 }
@@ -385,6 +396,9 @@ a {
     display: flex;
     flex-direction: row;
     z-index: 8;
+}
+.reg-form__checkbox.active {
+    display: flex;
 }
 .reg-form__checkbox span {
     font-size: 18px;
@@ -402,19 +416,33 @@ a {
     background-color: #0084FE;
     border-radius: 4px;
     color: #FFFFFF;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
     line-height: 24px;
     z-index: 5;
+}
+.reg-form__button.active {
+    display: initial;
 }
 .reg-form__button button:hover {
     background-color: #FFFFFF;
     color: #0084FE;
     border: 1px #0084FE solid;
-
 }
+.reg-form__button span {
+    color: rgba(54, 59, 77, 0.4);
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    margin: 0 auto;
+    padding-bottom: 8px;
+}
+
 /*-------Блок с кнопкой Продожить для мобильной версии----------------------------------------------------------------*/
 .reg-block__button-next-page {
+    display: none;
+}
+.reg-block__button-next-page.active {
     display: none;
 }
 /*-------Бордер для input при ошибках в заполнении форм----------------------------------------------------------------*/
@@ -424,7 +452,7 @@ a {
 ._input-border-red {
     border: 1px solid red;
 }
-/*------- Cообщения об ошибке в заполнении форм----------------------------------------------------------------------*/
+/*-------Предупреждения об ошибке в заполнении форм----------------------------------------------------------------------*/
 .reg-block__error-message {
     position: absolute;
     top: 84px;
@@ -461,7 +489,7 @@ a {
         padding: 35px 25px;
     }
     .reg-block-logotype__logo {
-        padding-bottom: 433px;
+        padding-bottom: 465px;
     }
     .reg-form__username {
         grid-template-rows: 75px;
@@ -482,9 +510,10 @@ a {
        height: 40px;
    }
    .reg-block-logotype__title {
-       top: 430px;
+       top: 460px;
        font-size: 20px;
        left: 22px;
+       line-height: 24px;
    }
    .reg-form__checkbox span {
        font-size: 14px;
@@ -507,7 +536,7 @@ a {
     }
 }
 /*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
-@media (max-width: 805px) {
+@media (max-width: 600px) {
     .container-reg {
         position: relative;
         width: 380px;
@@ -526,14 +555,16 @@ a {
     }
     .reg-form__title h3 {
         font-size: 26px;
+        margin-right: 40px;
     }
-
     .reg-block-logotype {
         border-radius: 0;
         width: 375px;
-        height: 300px;
+        height: 667px;
     }
-
+    .reg-block-logotype__title {
+        display: none;
+    }
     .reg-block-logotype__logo img {
         position: absolute;
         top: 25px;
@@ -541,28 +572,28 @@ a {
         width: 197px;
         height: 33px;
     }
-
     .reg-block-logotype__button {
         position: absolute;
         font-size: 16px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        top: 624px;
+        top: 628px;
         left: 80px;
         z-index: 1;
         color: #0075FF;
         gap: 6px;
     }
-
+    .reg-form__title span:last-child {
+        font-size: 14px;
+    }
     .reg-block-logotype__button span {
         color: rgba(54, 59, 77, 0.9);
         font-weight: 400;
     }
-
     .reg-block-logotype__button button {
         width: 47px;
-        height: 24px;
+        height: 21px;
     }
 
     .reg-form__username {
@@ -570,18 +601,15 @@ a {
         flex-direction: column;
         gap: 16px;
     }
-
     .username-forms {
         gap: 10px;
     }
-
     .username-forms input {
         width: 100%;
         height: 48px;
         padding: 10px 16px 10px 16px;
         font-size: 16px;
     }
-
     .reg-form__select-time-zone select {
         top: 24px;
         left: 0;
@@ -592,7 +620,6 @@ a {
         font-size: 14px;
         padding: 10px 16px 10px 16px;
     }
-
     .reg-form__select-time-zone::after {
         top: 40px;
         right: 23px;
@@ -603,11 +630,9 @@ a {
         top: 0;
         left: 190px;
     }
-
     .username-forms__red-star-icon__family {
         left: 78px;
     }
-
     .username-forms__red-star-icon__name {
         left: 38px;
     }
@@ -644,18 +669,12 @@ a {
         height: 48px;
         color: #FFFFFF;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 500;
         line-height: 24px;
         cursor: pointer;
     }
     .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
         display: none;
-    }
-
-    .reg-form__title-row-icon {
-        position: absolute;
-        top: 40px;
-        left: 19px;
     }
     .reg-form__e-mail {
         gap: 10px;
@@ -709,6 +728,8 @@ a {
         width: 343px;
         height: 48px;
         font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
     }
     .reg-form__time-zone-select-container {
         width: 343px;
@@ -731,4 +752,25 @@ a {
     .reg-form__time-zone-option {
         margin: 16px auto 0 0;
     }
+    ._reg-block-show {
+        display: none;
+    }
+    ._reg-block-hidden {
+        display: inherit;
+    }
+    ._modificator-reg-form__title-padding-right {
+        padding-right: 24px;
+    }
+    ._modificator-reg-block__error-message-mobile {
+        top: 169px;
+    }
+    .reg-block__reg-form.active {
+        display: none;
+    }
+    ._modificator-reg-block-logotype__logo-top {
+        position: absolute;
+        top: 2px;
+        left: 0;
+    }
+
 }

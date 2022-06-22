@@ -6,7 +6,6 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Authorization from "../Authorization/Authorization";
 import Registration from "../Registration/Registration";
-import RegistrationSecondPageMobile from "../Registration/RegistrationSecondPageMobile/RegistrationSecondPageMobile";
 import AuthorizationForgetPassword from "../AuthorizationForgetPassword/AuthorizationForgetPassword";
 import AuthorizationSetPassword from "../AuthorizationSetPassword/AuthorizationSetPassword";
 import VotesPage from "../VotesPage/VotesPage";
@@ -157,7 +156,7 @@ function App() {
                                     handleRegister={handleRegister}
                                 />}
                             />
-                            <Route path='/reg-second-page' element={<RegistrationSecondPageMobile />} />
+                            <Route path='/reg-page' element={<Registration />} />
                             <Route exact path='/' element={<MainPage />} />
                             <Route exact path='/call-voting-page' element={<CallVotingPage />} />
                             <Route exact path='/my-profile' element={<MyProfilePage />} />

@@ -48,7 +48,7 @@ const Authorization = (props) => {
                     <div className={'main-block__auth'}>
                         <div className={'auth__title'}>
                             <h3>Авторизация</h3>
-                            <div><span>РУС</span><a href="/#">ENG</a></div>
+                            <div><span>РУС</span><span>ENG</span></div>
                         </div>
                         <div className={'auth__form'}>
                             <div className={'form__login'}>
@@ -89,7 +89,7 @@ const Authorization = (props) => {
                             </div>
                             <div className={'form__button'}>
                                 <button onClick={inputHandler} type={'button'}>Войти</button>
-                                <a href={'https://esia.gosuslugi.ru/login/'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти через ЕСИА</a>
+                                <a className={'form__button__link-gosuslugi'} href={'https://esia.gosuslugi.ru/login/'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти через ЕСИА</a>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ const Authorization = (props) => {
                         </div>
                     </div>
                     <div className={'main-block__mobile-link-reg'}>
-                        <span>Ещё нет аккаунта?</span><a href={'reg-page'}>Зарегистрироваться</a>
+                        <span>Ещё нет аккаунта?</span><span onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</span>
                     </div>
                 </div>
             </div>

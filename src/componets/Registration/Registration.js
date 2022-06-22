@@ -12,6 +12,7 @@ import RegistrationModal from "./RegistrationModal/RegistrationModal";
 import { useNavigate } from "react-router-dom";
 import optionRow from '../../img/INPUT-ICONS-24-ARROW.svg';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
+import row_icon_title from "../../img/Registration_row_icon.svg";
 
 
 const Registration = (props) => {
@@ -37,8 +38,9 @@ const Registration = (props) => {
     const [timeZoneLocation, setTimeZoneLocation] = useState('(UTC+3) Россия - Москва - московское время');
     const [timeZoneValue, setTimeZoneValue] = useState(3);
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
+    const [showHideElem, setShowHideElem] = useState(false)
+    const [hideRegForm, setHideRegForm] = useState(false);
 
-    const linkRegSecondPage = useNavigate();
     const linkButtonBackPage = useNavigate();
 
     function onSelectTimeZoneClick(location) {
@@ -72,6 +74,7 @@ const Registration = (props) => {
             setErrorPassReg('Пароли не совпадают');
             setChangeBorderInputPass('_input-border-red');
         } else {
+            setHideRegForm(true);
             setModalActive(true)
             handleRegister({
                 email: email,
@@ -84,103 +87,119 @@ const Registration = (props) => {
         }
     }
 
+    function mobileShowElem () {
+        if((lastName === '' || name === '')) {
+            setErrorUserName('Поля “Имя” и “Фамилия” заполнены некорректно');
+            setChangeBorderInputUsername('_input-border-red');
+        } else {
+            setShowHideElem(true)
+        }
+    }
+
+    function mobileHideElem() {
+        setShowHideElem(false)
+    }
+
+
     return (
-        <div className={'wrapper-reg'}>
-            <div className={'container-reg'}>
-                <div className={'reg-block'}>
-                    <div className={'reg-block-logotype'}>
-                        <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
-                        <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
-                        <div className={'auth-image_1'}>
-                            <img alt={'изображение'} src={bg_image3} />
-                        </div>
-                        <div className={'auth-image_3'}>
-                            <img alt={'изображение'} src={bg_image4} />
-                        </div>
-                        <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile} />
-                        <div className={'reg-block-logotype__logo _modificator-reg-block-logotype__logo-top'}>
-                            <img src={logo} alt="Логотип" />
-                        </div>
-                        <div className={'reg-block-logotype__title'}>
-                            Система электронных голосований
-                        </div>
-                        <div className={'reg-block-logotype__button'}>
-                            <span>Уже есть аккаунт?</span>
-                            <button onClick={() => linkButtonBackPage('/auth')}>Войти</button>
-                        </div>
-                    </div>
-                    <div className={'reg-block__reg-form'}>
-                        <div className={'reg-form__title'}>
-                            <h3>Регистрация</h3>
-                            <div><span>РУС</span><span>ENG</span></div>
-                        </div>
-                        <div className={'reg-form__username'}>
-                            <div className={'username-forms'}>
-                                <span>Фамилия <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputUsername} onChange={e => { setLastName(e.target.value) }} type={"text"} />
+            <div className={'wrapper-reg'}>
+                <div className={'container-reg'}>
+                    <div className={'reg-block'}>
+                        <div className={'reg-block-logotype'}>
+                            <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
+                            <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
+                            <div className={'auth-image_1'}>
+                                <img alt={'изображение'} src={bg_image3} />
                             </div>
-                            <div className={'username-forms'}>
-                                <span>Имя <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputUsername} onChange={e => { setName(e.target.value) }} type={"text"} />
+                            <div className={'auth-image_3'}>
+                                <img alt={'изображение'} src={bg_image4} />
                             </div>
-                            <div className={'username-forms'}>
-                                <span>Отчество</span>
-                                <input className={changeBorderInputUsername} onChange={e => { setSecondName(e.target.value) }} type={"text"} />
+                            <img alt={'изображение'} className={'auth-image-mobile _modificator-auth-image-mobile-height'} src={bg_image_mobile} />
+                            <div className={'reg-block-logotype__logo _modificator-reg-block-logotype__logo-top'}>
+                                <img src={logo} alt="Логотип" />
                             </div>
-                            <div className={'reg-block__error-message'}>{errorUserName}</div>
-                        </div>
-                        <div className={'reg-form__e-mail _reg-block-show'}>
-                            <span>E-mail <span className="reg-form__time-zone-heading_span">*</span></span>
-                            <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => { setEmail(e.target.value) }} />
-                            <div className={'reg-block__error-message'}>{errorEmail}</div>
-                        </div>
-                        <div className={'reg-form__password _reg-block-show'}>
-                            <div className={'password-form'}>
-                                <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
-                                <span>Придумайте пароль <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputPass} type={changeTypePass} onChange={e => { setPassReg(e.target.value) }} />
+                            <div className={'reg-block-logotype__title'}>
+                                Система электронных голосований
                             </div>
-                            <div className={'password-form'}>
-                                <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon} />
-                                <span>Повторите пароль <span className="reg-form__time-zone-heading_span">*</span></span>
-                                <input className={changeBorderInputPass} type={'text'} onChange={e => { setRepeatPass(e.target.value) }} />
-                            </div>
-                            <div className={'reg-block__error-message '}>{errorPassReg}</div>
-                        </div>
-                        <div className={'reg-form__time-zone-main-container'}>
-                            <p className="reg-form__time-zone-heading">Выберите часовой пояс <span className="reg-form__time-zone-heading_span">*</span></p>
-                            <div className="reg-form__time-zone-select-container" onClick={handleTimeZoneOptionsOpen}>
-                                <p className="reg-form__time-zone-select-value">{timeZoneLocation}</p>
-                                <img className="reg-form__time-zone-select-arrow" src={optionRow} alt="Стрелочка открытия меню" />
-                                {isTimeZoneOptionsOpen && (
-                                    <div className="reg-form__time-zone-options-container">
-                                        {timeZone.map((location, index) => (
-                                            <p className="reg-form__time-zone-option" key={index} onClick={() => onSelectTimeZoneClick(location)}>{location.LABEL}</p>
-                                        ))}
-                                    </div>
-                                )}
+                            <div className={'reg-block-logotype__button'}>
+                                <span>Уже есть аккаунт?</span>
+                                <button onClick={() => linkButtonBackPage('/auth')}>Войти</button>
                             </div>
                         </div>
-                        <div className={'reg-form__checkbox _reg-block-show'}>
-                            <label className={'checkbox_container'}>
-                                <input type="checkbox" value="yes" />
-                                <span className={'checkmark'} />
-                            </label>
-                            <span>Ознакомлен с <a href={'https://dltc.spbu.ru/'} target="_blank" rel="noreferrer">Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
+                            <div className={hideRegForm ? 'reg-block__reg-form active' : 'reg-block__reg-form'}>
+                                <div className={'reg-form__title'}>
+                                    <img onClick={() => {mobileHideElem()}} alt={'стрелочка ссылка'} className={showHideElem ? 'reg-form__title-row-icon active' : 'reg-form__title-row-icon'} src={row_icon_title}/>
+                                    <h3>Регистрация</h3>
+                                <div><span>РУС</span><span>ENG</span></div>
+                            </div>
+                            <div className={showHideElem ? 'reg-form__username active' : 'reg-form__username'}>
+                                <div className={'username-forms'}>
+                                    <span>Фамилия <span className="reg-form__time-zone-heading_span">*</span></span>
+                                    <input className={changeBorderInputUsername} onChange={e => { setLastName(e.target.value) }} type={"text"} />
+                                </div>
+                                <div className={'username-forms'}>
+                                    <span>Имя <span className="reg-form__time-zone-heading_span">*</span></span>
+                                    <input className={changeBorderInputUsername} onChange={e => { setName(e.target.value) }} type={"text"} />
+                                </div>
+                                <div className={'username-forms'}>
+                                    <span>Отчество</span>
+                                    <input className={changeBorderInputUsername} onChange={e => { setSecondName(e.target.value) }} type={"text"} />
+                                </div>
+                                <div className={'reg-block__error-message'}>{errorUserName}</div>
+                            </div>
+                            <div className={showHideElem ? 'reg-form__e-mail active' : 'reg-form__e-mail _reg-block-show'}>
+                                <span>E-mail <span className="reg-form__time-zone-heading_span">*</span></span>
+                                <input className={changeBorderInputEmail} type={"text"} placeholder={'user@user.com'} onChange={e => { setEmail(e.target.value) }} />
+                                <div className={'reg-block__error-message'}>{errorEmail}</div>
+                            </div>
+                            <div className={showHideElem ? 'reg-form__password active' : 'reg-form__password _reg-block-show'}>
+                                <div className={'password-form'}>
+                                    <img alt={'иконка показать пароль'} className={'reg-form__show-pass-icon'} src={show_pass_icon} onClick={showHiddenPass} />
+                                    <span>Придумайте пароль <span className="reg-form__time-zone-heading_span">*</span></span>
+                                    <input className={changeBorderInputPass} type={changeTypePass} onChange={e => { setPassReg(e.target.value) }} />
+                                </div>
+                                <div className={'password-form'}>
+                                    <img alt={'иконка скрыть пароль'} className={'reg-form__hidden-pass-icon'} src={hidden_pass_icon} />
+                                    <span>Повторите пароль <span className="reg-form__time-zone-heading_span">*</span></span>
+                                    <input className={changeBorderInputPass} type={'text'} onChange={e => { setRepeatPass(e.target.value) }} />
+                                </div>
+                                <div className={'reg-block__error-message'}>{errorPassReg}</div>
+                            </div>
+                            <div className={showHideElem ? 'reg-form__time-zone-main-container active' : 'reg-form__time-zone-main-container'}>
+                                <p className="reg-form__time-zone-heading">Выберите часовой пояс <span className="reg-form__time-zone-heading_span">*</span></p>
+                                <div className="reg-form__time-zone-select-container" onClick={handleTimeZoneOptionsOpen}>
+                                    <p className="reg-form__time-zone-select-value">{timeZoneLocation}</p>
+                                    <img className="reg-form__time-zone-select-arrow" src={optionRow} alt="Стрелочка открытия меню" />
+                                    {isTimeZoneOptionsOpen && (
+                                        <div className="reg-form__time-zone-options-container">
+                                            {timeZone.map((location, index) => (
+                                                <p className="reg-form__time-zone-option" key={index} onClick={() => onSelectTimeZoneClick(location)}>{location.LABEL}</p>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className={showHideElem ? 'reg-form__checkbox active' : 'reg-form__checkbox _reg-block-show'}>
+                                <label className={'checkbox_container'}>
+                                    <input type="checkbox" value="yes" />
+                                    <span className={'checkmark'} />
+                                </label>
+                                <span>Ознакомлен с <a href={'https://dltc.spbu.ru/'} target="_blank" rel="noreferrer">Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
+                            </div>
+                            <div className={showHideElem ? 'reg-form__button active' : 'reg-form__button _reg-block-show'}>
+                                <span className={'_reg-block-hidden'}>Шаг 2 из 2, почти готово</span>
+                                <button type={'button'} onClick={e => { completeProcessRegistration(e) }}>Зарегистрироваться</button>
+                            </div>
                         </div>
-                        <div className={'reg-form__button _reg-block-show'}>
-                            <button type={'button'} onClick={e => { completeProcessRegistration(e) }}>Зарегистрироваться</button>
+                        {/*-Кнопка для мобильной версии-*/}
+                        <div className={showHideElem ? 'reg-block__button-next-page active' : 'reg-block__button-next-page'}>
+                            <span>Шаг 1 из 2</span>
+                            <button type={"button"} onClick={e => mobileShowElem(e)}>Продолжить</button>
                         </div>
-                    </div>
-                    {/*-Кнопка для мобильной версии-*/}
-                    <div className={'reg-block__button-next-page'}>
-                        <span>Шаг 1 из 2</span>
-                        <button type={"submit"} onClick={() => linkRegSecondPage('/reg-second-page')}>Продолжить</button>
                     </div>
                 </div>
+                <RegistrationModal active={modalActive} />
             </div>
-            <RegistrationModal active={modalActive} />
-        </div>
     )
 }
 
