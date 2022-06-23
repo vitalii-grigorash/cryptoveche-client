@@ -577,12 +577,13 @@ a {
         font-size: 16px;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        justify-content: center;
         top: 628px;
         left: 80px;
         z-index: 1;
         color: #0075FF;
         gap: 6px;
+
     }
     .reg-form__title span:last-child {
         font-size: 14px;
@@ -590,10 +591,13 @@ a {
     .reg-block-logotype__button span {
         color: rgba(54, 59, 77, 0.9);
         font-weight: 400;
+        height: 24px;
+        vertical-align: center;
     }
     .reg-block-logotype__button button {
         width: 47px;
-        height: 21px;
+        height: 24px;
+
     }
 
     .reg-form__username {
@@ -672,6 +676,7 @@ a {
         font-weight: 500;
         line-height: 24px;
         cursor: pointer;
+
     }
     .auth-image_1, .auth-image_2, .auth-image_3, .auth-image_4, .auth-image_5, .auth-image_6 {
         display: none;
