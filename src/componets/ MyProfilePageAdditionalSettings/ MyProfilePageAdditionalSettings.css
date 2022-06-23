@@ -19,32 +19,97 @@
 /*-----Стилизация для формы--------------------------------------------------------------------------------------------*/
 .my-profile-page-add-settings__form {
     display: flex;
-    gap: 16px;
     flex-direction: column;
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
     padding-bottom: 32px;
 }
-.my-profile-page-add-settings__form select {
-    padding: 12px 0 12px 16px;
-    max-height: 48px;
-    border-radius: 8px;
-    background: #FFFFFF;
-    border: 1px rgba(54, 59, 77, 0.3) solid;
-    font-size: 18px;
-    color: rgba(54, 59, 77, 0.9);
-    width: 100%;
-    cursor: pointer;
-    text-indent: 1px;
-}
+
 .my-profile-page-add-settings__form label {
     font-size: 18px;
     color: rgba(54, 59, 77, 0.9);
     line-height: 24px;
     font-weight: 400;
 }
-.my-profile-page-add-settings__form option {
-    text-align: left;
+/*------Форма выбора часового пояса-------------------------------------------------------------------------------------*/
+/* Переделал */
+.my-profile-form__time-zone-select-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 48px;
+    margin: 16px auto 0 0;
+    border: 0.5px solid rgba(54, 59, 77, 0.3);
+    box-sizing: border-box;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.my-profile-form__time-zone-select-value {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 0.9;
+    margin: auto auto auto 24px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.my-profile-form__time-zone-select-arrow {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    margin: auto 24px auto auto;
+}
+.my-profile-form__time-zone-options-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: #FFFFFF;
+    overflow-y: scroll;
+    top: 58px;
+    left: -1px;
+    width: 100%;
+    max-height: 200px;
+    box-shadow: 0 4px 8px rgba(54, 59, 77, 0.1);
+    border: 0.5px solid rgba(54, 59, 77, 0.2);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 24px 24px;
+    cursor: default;
+    z-index: 9;
+}
+.my-profile-form__time-zone-options-container::-webkit-scrollbar {
+    width: 4px;
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+.my-profile-form__time-zone-options-container::-webkit-scrollbar-thumb {
+    background: #CFD4DD;
+    border-radius: 4px;
+}
+.my-profile-form__time-zone-option {
+    line-height: 24px;
+    color: #363B4D;
+    opacity: 0.9;
+    margin: 24px auto 0 0;
+}
+.my-profile-form__time-zone-option:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+/*-----Cтилизация кнопочки---------------------------------------------------------------------------------------------*/
+.my-profile-page__save-change {
+    max-width: 224px;
+    padding: 12px 24px 12px 24px;
+    background: rgba(54, 59, 77, 0.08);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 124%;
+    color: rgba(54, 59, 77, 0.35);
+    cursor: pointer;
+    height: 48px;
 }
 /*------Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 1070px) {
@@ -58,12 +123,6 @@
         line-height: 138%;
         color: rgba(54, 59, 77, 0.9);
         padding-bottom: 16px;
-    }
-    .my-profile-page-add-settings__form select {
-        padding: 0 40px 0 16px;
-        height: 40px;
-        word-wrap: break-word;
-        font-size: 16px;
     }
     .my-profile-page-add-settings__form label {
         font-size: 16px;
