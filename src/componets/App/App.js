@@ -90,6 +90,7 @@ function App() {
         setCurrentUser({});
         navigate('/auth');
     }
+    
     function handleLogin(email, password) {
         if (email === '' || password === '') {
             setAuthError('Необходмо заполнить все поля');
@@ -202,7 +203,6 @@ function App() {
                                     hideRegisterModal={hideRegisterModal}
                                 />}
                             />
-                            <Route path='/reg-page' element={<Registration />} />
                             <Route exact path='/' element={<MainPage />} />
                             <Route exact path='/call-voting-page' element={<CallVotingPage />} />
                             <Route exact path='/my-profile' element={<MyProfilePage />} />
