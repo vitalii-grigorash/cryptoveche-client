@@ -25,6 +25,31 @@ function App() {
     const [currentUser, setCurrentUser] = useState({});
     const [authError, setAuthError] = useState('');
     const [userName, setUserName] = useState('');
+    const [isRememberMe, setRememberMe] = useState(true);
+    const [isPolicyAccept, setPolicyAccept] = useState(true);
+    const [modalActive, setModalActive] = useState(false);
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
+    const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
+
+    function hideRegisterModal () {
+        setModalActive(false);
+    }
+
+    function handleRememberMe() {
+        if (isRememberMe) {
+            setRememberMe(false);
+        } else {
+            setRememberMe(true);
+        }
+    }
+
+    function handlePolicyAccept() {
+        if (isPolicyAccept) {
+            setPolicyAccept(false);
+        } else {
+            setPolicyAccept(true);
+        }
+    }
 
     const userDefaultName = {
         lastName: "Неизвестный",
@@ -71,11 +96,12 @@ function App() {
         } else {
             Auth.authorize(email, password)
                 .then((res) => {
-                    console.log(res);
                     if (res.status === 'failure') {
                         setAuthError('Неправильное имя пользователя или пароль');
                     } else {
-                        localStorage.setItem('user', JSON.stringify(res));
+                        if (isRememberMe) {
+                            localStorage.setItem('user', JSON.stringify(res));
+                        }
                         setAuthError('');
                         setLoggedIn(true);
                         setCurrentUser(res);
@@ -118,17 +144,29 @@ function App() {
             }
         }
         // eslint-disable-next-line
-    }, [navigate, pathname]);
+    }, []);
 
     function handleRegister(registerData) {
         console.log(registerData);
-        Auth.registration(registerData)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            })
+        if (isPolicyAccept) {
+            Auth.registration(registerData)
+                .then((res) => {
+                    console.log(res);
+                    if (res.text === 'User has already exist') {
+                        setChangeBorderInputEmail('_input-border-red');
+                        setEmailErrorMessage('Пользователь с данным email уже существует');
+                    } else {
+                        setModalActive(true);
+                        setEmailErrorMessage('');
+                        setChangeBorderInputEmail('_input-border-black-reg-page');
+                    }
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                })
+        } else {
+            console.log('Необходимо отметить ознакомление с политикой');
+        }
     }
 
     return (
@@ -147,6 +185,8 @@ function App() {
                                 element={<Authorization
                                     handleLogin={handleLogin}
                                     authError={authError}
+                                    handleRememberMe={handleRememberMe}
+                                    isRememberMe={isRememberMe}
                                 />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
@@ -154,6 +194,12 @@ function App() {
                             <Route path='/reg-page'
                                 element={<Registration
                                     handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
                                 />}
                             />
                             <Route path='/reg-page' element={<Registration />} />

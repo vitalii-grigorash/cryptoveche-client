@@ -14,7 +14,9 @@ const Authorization = (props) => {
 
     const {
         handleLogin,
-        authError
+        authError,
+        handleRememberMe,
+        isRememberMe
     } = props;
 
     const email = Validation();
@@ -80,11 +82,16 @@ const Authorization = (props) => {
                             <div className={'form__checkbox'}>
                                 <div className={'checkbox__link-forget-pass-login-secretary'}>
                                     <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</span>
-                                    <a href={'https://admin.cryptoveche.local'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
+                                    <a href={'https://admin.cryptoveche.local'}>Войти как секретарь</a>
                                 </div>
                                 <label className={'checkbox_container'}>
-                                    <input type="checkbox" value="yes"/>Запомнить меня
-                                    <span className={'checkmark'}/>
+                                    <input
+                                        type="checkbox"
+                                        checked={isRememberMe}
+                                        onChange={handleRememberMe}
+                                    />
+                                    Запомнить меня
+                                    <span className={'checkmark'} />
                                 </label>
                             </div>
                             <div className={'form__button'}>

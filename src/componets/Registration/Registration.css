@@ -139,7 +139,6 @@ a {
     grid-template-rows: 88px;
     opacity: 0.9;
     color: #363B4D;
-    position: relative;
 }
 .reg-form__username.active {
     display: none;
@@ -161,10 +160,11 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
-.username-forms span {
     position: relative;
 }
+/*.username-forms span {*/
+/*    position: relative;*/
+/*}*/
 .username-forms__red-star-icon__family {
     position: absolute;
     width: 8px;
@@ -375,7 +375,7 @@ a {
 }
 
 .reg-form__select-time-zone select {
-   background-color: white;
+    background-color: white;
     position: absolute;
     left: 180px;
     top: 2px;
@@ -387,7 +387,7 @@ a {
     z-index: 3;
 }
 .reg-form__select-time-zone__red-star-icon {
-     display: none;
+    display: none;
 }
 /*------Форма c чекбоксом---------------------------------------------------------------------------------------------*/
 .reg-form__checkbox {
@@ -461,6 +461,12 @@ a {
     color: #FF4970;
     opacity: 0.9;
 }
+.reg-form__input-error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    top: 88px;
+}
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
 @media (max-width: 1108px) {
     .container-reg {
@@ -496,29 +502,29 @@ a {
         width: 140px;
         height: 40px;
     }
-   .username-forms, .reg-form__e-mail, .reg-form__password {
-       font-size: 16px;
-   }
-   .reg-form__e-mail input {
-       height: 40px;
-   }
+    .username-forms, .reg-form__e-mail, .reg-form__password {
+        font-size: 16px;
+    }
+    .reg-form__e-mail input {
+        height: 40px;
+    }
 
-   .password-form input {
-       width: 220px;
-       height: 40px;
-   }
-   .reg-block-logotype__title {
-       top: 460px;
-       font-size: 20px;
-       left: 22px;
-       line-height: 24px;
-   }
-   .reg-form__checkbox span {
-       font-size: 14px;
-   }
-   .reg-form__select-time-zone span {
-       font-size: 16px;
-   }
+    .password-form input {
+        width: 220px;
+        height: 40px;
+    }
+    .reg-block-logotype__title {
+        top: 460px;
+        font-size: 20px;
+        left: 22px;
+        line-height: 24px;
+    }
+    .reg-form__checkbox span {
+        font-size: 14px;
+    }
+    .reg-form__select-time-zone span {
+        font-size: 16px;
+    }
     .reg-block__error-message {
         top: 78px;
         font-size: 12px;
@@ -531,6 +537,9 @@ a {
     }
     .reg-form__hidden-pass-icon {
         top: 44px;
+    }
+    .reg-form__input-error {
+        top: 78px;
     }
 }
 /*------Адаптивная версия(c 805px до 375px)----------------------------------------------------------------------------*/
@@ -704,7 +713,7 @@ a {
         top: 44px;
     }
     .reg-form__checkbox {
-      padding-bottom: 0;
+        padding-bottom: 0;
 
     }
     .reg-form__checkbox span {
@@ -774,6 +783,10 @@ a {
         position: absolute;
         top: 2px;
         left: 0;
+    }
+    .reg-form__input-error {
+        top: 78px;
+        font-size: 10px;
     }
 
 }
