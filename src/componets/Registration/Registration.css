@@ -29,9 +29,7 @@ a {
 ._reg-block-show {
     display: inherit;
 }
-/*._reg-block-show.active {*/
-/*    display: inherit;*/
-/*}*/
+
 ._reg-block-hidden {
     display: none;
 }
