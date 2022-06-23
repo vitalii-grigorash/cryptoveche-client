@@ -31,7 +31,6 @@
     border-radius: 8px;
     background-color: #FFFFFF;
     position: relative;
-
 }
 /*------Стилизация заголовка модального окна--------------------------------------------------------------------------*/
 .content__title {
@@ -41,7 +40,6 @@
     justify-content: space-between;
     align-items: center;
     color: rgba(54, 59, 77, 0.9);
-
 }
 .content__title h3 {
     font-size: 26px;

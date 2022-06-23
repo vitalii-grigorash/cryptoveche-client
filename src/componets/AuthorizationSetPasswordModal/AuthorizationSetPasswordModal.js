@@ -12,7 +12,7 @@ const AuthorizationSetPasswordModal = ({ active }) => {
             <div className={'auth-set-pass-modal__content'}>
                 <div className={'content__title'}>
                     <h3>Установка пароля</h3>
-                    <div className={'title__language'}><span>РУС</span><a href={'en'}>ENG</a></div>
+                    <div className={'title__language'}><div><span>РУС</span><span>ENG</span></div></div>
                     <img className={'title__checkmark-set-pass-modal'} alt={'зеленая галочка'} src={icon_checkmark} />
                 </div>
                 <h4>Ваш пароль успешно изменён!</h4>
