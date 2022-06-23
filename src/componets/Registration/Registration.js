@@ -256,7 +256,7 @@ const Registration = (props) => {
                             </div>
                             <div className={showHideElem ? 'reg-form__button active' : 'reg-form__button _reg-block-show'}>
                                 <span className={'_reg-block-hidden'}>Шаг 2 из 2, почти готово</span>
-                                <button type={'submit'}>Зарегистрироваться</button>
+                                <button type='submit'>Зарегистрироваться</button>
                             </div>
                         </div>
                         {/*-Кнопка для мобильной версии-*/}
