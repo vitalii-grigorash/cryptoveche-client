@@ -10,8 +10,8 @@ const RegistrationPasswordRequireModal = ({active, setActive}) => {
 
 
     return (
-            <div className={'registration-pass-require-modal__wrapper'}>
-                <div className={'registration-pass-require-modal__content'}>
+            <div className={active ? 'registration-pass-require-modal__wrapper active' : 'registration-pass-require-modal__wrapper'}>
+                <div className={active ? 'registration-pass-require-modal__content active' : 'registration-pass-require-modal__content'}>
                     <div className={'registration-pass-require-modal__content-text'}>
                         <img className={'content-text__warning-icon'} alt={'иконка предупреждение'} src={warning_icon}/>
                         <img className={'content-text__warning-icon-mobile'} alt={'иконка предупреждение'} src={warning_icon_mobile}/>

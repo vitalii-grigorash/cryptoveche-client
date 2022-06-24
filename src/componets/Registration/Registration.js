@@ -84,10 +84,10 @@ const Registration = (props) => {
         // setChangeBorderInputUsername('_input-border-red');
         if (password.value !== repeatPassword.value) {
             setErrorPassReg('Пароли не совпадают');
+            setPasswordRequireModalActive(true)
             setChangeBorderInputPass('_input-border-red');
         } else {
             setHideRegForm(true)
-
             handleRegister({
                 email: email.value,
                 password: password.value,
