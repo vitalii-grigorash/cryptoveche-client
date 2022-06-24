@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './VotesPage.css';
 import VotesPageActiveVotes from "../VotesPageActiveVotes/VotesPageActiveVotes";
 import { activeVotesData } from "../../activeVotesData";
@@ -8,9 +8,7 @@ import TitleVotesDetailsCallVotingProfile
 import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 import VotesPageFilterSortButtons from "../VotesPageFilterSortButtons/VotesPageFilterSortButtons";
-
-
-
+import * as Events from '../../Api/Events';
 
 const VotesPage = () => {
 
@@ -26,7 +24,15 @@ const VotesPage = () => {
         setBtnArchiveVotes(true)
     }
 
-
+    useEffect(() => {
+        Events.getEvents()
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, [])
 
     return (
         <div className={'votes-page-block__wrapper'}>
@@ -52,7 +58,6 @@ const VotesPage = () => {
                 {btnActiveVotes && (
                     <>
                         {activeVotesData.map((item) => (
-
                             <VotesPageActiveVotes
                                 key={item.id}
                                 id={item.id}
@@ -65,7 +70,7 @@ const VotesPage = () => {
                                 dateTimeWatch1={item.TimeVote}
                                 confirmStatus={item.confirmStatus}
                                 nameRegButton={item.nameRegButton} />
-                        )
+                            )
                         )}
                     </>
                 )}

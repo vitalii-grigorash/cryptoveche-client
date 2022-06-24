@@ -26,7 +26,9 @@ const Registration = (props) => {
         modalActive,
         emailErrorMessage,
         changeBorderInputEmail,
-        hideRegisterModal
+        hideRegisterModal,
+        hideRegForm,
+        hideRegEmailErrors
     } = props;
 
     const firstName = Validation();
@@ -37,17 +39,20 @@ const Registration = (props) => {
     const repeatPassword = Validation();
 
     const [errorPassReg, setErrorPassReg] = useState('');
+    const [firstNameError, setFirstNameError] = useState('');
+    const [lastNameError, setLastNameError] = useState('');
+
     const [changeTypePass, setChangeTypePass] = useState('password');
     const [changeTypeRepeatPass, setChangeTypeRepeatPass] = useState('password');
-    // const [changeBorderInputUsername, setChangeBorderInputUsername] = useState('_input-border-black-reg-page');
+    const [changeBorderInputLastName, setChangeBorderInputLastName] = useState('_input-border-black-reg-page');
+    const [changeBorderInputFirstName, setChangeBorderInputFirstName] = useState('_input-border-black-reg-page');
     const [changeBorderInputPass, setChangeBorderInputPass] = useState('_input-border-black-reg-page');
     const [timeZoneLocation, setTimeZoneLocation] = useState('(UTC+3) Россия - Москва - московское время');
     const [timeZoneValue, setTimeZoneValue] = useState(3);
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
     const [showHideElem, setShowHideElem] = useState(false)
-    const [hideRegForm, setHideRegForm] = useState(false);
     const [passwordRequireModalActive, setPasswordRequireModalActive] = useState(false);
-
+    const [firsPageError, setFirsPageError] = useState('');
 
     const linkButtonBackPage = useNavigate();
 
@@ -81,13 +86,79 @@ const Registration = (props) => {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        // setChangeBorderInputUsername('_input-border-red');
-        if (password.value !== repeatPassword.value) {
-            setErrorPassReg('Пароли не совпадают');
-            setPasswordRequireModalActive(true)
+        const nameRegExp = /^([а-яё]+|[a-z]+)$/i
+        const passRegExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*,.:;+<>{}?\\[\]/_-]{8,64}$/
+        if (lastName.value === '') {
+            setChangeBorderInputLastName('_input-border-red');
+            setLastNameError('Необходимо заполнить');
+            setChangeBorderInputFirstName('_input-border-black-reg-page');
+            setFirstNameError('');
+            setErrorPassReg('');
+            setChangeBorderInputPass('_input-border-black-reg-page');
+            setPasswordRequireModalActive(false);
+            hideRegEmailErrors();
+            setFirsPageError('Ошибки на первой странице');
+        } else if (nameRegExp.test(lastName.value) === false) {
+            setChangeBorderInputLastName('_input-border-red');
+            setLastNameError('Неверный формат');
+            setChangeBorderInputFirstName('_input-border-black-reg-page');
+            setFirstNameError('');
+            setErrorPassReg('');
+            setChangeBorderInputPass('_input-border-black-reg-page');
+            setPasswordRequireModalActive(false);
+            hideRegEmailErrors();
+            setFirsPageError('Ошибки на первой странице');
+        } else if (firstName.value === '') {
+            setChangeBorderInputFirstName('_input-border-red');
+            setFirstNameError('Необходимо заполнить');
+            setChangeBorderInputLastName('_input-border-black-reg-page');
+            setLastNameError('');
+            setErrorPassReg('');
+            setChangeBorderInputPass('_input-border-black-reg-page');
+            setPasswordRequireModalActive(false);
+            hideRegEmailErrors();
+            setFirsPageError('Ошибки на первой странице');
+        } else if (nameRegExp.test(firstName.value) === false) {
+            setChangeBorderInputFirstName('_input-border-red');
+            setFirstNameError('Неверный формат');
+            setChangeBorderInputLastName('_input-border-black-reg-page');
+            setLastNameError('');
+            setErrorPassReg('');
+            setChangeBorderInputPass('_input-border-black-reg-page');
+            setPasswordRequireModalActive(false);
+            hideRegEmailErrors();
+            setFirsPageError('Ошибки на первой странице');
+        } else if (password.value === '' || repeatPassword.value === '') {
+            setErrorPassReg('Необходимо заполнить все поля');
+            setPasswordRequireModalActive(false);
             setChangeBorderInputPass('_input-border-red');
+            setChangeBorderInputLastName('_input-border-black-reg-page');
+            setLastNameError('');
+            setChangeBorderInputFirstName('_input-border-black-reg-page');
+            setFirstNameError('');
+            hideRegEmailErrors();
+            setFirsPageError('');
+        } else if (password.value !== repeatPassword.value) {
+            setErrorPassReg('Пароли не совпадают');
+            setPasswordRequireModalActive(false);
+            setChangeBorderInputPass('_input-border-red');
+            setChangeBorderInputLastName('_input-border-black-reg-page');
+            setLastNameError('');
+            setChangeBorderInputFirstName('_input-border-black-reg-page');
+            setFirstNameError('');
+            hideRegEmailErrors();
+            setFirsPageError('');
+        } else if (passRegExp.test(password.value) === false) {
+            setPasswordRequireModalActive(true);
+            setChangeBorderInputPass('_input-border-red');
+            setErrorPassReg('');
+            setChangeBorderInputLastName('_input-border-black-reg-page');
+            setLastNameError('');
+            setChangeBorderInputFirstName('_input-border-black-reg-page');
+            setFirstNameError('');
+            hideRegEmailErrors();
+            setFirsPageError('');
         } else {
-            setHideRegForm(true)
             handleRegister({
                 email: email.value,
                 password: password.value,
@@ -98,6 +169,12 @@ const Registration = (props) => {
             });
             setErrorPassReg('');
             setChangeBorderInputPass('_input-border-black-reg-page');
+            setPasswordRequireModalActive(false);
+            setChangeBorderInputFirstName('_input-border-black-reg-page');
+            setFirstNameError('');
+            setChangeBorderInputLastName('_input-border-black-reg-page');
+            setLastNameError('');
+            setFirsPageError('');
         }
     }
 
@@ -108,7 +185,6 @@ const Registration = (props) => {
     function mobileHideElem() {
         setShowHideElem(false)
     }
-
 
     return (
         <div className={'wrapper-reg'}>
@@ -146,31 +222,23 @@ const Registration = (props) => {
                                 <span>Фамилия <span className="reg-form__time-zone-heading_span">*</span></span>
                                 <input
                                     type="text"
-                                    className='_input-border-black-reg-page'
-                                    id="register-last-name-input"
+                                    className={changeBorderInputLastName}
                                     name="lastNameRegister"
-                                    maxLength="40"
-                                    pattern="[A-Za-zа-яёА-ЯЁ -]{1,}"
-                                    required
                                     value={lastName.value}
                                     onChange={lastName.onChange}
                                 />
-                                <span id="register-last-name-input-error" className="reg-form__input-error">{lastName.errorMessage}</span>
+                                <span className="reg-form__input-error">{lastNameError}</span>
                             </div>
                             <div className={'username-forms'}>
                                 <span>Имя <span className="reg-form__time-zone-heading_span">*</span></span>
                                 <input
                                     type="text"
-                                    className='_input-border-black-reg-page'
-                                    id="register-first-name-input"
+                                    className={changeBorderInputFirstName}
                                     name="firstNameRegister"
-                                    maxLength="40"
-                                    pattern="[A-Za-zа-яёА-ЯЁ -]{1,}"
-                                    required
                                     value={firstName.value}
                                     onChange={firstName.onChange}
                                 />
-                                <span id="register-first-name-input-error" className="reg-form__input-error">{firstName.errorMessage}</span>
+                                <span className="reg-form__input-error">{firstNameError}</span>
                             </div>
                             <div className={'username-forms'}>
                                 <span>Отчество</span>
@@ -178,8 +246,6 @@ const Registration = (props) => {
                                     type="text"
                                     className='_input-border-black-reg-page'
                                     name="secondNameRegister"
-                                    maxLength="40"
-                                    pattern="[A-Za-zа-яёА-ЯЁ -]{1,}"
                                     value={secondName.value}
                                     onChange={secondName.onChange}
                                 />
@@ -209,9 +275,6 @@ const Registration = (props) => {
                                     type={changeTypePass}
                                     className={changeBorderInputPass}
                                     name="passwordRegister"
-                                    minLength="8"
-                                    maxLength="64"
-                                    required
                                     value={password.value}
                                     onChange={password.onChange}
                                 />
@@ -223,14 +286,12 @@ const Registration = (props) => {
                                     type={changeTypeRepeatPass}
                                     className={changeBorderInputPass}
                                     name="repeatPasswordRegister"
-                                    minLength="8"
-                                    maxLength="64"
                                     value={repeatPassword.value}
                                     onChange={repeatPassword.onChange}
                                 />
                             </div>
                             <div className={'reg-block__error-message'}>{errorPassReg}</div>
-                            <RegistrationPasswordRequireModal active={passwordRequireModalActive} setActive={setPasswordRequireModalActive}/>
+                            <RegistrationPasswordRequireModal active={passwordRequireModalActive} setActive={setPasswordRequireModalActive} />
                         </div>
                         <div className={showHideElem ? 'reg-form__time-zone-main-container active' : 'reg-form__time-zone-main-container'}>
                             <p className="reg-form__time-zone-heading">Выберите часовой пояс <span className="reg-form__time-zone-heading_span">*</span></p>
@@ -260,6 +321,7 @@ const Registration = (props) => {
                         <div className={showHideElem ? 'reg-form__button active' : 'reg-form__button _reg-block-show'}>
                             <span className={'_reg-block-hidden'}>Шаг 2 из 2, почти готово</span>
                             <button type={'submit'}>Зарегистрироваться</button>
+                            <p className='reg-form__validate-error'>{firsPageError}</p>
                         </div>
                     </form>
                     {/*-Кнопка для мобильной версии-*/}
