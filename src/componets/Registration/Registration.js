@@ -14,6 +14,7 @@ import optionRow from '../../img/INPUT-ICONS-24-ARROW.svg';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 import { Validation } from '../../utils/Validation';
 import row_icon_title from "../../img/Registration_row_icon.svg";
+import RegistrationPasswordRequireModal from "./RegistrationPasswordRequireModal/RegistrationPasswordRequireModal";
 
 
 const Registration = (props) => {
@@ -45,6 +46,7 @@ const Registration = (props) => {
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
     const [showHideElem, setShowHideElem] = useState(false)
     const [hideRegForm, setHideRegForm] = useState(false);
+    const [passwordRequireModalActive, setPasswordRequireModalActive] = useState(false);
 
 
     const linkButtonBackPage = useNavigate();
@@ -82,10 +84,10 @@ const Registration = (props) => {
         // setChangeBorderInputUsername('_input-border-red');
         if (password.value !== repeatPassword.value) {
             setErrorPassReg('Пароли не совпадают');
+            setPasswordRequireModalActive(true)
             setChangeBorderInputPass('_input-border-red');
         } else {
             setHideRegForm(true)
-
             handleRegister({
                 email: email.value,
                 password: password.value,
@@ -228,6 +230,7 @@ const Registration = (props) => {
                                 />
                             </div>
                             <div className={'reg-block__error-message'}>{errorPassReg}</div>
+                            <RegistrationPasswordRequireModal active={passwordRequireModalActive} setActive={setPasswordRequireModalActive}/>
                         </div>
                         <div className={showHideElem ? 'reg-form__time-zone-main-container active' : 'reg-form__time-zone-main-container'}>
                             <p className="reg-form__time-zone-heading">Выберите часовой пояс <span className="reg-form__time-zone-heading_span">*</span></p>
