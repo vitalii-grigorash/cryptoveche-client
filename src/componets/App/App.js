@@ -30,6 +30,7 @@ function App() {
     const [modalActive, setModalActive] = useState(false);
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
+    const [hideRegForm, setHideRegForm] = useState(false);
 
     function hideRegisterModal() {
         setModalActive(false);
@@ -90,7 +91,7 @@ function App() {
         setCurrentUser({});
         navigate('/auth');
     }
-    
+
     function handleLogin(email, password) {
         if (email === '' || password === '') {
             setAuthError('Необходмо заполнить все поля');
@@ -147,6 +148,11 @@ function App() {
         // eslint-disable-next-line
     }, []);
 
+    function hideRegEmailErrors() {
+        setEmailErrorMessage('');
+        setChangeBorderInputEmail('_input-border-black-reg-page');
+    }
+
     function handleRegister(registerData) {
         console.log(registerData);
         if (isPolicyAccept) {
@@ -158,8 +164,8 @@ function App() {
                         setEmailErrorMessage('Пользователь с данным email уже существует');
                     } else {
                         setModalActive(true);
-                        setEmailErrorMessage('');
-                        setChangeBorderInputEmail('_input-border-black-reg-page');
+                        hideRegEmailErrors();
+                        setHideRegForm(true);
                     }
                 })
                 .catch((err) => {
@@ -201,6 +207,8 @@ function App() {
                                     emailErrorMessage={emailErrorMessage}
                                     changeBorderInputEmail={changeBorderInputEmail}
                                     hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
                                 />}
                             />
                             <Route exact path='/' element={<MainPage />} />

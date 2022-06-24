@@ -17,6 +17,9 @@
     margin: 0 auto;
     box-sizing: content-box;
 }
+.reg-form__validate-error {
+    display: none;
+}
 .reg-block {
     display: flex;
     flex-direction: row;
@@ -248,7 +251,6 @@ a {
 .password-form span {
     position: relative;
     opacity: 0.9;
-    color: #363B4D;
 }
 .reg-form__password__red-star-icon {
     position: absolute;
@@ -788,6 +790,17 @@ a {
     .reg-form__input-error {
         top: 78px;
         font-size: 10px;
+    }
+    .reg-form__validate-error {
+        display: block;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+        color: #FF4970;
+        opacity: 0.9;
+        margin: 0 auto;
     }
 
 }
