@@ -1,6 +1,6 @@
 /*-----Стилизация кнопки зарегистрироваться---------------------------------------------------------------------------*/
 .details-votes-page-general-info__reg-button {
-    max-width: 213px;
+    width: 213px;
     max-height: 48px;
     background-color: #0084FE;
     border-radius: 4px;
@@ -15,5 +15,10 @@
 @media (max-width: 600px) {
     .details-votes-page-general-info__reg-button {
         max-width: 100%;
+    }
+}
+@media (max-width: 420px) {
+    .details-votes-page-general-info__reg-button {
+        width: 100%;
     }
 }
