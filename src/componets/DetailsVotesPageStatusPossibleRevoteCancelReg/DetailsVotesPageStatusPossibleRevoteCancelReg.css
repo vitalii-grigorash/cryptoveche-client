@@ -24,6 +24,7 @@
     .details-votes-page-status-possible-revote-cancelreg__wrapper {
         justify-content: center;
         padding-left: 12px;
+        gap: 0;
     }
     .details-votes-page-status-possible-revote-cancelreg__possible-revote {
         font-size: 10px;

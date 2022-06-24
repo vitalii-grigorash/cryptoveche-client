@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './DetailsVotesPageGeneralInformation.css';
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
 import {detailsVotesPageGenerealInfoData} from "../../detailsVotesPageGenerealInfoData";
@@ -10,11 +10,13 @@ import DetailsVotesPageListStartEndRegVote
     from "../DetailsVotesPageListStartEndRegVote/DetailsVotesPageListStartEndRegVote";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
-import DetailsVotesPageMobileModal from "../DetailsVotesPageMobileModal/DetailsVotesPageMobileModal";
+import DetailsVotesSuccessRegModal from "./DetailsVotesSuccessRegModal/DetailsVotesSuccessRegModal";
 
 
 const DetailsVotesPageGeneralInformation = () => {
 
+
+    const  [successRegModal, setSuccessRegModal] = useState(false)
 
     const generalInfo = detailsVotesPageGenerealInfoData.find(item => item.id === 1)
     const generalInfoTitle = generalInfo.titleVoteData
@@ -23,11 +25,11 @@ const DetailsVotesPageGeneralInformation = () => {
     const generalInfoConfirmReg = generalInfo.confirmStatus
 
 
+
     return (
             <div>
                 <div className={'details-votes-page-general-info__main-content'}>
                     <div className={'details-votes-page-general-info__main-content-current-status-vote'}>
-                        <h1 className={'details-votes-page-result-votes__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
                             <span className={'main-content-current-status-vote__title'}>
                                 <VotesPageTitleTimeZone titleVoteData={generalInfoTitle} nameTimezone={'Часовой пояс: UTC+3'}/>
                             </span>
@@ -38,15 +40,15 @@ const DetailsVotesPageGeneralInformation = () => {
                         </div>
                     </div>
                         <DetailsVotesPageListStartEndRegVote/>
-                            <span className={'_show-possible-cancel-block'}>
-                                <DetailsVotesPageStatusPossibleRevoteCancelReg/>
-                            </span>
+                                <span className={'_show-possible-cancel-block'}>
+                                    <DetailsVotesPageStatusPossibleRevoteCancelReg/>
+                                </span>
                         </div>
                         <div className={'_hidden-materials-vote'}>
                             <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'}/>
                         </div>
-                <RegistrationButton/>
-                <DetailsVotesPageMobileModal/>
+                <DetailsVotesSuccessRegModal active={successRegModal} setActive={setSuccessRegModal}/>
+                <RegistrationButton />
             </div>
     )
 

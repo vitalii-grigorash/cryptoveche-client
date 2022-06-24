@@ -6,6 +6,7 @@
     width: 100%;
     justify-content: space-between;
     padding-bottom: 40px;
+    position: relative;
 }
 .main-content-current-status-vote__title {
     font-weight: 600;
