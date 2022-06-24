@@ -1,7 +1,7 @@
 import React from "react";
 import './CardQuestionVerticalGraph.css';
 import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
-// import CardQuestionVerticalGraphWideColumn from "../CardQuestionVerticalGraphWideColumn/CardQuestionVerticalGraphWideColumn";
+import CardQuestionVerticalGraphWideColumn from "../CardQuestionVerticalGraphWideColumn/CardQuestionVerticalGraphWideColumn";
 
 const CardQuestionVerticalGraph = () => {
     return (

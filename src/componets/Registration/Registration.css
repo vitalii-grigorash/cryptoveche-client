@@ -222,8 +222,7 @@ a {
     column-gap: 13px;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: 88px;
-    opacity: 0.9;
-    color: #363B4D;
+
 }
 .reg-form__password.active {
     display: flex;
@@ -248,6 +247,8 @@ a {
 }
 .password-form span {
     position: relative;
+    opacity: 0.9;
+    color: #363B4D;
 }
 .reg-form__password__red-star-icon {
     position: absolute;
