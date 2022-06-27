@@ -1,13 +1,20 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import './ MyProfilePageSetPassword.css';
 import icon_show_password from '../../img/Auth_show_pass_icon.svg';
+import icon_hide_password from '../../img/Auth_hidden_pass.svg';
 
 
 const MyProfilePageSetPassword = () => {
 
+    const [newPass, setNewPass] = useState('')
+    const [repeatNewPass, setRepeatNewPass] = useState('')
     const [typePass, setTypePass] = useState('password')
     const [typeNewPass, setTypeNewPass] = useState('text')
     const [typeRepeatNewPass, setTypeRepeatNewPass] = useState('text')
+    const [showIconNewPass, setShowIconNewPass] = useState(false)
+    const [showIconRepeatPass, setShowIconRepeatPass] = useState(false)
+    const [activeBtn, setActiveBtn] = useState(true)
+    const btnChangeColor = useRef(null)
 
 
     const showHiddenPass = () => {
@@ -27,6 +34,7 @@ const MyProfilePageSetPassword = () => {
             setTypeNewPass('text')
         }
     }
+
     const showHiddenRepeatNewPass = () => {
         if (typeRepeatNewPass === 'text')
         {
@@ -36,6 +44,29 @@ const MyProfilePageSetPassword = () => {
         }
     }
 
+    useEffect(() => {
+        if (newPass !== '') {
+            setShowIconNewPass(true)
+        } else {
+            setShowIconNewPass(false)
+        } if (repeatNewPass !== '') {
+            setShowIconRepeatPass(true)
+        } else {
+            setShowIconRepeatPass(false)
+        } if (newPass && repeatNewPass !== '') {
+            setActiveBtn(false);
+            btnChangeColor.current.style.background = '#0084FE';
+            btnChangeColor.current.style.color = '#FFFFFF';
+        } else {
+            setActiveBtn(true)
+            btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
+            btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
+        }
+
+    },[newPass, repeatNewPass])
+
+
+
 
     return (
             <div className={'my-profile-page-set-pass__wrapper'}>
@@ -44,20 +75,26 @@ const MyProfilePageSetPassword = () => {
                     <div className={'my-profile-page-set-pass__form-input __my-profile-page-set-pass-hidden'}>
                         <label>Пароль</label>
                         <input type={typePass}/>
-                        <img className={'my-profile-page-set-pass__icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password} onClick={() => {showHiddenPass()}}/>
+                        <img className={'my-profile-page-set-pass__icon-pass'} alt={'иконка скрыть пароль'} src={typePass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenPass()}}/>
                     </div>
                     <div className={'my-profile-page-set-pass__form-input'}>
                         <label>Новый пароль</label>
-                        <input type={typeNewPass}/>
-                        <img className={'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password} onClick={() => {showHiddenNewPass()}}/>
+                        <input
+                            type={typeNewPass}
+                            value={newPass}
+                            onChange={e => setNewPass(e.target.value)}/>
+                        <img className={showIconNewPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenNewPass()}}/>
                     </div>
                     <div className={'my-profile-page-set-pass__form-input '}>
                         <label>Повторите новый пароль</label>
-                        <input type={typeRepeatNewPass}/>
-                        <img className={'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={icon_show_password} onClick={() => {showHiddenRepeatNewPass()}}/>
+                        <input
+                            type={typeRepeatNewPass}
+                            value={repeatNewPass}
+                            onChange={e => setRepeatNewPass(e.target.value)}/>
+                        <img className={showIconRepeatPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeRepeatNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenRepeatNewPass()}}/>
                     </div>
                 </div>
-                <button className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+                <button disabled={activeBtn} ref={btnChangeColor} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
             </div>
     )
 }
