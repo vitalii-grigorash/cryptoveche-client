@@ -16,10 +16,10 @@ const HeaderBurgerMenu = ({active, setActive}) => {
                 <div className={active ? 'burger-menu__content active' : 'burger-menu__content'} onClick={e => e.stopPropagation()}>
                     <div className={'burger-menu__logotype-block'}>
                         <img alt={'Logo'} src={burger_menu_logo}/>
-                        <div><a href={'ru'}>РУС</a><span>ENG</span></div>
+                        <div><span>РУС</span><span>ENG</span></div>
                     </div>
                     <div className={'burger-menu__link-page'}>
-                        <Link to={'/main'}>Главная</Link>
+                        <Link to={'/'}>Главная</Link>
                         <Link to={'/votes-page'}>Голосования</Link>
                         <Link to={'/my-profile'}>Мой профиль</Link>
                     </div>

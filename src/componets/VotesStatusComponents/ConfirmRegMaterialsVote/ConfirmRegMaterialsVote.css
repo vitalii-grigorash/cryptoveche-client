@@ -1,15 +1,10 @@
 /*---------Основной контейнер-----------------------------------------------------------------------------------------*/
 .status-block__materials-vote {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
     font-size: 12px;
-    row-gap: 4px;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    padding: 0 24px 0 24px;
-    /*gap: 16px;*/
-    /*font-family: Inter;*/
+    display: flex;
+    flex-direction: column;
+    padding: 9px 24px 0 24px;
+    gap: 9px;
 }
 .materials-vote__status-icon {
     display: flex;
@@ -19,10 +14,8 @@
     font-weight: 400;
     color: rgba(54, 59, 77, 0.9);
 }
-
 .status-icon__color-status {
     color: #FF4970;
-
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
@@ -33,12 +26,11 @@
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        padding: 0 10px 0 10px;
+        padding: 10px 24px 0 12px;
     }
     .materials-vote__status-icon {
         font-size: 11px;
     }
-
 }
 @media (max-width: 600px) {
      .status-block__materials-vote {

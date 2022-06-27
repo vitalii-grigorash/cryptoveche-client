@@ -5,10 +5,10 @@
     gap: 3px;
 }
 .active-votes__title h2 {
-    font-size: 18px;
+    font-size: 20px;
     color: rgba(54, 59, 77, 0.9);
     line-height: 110%;
-    padding-bottom: 24px;
+    padding-bottom: 12px;
 }
 .active-votes__title h3 {
     font-size: 16px;

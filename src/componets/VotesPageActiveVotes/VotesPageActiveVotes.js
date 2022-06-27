@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './VotesPageActiveVotes.css'
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateRegVote from "../VotesStatusComponents/StartDateRegVote/StartDateRegVote";
@@ -7,13 +7,25 @@ import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterial
 import VotePageBtnRegister from "../VotesStatusComponents/VotePageBtnRegister/VotePageBtnRegister";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
 import VotePageBtnVoting from "../VotesStatusComponents/VotePageBtnVoting/VotePageBtnVoting";
+import VotesPageSuccessRegNowModal from "../VotesPageSuccessRegNowModal/VotesPageSuccessRegNowModal";
 
-const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus, nameRegButton}) => {
+const VotesPageActiveVotes = (props) => {
 
+    const  [voteSuccessRegModal, setVoteSuccessRegModal] = useState(false)
 
+    const {
+        titleVoteData,
+        regStatus,
+        voteStatus,
+        dateTimeDate,
+        dateTimeWatch,
+        dateTimeDate1,
+        dateTimeWatch1,
+        confirmStatus,
+        nameRegButton
+    } = props;
 
     return (
-
             <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>
                      <VotesPageTitleTimeZone titleVoteData={titleVoteData} nameTimezone={'(UTC+3) Россия - Москва'}/>
@@ -33,10 +45,9 @@ const VotesPageActiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDat
                         <VotePageBtnRegister nameRegButton={nameRegButton}/>
                     </div>
                 </div>
+                <VotesPageSuccessRegNowModal active={voteSuccessRegModal} setActive={setVoteSuccessRegModal}/>
             </div>
-
     )
-
 }
 
 export default VotesPageActiveVotes;
