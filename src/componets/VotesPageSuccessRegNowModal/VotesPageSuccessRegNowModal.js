@@ -1,7 +1,7 @@
 import React from "react";
-import './VotesPageSuccessRegModal.css';
+import './VotesPageSuccessRegNowModal.css';
 
-const VotesPageSuccessRegModal = ({active, setActive}) => {
+const VotesPageSuccessRegNowModal = ({active, setActive}) => {
 
     return (
             <div className={active ? 'votes-page-success-reg-modal__wrapper active' : 'votes-page-success-reg-modal__wrapper'}>
@@ -12,4 +12,4 @@ const VotesPageSuccessRegModal = ({active, setActive}) => {
             </div>
     )
 }
-export default VotesPageSuccessRegModal;
+export default VotesPageSuccessRegNowModal;

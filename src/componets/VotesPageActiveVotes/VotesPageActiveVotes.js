@@ -7,7 +7,7 @@ import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterial
 import VotePageBtnRegister from "../VotesStatusComponents/VotePageBtnRegister/VotePageBtnRegister";
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
 import VotePageBtnVoting from "../VotesStatusComponents/VotePageBtnVoting/VotePageBtnVoting";
-import VotesPageSuccessRegModal from "../VotesPageSuccessRegModal/VotesPageSuccessRegModal";
+import VotesPageSuccessRegNowModal from "../VotesPageSuccessRegNowModal/VotesPageSuccessRegNowModal";
 
 const VotesPageActiveVotes = (props) => {
 
@@ -45,7 +45,7 @@ const VotesPageActiveVotes = (props) => {
                         <VotePageBtnRegister nameRegButton={nameRegButton}/>
                     </div>
                 </div>
-                <VotesPageSuccessRegModal active={voteSuccessRegModal} setActive={setVoteSuccessRegModal}/>
+                <VotesPageSuccessRegNowModal active={voteSuccessRegModal} setActive={setVoteSuccessRegModal}/>
             </div>
     )
 }

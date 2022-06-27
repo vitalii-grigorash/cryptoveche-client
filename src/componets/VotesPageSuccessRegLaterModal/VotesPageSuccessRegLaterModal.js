@@ -1,7 +1,7 @@
 import React from "react";
-import './DetailsVotesSuccessRegModal.js.css';
+import './VotesPageSuccessRegLaterModal.css';
 
-const DetailsVotesSuccessRegModal = ({active, setActive}) => {
+const VotesPageSuccessRegLaterModal = ({active, setActive}) => {
 
 
 
@@ -15,4 +15,4 @@ const DetailsVotesSuccessRegModal = ({active, setActive}) => {
     )
 }
 
-export default DetailsVotesSuccessRegModal;
+export default VotesPageSuccessRegLaterModal;
