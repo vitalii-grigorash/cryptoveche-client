@@ -3,48 +3,28 @@
     font-weight: 400;
     color: rgba(54, 59, 77, 0.9);
     position: relative;
-    max-width: 170px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.materials-vote-question__select {
-    background-color: #FFFFFF;
+.materials-vote-question-select-arrow {
+    width: 10px;
+    height: 10px;
     cursor: pointer;
+    margin-left: 8px;
 }
-.materials-vote-question__select::after {
-    content: url("../../../img/Materials_vote_row.svg");
-    position: absolute;
-    margin-top: -16px;
-    margin-left: 10rem;
-    cursor: pointer;
-}
-.materials-vote-question__select select {
-    background-color: #FFFFFF;
-    opacity: 50%;
-    appearance: none;
-}
-
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 890px) {
     .materials-vote-question__wrapper {
         font-size: 11px;
     }
     .materials-vote-question__wrapper {
-        display: block;
-    }
-    .materials-vote-question__select::after {
-        margin-top: -11px;
-        margin-left: 135px;
+
     }
 }
 @media (max-width: 600px) {
     .materials-vote-question__wrapper {
       font-size: 14px;
-    }
-    .materials-vote-question__wrapper select {
-        margin-left: 4px;
-    }
-    .materials-vote-question__select::after {
-        margin-top: -15px;
-        margin-left: 166px;
     }
 
 }
