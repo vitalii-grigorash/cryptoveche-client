@@ -21,7 +21,7 @@
 .call-voting-page-title__details-btn {
     max-width: 210px;
     max-height: 40px;
-    padding: 8px 24px 8px 24px;
+    padding: 8px 0 8px 0;
     border-radius: 4px;
     border: 1px solid #0084FE;
     background-color: #FBFBFC;

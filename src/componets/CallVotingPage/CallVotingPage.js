@@ -24,7 +24,7 @@ import {useNavigate} from "react-router-dom";
                  <div className={'call-voting-page__title'}>
                      <h2 className={'call-voting-page-title__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h2>
                      <button className={'call-voting-page-title__details-btn'} onClick={() => linkDetailsPage('/details-vote')}>Детали голосования</button>
-                     <span className={'call-voting-page-title__details-icon'}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
+                     <span className={'call-voting-page-title__details-icon'} onClick={() => linkDetailsPage('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
                      <DetailsVotesPageDaysEndRegStartVote/>
                      <CallVotingPageQuestionCardList titleName={'1. Согласны ли вы с решением №576?'} chooseAnswer={'Выберите ровно 1'} answerSelected={'Выбрано: 0'}/>

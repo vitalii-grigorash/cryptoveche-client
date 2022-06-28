@@ -1,0 +1,107 @@
+.details-votes-success-reg-modal__wrapper {
+    z-index: 8;
+    position: absolute;
+    top: 660px;
+    left: 12px;
+    opacity: 0;
+    pointer-events: none;
+}
+.details-votes-success-reg-modal__wrapper.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+.details-votes-success-reg-modal__content {
+    display: flex;
+    align-items: center;
+    background: #373C4E;
+    padding: 26px 40px;
+    border-radius: 16px;
+    max-height: 88px;
+    gap: 350px;
+    max-width: 1328px;
+}
+.details-votes-success-reg-modal__content.active {
+    transform: scale(1);
+}
+.details-votes-success-reg-modal__content span {
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 36px;
+    font-weight: 400;
+}
+.details-votes-success-reg-modal__button {
+    height: 48px;
+    width: 119px;
+    border-radius: 4px;
+    border: 1px solid #FFFFFF;
+    background: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    padding: 12px 24px;
+    /*margin-left: 320px;*/
+}
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 1320px) {
+    .details-votes-success-reg-modal__wrapper {
+        top: 760px;
+        left: 6px;
+    }
+    .details-votes-success-reg-modal__content {
+       gap: 260px;
+    }
+}
+@media (max-width: 900px) {
+    .details-votes-success-reg-modal__wrapper {
+        top: 740px;
+        left: 6px;
+    }
+    .details-votes-success-reg-modal__content {
+        gap: 20px;
+        padding: 16px 16px;
+    }
+    .details-votes-success-reg-modal__content span {
+        font-size: 14px;
+        color: #FFFFFF;
+        line-height: 18px;
+        font-weight: 400;
+    }
+    .details-votes-success-reg-modal__button {
+        font-size: 14px;
+    }
+
+}
+@media (max-width: 600px) {
+    .details-votes-success-reg-modal__wrapper {
+        top: 800px;
+        left: 0;
+    }
+}
+@media (max-width: 375px) {
+    .details-votes-success-reg-modal__wrapper {
+        top: 470px;
+        left: 0;
+    }
+    .details-votes-success-reg-modal__content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 16px;
+        margin: 0 16px 0 16px;
+        max-width: 343px;
+        right: 0;
+        max-height: 124px;
+    }
+    .details-votes-success-reg-modal__content span {
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+    .details-votes-success-reg-modal__button {
+        font-size: 14px;
+        line-height: 24px;
+        width: 100%;
+    }
+}
