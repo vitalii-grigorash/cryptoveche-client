@@ -25,9 +25,11 @@ const MyProfilePageAdditionalSettings = () => {
             setActiveBtn(false);
             btnChangeColor.current.style.background = '#0084FE';
             btnChangeColor.current.style.color = '#FFFFFF';
-
+            btnChangeColor.current.style.cursor = 'pointer'
         }
     }
+
+
 
     return (
             <div className={'my-profile-page-add-settings__wrapper'}>

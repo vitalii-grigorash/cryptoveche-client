@@ -8,6 +8,7 @@
     top: 56px;
     opacity: 0;
     z-index: 2;
+    pointer-events: none;
 }
 .header-settings-modal__wrapper.active {
     opacity: 1;

@@ -42,7 +42,7 @@
     font-weight: 500;
     line-height: 124%;
     color: rgba(54, 59, 77, 0.35);
-    cursor: pointer;
+    /*cursor: pointer;*/
     height: 48px;
 }
 /*-----Cтилизация кнопочки Выйти из профиля---------------------------------------------------------------------------*/
@@ -64,6 +64,11 @@
     .my-profile-page__save-change-button {
         height: 40px;
         font-size: 14px;
+    }
+    .main-content__grid-item_3 {
+        grid-column: span 1;
+        grid-row: span 2;
+        max-height: 500px;
     }
 }
 @media (max-width: 790px) {
