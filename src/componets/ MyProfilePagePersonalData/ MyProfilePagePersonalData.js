@@ -19,7 +19,6 @@ const MyProfilePagePersonalData = () => {
     const userId = currentUser.id
     const userEmail = currentUser.email
 
-    console.log(firstName)
     console.log(userId)
 
     useEffect(() => {
@@ -37,24 +36,21 @@ const MyProfilePagePersonalData = () => {
     }, [firstName, lastName, secondName]);
 
 
+    function updateUserName() {
+        const nameRegExp = /^([а-яё]+|[a-z]+)$/i
+        if (nameRegExp.test(firstName) === false) {
+            console.log('error')
 
-
-
-    function updateUser() {
+        } else {
 
             let item = {
                 first_name: firstName,
                 last_name: lastName,
                 second_name: secondName
             }
-            const prop = 'red'
-            const newItem = Object.keys(item).reduce((object, key) => {
-                if (key !== prop) {
-                    object[key] = item[key]
-                }
-                return object
-            }, {})
 
+            Object.filter = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
+            const newItem = Object.filter(item, ([key, score]) => score !== '')
 
             fetch(`${API_URL}/users/${userId}`, {
                     method: 'PUT',
@@ -80,9 +76,9 @@ const MyProfilePagePersonalData = () => {
                         }
                     }
                 )
-        console.log(newItem)
+            console.log(newItem)
         }
-
+    }
         return (
             <div className={'my-profile-page-personal-data__wrapper'}>
                 <h3 className={'my-profile-page-personal-data__title'}>Личные данные</h3>
@@ -114,7 +110,7 @@ const MyProfilePagePersonalData = () => {
                         <input disabled={true} type={"email"} placeholder={userEmail}/>
                     </div>
                 </div>
-                <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUser()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+                <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUserName()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
             </div>
     )
 }

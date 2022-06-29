@@ -28,7 +28,6 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-
 }
 .header-settings-modal__modal-content.active {
     transform: scale(1);
@@ -38,7 +37,7 @@
     display: inline-flex;
     gap: 24px;
     padding: 16px 16px;
-    border: 1px solid #61687E;
+    border-bottom: 1px solid #61687E;
     color: #FFFFFF;
 }
 .modal-content__change-lang {

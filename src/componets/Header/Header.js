@@ -22,7 +22,11 @@ const Header = (props) => {
     const [burgerMenuActive, setBurgerMenuActive] = useState(false);
     const [modalProfileExitActive, setModalProfileExitActive] = useState(false);
     const [modalSettings, setModalSettings] = useState(false);
+    const [showInputSearch, setShowInputSearch] = useState(false)
 
+    const toogleInputSearch = () => {
+        setShowInputSearch(true)
+    }
 
     return (
         <div>
@@ -45,12 +49,16 @@ const Header = (props) => {
                         <Link to={'votes-page'}><span>Голосование</span></Link>
                     </div>
                     <div className={'header__general-block-search-settings-lk'}>
-                        <div className={'general-block-search-settings-lk__search'}>
-                        <img alt={'icon-search'} src={search_icon} />
-                            <span>Поиск</span>
+                        <div onClick={() => toogleInputSearch()}  className={showInputSearch ? 'general-block-search-settings-lk__search active' : 'general-block-search-settings-lk__search'}>
+                            <img alt={'icon-search'} src={search_icon}/>
+                                <span>Поиск</span>
+                            </div>
+                        <div className={showInputSearch ? 'general-block-search-settings-lk__search-input active' : 'general-block-search-settings-lk__search-input'}>
+                            <input className={'search-input'}/>
+                            <img className={'search-input-icon'} alt={'иконка поиска'} src={search_icon}/>
                         </div>
                         <div className={'general-block-search-settings-lk__settings'}>
-                            <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings} />
+                            <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings}/>
                             <HeaderSettingsModal active={modalSettings} setActive={setModalSettings} />
                         </div>
                         <div className={'general-block-search-settings-lk__iconclient'}>

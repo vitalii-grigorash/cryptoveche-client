@@ -94,6 +94,7 @@
 .header__general-block-search-settings-lk {
     display: flex;
     gap: 51px;
+    position: relative;
 }
 /*------Стилизация блока с иконкой поиск------------------------------------------------------------------------------*/
 .general-block-search-settings-lk__search {
@@ -101,13 +102,48 @@
     gap: 11px;
     align-items: center;
     cursor: pointer;
+    z-index: 3;
 }
+.general-block-search-settings-lk__search.active {
+     display: none;
+     cursor: inherit;
+}
+.general-block-search-settings-lk__search-input {
+    position: absolute;
+    bottom: -4px;
+    right: 230px;
+    opacity: 0;
+}
+.general-block-search-settings-lk__search-input.active {
+    transition: all 1s ease;
+    opacity: 100;
+}
+.search-input {
+    max-width: 180px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: rgba(101, 105, 117, 0.5);
+    outline: none;
+    padding: 8px 0 8px 32px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+.search-input-icon {
+    position: absolute;
+    bottom: 6px;
+    right: 155px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
 /*------Стилизация блока с иконкой настройки---------------------------------------------------------------------*/
 .general-block-search-settings-lk__settings {
     position: relative;
 }
 .general-block-search-settings-lk__settings img {
     cursor: pointer;
+    padding-top: 3px;
 }
 /*------Стилизация блока с иконкой личный кабинет---------------------------------------------------------------------*/
 .general-block-search-settings-lk__iconclient {
@@ -127,6 +163,10 @@
     .header__logotype-block {
         font-size: 14px;
     }
+    .general-block-search-settings-lk__settings img {
+        padding-top: 0;
+    }
+
 }
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
 @media (max-width: 815px) {
@@ -136,7 +176,20 @@
     .general-block-search-settings-lk__search  span {
         display: none;
     }
-
+    .general-block-search-settings-lk__search-input {
+        right: 210px;
+        bottom: -2px;
+    }
+    .search-input {
+        max-width: 150px;
+        padding: 8px 0 8px 26px;
+        height: 28px;
+    }
+    .search-input-icon {
+        right: 130px;
+        width: 14px;
+        height: 14px;
+    }
 }
 /*------Адаптивная версия(660px)--------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
@@ -148,12 +201,27 @@
    }
     .header__general-block-search-settings-lk {
         gap: 32px;
-}
+    }
+    .general-block-search-settings-lk__search-input {
+        right: 180px;
+    }
+
 }
 /*------Адаптивная версия(520px)--------------------------------------------------------------------------------------*/
-@media (max-width: 520px) {
+@media (max-width: 590px) {
     .header__logotype-block span {
         display: none;
+    }
+}
+@media (max-width: 410px) {
+
+    .search-input {
+        max-width: 130px;
+    }
+    .search-input-icon {
+        right: 110px;
+        width: 14px;
+        height: 14px;
     }
 }
 /*------Адаптивная версия(375px)--------------------------------------------------------------------------------------*/
