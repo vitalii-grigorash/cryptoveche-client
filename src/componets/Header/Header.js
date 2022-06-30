@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import './Header.css';
 import search_icon from '../../img/Header_search_icon.png';
 import search_icon_mobile from '../../img/Header_search_icon_mobile.svg';
@@ -26,6 +26,10 @@ const Header = (props) => {
     const [activeBorderMain, setActiveBorderMain] = useState(true)
     const [activeBorderVotes, setActiveBorderVotes] = useState(false)
 
+
+
+
+
     function toggleBorderMainHide() {
         setActiveBorderMain(true)
         setActiveBorderVotes(false)
@@ -38,6 +42,16 @@ const Header = (props) => {
     const toogleInputSearch = () => {
         setShowInputSearch(true)
     }
+
+    useEffect(() => {
+        if(modalProfileExitActive === true) {
+            setActiveBorderMain(false)
+            setActiveBorderVotes(false)
+        }
+
+    },[modalProfileExitActive])
+
+
 
     return (
         <div>

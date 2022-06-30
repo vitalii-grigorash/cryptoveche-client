@@ -33,7 +33,6 @@ const MainPage = () => {
                 <MainPageSuccessModal active={false}/>
             </div>
     )
-
 }
 
 export default MainPage;

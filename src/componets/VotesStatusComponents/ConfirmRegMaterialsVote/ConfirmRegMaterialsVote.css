@@ -3,8 +3,8 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    padding: 10px 24px 0 24px;
-    gap: 10px;
+    padding: 6px 24px 0 24px;
+    gap: 16px;
 }
 .materials-vote__status-icon {
     display: flex;
@@ -27,6 +27,7 @@
     .status-block__materials-vote {
         white-space: nowrap;
         padding: 10px 24px 0 12px;
+        gap: 12px;
     }
     .materials-vote__status-icon {
         font-size: 11px;
