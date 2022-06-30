@@ -82,14 +82,42 @@
 }
 /*------Стилизация блока с логотипом----------------------------------------------------------------------------------*/
 .header__logotype-block {
-    display: flex;
+    /*display: flex;*/
+    /*align-items: center;*/
+    display: inline-grid;
+    grid-template-columns: 85px 95px 1fr;
+    grid-template-rows: 80px;
     align-items: center;
-    gap: 64px;
 }
 .header__logotype-block a {
     text-decoration: none;
     color: #FFFFFF;
 }
+.logotype-block__main {
+    border-bottom: 4px solid #373C4E;
+    text-align: center;
+    padding: 28px 0 23px 0;
+
+}
+.logotype-block__votes {
+    padding: 28px 0 23px 0;
+    text-align: center;
+    margin-left: 47px;
+    border-bottom: 4px solid #373C4E;
+}
+.logotype-block__main:hover {
+    border-bottom: 4px solid #4569FF;
+}
+.logotype-block__votes:hover {
+    border-bottom: 4px solid #4569FF;
+}
+.logotype-block__main.active {
+    border-bottom: 4px solid #4569FF;
+}
+.logotype-block__votes.active {
+    border-bottom: 4px solid #4569FF;
+}
+
 /*------Стилизация общего блока с иконками поиск, настройки, личный кабинет-------------------------------------------*/
 .header__general-block-search-settings-lk {
     display: flex;
@@ -136,7 +164,6 @@
     width: 16px;
     height: 16px;
 }
-
 /*------Стилизация блока с иконкой настройки---------------------------------------------------------------------*/
 .general-block-search-settings-lk__settings {
     position: relative;
@@ -166,12 +193,20 @@
     .general-block-search-settings-lk__settings img {
         padding-top: 0;
     }
+    .logotype-block__main {
+        padding: 31px 0 23px 0;
+
+    }
+    .logotype-block__votes {
+        padding: 31px 0 23px 0;
+
+    }
 
 }
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
 @media (max-width: 815px) {
     .header__logotype-block {
-        gap: 40px;
+        grid-template-columns: 65px 70px 1fr;
     }
     .general-block-search-settings-lk__search  span {
         display: none;
@@ -190,6 +225,11 @@
         width: 14px;
         height: 14px;
     }
+    .logotype-block__votes {
+        margin-left: 35px;
+
+    }
+
 }
 /*------Адаптивная версия(660px)--------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
@@ -197,7 +237,7 @@
         display: none;
     }
    .header__logotype-block {
-       gap: 24px;
+
    }
     .header__general-block-search-settings-lk {
         gap: 32px;
@@ -205,7 +245,9 @@
     .general-block-search-settings-lk__search-input {
         right: 180px;
     }
-
+    .logotype-block__votes {
+        margin-left: 15px;
+    }
 }
 /*------Адаптивная версия(520px)--------------------------------------------------------------------------------------*/
 @media (max-width: 590px) {

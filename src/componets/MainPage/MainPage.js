@@ -7,6 +7,7 @@ import ScanQRMobile from "../ScanQRMobile/ScanQRMobile";
 import AmountVotesBlock from "../AmountVotesBlock/AmountVotesBlock";
 import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
+import MainPageSuccessModal from "../MainPageSuccessModal/MainPageSuccessModal";
 
 
 const MainPage = () => {
@@ -29,6 +30,7 @@ const MainPage = () => {
                     </div>
                     <CalendarVotes/>
                 </div>
+                <MainPageSuccessModal active={false}/>
             </div>
     )
 

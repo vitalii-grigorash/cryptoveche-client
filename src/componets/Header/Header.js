@@ -23,6 +23,17 @@ const Header = (props) => {
     const [modalProfileExitActive, setModalProfileExitActive] = useState(false);
     const [modalSettings, setModalSettings] = useState(false);
     const [showInputSearch, setShowInputSearch] = useState(false)
+    const [activeBorderMain, setActiveBorderMain] = useState(true)
+    const [activeBorderVotes, setActiveBorderVotes] = useState(false)
+
+    function toggleBorderMainHide() {
+        setActiveBorderMain(true)
+        setActiveBorderVotes(false)
+    }
+    function toggleBorderVotesShow() {
+        setActiveBorderMain(false)
+        setActiveBorderVotes(true)
+    }
 
     const toogleInputSearch = () => {
         setShowInputSearch(true)
@@ -44,9 +55,9 @@ const Header = (props) => {
                 {/*-------Основная часть Header-------------------------------------------------------------------------------------*/}
                 <div className={'header__container _container'}>
                     <div className={'header__logotype-block'}>
-                        <img alt={'Logo'} src={logo_header} />
-                        <Link to={'/'}><span>Главная</span></Link>
-                        <Link to={'votes-page'}><span>Голосование</span></Link>
+                        <Link to={'/'}><img alt={'Logo'} src={logo_header} className={'logotype-block__logo'}/></Link>
+                        <span className={activeBorderMain ? 'logotype-block__main active' : 'logotype-block__main '}><Link onClick={() => {toggleBorderMainHide()}} to={'/'}>Главная</Link></span>
+                        <span className={activeBorderVotes ? 'logotype-block__votes active' : 'logotype-block__votes'}><Link onClick={() => {toggleBorderVotesShow()}} to={'votes-page'}>Голосования</Link></span>
                     </div>
                     <div className={'header__general-block-search-settings-lk'}>
                         <div onClick={() => toogleInputSearch()}  className={showInputSearch ? 'general-block-search-settings-lk__search active' : 'general-block-search-settings-lk__search'}>

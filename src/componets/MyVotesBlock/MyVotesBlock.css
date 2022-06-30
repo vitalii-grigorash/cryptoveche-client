@@ -155,10 +155,11 @@
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .my-votes-block-wrapper {
-        max-width: 343px;
-        height: 61px;
+        max-width: 600px;
+        width: 100%;
+        height: 60px;
     }
     .my-votes__link-arrow span {
         display: block;
