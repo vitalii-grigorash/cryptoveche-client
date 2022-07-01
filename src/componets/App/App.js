@@ -17,18 +17,18 @@ import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsV
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 
-const { getCrypto, getAlgorithmParameters } = require("pkijs/build");
-
 const {
+    getCrypto,
+    Attribute,
+    Extensions,
     AttributeTypeAndValue,
     Certificate,
-    BasicConstraints,
     Extension,
-    ExtKeyUsage
 } = require("pkijs/build");
+
 const asn1js = require("asn1js");
 
-const { arrayBufferToString, toBase64 } = require("pvutils");
+const { arrayBufferToString } = require("pvutils");
 
 function App() {
 
@@ -268,9 +268,12 @@ function App() {
     }
 
     function myTest(keys, commonName) {
+
         let context = {};
         let sequence = Promise.resolve();
+
         const pkcs10Simpl = new Certificate();
+
         let publicKey;
         let privateKey;
         const hashAlgorithm = "SHA-384";
@@ -278,17 +281,18 @@ function App() {
         const crypto = getCrypto();
 
         if (typeof crypto == "undefined") {
-            console.log("undefined")
+            console.log('No WebCrypto extension found');
+            return
         }
 
         pkcs10Simpl.version = 0;
 
-        // pkcs10Simpl.subject.types_and_values.push(new org.pkijs.simpl.ATTR_TYPE_AND_VALUE({
-        //     type: "2.5.4.3",
-        //     value: new org.pkijs.asn1.UTF8STRING({
-        //         value: commonName
-        //     })
-        // }));
+        pkcs10Simpl.issuer.typesAndValues.push(new AttributeTypeAndValue({
+            type: "2.5.4.3",
+            value: new asn1js.Utf8String({
+                value: commonName
+            })
+        }));
 
         pkcs10Simpl.attributes = [];
 
@@ -300,26 +304,25 @@ function App() {
             return pkcs10Simpl.subjectPublicKeyInfo.importKey(publicKey);
         });
 
-        // sequence = sequence.then(function (result) {
-        //     return crypto.digest({ name: "SHA-384" }
-        //         , pkcs10Simpl.subjectPublicKeyInfo.subjectPublicKey.value_block.value_hex);
-        // }).then(function (result) {
-        //     console.log(result);
-        //     pkcs10Simpl.attributes.push(new org.pkijs.simpl.ATTRIBUTE({
-        //         type: "1.2.840.113549.1.9.14",
-        //         values: [(new org.pkijs.simpl.EXTENSIONS({
-        //             extensions_array: [
-        //                 new org.pkijs.simpl.EXTENSION({
-        //                     extnID: "2.5.29.14",
-        //                     critical: false,
-        //                     extnValue: (new org.pkijs.asn1.OCTETSTRING({
-        //                         value_hex: result
-        //                     })).toBER(false)
-        //                 })
-        //             ]
-        //         })).toSchema()]
-        //     }));
-        // });
+        sequence = sequence.then(function (result) {
+            return crypto.subtle.digest({ name: "SHA-384" }
+                , pkcs10Simpl.subjectPublicKeyInfo.subjectPublicKey.valueBlock.valueHex);
+        }).then(function (result) {
+            pkcs10Simpl.attributes.push(new Attribute({
+                type: "1.2.840.113549.1.9.14",
+                values: [(new Extensions({
+                    extensions_array: [
+                        new Extension({
+                            extnID: "2.5.29.14",
+                            critical: false,
+                            extnValue: (new asn1js.OctetString({
+                                value_hex: result
+                            })).toBER(false)
+                        })
+                    ]
+                })).toSchema()]
+            }));
+        });
 
         sequence = sequence.then(function () {
             return pkcs10Simpl.sign(privateKey, hashAlgorithm);
@@ -336,8 +339,6 @@ function App() {
             context.content = '';
             console.log("Error signing PKCS#10: " + error);
         });
-
-        console.log(context);
 
         return sequence;
     }
@@ -361,7 +362,8 @@ function App() {
     }
 
     function enrollPromise(body, authHeader) {
-        console.log(body, authHeader);
+        console.log(body.certificate_request);
+        console.log(authHeader.Authorization);
         getFullConfig().then(
             config => {
                 const ip = `${config.ca_url}/enroll`;
@@ -539,7 +541,6 @@ function App() {
                     console.log(config);
                     authRequestPromise(body).then(
                         result => {
-                            console.log(result)
                             const userId = result["id"];
                             if (result["status"] === "failure") {
                                 console.log("not found");
@@ -551,8 +552,8 @@ function App() {
                             } else {
                                 const needEnroll = result["need_enroll"];
                                 const secret = result["secret"];
-                                const is_utc_offset_defined = result["is_utc_offset_defined"];
-                                const offset = result["utc_offset"];
+                                // const is_utc_offset_defined = result["is_utc_offset_defined"];
+                                // const offset = result["utc_offset"];
                                 needEnrollPromiseHandler(needEnroll, secret, result['token'], userId).then(
                                     enroll => {
                                         console.log(enroll);
