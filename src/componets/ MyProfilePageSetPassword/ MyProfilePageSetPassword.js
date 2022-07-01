@@ -65,6 +65,7 @@ const MyProfilePageSetPassword = () => {
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';
+            setErrorPass('')
         }
     },[newPass, repeatNewPass]);
 

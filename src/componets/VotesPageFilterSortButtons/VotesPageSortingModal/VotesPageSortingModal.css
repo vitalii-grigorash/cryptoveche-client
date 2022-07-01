@@ -52,7 +52,7 @@
     cursor: pointer;
     width: 12px;
     height: 12px;
-
+    display: none;
 }
 /*------Стилизация для всех div c типом сортировки------------------------------------------------------------------------*/
 .sorting-modal__types-sort {
@@ -132,5 +132,8 @@
     .sorting-modal__types-sort img {
         width: 28px;
         height: 28px;
+    }
+    .sorting-modal__content-title img {
+        display: initial;
     }
 }

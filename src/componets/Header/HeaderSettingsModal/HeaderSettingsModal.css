@@ -4,7 +4,7 @@
     min-width: 220px;
     height: 112px;
     position: absolute;
-    right: 40px;
+    right: 55px;
     top: 56px;
     opacity: 0;
     z-index: 2;
@@ -57,22 +57,23 @@
 @media (max-width: 992px) {
     .header-settings-modal__wrapper {
         top: 56px;
-        right: 52px;
+        right: 62px;
     }
 }
 /*------Адаптивная версия(660px)--------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
     .header-settings-modal__wrapper {
-        min-width: 200px;
-        right: 34px;
+        min-width: 180px;
+        right: 44px;
+        height: 90px;
     }
     .header-settings-modal__modal-content {
-        font-size: 14px;
+        font-size: 12px;
     }
     .modal-content__change-lang {
-        padding: 14px 14px;
+        padding: 8px 8px;
     }
     .modal-content__size-font {
-        padding: 14px 14px;
+        padding: 8px 8px;
     }
 }

@@ -58,14 +58,15 @@
 @media (max-width: 660px) {
     .header-my-profile-modal__wrapper {
         min-width: 180px;
+        height: 90px;
     }
     .header-my-profile-modal__modal-content {
-       font-size: 14px;
+       font-size: 12px;
     }
     .header-my-profile-modal__modal-content a {
-        padding: 14px 14px;
+        padding: 8px 8px;
     }
     .header-my-profile-modal__modal-content span {
-        padding: 14px 14px;
+        padding: 8px 8px;
     }
 }

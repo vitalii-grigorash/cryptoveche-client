@@ -31,6 +31,7 @@ const MyProfilePageAdditionalSettings = () => {
 
 
 
+
     return (
             <div className={'my-profile-page-add-settings__wrapper'}>
                 <h3>Дополнительные настройки</h3>
