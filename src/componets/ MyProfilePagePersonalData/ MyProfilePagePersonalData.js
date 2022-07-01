@@ -5,21 +5,24 @@ import {options} from "../../config";
 
 
 
+
 const MyProfilePagePersonalData = () => {
 
     const API_URL = options.apiUrl;
     const currentUser = React.useContext(CurrentUserContext);
-    console.log(currentUser)
+
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [secondName, setSecondName] = useState('')
     const [activeBtn, setActiveBtn] = useState(true)
     const btnChangeColor = useRef(null)
+    const [valid, setValid] = useState(false)
     const userId = currentUser.id
     const userEmail = currentUser.email
 
-    console.log(userId)
+
+
 
     useEffect(() => {
         if (firstName || lastName || secondName !== '') {
@@ -35,12 +38,43 @@ const MyProfilePagePersonalData = () => {
         }
     }, [firstName, lastName, secondName]);
 
+    const lastNameHandler = (e) => {
+        const nameRegExp = /^([а-яё]+|[a-z]+)$/i
+        setLastName(e.target.value)
+        if (!nameRegExp.test(e.target.value)) {
+            console.log('ErrorName')
+            setValid(true)
+        } else {
+            setValid(false)
+        }
+    }
+
+    const firstNameHandler = (e) => {
+        const nameRegExp = /^([а-яё]+|[a-z]+)$/i
+        setFirstName(e.target.value)
+        if (!nameRegExp.test(e.target.value)) {
+            console.log('ErrorName')
+            setValid(true)
+        } else {
+            setValid(false)
+        }
+    }
+
+    const secondNameHandler = (e) => {
+        const nameRegExp = /^([а-яё]+|[a-z]+)$/i
+        setSecondName(e.target.value)
+        if (!nameRegExp.test(e.target.value)) {
+            console.log('ErrorName')
+            setValid(true)
+        } else {
+            setValid(false)
+        }
+    }
+
 
     function updateUserName() {
-        const nameRegExp = /^([а-яё]+|[a-z]+)$/i
-        if (nameRegExp.test(firstName) === false) {
-            console.log('error')
-
+        if (valid === true) {
+            console.log('wrong data')
         } else {
 
             let item = {
@@ -79,39 +113,41 @@ const MyProfilePagePersonalData = () => {
             console.log(newItem)
         }
     }
+
+
         return (
-            <div className={'my-profile-page-personal-data__wrapper'}>
-                <h3 className={'my-profile-page-personal-data__title'}>Личные данные</h3>
-                    <h3 className={'my-profile-page-personal-data__title-mobile'}>ФИО</h3>
-                    <div className={'my-profile-page-personal-data__form'}>
+                <div className={'my-profile-page-personal-data__wrapper'}>
+                    <h3 className={'my-profile-page-personal-data__title'}>Личные данные</h3>
+                        <h3 className={'my-profile-page-personal-data__title-mobile'}>ФИО</h3>
+                        <div className={'my-profile-page-personal-data__form'}>
+                            <div className={'my-profile-page-personal-data__form-input'}>
+                            <label>Фамилия</label>
+                            <input
+                                type={"text"}
+                                value={lastName}
+                                onChange={e => lastNameHandler(e)}/>
+                        </div>
                         <div className={'my-profile-page-personal-data__form-input'}>
-                        <label>Фамилия</label>
-                        <input
-                            type={"text"}
-                            value={lastName}
-                            onChange={e => setLastName(e.target.value)}/>
+                            <label>Имя</label>
+                            <input
+                                type={"text"}
+                                value={firstName}
+                                onChange={e => firstNameHandler(e)}/>
+                        </div>
+                        <div className={'my-profile-page-personal-data__form-input'}>
+                            <label>Отчетсво</label>
+                            <input
+                                type={"text"}
+                                value={secondName}
+                                onChange={e => secondNameHandler(e)}/>
+                        </div>
+                        <div className={'my-profile-page-personal-data__form-input __my-profile-page-personal-date__hidden-e-mail'}>
+                            <label>E-mail</label>
+                            <input disabled={true} type={"email"} placeholder={userEmail}/>
+                        </div>
                     </div>
-                    <div className={'my-profile-page-personal-data__form-input'}>
-                        <label>Имя</label>
-                        <input
-                            type={"text"}
-                            value={firstName}
-                            onChange={e => setFirstName(e.target.value)}/>
-                    </div>
-                    <div className={'my-profile-page-personal-data__form-input'}>
-                        <label>Отчетсво</label>
-                        <input
-                            type={"text"}
-                            value={secondName}
-                            onChange={e => setSecondName(e.target.value)}/>
-                    </div>
-                    <div className={'my-profile-page-personal-data__form-input __my-profile-page-personal-date__hidden-e-mail'}>
-                        <label>E-mail</label>
-                        <input disabled={true} type={"email"} placeholder={userEmail}/>
-                    </div>
+                    <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUserName()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
                 </div>
-                <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUserName()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
-            </div>
     )
 }
 

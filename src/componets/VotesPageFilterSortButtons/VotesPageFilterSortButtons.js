@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './VotesPageFilterSortButtons.css';
 import votes_page_filters_icon from "../../img/VotesPageBlock_filter_icon.svg";
 import votes_page_sort_icon from "../../img/VotesPageBlock_sort_icon.svg";
