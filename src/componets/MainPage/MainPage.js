@@ -16,6 +16,7 @@ const API_URL = options.apiUrl;
 const MainPage = () => {
 
   const [statsData, setStatsData] = useState({});
+  const [myVotesData, setMyVotesData] = useState([]);
 
   useEffect(() => {
 
@@ -29,6 +30,20 @@ const MainPage = () => {
       }
     }
     getStatsData();
+
+
+      const getMyVotes = async () => {
+        try {
+          const response = await fetch(`${API_URL}/events/me`);
+          const json = await response.json();
+          setMyVotesData(json)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getMyVotes();
+      console.log(myVotesData); // Unauthorized request. Later need map array myVotesData 
+
   }, []);
 
 
@@ -39,8 +54,8 @@ const MainPage = () => {
       </div>
       <CounterBlock stats={statsData} />
       <div className={'main-content__my-votes-actual'}>
-        <MyVotesBlock />
-        <ActualBlock />
+        <MyVotesBlock myVotes={myVotesData}/>
+        <ActualBlock myVotes={myVotesData} />
         <ScanQRMobile />
       </div>
       <div className={'main-content__amount-votes-and-calendar-votes'}>
