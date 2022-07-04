@@ -17,6 +17,8 @@ import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsV
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 
+const pkijs = require('pkijs');
+
 const {
     getCrypto,
     Attribute,
@@ -28,7 +30,9 @@ const {
 
 const asn1js = require("asn1js");
 
-const { arrayBufferToString } = require("pvutils");
+console.log(asn1js);
+
+// const { arrayBufferToString } = require("pvutils");
 
 function App() {
 
@@ -267,87 +271,203 @@ function App() {
         }
     }
 
-    function myTest(keys, commonName) {
+    function arrayBufferToString(buffer) {
+        let resultString = "";
+        const view = new Uint8Array(buffer);
 
-        let context = {};
-        let sequence = Promise.resolve();
+        for (let i = 0; i < view.length; i++) {
+            resultString = resultString + String.fromCharCode(view[i]);
+        }
 
-        const pkcs10Simpl = new Certificate();
+        return resultString;
+    }
+
+    async function myTest(keys, commonName) {
+
+        const crypto = pkijs.getCrypto(true);
 
         let publicKey;
         let privateKey;
-        const hashAlgorithm = "SHA-384";
 
-        const crypto = getCrypto();
-
-        if (typeof crypto == "undefined") {
-            console.log('No WebCrypto extension found');
-            return
-        }
-
-        pkcs10Simpl.version = 0;
-
-        pkcs10Simpl.issuer.typesAndValues.push(new AttributeTypeAndValue({
-            type: "2.5.4.3",
-            value: new asn1js.Utf8String({
-                value: commonName
-            })
+        // Create certificate
+        const certificate = new pkijs.Certificate();
+        certificate.version = 0;
+        certificate.serialNumber = new asn1js.Integer({ value: 1 });
+        certificate.issuer.typesAndValues.push(new pkijs.AttributeTypeAndValue({
+            type: "2.5.4.3", // Common name
+            value: new asn1js.BmpString({ value: commonName })
+        }));
+        certificate.subject.typesAndValues.push(new pkijs.AttributeTypeAndValue({
+            type: "2.5.4.3", // Common name
+            value: new asn1js.BmpString({ value: commonName })
         }));
 
-        pkcs10Simpl.attributes = [];
+        certificate.notBefore.value = new Date();
+        const notAfter = new Date();
+        notAfter.setUTCFullYear(notAfter.getUTCFullYear() + 1);
+        certificate.notAfter.value = notAfter;
+
+        certificate.extensions = []; // Extensions are not a part of certificate by default, it's an optional array
+
+        // "BasicConstraints" extension
+        const basicConstr = new pkijs.BasicConstraints({
+            cA: true,
+            pathLenConstraint: 3
+        });
+        certificate.extensions.push(new pkijs.Extension({
+            extnID: "2.5.29.19",
+            critical: false,
+            extnValue: basicConstr.toSchema().toBER(false),
+            parsedValue: basicConstr // Parsed value for well-known extensions
+        }));
+
+        // "KeyUsage" extension
+        const bitArray = new ArrayBuffer(1);
+        const bitView = new Uint8Array(bitArray);
+        bitView[0] |= 0x02; // Key usage "cRLSign" flag
+        bitView[0] |= 0x04; // Key usage "keyCertSign" flag
+        const keyUsage = new asn1js.BitString({ valueHex: bitArray });
+        certificate.extensions.push(new pkijs.Extension({
+            extnID: "2.5.29.15",
+            critical: false,
+            extnValue: keyUsage.toBER(false),
+            parsedValue: keyUsage // Parsed value for well-known extensions
+        }));
+
+        // const algorithm = pkijs.getAlgorithmParameters("RSASSA-PKCS1-v1_5", "generateKey");
+        // if ("hash" in algorithm.algorithm) {
+        //     algorithm.algorithm.hash.name = "SHA-256";
+        // }
+
+        // const keys = await crypto.generateKey(algorithm.algorithm, true, algorithm.usages);
 
         publicKey = keys.publicKey;
         privateKey = keys.privateKey;
 
+        // Exporting public key into "subjectPublicKeyInfo" value of certificate
+        await certificate.subjectPublicKeyInfo.importKey(publicKey);
 
-        sequence = sequence.then(function () {
-            return pkcs10Simpl.subjectPublicKeyInfo.importKey(publicKey);
-        });
+        // Signing final certificate
+        await certificate.sign(privateKey, "SHA-384");
 
-        sequence = sequence.then(function (result) {
-            return crypto.subtle.digest({ name: "SHA-384" }
-                , pkcs10Simpl.subjectPublicKeyInfo.subjectPublicKey.valueBlock.valueHex);
-        }).then(function (result) {
-            pkcs10Simpl.attributes.push(new Attribute({
-                type: "1.2.840.113549.1.9.14",
-                values: [(new Extensions({
-                    extensions_array: [
-                        new Extension({
-                            extnID: "2.5.29.14",
-                            critical: false,
-                            extnValue: (new asn1js.OctetString({
-                                value_hex: result
-                            })).toBER(false)
-                        })
-                    ]
-                })).toSchema()]
-            }));
-        });
+        const raw = certificate.toSchema().toBER(false);
 
-        sequence = sequence.then(function () {
-            return pkcs10Simpl.sign(privateKey, hashAlgorithm);
-        }, function (error) {
-            context.content = '';
-            console.log("Error during exporting public key: " + error);
-        });
+        console.log(raw);
 
-        sequence = sequence.then(function () {
-            const pkcs10Schema = pkcs10Simpl.toSchema();
-            const pkcs10Encoded = pkcs10Schema.toBER(false);
-            return `-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(pkcs10Encoded))}\n-----END CERTIFICATE REQUEST-----`;
-        }, function (error) {
-            context.content = '';
-            console.log("Error signing PKCS#10: " + error);
-        });
+        console.log(certificate);
 
-        return sequence;
+        // const asn1 = asn1js.fromBER(raw);
+        // if (asn1.offset === -1) {
+        //     throw new Error("Incorrect encoded ASN.1 data");
+        // }
+
+        // const cert = new pkijs.Certificate({ schema: asn1.result });
+
+        // console.log(cert);
+
+        // return cert;
+
+        console.log(`-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(raw))}\n-----END CERTIFICATE REQUEST-----`);
+
+        return `-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(raw))}\n-----END CERTIFICATE REQUEST-----`
+
     }
+
+    // function myTest(keys, commonName) {
+
+    //     console.log(pkijs);
+
+    //     const context = {};
+    //     let sequence = Promise.resolve();
+    //     let pkcs10Simpl = new pkijs.Certificate();
+    //     let publicKey;
+    //     let privateKey;
+    //     const hashAlgorithm = "SHA-384";
+
+    //     const crypto = pkijs.getCrypto();
+
+    //     console.log(crypto);
+
+    //     if (typeof crypto == "undefined") {
+    //         console.log('No crypto')
+    //         context.content = '';
+    //     }
+
+    //     pkcs10Simpl.version = 0;
+
+    //     console.log(pkcs10Simpl);
+
+    //     pkcs10Simpl.subject.typesAndValues.push(new pkijs.AttributeTypeAndValue({
+    //         type: "2.5.4.3",
+    //         value: new asn1js.Utf8String({
+    //             value: commonName
+    //         })
+    //     }));
+
+    //     console.log(pkcs10Simpl);
+
+    //     pkcs10Simpl.attributes = [];
+
+    //     publicKey = keys.publicKey;
+    //     privateKey = keys.privateKey;
+
+
+    //     sequence = sequence.then(function () {
+    //         return pkcs10Simpl.subjectPublicKeyInfo.importKey(publicKey);
+    //     });
+
+    //     console.log(crypto);
+
+    //     sequence = sequence.then(function (result) {
+    //         return crypto.digest({ name: "SHA-384" }
+    //             , pkcs10Simpl.subjectPublicKeyInfo.subjectPublicKey.valueBlock.valueHexView);
+    //     }).then(function (result) {
+    //         console.log(result);
+    //         pkcs10Simpl.attributes.push(new pkijs.Attribute({
+    //             type: "1.2.840.113549.1.9.14",
+    //             values: [(new pkijs.Extensions({
+    //                 extensions_array: [
+    //                     new pkijs.Extension({
+    //                         extnID: "2.5.29.14",
+    //                         critical: false,
+    //                         extnValue: (new asn1js.OctetString({
+    //                             value_hex: result
+    //                         })).toBER(false)
+    //                     })
+    //                 ]
+    //             })).toSchema()]
+    //         }));
+    //     });
+
+    //     sequence = sequence.then(function () {
+    //         return pkcs10Simpl.sign(privateKey, hashAlgorithm);
+    //     }, function (error) {
+    //         context.content = '';
+    //         console.log("Error during exporting public key: " + error);
+    //     });
+
+    //     sequence = sequence.then(function () {
+    //         const pkcs10Schema = pkcs10Simpl.toSchema();
+    //         const pkcs10Encoded = pkcs10Schema.toBER(false);
+    //         console.log(`-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(pkcs10Encoded))}\n-----END CERTIFICATE REQUEST-----`)
+    //         return `-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(pkcs10Encoded))}\n-----END CERTIFICATE REQUEST-----`;
+    //     }, function (error) {
+    //         context.content = '';
+    //         console.log("Error signing PKCS#10: " + error);
+    //     });
+
+    //     console.log(sequence);
+
+    //     return sequence;
+
+    // }
 
     function formEnrollBody(keys, user) {
         return new Promise(async function (resolve, reject) {
             myTest(keys, user).then(
                 csr => {
                     if (csr) {
+                        console.log(csr.toString('base64'));
                         resolve({
                             "certificate_request": csr.toString('base64'),
                         });
@@ -362,10 +482,11 @@ function App() {
     }
 
     function enrollPromise(body, authHeader) {
-        console.log(body.certificate_request);
-        console.log(authHeader.Authorization);
+        console.log(body);
+        console.log(authHeader);
         getFullConfig().then(
             config => {
+                console.log(`${config.ca_url}/enroll`)
                 const ip = `${config.ca_url}/enroll`;
                 return fetch(`${ip}`, {
                     method: 'POST',
@@ -375,12 +496,12 @@ function App() {
                     },
                     body: JSON.stringify(body)
                 })
-                    .then(res => res.ok ? res : Promise.reject(res))
-                    .then((res) => {
-                        if (res.ok) {
-                            return res.json();
-                        }
-                    })
+                    // .then(res => res.ok ? res : Promise.reject(res))
+                    // .then((res) => {
+                    //     if (res.ok) {
+                    //         return res.json();
+                    //     }
+                    // })
                     .then((data) => {
                         return data;
                     })
@@ -694,36 +815,36 @@ function App() {
     //     }
     // }
 
-    useEffect(() => {
-        if (localStorage.getItem('user')) {
-            const userData = localStorage.getItem('user');
-            const user = JSON.parse(userData);
-            createUserName(user);
-            setLoggedIn(true);
-            setCurrentUser(user);
-            if (
-                pathname === '/auth' ||
-                pathname === '/forget-password' ||
-                pathname === '/reset' ||
-                pathname === '/reg-page' ||
-                pathname === '/reg-second-page'
-            ) {
-                navigate('/');
-            }
-        } else {
-            if (
-                pathname === '/' ||
-                pathname === '/call-voting-page' ||
-                pathname === '/my-profile' ||
-                pathname === '/details-vote' ||
-                pathname === '/result-vote' ||
-                pathname === '/votes-page'
-            ) {
-                logout();
-            }
-        }
-        // eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     if (localStorage.getItem('user')) {
+    //         const userData = localStorage.getItem('user');
+    //         const user = JSON.parse(userData);
+    //         createUserName(user);
+    //         setLoggedIn(true);
+    //         setCurrentUser(user);
+    //         if (
+    //             pathname === '/auth' ||
+    //             pathname === '/forget-password' ||
+    //             pathname === '/reset' ||
+    //             pathname === '/reg-page' ||
+    //             pathname === '/reg-second-page'
+    //         ) {
+    //             navigate('/');
+    //         }
+    //     } else {
+    //         if (
+    //             pathname === '/' ||
+    //             pathname === '/call-voting-page' ||
+    //             pathname === '/my-profile' ||
+    //             pathname === '/details-vote' ||
+    //             pathname === '/result-vote' ||
+    //             pathname === '/votes-page'
+    //         ) {
+    //             logout();
+    //         }
+    //     }
+    //     // eslint-disable-next-line
+    // }, []);
 
     function hideRegEmailErrors() {
         setEmailErrorMessage('');
