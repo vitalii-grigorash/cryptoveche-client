@@ -1,18 +1,33 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarVotes.css';
 import CalendarVotesStartEndRegVoteEvent from "./CalendarVotesStartEndRegVoteEvent/CalendarVotesStartEndRegVoteEvent";
-// import CalendarVotesTimeTable from "../CalendarVotesTimeTable/CalendarVotesTimeTable";
-// import {isVisible} from "@testing-library/user-event/dist/utils";
+import CalendarVotesTimeTable from "../CalendarVotesTimeTable/CalendarVotesTimeTable";
+
+
+
 
 const CalendarVotes = () => {
 
+
     // const [showCalendarList, setShowCalendarList] = useState(false);
 
-    function clickDays() {
-        console.log('Click Days');
+
+    let dataVote = '14.07.2022'
+
+    const [valueData, setValueData] = useState(new Date());
+
+
+    function onChange() {
+            setValueData(valueData)
+
     }
+
+     console.log(valueData)
+
+
+
 
     return (
         <div className={'calendar-container main-content__elem1'}>
@@ -33,7 +48,13 @@ const CalendarVotes = () => {
                     <div className={'orange__circle'}></div>
                     <div className={'green__circle'}></div>
                     <div className={'red__circle'}></div>
-                    <Calendar onClickDay={clickDays} />
+                    <Calendar
+
+                        value={valueData}
+                        onChange={onChange}
+                        locale={"ru-RU"}
+
+                    />
                 </div>
             </div>
             {/*<CalendarVotesTimeTable/>*/}

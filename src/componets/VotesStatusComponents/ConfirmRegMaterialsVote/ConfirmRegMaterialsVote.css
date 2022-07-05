@@ -26,7 +26,7 @@
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        padding: 10px 24px 0 12px;
+        padding: 8px 24px 0 12px;
         gap: 12px;
     }
     .materials-vote__status-icon {

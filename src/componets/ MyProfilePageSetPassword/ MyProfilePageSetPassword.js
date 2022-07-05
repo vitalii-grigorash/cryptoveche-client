@@ -55,7 +55,7 @@ const MyProfilePageSetPassword = () => {
             setShowIconRepeatPass(true)
         } else {
             setShowIconRepeatPass(false)
-        } if (newPass && repeatNewPass !== '') {
+        } if (newPass || repeatNewPass !== '') {
             setActiveBtn(false);
             btnChangeColor.current.style.background = '#0084FE';
             btnChangeColor.current.style.color = '#FFFFFF';
@@ -82,6 +82,8 @@ const MyProfilePageSetPassword = () => {
             console.log('Complete')
             console.log(activeBtn)
             setActiveBtn(true)
+            setNewPass('')
+            setRepeatNewPass('')
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';

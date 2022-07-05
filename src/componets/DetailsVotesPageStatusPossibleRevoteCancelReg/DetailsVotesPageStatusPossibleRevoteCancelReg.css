@@ -4,7 +4,8 @@
     flex-direction: column;
     border-left: 1px solid rgba(54, 59, 77, 0.2);
     height: 58px;
-    padding: 4px 0 0 24px;
+    gap: 4px;
+    padding: 2px 0 0 24px;
 }
 /*-----Стилизация div  элементами-------------------------------------------------------------------------------------*/
 .details-votes-page-status-possible-revote-cancelreg__possible-revote {
