@@ -10,10 +10,10 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "all": "^0.0.0",
-    "asn1js": "^3.0.5",
+    "asn1js": "^1.2.0",
     "bizcharts": "^4.1.15",
     "hammerjs": "^2.0.8",
-    "pkijs": "^3.0.5",
+    "pkijs": "^1.2.0",
     "pvutils": "^1.1.3",
     "react": "^17.0.2",
     "react-calendar": "^3.7.0",
@@ -23,7 +23,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start",
+    "start-https": "HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
