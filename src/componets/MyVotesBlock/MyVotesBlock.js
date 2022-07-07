@@ -3,13 +3,15 @@ import './MyVotesBlock.css';
 import icon_arrow from '../../img/MyVotes_icon_arrow.svg';
 import { Link } from "react-router-dom";
 // import { options } from '../../config';
-import { myVotesDataTest } from '../../testMyEvents';
+import { testMyEventsData } from '../../testMyEvents';
 import MyVotesBlockForm from './MyVotesBlockForm'
 
 // const API_URL = options.apiUrl;
 
 
 const MyVotesBlock = ({ myVotesData }) => {
+
+	const myVotesDataTest = testMyEventsData.slice(0, 2)
 
 	useEffect(() => {
 

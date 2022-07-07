@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-expressions
-export const myVotesDataTest = [
+export const testMyEventsData = [
 	{
 		"owner": {
 			"user_id": "d.kirillov@spbu.ru",
