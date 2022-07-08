@@ -17,6 +17,12 @@ import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsV
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 
+const idb = require('idb');
+
+console.log(idb);
+
+let db;
+
 const pkijs = require('pkijs');
 const asn1js = require("asn1js/org/pkijs/asn1");
 const common = require('pkijs/org/pkijs/common');
@@ -555,15 +561,109 @@ function App() {
         });
     }
 
+    function errorHandler(error) {
+        console.log(error);
+        if (error.text && error.text === 'Unauthorized request') {
+            console.log('Unauthorized request');
+        }
+        console.log('exit');
+    }
+
+    async function init() {
+        try {
+            db = await idb.openDB('appData', 1, db => {
+                db.createObjectStore('keyPairs', { keyPath: 'key' });
+            });
+        } catch (e) {
+            console.log('Could not initialize indexDB, switch to localStorage');
+            db = localStorage;
+        }
+    }
+
+    init();
+
+    async function deleteKey(key = "") {
+        if (db === localStorage) {
+            db.removeItem(key);
+        } else {
+            if (!db) {
+                await init();
+            }
+            let tx = db.transaction('keyPairs', 'readwrite');
+
+            await tx.objectStore('keyPairs').delete(key);
+        }
+    }
+
+    async function addKeyPair(key = "", value = "") {
+        if (db === localStorage) {
+            db.setItem(key, JSON.stringify(value));
+        } else {
+            if (!db) {
+                await init();
+            }
+            console.log(db)
+            let tx = db.transaction('keyPairs', 'readwrite');
+            try {
+                await tx.objectStore('keyPairs').put({ key, value });
+            } catch (err) {
+                console.log(err);
+                if (err.name === 'ConstraintError') {
+                    deleteKey(key);
+                    addKeyPair(key, value);
+                    console.log('Such keyPair has existed!');
+                } else {
+                    throw err;
+                }
+            }
+        }
+    }
+
+    function setSt(data) {
+        return new Promise(function (resolve, reject) {
+            resolve(addKeyPair('st', data));
+        });
+    }
+
+    function setUser(data) {
+        return new Promise(function (resolve, reject) {
+            resolve(addKeyPair('userData', data));
+        });
+    }
+
+    function setUserId(data) {
+        return new Promise(function (resolve, reject) {
+            resolve(addKeyPair('userId', data));
+        });
+    }
+
+    function utf8_to_b64(str) {
+        return window.btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function updateProfile(last_name, first_name, second_name, user_id) {
+        const lastName = "userLastName";
+        const firstName = "userFirstName";
+        const secondName = "userSecondName";
+        const userId = "userId";
+        document.cookie = `${lastName}=${utf8_to_b64(last_name)}; samesite=strict; path=/`;
+        document.cookie = `${firstName}=${utf8_to_b64(first_name)}; samesite=strict; path=/`;
+        document.cookie = `${secondName}=${utf8_to_b64(second_name)}; samesite=strict; path=/`;
+        document.cookie = `${userId}=${utf8_to_b64(user_id)}; samesite=strict; path=/`;
+    }
+
     function authRequestPost(email, password) {
         getSystemConfig()
             .then(
                 results => {
                     const config = results;
                     const body = getAuthBody(email, password);
+                    console.log(body);
                     authRequestPromise(body).then(
                         result => {
+                            console.log(result);
                             const userId = result["id"];
+                            console.log(userId);
                             if (result["status"] === "failure") {
                                 console.log("not found");
                                 if (config.systemType !== 'soviet') {
@@ -574,11 +674,17 @@ function App() {
                             } else {
                                 const needEnroll = result["need_enroll"];
                                 const secret = result["secret"];
-                                // const is_utc_offset_defined = result["is_utc_offset_defined"];
-                                // const offset = result["utc_offset"];
+                                const st = result["email"];
+                                const first_name = result["first_name"];
+                                const second_name = result["second_name"];
+                                const last_name = result["last_name"];
+                                const is_utc_offset_defined = result["is_utc_offset_defined"];
+                                const offset = result["utc_offset"];
+                                // setSt(st).then(setUser(result).then(setUserId(userId).then(
+                                // results => {
+                                updateProfile(last_name, first_name, second_name, userId);
                                 needEnrollPromiseHandler(needEnroll, secret, result['token'], userId).then(
                                     enroll => {
-                                        console.log(enroll);
                                         // brokerForUserNewEvents(userId, config);
                                         // if (is_utc_offset_defined) {
                                         //     setOffset(offset);
@@ -593,14 +699,20 @@ function App() {
                                         //         }, 1000);
                                         //     },
                                         //     error => {
-                                        //         console.log(error);
+                                        //         errorHandler(error);
                                         //     }
                                         // );
                                     },
                                     error => {
-                                        console.log(error);
+                                        errorHandler(error);
                                     }
                                 );
+                                // }
+                                // ))).catch(
+                                //     error => {
+                                //         errorHandler(error);
+                                //     }
+                                // );
                             }
 
                         }
