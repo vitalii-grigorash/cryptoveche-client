@@ -16,12 +16,9 @@ import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
+import { options } from '../../config';
 
 const idb = require('idb');
-
-console.log(idb);
-
-let db;
 
 const pkijs = require('pkijs');
 const asn1js = require("asn1js/org/pkijs/asn1");
@@ -95,25 +92,43 @@ function App() {
 
 
 
+    let db;
 
-    const getFullConfig = () => {
-        return fetch(`https://client.cryptoveche.local/fullConfig`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.ok ? res : Promise.reject(res))
-            .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-            })
-            .then(data => data)
-            .catch((err) => {
-                throw new Error(err.message);
+    async function init() {
+        try {
+            // правильно openDB (разобраться, почему не можем обратиться к методу 'transaction' on 'IDBDatabase')
+            // пока сохраняется в localstorage(что тоже пока ОК)
+            db = await idb.openDb('appData', 1, db => {
+                db.createObjectStore('keyPairs', { keyPath: 'key' });
             });
+        } catch (e) {
+            console.log('Could not initialize indexDB, switch to localStorage');
+            db = localStorage;
+        }
     }
+
+    useEffect(() => {
+        init();
+    }, []);
+
+    // const getFullConfig = () => {
+    //     return fetch(`https://client.cryptoveche.local/fullConfig`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.ok ? res : Promise.reject(res))
+    //         .then((res) => {
+    //             if (res.ok) {
+    //                 return res.json();
+    //             }
+    //         })
+    //         .then(data => data)
+    //         .catch((err) => {
+    //             throw new Error(err.message);
+    //         });
+    // }
 
     function b64_to_utf8(str) {
         return decodeURIComponent(escape(window.atob(str)));
@@ -166,33 +181,33 @@ function App() {
 
     function getSystemConfig() {
         return new Promise(function (resolve, reject) {
-            getFullConfig().then(
-                config => {
-                    const lang = getLang() ? getLang() : 'ru';
-                    const type = config.system_type;
-                    const ws = config.ws_connect;
-                    const wsUser = config.ws_user;
-                    const wsPass = config.ws_pass;
-                    const phoneEnable = config.enable_phone;
-                    switch (config.system_type) {
-                        case 'political':
-                            resolve(systemConfigGenerator(true, true, false, false, config.enable_esia, true, config.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
-                            break;
-                        case 'soviet':
-                            resolve(systemConfigGenerator(false, false, true, false, false, true, config.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
-                            break;
-                        case 'ras':
-                            resolve(systemConfigGenerator(true, true, false, false, false, false, config.lang, "/img/ras.svg", false, type, ws, wsUser, wsPass, phoneEnable));
-                            break;
-                        case 'tosna':
-                            resolve(systemConfigGenerator(true, true, false, false, config.enable_esia, true, config.lang, `/img/tosna_${lang}.svg`, true, type, ws, wsUser, wsPass, phoneEnable));
-                            break;
-                        default:
-                            reject(config);
-                            break;
-                    }
-                }
-            );
+            // getFullConfig().then(
+            //     config => {
+            const lang = getLang() ? getLang() : 'ru';
+            const type = options.system_type;
+            const ws = options.ws_connect;
+            const wsUser = options.ws_user;
+            const wsPass = options.ws_pass;
+            const phoneEnable = options.enable_phone;
+            switch (options.system_type) {
+                case 'political':
+                    resolve(systemConfigGenerator(true, true, false, false, options.enable_esia, true, options.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
+                    break;
+                case 'soviet':
+                    resolve(systemConfigGenerator(false, false, true, false, false, true, options.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
+                    break;
+                case 'ras':
+                    resolve(systemConfigGenerator(true, true, false, false, false, false, options.lang, "/img/ras.svg", false, type, ws, wsUser, wsPass, phoneEnable));
+                    break;
+                case 'tosna':
+                    resolve(systemConfigGenerator(true, true, false, false, options.enable_esia, true, options.lang, `/img/tosna_${lang}.svg`, true, type, ws, wsUser, wsPass, phoneEnable));
+                    break;
+                default:
+                    reject(options);
+                    break;
+            }
+            // }
+            // );
         });
     }
 
@@ -205,7 +220,7 @@ function App() {
     }
 
     function authRequestPromise(body) {
-        return fetch(`https://client.cryptoveche.local:443/api/auth`, {
+        return fetch(`${options.java_api_url}/auth`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -220,6 +235,7 @@ function App() {
                 }
             })
             .then((data) => {
+                console.log(data);
                 return data;
             })
             .catch((err) => {
@@ -255,7 +271,7 @@ function App() {
     }
 
     function newSecretPromise(token) {
-        return fetch(`https://client.cryptoveche.local:443/api/users/secret/${token}`, {
+        return fetch(`${options.java_api_url}/users/secret/${token}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -269,6 +285,7 @@ function App() {
                 }
             })
             .then((data) => {
+                console.log(data);
                 return data;
             })
             .catch((err) => {
@@ -409,35 +426,32 @@ function App() {
     }
 
     function enrollPromise(body, authHeader) {
-        console.log(body);
-        console.log(authHeader);
-        getFullConfig().then(
-            config => {
-                console.log(`${config.ca_url}/enroll`)
-                const ip = `${config.ca_url}/enroll`;
-                return fetch(`${ip}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': authHeader.Authorization
-                    },
-                    body: JSON.stringify(body)
-                })
-                    // .then(res => res.ok ? res : Promise.reject(res))
-                    // .then((res) => {
-                    //     if (res.ok) {
-                    //         return res.json();
-                    //     }
-                    // })
-                    .then((data) => {
-                        console.log(data);
-                        return data;
-                    })
-                    .catch((err) => {
-                        throw new Error(err.message);
-                    });
-            }
-        );
+        // getFullConfig().then(
+        //     config => {
+        const ip = `${options.ca_url}/enroll`;
+        return fetch(`${ip}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authHeader.Authorization
+            },
+            body: JSON.stringify(body)
+        })
+            // .then(res => res.ok ? res : Promise.reject(res))
+            // .then((res) => {
+            //     if (res.ok) {
+            //         return res.json();
+            //     }
+            // })
+            .then((data) => {
+                console.log(data);
+                return data;
+            })
+            .catch((err) => {
+                throw new Error(err.message);
+            });
+        //     }
+        // );
     }
 
     async function exportKey(keys) {
@@ -482,7 +496,7 @@ function App() {
     function newCertPromise(body) {
         return new Promise(function (resolve, reject) {
             fetch({
-                url: `https://client.cryptoveche.local:443/api/auth`,
+                url: `${options.java_api_url}/auth`,
                 crossDomain: true,
                 data: JSON.stringify(body),
                 cache: false,
@@ -569,19 +583,6 @@ function App() {
         console.log('exit');
     }
 
-    async function init() {
-        try {
-            db = await idb.openDB('appData', 1, db => {
-                db.createObjectStore('keyPairs', { keyPath: 'key' });
-            });
-        } catch (e) {
-            console.log('Could not initialize indexDB, switch to localStorage');
-            db = localStorage;
-        }
-    }
-
-    init();
-
     async function deleteKey(key = "") {
         if (db === localStorage) {
             db.removeItem(key);
@@ -602,7 +603,6 @@ function App() {
             if (!db) {
                 await init();
             }
-            console.log(db)
             let tx = db.transaction('keyPairs', 'readwrite');
             try {
                 await tx.objectStore('keyPairs').put({ key, value });
@@ -680,39 +680,39 @@ function App() {
                                 const last_name = result["last_name"];
                                 const is_utc_offset_defined = result["is_utc_offset_defined"];
                                 const offset = result["utc_offset"];
-                                // setSt(st).then(setUser(result).then(setUserId(userId).then(
-                                // results => {
-                                updateProfile(last_name, first_name, second_name, userId);
-                                needEnrollPromiseHandler(needEnroll, secret, result['token'], userId).then(
-                                    enroll => {
-                                        // brokerForUserNewEvents(userId, config);
-                                        // if (is_utc_offset_defined) {
-                                        //     setOffset(offset);
-                                        // }
-                                        // getCurrentEventId().then(
-                                        //     eventId => {
-                                        //         let waitBroker = setInterval(() => {
-                                        //             if (newEvents.size == 0) {
-                                        //                 authRouter(eventId);
-                                        //                 clearInterval(waitBroker);
-                                        //             }
-                                        //         }, 1000);
-                                        //     },
-                                        //     error => {
-                                        //         errorHandler(error);
-                                        //     }
-                                        // );
-                                    },
+                                setSt(st).then(setUser(result).then(setUserId(userId).then(
+                                    results => {
+                                        updateProfile(last_name, first_name, second_name, userId);
+                                        needEnrollPromiseHandler(needEnroll, secret, result['token'], userId).then(
+                                            enroll => {
+                                                // brokerForUserNewEvents(userId, config);
+                                                // if (is_utc_offset_defined) {
+                                                //     setOffset(offset);
+                                                // }
+                                                // getCurrentEventId().then(
+                                                //     eventId => {
+                                                //         let waitBroker = setInterval(() => {
+                                                //             if (newEvents.size == 0) {
+                                                //                 authRouter(eventId);
+                                                //                 clearInterval(waitBroker);
+                                                //             }
+                                                //         }, 1000);
+                                                //     },
+                                                //     error => {
+                                                //         errorHandler(error);
+                                                //     }
+                                                // );
+                                            },
+                                            error => {
+                                                errorHandler(error);
+                                            }
+                                        );
+                                    }
+                                ))).catch(
                                     error => {
                                         errorHandler(error);
                                     }
                                 );
-                                // }
-                                // ))).catch(
-                                //     error => {
-                                //         errorHandler(error);
-                                //     }
-                                // );
                             }
 
                         }
