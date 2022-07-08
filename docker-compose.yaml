@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  edemes-frontend:
+    container_name: crypto-veche
+    restart: always
+    build: .
+    image: crypto-veche:latest
+    ports:
+      - 3000:3000
