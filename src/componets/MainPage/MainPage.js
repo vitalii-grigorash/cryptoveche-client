@@ -42,7 +42,7 @@ const MainPage = () => {
         }
       }
       getMyVotes();
-      console.log(myVotesData); // Unauthorized request. Later need map array myVotesData 
+      // console.log(myVotesData); // Unauthorized request. Later need map array myVotesData 
 
   }, []);
 

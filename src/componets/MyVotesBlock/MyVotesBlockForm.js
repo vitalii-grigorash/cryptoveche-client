@@ -3,6 +3,9 @@ import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/Curren
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import { myVotesBlockData } from '../../myVotesBlockData';
+import { useEffect } from 'react';
+import moment from 'moment';
+
 
 const MyVotesBlockForm = ({ votesData }) => {
 
@@ -12,6 +15,15 @@ const MyVotesBlockForm = ({ votesData }) => {
 
 	const startEventDate = votesData.event_start_time.slice(0, 10)
 	const startEventTime = votesData.event_start_time.slice(10, votesData.event_start_time.length)
+
+	
+	const compareDateRegEvents = (date) => {
+		const dateAndTimeNow = `${moment().format('L')} ${moment().format('LTS')}`.slice(0, -3);
+		if (date === votesData.registration_start_time) { // 
+
+		}
+	} // toDO
+	
 
 	return (
 		<div className={'my-votes-block__vote-form'}>
