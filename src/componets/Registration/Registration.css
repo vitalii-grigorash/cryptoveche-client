@@ -471,6 +471,12 @@ a {
     top: 88px;
 }
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
+@media (max-height: 800px) {
+    .wrapper-reg {
+        overflow: auto;
+    }
+}
+
 @media (max-width: 1108px) {
     .container-reg {
         max-width: 800px;
