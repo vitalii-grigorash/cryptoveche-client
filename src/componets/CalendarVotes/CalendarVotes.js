@@ -16,7 +16,7 @@ const CalendarVotes = () => {
     const [showCalendarList, setShowCalendarList] = useState(false);
     const [showBackRow, setShowBackRow] = useState(false)
     const [valueData, setValueData] = useState(new Date());
-    const [valueDay, setValueDay] = useState(new Date())
+    const [getEventDay, setGetEventDay] = useState(false)
 
     const dayStartVote = new Date(events_calendar.event_start_time).getDate()
     const monthStartVote = new Date(events_calendar.event_start_time).getMonth()
@@ -45,15 +45,12 @@ const CalendarVotes = () => {
         setShowCalendarList(false)
         setShowBackRow(false)
     }
+
     const toggleCalendarHideGetCurrentDay = (date) => {
         setShowCalendar(false)
         setShowCalendarList(true)
         setShowBackRow(true)
-        setValueDay(date.getDate())
-
-        return (
-            console.log(valueDay)
-        )
+        setGetEventDay(date.getDate())
     }
 
     const addColorDotsCalendar = ({date}) => {
@@ -140,7 +137,7 @@ const CalendarVotes = () => {
                 </div>
             )}
             {showCalendarList && (
-                <CalendarVotesTimeTable/>
+                <CalendarVotesTimeTable active={getEventDay}/>
             )
             }
         </div>

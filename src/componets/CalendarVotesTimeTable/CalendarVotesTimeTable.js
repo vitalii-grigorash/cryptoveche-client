@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useEffect, useMemo} from "react";
 import './CalendarVotesTimeTable.css';
 import CalendarVotesTimeTableDayVote
     from "./CalendarVotesTimeTableDayVote/CalendarVotesTimeTableDayVote/CalendarVotesTimeTableDayVote";
 import CalendarVotesTimeTableListVote from "./CalendarVotesTimeTableListVote/CalendarVotesTimeTableListVote";
 // import {events_calendar} from "./test_events_json";
 
-const CalendarVotesTimeTable = () => {
+const CalendarVotesTimeTable = ({active}) => {
 
+       let currentDate = active;
+       console.log(currentDate)
 
+       useEffect(() => {
+               if(currentDate === 26) {
+                   console.log('succsecc')
+
+                   
+               }
+       },[currentDate])
 
 
     return (
