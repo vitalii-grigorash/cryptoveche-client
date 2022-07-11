@@ -15,7 +15,6 @@ const CalendarVotesTimeTableListVote = (props) => {
         eventEndReg,
         eventStartVote,
         eventEndVote,
-        timeEventRegVote,
         eventTimeStartReg,
         eventTimeEndReg,
         eventTimeStartVote,
@@ -30,22 +29,24 @@ const CalendarVotesTimeTableListVote = (props) => {
                             <div className={'calendar-votes-timetable-list__event-reg-vote'}>
                                 {/*<CalendarVotesStartEndRegVoteEvent colorCircle={colorCircle} eventName={eventName}/>*/}
                                 <div className={'event-reg-vote__circle-event-name'}>
+                                    <div className={'circle-event-name__start-reg'}>
                                         <div className={'color__circle'} style={{backgroundColor: colorCircleStartReg}}></div>
-                                        <span className={'calendar-votes-start-end-reg-vote__name-event'}>{eventStartReg}</span>
+                                        <span className={'circle-event-name__name-event'}>{eventStartReg}</span>
+                                    </div>
                                     <span className={'calendar-votes-timetable-list__time-vote'}>{eventTimeEndReg}</span>
                                     <div className={'circle-event-name__end-reg'}>
                                         <div className={'color__circle-end-reg'} style={{backgroundColor: colorCircleEndReg}}></div>
-                                        <span className={'calendar-votes-start-end-reg-vote__name-event'}>{eventEndReg}</span>
+                                        <span className={'circle-event-name__name-event'}>{eventEndReg}</span>
                                     </div>
                                     <span className={'calendar-votes-timetable-list__time-vote'}>{eventTimeStartVote}</span>
                                     <div className={'circle-event-name__start-vote'}>
                                         <div className={'color__circle-start-vote'} style={{backgroundColor: colorCircleStartVote}}></div>
-                                        <span className={'calendar-votes-start-end-reg-vote__name-event'}>{eventStartVote}</span>
+                                        <span className={'circle-event-name__name-event'}>{eventStartVote}</span>
                                     </div>
                                     <span className={'calendar-votes-timetable-list__time-vote'}>{eventTimeEndVote}</span>
                                     <div className={'circle-event-name__end-vote'} >
                                         <div className={'color__circle-end-vote'} style={{backgroundColor: colorCircleEndVote}}></div>
-                                        <span className={'calendar-votes-start-end-reg-vote__name-event'}>{eventEndVote}</span>
+                                        <span className={'circle-event-name__name-event'}>{eventEndVote}</span>
                                     </div>
                                 </div>
                             </div>

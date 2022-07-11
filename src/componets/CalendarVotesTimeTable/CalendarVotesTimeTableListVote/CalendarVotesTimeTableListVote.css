@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     height: 50%;
+
 }
 .calendar-votes-timetable-list__time-vote {
     font-size: 16px;
@@ -35,6 +36,11 @@
     display: flex;
     flex-direction: column;
 }
+/*------Блок для синего кружка---------------------------------------------------------------------------------------*/
+.circle-event-name__start-reg {
+    position: relative;
+    padding-left: 16px;
+}
 .color__circle {
     width: 8px;
     height: 8px;
@@ -43,9 +49,14 @@
     right: 172px;
     top: 9px;
 }
+.circle-event-name__name-event {
+
+}
+
 /*------Блок для оранжевого кружка---------------------------------------------------------------------------------------*/
 .circle-event-name__end-reg {
     position: relative;
+    padding-left: 16px;
 }
 
 .color__circle-end-reg {
@@ -54,11 +65,12 @@
     border-radius: 100%;
     position: absolute;
     right: 172px;
-    top: 8px;
+    top: 9px;
 }
 /*------Блок для зеленого кружка---------------------------------------------------------------------------------------*/
 .circle-event-name__start-vote {
     position: relative;
+    padding-left: 16px;
 }
 .color__circle-start-vote {
     width: 8px;
@@ -66,11 +78,12 @@
     border-radius: 100%;
     position: absolute;
     right: 172px;
-    top: 8px;
+    top: 9px;
 }
 /*------Блок для красного кружка---------------------------------------------------------------------------------------*/
 .circle-event-name__end-vote {
     position: relative;
+    padding-left: 16px;
 }
 .color__circle-end-vote {
     width: 8px;
@@ -78,7 +91,7 @@
     border-radius: 100%;
     position: absolute;
     right: 172px;
-    top: 8px;
+    top: 9px;
 }
 
 /*------Адаптивная версия----------------------------------------------------------------------------------------------*/

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './CalendarVotesTimeTable.css';
 import CalendarVotesTimeTableDayVote
     from "./CalendarVotesTimeTableDayVote/CalendarVotesTimeTableDayVote/CalendarVotesTimeTableDayVote";
@@ -20,10 +20,12 @@ const CalendarVotesTimeTable = (props) => {
        let currentMonth = activeMonth
        let currentYear = activeYear
 
-
+       const [startVoteEvent, setStartVoteEvent] = useState(false)
+       const [endVoteEvent, setVoteEvent] = useState(false)
+       const [startRegEvent, setStartRegEvent] = useState(false)
+       const [endRegEvent, setRegEvent] = useState(false)
        const currentDays = ['', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
        const currentMonths = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-
        const colors_circle = ['#49B3FF', '#FF8A00', '#4ED4A9', '#FF4970'];
 
 
@@ -46,16 +48,19 @@ const CalendarVotesTimeTable = (props) => {
                              <CalendarVotesTimeTableListVote
                                    key={item.id}
                                    id={item.id}
-                                   eventStartReg={currentDay ? 'Начало регистрации' : null}
-                                   eventEndReg={currentDay ? 'Конец регистрации' : null}
-                                   eventStartVote={currentDay ? 'Начало голосования' : null}
-                                   eventEndVote={currentDay ? 'Конец голосования' : null}
-                                   colorCircleStartReg={currentDay ? colors_circle[0] : null}
-                                   colorCircleEndReg={currentDay ? colors_circle[1] : null}
-                                   colorCircleStartVote={currentDay ? colors_circle[2] : null}
-                                   colorCircleEndVote={currentDay ? colors_circle[3] : null}
+                                   eventStartReg={startRegEvent ? 'Начало регистрации' : null}
+                                   eventEndReg={endRegEvent ? 'Конец регистрации' : null}
+                                   eventStartVote={startVoteEvent ? 'Начало голосования' : null}
+                                   eventEndVote={endVoteEvent ? 'Конец голосования' : null}
+                                   colorCircleStartReg={startRegEvent ? colors_circle[0] : null}
+                                   colorCircleEndReg={endRegEvent ? colors_circle[1] : null}
+                                   colorCircleStartVote={startVoteEvent ? colors_circle[2] : null}
+                                   colorCircleEndVote={endVoteEvent ? colors_circle[3] : null}
                                    votingTheme={item.title}
-                                   timeEventRegVote={item.event_end_time}
+                                   eventTimeStartReg={startRegEvent? item.registration_start_time : null}
+                                   eventTimeEndReg={endRegEvent ? item.registration_end_time : null}
+                                   eventTimeStartVote={startVoteEvent ? item.event_start_time : null}
+                                   eventTimeEndVote={endVoteEvent ? item.event_end_time : null}
                              />
                          )})
                 }
