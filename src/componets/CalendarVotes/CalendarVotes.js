@@ -16,23 +16,30 @@ const CalendarVotes = () => {
     const [showCalendarList, setShowCalendarList] = useState(false);
     const [showBackRow, setShowBackRow] = useState(false)
     const [valueData, setValueData] = useState(new Date());
-    const [getEventDay, setGetEventDay] = useState(false)
+    const [getEventDay, setGetEventDay] = useState(new Date())
+    const [getEventDate, setGetEventDate] = useState(new Date())
+    const [getEventMonth, setGetEventMonth] = useState(new Date())
+    const [getEventYear, setGetEventYear] = useState(new Date())
 
-    const dayStartVote = new Date(events_calendar.event_start_time).getDate()
-    const monthStartVote = new Date(events_calendar.event_start_time).getMonth()
-    const yearStartVote = new Date(events_calendar.event_start_time).getFullYear()
 
-    const dayEndVote = new Date(events_calendar.event_end_time).getDate()
-    const monthEndVote = new Date(events_calendar.event_end_time).getMonth()
-    const yearEndVote = new Date(events_calendar.event_end_time).getFullYear()
 
-    const dayStartReg = new Date(events_calendar.registration_start_time).getDate()
-    const monthStartReg = new Date(events_calendar.registration_start_time).getMonth()
-    const yearStartReg = new Date(events_calendar.registration_start_time).getFullYear()
+    const dayStartVote = new Date(events_calendar[0].event_start_time).getDate()
+    const monthStartVote = new Date(events_calendar[0].event_start_time).getMonth()
+    const yearStartVote = new Date(events_calendar[0].event_start_time).getFullYear()
 
-    const dayEndReg = new Date(events_calendar.registration_end_time).getDate()
-    const monthEndReg = new Date(events_calendar.registration_end_time).getMonth()
-    const yearEndReg = new Date(events_calendar.registration_end_time).getFullYear()
+    const dayEndVote = new Date(events_calendar[0].event_end_time).getDate()
+    const monthEndVote = new Date(events_calendar[0].event_end_time).getMonth()
+    const yearEndVote = new Date(events_calendar[0].event_end_time).getFullYear()
+
+    const dayStartReg = new Date(events_calendar[0].registration_start_time).getDate()
+    const monthStartReg = new Date(events_calendar[0].registration_start_time).getMonth()
+    const yearStartReg = new Date(events_calendar[0].registration_start_time).getFullYear()
+
+    const dayEndReg = new Date(events_calendar[0].registration_end_time).getDate()
+    const monthEndReg = new Date(events_calendar[0].registration_end_time).getMonth()
+    const yearEndReg = new Date(events_calendar[0].registration_end_time).getFullYear()
+
+
 
 
     const onChange = date => {
@@ -50,7 +57,10 @@ const CalendarVotes = () => {
         setShowCalendar(false)
         setShowCalendarList(true)
         setShowBackRow(true)
-        setGetEventDay(date.getDate())
+        setGetEventDay(date.getDay())
+        setGetEventDate(date.getDate())
+        setGetEventMonth(date.getMonth())
+        setGetEventYear(date.getFullYear())
     }
 
     const addColorDotsCalendar = ({date}) => {
@@ -60,7 +70,7 @@ const CalendarVotes = () => {
             searchStartVote: date.getDate() === dayStartVote && date.getMonth() === monthStartVote && date.getFullYear() === yearStartVote,
             searchEndVote: date.getDate() === dayEndVote && date.getMonth() === monthEndVote && date.getFullYear() === yearEndVote
         }
-        const num = [
+        const content = [
             dateRegVote.searchStartRegDate
                 ? <div className={'blue__circle'}></div>
                 : null,
@@ -74,7 +84,7 @@ const CalendarVotes = () => {
                 ? <div className={'red__circle'}></div>
                 : null
         ]
-        return React.Children.toArray(num)
+        return React.Children.toArray(content)
     }
 
     const activeEventButton = ({date}) => {
@@ -102,7 +112,6 @@ const CalendarVotes = () => {
                 : null
         } else return null;
     }
-
 
     return (
         <div className={'calendar-container main-content__elem1'}>
@@ -137,7 +146,7 @@ const CalendarVotes = () => {
                 </div>
             )}
             {showCalendarList && (
-                <CalendarVotesTimeTable active={getEventDay}/>
+                <CalendarVotesTimeTable activeDay={getEventDay} activeDate={getEventDate} activeMonth={getEventMonth} activeYear={getEventYear}/>
             )
             }
         </div>

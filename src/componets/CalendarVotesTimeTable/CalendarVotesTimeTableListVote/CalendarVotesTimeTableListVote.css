@@ -28,7 +28,60 @@
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
 }
-/*------Адаптивная версия()------------------------------------------------------------------------------------------*/
+.event-reg-vote__circle-event-name {
+    position: relative;
+    min-width: 180px;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+}
+.color__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 172px;
+    top: 9px;
+}
+/*------Блок для оранжевого кружка---------------------------------------------------------------------------------------*/
+.circle-event-name__end-reg {
+    position: relative;
+}
+
+.color__circle-end-reg {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 172px;
+    top: 8px;
+}
+/*------Блок для зеленого кружка---------------------------------------------------------------------------------------*/
+.circle-event-name__start-vote {
+    position: relative;
+}
+.color__circle-start-vote {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 172px;
+    top: 8px;
+}
+/*------Блок для красного кружка---------------------------------------------------------------------------------------*/
+.circle-event-name__end-vote {
+    position: relative;
+}
+.color__circle-end-vote {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    right: 172px;
+    top: 8px;
+}
+
+/*------Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1120px) {
     .calendar-votes-timetable-list__wrapper {
         padding: 12px 0 12px 0;
@@ -55,5 +108,8 @@
         font-size: 12px;
         line-height: 27px;
         width: 140px;
+    }
+    .event-reg-vote__circle-event-name {
+
     }
 }

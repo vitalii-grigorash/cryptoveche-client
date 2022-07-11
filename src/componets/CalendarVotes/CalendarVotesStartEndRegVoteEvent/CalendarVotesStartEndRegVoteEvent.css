@@ -26,7 +26,6 @@
     }
     .calendar-votes-start-end-reg-vote__wrapper {
         position: relative;
-        min-width: 130px;
         white-space: nowrap;
     }
 }

@@ -1,9 +1,11 @@
 import React from "react";
 import './CalendarVotesTimeTableDayVote.css';
 
-const CalendarVotesTimeTableDayVote = ({colorDay, dayWeek, calendarDate}) => {
+const CalendarVotesTimeTableDayVote = (props) => {
 
-
+    const {
+        colorDay, dayWeek, calendarDate
+    } = props;
 
     return (
             <div className={'calendar-votes-timetable-day__wrapper'}>

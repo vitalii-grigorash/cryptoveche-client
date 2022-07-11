@@ -1,4 +1,5 @@
 export const events_calendar =
+    [
     {
         "owner": {
             "user_id": "d.kirillov@spbu.ru",
@@ -9,7 +10,7 @@ export const events_calendar =
         "registration_start_time": "07/18/2022 16:28",
         "registration_end_time": "07/21/2022 16:31",
         "event_start_time": "07/22/2022 16:31",
-        "event_end_time": "07/26/2022 16:35",
+        "event_end_time": "07/25/2022 16:35",
         "re_registration": false,
         "re_voting": false,
         "quorum": "0",
@@ -113,3 +114,4 @@ export const events_calendar =
         "id": "fc9b5a5e-ddb1-4e78-96c7-cd1bf93e35a5",
         "title": "Голосование по очень важному вопросу"
     }
+]
