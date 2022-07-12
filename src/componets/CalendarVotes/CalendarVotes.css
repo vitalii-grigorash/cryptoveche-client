@@ -262,6 +262,7 @@
     }
     .calendar-container__run-end-vote {
         padding: 0 0 16px 0;
+        gap: 0;
     }
     .red__circle {
         width: 4px;

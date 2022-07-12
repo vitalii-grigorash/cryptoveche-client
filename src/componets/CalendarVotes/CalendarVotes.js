@@ -10,6 +10,7 @@ import calendar_row_back from "../../img/CalendarVotesTimeTable_back_row.svg";
 
 
 
+
 const CalendarVotes = () => {
 
     const [showCalendar, setShowCalendar] = useState(true)
@@ -20,7 +21,6 @@ const CalendarVotes = () => {
     const [getEventDate, setGetEventDate] = useState(new Date())
     const [getEventMonth, setGetEventMonth] = useState(new Date())
     const [getEventYear, setGetEventYear] = useState(new Date())
-
 
 
     const dayStartVote = new Date(events_calendar[0].event_start_time).getDate()
@@ -38,9 +38,6 @@ const CalendarVotes = () => {
     const dayEndReg = new Date(events_calendar[0].registration_end_time).getDate()
     const monthEndReg = new Date(events_calendar[0].registration_end_time).getMonth()
     const yearEndReg = new Date(events_calendar[0].registration_end_time).getFullYear()
-
-
-
 
     const onChange = date => {
         if (date instanceof Date) {

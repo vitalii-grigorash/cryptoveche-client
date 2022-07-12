@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-height: 20vh;
+    max-height: 40vh;
     overflow: auto;
-    max-height: 53vh;
     position: relative;
 }
-
 .calendar-votes-timetable__events-block {
 
 }
@@ -27,10 +27,9 @@
 @media (max-width: 420px) {
     .calendar-votes-timetable__hidden-border {
         top: 70px;
-
     }
     .calendar-votes-timetable__wrapper {
-        max-height: 45vh;
+        min-height: 15vh;
     }
 
 }

@@ -78,6 +78,10 @@
         align-items: stretch;
         gap: 7px;
     }
+    .main-content__grid-item_1{order: 0}
+    .main-content__grid-item_2{order: 3}
+    .main-content__grid-item_3{order: 4}
+    .main-content__grid-item_4{order: 1}
 }
 @media (max-width: 420px) {
     .my-profile-page__wrapper {
@@ -98,8 +102,5 @@
         cursor: pointer;
         min-height: 40px;
     }
-    .main-content__grid-item_1{order: 0}
-    .main-content__grid-item_2{order: 3}
-    .main-content__grid-item_3{order: 4}
-    .main-content__grid-item_4{order: 1}
+
 }
