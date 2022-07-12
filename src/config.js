@@ -1,5 +1,4 @@
-export const options = {
-    apiUrl: 'https://client.cryptoveche.local:443/api',
+export const config = {
     local_port: "8886",
     node_ca_url: "http://evote65-vm.dltc.spbu.ru:3000",
     java_api_url: "https://client.cryptoveche.local:443/api",

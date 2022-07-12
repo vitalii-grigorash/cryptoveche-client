@@ -16,7 +16,7 @@ import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
-import { options } from '../../config';
+import { config } from '../../config';
 
 const idb = require('idb');
 
@@ -111,24 +111,9 @@ function App() {
         init();
     }, []);
 
-    // const getFullConfig = () => {
-    //     return fetch(`https://client.cryptoveche.local/fullConfig`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(res => res.ok ? res : Promise.reject(res))
-    //         .then((res) => {
-    //             if (res.ok) {
-    //                 return res.json();
-    //             }
-    //         })
-    //         .then(data => data)
-    //         .catch((err) => {
-    //             throw new Error(err.message);
-    //         });
-    // }
+    useEffect(() => {
+        console.log(db)
+    }, [db]);
 
     function b64_to_utf8(str) {
         return decodeURIComponent(escape(window.atob(str)));
@@ -181,33 +166,29 @@ function App() {
 
     function getSystemConfig() {
         return new Promise(function (resolve, reject) {
-            // getFullConfig().then(
-            //     config => {
             const lang = getLang() ? getLang() : 'ru';
-            const type = options.system_type;
-            const ws = options.ws_connect;
-            const wsUser = options.ws_user;
-            const wsPass = options.ws_pass;
-            const phoneEnable = options.enable_phone;
-            switch (options.system_type) {
+            const type = config.system_type;
+            const ws = config.ws_connect;
+            const wsUser = config.ws_user;
+            const wsPass = config.ws_pass;
+            const phoneEnable = config.enable_phone;
+            switch (config.system_type) {
                 case 'political':
-                    resolve(systemConfigGenerator(true, true, false, false, options.enable_esia, true, options.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
+                    resolve(systemConfigGenerator(true, true, false, false, config.enable_esia, true, config.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
                     break;
                 case 'soviet':
-                    resolve(systemConfigGenerator(false, false, true, false, false, true, options.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
+                    resolve(systemConfigGenerator(false, false, true, false, false, true, config.lang, `/img/logo_${lang}.svg`, false, type, ws, wsUser, wsPass, phoneEnable));
                     break;
                 case 'ras':
-                    resolve(systemConfigGenerator(true, true, false, false, false, false, options.lang, "/img/ras.svg", false, type, ws, wsUser, wsPass, phoneEnable));
+                    resolve(systemConfigGenerator(true, true, false, false, false, false, config.lang, "/img/ras.svg", false, type, ws, wsUser, wsPass, phoneEnable));
                     break;
                 case 'tosna':
-                    resolve(systemConfigGenerator(true, true, false, false, options.enable_esia, true, options.lang, `/img/tosna_${lang}.svg`, true, type, ws, wsUser, wsPass, phoneEnable));
+                    resolve(systemConfigGenerator(true, true, false, false, config.enable_esia, true, config.lang, `/img/tosna_${lang}.svg`, true, type, ws, wsUser, wsPass, phoneEnable));
                     break;
                 default:
-                    reject(options);
+                    reject(config);
                     break;
             }
-            // }
-            // );
         });
     }
 
@@ -220,7 +201,7 @@ function App() {
     }
 
     function authRequestPromise(body) {
-        return fetch(`${options.java_api_url}/auth`, {
+        return fetch(`${config.java_api_url}/auth`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -271,7 +252,7 @@ function App() {
     }
 
     function newSecretPromise(token) {
-        return fetch(`${options.java_api_url}/users/secret/${token}`, {
+        return fetch(`${config.java_api_url}/users/secret/${token}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -393,7 +374,6 @@ function App() {
         sequence = sequence.then(function () {
             const pkcs10Schema = pkcs10Simpl.toSchema();
             const pkcs10Encoded = pkcs10Schema.toBER(false);
-            console.log(pkcs10Encoded.byteLength)
             console.log(`-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(pkcs10Encoded))}\n-----END CERTIFICATE REQUEST-----`)
             return `-----BEGIN CERTIFICATE REQUEST-----\n${window.btoa(arrayBufferToString(pkcs10Encoded))}\n-----END CERTIFICATE REQUEST-----`;
         }, function (error) {
@@ -403,7 +383,7 @@ function App() {
 
         console.log(sequence);
 
-        // return sequence;
+        return sequence;
     }
 
     function formEnrollBody(keys, user) {
@@ -426,9 +406,7 @@ function App() {
     }
 
     function enrollPromise(body, authHeader) {
-        // getFullConfig().then(
-        //     config => {
-        const ip = `${options.ca_url}/enroll`;
+        const ip = `${config.ca_url}/enroll`;
         return fetch(`${ip}`, {
             method: 'POST',
             headers: {
@@ -437,12 +415,12 @@ function App() {
             },
             body: JSON.stringify(body)
         })
-            // .then(res => res.ok ? res : Promise.reject(res))
-            // .then((res) => {
-            //     if (res.ok) {
-            //         return res.json();
-            //     }
-            // })
+            .then(res => res.ok ? res : Promise.reject(res))
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
             .then((data) => {
                 console.log(data);
                 return data;
@@ -450,8 +428,6 @@ function App() {
             .catch((err) => {
                 throw new Error(err.message);
             });
-        //     }
-        // );
     }
 
     async function exportKey(keys) {
@@ -496,7 +472,7 @@ function App() {
     function newCertPromise(body) {
         return new Promise(function (resolve, reject) {
             fetch({
-                url: `${options.java_api_url}/auth`,
+                url: `${config.java_api_url}/auth`,
                 crossDomain: true,
                 data: JSON.stringify(body),
                 cache: false,

@@ -1,6 +1,6 @@
-import { options } from '../config';
+import { config } from '../config';
 
-const API_URL = options.apiUrl;
+const API_URL = config.java_api_url;
 
 export const getFullConfig = () => {
     return fetch(`https://client.cryptoveche.local/fullConfig`, {
