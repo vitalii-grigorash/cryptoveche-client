@@ -11,7 +11,7 @@ const CalendarVotes = () => {
     // const [showCalendarList, setShowCalendarList] = useState(false);
 
     function clickDays() {
-        console.log('Click Days');
+        // console.log('Click Days');
     }
 
     return (

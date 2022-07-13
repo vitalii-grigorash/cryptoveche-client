@@ -9,13 +9,13 @@ const MyProfilePagePersonalData = () => {
 
     const API_URL = options.apiUrl;
     const currentUser = React.useContext(CurrentUserContext);
-                console.log(currentUser)
+                // console.log(currentUser)
 
      const [firstName, setFirstName] = useState('')
      const userId = currentUser.id
 
-        console.log(firstName)
-        console.log(userId)
+        // console.log(firstName)
+        // console.log(userId)
 
     function updateUser() {
                 let item = {
@@ -46,7 +46,7 @@ const MyProfilePagePersonalData = () => {
                         console.log(err);
                     }
                 });
-        console.log(firstName)
+        // console.log(firstName)
         }
 
 

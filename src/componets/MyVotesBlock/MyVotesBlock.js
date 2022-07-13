@@ -15,7 +15,7 @@ const MyVotesBlock = ({ myVotesData }) => {
 
 	useEffect(() => {
 
-		console.log(myVotesDataTest);
+		// console.log(myVotesDataTest);
 
 	}, []);
 
