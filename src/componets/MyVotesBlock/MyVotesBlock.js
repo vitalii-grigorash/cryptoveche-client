@@ -33,7 +33,7 @@ const MyVotesBlock = () => {
                     <div className={'reg-form__status-block'}>
                         <CurrentStatusVote regStatus={myVotesRegStatus} voteStatus={myVotesVoteStatus}/>
                         <StartDateVote dateTimeDate={myVotesStartDateVote} dateTimeWatch={myVotesStartTimeVote}/>
-                        <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={myVotesConfirmStatus}/></div>
+                        <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={myVotesConfirmStatus} colorActiveReg={'#FF2957'}/></div>
                     </div>
                     <button className={'reg-form__button-reg'}>Зарегистрироваться</button>
                 </div>
@@ -44,7 +44,7 @@ const MyVotesBlock = () => {
                         <div className={'vote-form__status-block'}>
                             <CurrentStatusVote regStatus={runVotesRegStatus} voteStatus={runVotesVoteStatus}/>
                             <StartDateVote dateTimeDate={runVotesStartDateVote} dateTimeWatch={runVotesStartTimeVote}/>
-                            <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus}/></div>
+                            <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus} activeIconReg={true}/></div>
                         </div>
                         <div className={'votes-form__button-vote-cancel-reg'}>
                             <button className={'button-vote'}>Проголосовать</button>

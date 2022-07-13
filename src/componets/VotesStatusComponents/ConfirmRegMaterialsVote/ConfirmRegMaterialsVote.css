@@ -17,6 +17,9 @@
 .status-icon__color-status {
     color: #FF4970;
 }
+.status-icon__color-status-reg {
+    color: #4ED4A9;
+}
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
     .status-block__materials-vote {

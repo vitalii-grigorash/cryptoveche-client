@@ -7,6 +7,7 @@ import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestio
 const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, answerSelected}) => {
 
 
+
     return (
             <div className={'call-voting-page-question-card-list__wrapper'}>
                     <div className={'call-voting-page-question-card-list__title'}>
@@ -16,7 +17,7 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, answerSelected
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     <div className={'call-voting-page-question-card-list__main-content'}>
-                        <CallVotingList labelCheckbox={'Да'}/>
+                        <CallVotingList labelCheckbox={'Да'} activeCheck={false}/>
                         <CallVotingList labelCheckbox={'Нет'}/>
                         <CallVotingList labelCheckbox={'Дайте подумать'}/>
                     </div>

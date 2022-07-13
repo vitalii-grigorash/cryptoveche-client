@@ -19,6 +19,7 @@ const CalendarVotesTimeTable = (props) => {
        let currentDate = activeDate;
        let currentMonth = activeMonth + 1;
        let currentYear = activeYear;
+
        const currentEventDate =  `0` + currentMonth + '/' + currentDate + '/' + currentYear;
        const [startVoteEvent, setStartVoteEvent] = useState(false);
        const [endVoteEvent, setEndVoteEvent] = useState(false);
@@ -31,39 +32,41 @@ const CalendarVotesTimeTable = (props) => {
        const dateEventEndReg = events_calendar[0].registration_end_time.substring(0, 10);
        const dateEventStartVote = events_calendar[0].event_start_time.substring(0, 10);
        const dateEventEndVote = events_calendar[0].event_end_time.substring(0, 10);
+       const [colorEventDay, setColorEventDay] = useState('#49B3FF')
 
-
-       console.log(dateEventStartReg)
-       console.log(currentEventDate)
 
         useEffect(() => {
             if(dateEventStartReg === currentEventDate) {
                 setStartRegEvent(true)
+                setColorEventDay('#49B3FF')
             }
         }, [currentEventDate, dateEventStartReg])
 
         useEffect(() => {
              if(dateEventEndReg === currentEventDate) {
                 setEndRegEvent(true)
+                setColorEventDay('#FF8A00')
             }
         }, [currentEventDate, dateEventEndReg])
 
         useEffect(() => {
             if(dateEventStartVote === currentEventDate) {
                 setStartVoteEvent(true)
+                setColorEventDay('#4ED4A9')
             }
         }, [currentEventDate, dateEventStartVote])
 
         useEffect(() => {
             if(dateEventEndVote === currentEventDate) {
                 setEndVoteEvent(true)
+                setColorEventDay('#FF4970')
             }
         }, [currentEventDate, dateEventEndVote])
 
     return (
             <div className={'calendar-votes-timetable__wrapper'}>
                 <div>
-                    <CalendarVotesTimeTableDayVote calendarDate={`${currentDate} ${currentMonths[currentMonth]} ${currentYear} года`} dayWeek={currentDays[currentDay]} colorDay={'сегодня'}/>
+                    <CalendarVotesTimeTableDayVote calendarDate={`${currentDate} ${currentMonths[currentMonth]} ${currentYear} года`} dayWeek={currentDays[currentDay]} colorDay={colorEventDay}/>
                 </div>
                 <div className={'calendar-votes-timetable__hidden-border'}>
                 </div>

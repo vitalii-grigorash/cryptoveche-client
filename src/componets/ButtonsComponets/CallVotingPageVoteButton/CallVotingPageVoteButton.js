@@ -6,6 +6,9 @@ const CallVotingPageVoteButton = () => {
     return (
         <>
             <button className={'call-voting-page-vote-button__button'}>Проголосовать</button>
+            <button className={'call-voting-page-vote-button__button'}>Проголосовать</button>
+            <button className={'call-voting-page-vote-button__button'}>Проголосовать</button>
+            <button className={'call-voting-page-vote-button__button'}>Проголосовать</button>
         </>
     )
 }

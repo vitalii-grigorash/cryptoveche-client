@@ -12,7 +12,7 @@ const CalendarVotesTimeTableDayVote = (props) => {
                 <span className={'calendar-votes-timetable-day__calendar-date'}>{calendarDate}</span>
                 <div className={'calendar-votes-timetable-day__day-week'}>
                     <span>{dayWeek},</span>
-                    <span style={{color: '#49B3FF'}}>{colorDay}</span>
+                    <span style={{color: colorDay}}>сегодня</span>
                 </div>
             </div>
     )

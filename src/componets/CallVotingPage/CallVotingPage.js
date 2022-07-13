@@ -15,6 +15,8 @@ import {useNavigate} from "react-router-dom";
      const linkDetailsPage = useNavigate();
 
 
+
+
      return (
              <div className={'call-voting-page__wrapper'}>
                <TitleVotesDetailsCallVotingProfile
@@ -27,8 +29,8 @@ import {useNavigate} from "react-router-dom";
                      <span className={'call-voting-page-title__details-icon'} onClick={() => linkDetailsPage('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
                      <DetailsVotesPageDaysEndRegStartVote/>
-                     <CallVotingPageQuestionCardList titleName={'1. Согласны ли вы с решением №576?'} chooseAnswer={'Выберите ровно 1'} answerSelected={'Выбрано: 0'}/>
-                     <CallVotingPageQuestionCardList titleName={'2. Как должен происходить процесс выбора делегатов конференции?'} chooseAnswer={'Выберите больше или ровно 2'} answerSelected={'Выбрано: 0'}/>
+                     <CallVotingPageQuestionCardList titleName={'1. Согласны ли вы с решением №576?'} chooseAnswer={'Необходимо выбрать ровно 1'} answerSelected={'Сейчас выбрано: 0'}/>
+                     <CallVotingPageQuestionCardList titleName={'2. Как должен происходить процесс выбора делегатов конференции?'} chooseAnswer={'Необходимо выбрать ровно 1'} answerSelected={'Сейчас выбрано: 0'}/>
                      <CallVotingPageQuestionCardList titleName={'3. Выберите кандидата на позицию делегата Ученого Совета СПбГУ. '} chooseAnswer={'Голосование выражается оставлением (голосование “за”) или зачеркиванием (голосование “против”) ФИО кандидатуры. Оставляется не более одной кандидатуры. В противном случае бюллетень считается недействительным'} answerSelected={'Выбрано: 0'}/>
                      <CallVotingPageQuestionCardCheckBox titleName={'4. Выберите кандидата на позицию делегата Ученого Совета СПбГУ.'} chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'} answerSelected={'Выбрано: 0'} nameFirstColumn={'Против'} nameSecondColumn={'Воздержаться'} nameThirdColumn={'За'}/>
                      <CallVotingPageQuestionCardCheckBox titleName={'5. Выберите лучшего композитора мира. '} chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'} answerSelected={'Выбрано: 0'} nameFirstColumn={'Против'} nameSecondColumn={'За'} nameThirdColumn={'Воздержаться'}/>
