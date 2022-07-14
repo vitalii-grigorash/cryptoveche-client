@@ -23,6 +23,10 @@ const CalendarVotes = () => {
     const [getEventYear, setGetEventYear] = useState(new Date())
 
 
+<<<<<<< HEAD
+    function clickDays() {
+        // console.log('Click Days');
+=======
     const dayStartVote = new Date(events_calendar[0].event_start_time).getDate()
     const monthStartVote = new Date(events_calendar[0].event_start_time).getMonth()
     const yearStartVote = new Date(events_calendar[0].event_start_time).getFullYear()
@@ -108,6 +112,7 @@ const CalendarVotes = () => {
                 ? 'active_event_button'
                 : null
         } else return null;
+>>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
     }
 
     return (
