@@ -18,6 +18,21 @@
     color: rgba(54, 59, 77, 0.9);
     padding-bottom: 32px;
 }
+.calendar-container-timetable__title-row {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 27px;
+}
+.calendar-container-timetable__title-row span {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgba(54, 59, 77, 0.9);
+    line-height: 32px;
+}
+.title-row__row {
+    cursor: pointer;
+}
 /*------Стили для блока "Начало и конец регистрацич"-------------------------------------------------------------------*/
 .calendar-container__run-end-vote {
     display: flex;
@@ -38,9 +53,9 @@
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    position: absolute;
-    right: 203px;
-    top: 225px;
+    /*position: absolute;*/
+    /*right: 39px;*/
+    /*top: 44px;*/
     background-color: #49B3FF;
 }
 
@@ -48,30 +63,32 @@
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    position: absolute;
-    right: 210px;
-    top: 355px;
+    /*position: absolute;*/
+    /*right: 39px;*/
+    /*top: 44px;*/
     background-color: #FF8A00;
 }
 .green__circle {
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    position: absolute;
-    right: 217px;
-    top: 225px;
+    /*position: absolute;*/
+    /*right: 39px;*/
+    /*top: 44px;*/
     background-color: #4ED4A9;
 }
 .red__circle {
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    position: absolute;
-    right: 40px;
-    top: 225px;
+    /*position: absolute;*/
+    /*right: 39px;*/
+    /*top: 44px;*/
     background-color: #FF4970;
 }
-
+.active_event_button {
+    pointer-events: visible;
+}
 /*------Cтилизация календаря-----------------------------------------------------------------------------------------*/
 .calendar-block {
     position: relative;
@@ -79,8 +96,13 @@
 .react-calendar {
     border: white;
     width: 100%;
+    pointer-events: none;
 }
-.react-calendar .react-calendar__month-view__days button {
+.react-calendar__tile--now {
+    background: #CACCCF;
+    color: rgba(54, 59, 77, 0.9);
+}
+.react-calendar__month-view__days button {
     border-right: 1px rgba(54, 59, 77, 0.4) solid;
     border-top: 1px rgba(54, 59, 77, 0.4) solid;
 }
@@ -89,7 +111,7 @@
 }
 
 .react-calendar button:enabled:hover {
-    cursor: inherit;
+    cursor: pointer;
 }
 
 .react-calendar__navigation__label {
@@ -98,12 +120,15 @@
     max-width: 265px;
     color: rgba(54, 59, 77, 0.9);
 }
-
+.react-calendar__navigation button:hover {
+    background: none;
+}
 .react-calendar__navigation button:enabled:hover {
     background: none;
-    pointer-events: none;
 }
-
+.react-calendar__navigation button:enabled:focus {
+    background: none;
+}
 .react-calendar__month-view__weekdays__weekday {
     padding: 0 24px 24px 24px;
     border-right: 1px solid rgba(54, 59, 77, 0.2);
@@ -114,30 +139,47 @@
 .react-calendar__navigation {
     justify-content: center;
     cursor: pointer;
+    pointer-events: visible;
 }
 .react-calendar__month-view__days__day {
-    padding: 24px 24px;
+    /*padding: 24px 24px;*/
     font-size: 18px;
     opacity: 0.7;
+    position: relative;
     /*z-index: 3;*/
-    /*pointer-events: none;*/
+    width: 75px;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    gap: 4px;
 }
-
+.react-calendar__month-view__days__day abbr {
+    position: absolute;
+    top: 30px;
+    margin: 0 15px;
+}
 .react-calendar__month-view__weekdays__weekday abbr {
     text-decoration: none;
     font-size: 18px;
     color: rgba(54, 59, 77, 0.4);
     font-weight: 400;
-}
+    cursor: pointer;
 
+}
 .react-calendar__navigation__label::first-letter {
     text-transform: capitalize;
 }
-.react-calendar__tile--now {
-    background: #CACCCF;
-}
 
-/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия-------------------------------------------------------------------------------------------*/
+@media (max-width: 1070px) {
+    .calendar-container-timetable__title-row span  {
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 138%;
+    }
+}
 @media (max-width: 830px) {
     .calendar-container {
         padding: 16px 16px 16px 16px;
@@ -152,7 +194,6 @@
         font-weight: 500;
         padding-bottom: 16px;
     }
-
     .calendar-container__run-end-vote span {
         font-size: 12px;
     }
@@ -164,11 +205,14 @@
     }
     .react-calendar__month-view__weekdays__weekday {
         padding: 0 2px 2px 2px;
-
     }
     .react-calendar__month-view__days__day {
-        padding: 5px 5px;
         font-size: 16px;
+        width: 60px;
+        height: 60px;
+    }
+    .react-calendar__month-view__days__day abbr{
+        top: 25px;
     }
     .react-calendar__month-view__weekdays__weekday abbr {
         text-decoration: none;
@@ -178,24 +222,81 @@
         height: 30px;
     }
     .react-calendar .react-calendar__month-view__days button {
-      border: none;
+        border: none;
     }
     .react-calendar__month-view__weekdays__weekday {
-       border: none;
-    }
-    .red__circle, .blue__circle, .green__circle, .orange__circle {
-        display: none;
+        border: none;
     }
     .run-end-vote {
         gap: 8px;
     }
+    .red__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .green__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .blue__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .orange__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
 }
+
 @media (max-width: 420px) {
     .calendar-container {
         min-width: 343px;
     }
     .calendar-container__run-end-vote {
-     padding: 0 0 16px 0;
+        padding: 0 0 16px 0;
+        gap: 0;
     }
-
+    .red__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .green__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .blue__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .orange__circle {
+        width: 4px;
+        height: 4px;
+        top: 35px;
+        left: 22px;
+    }
+    .calendar-container-timetable__title-row {
+        gap: 16px;
+    }
+    .react-calendar__month-view__days__day {
+        font-size: 16px;
+        width: 50px;
+        height: 55px;
+    }
+    .react-calendar__month-view__days__day abbr{
+        top: 20px;
+    }
 }

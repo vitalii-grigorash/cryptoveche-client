@@ -16,7 +16,7 @@ const TitleVotesDetailsCallVotingProfile = ({firstLetter, secondLetter, titleNam
                         <span>{secondLetter}</span>
                     </div>
                     <div className={'page-info__link-back-row'}>
-                        <span><Link to={'/main'}><img alt={'стрелка для возврата'} src={row_link_back} hidden={hiddenRowBack}/></Link></span>
+                        <span><Link to={'/'}><img alt={'стрелка для возврата'} src={row_link_back} hidden={hiddenRowBack}/></Link></span>
                         <span>{mobileLetter}</span>
                     </div>
                 </div>

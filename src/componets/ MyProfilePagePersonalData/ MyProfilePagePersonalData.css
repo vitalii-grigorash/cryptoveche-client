@@ -71,11 +71,13 @@
     }
     .my-profile-page-personal-data__form-input {
         gap: 8px;
+
     }
     .my-profile-page-personal-data__form-input input {
         font-size: 16px;
         line-height: 22px;
         height: 40px;
+        padding: 12px 0 12px 12px;
     }
     .my-profile-page-personal-data__form-input label {
         font-size: 16px;
