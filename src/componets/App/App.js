@@ -61,21 +61,21 @@ function App() {
 
     function createUserName(user) {
         const firstName = function () {
-            if (user.first_name === "") {
+            if (user.first_name === "" || user.first_name === undefined) {
                 return `${userDefaultName.firstName.charAt(0)}`;
             } else {
                 return `${user.first_name.charAt(0)}`;
             }
         }
         const lastName = function () {
-            if (user.last_name === "") {
+            if (user.last_name === "" || user.last_name === undefined) {
                 return userDefaultName.lastName
             } else {
                 return user.last_name;
             }
         }
         const middleName = function () {
-            if (user.second_name === "") {
+            if (user.second_name === "" || user.second_name === undefined) {
                 return ""
             } else {
                 return `${user.second_name.charAt(0)}.`;
@@ -126,9 +126,9 @@ function App() {
         if (localStorage.getItem('user')) {
             const userData = localStorage.getItem('user');
             const user = JSON.parse(userData);
+            setCurrentUser(user);
             createUserName(user);
             setLoggedIn(true);
-            setCurrentUser(user);
             if (
                 pathname === '/auth' ||
                 pathname === '/forget-password' ||
