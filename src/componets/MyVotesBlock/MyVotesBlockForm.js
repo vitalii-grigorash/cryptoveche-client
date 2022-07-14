@@ -17,11 +17,9 @@ const MyVotesBlockForm = memo(({ votesData }) => {
 	const startEventTime = votesData.event_start_time.slice(10, votesData.event_start_time.length);
 
 	const isRegistered = votesData.isRegistered; // Зарегистрирован ли юзер на данное голосование
-	console.log(isRegistered);
 	const isRegistration = votesData.isRegistration; // Идет ли регистрация в данный момент
 	const isVoted = votesData.isVoted; // Проголосовал ли юзер по данному голосованию
 	const isVoting = votesData.isVoting; // Идет ли голосование в данный момент
-
 
 
 	const compareDateRegEvents = (date) => {
@@ -42,7 +40,9 @@ const MyVotesBlockForm = memo(({ votesData }) => {
 			<div className={'vote-form__status-block'}>
 				<CurrentStatusVote regStatus={runVotesRegStatus} voteStatus={votesData.type === 'secret' ? 'Закрытое' : 'Открытое'} />
 				<StartDateVote dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
-				<div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus} /></div>
+				<div className={'status-and-start-reg-start-vote__add-border-left'}>
+					<ConfirmRegMaterialsVote isRegistered={isRegistered} />
+				</div>
 			</div>
 			<div className={'votes-form__button-vote-cancel-reg'}>
 				<button className={'button-vote'}>Проголосовать</button>
