@@ -10,10 +10,6 @@ const MyProfilePagePersonalData = () => {
 
     const API_URL = options.apiUrl;
     const currentUser = React.useContext(CurrentUserContext);
-<<<<<<< HEAD
-                // console.log(currentUser)
-=======
->>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -28,11 +24,6 @@ const MyProfilePagePersonalData = () => {
 
 
 
-<<<<<<< HEAD
-        // console.log(firstName)
-        // console.log(userId)
-=======
->>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
 
     useEffect(() => {
 
@@ -127,10 +118,6 @@ const MyProfilePagePersonalData = () => {
                             console.log(err);
                         }
                     }
-<<<<<<< HEAD
-                });
-        // console.log(firstName)
-=======
                 )
             console.log(newItem)
                     setActiveBtn(true)
@@ -141,7 +128,6 @@ const MyProfilePagePersonalData = () => {
                     setLastName('')
                     setSecondName('')
 
->>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
         }
     }
 
