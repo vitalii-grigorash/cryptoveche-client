@@ -14,9 +14,9 @@ const CallVotingCheckBox = ({checkBoxNameRow}) => {
                             <input type="checkbox" value="yes"/>
                             <span className={'call-voting-checkbox__checkmark'}/>
                         </label>
-                        <label className={'call-voting-checkbox-radio__container'}>
+                        <label className={'call-voting-checkbox__container'}>
                             <input type="checkbox" value="yes"/>
-                            <span className={'call-voting-checkbox-radio__checkmark'}/>
+                            <span className={'call-voting-checkbox__checkmark'}/>
                         </label>
                 </div>
     )

@@ -36,6 +36,7 @@
     color: #0075FF;
     font-weight: 300;
     font-size: 12px;
+    cursor: pointer;
 }
 .call-voting-page-title__details-icon img {
     padding-right: 9px;

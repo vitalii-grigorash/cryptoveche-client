@@ -75,9 +75,9 @@
 }
 
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .observer-crypto-block-wrapper {
-        width: 343px;
+        width: 100%;
         padding: 16px 16px 23px 16px;
     }
 

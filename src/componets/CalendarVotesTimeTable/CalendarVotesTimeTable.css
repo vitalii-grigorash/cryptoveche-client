@@ -2,24 +2,10 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    height: 23vh;
+    max-height: 40vh;
     overflow: auto;
-    max-height: 53vh;
     position: relative;
-}
-.calendar-votes-timetable__title-row {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 27px;
-}
-.calendar-votes-timetable__title-row span {
-    font-size: 24px;
-    font-weight: 600;
-    color: rgba(54, 59, 77, 0.9);
-    line-height: 32px;
-}
-.calendar-votes-timetable__title-row img {
-    cursor: pointer;
 }
 .calendar-votes-timetable__events-block {
 
@@ -29,19 +15,22 @@
     background: white;
     width: 100%;
     height: 4px;
-    top: 142px;
+    top: 85px;
     z-index: 5;
 }
 /*------Адаптивная версия---------------------------------------------------------------------------------------------*/
-@media (max-width: 1070px) {
-    .calendar-votes-timetable__title-row span  {
-        font-size: 21px;
-        font-weight: 500;
-        line-height: 138%;
+@media (max-width: 840px) {
+    .calendar-votes-timetable__hidden-border {
+        top: 72px;
     }
 }
 @media (max-width: 420px) {
     .calendar-votes-timetable__hidden-border {
-        top: 140px;
+        top: 70px;
     }
+    .calendar-votes-timetable__wrapper {
+        max-height: 50vh;
+        min-height: 20vh;
+    }
+
 }

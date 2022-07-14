@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import './Header.css';
 import search_icon from '../../img/Header_search_icon.png';
 import search_icon_mobile from '../../img/Header_search_icon_mobile.svg';
@@ -22,6 +22,35 @@ const Header = (props) => {
     const [burgerMenuActive, setBurgerMenuActive] = useState(false);
     const [modalProfileExitActive, setModalProfileExitActive] = useState(false);
     const [modalSettings, setModalSettings] = useState(false);
+    const [showInputSearch, setShowInputSearch] = useState(false)
+    const [activeBorderMain, setActiveBorderMain] = useState(true)
+    const [activeBorderVotes, setActiveBorderVotes] = useState(false)
+
+
+
+
+
+    function toggleBorderMainHide() {
+        setActiveBorderMain(true)
+        setActiveBorderVotes(false)
+    }
+    function toggleBorderVotesShow() {
+        setActiveBorderMain(false)
+        setActiveBorderVotes(true)
+    }
+
+    const toogleInputSearch = () => {
+        setShowInputSearch(true)
+    }
+
+    useEffect(() => {
+        if(modalProfileExitActive === true) {
+            setActiveBorderMain(false)
+            setActiveBorderVotes(false)
+        }
+
+    },[modalProfileExitActive])
+
 
 
     return (
@@ -40,17 +69,21 @@ const Header = (props) => {
                 {/*-------Основная часть Header-------------------------------------------------------------------------------------*/}
                 <div className={'header__container _container'}>
                     <div className={'header__logotype-block'}>
-                        <img alt={'Logo'} src={logo_header} />
-                        <Link to={'/'}><span>Главная</span></Link>
-                        <Link to={'votes-page'}><span>Голосование</span></Link>
+                        <Link to={'/'}><img alt={'Logo'} src={logo_header} className={'logotype-block__logo'}/></Link>
+                        <span className={activeBorderMain ? 'logotype-block__main active' : 'logotype-block__main '}><Link onClick={() => {toggleBorderMainHide()}} to={'/'}>Главная</Link></span>
+                        <span className={activeBorderVotes ? 'logotype-block__votes active' : 'logotype-block__votes'}><Link onClick={() => {toggleBorderVotesShow()}} to={'votes-page'}>Голосования</Link></span>
                     </div>
                     <div className={'header__general-block-search-settings-lk'}>
-                        <div className={'general-block-search-settings-lk__search'}>
-                        <img alt={'icon-search'} src={search_icon} />
-                            <span>Поиск</span>
+                        <div onClick={() => toogleInputSearch()}  className={showInputSearch ? 'general-block-search-settings-lk__search active' : 'general-block-search-settings-lk__search'}>
+                            <img alt={'icon-search'} src={search_icon}/>
+                                <span>Поиск</span>
+                            </div>
+                        <div className={showInputSearch ? 'general-block-search-settings-lk__search-input active' : 'general-block-search-settings-lk__search-input'}>
+                            <input className={'search-input'}/>
+                            <img className={'search-input-icon'} alt={'иконка поиска'} src={search_icon}/>
                         </div>
                         <div className={'general-block-search-settings-lk__settings'}>
-                            <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings} />
+                            <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings}/>
                             <HeaderSettingsModal active={modalSettings} setActive={setModalSettings} />
                         </div>
                         <div className={'general-block-search-settings-lk__iconclient'}>

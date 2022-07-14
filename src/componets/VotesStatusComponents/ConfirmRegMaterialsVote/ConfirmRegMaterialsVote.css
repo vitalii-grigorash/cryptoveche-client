@@ -3,8 +3,8 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    padding: 9px 24px 0 24px;
-    gap: 9px;
+    padding: 6px 24px 0 24px;
+    gap: 16px;
 }
 .materials-vote__status-icon {
     display: flex;
@@ -17,6 +17,9 @@
 .status-icon__color-status {
     color: #FF4970;
 }
+.status-icon__color-status-reg {
+    color: #4ED4A9;
+}
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
     .status-block__materials-vote {
@@ -26,7 +29,8 @@
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        padding: 10px 24px 0 12px;
+        padding: 8px 24px 0 12px;
+        gap: 12px;
     }
     .materials-vote__status-icon {
         font-size: 11px;
