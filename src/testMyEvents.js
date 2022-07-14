@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-expressions
-export const testMyEventsData = [
+export const myVotesDataTest = [
 	{
 		"owner": {
 			"user_id": "d.kirillov@spbu.ru",
@@ -71,7 +71,7 @@ export const testMyEventsData = [
 		"status": "ended",
 		"isRegistration": false,
 		"isVoting": false,
-		"isRegistered": false,
+		"isRegistered": true,
 		"isVoted": true,
 		"results": {
 			"questions": [
