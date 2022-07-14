@@ -13,6 +13,8 @@ const MyVotesBlockForm = ({ votesData }) => {
 	const startEventDate = votesData.event_start_time.slice(0, 10)
 	const startEventTime = votesData.event_start_time.slice(10, votesData.event_start_time.length)
 
+	const isRegistered = votesData.isRegistered;
+
 	return (
 		<div className={'my-votes-block__vote-form'}>
 			<h3>{votesData.title}</h3>
@@ -20,7 +22,7 @@ const MyVotesBlockForm = ({ votesData }) => {
 			<div className={'vote-form__status-block'}>
 				<CurrentStatusVote regStatus={runVotesRegStatus} voteStatus={votesData.type === 'secret' ? 'Закрытое' : 'Открытое'} />
 				<StartDateVote dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
-				<div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote confirmStatus={runVotesConfirmStatus} /></div>
+				<div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote isRegistered={isRegistered} /></div>
 			</div>
 			<div className={'votes-form__button-vote-cancel-reg'}>
 				<button className={'button-vote'}>Проголосовать</button>

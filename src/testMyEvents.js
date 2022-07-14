@@ -191,7 +191,7 @@ export const myVotesDataTest = [
 		"status": "ended",
 		"isRegistration": false,
 		"isVoting": false,
-		"isRegistered": true,
+		"isRegistered": false,
 		"isVoted": true,
 		"results": {
 			"questions": [
