@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './MyVotesBlock.css';
 import icon_arrow from '../../img/MyVotes_icon_arrow.svg';
+<<<<<<< HEAD
+import { Link } from "react-router-dom";
+// import { options } from '../../config';
+import { testMyEventsData } from '../../testMyEvents';
+import MyVotesBlockForm from './MyVotesBlockForm'
+
+// const API_URL = options.apiUrl;
+
+
+const MyVotesBlock = ({ myVotesData }) => {
+
+	const myVotesDataTest = testMyEventsData.slice(0, 2)
+
+	useEffect(() => {
+
+		// console.log(myVotesDataTest);
+
+	}, []);
+
+
+	return (
+		<div className={'my-votes-block-wrapper'}>
+			<h2>Мои голосования</h2>
+			{myVotesDataTest && myVotesDataTest.map(votesData => <MyVotesBlockForm key={votesData.id} votesData={votesData} />)}
+			<div className={'my-votes__link-arrow'}>
+				<span><Link to={'/votes-page'}>ПОКАЗАТЬ ПОЛНОСТЬЮ</Link></span>
+				<span><Link to={'/votes-page'}><img alt={'logo_arrow'} src={icon_arrow} /></Link></span>
+			</div>
+		</div>
+	)
+=======
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
@@ -58,6 +89,7 @@ const MyVotesBlock = () => {
                 </div>
             </div>
     )
+>>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
 }
 
 export default MyVotesBlock;
