@@ -3,9 +3,10 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    padding: 6px 24px 0 24px;
-    gap: 16px;
+    padding: 9px 24px 0 24px;
+    gap: 9px;
 }
+
 .materials-vote__status-icon {
     display: flex;
     gap: 5px;
@@ -14,44 +15,45 @@
     font-weight: 400;
     color: rgba(54, 59, 77, 0.9);
 }
+
 .status-icon__color-status_isRegistered {
     color: #FF4970;
 }
-<<<<<<< HEAD
+
 .status-icon__color-status_notRegistered {
-=======
-.status-icon__color-status-reg {
->>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
     color: #4ED4A9;
 }
+
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
     .status-block__materials-vote {
         white-space: nowrap;
     }
 }
+
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        padding: 8px 24px 0 12px;
-        gap: 12px;
+        padding: 10px 24px 0 12px;
     }
+
     .materials-vote__status-icon {
         font-size: 11px;
     }
 }
+
 @media (max-width: 600px) {
-     .status-block__materials-vote {
-         padding: 12px 0 0 0;
-         font-size: 14px;
-         grid-template-rows: 1fr;
-     }
+    .status-block__materials-vote {
+        padding: 12px 0 0 0;
+        font-size: 14px;
+        grid-template-rows: 1fr;
+    }
+
     .materials-vote__status-icon {
         font-size: 14px;
     }
+
     .materials-vote__hidden-materials {
         display: none;
     }
 }
-
-
