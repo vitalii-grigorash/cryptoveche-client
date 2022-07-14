@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarVotes.css';
 import CalendarVotesStartEndRegVoteEvent from "./CalendarVotesStartEndRegVoteEvent/CalendarVotesStartEndRegVoteEvent";
 import CalendarVotesTimeTable from "../CalendarVotesTimeTable/CalendarVotesTimeTable";
-import {events_calendar} from "./test_events_json";
+import { events_calendar } from "./test_events_json";
 import calendar_row_back from "../../img/CalendarVotesTimeTable_back_row.svg";
 
 
@@ -22,11 +22,6 @@ const CalendarVotes = () => {
     const [getEventMonth, setGetEventMonth] = useState(new Date())
     const [getEventYear, setGetEventYear] = useState(new Date())
 
-
-<<<<<<< HEAD
-    function clickDays() {
-        // console.log('Click Days');
-=======
     const dayStartVote = new Date(events_calendar[0].event_start_time).getDate()
     const monthStartVote = new Date(events_calendar[0].event_start_time).getMonth()
     const yearStartVote = new Date(events_calendar[0].event_start_time).getFullYear()
@@ -64,7 +59,7 @@ const CalendarVotes = () => {
         setGetEventYear(date.getFullYear())
     }
 
-    const addColorDotsCalendar = ({date}) => {
+    const addColorDotsCalendar = ({ date }) => {
         const dateRegVote = {
             searchStartRegDate: date.getDate() === dayStartReg && date.getMonth() === monthStartReg && date.getFullYear() === yearStartReg,
             searchEndRegDate: date.getDate() === dayEndReg && date.getMonth() === monthEndReg && date.getFullYear() === yearEndReg,
@@ -88,7 +83,7 @@ const CalendarVotes = () => {
         return React.Children.toArray(content)
     }
 
-    const activeEventButton = ({date}) => {
+    const activeEventButton = ({ date }) => {
         const activeBtnRegVote = {
             startReg: date.getDate() === dayStartReg && date.getMonth() === monthStartReg && date.getFullYear() === yearStartReg,
             endReg: date.getDate() === dayEndReg && date.getMonth() === monthEndReg && date.getFullYear() === yearEndReg,
@@ -112,14 +107,13 @@ const CalendarVotes = () => {
                 ? 'active_event_button'
                 : null
         } else return null;
->>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
     }
 
     return (
         <div className={'calendar-container main-content__elem1'}>
             <div className={'calendar-container-timetable__title-row'}>
                 {showBackRow && (
-                    <img onClick={() => toggleCalendarShow()} alt={'стрелка'} src={calendar_row_back} className={'title-row__row'}/>
+                    <img onClick={() => toggleCalendarShow()} alt={'стрелка'} src={calendar_row_back} className={'title-row__row'} />
                 )}
                 <span>Календарь голосований</span>
             </div>
@@ -148,7 +142,7 @@ const CalendarVotes = () => {
                 </div>
             )}
             {showCalendarList && (
-                <CalendarVotesTimeTable activeDay={getEventDay} activeDate={getEventDate} activeMonth={getEventMonth} activeYear={getEventYear}/>
+                <CalendarVotesTimeTable activeDay={getEventDay} activeDate={getEventDate} activeMonth={getEventMonth} activeYear={getEventYear} />
             )
             }
         </div>
