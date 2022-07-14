@@ -1,25 +1,6 @@
-import { options } from '../config';
+import { config } from '../config';
 
-const API_URL = options.apiUrl;
-
-export const getFullConfig = () => {
-    return fetch(`https://client.cryptoveche.local/fullConfig`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(res => res.ok ? res : Promise.reject(res))
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
-        .then(data => data)
-        .catch((err) => {
-            throw new Error(err.message);
-        });
-}
+const API_URL = config.java_api_url;
 
 export const authorize = (email, password) => {
     return fetch(`${API_URL}/auth`, {
@@ -40,7 +21,10 @@ export const authorize = (email, password) => {
             }
         })
         .then((data) => {
-            return data;
+            if (data.jwt_token) {
+                localStorage.setItem('jwt', data.jwt_token);
+                return data;
+            }
         })
         .catch((err) => {
             console.log(err);

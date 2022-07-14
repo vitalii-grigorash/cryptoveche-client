@@ -12,8 +12,8 @@ import * as Events from '../../Api/Events';
 
 const VotesPage = () => {
 
-    const [btnActiveVotes, setBtnActiveVotes] = useState(true)
-    const [btnArchiveVotes, setBtnArchiveVotes] = useState(false)
+    const [btnActiveVotes, setBtnActiveVotes] = useState(true);
+    const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
 
     function toggleActiveHide() {
         setBtnActiveVotes(true)
@@ -25,13 +25,16 @@ const VotesPage = () => {
     }
 
     useEffect(() => {
-        Events.getEvents()
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        if (localStorage.getItem('jwt')) {
+            const jwt = localStorage.getItem('jwt');
+            Events.getEvents(jwt)
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
     }, [])
 
     return (
@@ -70,7 +73,7 @@ const VotesPage = () => {
                                 dateTimeWatch1={item.TimeVote}
                                 confirmStatus={item.confirmStatus}
                                 nameRegButton={item.nameRegButton} />
-                            )
+                        )
                         )}
                     </>
                 )}
