@@ -1,8 +1,9 @@
 import React from "react";
 import './CallVotingPageQuestionCardCheckBox.css';
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
-import CallVotingPageVoteButton from "../ButtonsComponets/CallVotingPageVoteButton/CallVotingPageVoteButton";
+import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
 import CallVotingCheckBox from "./CallVotingCheckBox/CallVotingCheckBox";
+import CallVotingPageVoteButtonCheckBox from "../CallVotingPageVoteButtonCheckBox/CallVotingPageVoteButtonCheckBox";
 
 const CallVotingPageQuestionCardCheckBox = ({titleName, chooseAnswer, answerSelected, nameFirstColumn, nameSecondColumn, nameThirdColumn, typeCheck}) => {
 
@@ -27,7 +28,7 @@ const CallVotingPageQuestionCardCheckBox = ({titleName, chooseAnswer, answerSele
                             <CallVotingCheckBox checkBoxNameRow={'Третий варентос'}/>
                             <CallVotingCheckBox checkBoxNameRow={'Очень совсем уж динный четвертый чтобы стыдно было такие варианты давать блин'}/>
                     </div>
-                    <CallVotingPageVoteButton/>
+                    <CallVotingPageVoteButtonCheckBox/>
                 </div>
     )
 }

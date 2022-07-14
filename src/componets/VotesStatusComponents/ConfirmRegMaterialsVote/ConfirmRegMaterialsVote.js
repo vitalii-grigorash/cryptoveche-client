@@ -16,7 +16,6 @@ const ConfirmRegMaterialsVote = ({confirmStatus, activeIconReg}) => {
                 </div>
             </div>
     )
-
 }
 
 export default ConfirmRegMaterialsVote;
