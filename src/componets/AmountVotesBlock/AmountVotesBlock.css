@@ -95,14 +95,26 @@
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .amount-votes-wrapper {
-        width: 343px;
+        width: 100%;
         height: 271px;
     }
     .total-amount {
         gap: 4px;
     }
+    .gistogramma-and-total-amount__procent {
+        top: 65px;
+        left: 310px;
+        font-size: 14px;
+    }
+    .gistogramma-and-total-amount__row {
+        top: 69px;
+        left: 287px;
+    }
+
+}
+@media (max-width: 420px) {
     .gistogramma-and-total-amount__procent {
         top: 65px;
         left: 268px;

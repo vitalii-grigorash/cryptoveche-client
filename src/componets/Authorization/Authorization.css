@@ -321,6 +321,11 @@ a {
 }
 
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
+@media (max-height: 800px) {
+    .wrapper-auth {
+        overflow: auto;
+    }
+}
 @media (max-width: 1108px) {
     .container-auth {
         max-width: 800px;

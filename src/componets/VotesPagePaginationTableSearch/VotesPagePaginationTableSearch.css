@@ -2,7 +2,7 @@
 .navigation-menu__pagination-search-block {
     display: flex;
     flex-direction: row;
-    /* justify-content: end; */
+     justify-content: end;
     align-items: center;
     gap: 32px;
     font-size: 16px;

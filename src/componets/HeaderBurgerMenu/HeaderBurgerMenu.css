@@ -154,7 +154,7 @@ input:checked + .toggle-font__slider:before {
     opacity: 40%;
 }
 /*------Адаптивная версия(420px)---------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 376px) {
    .blur {
        width: 100vw;
        height: 100vh;
