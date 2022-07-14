@@ -1,4 +1,21 @@
-export const options = {
-
-    apiUrl: 'https://client.cryptoveche.local:443/api'
+export const config = {
+    local_port: "8886",
+    node_ca_url: "http://evote65-vm.dltc.spbu.ru:3000",
+    java_api_url: "https://client.cryptoveche.local:443/api",
+    ws_connect: "wss://client.cryptoveche.local/ws",
+    node_ca_get_auth_url_path: "/esia/get_auth_url_client",
+    login_redirect: "/esia/login_redirect",
+    java_api_esia_validate_path: "/esia/validate",
+    users_reset: "/users/reset",
+    enable_esia: false,
+    system_type: "political",
+    lang: "ru",
+    ws_user: "client",
+    ws_pass: "client",
+    admin_url: "https://admin.cryptoveche.local",
+    ca_url: "https://client.cryptoveche.local/hlf/api/v1",
+    max_input_length: 100,
+    options_number_to_select_all: 4,
+    enable_phone: false,
+    default_offset: 3
 };

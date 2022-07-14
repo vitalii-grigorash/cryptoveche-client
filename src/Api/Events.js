@@ -1,13 +1,14 @@
-import { options } from '../config';
+import { config } from '../config';
 
-const API_URL = options.apiUrl;
+const API_URL = config.java_api_url;
 
-export const getEvents = () => {
+export const getEvents = (jwt) => {
     return fetch(`${API_URL}/events/me`, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwt}`,
+        },
     })
         .then(res => res.ok ? res : Promise.reject(res))
         .then((res) => {
