@@ -22,6 +22,9 @@ const MyProfilePagePersonalData = () => {
     const userId = currentUser.id
     const userEmail = currentUser.email
 
+
+
+
     useEffect(() => {
 
         if (firstName || lastName || secondName !== '') {
@@ -124,6 +127,7 @@ const MyProfilePagePersonalData = () => {
                     setFirstName('')
                     setLastName('')
                     setSecondName('')
+
         }
     }
 
