@@ -28,10 +28,10 @@ const ActualBlockDiagramm = () => {
             <div className={'diagramm-container'}>
                 <a href={'main'}><img className={'diagramm-container__row-button-left'} src={row_icon_button} alt={'кнопка стрелка'}/></a>
                 <a href={'main'}><img className={'diagramm-container__row-button-right'} src={row_icon_button} alt={'кнопка стрелка'}/></a>
-                <span className={'diagramm-container__info'}>
+                <div className={'diagramm-container__info'}>
                     <h3>{  (sectorCircle*100).toFixed(0) }%</h3>
                     <p>времени прошло</p>
-                </span>
+                </div>
                         {drawCircles(18, sectorCircle, ['#4ED4A9','#F9C521'])}
             </div>
     )

@@ -10,6 +10,7 @@ const MyProfilePageAdditionalSettings = () => {
     const [timeZoneValue, setTimeZoneValue] = useState(3);
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
     const btnChangeColor = useRef(null)
+    const [activeBtn, setActiveBtn] = useState(true)
 
     function onSelectTimeZoneClick(location) {
         setTimeZoneValue(location.VALUE);
@@ -21,10 +22,15 @@ const MyProfilePageAdditionalSettings = () => {
             setTimeZoneOptionsOpen(false);
         } else {
             setTimeZoneOptionsOpen(true);
-            btnChangeColor.current.style.background = '#0084FE'
-            btnChangeColor.current.style.color = '#FFFFFF'
+            setActiveBtn(false);
+            btnChangeColor.current.style.background = '#0084FE';
+            btnChangeColor.current.style.color = '#FFFFFF';
+            btnChangeColor.current.style.cursor = 'pointer'
         }
     }
+
+
+
 
     return (
             <div className={'my-profile-page-add-settings__wrapper'}>
@@ -43,7 +49,7 @@ const MyProfilePageAdditionalSettings = () => {
                         )}
                     </div>
                 </div>
-                <button ref={btnChangeColor} className={'my-profile-page__save-change'}>Сохранить изменения</button>
+                <button disabled={activeBtn} ref={btnChangeColor} className={'my-profile-page__save-change'}>Сохранить изменения</button>
             </div>
     )
 }

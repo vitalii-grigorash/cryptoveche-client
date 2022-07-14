@@ -42,7 +42,7 @@
     font-weight: 500;
     line-height: 124%;
     color: rgba(54, 59, 77, 0.35);
-    cursor: pointer;
+    /*cursor: pointer;*/
     height: 48px;
 }
 /*-----Cтилизация кнопочки Выйти из профиля---------------------------------------------------------------------------*/
@@ -65,6 +65,11 @@
         height: 40px;
         font-size: 14px;
     }
+    .main-content__grid-item_3 {
+        grid-column: span 1;
+        grid-row: span 2;
+        max-height: 500px;
+    }
 }
 @media (max-width: 790px) {
     .my-profile-page__main-content {
@@ -73,6 +78,10 @@
         align-items: stretch;
         gap: 7px;
     }
+    .main-content__grid-item_1{order: 0}
+    .main-content__grid-item_2{order: 3}
+    .main-content__grid-item_3{order: 4}
+    .main-content__grid-item_4{order: 1}
 }
 @media (max-width: 420px) {
     .my-profile-page__wrapper {
@@ -93,8 +102,5 @@
         cursor: pointer;
         min-height: 40px;
     }
-    .main-content__grid-item_1{order: 0}
-    .main-content__grid-item_2{order: 3}
-    .main-content__grid-item_3{order: 4}
-    .main-content__grid-item_4{order: 1}
+
 }

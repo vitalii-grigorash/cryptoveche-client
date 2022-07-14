@@ -27,6 +27,7 @@
 .diagramm-circle {
   width: 600px;
   height: 370px;
+
 }
 /*------При-увеличении dashoffset у green, надо уменьшать dasharray у желтого-------------------------------------------*/
 .circle__style {
@@ -67,12 +68,20 @@
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .diagramm-circle {
         height: 187px;
     }
     .diagramm-container__info {
         top: 60px;
-        left: 115px;
+        left: 35vw;
     }
 }
+@media (max-width: 470px) {
+    .diagramm-container__info {
+        top: 60px;
+        left: 31vw;
+    }
+}
+
+

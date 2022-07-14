@@ -1,10 +1,13 @@
 import React from "react";
 import './CallVotingPageQuestionCardList.css';
-import CallVotingPageVoteButton from "../ButtonsComponets/CallVotingPageVoteButton/CallVotingPageVoteButton";
+import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
 import CallVotingList from "./CallVotingList/CallVotingList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
-const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, answerSelected}) => {
+
+const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue}) => {
+
+
 
 
     return (
@@ -12,7 +15,9 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, answerSelected
                     <div className={'call-voting-page-question-card-list__title'}>
                         <h3>{titleName}</h3>
                         <div className={'call-voting-page-question-card-list__select-answer'}>
-                            <span>{chooseAnswer}</span><span>{answerSelected}</span></div>
+                            <span>{chooseAnswer}</span>
+                            <span>Сейчас выбрано: {selectValue}</span>
+                        </div>
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     <div className={'call-voting-page-question-card-list__main-content'}>
@@ -20,7 +25,7 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, answerSelected
                         <CallVotingList labelCheckbox={'Нет'}/>
                         <CallVotingList labelCheckbox={'Дайте подумать'}/>
                     </div>
-                <CallVotingPageVoteButton/>
+                <CallVotingPageVoteButtonList/>
             </div>
     )
 }

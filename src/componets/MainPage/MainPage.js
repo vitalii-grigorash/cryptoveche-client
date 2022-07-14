@@ -7,14 +7,19 @@ import ScanQRMobile from "../ScanQRMobile/ScanQRMobile";
 import AmountVotesBlock from "../AmountVotesBlock/AmountVotesBlock";
 import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
+<<<<<<< HEAD
 import { options } from '../../config';
 
 const API_URL = options.apiUrl;
 
+=======
+import MainPageSuccessModal from "../MainPageSuccessModal/MainPageSuccessModal";
+>>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
 
 
 const MainPage = () => {
 
+<<<<<<< HEAD
   const [statsData, setStatsData] = useState({});
   const [myVotesData, setMyVotesData] = useState([]);
 
@@ -68,6 +73,29 @@ const MainPage = () => {
     </div>
   )
 
+=======
+    return (
+            <div>
+                <div className={'main-content__title'}>
+                    Добро пожаловать в КриптоВече!
+                </div>
+                <CounterBlock/>
+                    <div className={'main-content__my-votes-actual'}>
+                        <MyVotesBlock/>
+                        <ActualBlock/>
+                        <ScanQRMobile/>
+                    </div>
+                <div className={'main-content__amount-votes-and-calendar-votes'}>
+                    <div className={'gistogramma-and-observer-cryptoveche'}>
+                        <AmountVotesBlock/>
+                        <ObserverCryptoBlock/>
+                    </div>
+                    <CalendarVotes/>
+                </div>
+                <MainPageSuccessModal active={false}/>
+            </div>
+    )
+>>>>>>> e178d0584be038d8233e5184f9d2471e8e01d24f
 }
 
 export default MainPage;

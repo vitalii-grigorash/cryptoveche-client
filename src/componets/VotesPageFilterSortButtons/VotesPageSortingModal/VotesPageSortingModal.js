@@ -1,13 +1,35 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import './VotesPageSortingModal.css';
 import sorting_modal_close_button from "../../../img/VotesPageBlockFilterModal_close_button.svg";
 import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
 import sorting_modal_increase_bnt from '../../../img/VotesPageBlockSortModal_increase_btn.svg';
 
 const VotesPageSortingModal = ({active, setActive}) => {
-    return (
-            <div className={active ? 'sorting-modal active' : 'sorting-modal'}>
 
+    const closeSortModalRef = useRef()
+    useOnClickOutside(closeSortModalRef, () => setActive(false))
+
+    function useOnClickOutside(closeSortModalRef, handler) {
+        useEffect(() => {
+            const listener = (e) => {
+                if(!closeSortModalRef.current || closeSortModalRef.current.contains(e.target)) {
+                    return;
+                }
+                handler(e);
+            };
+            document.addEventListener('mousedown', listener);
+            document.addEventListener('touchstart', listener);
+
+            return () => {
+                document.removeEventListener('mousedown', listener);
+                document.removeEventListener('touchstart', listener);
+
+            };
+        }, [closeSortModalRef, handler])
+    }
+
+    return (
+            <div ref={closeSortModalRef} className={active ? 'sorting-modal active' : 'sorting-modal'}>
                 <div className={active ? 'sorting-modal__content active' : 'sorting-modal__content'} onClick={e => e.stopPropagation()}>
                     <div className={'sorting-modal__content-title'}>
                         <h3>Сортировать по</h3>
