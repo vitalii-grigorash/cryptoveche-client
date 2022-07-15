@@ -13,7 +13,11 @@ const ConfirmRegMaterialsVote = ({ isRegistered }) => {
                 <span>
                     <img className={'status-icon__color-icon'} alt={'иконка статуса регистрации'} src={isRegistered ? registeredEventIcon : notRegisteredEventIcon} />
                 </span>
-                <span className={isRegistered ? 'status-icon__color-status_notRegistered' : 'status-icon__color-status_isRegistered'}>{isRegistered ? 'Вы зарегистрированны' : 'Вы не зарегистрированны'}</span>
+                <p>
+                    <span className={isRegistered ? 'status-icon__color-status_isRegistered' : 'status-icon__color-status_notRegistered'}>
+                        {isRegistered ? 'Вы зарегистрированны' : 'Вы не зарегистрированны'}
+                    </span>
+                </p>
             </div>
             <div className={'materials-vote__hidden-materials'}>
                 <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'} />
