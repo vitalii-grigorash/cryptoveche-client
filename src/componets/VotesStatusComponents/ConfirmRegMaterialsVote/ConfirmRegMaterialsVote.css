@@ -15,11 +15,11 @@
     color: rgba(54, 59, 77, 0.9);
 }
 .status-icon__color-status_isRegistered {
-    color: #FF4970;
+    color: #4ED4A9;
 }
 
 .status-icon__color-status_notRegistered {
-    color: #4ED4A9;
+    color: #FF4970;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
