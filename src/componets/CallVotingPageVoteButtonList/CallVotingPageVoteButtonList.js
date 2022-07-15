@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import './CallVotingPageVoteButtonList.css';
 
 const CallVotingPageVoteButtonList = (props) => {
+
     const {
         currentSelectAnswer,
         active

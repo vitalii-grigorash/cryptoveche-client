@@ -1,4 +1,3 @@
-import './MyVotesBlock.css';
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
@@ -9,12 +8,11 @@ import moment from 'moment';
 const compareDateRegEvents = (date) => {
 	const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
 	const timeNow = `${moment().format()}`.slice(11, 16); // Получение текущего времени в формате, аналогичном  с данными от сервера
-	// if (date === votesData.registration_start_time) { 
+	// if (date === votesData.registration_start_time) {
 	// }
 	// console.log(`${dateToday} ${timeNow}`);
 } // toDO
 
-compareDateRegEvents()
 
 const MyVotesBlockForm = ({ votesData }) => {
 

@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect} from "react";
 import './VotesPageFiltersModal.css';
 import filter_modal_close_button_mobile from '../../../img/VotesPageBlockFilterModal_close_button_mobile.svg';
+import filter_modal_close_button from '../../../img/VotesPageBlockFilterModal_close_button.svg';
 import filter_modal_increment_button from '../../../img/VotesPageBlockModal_increment_icon.svg';
 import FiltersModalCheckBox from "./FiltersModalCheckBox/FiltersModalCheckBox";
 
@@ -8,32 +9,28 @@ import FiltersModalCheckBox from "./FiltersModalCheckBox/FiltersModalCheckBox";
 const VotesPageFiltersModal = ({active, setActive}) => {
 
 
-    const closeFiltersModalRef = useRef()
-    useOnClickOutside(closeFiltersModalRef, () => setActive(false))
 
-    function useOnClickOutside(closeFiltersModalRef, handler) {
+    useOnClickOutsideFiltersModal(active, () => setActive(false))
+
+    function useOnClickOutsideFiltersModal(active, handler) {
         useEffect(() => {
             const listener = (e) => {
-                if(!closeFiltersModalRef.current || closeFiltersModalRef.current.contains(e.target)) {
+                if(!active) {
                     return;
                 }
                 handler(e);
             };
-            document.addEventListener('mousedown', listener);
-            document.addEventListener('touchstart', listener);
-
-            return () => {
-                document.removeEventListener('mousedown', listener);
-                document.removeEventListener('touchstart', listener);
-
+            document.addEventListener('click', listener);
+            return function () {
+                document.removeEventListener('click', listener);
             };
-        }, [closeFiltersModalRef, handler])
+        }, [active, handler])
     }
 
 
 
     return (
-            <div ref={closeFiltersModalRef} className={active ? 'filters-modal active' : 'filters-modal'}>
+            <div className={active ? 'filters-modal active' : 'filters-modal'}>
                 <div className={active ? 'filters-modal__content active' : 'filters-modal__content'} onClick={e => e.stopPropagation()}>
                     <div className={'filters-modal__content-title-mobile'}>
                        <h5>Фильтры</h5>
@@ -42,6 +39,7 @@ const VotesPageFiltersModal = ({active, setActive}) => {
                     <div className={'filters-modal__content-title'}>
                         <h3>По статусу голосования</h3>
                         <h4>Статус голосования</h4>
+                        <img alt={'кнопка-крестик'} src={filter_modal_close_button} onClick={() => setActive(false)}/>
                     </div>
                     <div className={'filters-modal__content-checkboxes-status-vote'}>
                         <FiltersModalCheckBox nameSearchVote={'Идет голосование'}/>
