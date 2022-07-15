@@ -52,7 +52,7 @@
     cursor: pointer;
     width: 12px;
     height: 12px;
-    display: none;
+
 }
 /*------Стилизация для всех div c типом сортировки------------------------------------------------------------------------*/
 .sorting-modal__types-sort {
@@ -71,6 +71,7 @@
 }
 .sorting-modal__types-sort img {
     cursor: pointer;
+
 }
 .sorting-modal__types-sort img:hover {
     background-color: rgba(54, 59, 77, 0.4);

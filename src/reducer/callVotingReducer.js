@@ -1,6 +1,5 @@
 export const initialState = {
     counter: 0,
-    cards: []
 }
 
 const callVotingReducer = (state, action) => {
@@ -11,7 +10,7 @@ const callVotingReducer = (state, action) => {
             console.log("ADD_COUNT", payload);
             return {
                 ...state,
-                cards: payload.cards
+                counter: state.counter + 1
             };
         case "REMOVE_COUNT":
             console.log("REMOVE_COUNT", payload);
