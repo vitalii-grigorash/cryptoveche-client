@@ -27,7 +27,8 @@ const VotesPage = () => {
     useEffect(() => {
         if (localStorage.getItem('jwt')) {
             const jwt = localStorage.getItem('jwt');
-            Events.getEvents(jwt)
+            const jwtTokens = JSON.parse(jwt);
+            Events.getEvents(jwtTokens.access_token)
                 .then((res) => {
                     console.log(res);
                 })
