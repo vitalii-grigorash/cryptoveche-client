@@ -18,7 +18,7 @@ const VotesPageFilterSortButtons = (closeBall) => {
         if (filtersModalActive === false) {
             setFiltersModalActive(true)
             setSortingModalActive(false)
-        } else  {
+        } else {
             setFiltersModalActive(false)
         }
     }
@@ -27,6 +27,8 @@ const VotesPageFilterSortButtons = (closeBall) => {
         if(sortingModalActive === false){
             setSortingModalActive(true)
             setFiltersModalActive(false)
+        } else {
+            setSortingModalActive(false)
         }
     }
 

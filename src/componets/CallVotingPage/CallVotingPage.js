@@ -9,14 +9,17 @@ import CallVotingPageQuestionCardList from "../CallVotingPageQuestionCardList/Ca
 import CallVotingPageQuestionCardCheckBox
     from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
 import {useNavigate} from "react-router-dom";
-import {activeVotesData} from "../../activeVotesData";
+import {callVotingEvent} from "../../testCallVotingEvent";
+import useShop from "../../contexts/CallVotingContext";
 
 
  const CallVotingPage = (props) => {
 
-
+     const { counter, cards } = useShop();
      const linkDetailsPage = useNavigate();
-     let count = 1;
+
+
+
 
 
      return (
@@ -32,14 +35,14 @@ import {activeVotesData} from "../../activeVotesData";
                  </div>
                      <DetailsVotesPageDaysEndRegStartVote/>
                  {
-                     activeVotesData.map((item => {
+                     callVotingEvent.map((item => {
                          return (
                              <CallVotingPageQuestionCardList
                                  key={item.id}
                                  id={item.id}
-                                 titleName={item.titleVoteData}
+                                 titleName={item.title}
                                  chooseAnswer={'Необходимо выбрать ровно 1'}
-                                 selectValue={count}/>
+                                 selectValue={counter}/>
                          )
                      }))
                  }

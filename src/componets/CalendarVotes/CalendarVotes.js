@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import './CalendarVotes.css';
 import CalendarVotesStartEndRegVoteEvent from "./CalendarVotesStartEndRegVoteEvent/CalendarVotesStartEndRegVoteEvent";
 import CalendarVotesTimeTable from "../CalendarVotesTimeTable/CalendarVotesTimeTable";
-import { events_calendar } from "./test_events_json";
+import {events_calendar} from "./test_events_json";
 import calendar_row_back from "../../img/CalendarVotesTimeTable_back_row.svg";
 
 
@@ -38,6 +38,7 @@ const CalendarVotes = () => {
     const monthEndReg = new Date(events_calendar[0].registration_end_time).getMonth()
     const yearEndReg = new Date(events_calendar[0].registration_end_time).getFullYear()
 
+
     const onChange = date => {
         if (date instanceof Date) {
             setValueData(date)
@@ -60,28 +61,28 @@ const CalendarVotes = () => {
     }
 
     const addColorDotsCalendar = ({ date }) => {
-        const dateRegVote = {
-            searchStartRegDate: date.getDate() === dayStartReg && date.getMonth() === monthStartReg && date.getFullYear() === yearStartReg,
-            searchEndRegDate: date.getDate() === dayEndReg && date.getMonth() === monthEndReg && date.getFullYear() === yearEndReg,
-            searchStartVote: date.getDate() === dayStartVote && date.getMonth() === monthStartVote && date.getFullYear() === yearStartVote,
-            searchEndVote: date.getDate() === dayEndVote && date.getMonth() === monthEndVote && date.getFullYear() === yearEndVote
+            const dateRegVote = {
+                searchStartRegDate: date.getDate() === dayStartReg && date.getMonth() === monthStartReg && date.getFullYear() === yearStartReg,
+                searchEndRegDate: date.getDate() === dayEndReg && date.getMonth() === monthEndReg && date.getFullYear() === yearEndReg,
+                searchStartVote: date.getDate() === dayStartVote && date.getMonth() === monthStartVote && date.getFullYear() === yearStartVote,
+                searchEndVote: date.getDate() === dayEndVote && date.getMonth() === monthEndVote && date.getFullYear() === yearEndVote
+            }
+            const content = [
+                dateRegVote.searchStartRegDate
+                    ? <div className={'blue__circle'}></div>
+                    : null,
+                dateRegVote.searchEndRegDate
+                    ? <div className={'orange__circle'}></div>
+                    : null,
+                dateRegVote.searchStartVote
+                    ? <div className={'green__circle'}></div>
+                    : null,
+                dateRegVote.searchEndVote
+                    ? <div className={'red__circle'}></div>
+                    : null
+            ]
+            return React.Children.toArray(content)
         }
-        const content = [
-            dateRegVote.searchStartRegDate
-                ? <div className={'blue__circle'}></div>
-                : null,
-            dateRegVote.searchEndRegDate
-                ? <div className={'orange__circle'}></div>
-                : null,
-            dateRegVote.searchStartVote
-                ? <div className={'green__circle'}></div>
-                : null,
-            dateRegVote.searchEndVote
-                ? <div className={'red__circle'}></div>
-                : null
-        ]
-        return React.Children.toArray(content)
-    }
 
     const activeEventButton = ({ date }) => {
         const activeBtnRegVote = {

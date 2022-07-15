@@ -15,6 +15,7 @@ import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { CallVotingProvider } from "../../contexts/CallVotingContext";
 import * as Auth from '../../Api/Auth';
 
 function App() {
@@ -182,6 +183,7 @@ function App() {
     }
 
     return (
+        <CallVotingProvider>
         <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
                 {isLoggedIn && (
@@ -230,6 +232,7 @@ function App() {
                 )}
             </div>
         </CurrentUserContext.Provider>
+        </CallVotingProvider>
     );
 }
 

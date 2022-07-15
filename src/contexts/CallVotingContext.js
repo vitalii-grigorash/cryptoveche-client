@@ -1,16 +1,16 @@
-import { createContext, useReducer } from "react";
+import {createContext, useContext, useReducer} from "react";
 import callVotingReducer, {initialState} from "../reducer/callVotingReducer";
 
 const CallVotingContext = createContext(initialState)
 
 export const CallVotingProvider = ({children}) => {
-    const [state, dispath] = useReducer(callVotingReducer, initialState);
+    const [state, dispatch] = useReducer(callVotingReducer, initialState);
 
     const addCard = (card) => {
         const updateCard = state.cards.concat(card)
         updateCount(updateCard)
 
-        dispath({
+        dispatch({
             type: "ADD_COUNT",
             payload: {
                 cards: updateCard
@@ -23,7 +23,7 @@ export const CallVotingProvider = ({children}) => {
             currentCard.name !== card.name)
         updateCount(updateCard)
 
-        dispath({
+        dispatch({
             type: "REMOVE_COUNT",
             payload: {
                 cards: updateCard
@@ -31,15 +31,32 @@ export const CallVotingProvider = ({children}) => {
         })
     }
     const updateCount = (cards) => {
-        let count = 0
-        cards.forEach((card) => count += card.counter)
+        let counter = 0
+        cards.forEach((card) => counter += card.counter)
 
-        dispath({
+        dispatch({
             type: "REMOVE_COUNT",
             payload: {
-                count
+                counter
             }
         });
     };
-    return <CallVotingContext.Provider>{children}</CallVotingContext.Provider>
+    const value = {
+        counter: state.counter,
+        cards: state.cards,
+        addCard,
+        removeCard
+    };
+    return <CallVotingContext.Provider value={value}>{children}</CallVotingContext.Provider>;
 };
+
+const useShop = () => {
+    const context = useContext(CallVotingContext)
+
+    if (context === undefined){
+        throw new Error('useShop must be used')
+    }
+    return context
+}
+
+export default useShop
