@@ -184,54 +184,58 @@ function App() {
 
     return (
         <CallVotingProvider>
-        <CurrentUserContext.Provider value={currentUser}>
-            <div className="App">
-                {isLoggedIn && (
-                    <Header
-                        handleLogout={logout}
-                        userName={userName}
-                    />
-                )}
-                <main className={'main'}>
-                    <div className={'main-content _container'}>
-                        <Routes>
-                            <Route path='/auth'
-                                element={<Authorization
-                                    handleLogin={handleLogin}
-                                    authError={authError}
-                                    handleRememberMe={handleRememberMe}
-                                    isRememberMe={isRememberMe}
-                                />}
-                            />
-                            <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                            <Route path='/reset' element={<AuthorizationSetPassword />} />
-                            <Route path='/reg-page'
-                                element={<Registration
-                                    handleRegister={handleRegister}
-                                    handlePolicyAccept={handlePolicyAccept}
-                                    isPolicyAccept={isPolicyAccept}
-                                    modalActive={modalActive}
-                                    emailErrorMessage={emailErrorMessage}
-                                    changeBorderInputEmail={changeBorderInputEmail}
-                                    hideRegisterModal={hideRegisterModal}
-                                    hideRegForm={hideRegForm}
-                                    hideRegEmailErrors={hideRegEmailErrors}
-                                />}
-                            />
-                            <Route exact path='/' element={<MainPage />} />
-                            <Route exact path='/call-voting-page' element={<CallVotingPage />} />
-                            <Route exact path='/my-profile' element={<MyProfilePage />} />
-                            <Route exact path='/details-vote' element={<DetailsVotesPage />} />
-                            <Route exact path='/votes-page' element={<VotesPage />} />
-                            <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
-                        </Routes>
-                    </div>
-                </main>
-                {isLoggedIn && (
-                    <Footer />
-                )}
-            </div>
-        </CurrentUserContext.Provider>
+            <CurrentUserContext.Provider value={currentUser}>
+                <div className="App">
+                    {isLoggedIn && (
+                        <Header
+                            handleLogout={logout}
+                            userName={userName}
+                        />
+                    )}
+                    <main className={'main'}>
+                        <div className={'main-content _container'}>
+                            <Routes>
+                                <Route path='/auth'
+                                    element={<Authorization
+                                        handleLogin={handleLogin}
+                                        authError={authError}
+                                        handleRememberMe={handleRememberMe}
+                                        isRememberMe={isRememberMe}
+                                    />}
+                                />
+                                <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
+                                <Route path='/reset' element={<AuthorizationSetPassword />} />
+                                <Route path='/reg-page'
+                                    element={<Registration
+                                        handleRegister={handleRegister}
+                                        handlePolicyAccept={handlePolicyAccept}
+                                        isPolicyAccept={isPolicyAccept}
+                                        modalActive={modalActive}
+                                        emailErrorMessage={emailErrorMessage}
+                                        changeBorderInputEmail={changeBorderInputEmail}
+                                        hideRegisterModal={hideRegisterModal}
+                                        hideRegForm={hideRegForm}
+                                        hideRegEmailErrors={hideRegEmailErrors}
+                                    />}
+                                />
+                                <Route exact path='/' element={<MainPage />} />
+                                <Route exact path='/call-voting-page' element={<CallVotingPage />} />
+                                <Route exact path='/my-profile' element={<MyProfilePage />} />
+                                <Route exact path='/details-vote' element={<DetailsVotesPage />} />
+                                <Route exact path='/votes-page'
+                                    element={<VotesPage
+                                        logout={logout}
+                                    />}
+                                />
+                                <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
+                            </Routes>
+                        </div>
+                    </main>
+                    {isLoggedIn && (
+                        <Footer />
+                    )}
+                </div>
+            </CurrentUserContext.Provider>
         </CallVotingProvider>
     );
 }
