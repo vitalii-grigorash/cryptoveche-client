@@ -117,7 +117,7 @@ export const callVotingEvent = [
                 }
             },
             {
-                "id": "5563d972-cbf2-4215-ae72-bd9fc4867959",
+                "id": "5963d972-cbf2-4215-ae72-bd9fc4867959",
                 "title": "2.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
@@ -125,11 +125,15 @@ export const callVotingEvent = [
                     "rows": [
                         {
                             "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
-                            "value": "За"
+                            "value": "Иванов"
                         },
                         {
                             "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Против"
+                            "value": "Петров"
+                        },
+                        {
+                            "id": "5z71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "value": "Васильев"
                         }
                     ],
                     "columns": [
@@ -149,7 +153,7 @@ export const callVotingEvent = [
                 }
             },
             {
-                "id": "5563d972-cbf2-4215-ae72-bd9fc4867959",
+                "id": "2563d972-cbf2-4215-ae72-bd9fc4867959",
                 "title": "3.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
@@ -162,6 +166,10 @@ export const callVotingEvent = [
                         {
                             "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
                             "value": "Против"
+                        },
+                        {
+                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5155",
+                            "value": "Воздержаться"
                         }
                     ],
                     "columns": [
@@ -181,7 +189,7 @@ export const callVotingEvent = [
                 }
             },
             {
-                "id": "5563d972-cbf2-4215-ae72-bd9fc4867959",
+                "id": "0563d972-cbf2-4215-ae72-bd9fc4867959",
                 "title": "4.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
@@ -189,11 +197,11 @@ export const callVotingEvent = [
                     "rows": [
                         {
                             "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
-                            "value": "За"
+                            "value": "Да"
                         },
                         {
                             "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Против"
+                            "value": "Нет"
                         }
                     ],
                     "columns": [

@@ -4,12 +4,15 @@ import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVo
 import CallVotingList from "./CallVotingList/CallVotingList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import useShop from "../../contexts/CallVotingContext";
+import {callVotingEvent} from "../../testCallVotingEvent";
 
 
-const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue}) => {
+const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue, labelCheckbox}) => {
 
     // const {cards,addCard,removeCard} = useShop()
     const [isCheck, setIsCheck] = useState(false)
+
+
 
 
     function reducer(state, action) {
@@ -53,6 +56,10 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue}) 
     //         selectValue++;
     //     }
     // }
+    // const [questionsCard] = callVotingEvent.map(item => item.questions)
+    // const answerCard = questionsCard.map(item => item.options.rows)
+
+    // Object.entries(answerCard).map(x => console.log(x))
 
 
 
@@ -67,9 +74,7 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue}) 
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     <div className={'call-voting-page-question-card-list__main-content'}>
-                        <CallVotingList labelCheckbox={'Да'} onClickCheck={() => dispatch({ type: 'plus'})} activeCheck={isCheck}/>
-                        <CallVotingList labelCheckbox={'Нет'}/>
-                        <CallVotingList labelCheckbox={'Дайте подумать'}/>
+                        <CallVotingList labelCheckbox={labelCheckbox}/>
                     </div>
                 <CallVotingPageVoteButtonList/>
             </div>
