@@ -30,40 +30,36 @@ const VotesPage = (props) => {
     }
 
     useEffect(() => {
-        console.log('Hello');
-        console.log(localStorage);
         if (localStorage.getItem('jwt')) {
             const jwt = localStorage.getItem('jwt');
             const jwtTokens = JSON.parse(jwt);
             Events.getEvents(jwtTokens.access_token)
                 .then((res) => {
                     if (res.text === 'Expired token') {
-                        console.log('Expired token')
                         Auth.getNewTokens(jwtTokens.refresh_token)
                             .then((newTokens) => {
                                 if (newTokens.text === 'Expired token') {
                                     logout();
                                 } else {
-                                    console.log(newTokens);
                                     localStorage.setItem('jwt', JSON.stringify(newTokens));
                                     Events.getEvents(newTokens.access_token)
                                         .then((res) => {
                                             console.log(res);
                                         })
                                         .catch((err) => {
-                                            console.log(err);
+                                            throw new Error(err.message);
                                         })
                                 }
                             })
                             .catch((err) => {
-                                console.log(err);
+                                throw new Error(err.message);
                             })
                     } else {
                         console.log(res);
                     }
                 })
                 .catch((err) => {
-                    console.log(err);
+                    throw new Error(err.message);
                 })
         } else {
             logout();
