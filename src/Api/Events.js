@@ -8,7 +8,7 @@ export const getEvents = (accessToken) => {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${accessToken}`,
-        },
+        }
     })
         .then(res => res.ok ? res : Promise.reject(res))
         .then((res) => {
