@@ -8,13 +8,43 @@
     border-right: 1px rgba(54, 59, 77, 0.2) solid;
     justify-content: center;
 }
-.current-status__registration-in-progress {
+.current-status__registration-and-votes {
+    display: flex;
+    border: 1px #0084FE solid;
+    border-radius: 8px;
+    padding: 5px 12px 5px 24px;
+    color: #0084FE;
+}
+.current-status__registration {
     display: flex;
     border: 1px #4ED4A9 solid;
     border-radius: 8px;
     padding: 5px 12px 5px 24px;
     color: #4ED4A9;
 }
+.current-status__voiting {
+    display: flex;
+    border: 1px #4569FF solid;
+    border-radius: 8px;
+    padding: 5px 12px 5px 24px;
+    color: #4569FF;
+}
+.current-status__wait-voiting {
+    display: flex;
+    border: 1px #FF8A00 solid;
+    border-radius: 8px;
+    padding: 5px 12px 5px 24px;
+    color: #FF8A00;
+}
+.current-status__ended-voiting {
+    display: flex;
+    border: 1px #FF2957 solid;
+    border-radius: 8px;
+    padding: 5px 12px 5px 24px;
+    color: #FF2957;
+}
+
+
 .current-status__types-vote {
     border: 1px rgba(54, 59, 77, 0.4) solid;
     border-radius: 8px;
