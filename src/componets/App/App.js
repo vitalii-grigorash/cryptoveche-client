@@ -271,7 +271,11 @@ function App() {
                                         hideRegEmailErrors={hideRegEmailErrors}
                                     />}
                                 />
-                                <Route exact path='/' element={<MainPage />} />
+                                <Route exact path='/' element={<MainPage 
+                                    allEvents={allEvents}
+                                    requestHelper={requestHelper} 
+                                    />} 
+                                />
                                 <Route exact path='/call-voting-page' element={<CallVotingPage />} />
                                 <Route exact path='/my-profile' element={<MyProfilePage />} />
                                 <Route exact path='/details-vote' element={<DetailsVotesPage />} />
