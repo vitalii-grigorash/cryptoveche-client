@@ -74,7 +74,8 @@ const MyProfilePagePersonalData = () => {
     }
 
 
-    function updateUserName() {
+
+    function updateUserName(jwt) {
         if (validLastName || validFirstName || validSecondName === true) {
             console.log('wrong data')
             console.log(validFirstName, validLastName, validSecondName)
@@ -92,7 +93,9 @@ const MyProfilePagePersonalData = () => {
             fetch(`${API_URL}/users/${userId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${jwt}`,
+
                 },
                 body: JSON.stringify(newItem)
             }

@@ -25,13 +25,13 @@ const CounterBlock = ({ stats }) => {
 				</span>
 				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
 			</div>
-			{/* <div className={'count-block__style _orange'}>
-				<h3>23 456 789</h3>
-				<span>
-					транзакций
-				</span>
-				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
-			</div> */}
+			{/*<div className={'count-block__style _orange'}>*/}
+			{/*	<h3>23 456 789</h3>*/}
+			{/*	<span>*/}
+			{/*		транзакций*/}
+			{/*	</span>*/}
+			{/*	<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />*/}
+			{/*</div>*/}
 			<div className={'count-block__style _orange'}>
 				<h3>{stats.orgsCount}</h3>
 				<span>

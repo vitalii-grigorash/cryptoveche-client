@@ -2,6 +2,30 @@ import { config } from '../config';
 
 const API_URL = config.java_api_url;
 
+export const getNewTokens = (refreshToken) => {
+    console.log(refreshToken)
+    return fetch(`${API_URL}/refresh_tokens`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${refreshToken}`,
+        },
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then((data) => {
+            localStorage.removeItem('jwt');
+            return data;
+        })
+        .catch((err) => {
+            throw new Error(err.message);
+        });
+}
+
 export const authorize = (email, password) => {
     return fetch(`${API_URL}/auth`, {
         method: 'POST',
@@ -21,8 +45,8 @@ export const authorize = (email, password) => {
             }
         })
         .then((data) => {
-            if (data.jwt_token) {
-                localStorage.setItem('jwt', data.jwt_token);
+            if (data.jwt) {
+                localStorage.setItem('jwt', JSON.stringify(data.jwt));
                 return data;
             }
         })

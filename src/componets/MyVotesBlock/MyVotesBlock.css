@@ -7,7 +7,7 @@
     background-color: #FFFFFF;
     border-radius: 24px;
     padding: 32px 32px 32px 32px;
-    max-width: 824px;
+    width: 100%;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
 .my-votes-block-wrapper h2 {
@@ -172,10 +172,12 @@
     .my-votes-block__reg-form, .my-votes-block__votes-form {
         display: none;
     }
+    .my-votes-block__vote-form {
+        display: none;
+    }
     .my-votes__link-arrow img {
         position: absolute;
         top: 20px;
         right: 27px;
     }
-
 }

@@ -9,8 +9,13 @@ import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 import VotesPageFilterSortButtons from "../VotesPageFilterSortButtons/VotesPageFilterSortButtons";
 import * as Events from '../../Api/Events';
+import * as Auth from '../../Api/Auth';
 
-const VotesPage = () => {
+const VotesPage = (props) => {
+
+    const {
+        logout
+    } = props;
 
     const [btnActiveVotes, setBtnActiveVotes] = useState(true);
     const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
@@ -27,14 +32,39 @@ const VotesPage = () => {
     useEffect(() => {
         if (localStorage.getItem('jwt')) {
             const jwt = localStorage.getItem('jwt');
-            Events.getEvents(jwt)
+            const jwtTokens = JSON.parse(jwt);
+            Events.getEvents(jwtTokens.access_token)
                 .then((res) => {
-                    console.log(res);
+                    if (res.text === 'Expired token') {
+                        Auth.getNewTokens(jwtTokens.refresh_token)
+                            .then((newTokens) => {
+                                if (newTokens.text === 'Expired token') {
+                                    logout();
+                                } else {
+                                    localStorage.setItem('jwt', JSON.stringify(newTokens));
+                                    Events.getEvents(newTokens.access_token)
+                                        .then((res) => {
+                                            console.log(res);
+                                        })
+                                        .catch((err) => {
+                                            throw new Error(err.message);
+                                        })
+                                }
+                            })
+                            .catch((err) => {
+                                throw new Error(err.message);
+                            })
+                    } else {
+                        console.log(res);
+                    }
                 })
                 .catch((err) => {
-                    console.log(err);
+                    throw new Error(err.message);
                 })
+        } else {
+            logout();
         }
+        // eslint-disable-next-line
     }, [])
 
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import './CallVotingList.css';
 
 
-const CallVotingList = ({labelCheckbox, activeCheck}) => {
+const CallVotingList = ({labelCheckbox, activeCheck, onClickCheck}) => {
 
 
 
@@ -12,7 +12,7 @@ const CallVotingList = ({labelCheckbox, activeCheck}) => {
     return (
                 <div>
                     <label className={'checkbox_container'}>
-                        <input type="checkbox" value="yes" defaultChecked={activeCheck}/>{labelCheckbox}
+                        <input onClick={onClickCheck} type="checkbox" value="yes" defaultChecked={activeCheck}/>{labelCheckbox}
                         <span className={'checkmark-row'}/>
                     </label>
                 </div>

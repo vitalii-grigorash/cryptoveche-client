@@ -1,9 +1,7 @@
-import './MyVotesBlock.css';
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 // import moment from 'moment';
-
 
 const MyVotesBlockForm = ({ votesData }) => {
 
@@ -47,7 +45,6 @@ const MyVotesBlockForm = ({ votesData }) => {
     }
     return labelText;
   };
-
 
   return (
     <div className={'my-votes-block__vote-form'}>

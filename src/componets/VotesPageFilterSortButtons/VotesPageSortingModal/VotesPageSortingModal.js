@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect} from "react";
 import './VotesPageSortingModal.css';
 import sorting_modal_close_button from "../../../img/VotesPageBlockFilterModal_close_button.svg";
 import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
@@ -6,30 +6,25 @@ import sorting_modal_increase_bnt from '../../../img/VotesPageBlockSortModal_inc
 
 const VotesPageSortingModal = ({active, setActive}) => {
 
-    const closeSortModalRef = useRef()
-    useOnClickOutside(closeSortModalRef, () => setActive(false))
+    useOnClickOutsideSortModal(active, () => setActive(false))
 
-    function useOnClickOutside(closeSortModalRef, handler) {
+    function useOnClickOutsideSortModal(active, handler) {
         useEffect(() => {
             const listener = (e) => {
-                if(!closeSortModalRef.current || closeSortModalRef.current.contains(e.target)) {
+                if(!active) {
                     return;
                 }
                 handler(e);
             };
-            document.addEventListener('mousedown', listener);
-            document.addEventListener('touchstart', listener);
-
-            return () => {
-                document.removeEventListener('mousedown', listener);
-                document.removeEventListener('touchstart', listener);
-
+            document.addEventListener('click', listener);
+            return function () {
+                document.removeEventListener('click', listener);
             };
-        }, [closeSortModalRef, handler])
+        }, [active, handler])
     }
 
     return (
-            <div ref={closeSortModalRef} className={active ? 'sorting-modal active' : 'sorting-modal'}>
+            <div className={active ? 'sorting-modal active' : 'sorting-modal'}>
                 <div className={active ? 'sorting-modal__content active' : 'sorting-modal__content'} onClick={e => e.stopPropagation()}>
                     <div className={'sorting-modal__content-title'}>
                         <h3>Сортировать по</h3>

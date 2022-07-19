@@ -6,7 +6,7 @@ import settings from '../../img/Header_settings_icon.png';
 import icon_client from '../../img/Header_lk_icon.png';
 import logo_header from '../../img/Header_logo.svg';
 import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
-import { Link } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import HeaderMyProfileModal from "./HeaderMyProfileModal/HeaderMyProfileModal";
 import HeaderSettingsModal from "./HeaderSettingsModal/HeaderSettingsModal";
 
@@ -23,33 +23,11 @@ const Header = (props) => {
     const [modalProfileExitActive, setModalProfileExitActive] = useState(false);
     const [modalSettings, setModalSettings] = useState(false);
     const [showInputSearch, setShowInputSearch] = useState(false)
-    const [activeBorderMain, setActiveBorderMain] = useState(true)
-    const [activeBorderVotes, setActiveBorderVotes] = useState(false)
-
-
-
-
-
-    function toggleBorderMainHide() {
-        setActiveBorderMain(true)
-        setActiveBorderVotes(false)
-    }
-    function toggleBorderVotesShow() {
-        setActiveBorderMain(false)
-        setActiveBorderVotes(true)
-    }
+    const { pathname } = useLocation();
 
     const toogleInputSearch = () => {
         setShowInputSearch(true)
     }
-
-    useEffect(() => {
-        if(modalProfileExitActive === true) {
-            setActiveBorderMain(false)
-            setActiveBorderVotes(false)
-        }
-
-    },[modalProfileExitActive])
 
 
 
@@ -70,8 +48,8 @@ const Header = (props) => {
                 <div className={'header__container _container'}>
                     <div className={'header__logotype-block'}>
                         <Link to={'/'}><img alt={'Logo'} src={logo_header} className={'logotype-block__logo'}/></Link>
-                        <span className={activeBorderMain ? 'logotype-block__main active' : 'logotype-block__main '}><Link onClick={() => {toggleBorderMainHide()}} to={'/'}>Главная</Link></span>
-                        <span className={activeBorderVotes ? 'logotype-block__votes active' : 'logotype-block__votes'}><Link onClick={() => {toggleBorderVotesShow()}} to={'votes-page'}>Голосования</Link></span>
+                        <span className={pathname === '/' ? 'logotype-block__main active' : 'logotype-block__main '}><Link to={'/'}>Главная</Link></span>
+                        <span className={pathname === '/votes-page' ? 'logotype-block__votes active' : 'logotype-block__votes'}><Link to={'votes-page'}>Голосования</Link></span>
                     </div>
                     <div className={'header__general-block-search-settings-lk'}>
                         <div onClick={() => toogleInputSearch()}  className={showInputSearch ? 'general-block-search-settings-lk__search active' : 'general-block-search-settings-lk__search'}>
