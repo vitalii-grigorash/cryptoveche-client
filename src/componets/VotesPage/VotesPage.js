@@ -8,17 +8,17 @@ import TitleVotesDetailsCallVotingProfile
 import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 import VotesPageFilterSortButtons from "../VotesPageFilterSortButtons/VotesPageFilterSortButtons";
-import * as Events from '../../Api/Events';
-import * as Auth from '../../Api/Auth';
 
 const VotesPage = (props) => {
 
     const {
-        logout
+        allEvents
     } = props;
 
     const [btnActiveVotes, setBtnActiveVotes] = useState(true);
     const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
+
+    console.log(allEvents);
 
     function toggleActiveHide() {
         setBtnActiveVotes(true)
@@ -28,44 +28,6 @@ const VotesPage = (props) => {
         setBtnActiveVotes(false)
         setBtnArchiveVotes(true)
     }
-
-    useEffect(() => {
-        if (localStorage.getItem('jwt')) {
-            const jwt = localStorage.getItem('jwt');
-            const jwtTokens = JSON.parse(jwt);
-            Events.getEvents(jwtTokens.access_token)
-                .then((res) => {
-                    if (res.text === 'Expired token') {
-                        Auth.getNewTokens(jwtTokens.refresh_token)
-                            .then((newTokens) => {
-                                if (newTokens.text === 'Expired token') {
-                                    logout();
-                                } else {
-                                    localStorage.setItem('jwt', JSON.stringify(newTokens));
-                                    Events.getEvents(newTokens.access_token)
-                                        .then((res) => {
-                                            console.log(res);
-                                        })
-                                        .catch((err) => {
-                                            throw new Error(err.message);
-                                        })
-                                }
-                            })
-                            .catch((err) => {
-                                throw new Error(err.message);
-                            })
-                    } else {
-                        console.log(res);
-                    }
-                })
-                .catch((err) => {
-                    throw new Error(err.message);
-                })
-        } else {
-            logout();
-        }
-        // eslint-disable-next-line
-    }, [])
 
     return (
         <div className={'votes-page-block__wrapper'}>
