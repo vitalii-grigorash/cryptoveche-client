@@ -78,6 +78,9 @@
     cursor: pointer;
     border-radius: 4px;
 }
+.button-vote-hide {
+    display: none;
+}
 .cancel-reg {
     width: 233px;
     height: 40px;
@@ -89,6 +92,9 @@
     border-radius: 4px;
     color: #0084FE;
     border: 1px #0084FE solid;
+}
+.cancel-reg-hide {
+    display: none;
 }
 /*------Ccылка со стрелкой ПОКАЗАТЬ ПОЛНОСТЬЮ----------------------------------------------------------------------------------*/
 .my-votes__link-arrow {

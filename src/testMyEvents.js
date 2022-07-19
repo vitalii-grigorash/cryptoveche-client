@@ -68,11 +68,11 @@ export const myVotesDataTest = [
 			"counters": [],
 			"formed": true
 		},
-		"status": "ended",
-		"isRegistration": false,
-		"isVoting": false,
-		"isRegistered": true,
-		"isVoted": true,
+		"status": "voting",
+		"isRegistration": false, // началась ли регистрация
+		"isRegistered": true, // зарегистрирован ли юзер на текущее голосование
+		"isVoting": false, // началось ли голосование
+		"isVoted": true, // проголосовал ли юзе по текущему евенту
 		"results": {
 			"questions": [
 				{
@@ -188,11 +188,11 @@ export const myVotesDataTest = [
 			"counters": [],
 			"formed": true
 		},
-		"status": "ended",
-		"isRegistration": false,
-		"isVoting": false,
+		"status": "registration",
+		"isRegistration": true,
+		"isVoting": true,
 		"isRegistered": false,
-		"isVoted": true,
+		"isVoted": false,
 		"results": {
 			"questions": [
 				{

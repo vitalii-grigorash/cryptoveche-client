@@ -9,7 +9,6 @@ import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import { config } from "../../config";
 const API_URL = config.java_api_url
-console.log(4444, API_URL);
 
 
 const MainPage = () => {

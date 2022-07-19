@@ -4,7 +4,6 @@ import count_block_img from '../../img/CountBlock_image.svg';
 
 const CounterBlock = ({ stats }) => {
 
-	console.log(33333, stats);
 
 	// Добавление правильной формы существительных рядом с числом
 	const CountForm = (number, titles) => {
