@@ -8,8 +8,8 @@ const MyVotesBlockForm = ({ votesData }) => {
   //   const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
   //   const timeNow = `${moment().format()}`.slice(11, 16); // Получение текущего времени в формате, аналогичном  с данными от сервера
 
-  const startEventDate = votesData.event_start_time.slice(0, 10)
-  const startEventTime = votesData.event_start_time.slice(10, votesData.event_start_time.length)
+  const startEventDate = votesData.event_start_time.slice(0, 10).split('-').reverse().join('.');
+  const startEventTime = votesData.event_start_time.slice(11, votesData.event_start_time.length - 4)
   const isRegistered = votesData.isRegistered;
 
   // status: "ended", 

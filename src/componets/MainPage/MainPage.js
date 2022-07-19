@@ -7,8 +7,11 @@ import ScanQRMobile from "../ScanQRMobile/ScanQRMobile";
 import AmountVotesBlock from "../AmountVotesBlock/AmountVotesBlock";
 import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
-import { config } from "../../config";
-const API_URL = config.java_api_url
+import { getStats } from '../../Api/Stats';
+import { getEvents } from '../../Api/Events';
+import * as authorize from '../../Api/Auth';
+import logout from '../../componets/App/App'
+
 
 
 const MainPage = () => {
@@ -20,29 +23,53 @@ const MainPage = () => {
 
     const getStatsData = async () => {
       try {
-        const response = await fetch(`${API_URL}/common_statistic`);
-        const json = await response.json();
-        setStatsData(json)
+        getStats()
+          .then(data => setStatsData(data))
       } catch (error) {
         console.log(error);
       }
     }
     getStatsData();
 
-
-      const getMyVotes = async () => {
-        try {
-          const response = await fetch(`${API_URL}/events/me`);
-          const json = await response.json();
-          setMyVotesData(json)
-        } catch (error) {
-          console.log(error);
-        }
+    const getMyVotes = async () => {
+      if (localStorage.getItem('jwt')) {
+        const jwt = localStorage.getItem('jwt');
+        const jwtTokens = JSON.parse(jwt);
+        getEvents(jwtTokens.access_token)
+          .then((res) => {
+            if (res.text === 'Expired token') {
+              authorize.getNewTokens(jwtTokens.refresh_token)
+                .then((newTokens) => {
+                  if (newTokens.text === 'Expired token') {
+                    logout();
+                  } else {
+                    localStorage.setItem('jwt', JSON.stringify(newTokens));
+                    getEvents(newTokens.access_token)
+                      .then((res) => {
+                        setMyVotesData(res);
+                      })
+                      .catch((err) => {
+                        throw new Error(err.message);
+                      })
+                  }
+                })
+                .catch((err) => {
+                  throw new Error(err.message);
+                })
+            } else {
+              setMyVotesData(res);
+            }
+          })
+          .catch((err) => {
+            throw new Error(err.message);
+          })
+      } else {
+        logout();
       }
-      getMyVotes();
+    }
+    getMyVotes();
 
   }, []);
-
 
   return (
     <div>
@@ -51,7 +78,7 @@ const MainPage = () => {
       </div>
       <CounterBlock stats={statsData} />
       <div className={'main-content__my-votes-actual'}>
-        <MyVotesBlock myVotes={myVotesData}/>
+        <MyVotesBlock myVotes={myVotesData} />
         <ActualBlock myVotes={myVotesData} />
         <ScanQRMobile />
       </div>
