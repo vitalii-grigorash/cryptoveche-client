@@ -17,8 +17,29 @@ const VotesPage = (props) => {
 
     const [btnActiveVotes, setBtnActiveVotes] = useState(true);
     const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
+    const [activeEvents, setActiveEvents] = useState([]);
+    const [archiveEvents, setArchiveEvents] = useState([]);
 
     console.log(allEvents);
+
+    useEffect(() => {
+        setActiveEvents([]);
+        setArchiveEvents([]);
+        if (allEvents.length !== 0) {
+            allEvents.forEach((event) => {
+                if (event.status === 'ended') {
+                    setArchiveEvents(archiveEvents => [...archiveEvents, event]);
+                } else {
+                    setActiveEvents(activeEvents => [...activeEvents, event]);
+                }
+            })
+        }
+    }, [allEvents])
+
+    console.log('Активные');
+    console.log(activeEvents);
+    console.log('Архивные');
+    console.log(archiveEvents);
 
     function toggleActiveHide() {
         setBtnActiveVotes(true)
