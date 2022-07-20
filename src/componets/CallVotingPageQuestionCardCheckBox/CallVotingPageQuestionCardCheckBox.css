@@ -53,7 +53,12 @@
     font-size: 18px;
     gap: 40px;
 }
-
+.call-voting-card-checkbox__list-answer {
+    display: grid;
+    grid-template-columns: 31% 14% 14% 20%;
+    grid-auto-rows: auto;
+    gap: 40px;
+}
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
     .call-voting-page-question-card-check__select-checkboxes-block {

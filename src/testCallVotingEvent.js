@@ -84,131 +84,182 @@ export const callVotingEvent = [
         "quorum_type": "voting",
         "invalidBallots": false,
         "questions": [
+            // {
+            //     "id": "5563d972-cbf2-4215-ae72-bd9fc4867959",
+            //     "title": "1.Вы за проведение данного мероприятия?",
+            //     "template": "ynq",
+            //     "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
+            //     "options": {
+            //         "rows": [
+            //             {
+            //                 "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+            //                 "value": "За"
+            //             },
+            //             {
+            //                 "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+            //                 "value": "Против"
+            //             }
+            //         ],
+            //         "columns": [
+            //             {
+            //                 "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
+            //                 "value": "SYSTEM_DEFAULT_COLUMN"
+            //             }
+            //         ]
+            //     },
+            //     "materials": [],
+            //     "rules": {
+            //         "pick_gt": -1,
+            //         "pick_ge": -1,
+            //         "pick_lt": -1,
+            //         "pick_le": -1,
+            //         "pick_eq": -1
+            //     }
+            // },
+            // {
+            //     "id": "5963d972-cbf2-4215-ae72-bd9fc4867959",
+            //     "title": "2.Вы за проведение данного мероприятия?",
+            //     "template": "ynq",
+            //     "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
+            //     "options": {
+            //         "rows": [
+            //             {
+            //                 "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+            //                 "value": "Иванов"
+            //             },
+            //             {
+            //                 "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+            //                 "value": "Петров"
+            //             },
+            //             {
+            //                 "id": "5z71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+            //                 "value": "Васильев"
+            //             },
+            //             {
+            //                 "id": "5z11adc7-b5b7-4c95-b7e2-5231bf2e5955",
+            //                 "value": "Петрович"
+            //             }
+            //         ],
+            //         "columns": [
+            //             {
+            //                 "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
+            //                 "value": "SYSTEM_DEFAULT_COLUMN"
+            //             }
+            //         ]
+            //     },
+            //     "materials": [],
+            //     "rules": {
+            //         "pick_gt": -1,
+            //         "pick_ge": -1,
+            //         "pick_lt": -1,
+            //         "pick_le": -1,
+            //         "pick_eq": -1
+            //     }
+            // },
+            // {
+            //     "id": "2563d972-cbf2-4215-ae72-bd9fc4867959",
+            //     "title": "3.Вы за проведение данного мероприятия?",
+            //     "template": "ynq",
+            //     "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
+            //     "options": {
+            //         "rows": [
+            //             {
+            //                 "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+            //                 "value": "За"
+            //             },
+            //             {
+            //                 "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+            //                 "value": "Против"
+            //             },
+            //             {
+            //                 "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5155",
+            //                 "value": "Воздержаться"
+            //             }
+            //         ],
+            //         "columns": [
+            //             {
+            //                 "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
+            //                 "value": "SYSTEM_DEFAULT_COLUMN"
+            //             }
+            //         ]
+            //     },
+            //     "materials": [],
+            //     "rules": {
+            //         "pick_gt": -1,
+            //         "pick_ge": -1,
+            //         "pick_lt": -1,
+            //         "pick_le": -1,
+            //         "pick_eq": -1
+            //     }
+            // },
+            // {
+            //     "id": "0563d972-cbf2-4215-ae72-bd9fc4867959",
+            //     "title": "4.Вы за проведение данного мероприятия?",
+            //     "template": "ynq",
+            //     "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
+            //     "options": {
+            //         "rows": [
+            //             {
+            //                 "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+            //                 "value": "Да"
+            //             },
+            //             {
+            //                 "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+            //                 "value": "Нет"
+            //             }
+            //         ],
+            //         "columns": [
+            //             {
+            //                 "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
+            //                 "value": "SYSTEM_DEFAULT_COLUMN"
+            //             }
+            //         ]
+            //     },
+            //     "materials": [],
+            //     "rules": {
+            //         "pick_gt": -1,
+            //         "pick_ge": -1,
+            //         "pick_lt": -1,
+            //         "pick_le": -1,
+            //         "pick_eq": -1
+            //     }
+            // },
             {
-                "id": "5563d972-cbf2-4215-ae72-bd9fc4867959",
-                "title": "1.Вы за проведение данного мероприятия?",
+                "id": "0563d972-cbf2-4215-ae74-bd9fc4867959",
+                "title": "5.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
                 "options": {
                     "rows": [
                         {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
-                            "value": "За"
+                            "id": "da21aefb-b4c5-471b-a24f-f0e797757bef",
+                            "value": "Банан"
                         },
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Против"
+                            "id": "5a71adc7-z5b7-4c95-b7e2-5231bf2e5955",
+                            "value": "Яблоко"
+                        },
+                        {
+                            "id": "5a59adc7-b5b7-4c95-b0e2-5231bf2e5955",
+                            "value": "Персик"
                         }
                     ],
                     "columns": [
                         {
-                            "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
-                            "value": "SYSTEM_DEFAULT_COLUMN"
-                        }
-                    ]
-                },
-                "materials": [],
-                "rules": {
-                    "pick_gt": -1,
-                    "pick_ge": -1,
-                    "pick_lt": -1,
-                    "pick_le": -1,
-                    "pick_eq": -1
-                }
-            },
-            {
-                "id": "5963d972-cbf2-4215-ae72-bd9fc4867959",
-                "title": "2.Вы за проведение данного мероприятия?",
-                "template": "ynq",
-                "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
-                "options": {
-                    "rows": [
-                        {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
-                            "value": "Иванов"
-                        },
-                        {
+                            // "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
+                            // "value": "SYSTEM_DEFAULT_COLUMN"
                             "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Петров"
+                            "value": "Нет"
                         },
-                        {
-                            "id": "5z71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Васильев"
-                        }
-                    ],
-                    "columns": [
-                        {
-                            "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
-                            "value": "SYSTEM_DEFAULT_COLUMN"
-                        }
-                    ]
-                },
-                "materials": [],
-                "rules": {
-                    "pick_gt": -1,
-                    "pick_ge": -1,
-                    "pick_lt": -1,
-                    "pick_le": -1,
-                    "pick_eq": -1
-                }
-            },
-            {
-                "id": "2563d972-cbf2-4215-ae72-bd9fc4867959",
-                "title": "3.Вы за проведение данного мероприятия?",
-                "template": "ynq",
-                "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
-                "options": {
-                    "rows": [
-                        {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
-                            "value": "За"
-                        },
-                        {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Против"
-                        },
-                        {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5155",
-                            "value": "Воздержаться"
-                        }
-                    ],
-                    "columns": [
-                        {
-                            "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
-                            "value": "SYSTEM_DEFAULT_COLUMN"
-                        }
-                    ]
-                },
-                "materials": [],
-                "rules": {
-                    "pick_gt": -1,
-                    "pick_ge": -1,
-                    "pick_lt": -1,
-                    "pick_le": -1,
-                    "pick_eq": -1
-                }
-            },
-            {
-                "id": "0563d972-cbf2-4215-ae72-bd9fc4867959",
-                "title": "4.Вы за проведение данного мероприятия?",
-                "template": "ynq",
-                "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
-                "options": {
-                    "rows": [
                         {
                             "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
                             "value": "Да"
                         },
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Нет"
-                        }
-                    ],
-                    "columns": [
-                        {
-                            "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
-                            "value": "SYSTEM_DEFAULT_COLUMN"
-                        }
+                            "id": "5a59adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "value": "Я подумаю"
+                        },
+
                     ]
                 },
                 "materials": [],
@@ -220,7 +271,6 @@ export const callVotingEvent = [
                     "pick_eq": -1
                 }
             }
-
         ],
         "materials": [
             {

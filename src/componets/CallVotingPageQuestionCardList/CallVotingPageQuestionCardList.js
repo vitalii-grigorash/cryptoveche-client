@@ -1,13 +1,16 @@
-import React, {useEffect, useState, useReducer} from "react";
+import React, {useState, useReducer} from "react";
 import './CallVotingPageQuestionCardList.css';
 import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
-import CallVotingList from "./CallVotingList/CallVotingList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import useShop from "../../contexts/CallVotingContext";
-import {callVotingEvent} from "../../testCallVotingEvent";
 
 
-const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue, labelCheckbox}) => {
+
+const CallVotingPageQuestionCardList = (props) => {
+
+    const {
+        questionName, chooseAnswer, selectValue, labelCheckbox
+    } = props;
 
     // const {cards,addCard,removeCard} = useShop()
     const [isCheck, setIsCheck] = useState(false)
@@ -56,17 +59,11 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue, l
     //         selectValue++;
     //     }
     // }
-    // const [questionsCard] = callVotingEvent.map(item => item.questions)
-    // const answerCard = questionsCard.map(item => item.options.rows)
-
-    // Object.entries(answerCard).map(x => console.log(x))
-
-
 
     return (
             <div className={'call-voting-page-question-card-list__wrapper'}>
                     <div className={'call-voting-page-question-card-list__title'}>
-                        <h3>{titleName}</h3>
+                        <h3>{questionName}</h3>
                         <div className={'call-voting-page-question-card-list__select-answer'}>
                             <span>{chooseAnswer}</span>
                             <span>Сейчас выбрано: {selectValue}</span>
@@ -74,7 +71,7 @@ const CallVotingPageQuestionCardList = ({titleName, chooseAnswer, selectValue, l
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     <div className={'call-voting-page-question-card-list__main-content'}>
-                        <CallVotingList labelCheckbox={labelCheckbox}/>
+                        {labelCheckbox}
                     </div>
                 <CallVotingPageVoteButtonList/>
             </div>

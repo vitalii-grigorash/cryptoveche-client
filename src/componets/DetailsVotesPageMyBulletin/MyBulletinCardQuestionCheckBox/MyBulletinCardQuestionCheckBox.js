@@ -1,6 +1,6 @@
 import React from "react";
 import './MyBulletinCardQuestionCheckBox.css';
-// import CallVotingCheckBox from "../../CallVotingPageQuestionCardCheckBox/CallVotingCheckBox/CallVotingCheckBox";
+// import CallVotingNameRows from "../../CallVotingPageQuestionCardCheckBox/CallVotingNameRows/CallVotingNameRows";
 import MyBulletinCardCheckBox from "./MyBulletinCardCheckBox/MyBulletinCardCheckBox";
 
 
