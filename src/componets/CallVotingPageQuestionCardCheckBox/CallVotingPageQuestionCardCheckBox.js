@@ -1,11 +1,8 @@
 import React from "react";
 import './CallVotingPageQuestionCardCheckBox.css';
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
-import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
-import CallVotingNameRows from "./CallVotingNameRows/CallVotingNameRows";
 import CallVotingPageVoteButtonCheckBox from "../CallVotingPageVoteButtonCheckBox/CallVotingPageVoteButtonCheckBox";
-import CallVotingNameColumns from "./CallVotingNameColumns/CallVotingNameColumns";
-import CallVotingCheckBox from "./CallVotingCheckBox/CallVotingCheckBox";
+
 
 const CallVotingPageQuestionCardCheckBox = (props) => {
 
@@ -14,8 +11,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         chooseAnswer,
         answerSelected,
         nameColumn,
-        checkBoxNameRow,
-        callVotingCheckProp,
+        nameRow,
         typeCheck
     } = props;
 
@@ -28,12 +24,17 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
-                        <div className={'call-voting-page-question-card-check__header-columns'}>
-                            <span/>
-                            {nameColumn}
-                        </div>
-                            {checkBoxNameRow}
-                            {/*<CallVotingCheckBox callVotingCheckProp={callVotingCheckProp}/>*/}
+                        <table>
+                            <thead>
+                                <tr className={'select-checkboxes-block__name-columns'}>
+                                    <th className={'name-columns__width-column'}></th>
+                                    {nameColumn}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {nameRow}
+                            </tbody>
+                        </table>
                     </div>
                     <CallVotingPageVoteButtonCheckBox/>
                 </div>

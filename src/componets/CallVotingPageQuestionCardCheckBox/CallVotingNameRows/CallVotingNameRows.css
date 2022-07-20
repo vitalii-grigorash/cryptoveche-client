@@ -1,13 +1,24 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
-.call-voting-card-checkbox__list-answer {
-    display: grid;
-    grid-template-columns: 31% 14% 14% 20%;
-    grid-auto-rows: auto;
+/*.call-voting-card-checkbox__list-answer {*/
+/*    display: grid;*/
+/*    grid-template-columns: 31% 14% 14% 20%;*/
+/*    grid-auto-rows: auto;*/
+/*    gap: 40px;*/
+/*}*/
+/*.call-voting-card-checkbox__name-question {*/
+/*    word-wrap: break-word;*/
+/*    line-height: 28px;*/
+/*    width: 240px;*/
+/*}*/
+.call-voting-name-rows__wrapper {
+    display: flex;
+    flex-direction: row;
     gap: 40px;
+    padding-bottom: 40px;
 }
-.call-voting-card-checkbox__name-question {
-    word-wrap: break-word;
-    line-height: 28px;
+.call-voting-name-rows__name-row {
+    width: 240px;
+    word-break: break-word;
 }
 /*------Стилизация квадратного чекбокса--------------------------------------------------------------------------------*/
 .call-voting-checkbox__container {
@@ -27,8 +38,8 @@
 }
 .call-voting-checkbox__checkmark {
     position: absolute;
-    top: 2px;
-    left: 0;
+    top: -2px;
+    left: 58px;
     height: 24px;
     width: 24px;
     background-color: #FFFFFF;
@@ -80,8 +91,8 @@
 }
 .call-voting-checkbox-radio__checkmark {
     position: absolute;
-    top: 2px;
-    left: 0;
+    top: -2px;
+    left: 58px;
     height: 24px;
     width: 24px;
     background-color: #FFFFFF;
@@ -115,8 +126,8 @@
 }
 
 
-/*------Адаптивная версия(800px)---------------------------------------------------------------------------------------*/
-@media (max-width: 800px) {
+/*------Адаптивная версия(830px)---------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
     .call-voting-card-checkbox__name-question {
         word-wrap: break-word;
         line-height: 22px;
@@ -124,10 +135,29 @@
     .call-voting-checkbox__checkmark {
         width: 20px;
         height: 20px;
+        left:  50px;
+    }
+    .call-voting-checkbox-radio__checkmark {
+        width: 20px;
+        height: 20px;
+        left:  50px;
     }
     .call-voting-checkbox__container .call-voting-checkbox__checkmark:after {
         left: 4px;
         top: 3px;
+    }
+    .call-voting-checkbox-radio__container .call-voting-checkbox-radio__checkmark:after {
+        left: 2px;
+        top: 2px;
+    }
+    .call-voting-name-rows__name-row {
+        width: 140px;
+    }
+    .call-voting-name-rows__wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        padding-bottom: 24px;
     }
 }
 @media (max-width: 560px) {

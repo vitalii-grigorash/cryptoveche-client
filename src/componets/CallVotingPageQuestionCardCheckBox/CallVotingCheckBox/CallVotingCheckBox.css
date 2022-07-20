@@ -1,0 +1,11 @@
+.call-voting-checkbox__wrapper {
+    width: 140px;
+    text-align: center;
+    position: relative;
+}
+/*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
+@media (max-width: 830px) {
+    .call-voting-checkbox__wrapper  {
+        width: 117px;
+    }
+}

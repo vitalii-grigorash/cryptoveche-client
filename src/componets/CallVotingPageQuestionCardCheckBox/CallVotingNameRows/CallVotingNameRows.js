@@ -1,19 +1,20 @@
 import React from "react";
 import './CallVotingNameRows.css';
-import CallVotingCheckBox from "../CallVotingCheckBox/CallVotingCheckBox";
-import callVotingCheckBox from "../CallVotingCheckBox/CallVotingCheckBox";
 
-const CallVotingNameRows = ({checkBoxNameRow, callVotingCheckProp}) => {
+
+const CallVotingNameRows = ({nameRow, callVotingCheckProp}) => {
 
 
 
     return (
-                <div className={'call-voting-card-checkbox__list-answer'}>
-                    <div className={'call-voting-card-checkbox__name-question'}>{checkBoxNameRow}</div>
-                    <CallVotingCheckBox callVotingCheckProp={callVotingCheckProp}/>
-                    <CallVotingCheckBox callVotingCheckProp={callVotingCheckProp}/>
-                    <CallVotingCheckBox callVotingCheckProp={callVotingCheckProp}/>
-                </div>
+        <>
+            <tr className={'call-voting-name-rows__wrapper'}>
+                <td className={'call-voting-name-rows__name-row'}>
+                    {nameRow}
+                </td>
+                    {callVotingCheckProp}
+            </tr>
+        </>
     )
 }
 

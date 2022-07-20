@@ -1,10 +1,11 @@
 import React from "react";
 import './CallVotingNameColumns.css';
 
+
 const CallVotingNameColumns = ({nameColumn}) => {
     return (
         <>
-            <span>{nameColumn}</span>
+            <th className={'call-voting-name-columns__wrapper'}>{nameColumn}</th>
         </>
         )
 }

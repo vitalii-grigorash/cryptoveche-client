@@ -243,22 +243,23 @@ export const callVotingEvent = [
                             "id": "5a59adc7-b5b7-4c95-b0e2-5231bf2e5955",
                             "value": "Персик"
                         }
+
                     ],
                     "columns": [
                         {
                             // "id": "8cef93d4-e162-49d6-a3d2-a0e6ec5e9538",
                             // "value": "SYSTEM_DEFAULT_COLUMN"
                             "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Нет"
+                            "value": "За"
                         },
                         {
                             "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
-                            "value": "Да"
+                            "value": "Против"
                         },
                         {
                             "id": "5a59adc7-b5b7-4c95-b7e2-5231bf2e5955",
-                            "value": "Я подумаю"
-                        },
+                            "value": "Воздержаться"
+                        }
 
                     ]
                 },
