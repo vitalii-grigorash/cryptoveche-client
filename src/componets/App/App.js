@@ -17,6 +17,7 @@ import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsV
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { CallVotingProvider } from "../../contexts/CallVotingContext";
 import * as Auth from '../../Api/Auth';
+import * as Events from '../../Api/Events';
 
 function App() {
 
@@ -32,8 +33,60 @@ function App() {
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
+    const [allEvents, setAllEvents] = useState([]);
 
     console.log(currentUser);
+
+    function requestHelper(request, body = {}) {
+        return new Promise((resolve, reject) => {
+            if (localStorage.getItem('jwt')) {
+                const jwt = localStorage.getItem('jwt');
+                const jwtTokens = JSON.parse(jwt);
+                request(jwtTokens.access_token, body)
+                    .then((res) => {
+                        if (res.text === 'Expired token') {
+                            console.log('Expired token');
+                            Auth.getNewTokens(jwtTokens.refresh_token)
+                                .then((newTokens) => {
+                                    if (newTokens.text === 'Expired token') {
+                                        logout();
+                                    } else {
+                                        localStorage.setItem('jwt', JSON.stringify(newTokens));
+                                        request(newTokens.access_token, body)
+                                            .then((res) => {
+                                                resolve(res);
+                                            })
+                                            .catch((err) => {
+                                                throw new Error(err.message);
+                                            })
+                                    }
+                                })
+                                .catch((err) => {
+                                    throw new Error(err.message);
+                                })
+                        } else {
+                            resolve(res);
+                        }
+                    })
+                    .catch((err) => {
+                        throw new Error(err.message);
+                    })
+            } else {
+                logout();
+            }
+        })
+    }
+
+    useEffect(() => {
+        requestHelper(Events.getEvents)
+            .then((data) => {
+                setAllEvents(data);
+            })
+            .catch((err) => {
+                throw new Error(err.message);
+            })
+        // eslint-disable-next-line
+    }, [])
 
     function hideRegisterModal() {
         setModalActive(false);
@@ -218,13 +271,17 @@ function App() {
                                         hideRegEmailErrors={hideRegEmailErrors}
                                     />}
                                 />
-                                <Route exact path='/' element={<MainPage />} />
+                                <Route exact path='/' element={<MainPage 
+                                    allEvents={allEvents}
+                                    requestHelper={requestHelper} 
+                                    />} 
+                                />
                                 <Route exact path='/call-voting-page' element={<CallVotingPage />} />
                                 <Route exact path='/my-profile' element={<MyProfilePage />} />
                                 <Route exact path='/details-vote' element={<DetailsVotesPage />} />
                                 <Route exact path='/votes-page'
                                     element={<VotesPage
-                                        logout={logout}
+                                        allEvents={allEvents}
                                     />}
                                 />
                                 <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />

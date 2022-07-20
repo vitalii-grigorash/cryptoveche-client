@@ -5,7 +5,6 @@ import registeredEventIcon from '../../../img/MyVotes_icon_checkmark.svg'
 import MaterialsVoteQuestion from "../MaterialsVoteQuestion/MaterialsVoteQuestion";
 
 const ConfirmRegMaterialsVote = ({ isRegistered }) => {
-    console.log(11111, isRegistered)
 
     return (
         <div className={'status-block__materials-vote'}>

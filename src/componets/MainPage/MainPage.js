@@ -7,43 +7,30 @@ import ScanQRMobile from "../ScanQRMobile/ScanQRMobile";
 import AmountVotesBlock from "../AmountVotesBlock/AmountVotesBlock";
 import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
-import { config } from "../../config";
-const API_URL = config.java_api_url
-console.log(4444, API_URL);
+import * as Stats from '../../Api/Stats';
+import { getEvents } from '../../Api/Events';
+import * as authorize from '../../Api/Auth';
+import logout from '../../componets/App/App'
 
 
-const MainPage = () => {
+
+const MainPage = (props) => {
+
+  const {
+    allEvents,
+    requestHelper
+  } = props
 
   const [statsData, setStatsData] = useState({});
-  const [myVotesData, setMyVotesData] = useState([]);
 
   useEffect(() => {
 
-    const getStatsData = async () => {
-      try {
-        const response = await fetch(`${API_URL}/common_statistic`);
-        const json = await response.json();
-        setStatsData(json)
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getStatsData();
-
-
-      const getMyVotes = async () => {
-        try {
-          const response = await fetch(`${API_URL}/events/me`);
-          const json = await response.json();
-          setMyVotesData(json)
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      getMyVotes();
+    requestHelper(Stats.getStats)
+    .then ((data) => {
+      setStatsData(data)
+    })
 
   }, []);
-
 
   return (
     <div>
@@ -52,8 +39,8 @@ const MainPage = () => {
       </div>
       <CounterBlock stats={statsData} />
       <div className={'main-content__my-votes-actual'}>
-        <MyVotesBlock myVotes={myVotesData}/>
-        <ActualBlock myVotes={myVotesData} />
+        <MyVotesBlock myVotes={allEvents} />
+        <ActualBlock myVotes={allEvents} />
         <ScanQRMobile />
       </div>
       <div className={'main-content__amount-votes-and-calendar-votes'}>
