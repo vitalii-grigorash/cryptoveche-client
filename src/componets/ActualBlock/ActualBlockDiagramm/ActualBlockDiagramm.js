@@ -9,11 +9,10 @@ const ActualBlockDiagramm = (props) => {
 		actualVote
 	} = props;
 
-	console.log(111, actualVote);
 
 	const [startTime, setStartTime] = useState(0);
 	const [endTime, setEndTime] = useState(0);
-	const [sectorCircle, setSectorCircle] = useState(0);
+	const [sectorCircle, setSectorCircle] = useState(null);
 
 	useEffect(() => {
 		if (actualVote && Object.keys(actualVote).length > 0) {
@@ -34,10 +33,14 @@ const ActualBlockDiagramm = (props) => {
 
 
 		return (
-			<svg className={'diagramm-circle'} viewBox={'0 0 50 50'}>
-				<circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[0]} strokeDasharray={(circleFill - gapBetweenCircle) + ' ' + circleEmpty} strokeDashoffset={circleOffset} />
-				<circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[1]} strokeDasharray={(circleEmpty - gapBetweenCircle) + ' ' + circleFill} strokeDashoffset={circleOffset - circleFill + gapBetweenCircle / 2} />
-			</svg>
+			<>
+				{sectorCircle && typeof (sectorCircle) === 'number' && (
+					<svg className={'diagramm-circle'} viewBox={'0 0 50 50'}>
+						<circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[0]} strokeDasharray={(circleFill - gapBetweenCircle) + ' ' + circleEmpty} strokeDashoffset={circleOffset} />
+						<circle className={'circle__style'} r={radius} cx={'50%'} cy={'50%'} stroke={colorsCircle[1]} strokeDasharray={(circleEmpty - gapBetweenCircle) + ' ' + circleFill} strokeDashoffset={circleOffset - circleFill + gapBetweenCircle / 2} />
+					</svg>
+				)}
+			</>
 		)
 	}
 
@@ -45,7 +48,7 @@ const ActualBlockDiagramm = (props) => {
 
 	return (
 		<>
-			{typeof(sectorCircle) === 'number' && (
+			{sectorCircle && typeof (sectorCircle) === 'number' && (
 				<div className={'diagramm-container'}>
 					<a href={'main'}><img className={'diagramm-container__row-button-left'} src={row_icon_button} alt={'кнопка стрелка'} /></a>
 					<a href={'main'}><img className={'diagramm-container__row-button-right'} src={row_icon_button} alt={'кнопка стрелка'} /></a>
