@@ -2,16 +2,20 @@ import React from "react";
 import './ReadQuestionsCardCheckbox.css';
 
 
-const ReadQuestionsCardCheckbox = ({checkBoxNameRow, typeCheck}) => {
+const ReadQuestionsCardCheckbox = ({checkBoxReadQuestion, activeRadioCheck}) => {
 
 
     return (
-            <div className={'card-checkbox__list-answer'}>
-                <div className={'list-answer__name-question'}>{checkBoxNameRow}</div>
-                <input className={'list-answer-checkbox'} type={typeCheck} disabled={true}/>
-                <input className={'list-answer-checkbox'} type={typeCheck} disabled={true}/>
-                <input className={'list-answer-checkbox'} type={typeCheck} disabled={true}/>
-            </div>
+            <>
+                <td className={'call-voting-checkbox__wrapper'}>
+                    <label
+                        className={activeRadioCheck ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
+                        <input type="checkbox" value="yes"/>
+                        <span
+                            className={activeRadioCheck ? 'call-voting-checkbox-radio__checkmark' : 'call-voting-checkbox__checkmark'}/>{checkBoxReadQuestion}
+                    </label>
+                </td>
+            </>
     )
 }
 

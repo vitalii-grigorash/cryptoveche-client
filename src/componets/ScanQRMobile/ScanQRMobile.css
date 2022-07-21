@@ -1,14 +1,14 @@
 .scan-qr-code-wrapper {
     display: none;
-    max-width: 343px;
+    max-width: 100%;
     height: 56px;
-    gap: 42px;
+    gap: 34px;
     background-color: #FFFFFF;
     border-radius: 16px;
     align-items: center;
-    justify-content: center;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
     padding: 14px 6px 13px 16px;
+    position: relative;
 }
 .scan-qr-code-wrapper span {
     font-size: 21px;
@@ -16,9 +16,13 @@
     line-height: 29px;
     white-space: nowrap;
     color: rgba(54, 59, 77, 0.9);
+
 }
 .scan-qr-code-wrapper img {
     border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/

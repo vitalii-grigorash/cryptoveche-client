@@ -47,30 +47,30 @@ const MyVotesBlockForm = ({ votesData }) => {
   };
 
   return (
-    <div className={'my-votes-block__vote-form'}>
-      <h3>{votesData.title}</h3>
-      <h5>{votesData.owner.title}</h5>
-      <div className={'vote-form__status-block'}>
-        <CurrentStatusVote
-          regStatus={renderRegStatus(votesData)}
-          voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
-        <StartDateVote dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
-        <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote isRegistered={isRegistered} /></div>
-      </div>
-      <div className={'votes-form__button-vote-cancel-reg'}>
-        {!votesData.re_voting ?
-          <button className={votesData.isVoting && votesData.isRegistered && votesData.status !== 'ended' ? 'button-vote' : 'button-vote-hide'}>
-            Проголосовать
+      <div className={'my-votes-block__vote-form'}>
+        <h3>{votesData.title}</h3>
+        <h5>{votesData.owner.title}</h5>
+        <div className={'vote-form__status-block'}>
+          <CurrentStatusVote
+            regStatus={renderRegStatus(votesData)}
+            voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
+          <StartDateVote dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
+          <div className={'status-and-start-reg-start-vote__add-border-left'}><ConfirmRegMaterialsVote isRegistered={isRegistered} /></div>
+        </div>
+        <div className={'votes-form__button-vote-cancel-reg'}>
+          {!votesData.re_voting ?
+            <button className={votesData.isVoting && votesData.isRegistered && votesData.status !== 'ended' ? 'button-vote' : 'button-vote-hide'}>
+              Проголосовать
+            </button>
+            :
+            <button className={votesData.isVoting && votesData.isRegistered && votesData.status !== 'ended' ? 'button-vote' : 'button-vote-hide'}>
+              Переголосовать
+            </button>}
+          <button className={votesData.isRegistration && votesData.status !== 'ended' ? 'cancel-reg' : 'cancel-reg-hide'}>
+            {renderBtnRegistration(votesData)}
           </button>
-          :
-          <button className={votesData.isVoting && votesData.isRegistered && votesData.status !== 'ended' ? 'button-vote' : 'button-vote-hide'}>
-            Переголосовать
-          </button>}
-        <button className={votesData.isRegistration && votesData.status !== 'ended' ? 'cancel-reg' : 'cancel-reg-hide'}>
-          {renderBtnRegistration(votesData)}
-        </button>
+        </div>
       </div>
-    </div>
   )
 }
 

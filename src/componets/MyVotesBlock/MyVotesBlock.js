@@ -10,14 +10,14 @@ const MyVotesBlock = ({ myVotes }) => {
   const shortEventsData = myVotes.slice(0, 2)
 
   return (
-    <div className={'my-votes-block-wrapper'}>
-      <h2>Мои голосования</h2>
-      {shortEventsData && shortEventsData.map(votesData => <MyVotesBlockForm key={votesData.id} votesData={votesData} />)}
-      <div className={'my-votes__link-arrow'}>
-        <span className={'link-arrow__show-all'}><Link to={'/votes-page'}>ПОКАЗАТЬ ПОЛНОСТЬЮ</Link></span>
-        <span><Link to={'/votes-page'}><img alt={'logo_arrow'} src={icon_arrow} /></Link></span>
-      </div>
-    </div>
+        <div className={'my-votes-block-wrapper'}>
+              <h2>Мои голосования</h2>
+              {shortEventsData && shortEventsData.map(votesData => <MyVotesBlockForm key={votesData.id} votesData={votesData} />)}
+              <div className={'my-votes__link-arrow'}>
+                <span className={'link-arrow__show-all'}><Link to={'/votes-page'}>ПОКАЗАТЬ ПОЛНОСТЬЮ</Link></span>
+                <span><Link to={'/votes-page'}><img alt={'logo_arrow'} src={icon_arrow} /></Link></span>
+              </div>
+        </div>
   )
 }
 export default MyVotesBlock;

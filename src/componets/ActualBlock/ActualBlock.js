@@ -3,6 +3,7 @@ import './ActualBlock.css';
 import logo_icon from '../../img/ActualBlock_logo.svg';
 import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
 import { useNavigate } from "react-router-dom";
+import EmptyStatesComponent from "../EmptyStatesComponent/EmptyStatesComponent";
 
 
 const ActualBlock = ({ myVotes }) => {

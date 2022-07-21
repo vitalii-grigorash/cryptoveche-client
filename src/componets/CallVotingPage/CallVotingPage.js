@@ -22,22 +22,23 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
      const { counter, cards } = useShop();
      const linkDetailsPage = useNavigate();
-     const [questionsRowCheck] = callVotingEvent.map(item => item.questions)
-     const optionsRows = questionsRowCheck.map(item => item.options)
-     const [defaultColumns] = optionsRows.map(item => item.columns.length)
-     const [currentCheck, setCurrentCheck] = useState(false)
-     const [activeCardList, setActiveCardList] = useState(false)
-     const [activeCardCheckbox, setActiveCardCheckbox] = useState(true)
+     const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
 
-     console.log(defaultColumns)
-     // Object.values(defaultColumns).map(item => console.log(item))
+
+     const [allQuestionsVote] = callVotingEvent.map(item => item.questions)
+     const questionsTemplateRow = allQuestionsVote.filter(function (e) {
+         return e.template === 'ynq'
+     });
+     const questionsTemplateGrid = allQuestionsVote.filter(function (e) {
+         return e.template === 'grid'
+     });
+
+
 
 
      const ver = []
-     const total = ver.push(<CallVotingCheckBox activeRadioCheck={false}/>, <CallVotingCheckBox activeRadioCheck={false}/>, <CallVotingCheckBox activeRadioCheck={false}/>)
+     ver.push(<CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>)
 
-
-    console.log(total)
 
      return (
              <div className={'call-voting-page__wrapper'}>
@@ -51,8 +52,8 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                      <span className={'call-voting-page-title__details-icon'} onClick={() => linkDetailsPage('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
                      <DetailsVotesPageDaysEndRegStartVote/>
-                 {activeCardList &&
-                     questionsRowCheck.map((item => {
+                 {
+                     questionsTemplateRow.map((item => {
                          return (
                              <CallVotingPageQuestionCardList
                                  key={item.id}
@@ -69,8 +70,8 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                          )
                      }))
                  }
-                 {activeCardCheckbox &&
-                     questionsRowCheck.map((item => {
+                 {
+                     questionsTemplateGrid.map((item => {
                          return (
                              <CallVotingPageQuestionCardCheckBox
                                  key={item.id}
@@ -88,6 +89,12 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                      key={el.id}
                                      nameRow={el.value}
                                      callVotingCheckProp={React.Children.toArray(ver)}
+                                     nameColumn={item.options.columns.map(el => {
+                                         return <CallVotingNameColumns
+                                         key={el.id}
+                                         nameColumn={el.value}
+                                         activeRadioCheck={activeRadioCheckbox}/>
+                                     })}
                                      />
                                  })}/>
                          )

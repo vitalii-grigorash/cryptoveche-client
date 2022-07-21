@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import './CallVotingPageQuestionCardCheckBox.css';
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import CallVotingPageVoteButtonCheckBox from "../CallVotingPageVoteButtonCheckBox/CallVotingPageVoteButtonCheckBox";
+
 
 
 const CallVotingPageQuestionCardCheckBox = (props) => {
@@ -12,8 +13,11 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         answerSelected,
         nameColumn,
         nameRow,
-        typeCheck
     } = props;
+
+    const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
+    const [activeViewListCheck, setActiveViewListCheck] = useState(false)
+
 
     return (
                 <div className={'call-voting-page-question-card-check__wrapper'}>
@@ -23,19 +27,30 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                             <span>{chooseAnswer}</span><span>{answerSelected}</span></div>
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
-                    <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
-                        <table>
-                            <thead>
+                    {activeViewTableCheck &&
+                        <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
+                            <table>
+                                <thead>
                                 <tr className={'select-checkboxes-block__name-columns'}>
                                     <th className={'name-columns__width-column'}></th>
                                     {nameColumn}
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                     {nameRow}
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    {activeViewListCheck &&
+                        <div>
+                            <table>
+                                <tbody>
+                                    {nameRow}
+                                </tbody>
+                            </table>
+                        </div>
+                    }
                     <CallVotingPageVoteButtonCheckBox/>
                 </div>
     )
