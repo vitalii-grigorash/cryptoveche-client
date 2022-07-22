@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './VotesPageFilterSortButtons.css';
 import votes_page_filters_icon from "../../img/VotesPageBlock_filter_icon.svg";
 import votes_page_sort_icon from "../../img/VotesPageBlock_sort_icon.svg";
@@ -8,13 +8,20 @@ import mobile_filters_sort_red_circle from "../../img/VotesPageBlock_red_cicrle.
 import VotesPageFiltersModal from "./VotesPageFiltersModal/VotesPageFiltersModal";
 import VotesPageSortingModal from "./VotesPageSortingModal/VotesPageSortingModal";
 
-const VotesPageFilterSortButtons = (closeBall) => {
+const VotesPageFilterSortButtons = (props) => {
+
+    const {
+        checkboxFilterArrayAdd,
+        checkboxFilterArrayRemove,
+        onApplyFilterClick,
+        onResetFilterClick
+    } = props;
 
     const [filtersModalActive, setFiltersModalActive] = useState(false);
     const [sortingModalActive, setSortingModalActive] = useState(false);
 
 
-    function showFiltersModal () {
+    function showFiltersModal() {
         if (filtersModalActive === false) {
             setFiltersModalActive(true)
             setSortingModalActive(false)
@@ -23,8 +30,8 @@ const VotesPageFilterSortButtons = (closeBall) => {
         }
     }
 
-    function showSortingModal () {
-        if(sortingModalActive === false){
+    function showSortingModal() {
+        if (sortingModalActive === false) {
             setSortingModalActive(true)
             setFiltersModalActive(false)
         } else {
@@ -33,23 +40,34 @@ const VotesPageFilterSortButtons = (closeBall) => {
     }
 
     return (
-               <div>
-                <div className={'navigation-menu__select-buttons'}>
-                    <button type={'button'} className={'select-buttons__filters-button'} onClick={() => {showFiltersModal()}}>
-                        <img alt={'иконка фильтры'} src={votes_page_filters_icon}/>Фильтры</button>
-                    <button type={'button'} className={'select-buttons__sort-button'} onClick={() => {showSortingModal()}}>
-                        <img alt={'иконка сортировка'} src={votes_page_sort_icon}/>Сортировка</button>
-                    <button type={'button'} className={'select-buttons__mobile-filters-sort-button'} onClick={() => {showFiltersModal()}}>
-                        <img alt={'иконка фильтры'} src={votes_page_mobile_filters_icon}/>Фильтры</button>
-                    <button type={'button'} className={'select-buttons__mobile-filters-sort-button '} onClick={() => {showSortingModal()}}>
-                        <img alt={'иконка сортировка'} src={votes_page_mobile_sort_icon}/>Сортировка</button>
-                    <img alt={'красная точка'} className={'select-buttons__filters-red-circle'} src={mobile_filters_sort_red_circle}/>
-                    <img alt={'красная точка'} className={'select-buttons__sort-red-circle'}  src={mobile_filters_sort_red_circle}/>
-                </div>
-                   <VotesPageFiltersModal active={filtersModalActive} setActive={setFiltersModalActive}/>
-                   <VotesPageSortingModal active={sortingModalActive} setActive={setSortingModalActive}/>
-               </div>
+        <div>
+            <div className={'navigation-menu__select-buttons'}>
+                <button type={'button'} className={'select-buttons__filters-button'} onClick={() => { showFiltersModal() }}>
+                    <img alt={'иконка фильтры'} src={votes_page_filters_icon} />Фильтры</button>
+                <button type={'button'} className={'select-buttons__sort-button'} onClick={() => { showSortingModal() }}>
+                    <img alt={'иконка сортировка'} src={votes_page_sort_icon} />Сортировка</button>
+                <button type={'button'} className={'select-buttons__mobile-filters-sort-button'} onClick={() => { showFiltersModal() }}>
+                    <img alt={'иконка фильтры'} src={votes_page_mobile_filters_icon} />Фильтры</button>
+                <button type={'button'} className={'select-buttons__mobile-filters-sort-button '} onClick={() => { showSortingModal() }}>
+                    <img alt={'иконка сортировка'} src={votes_page_mobile_sort_icon} />Сортировка</button>
+                <img alt={'красная точка'} className={'select-buttons__filters-red-circle'} src={mobile_filters_sort_red_circle} />
+                <img alt={'красная точка'} className={'select-buttons__sort-red-circle'} src={mobile_filters_sort_red_circle} />
+            </div>
+            <VotesPageFiltersModal
+                active={filtersModalActive}
+                setActive={setFiltersModalActive}
+                checkboxFilterArrayAdd={checkboxFilterArrayAdd}
+                checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                onApplyFilterClick={onApplyFilterClick}
+                onResetFilterClick={onResetFilterClick}
+            />
+            <VotesPageSortingModal
+                active={sortingModalActive}
+                setActive={setSortingModalActive}
+            />
+        </div>
     )
-}
-export default VotesPageFilterSortButtons;
 
+}
+
+export default VotesPageFilterSortButtons;

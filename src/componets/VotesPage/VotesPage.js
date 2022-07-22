@@ -26,6 +26,8 @@ const VotesPage = (props) => {
     const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
     const [activeEvents, setActiveEvents] = useState([]);
     const [archiveEvents, setArchiveEvents] = useState([]);
+    const [statusFilterArray, setStatusFilterArray] = useState([]);
+    const [typeFilterArray, setTypeFilterArray] = useState([]);
 
     const activeEventsPerRow = 3;
     const activeEventsToRender = activeEvents.slice(0, (currentRowActiveEvents + 1) * activeEventsPerRow);
@@ -35,11 +37,11 @@ const VotesPage = (props) => {
     const archiveEventsToRender = archiveEvents.slice(0, (currentRowArchiveEvents + 1) * archiveEventsPerRow);
     const isMoreArchiveEvents = archiveEventsToRender.length !== archiveEvents.length;
 
-    useEffect(() => {
+    function splitEvents(events) {
         setActiveEvents([]);
         setArchiveEvents([]);
-        if (allEvents.length !== 0) {
-            allEvents.forEach((event) => {
+        if (events.length !== 0) {
+            events.forEach((event) => {
                 if (event.status === 'ended') {
                     setArchiveEvents(archiveEvents => [...archiveEvents, event]);
                 } else {
@@ -47,7 +49,59 @@ const VotesPage = (props) => {
                 }
             })
         }
+    }
+
+    useEffect(() => {
+        splitEvents(allEvents);
     }, [allEvents])
+
+    function checkboxFilterArrayAdd(selectedCheckboxValue) {
+        if (selectedCheckboxValue === 'open' || selectedCheckboxValue === 'secret') {
+            setTypeFilterArray([...typeFilterArray, selectedCheckboxValue]);
+        } else {
+            setStatusFilterArray([...statusFilterArray, selectedCheckboxValue]);
+        }
+    }
+
+    function checkboxFilterArrayRemove(selectedCheckboxValue) {
+        if (selectedCheckboxValue === 'open' || selectedCheckboxValue === 'secret') {
+            const filteredItems = typeFilterArray.filter(typeFilter => typeFilter !== selectedCheckboxValue);
+            setTypeFilterArray(filteredItems);
+        } else {
+            const filteredItems = statusFilterArray.filter(statusFilter => statusFilter !== selectedCheckboxValue);
+            setStatusFilterArray(filteredItems);
+        }
+    }
+
+    function applyDateEventStartFilter(events) {
+        splitEvents(events);
+    }
+
+    function applyDateRegisterFilter(events) {
+        applyDateEventStartFilter(events);
+    }
+
+    function applyTypeFilter(events) {
+        if (typeFilterArray.length === 0) {
+            applyDateRegisterFilter(events);
+        } else {
+            const filteredEvents = events.filter(event => typeFilterArray.find(typeFilter => typeFilter === event.type))
+            applyDateRegisterFilter(filteredEvents);
+        }
+    }
+
+    function onApplyFilterClick() {
+        if (statusFilterArray.length === 0) {
+            applyTypeFilter(allEvents);
+        } else {
+            const filteredEvents = allEvents.filter(event => statusFilterArray.find(statusFilter => statusFilter === event.status))
+            applyTypeFilter(filteredEvents);
+        }
+    }
+
+    function onResetFilterClick() {
+        console.log('Reset filter click');
+    }
 
     function toggleActiveHide() {
         setBtnActiveVotes(true)
@@ -68,7 +122,12 @@ const VotesPage = (props) => {
             />
             <img className='votes-page-block__qr-cod' alt='qr-код' src={qr_cod_icon} />
             <div className='votes-page-block__navigation-menu'>
-                <VotesPageFilterSortButtons />
+                <VotesPageFilterSortButtons
+                    checkboxFilterArrayAdd={checkboxFilterArrayAdd}
+                    checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                    onApplyFilterClick={onApplyFilterClick}
+                    onResetFilterClick={onResetFilterClick}
+                />
                 <VotesPagePaginationTableSearch />
             </div>
             <div className='votes-page-block__main-content'>
