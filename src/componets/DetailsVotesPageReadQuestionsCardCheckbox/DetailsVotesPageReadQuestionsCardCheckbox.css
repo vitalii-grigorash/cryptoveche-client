@@ -35,9 +35,7 @@
     width: 20px;
     cursor: pointer;
 }
-.block__www {
-    width: 120px;
-}
+
 /*------Стилизация для блока с чекбоксам------------------------------------------------------------------------------*/
 .checkbox-question-block__select-checkboxes-block {
     display: flex;
@@ -46,15 +44,6 @@
     gap: 40px;
     color: rgba(54, 59, 77, 0.9);
     font-size: 18px;
-}
-.checkbox-question-block__header-columns {
-    display: grid;
-    grid-template-columns: 25% 14% 13% 16%;
-    grid-template-rows: 24px;
-    text-align: center;
-    color: rgba(54, 59, 77, 0.9);
-    font-size: 18px;
-    gap: 40px;
 }
 
 /*------Адаптивная версия(800px)---------------------------------------------------------------------------------------*/
@@ -80,7 +69,7 @@
         font-weight: 500;
     }
     .checkbox-question-block__title span {
-       display: none;
+        font-size: 12px;
     }
     .checkbox-question-block__title select {
         display: none;

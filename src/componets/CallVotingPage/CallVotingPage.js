@@ -23,18 +23,10 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
      const { counter, cards } = useShop();
      const linkDetailsPage = useNavigate();
      const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
-
-
+     const titleVote = callVotingEvent.map(item => item.title)
      const [allQuestionsVote] = callVotingEvent.map(item => item.questions)
-     const questionsTemplateRow = allQuestionsVote.filter(function (e) {
-         return e.template === 'ynq'
-     });
-     const questionsTemplateGrid = allQuestionsVote.filter(function (e) {
-         return e.template === 'grid'
-     });
-
-
-
+     const questionsTemplateRow = allQuestionsVote.filter(e => e.template === 'ynq')
+     const questionsTemplateGrid = allQuestionsVote.filter(e => e.template === 'grid')
 
      const ver = []
      ver.push(<CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>)
@@ -47,7 +39,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                     secondLetter={'Голосование по повестке'}
                     titleName={'Голосование по повестке'} mobileLetter={'Назад на главную'}/>
                  <div className={'call-voting-page__title'}>
-                     <h2 className={'call-voting-page-title__title'}>{callVotingEvent.map(item => item.title)}</h2>
+                     <h2 className={'call-voting-page-title__title'}>{titleVote}</h2>
                      <button className={'call-voting-page-title__details-btn'} onClick={() => linkDetailsPage('/details-vote')}>Детали голосования</button>
                      <span className={'call-voting-page-title__details-icon'} onClick={() => linkDetailsPage('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
@@ -74,26 +66,27 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                      questionsTemplateGrid.map((item => {
                          return (
                              <CallVotingPageQuestionCardCheckBox
-                                 key={item.id}
-                                 questionName={item.title}
-                                 chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'}
-                                 answerSelected={'Выбрано: 0'}
-                                 nameColumn={item.options.columns.map(el => {
-                                     return <CallVotingNameColumns
-                                     key={el.id}
-                                     nameColumn={el.value}
-                                     />
-                                 })}
-                                 nameRow={item.options.rows.map(el => {
-                                     return <CallVotingNameRows
-                                     key={el.id}
-                                     nameRow={el.value}
-                                     callVotingCheckProp={React.Children.toArray(ver)}
+                                     key={item.id}
+                                     questionName={item.title}
+                                     chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'}
+                                     answerSelected={'Выбрано: 0'}
                                      nameColumn={item.options.columns.map(el => {
                                          return <CallVotingNameColumns
                                          key={el.id}
                                          nameColumn={el.value}
-                                         activeRadioCheck={activeRadioCheckbox}/>
+                                         />
+                                 })}
+                                     nameRow={item.options.rows.map(el => {
+                                         return <CallVotingNameRows
+                                         key={el.id}
+                                         nameRow={el.value}
+                                         callVotingCheckProp={React.Children.toArray(ver)}
+                                         nameColumn={item.options.columns.map(el => {
+                                             return <CallVotingNameColumns
+                                             key={el.id}
+                                             nameColumn={el.value}
+                                             activeRadioCheck={activeRadioCheckbox}
+                                             />
                                      })}
                                      />
                                  })}/>

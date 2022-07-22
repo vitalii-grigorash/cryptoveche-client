@@ -23,20 +23,16 @@ const DetailsVotesPageReadQuestions = () => {
 
     const nameVoteTitle = callVotingEvent.map(item => item.title)
     const [readQuestionsVote] = callVotingEvent.map(item => item.questions)
+    const questionsTemplateRow = readQuestionsVote.filter(e => e.template === 'ynq')
+    const questionsTemplateGrid = readQuestionsVote.filter(e => e.template === 'grid')
 
-    const questionsTemplateRow = readQuestionsVote.filter(function (e) {
-        return e.template === 'ynq'
-    });
-    const questionsTemplateGrid = readQuestionsVote.filter(function (e) {
-        return e.template === 'grid'
-    });
 
 
     const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
 
 
     const ver = []
-    ver.push(<CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>)
+    ver.push(<ReadQuestionsCardCheckbox activeRadioCheck={activeRadioCheckbox}/>, <ReadQuestionsCardCheckbox activeRadioCheck={activeRadioCheckbox}/>, <ReadQuestionsCardCheckbox activeRadioCheck={activeRadioCheckbox}/>)
 
 
 
@@ -80,7 +76,9 @@ const DetailsVotesPageReadQuestions = () => {
                                       <ReadQuestionsCardNameRows
                                       key={el.id}
                                       nameQuestionRow={el.value}
-                                      checkBoxReadQuestion={React.Children.toArray(ver)}/>
+                                      activeRadioCheck={activeRadioCheckbox}
+                                      checkBoxReadQuestion={React.Children.toArray(ver)}
+                                      />
                                   )
                               })}
                               />

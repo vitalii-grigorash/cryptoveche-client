@@ -1,15 +1,4 @@
 /*------Основной контейнер--------------------------------------------------------------------------------------------*/
-/*.call-voting-card-checkbox__list-answer {*/
-/*    display: grid;*/
-/*    grid-template-columns: 31% 14% 14% 20%;*/
-/*    grid-auto-rows: auto;*/
-/*    gap: 40px;*/
-/*}*/
-/*.call-voting-card-checkbox__name-question {*/
-/*    word-wrap: break-word;*/
-/*    line-height: 28px;*/
-/*    width: 240px;*/
-/*}*/
 .call-voting-name-rows__wrapper {
     display: flex;
     flex-direction: row;

@@ -5,8 +5,8 @@ const ReadQuestionsCardNameRows = ({nameQuestionRow, checkBoxReadQuestion}) => {
 
     return (
             <>
-                <tr className={'call-voting-name-rows__wrapper'}>
-                    <td className={'call-voting-name-rows__name-row'}>
+                <tr className={'read-questions-card-name-rows__wrapper'}>
+                    <td className={'read-questions-card-name-rows__name-row'}>
                         {nameQuestionRow}
                     </td>
                     {checkBoxReadQuestion}
