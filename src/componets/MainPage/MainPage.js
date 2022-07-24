@@ -35,6 +35,8 @@ const MainPage = (props) => {
 		}
 	}, [allEvents])
 
+	console.log(allEvents);
+
 
 	return (
 		<div>
@@ -43,13 +45,13 @@ const MainPage = (props) => {
 			</div>
 			<CounterBlock stats={statsData} />
 			<div className={'main-content__my-votes-actual'}>
-				<MyVotesBlock myVotes={allEvents} />
+				<MyVotesBlock myVotes={allEvents.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1)} />
 				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock actualVote={actualVote} />}
 				<ScanQRMobile />
 			</div>
 			<div className={'main-content__amount-votes-and-calendar-votes'}>
 				<div className={'gistogramma-and-observer-cryptoveche'}>
-					<AmountVotesBlock />
+					<AmountVotesBlock statsData={statsData}/>
 					<ObserverCryptoBlock />
 				</div>
 				<CalendarVotes />

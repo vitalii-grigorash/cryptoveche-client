@@ -4,29 +4,33 @@
     flex-direction: column;
     position: relative;
 }
+
 .gistogramma-block__stylization {
     height: 100px;
     max-width: 290px;
     opacity: 20%;
     padding-top: 15px;
     transform: rotate(180deg);
+
 }
 
 /*------Стилизация для div с датами-------------------------------------------------------------------------------*/
 .gistogramma-block__date {
     display: flex;
     width: 290px;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 14px;
     line-height: 142%;
     color: #333333;
     opacity: 50%;
 }
+
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
 @media (max-width: 420px) {
     .gistogramma-block__stylization {
         width: 248px;
     }
+
     .gistogramma-block__date {
         width: 248px;
         font-size: 13px;
