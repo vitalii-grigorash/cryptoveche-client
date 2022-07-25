@@ -8,11 +8,20 @@ const FiltersModalCheckBox = (props) => {
         status,
         type,
         checkboxFilterArrayAdd,
-        checkboxFilterArrayRemove
+        checkboxFilterArrayRemove,
+        isResetAllCheckboxClick,
+        changeAllCheckbox
     } = props;
 
     const [value, setValue] = useState('');
     const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+
+    useEffect(() => {
+        if (isResetAllCheckboxClick) {
+            setCheckboxChecked(false);
+            changeAllCheckbox();
+        }
+    }, [isResetAllCheckboxClick, changeAllCheckbox])
 
     useEffect(() => {
         if (status === undefined) {

@@ -28,6 +28,13 @@ const VotesPage = (props) => {
     const [archiveEvents, setArchiveEvents] = useState([]);
     const [statusFilterArray, setStatusFilterArray] = useState([]);
     const [typeFilterArray, setTypeFilterArray] = useState([]);
+    const [registerDateFrom, setRegisterDateFrom] = useState('');
+    const [registerDateTo, setRegisterDateTo] = useState('');
+    const [eventStartDateFrom, setEventStartDateFrom] = useState('');
+    const [eventStartDateTo, setEventStartDateTo] = useState('');
+    const [isRegisterDateAscending, setRegisterDateAscending] = useState(true);
+    const [isEventDateAscending, setEventDateAscending] = useState(true);
+    const [isResetAllCheckboxClick, setResetAllCheckboxClick] = useState(false);
 
     const activeEventsPerRow = 3;
     const activeEventsToRender = activeEvents.slice(0, (currentRowActiveEvents + 1) * activeEventsPerRow);
@@ -73,12 +80,52 @@ const VotesPage = (props) => {
         }
     }
 
+    function toggleRegisterDateAscending() {
+        if (isRegisterDateAscending) {
+            setRegisterDateAscending(false);
+        } else {
+            setRegisterDateAscending(true);
+        }
+    }
+
+    function toggleEventDateAscending() {
+        if (isEventDateAscending) {
+            setEventDateAscending(false);
+        } else {
+            setEventDateAscending(true);
+        }
+    }
+
     function applyDateEventStartFilter(events) {
-        splitEvents(events);
+        const dateFrom = eventStartDateFrom !== '' ? new Date(eventStartDateFrom) : null;
+        const dateTo = eventStartDateTo !== '' ? new Date(eventStartDateTo) : null;
+        const filteredEvents = events.filter((event) => {
+            const eventDate = new Date(event.event_start_time);
+            return !((dateFrom && dateFrom > eventDate) || (dateTo && dateTo < eventDate));
+        })
+        if (isEventDateAscending) {
+            const sortedActivities = filteredEvents.sort((a, b) => new Date(a.event_start_time) - new Date(b.event_start_time))
+            splitEvents(sortedActivities);
+        } else {
+            const sortedActivities = filteredEvents.sort((a, b) => new Date(b.event_start_time) - new Date(a.event_start_time))
+            splitEvents(sortedActivities);
+        }
     }
 
     function applyDateRegisterFilter(events) {
-        applyDateEventStartFilter(events);
+        const dateFrom = registerDateFrom !== '' ? new Date(registerDateFrom) : null;
+        const dateTo = registerDateTo !== '' ? new Date(registerDateTo) : null;
+        const filteredEvents = events.filter((event) => {
+            const eventDate = new Date(event.registration_start_time);
+            return !((dateFrom && dateFrom > eventDate) || (dateTo && dateTo < eventDate));
+        })
+        if (isRegisterDateAscending) {
+            const sortedActivities = filteredEvents.sort((a, b) => new Date(a.registration_start_time) - new Date(b.registration_start_time))
+            applyDateEventStartFilter(sortedActivities);
+        } else {
+            const sortedActivities = filteredEvents.sort((a, b) => new Date(b.registration_start_time) - new Date(a.registration_start_time))
+            applyDateEventStartFilter(sortedActivities);
+        }
     }
 
     function applyTypeFilter(events) {
@@ -99,8 +146,37 @@ const VotesPage = (props) => {
         }
     }
 
+    function changeAllCheckbox () {
+        setResetAllCheckboxClick(false);
+    }
+
     function onResetFilterClick() {
-        console.log('Reset filter click');
+        setStatusFilterArray([]);
+        setTypeFilterArray([]);
+        setRegisterDateFrom('');
+        setRegisterDateTo('');
+        setEventStartDateFrom('');
+        setEventStartDateTo('');
+        setRegisterDateAscending(true);
+        setEventDateAscending(true);
+        setResetAllCheckboxClick(true);
+        splitEvents(allEvents);
+    }
+
+    function registerDateFromChange(evt) {
+        setRegisterDateFrom(evt.target.value);
+    }
+
+    function registerDateToChange(evt) {
+        setRegisterDateTo(evt.target.value);
+    }
+
+    function eventStartDateFromChange(evt) {
+        setEventStartDateFrom(evt.target.value);
+    }
+
+    function eventStartDateToChange(evt) {
+        setEventStartDateTo(evt.target.value);
     }
 
     function toggleActiveHide() {
@@ -127,6 +203,20 @@ const VotesPage = (props) => {
                     checkboxFilterArrayRemove={checkboxFilterArrayRemove}
                     onApplyFilterClick={onApplyFilterClick}
                     onResetFilterClick={onResetFilterClick}
+                    registerDateFromChange={registerDateFromChange}
+                    registerDateToChange={registerDateToChange}
+                    eventStartDateFromChange={eventStartDateFromChange}
+                    eventStartDateToChange={eventStartDateToChange}
+                    registerDateFrom={registerDateFrom}
+                    registerDateTo={registerDateTo}
+                    eventStartDateFrom={eventStartDateFrom}
+                    eventStartDateTo={eventStartDateTo}
+                    toggleRegisterDateAscending={toggleRegisterDateAscending}
+                    toggleEventDateAscending={toggleEventDateAscending}
+                    isRegisterDateAscending={isRegisterDateAscending}
+                    isEventDateAscending={isEventDateAscending}
+                    changeAllCheckbox={changeAllCheckbox}
+                    isResetAllCheckboxClick={isResetAllCheckboxClick}
                 />
                 <VotesPagePaginationTableSearch />
             </div>

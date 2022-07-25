@@ -3,6 +3,7 @@ import './VotesPageFiltersModal.css';
 import filter_modal_close_button_mobile from '../../../img/VotesPageBlockFilterModal_close_button_mobile.svg';
 import filter_modal_close_button from '../../../img/VotesPageBlockFilterModal_close_button.svg';
 import filter_modal_increment_button from '../../../img/VotesPageBlockModal_increment_icon.svg';
+import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
 import FiltersModalCheckBox from "./FiltersModalCheckBox/FiltersModalCheckBox";
 
 
@@ -15,6 +16,20 @@ const VotesPageFiltersModal = (props) => {
         checkboxFilterArrayRemove,
         onApplyFilterClick,
         onResetFilterClick,
+        registerDateFromChange,
+        registerDateToChange,
+        eventStartDateFromChange,
+        eventStartDateToChange,
+        registerDateFrom,
+        registerDateTo,
+        eventStartDateFrom,
+        eventStartDateTo,
+        toggleRegisterDateAscending,
+        toggleEventDateAscending,
+        isRegisterDateAscending,
+        isEventDateAscending,
+        changeAllCheckbox,
+        isResetAllCheckboxClick
     } = props;
 
     useOnClickOutsideFiltersModal(active, () => setActive(false));
@@ -36,12 +51,12 @@ const VotesPageFiltersModal = (props) => {
 
     function applyFilter() {
         onApplyFilterClick();
-        setActive(false)
+        setActive(false);
     }
 
     function resetFilter() {
         onResetFilterClick();
-        setActive(false)
+        setActive(false);
     }
 
     return (
@@ -62,42 +77,56 @@ const VotesPageFiltersModal = (props) => {
                         status={"voting"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Идет регистрация'}
                         status={"registration"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Регистрация и голосование'}
                         status={"registration and voting"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Ожидание голосования'}
                         status={"event waiting"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Ожидание регистрации'}
                         status={"waiting"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Голосование завершено'}
                         status={"ended"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Кворум не достигнут'}
                         status={"quorum not reached"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                        isResetAllCheckboxClick={isResetAllCheckboxClick}
+                        changeAllCheckbox={changeAllCheckbox}
                     />
                 </div>
                 <div className={'filters-modal__content-checkboxes-type-vote'}>
@@ -109,12 +138,16 @@ const VotesPageFiltersModal = (props) => {
                             type={"open"}
                             checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                             checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                            isResetAllCheckboxClick={isResetAllCheckboxClick}
+                            changeAllCheckbox={changeAllCheckbox}
                         />
                         <FiltersModalCheckBox
                             nameSearchVote={'Тайное'}
                             type={"secret"}
                             checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                             checkboxFilterArrayRemove={checkboxFilterArrayRemove}
+                            isResetAllCheckboxClick={isResetAllCheckboxClick}
+                            changeAllCheckbox={changeAllCheckbox}
                         />
                     </div>
                 </div>
@@ -124,11 +157,21 @@ const VotesPageFiltersModal = (props) => {
                     <div className={'content-date-start-reg'}>
                         <div className={'content-date-start-reg__select-dates'}>
                             <span>с</span>
-                            <input type={'date'} className={'content-date-start-reg__start-select-date'} />по
-                            <input type={"date"} className={'content-date-start-reg__end-select-date'} />
+                            <input
+                                type='date'
+                                className={'content-date-start-reg__start-select-date'}
+                                onChange={registerDateFromChange}
+                                value={registerDateFrom}
+                            />по
+                            <input
+                                type='date'
+                                className={'content-date-start-reg__end-select-date'}
+                                onChange={registerDateToChange}
+                                value={registerDateTo}
+                            />
                         </div>
-                        <div className={'content-date-start-reg__increment-bnt'}>
-                            <span>По возрастанию</span><img alt={'кнопка по возрастанию'} src={filter_modal_increment_button} />
+                        <div className={'content-date-start-reg__increment-bnt'} onClick={toggleRegisterDateAscending}>
+                            <span>{isRegisterDateAscending ? 'По возрастанию' : 'По убыванию'}</span><img alt={'кнопка по возрастанию'} src={isRegisterDateAscending ? filter_modal_increment_button : sorting_modal_decrease_btn} />
                         </div>
                     </div>
                 </div>
@@ -138,11 +181,21 @@ const VotesPageFiltersModal = (props) => {
                     <div className={'content-date-start-vote'}>
                         <div className={'content-date-start-reg__select-dates'}>
                             <span>с</span>
-                            <input type={'date'} className={'content-date-start-vote__start-select-date'} />по
-                            <input type={"date"} className={'content-date-start-vote__end-select-date'} />
+                            <input
+                                type='date'
+                                className={'content-date-start-vote__start-select-date'}
+                                onChange={eventStartDateFromChange}
+                                value={eventStartDateFrom}
+                            />по
+                            <input
+                                type='date'
+                                className={'content-date-start-vote__end-select-date'}
+                                onChange={eventStartDateToChange}
+                                value={eventStartDateTo}
+                            />
                         </div>
-                        <div className={'content-date-start-reg__increment-bnt'}>
-                            <span>По возрастанию</span><img alt={'кнопка по возрастанию'} src={filter_modal_increment_button} />
+                        <div className={'content-date-start-reg__increment-bnt'} onClick={toggleEventDateAscending}>
+                            <span>{isEventDateAscending ? 'По возрастанию' : 'По убыванию'}</span><img alt={'кнопка по возрастанию'} src={isEventDateAscending ? filter_modal_increment_button : sorting_modal_decrease_btn} />
                         </div>
                     </div>
                 </div>

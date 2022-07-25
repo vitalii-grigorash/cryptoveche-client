@@ -14,7 +14,21 @@ const VotesPageFilterSortButtons = (props) => {
         checkboxFilterArrayAdd,
         checkboxFilterArrayRemove,
         onApplyFilterClick,
-        onResetFilterClick
+        onResetFilterClick,
+        registerDateFromChange,
+        registerDateToChange,
+        eventStartDateFromChange,
+        eventStartDateToChange,
+        registerDateFrom,
+        registerDateTo,
+        eventStartDateFrom,
+        eventStartDateTo,
+        toggleRegisterDateAscending,
+        toggleEventDateAscending,
+        isRegisterDateAscending,
+        isEventDateAscending,
+        changeAllCheckbox,
+        isResetAllCheckboxClick
     } = props;
 
     const [filtersModalActive, setFiltersModalActive] = useState(false);
@@ -60,6 +74,20 @@ const VotesPageFilterSortButtons = (props) => {
                 checkboxFilterArrayRemove={checkboxFilterArrayRemove}
                 onApplyFilterClick={onApplyFilterClick}
                 onResetFilterClick={onResetFilterClick}
+                registerDateFromChange={registerDateFromChange}
+                registerDateToChange={registerDateToChange}
+                eventStartDateFromChange={eventStartDateFromChange}
+                eventStartDateToChange={eventStartDateToChange}
+                registerDateFrom={registerDateFrom}
+                registerDateTo={registerDateTo}
+                eventStartDateFrom={eventStartDateFrom}
+                eventStartDateTo={eventStartDateTo}
+                toggleRegisterDateAscending={toggleRegisterDateAscending}
+                toggleEventDateAscending={toggleEventDateAscending}
+                isRegisterDateAscending={isRegisterDateAscending}
+                isEventDateAscending={isEventDateAscending}
+                changeAllCheckbox={changeAllCheckbox}
+                isResetAllCheckboxClick={isResetAllCheckboxClick}
             />
             <VotesPageSortingModal
                 active={sortingModalActive}
