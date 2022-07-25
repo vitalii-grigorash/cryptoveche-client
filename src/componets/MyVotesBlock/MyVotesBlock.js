@@ -7,7 +7,7 @@ import MyVotesBlockForm from './MyVotesBlockForm';
 
 const MyVotesBlock = ({ myVotes }) => {
 
-  const shortEventsData = myVotes.slice(0, 2)
+	const shortEventsData = myVotes.slice(0, 2)
 
   return (
     <div className={'my-votes-block-wrapper'}>

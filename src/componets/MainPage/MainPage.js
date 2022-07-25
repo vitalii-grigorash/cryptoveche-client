@@ -14,9 +14,12 @@ const MainPage = (props) => {
 	const {
 		allEvents,
 		requestHelper
-	} = props
+	} = props;
 
-	
+	const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+	const sortActualEvents = allEvents.filter(el => el.status !== 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+
+
 	const [statsData, setStatsData] = useState({});
 	const [actualVote, setActualVote] = useState({});
 	
@@ -29,13 +32,11 @@ const MainPage = (props) => {
 	}, []);
 	
 	useEffect (() => {
-		const [nextVote] = allEvents.slice(0, 1)
+		const [nextVote] = sortActualEvents.slice(0, 1)
 		if (nextVote) {
 			setActualVote(nextVote)
 		}
 	}, [allEvents])
-
-	console.log(allEvents);
 
 
 	return (
@@ -45,7 +46,7 @@ const MainPage = (props) => {
 			</div>
 			<CounterBlock stats={statsData} />
 			<div className={'main-content__my-votes-actual'}>
-				<MyVotesBlock myVotes={allEvents.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1)} />
+				<MyVotesBlock myVotes={sortActualEvents} />
 				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock actualVote={actualVote} />}
 				<ScanQRMobile />
 			</div>

@@ -19,6 +19,13 @@ const MyVotesBlockForm = ({ votesData }) => {
   // isVoting: false началось ли голосование
   // isVoted: true проголосовал ли юзе по текущему евенту
 
+	// "waiting"; ожтдание регистарции
+	// "registration"; идет регистрация
+	// "event waiting"; ожидание голосования
+	// "voting"; идет голосование
+	// "quorum_unpresant"; куорум не достигнут
+	// "ended"; завершено 
+
   const renderBtnRegistration = (votesData) => {
     let btnText;
 
