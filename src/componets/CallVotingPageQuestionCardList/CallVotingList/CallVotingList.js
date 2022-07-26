@@ -6,9 +6,6 @@ const CallVotingList = ({labelCheckbox, activeCheck, onClickCheck}) => {
 
 
 
-
-
-
     return (
                 <div>
                     <label className={'checkbox_container'}>

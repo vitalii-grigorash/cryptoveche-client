@@ -7,29 +7,16 @@
     font-weight: 400;
 }
 /*------Стилизация чебокса--------------------------------------------------------------------------------------------*/
-.my-bulletin-card-list__checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #FFFFFF;
-    border-color: #0084FE;
-    border-style: solid;
-    border-width: 1px;
-}
 .my-bulletin-card-list__container{
     display: block;
     position: relative;
     padding-left: 34px;
-    cursor: pointer;
     font-size: 18px;
-    user-select: none;
+    pointer-events: none;
 }
 .my-bulletin-card-list__container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
 }
@@ -41,12 +28,11 @@
     width: 20px;
     background-color: #FBFBFB;
     border: 1px solid rgba(54, 59, 77, 0.2);
+    pointer-events: none;
 }
-
 .my-bulletin-card-list__container input:checked ~ .my-bulletin-card-list__checkmark {
     background-color: #0084FE;
 }
-
 .my-bulletin-card-list__checkmark:after {
     content: "";
     position: absolute;
