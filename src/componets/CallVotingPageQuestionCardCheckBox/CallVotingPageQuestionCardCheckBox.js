@@ -11,8 +11,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         questionName,
         chooseAnswer,
         answerSelected,
-        nameColumn,
-        nameRow,
+        columnsGrid,
+        rowsGrid,
     } = props;
 
     const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
@@ -33,11 +33,11 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                                 <thead>
                                 <tr className={'select-checkboxes-block__name-columns'}>
                                     <th className={'name-columns__width-column'}></th>
-                                    {nameColumn}
+                                    {columnsGrid}
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {nameRow}
+                                    {rowsGrid}
                                 </tbody>
                             </table>
                         </div>
@@ -46,7 +46,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                         <div>
                             <table>
                                 <tbody>
-                                    {nameRow}
+                                {rowsGrid}
                                 </tbody>
                             </table>
                         </div>
@@ -55,5 +55,4 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                 </div>
     )
 }
-
 export default CallVotingPageQuestionCardCheckBox;

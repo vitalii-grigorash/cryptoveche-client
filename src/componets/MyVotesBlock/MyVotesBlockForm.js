@@ -1,6 +1,7 @@
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
+import './MyVotesBlock.css';
 // import moment from 'moment';
 
 const MyVotesBlockForm = ({ votesData }) => {

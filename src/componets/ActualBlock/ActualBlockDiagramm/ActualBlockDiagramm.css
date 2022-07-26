@@ -8,14 +8,18 @@
 }
 .diagramm-container__info {
     position: absolute;
-    left: 155px;
-    top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
 }
 .diagramm-container__info h3 {
     font-size: 60px;
     line-height: 70px;
     color: #4ED4A9;
     font-weight: 600;
+
 }
 .diagramm-container__info p {
     font-size: 14px;
@@ -25,9 +29,8 @@
 }
 /*------Стили для кругов диаграммы-----------------------------------------------------------------------------------*/
 .diagramm-circle {
-  width: 600px;
-  height: 370px;
-
+      width: 600px;
+      height: 370px;
 }
 /*------При-увеличении dashoffset у green, надо уменьшать dasharray у желтого-------------------------------------------*/
 .circle__style {
@@ -55,8 +58,7 @@
         height: 290px;
     }
     .diagramm-container__info {
-        top: 110px;
-        left: 115px;
+
     }
     .diagramm-container__info h3 {
         font-size: 40px;
@@ -70,17 +72,21 @@
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
     .diagramm-circle {
-        height: 187px;
+        height: 240px;
     }
     .diagramm-container__info {
-        top: 60px;
-        left: 35vw;
     }
 }
 @media (max-width: 470px) {
     .diagramm-container__info {
-        top: 60px;
-        left: 31vw;
+
+    }
+    .diagramm-container__info h3 {
+        font-size: 38px;
+        line-height: 45px;
+    }
+    .diagramm-container__info p {
+        font-size: 10px;
     }
 }
 

@@ -232,7 +232,7 @@ export const callVotingEvent = [
                 "options": {
                     "rows": [
                         {
-                            "id": "da21vefb-b4c5-471b-a24f-f0e797757bzf",
+                            "id": "da21vefq-b4c5-471b-a24f-f0e797757bzf",
                             "value": "Банан"
                         },
                         {
@@ -255,7 +255,7 @@ export const callVotingEvent = [
                             "value": "Против"
                         },
                         {
-                            "id": "5a59zdc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5a59zdc7-b5b7-4c95-b700-5231bf2e5955",
                             "value": "Воздержаться"
                         }
                     ]
@@ -278,19 +278,19 @@ export const callVotingEvent = [
                 "options": {
                     "rows": [
                         {
-                            "id": "da21aefb-b4c5-471b-a24f-f0e797757bef",
+                            "id": "da21aefb-b4c5-3333-a24f-f0e797757bef",
                             "value": "Банан"
                         },
                         {
-                            "id": "da21aefb-b4c5-471b-a24f-f0e797759bef",
+                            "id": "da21aefb-b4c5-1111-a24f-f0e797759bef",
                             "value": "Ананас"
                         },
                         {
-                            "id": "5a71adc7-z5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5a71adc7-z5b7-4c95-2222-5231bf2e5955",
                             "value": "Яблоко"
                         },
                         {
-                            "id": "5a59adc7-b5b7-4c95-b0e2-5231bf2e5955",
+                            "id": "5a59adc7-b5b7-0000-b0e2-5231bf2e5955",
                             "value": "Персик"
                         }
 

@@ -3,13 +3,17 @@ import './CallVotingPageQuestionCardList.css';
 import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import useShop from "../../contexts/CallVotingContext";
+import CallVotingList from "./CallVotingList/CallVotingList";
 
 
 
 const CallVotingPageQuestionCardList = (props) => {
 
     const {
-        questionName, chooseAnswer, selectValue, labelCheckbox
+        questionName,
+        chooseAnswer,
+        selectValue,
+        listNameAnswers
     } = props;
 
     // const {cards,addCard,removeCard} = useShop()
@@ -72,7 +76,7 @@ const CallVotingPageQuestionCardList = (props) => {
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     <div className={'call-voting-page-question-card-list__main-content'}>
-                        {labelCheckbox}
+                        {listNameAnswers}
                     </div>
                 <CallVotingPageVoteButtonList/>
             </div>

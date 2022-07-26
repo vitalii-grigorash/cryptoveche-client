@@ -32,9 +32,10 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
      // const countColumns = getId.find(el => el.id[2])
      //  const bun = Object.values(countColumns)
-    function onGetId(e) {
-         console.log('id:', e.currentTarget.id)
-     }
+
+
+
+     console.log(getId)
 
      return (
              <div className={'call-voting-page__wrapper'}>
@@ -56,11 +57,11 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                  questionName={item.title}
                                  chooseAnswer={'Необходимо выбрать ровно 1'}
                                  selectValue={counter}
-                                 labelCheckbox={item.options.rows.map(elem => {
+                                 listNameAnswers={item.options.rows.map(elem => {
                                      return <CallVotingList
                                          key={elem.id}
-                                         labelCheckbox={elem.value}
-                                         onClickCheck={onGetId}
+                                         checkListId={elem.id}
+                                         nameAnswer={elem.value}
                                      />
                                  })}
                                  />
@@ -75,27 +76,30 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                      questionName={item.title}
                                      chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'}
                                      answerSelected={'Выбрано: 0'}
-                                     nameColumn={item.options.columns.map(el => {
+                                     columnsGrid={item.options.columns.map(el => {
                                          return <CallVotingNameColumns
                                          key={el.id}
-                                         nameColumn={el.value}
+                                         nameColumnAnswer={el.value}
                                          />
                                  })}
-                                     nameRow={item.options.rows.map(el => {
+                                     rowsGrid={item.options.rows.map(el => {
                                          return <CallVotingNameRows
                                          key={el.id}
-                                         nameRow={el.value}
-                                         callVotingCheckProp={item.options.columns.map(item => {
+                                         nameRowAnswer={el.value}
+                                         checkGridId={item.options.columns.map(item => {
                                              return (
                                                  <CallVotingCheckBox
                                                  key={item.id}
+                                                 checkIdRow={el.id}
+                                                 checkColumn={item.value}
+                                                 checkRow={el.value}
                                                  activeRadioCheck={activeRadioCheckbox}/>
                                              )
                                          })}
-                                         nameColumn={item.options.columns.map(el => {
+                                         columnGrid={item.options.columns.map(el => {
                                              return <CallVotingNameColumns
                                              key={el.id}
-                                             nameColumn={el.value}
+                                             nameColumnAnswer={el.value}
                                              activeRadioCheck={activeRadioCheckbox}
                                              />
                                      })}
