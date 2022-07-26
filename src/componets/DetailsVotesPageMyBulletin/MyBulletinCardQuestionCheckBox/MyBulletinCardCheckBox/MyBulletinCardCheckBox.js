@@ -5,7 +5,7 @@ const MyBulletinCardCheckBox = ({myBulletinCheckProp, activeChecked, activeDisab
 
     return (
                 <>
-                    <td className={'call-voting-checkbox__wrapper'}>
+                    <td className={'my-bulletin-card-list-checkbox__wrapper my-bulletin-card-list-checkbox__view-left '}>
                         <label className={'my-bulletin-card-list__container'}>
                             <input type="checkbox" value="yes" defaultChecked={activeChecked} disabled={activeDisable}/>{myBulletinCheckProp}
                             <span className={'my-bulletin-card-list__checkmark'}/>

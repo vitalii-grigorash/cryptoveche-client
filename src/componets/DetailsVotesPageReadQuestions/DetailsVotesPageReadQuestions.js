@@ -5,7 +5,6 @@ import DetailsVotesPageReadQuestionsCardList from "../DetailsVotesPageReadQuesti
 import DetailsVotesPageReadQuestionsCardCheckbox
     from "../DetailsVotesPageReadQuestionsCardCheckbox/DetailsVotesPageReadQuestionsCardCheckbox";
 import {callVotingEvent} from "../../testCallVotingEvent";
-import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVotingCheckBox/CallVotingCheckBox";
 import ReadQuestionsCardList
     from "../DetailsVotesPageReadQuestionsCardList/ReadQuestionsCardList/ReadQuestionsCardList";
 import ReadQuestionsCardCheckbox
@@ -25,16 +24,7 @@ const DetailsVotesPageReadQuestions = () => {
     const [readQuestionsVote] = callVotingEvent.map(item => item.questions)
     const questionsTemplateRow = readQuestionsVote.filter(e => e.template === 'ynq')
     const questionsTemplateGrid = readQuestionsVote.filter(e => e.template === 'grid')
-
-
-
     const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
-
-
-    const ver = []
-    ver.push(<ReadQuestionsCardCheckbox activeRadioCheck={activeRadioCheckbox}/>, <ReadQuestionsCardCheckbox activeRadioCheck={activeRadioCheckbox}/>, <ReadQuestionsCardCheckbox activeRadioCheck={activeRadioCheckbox}/>)
-
-
 
     return (
               <div className={'details-votes-page-read-questions__main-content'}>
@@ -77,7 +67,13 @@ const DetailsVotesPageReadQuestions = () => {
                                       key={el.id}
                                       nameQuestionRow={el.value}
                                       activeRadioCheck={activeRadioCheckbox}
-                                      checkBoxReadQuestion={React.Children.toArray(ver)}
+                                      checkBoxReadQuestion={item.options.columns.map(item => {
+                                          return (
+                                              <ReadQuestionsCardCheckbox
+                                              key={item.id}
+                                              />
+                                          )
+                                      })}
                                       />
                                   )
                               })}

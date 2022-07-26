@@ -18,6 +18,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
 
 
+
  const CallVotingPage = () => {
 
      const { counter, cards } = useShop();
@@ -27,10 +28,13 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
      const [allQuestionsVote] = callVotingEvent.map(item => item.questions)
      const questionsTemplateRow = allQuestionsVote.filter(e => e.template === 'ynq')
      const questionsTemplateGrid = allQuestionsVote.filter(e => e.template === 'grid')
+     const getId = questionsTemplateRow.map(elem => elem.options.rows)
 
-     const ver = []
-     ver.push(<CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>, <CallVotingCheckBox activeRadioCheck={activeRadioCheckbox}/>)
-
+     // const countColumns = getId.find(el => el.id[2])
+     //  const bun = Object.values(countColumns)
+    function onGetId(e) {
+         console.log('id:', e.currentTarget.id)
+     }
 
      return (
              <div className={'call-voting-page__wrapper'}>
@@ -56,6 +60,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                      return <CallVotingList
                                          key={elem.id}
                                          labelCheckbox={elem.value}
+                                         onClickCheck={onGetId}
                                      />
                                  })}
                                  />
@@ -80,7 +85,13 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                          return <CallVotingNameRows
                                          key={el.id}
                                          nameRow={el.value}
-                                         callVotingCheckProp={React.Children.toArray(ver)}
+                                         callVotingCheckProp={item.options.columns.map(item => {
+                                             return (
+                                                 <CallVotingCheckBox
+                                                 key={item.id}
+                                                 activeRadioCheck={activeRadioCheckbox}/>
+                                             )
+                                         })}
                                          nameColumn={item.options.columns.map(el => {
                                              return <CallVotingNameColumns
                                              key={el.id}

@@ -22,8 +22,6 @@ const DetailsVotesPageMyBulletin = () => {
     const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
     const [activeCheckedCheckbox, setActiveCheckedCheckbox] = useState(false)
 
-    const ver = []
-    ver.push(<MyBulletinCardCheckBox activeRadioCheck={activeRadioCheckbox}/>, <MyBulletinCardCheckBox activeRadioCheck={activeRadioCheckbox}/>, <MyBulletinCardCheckBox activeRadioCheck={activeRadioCheckbox}/>)
 
 
     return (
@@ -65,14 +63,19 @@ const DetailsVotesPageMyBulletin = () => {
                                         <MyBulletinCardNameRows
                                         key={el.id}
                                         nameRowBulletin={el.value}
-                                        myBulletinCheckProp={ver}/>
+                                        myBulletinCheckProp={item.options.columns.map(el => {
+                                            return (
+                                                <MyBulletinCardCheckBox
+                                                key={el.id}
+                                                />
+                                            )
+                                        })}/>
                                     )
                                 })}
                                 />)
 
                     }))
                 }
-
                 <button className={'details-votes-page-my-bulletin__revote-button'}>Переголосовать</button>
             </div>
 

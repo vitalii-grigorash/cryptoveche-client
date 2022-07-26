@@ -232,8 +232,58 @@ export const callVotingEvent = [
                 "options": {
                     "rows": [
                         {
+                            "id": "da21vefb-b4c5-471b-a24f-f0e797757bzf",
+                            "value": "Банан"
+                        },
+                        {
+                            "id": "5a71adc7-z5b7-4c95-b7e2-5231bf3e5955",
+                            "value": "Яблоко"
+                        },
+                        {
+                            "id": "5a59adc7-b5b7-4c95-b0e2-5231bf3e5955",
+                            "value": "Персик"
+                        }
+
+                    ],
+                    "columns": [
+                        {
+                            "id": "5a7zadc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "value": "За"
+                        },
+                        {
+                            "id": "da61zefb-b4c5-471b-a24f-f0e797757bef",
+                            "value": "Против"
+                        },
+                        {
+                            "id": "5a59zdc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "value": "Воздержаться"
+                        }
+                    ]
+                },
+                "materials": [],
+                "rules": {
+                    "pick_gt": -1,
+                    "pick_ge": -1,
+                    "pick_lt": -1,
+                    "pick_le": -1,
+                    "pick_eq": -1
+                }
+            },
+            {
+
+                "id": "0563d978-cbf2-4215-ae74-bd9fc4867959",
+                "title": "6.Вы за проведение данного мероприятия?",
+                "template": "grid",
+                "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
+                "options": {
+                    "rows": [
+                        {
                             "id": "da21aefb-b4c5-471b-a24f-f0e797757bef",
                             "value": "Банан"
+                        },
+                        {
+                            "id": "da21aefb-b4c5-471b-a24f-f0e797759bef",
+                            "value": "Ананас"
                         },
                         {
                             "id": "5a71adc7-z5b7-4c95-b7e2-5231bf2e5955",
@@ -247,18 +297,21 @@ export const callVotingEvent = [
                     ],
                     "columns": [
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "8a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
                             "value": "За"
                         },
                         {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+                            "id": "da63aefb-b4c5-471b-a24f-f0e797757bef",
                             "value": "Против"
                         },
                         {
-                            "id": "5a59adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5a59adc7- q5b7-4c95-b7e2-5231bf2e5955",
                             "value": "Воздержаться"
+                        },
+                        {
+                            "id": "5a59adz7- q5b7-4c95-b7e2-5231bf2e5955",
+                            "value": " Надо подумать"
                         }
-
                     ]
                 },
                 "materials": [],
@@ -270,6 +323,7 @@ export const callVotingEvent = [
                     "pick_eq": -1
                 }
             }
+
         ],
         "materials": [
             {
