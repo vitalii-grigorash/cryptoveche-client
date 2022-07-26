@@ -61,7 +61,6 @@ function App() {
                 request(jwtTokens.access_token, body)
                     .then((res) => {
                         if (res.text === 'Expired token') {
-                            console.log('Expired token');
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
                                     if (newTokens.text === 'Expired token') {
