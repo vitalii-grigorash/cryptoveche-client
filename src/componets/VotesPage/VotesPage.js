@@ -9,6 +9,7 @@ import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 // import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 import VotesPageFilterSortButtons from "../VotesPageFilterSortButtons/VotesPageFilterSortButtons";
 import MyVotesBlockForm from '../MyVotesBlock/MyVotesBlockForm';
+import { Validation } from '../../utils/Validation';
 
 const VotesPage = (props) => {
 
@@ -21,6 +22,9 @@ const VotesPage = (props) => {
         handleShowMoreArchiveEvents,
         hideArchiveEvents
     } = props;
+
+    const eventsSearchActive = Validation();
+    const eventsSearchArchive = Validation();
 
     const [btnActiveVotes, setBtnActiveVotes] = useState(true);
     const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
@@ -35,14 +39,67 @@ const VotesPage = (props) => {
     const [isRegisterDateAscending, setRegisterDateAscending] = useState(true);
     const [isEventDateAscending, setEventDateAscending] = useState(true);
     const [isResetAllCheckboxClick, setResetAllCheckboxClick] = useState(false);
+    const [activeEventsSearchInput, setActiveEventsSearchInput] = useState('');
+    const [archiveEventsSearchInput, setArchiveEventsSearchInput] = useState('');
+    const [activeEventsForRender, setActiveEventsForRender] = useState([]);
+    const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
 
     const activeEventsPerRow = 3;
-    const activeEventsToRender = activeEvents.slice(0, (currentRowActiveEvents + 1) * activeEventsPerRow);
-    const isMoreActiveEvents = activeEventsToRender.length !== activeEvents.length;
+    const activeEventsToRender = activeEventsForRender.slice(0, (currentRowActiveEvents + 1) * activeEventsPerRow);
+    const isMoreActiveEvents = activeEventsToRender.length !== activeEventsForRender.length;
 
     const archiveEventsPerRow = 3;
-    const archiveEventsToRender = archiveEvents.slice(0, (currentRowArchiveEvents + 1) * archiveEventsPerRow);
-    const isMoreArchiveEvents = archiveEventsToRender.length !== archiveEvents.length;
+    const archiveEventsToRender = archiveEventsForRender.slice(0, (currentRowArchiveEvents + 1) * archiveEventsPerRow);
+    const isMoreArchiveEvents = archiveEventsToRender.length !== archiveEventsForRender.length;
+
+    useEffect(() => {
+        splitEvents(allEvents);
+    }, [allEvents])
+
+    function eventsSearchInput(value) {
+        if (btnActiveVotes) {
+            setActiveEventsSearchInput(value);
+        } else if (btnArchiveVotes) {
+            setArchiveEventsSearchInput(value);
+        }
+    }
+
+    useEffect(() => {
+        if (btnActiveVotes) {
+            if (activeEventsSearchInput === '') {
+                setActiveEventsForRender(activeEvents);
+            } else {
+                const dataForRender = [];
+                activeEvents.forEach((event) => {
+                    if (event.title.toLowerCase().includes(activeEventsSearchInput.toLowerCase())) {
+                        dataForRender.push(event);
+                    }
+                })
+                setActiveEventsForRender(dataForRender);
+            }
+        } else if (btnArchiveVotes) {
+            if (archiveEventsSearchInput === '') {
+                setArchiveEventsForRender(archiveEvents);
+            } else {
+                const dataForRender = [];
+                archiveEvents.forEach((event) => {
+                    if (event.title.toLowerCase().includes(archiveEventsSearchInput.toLowerCase())) {
+                        dataForRender.push(event);
+                    }
+                })
+                setArchiveEventsForRender(dataForRender);
+            }
+        }
+    },
+        [
+            activeEventsSearchInput,
+            activeEvents,
+            archiveEvents,
+            archiveEventsSearchInput,
+            btnActiveVotes,
+            btnArchiveVotes
+        ]
+    );
 
     function splitEvents(events) {
         setActiveEvents([]);
@@ -57,10 +114,6 @@ const VotesPage = (props) => {
             })
         }
     }
-
-    useEffect(() => {
-        splitEvents(allEvents);
-    }, [allEvents])
 
     function checkboxFilterArrayAdd(selectedCheckboxValue) {
         if (selectedCheckboxValue === 'open' || selectedCheckboxValue === 'secret') {
@@ -146,7 +199,7 @@ const VotesPage = (props) => {
         }
     }
 
-    function changeAllCheckbox () {
+    function changeAllCheckbox() {
         setResetAllCheckboxClick(false);
     }
 
@@ -218,7 +271,13 @@ const VotesPage = (props) => {
                     changeAllCheckbox={changeAllCheckbox}
                     isResetAllCheckboxClick={isResetAllCheckboxClick}
                 />
-                <VotesPagePaginationTableSearch />
+                <VotesPagePaginationTableSearch
+                    eventsSearchActive={eventsSearchActive}
+                    eventsSearchArchive={eventsSearchArchive}
+                    eventsSearchInput={eventsSearchInput}
+                    btnActiveVotes={btnActiveVotes}
+                    btnArchiveVotes={btnArchiveVotes}
+                />
             </div>
             <div className='votes-page-block__main-content'>
                 <div className='votes-page-switch-buttons'>
@@ -309,7 +368,13 @@ const VotesPage = (props) => {
                     </>
                 )} */}
             </div>
-            <VotesPagePaginationTableSearch />
+            <VotesPagePaginationTableSearch
+                eventsSearchActive={eventsSearchActive}
+                eventsSearchArchive={eventsSearchArchive}
+                eventsSearchInput={eventsSearchInput}
+                btnActiveVotes={btnActiveVotes}
+                btnArchiveVotes={btnArchiveVotes}
+            />
         </div>
     )
 }
