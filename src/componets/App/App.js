@@ -34,8 +34,24 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
+    const [currentRowActiveEvents, setCurrentRowActiveEvents] = useState(0);
+    const [currentRowArchiveEvents, setCurrentRowArchiveEvents] = useState(0);
 
-    console.log(currentUser);
+    function handleShowMoreActiveEvents() {
+        setCurrentRowActiveEvents(currentRowActiveEvents + 1);
+    }
+
+    function hideActiveEvents() {
+        setCurrentRowActiveEvents(0);
+    }
+
+    function handleShowMoreArchiveEvents() {
+        setCurrentRowArchiveEvents(currentRowArchiveEvents + 1);
+    }
+
+    function hideArchiveEvents() {
+        setCurrentRowArchiveEvents(0);
+    }
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -45,7 +61,6 @@ function App() {
                 request(jwtTokens.access_token, body)
                     .then((res) => {
                         if (res.text === 'Expired token') {
-                            console.log('Expired token');
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
                                     if (newTokens.text === 'Expired token') {
@@ -78,15 +93,17 @@ function App() {
     }
 
     useEffect(() => {
-        requestHelper(Events.getEvents)
-            .then((data) => {
-                setAllEvents(data);
-            })
-            .catch((err) => {
-                throw new Error(err.message);
-            })
+        if (pathname === '/' || pathname === '/votes-page') {
+            requestHelper(Events.getEvents)
+                .then((data) => {
+                    setAllEvents(data);
+                })
+                .catch((err) => {
+                    throw new Error(err.message);
+                })
+        }
         // eslint-disable-next-line
-    }, [])
+    }, [pathname])
 
     function hideRegisterModal() {
         setModalActive(false);
@@ -271,10 +288,10 @@ function App() {
                                         hideRegEmailErrors={hideRegEmailErrors}
                                     />}
                                 />
-                                <Route exact path='/' element={<MainPage 
+                                <Route exact path='/' element={<MainPage
                                     allEvents={allEvents}
-                                    requestHelper={requestHelper} 
-                                    />} 
+                                    requestHelper={requestHelper}
+                                />}
                                 />
                                 <Route exact path='/call-voting-page' element={<CallVotingPage />} />
                                 <Route exact path='/my-profile' element={<MyProfilePage />} />
@@ -282,6 +299,12 @@ function App() {
                                 <Route exact path='/votes-page'
                                     element={<VotesPage
                                         allEvents={allEvents}
+                                        currentRowActiveEvents={currentRowActiveEvents}
+                                        handleShowMoreActiveEvents={handleShowMoreActiveEvents}
+                                        hideActiveEvents={hideActiveEvents}
+                                        currentRowArchiveEvents={currentRowArchiveEvents}
+                                        handleShowMoreArchiveEvents={handleShowMoreArchiveEvents}
+                                        hideArchiveEvents={hideArchiveEvents}
                                     />}
                                 />
                                 <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />

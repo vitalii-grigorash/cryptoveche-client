@@ -3,7 +3,6 @@ import { config } from '../config';
 const API_URL = config.java_api_url;
 
 export const getNewTokens = (refreshToken) => {
-    console.log(refreshToken)
     return fetch(`${API_URL}/refresh_tokens`, {
         method: 'GET',
         headers: {
