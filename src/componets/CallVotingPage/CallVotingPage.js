@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './CallVotingPage.css';
 import mobile_icon_details_vote from '../../img/CallVotingMobileIcon.svg';
 import DetailsVotesPageDaysEndRegStartVote
@@ -11,16 +11,30 @@ import CallVotingPageQuestionCardCheckBox
 import {useNavigate} from "react-router-dom";
 import {callVotingEvent} from "../../testCallVotingEvent";
 import useShop from "../../contexts/CallVotingContext";
+import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
+import CallVotingNameColumns from "../CallVotingPageQuestionCardCheckBox/CallVotingNameColumns/CallVotingNameColumns";
+import CallVotingNameRows from "../CallVotingPageQuestionCardCheckBox/CallVotingNameRows/CallVotingNameRows";
+import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVotingCheckBox/CallVotingCheckBox";
 
 
- const CallVotingPage = (props) => {
+
+
+ const CallVotingPage = () => {
 
      const { counter, cards } = useShop();
      const linkDetailsPage = useNavigate();
+     const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
+     const titleVote = callVotingEvent.map(item => item.title)
+     const [allQuestionsVote] = callVotingEvent.map(item => item.questions)
+     const questionsTemplateRow = allQuestionsVote.filter(e => e.template === 'ynq')
+     const questionsTemplateGrid = allQuestionsVote.filter(e => e.template === 'grid')
+     const getId = questionsTemplateRow.map(elem => elem.options.rows)
 
-
-
-
+     // const countColumns = getId.find(el => el.id[2])
+     //  const bun = Object.values(countColumns)
+    function onGetId(e) {
+         console.log('id:', e.currentTarget.id)
+     }
 
      return (
              <div className={'call-voting-page__wrapper'}>
@@ -29,29 +43,68 @@ import useShop from "../../contexts/CallVotingContext";
                     secondLetter={'Голосование по повестке'}
                     titleName={'Голосование по повестке'} mobileLetter={'Назад на главную'}/>
                  <div className={'call-voting-page__title'}>
-                     <h2 className={'call-voting-page-title__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h2>
+                     <h2 className={'call-voting-page-title__title'}>{titleVote}</h2>
                      <button className={'call-voting-page-title__details-btn'} onClick={() => linkDetailsPage('/details-vote')}>Детали голосования</button>
                      <span className={'call-voting-page-title__details-icon'} onClick={() => linkDetailsPage('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
                      <DetailsVotesPageDaysEndRegStartVote/>
                  {
-                     callVotingEvent.map((item => {
+                     questionsTemplateRow.map((item => {
                          return (
                              <CallVotingPageQuestionCardList
                                  key={item.id}
-                                 id={item.id}
-                                 titleName={item.title}
+                                 questionName={item.title}
                                  chooseAnswer={'Необходимо выбрать ровно 1'}
-                                 selectValue={counter}/>
+                                 selectValue={counter}
+                                 labelCheckbox={item.options.rows.map(elem => {
+                                     return <CallVotingList
+                                         key={elem.id}
+                                         labelCheckbox={elem.value}
+                                         onClickCheck={onGetId}
+                                     />
+                                 })}
+                                 />
                          )
                      }))
                  }
-                     {/*<CallVotingPageQuestionCardList titleName={'2. Как должен происходить процесс выбора делегатов конференции?'} chooseAnswer={'Необходимо выбрать ровно 1'}/>*/}
-                     {/*<CallVotingPageQuestionCardList titleName={'3. Выберите кандидата на позицию делегата Ученого Совета СПбГУ. '} chooseAnswer={'Голосование выражается оставлением (голосование “за”) или зачеркиванием (голосование “против”) ФИО кандидатуры. Оставляется не более одной кандидатуры. В противном случае бюллетень считается недействительным'}/>*/}
-                     <CallVotingPageQuestionCardCheckBox titleName={'4. Выберите кандидата на позицию делегата Ученого Совета СПбГУ.'} chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'} answerSelected={'Выбрано: 0'} nameFirstColumn={'Против'} nameSecondColumn={'Воздержаться'} nameThirdColumn={'За'}/>
-                     <CallVotingPageQuestionCardCheckBox titleName={'5. Выберите лучшего композитора мира. '} chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'} answerSelected={'Выбрано: 0'} nameFirstColumn={'Против'} nameSecondColumn={'За'} nameThirdColumn={'Воздержаться'}/>
+                 {
+                     questionsTemplateGrid.map((item => {
+                         return (
+                             <CallVotingPageQuestionCardCheckBox
+                                     key={item.id}
+                                     questionName={item.title}
+                                     chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'}
+                                     answerSelected={'Выбрано: 0'}
+                                     nameColumn={item.options.columns.map(el => {
+                                         return <CallVotingNameColumns
+                                         key={el.id}
+                                         nameColumn={el.value}
+                                         />
+                                 })}
+                                     nameRow={item.options.rows.map(el => {
+                                         return <CallVotingNameRows
+                                         key={el.id}
+                                         nameRow={el.value}
+                                         callVotingCheckProp={item.options.columns.map(item => {
+                                             return (
+                                                 <CallVotingCheckBox
+                                                 key={item.id}
+                                                 activeRadioCheck={activeRadioCheckbox}/>
+                                             )
+                                         })}
+                                         nameColumn={item.options.columns.map(el => {
+                                             return <CallVotingNameColumns
+                                             key={el.id}
+                                             nameColumn={el.value}
+                                             activeRadioCheck={activeRadioCheckbox}
+                                             />
+                                     })}
+                                     />
+                                 })}/>
+                         )
+                     }))
+                 }
              </div>
      )
  }
-
- export default CallVotingPage;
+export default CallVotingPage;
