@@ -37,39 +37,35 @@
 }
 /*------Стилизация для блока с чекбоксам------------------------------------------------------------------------------*/
 .call-voting-page-question-card-check__select-checkboxes-block {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 16px;
-    gap: 40px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*gap: 40px;*/
     color: rgba(54, 59, 77, 0.9);
     font-size: 18px;
 }
-.call-voting-page-question-card-check__header-columns {
-    display: grid;
-    grid-template-columns: 25% 14% 13% 16%;
-    grid-template-rows: 24px;
-    text-align: center;
-    color: rgba(54, 59, 77, 0.9);
-    font-size: 18px;
+.select-checkboxes-block__name-columns {
+    display: flex;
+    flex-direction: row;
     gap: 40px;
+    padding-bottom: 40px;
+}
+.name-columns__width-column {
+    width: 240px;
 }
 
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 800px) {
+@media (max-width: 830px) {
     .call-voting-page-question-card-check__select-checkboxes-block {
         font-size: 16px;
         overflow: scroll;
     }
-    .call-voting-page-question-card-check__header-columns {
-        font-size: 16px;
+    .name-columns__width-column {
+        width: 142px;
     }
-}
-@media (max-width: 560px) {
-    .call-voting-page-question-card-check__header-columns {
-        font-size: 16px;
-        grid-template-columns: 121px 13% 23% 16%;
+    .select-checkboxes-block__name-columns {
+        gap: 32px;
+        padding-bottom: 24px;
     }
-
 }
 @media (max-width: 670px) {
     .call-voting-page-question-card-check__wrapper {

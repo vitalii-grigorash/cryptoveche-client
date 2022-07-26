@@ -11,9 +11,6 @@ import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterial
 const VotesPageArchiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDate, dateTimeWatch, dateTimeDate1, dateTimeWatch1, confirmStatus}) => {
 
 
-
-
-
     return (
             <div className={'votes-page-active-votes__wrapper'}>
                 <span className={'votes-page-active-votes__wrapper-title'}>

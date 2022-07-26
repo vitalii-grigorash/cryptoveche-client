@@ -3,11 +3,11 @@ import './ActualBlock.css';
 import logo_icon from '../../img/ActualBlock_logo.svg';
 import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
 import { useNavigate } from "react-router-dom";
+
 import DataTime from '../VotesStatusComponents/DateTime/DateTime';
 
 
 const ActualBlock = ({ actualVote }) => {
-
 
 	const [eventTitle, setEventTitle] = useState('');
 	const [startEventDate, setStartEventDate] = useState('');
@@ -50,6 +50,7 @@ const ActualBlock = ({ actualVote }) => {
 			{/*<EmptyStatesComponent/>*/}
 		</div>
 	)
+
 }
 
 export default ActualBlock

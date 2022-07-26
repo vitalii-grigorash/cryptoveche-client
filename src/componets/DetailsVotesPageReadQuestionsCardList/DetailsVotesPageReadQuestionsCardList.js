@@ -4,7 +4,10 @@ import ReadQuestionsCardList from "./ReadQuestionsCardList/ReadQuestionsCardList
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
 
-const DetailsVotesPageReadQuestionsCardList = ({nameQuestionCard, nameSelectAnswerQuestion}) => {
+const DetailsVotesPageReadQuestionsCardList = (props) => {
+    const { nameQuestionCard,
+            nameSelectAnswerQuestion,
+            nameCardList } = props;
 
     return (
             <div className={'read-questions-card-list__list-question-block'}>
@@ -13,9 +16,7 @@ const DetailsVotesPageReadQuestionsCardList = ({nameQuestionCard, nameSelectAnsw
                     <h5>{nameSelectAnswerQuestion}</h5>
                     <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                 </div>
-                    <ReadQuestionsCardList nameCardList={'Да'}/>
-                    <ReadQuestionsCardList nameCardList={'Нет'}/>
-                    <ReadQuestionsCardList nameCardList={'Дайте подумать'}/>
+                {nameCardList}
             </div>
     )
 }
