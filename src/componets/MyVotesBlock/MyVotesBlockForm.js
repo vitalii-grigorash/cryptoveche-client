@@ -48,6 +48,8 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 			setLabelText('Регистрация и голосование');
 		} else if (votesData.status === 'voting') {
 			setLabelText('Идет голосование');
+		} else if (votesData.status === false) {
+			setLabelText('Голосование завершено');
 		} else if (votesData.quorum_type === 'quorum_unpresant') {
 			setLabelText('Кворум не достигнут');
 		}
@@ -75,6 +77,10 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 			});
 	};
 
+	const sendEventData = () => {
+		console.log('123');
+	};
+
 	return (
 		<div className={'my-votes-block__vote-form'}>
 			<h3>{votesData.title}</h3>
@@ -98,13 +104,17 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 						(votesData.status === 'voting' && votesData.isRegistered) ||
 							(votesData.status === 'registration' && votesData.isVoting && votesData.isRegistered)
 							? 'button-vote'
-							: 'button-vote-hide'}>
+							: 'button-vote-hide'}
+						onClick={() => { sendEventData() }}
+					>
 						Проголосовать
 					</button>
 					:
 					<button className={votesData.status === 'voting' && votesData.isRegistered && votesData.re_voting
 						? 'button-vote'
-						: 'button-vote-hide'}>
+						: 'button-vote-hide'}
+						onClick={() => { sendEventData() }}
+					>
 						Переголосовать
 					</button>}
 				<button className={votesData.isRegistration && votesData.status !== 'ended' && renderBtnRegistration(votesData) !== '' ? 'cancel-reg' : 'cancel-reg-hide'}

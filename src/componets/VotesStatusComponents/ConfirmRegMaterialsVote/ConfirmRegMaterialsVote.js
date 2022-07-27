@@ -21,7 +21,9 @@ const ConfirmRegMaterialsVote = ({ isRegistered, isVoted, isVoting,statusEvent }
       labelText = 'Вы зарегистрированны'
     } else if ((statusEvent === 'Ожидание голосования' || statusEvent === 'Идет голосование' || statusEvent === 'Регистрация и голосование') && !isVoted) {
       labelText = 'Вы не проголосовали'
-    } else if ((statusEvent === 'Ожидание голосования' || statusEvent === 'Идет голосование') && isVoted) {
+		} else if (statusEvent === 'Голосование завершено' || !isVoted) {
+			labelText = 'Вы не проголосовали'
+		} else if ((statusEvent === 'Ожидание голосования' || statusEvent === 'Идет голосование') && isVoted) {
       labelText = 'Вы проголосовали'
     }
 
