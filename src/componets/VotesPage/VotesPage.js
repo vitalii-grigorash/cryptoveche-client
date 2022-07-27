@@ -14,13 +14,7 @@ import { Validation } from '../../utils/Validation';
 const VotesPage = (props) => {
 
     const {
-        allEvents,
-        currentRowActiveEvents,
-        handleShowMoreActiveEvents,
-        hideActiveEvents,
-        currentRowArchiveEvents,
-        handleShowMoreArchiveEvents,
-        hideArchiveEvents
+        allEvents
     } = props;
 
     const eventsSearchActive = Validation();
@@ -36,25 +30,112 @@ const VotesPage = (props) => {
     const [registerDateTo, setRegisterDateTo] = useState('');
     const [eventStartDateFrom, setEventStartDateFrom] = useState('');
     const [eventStartDateTo, setEventStartDateTo] = useState('');
-    const [isRegisterDateAscending, setRegisterDateAscending] = useState(true);
-    const [isEventDateAscending, setEventDateAscending] = useState(true);
     const [isResetAllCheckboxClick, setResetAllCheckboxClick] = useState(false);
     const [activeEventsSearchInput, setActiveEventsSearchInput] = useState('');
     const [archiveEventsSearchInput, setArchiveEventsSearchInput] = useState('');
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
 
-    const activeEventsPerRow = 3;
-    const activeEventsToRender = activeEventsForRender.slice(0, (currentRowActiveEvents + 1) * activeEventsPerRow);
-    const isMoreActiveEvents = activeEventsToRender.length !== activeEventsForRender.length;
+    const [showResultsFrom, setShowResultsFrom] = useState(0);
+    const [resultsShow, setResultsShow] = useState(5);
+    const [result, setResult] = useState(5);
+    const [pageCount, setPageCount] = useState(1);
+    const [selectedResultsShow, setSelectedResultsShow] = useState(5);
 
-    const archiveEventsPerRow = 3;
-    const archiveEventsToRender = archiveEventsForRender.slice(0, (currentRowArchiveEvents + 1) * archiveEventsPerRow);
-    const isMoreArchiveEvents = archiveEventsToRender.length !== archiveEventsForRender.length;
+    const [showResultsFromArchive, setShowResultsFromArchive] = useState(0);
+    const [resultsShowArchive, setResultsShowArchive] = useState(5);
+    const [resultArchive, setResultArchive] = useState(5);
+    const [pageCountArchive, setPageCountArchive] = useState(1);
+    const [selectedResultsShowArchive, setSelectedResultsShowArchive] = useState(5);
 
     useEffect(() => {
         splitEvents(allEvents);
     }, [allEvents])
+
+    function handleShowResultsFrom(value) {
+        if (btnActiveVotes) {
+            setShowResultsFrom(value);
+        } else {
+            setShowResultsFromArchive(value);
+        }
+    }
+
+    function handleResultsShow(value) {
+        if (btnActiveVotes) {
+            setResultsShow(value);
+        } else {
+            setResultsShowArchive(value);
+        }
+    }
+
+    function showPrevResults() {
+        if (btnActiveVotes) {
+            if (resultsShow <= result) {
+                return
+            } else {
+                setShowResultsFrom(showResultsFrom - result);
+                handleShowResultsFrom(showResultsFrom - result);
+                setResultsShow(resultsShow - result);
+                handleResultsShow(resultsShow - result);
+                setPageCount(pageCount - 1);
+            }
+        } else {
+            if (resultsShowArchive <= resultArchive) {
+                return
+            } else {
+                setShowResultsFromArchive(showResultsFromArchive - resultArchive);
+                handleShowResultsFrom(showResultsFromArchive - resultArchive);
+                setResultsShowArchive(resultsShowArchive - resultArchive);
+                handleResultsShow(resultsShowArchive - resultArchive);
+                setPageCountArchive(pageCountArchive - 1);
+            }
+        }
+    }
+
+    function showNextResults() {
+        const sortList = btnActiveVotes ? activeEventsForRender : archiveEventsForRender
+        if (btnActiveVotes) {
+            if (resultsShow >= sortList.length) {
+                return
+            } else {
+                setShowResultsFrom(0 + resultsShow);
+                handleShowResultsFrom(0 + resultsShow);
+                setResultsShow(result + resultsShow);
+                handleResultsShow(result + resultsShow);
+                setPageCount(pageCount + 1);
+            }
+        } else {
+            if (resultsShowArchive >= sortList.length) {
+                return
+            } else {
+                setShowResultsFromArchive(0 + resultsShowArchive);
+                handleShowResultsFrom(0 + resultsShowArchive);
+                setResultsShowArchive(resultArchive + resultsShowArchive);
+                handleResultsShow(resultArchive + resultsShowArchive);
+                setPageCountArchive(pageCountArchive + 1);
+            }
+        }
+    }
+
+    function onChoiceClick(value) {
+        if (btnActiveVotes) {
+            setResultsShow(value);
+            handleResultsShow(value);
+            setResult(value);
+            setSelectedResultsShow(value);
+            setShowResultsFrom(0);
+            handleShowResultsFrom(0);
+            setPageCount(1);
+        } else {
+            setResultsShowArchive(value);
+            handleResultsShow(value);
+            setResultArchive(value);
+            setSelectedResultsShowArchive(value);
+            setShowResultsFromArchive(0);
+            handleShowResultsFrom(0);
+            setPageCountArchive(1);
+        }
+    }
 
     function eventsSearchInput(value) {
         if (btnActiveVotes) {
@@ -133,22 +214,6 @@ const VotesPage = (props) => {
         }
     }
 
-    function toggleRegisterDateAscending() {
-        if (isRegisterDateAscending) {
-            setRegisterDateAscending(false);
-        } else {
-            setRegisterDateAscending(true);
-        }
-    }
-
-    function toggleEventDateAscending() {
-        if (isEventDateAscending) {
-            setEventDateAscending(false);
-        } else {
-            setEventDateAscending(true);
-        }
-    }
-
     function applyDateEventStartFilter(events) {
         const dateFrom = eventStartDateFrom !== '' ? new Date(eventStartDateFrom) : null;
         const dateTo = eventStartDateTo !== '' ? new Date(eventStartDateTo) : null;
@@ -156,13 +221,7 @@ const VotesPage = (props) => {
             const eventDate = new Date(event.event_start_time);
             return !((dateFrom && dateFrom > eventDate) || (dateTo && dateTo < eventDate));
         })
-        if (isEventDateAscending) {
-            const sortedActivities = filteredEvents.sort((a, b) => new Date(a.event_start_time) - new Date(b.event_start_time))
-            splitEvents(sortedActivities);
-        } else {
-            const sortedActivities = filteredEvents.sort((a, b) => new Date(b.event_start_time) - new Date(a.event_start_time))
-            splitEvents(sortedActivities);
-        }
+        splitEvents(filteredEvents);
     }
 
     function applyDateRegisterFilter(events) {
@@ -172,13 +231,7 @@ const VotesPage = (props) => {
             const eventDate = new Date(event.registration_start_time);
             return !((dateFrom && dateFrom > eventDate) || (dateTo && dateTo < eventDate));
         })
-        if (isRegisterDateAscending) {
-            const sortedActivities = filteredEvents.sort((a, b) => new Date(a.registration_start_time) - new Date(b.registration_start_time))
-            applyDateEventStartFilter(sortedActivities);
-        } else {
-            const sortedActivities = filteredEvents.sort((a, b) => new Date(b.registration_start_time) - new Date(a.registration_start_time))
-            applyDateEventStartFilter(sortedActivities);
-        }
+        applyDateEventStartFilter(filteredEvents);
     }
 
     function applyTypeFilter(events) {
@@ -210,8 +263,6 @@ const VotesPage = (props) => {
         setRegisterDateTo('');
         setEventStartDateFrom('');
         setEventStartDateTo('');
-        setRegisterDateAscending(true);
-        setEventDateAscending(true);
         setResetAllCheckboxClick(true);
         splitEvents(allEvents);
     }
@@ -264,10 +315,6 @@ const VotesPage = (props) => {
                     registerDateTo={registerDateTo}
                     eventStartDateFrom={eventStartDateFrom}
                     eventStartDateTo={eventStartDateTo}
-                    toggleRegisterDateAscending={toggleRegisterDateAscending}
-                    toggleEventDateAscending={toggleEventDateAscending}
-                    isRegisterDateAscending={isRegisterDateAscending}
-                    isEventDateAscending={isEventDateAscending}
                     changeAllCheckbox={changeAllCheckbox}
                     isResetAllCheckboxClick={isResetAllCheckboxClick}
                 />
@@ -277,6 +324,12 @@ const VotesPage = (props) => {
                     eventsSearchInput={eventsSearchInput}
                     btnActiveVotes={btnActiveVotes}
                     btnArchiveVotes={btnArchiveVotes}
+                    sortList={btnActiveVotes ? activeEventsForRender : archiveEventsForRender}
+                    onChoiceClick={onChoiceClick}
+                    selectedResultsShow={btnActiveVotes ? selectedResultsShow : selectedResultsShowArchive}
+                    pageCount={btnActiveVotes ? pageCount : pageCountArchive}
+                    showPrevResults={showPrevResults}
+                    showNextResults={showNextResults}
                 />
             </div>
             <div className='votes-page-block__main-content'>
@@ -290,49 +343,23 @@ const VotesPage = (props) => {
                 </div>
                 {btnActiveVotes && (
                     <>
-                        {activeEventsToRender.map((event) => (
+                        {activeEventsForRender.slice(showResultsFrom, resultsShow).map((event) => (
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
                             />
                         )
-                        )}
-                        {isMoreActiveEvents ? (
-                            <div className='votes-page-block__main-content-show-more-button' onClick={handleShowMoreActiveEvents}>
-                                <span>ПОКАЗАТЬ ЕЩЁ</span>
-                            </div>
-                        ) : (
-                            <>
-                                {activeEvents.length > 3 && (
-                                    <div className='votes-page-block__main-content-show-more-button' onClick={hideActiveEvents}>
-                                        <span>СКРЫТЬ</span>
-                                    </div>
-                                )}
-                            </>
                         )}
                     </>
                 )}
                 {btnArchiveVotes && (
                     <>
-                        {archiveEventsToRender.map((event) => (
+                        {archiveEventsForRender.slice(showResultsFromArchive, resultsShowArchive).map((event) => (
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
                             />
                         )
-                        )}
-                        {isMoreArchiveEvents ? (
-                            <div className='votes-page-block__main-content-show-more-button' onClick={handleShowMoreArchiveEvents}>
-                                <span>ПОКАЗАТЬ ЕЩЁ</span>
-                            </div>
-                        ) : (
-                            <>
-                                {archiveEvents.length > 3 && (
-                                    <div className='votes-page-block__main-content-show-more-button' onClick={hideArchiveEvents}>
-                                        <span>СКРЫТЬ</span>
-                                    </div>
-                                )}
-                            </>
                         )}
                     </>
                 )}
@@ -374,6 +401,12 @@ const VotesPage = (props) => {
                 eventsSearchInput={eventsSearchInput}
                 btnActiveVotes={btnActiveVotes}
                 btnArchiveVotes={btnArchiveVotes}
+                sortList={btnActiveVotes ? activeEventsForRender : archiveEventsForRender}
+                onChoiceClick={onChoiceClick}
+                selectedResultsShow={btnActiveVotes ? selectedResultsShow : selectedResultsShowArchive}
+                pageCount={btnActiveVotes ? pageCount : pageCountArchive}
+                showPrevResults={showPrevResults}
+                showNextResults={showNextResults}
             />
         </div>
     )

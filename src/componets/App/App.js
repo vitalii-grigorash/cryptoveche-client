@@ -34,24 +34,6 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
-    const [currentRowActiveEvents, setCurrentRowActiveEvents] = useState(0);
-    const [currentRowArchiveEvents, setCurrentRowArchiveEvents] = useState(0);
-
-    function handleShowMoreActiveEvents() {
-        setCurrentRowActiveEvents(currentRowActiveEvents + 1);
-    }
-
-    function hideActiveEvents() {
-        setCurrentRowActiveEvents(0);
-    }
-
-    function handleShowMoreArchiveEvents() {
-        setCurrentRowArchiveEvents(currentRowArchiveEvents + 1);
-    }
-
-    function hideArchiveEvents() {
-        setCurrentRowArchiveEvents(0);
-    }
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -299,12 +281,6 @@ function App() {
                                 <Route exact path='/votes-page'
                                     element={<VotesPage
                                         allEvents={allEvents}
-                                        currentRowActiveEvents={currentRowActiveEvents}
-                                        handleShowMoreActiveEvents={handleShowMoreActiveEvents}
-                                        hideActiveEvents={hideActiveEvents}
-                                        currentRowArchiveEvents={currentRowArchiveEvents}
-                                        handleShowMoreArchiveEvents={handleShowMoreArchiveEvents}
-                                        hideArchiveEvents={hideArchiveEvents}
                                     />}
                                 />
                                 <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
