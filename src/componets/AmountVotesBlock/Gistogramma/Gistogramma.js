@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Gistogramma.css';
 
 
-const Gistogramma = () => {
+const Gistogramma = ({ statsVoted }) => {
 
-        const firstDateColumn = [46, 53, 56, 100, 34];
-        const secondDateColumn = [50, 100, 56, 100, 44];
-        const threeDateColumn = [40, 77, 86, 35, 100];
-        const fourDateColumn = [40, 63, 23, 60, 48, 100];
+  const [sortedArray, setSortedArray] = useState([]);
 
-        return (
-           <div className={'gistogramma-block'}>
-               <svg className={'gistogramma-block__stylization'}>
-                   <rect width="10" height={fourDateColumn[5]} fill={'#0084FE'}  x="0" y="6" rx="0" ry="0"/>
-                   <rect width="10" height={fourDateColumn[4]} fill={'#87CEFA'} x="14" y="6" rx="0" ry="0"/>
-                   <rect width="10" height={fourDateColumn[3]} fill={'#87CEFA'} x="28" y="6" rx="0" ry="0"/>
+  useEffect(() => {
+    if (statsVoted && statsVoted.length > 0) {
+      setSortedArray(statsVoted.sort((a, b) => a.day > b.day ? 1 : -1).slice(statsVoted.length - 12, statsVoted.length));
+    }
+  }, [statsVoted])
+
+
+  const fourDateColumn = [40, 63, 23, 60, 48, 100];
+  // const firstDateColumn = [46, 53, 56, 100, 34];
+  // const secondDateColumn = [50, 100, 56, 100, 44];
+  // const threeDateColumn = [40, 77, 86, 35, 100];
+
+  return (
+    <div className={'gistogramma-block'}>
+      <svg className={'gistogramma-block__stylization'} >
+        <rect width="10" height={fourDateColumn[5]} fill={'#0084FE'} x="0" y="6" rx="0" ry="0" />
+        <rect width="10" height={fourDateColumn[4]} fill={'#87CEFA'} x="280" y="6" rx="0" ry="0" />
+        {/* <rect width="10" height={fourDateColumn[3]} fill={'#87CEFA'} x="28" y="6" rx="0" ry="0"/>
                    <rect width="10" height={fourDateColumn[2]} fill={'#87CEFA'} x="42" y="6" rx="0" ry="0"/>
                    <rect width="10" height={fourDateColumn[1]} fill={'#0084FE'} x="56" y="6" rx="0" ry="0"/>
                    <rect width="10" height={fourDateColumn[0]} fill={'#87CEFA'} x="70" y="6" rx="0" ry="0"/>
@@ -32,16 +41,16 @@ const Gistogramma = () => {
                    <rect width="10" height={firstDateColumn[3]} fill={'#87CEFA'} x="238" y="6" rx="0" ry="0"/>
                    <rect width="10" height={firstDateColumn[2]} fill={'#87CEFA'} x="252" y="6" rx="0" ry="0"/>
                    <rect width="10" height={firstDateColumn[1]} fill={'#87CEFA'} x="266" y="6" rx="0" ry="0"/>
-                   <rect width="10" height={firstDateColumn[0]} fill={'#0084FE'}  x="280" y="6" rx="0" ry="0"/>
-               </svg>
-               <div className={'gistogramma-block__date'}>
-                   <span>25.01</span>
-                   <span>25.02</span>
-                   <span>25.03</span>
-                   <span>25.04</span>
-               </div>
-            </div>
-    )
+                   <rect width="10" height={firstDateColumn[0]} fill={'#0084FE'}  x="280" y="6" rx="0" ry="0"/> */}
+      </svg>
+      <div className={'gistogramma-block__date'}>
+        <span>25.01</span>
+        <span>25.02</span>
+        {/* <span>25.03</span>
+                   <span>25.04</span> */}
+      </div>
+    </div>
+  )
 }
 
 export default Gistogramma;

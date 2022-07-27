@@ -53,12 +53,12 @@ function App() {
         setCurrentRowArchiveEvents(0);
     }
 
-    function requestHelper(request, body = {}) {
+    function requestHelper(request, body = {}, id) {
         return new Promise((resolve, reject) => {
             if (localStorage.getItem('jwt')) {
                 const jwt = localStorage.getItem('jwt');
                 const jwtTokens = JSON.parse(jwt);
-                request(jwtTokens.access_token, body)
+                request(jwtTokens.access_token, body, id)
                     .then((res) => {
                         if (res.text === 'Expired token') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
