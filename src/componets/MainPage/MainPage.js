@@ -9,7 +9,7 @@ import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import * as Stats from '../../Api/Stats';
 
-const MainPage = (props) => {
+const MainPage = React.memo((props) => {
 
 	const {
 		allEvents,
@@ -22,16 +22,16 @@ const MainPage = (props) => {
 
 	const [statsData, setStatsData] = useState({});
 	const [actualVote, setActualVote] = useState({});
-	
-	
+
+
 	useEffect(() => {
 		requestHelper(Stats.getStats)
-		.then((data) => {
-			setStatsData(data)
-		})	
+			.then((data) => {
+				setStatsData(data)
+			})
 	}, []);
-	
-	useEffect (() => {
+
+	useEffect(() => {
 		const [nextVote] = sortActualEvents.slice(0, 1)
 		if (nextVote) {
 			setActualVote(nextVote)
@@ -46,19 +46,19 @@ const MainPage = (props) => {
 			</div>
 			<CounterBlock stats={statsData} />
 			<div className={'main-content__my-votes-actual'}>
-				<MyVotesBlock myVotes={sortActualEvents} />
+				<MyVotesBlock myVotes={sortActualEvents} requestHelper={requestHelper} />
 				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock actualVote={actualVote} />}
 				<ScanQRMobile />
 			</div>
 			<div className={'main-content__amount-votes-and-calendar-votes'}>
 				<div className={'gistogramma-and-observer-cryptoveche'}>
-					<AmountVotesBlock statsData={statsData}/>
+					<AmountVotesBlock statsData={statsData} />
 					<ObserverCryptoBlock />
 				</div>
 				<CalendarVotes />
 			</div>
 		</div>
 	)
-}
+})
 
 export default MainPage;
