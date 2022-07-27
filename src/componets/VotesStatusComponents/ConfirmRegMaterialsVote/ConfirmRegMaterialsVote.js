@@ -6,9 +6,16 @@ import MaterialsVoteQuestion from "../MaterialsVoteQuestion/MaterialsVoteQuestio
 
 const ConfirmRegMaterialsVote = ({ isRegistered, isVoted, isVoting,statusEvent }) => {
 
+	// status: "ended", 
+	// isRegistration: false началась ли регистрация
+	// isRegistered: true зарегистрирован ли юзер на текущее голосование
+	// isVoting: false началось ли голосование
+	// isVoted: true проголосовал ли юзе по текущему евенту
+
+
   const renderLabelStatus = (isRegistered, isVoted, statusEvent) => {
     let labelText;
-    if ((statusEvent === 'Ожидание регистрации' || statusEvent === 'Идет регистрация' || statusEvent === 'Идет голосование') && !isRegistered) {
+    if ((statusEvent === 'Ожидание регистрации' || statusEvent === 'Идет регистрация' || statusEvent === 'Идет голосование' || statusEvent === 'Ожидание голосования') && !isRegistered) {
       labelText = 'Вы не зарегистрированны';
     } else if ((statusEvent === 'Ожидание регистрации' || statusEvent === 'Идет регистрация') && isRegistered) {
       labelText = 'Вы зарегистрированны'
