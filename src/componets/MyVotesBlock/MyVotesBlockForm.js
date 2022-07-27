@@ -36,7 +36,11 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 			if (!votesData.isRegistered) {
 				setLabelText('Идет регистрация')
 			} else if (votesData.isRegistered) {
-				setLabelText('Ожидание голосования');
+				if (votesData.isVoting) {
+					setLabelText('Регистрация и голосование');
+				} else {
+					setLabelText('Ожидание голосования');
+				}
 			}
 		} else if (votesData.status === 'event waiting') {
 			setLabelText('Ожидание голосования');
@@ -54,9 +58,11 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 
 		if ((votesData.status === 'registration' || votesData.status === 'event waiting') && !votesData.isRegistered) {
 			btnText = 'Зарегистрироваться';
-		} else if ((votesData.status === 'registration' || votesData.status === 'event waiting') && votesData.isRegistered && votesData.re_registration) {
+		} else if ((votesData.status === 'registration' || votesData.status === 'event waiting') && votesData.isRegistered && votesData.re_registration && !votesData.isVoting) {
 			btnText = 'Отменить регистрацию';
-		} else if ((votesData.status === 'registration' || votesData.status === 'event waiting') || votesData.isRegistered && !votesData.re_registration) {
+		} else if ((votesData.status === 'registration' || votesData.status === 'event waiting') ||
+			(votesData.isRegistered && !votesData.re_registration) ||
+			(votesData.status = 'registration' && votesData.isVoting)) {
 			btnText = ''
 		}
 		return btnText
