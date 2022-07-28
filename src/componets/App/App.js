@@ -36,7 +36,7 @@ function App() {
     const [allEvents, setAllEvents] = useState([]);
     const [currentEventData, setCurrentEventData] = useState({});
 
-    function requestHelper(request, body = {}) {
+    function requestHelper(request, body = {}, id) {
         return new Promise((resolve, reject) => {
             if (localStorage.getItem('jwt')) {
                 const jwt = localStorage.getItem('jwt');
