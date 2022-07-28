@@ -3,9 +3,16 @@ import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/Curren
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import * as Events from '../../Api/Events';
+// import handleCurrentEvents from '../App/App'
 // import moment from 'moment';
 
-const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
+const MyVotesBlockForm = React.memo((props) => {
+
+	const {
+		votesData,
+		requestHelper,
+		handleCurrentEvents
+	} = props;
 
 	//   const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
 	//   const timeNow = `${moment().format()}`.slice(11, 16); // Получение текущего времени в формате, аналогичном  с данными от сервера
@@ -77,9 +84,9 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 			});
 	};
 
-	const sendEventData = () => {
-		console.log('123');
-	};
+	// const sendEventData = () => {
+	// 	handleCurrentEvents(votesData);
+	// };
 
 	return (
 		<div className={'my-votes-block__vote-form'}>
@@ -105,7 +112,7 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 							(votesData.status === 'registration' && votesData.isVoting && votesData.isRegistered)
 							? 'button-vote'
 							: 'button-vote-hide'}
-						onClick={() => { sendEventData() }}
+						onClick={() => { handleCurrentEvents(votesData) }}
 					>
 						Проголосовать
 					</button>
@@ -113,7 +120,7 @@ const MyVotesBlockForm = React.memo(({ votesData, requestHelper }) => {
 					<button className={votesData.status === 'voting' && votesData.isRegistered && votesData.re_voting
 						? 'button-vote'
 						: 'button-vote-hide'}
-						onClick={() => { sendEventData() }}
+						onClick={() => { handleCurrentEvents(votesData) }}
 					>
 						Переголосовать
 					</button>}

@@ -19,7 +19,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
 
 
- const CallVotingPage = () => {
+ const CallVotingPage = ({currentEventData}) => {
 
      const { counter, cards } = useShop();
      const linkDetailsPage = useNavigate();
