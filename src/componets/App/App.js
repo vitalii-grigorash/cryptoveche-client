@@ -34,6 +34,7 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
+    const [currentEventData, setCurrentEventData] = useState({});
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
