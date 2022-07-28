@@ -24,7 +24,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                     <div className={'call-voting-page-question-card-check__title'}>
                         <h3>{questionName}</h3>
                         <div className={'call-voting-page-question-card-check__select-answer'}>
-                            <span>{chooseAnswer}</span><span>{answerSelected}</span></div>
+                            <span>{chooseAnswer}</span>
+                            <span>{answerSelected}</span></div>
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>
                     {activeViewTableCheck &&

@@ -92,11 +92,11 @@ export const callVotingEvent = [
                 "options": {
                     "rows": [
                         {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+                            "id": "da61aefb-b4c5-471b-a24f-f0e79775111",
                             "value": "За"
                         },
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e0000",
                             "value": "Против"
                         }
                     ],
@@ -117,26 +117,26 @@ export const callVotingEvent = [
                 }
             },
             {
-                "id": "5963d972-cbf2-4215-ae72-bd9fc4867959",
+                "id": "5963d972-0000-4215-ae72-bd9fc4867959",
                 "title": "2.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
                 "options": {
                     "rows": [
                         {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+                            "id": "da61aefb-b4c5-471b-1111-f0e797757bef",
                             "value": "Иванов"
                         },
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5a71adc7-b5b7-4c95-2222-5231bf2e5955",
                             "value": "Петров"
                         },
                         {
-                            "id": "5z71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5z71adc7-b5b7-4c95-3333-5231bf2e5955",
                             "value": "Васильев"
                         },
                         {
-                            "id": "5z11adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5z11adc7-b5b7-4c95-4444-5231bf2e5955",
                             "value": "Петрович"
                         }
                     ],
@@ -157,22 +157,22 @@ export const callVotingEvent = [
                 }
             },
             {
-                "id": "2563d972-cbf2-4215-ae72-bd9fc4867959",
+                "id": "2563d972-cbf2-1111-ae72-bd9fc4867959",
                 "title": "3.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",
                 "options": {
                     "rows": [
                         {
-                            "id": "da61aefb-b4c5-471b-a24f-f0e797757bef",
+                            "id": "da61aefb-0000-471b-a24f-f0e797757bef",
                             "value": "За"
                         },
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5955",
+                            "id": "5a71adc7-1111-4c95-b7e2-5231bf2e5955",
                             "value": "Против"
                         },
                         {
-                            "id": "5a71adc7-b5b7-4c95-b7e2-5231bf2e5155",
+                            "id": "5a71adc7-2222-4c95-b7e2-5231bf2e5155",
                             "value": "Воздержаться"
                         }
                     ],
@@ -193,7 +193,7 @@ export const callVotingEvent = [
                 }
             },
             {
-                "id": "0563d972-cbf2-4215-ae72-bd9fc4867959",
+                "id": "0563d972-cbf2-4215-9999-bd9fc4867959",
                 "title": "4.Вы за проведение данного мероприятия?",
                 "template": "ynq",
                 "bulletinId": "bd743d15-e0cd-4981-85b4-fe61df8d4be1",

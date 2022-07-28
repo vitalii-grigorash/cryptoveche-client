@@ -10,7 +10,6 @@ import CallVotingPageQuestionCardCheckBox
     from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
 import {useNavigate} from "react-router-dom";
 import {callVotingEvent} from "../../testCallVotingEvent";
-import useShop from "../../contexts/CallVotingContext";
 import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
 import CallVotingNameColumns from "../CallVotingPageQuestionCardCheckBox/CallVotingNameColumns/CallVotingNameColumns";
 import CallVotingNameRows from "../CallVotingPageQuestionCardCheckBox/CallVotingNameRows/CallVotingNameRows";
@@ -21,7 +20,6 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
  const CallVotingPage = () => {
 
-     const { counter, cards } = useShop();
      const linkDetailsPage = useNavigate();
      const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
      const titleVote = callVotingEvent.map(item => item.title)
@@ -35,9 +33,18 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
 
 
-     console.log(getId)
+     // const ethnicities = [1, 2, 3, 4]
+     //
+     // const ethnicitiesObject = Object.assign({}, ethnicities);
+     // //
+     // //
+     // //
+     // const vit = Object.entries(ethnicitiesObject)
+     //
+     // console.log(ethnicitiesObject);
 
      return (
+
              <div className={'call-voting-page__wrapper'}>
                <TitleVotesDetailsCallVotingProfile
                     firstLetter={'КлиентКриптовече'}
@@ -54,9 +61,9 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                          return (
                              <CallVotingPageQuestionCardList
                                  key={item.id}
+                                 id={item.id}
                                  questionName={item.title}
                                  chooseAnswer={'Необходимо выбрать ровно 1'}
-                                 selectValue={counter}
                                  listNameAnswers={item.options.rows.map(elem => {
                                      return <CallVotingList
                                          key={elem.id}
@@ -73,6 +80,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                          return (
                              <CallVotingPageQuestionCardCheckBox
                                      key={item.id}
+                                     id={item.id}
                                      questionName={item.title}
                                      chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'}
                                      answerSelected={'Выбрано: 0'}
@@ -109,6 +117,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                      }))
                  }
              </div>
+
      )
  }
 export default CallVotingPage;
