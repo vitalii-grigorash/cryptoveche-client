@@ -23,10 +23,6 @@ const VotesPageFilterSortButtons = (props) => {
         registerDateTo,
         eventStartDateFrom,
         eventStartDateTo,
-        toggleRegisterDateAscending,
-        toggleEventDateAscending,
-        isRegisterDateAscending,
-        isEventDateAscending,
         changeAllCheckbox,
         isResetAllCheckboxClick
     } = props;
@@ -82,10 +78,6 @@ const VotesPageFilterSortButtons = (props) => {
                 registerDateTo={registerDateTo}
                 eventStartDateFrom={eventStartDateFrom}
                 eventStartDateTo={eventStartDateTo}
-                toggleRegisterDateAscending={toggleRegisterDateAscending}
-                toggleEventDateAscending={toggleEventDateAscending}
-                isRegisterDateAscending={isRegisterDateAscending}
-                isEventDateAscending={isEventDateAscending}
                 changeAllCheckbox={changeAllCheckbox}
                 isResetAllCheckboxClick={isResetAllCheckboxClick}
             />

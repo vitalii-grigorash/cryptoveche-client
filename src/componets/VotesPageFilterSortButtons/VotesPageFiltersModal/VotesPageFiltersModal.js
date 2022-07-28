@@ -24,10 +24,10 @@ const VotesPageFiltersModal = (props) => {
         registerDateTo,
         eventStartDateFrom,
         eventStartDateTo,
-        toggleRegisterDateAscending,
-        toggleEventDateAscending,
-        isRegisterDateAscending,
-        isEventDateAscending,
+        // toggleRegisterDateAscending,
+        // toggleEventDateAscending,
+        // isRegisterDateAscending,
+        // isEventDateAscending,
         changeAllCheckbox,
         isResetAllCheckboxClick
     } = props;
@@ -170,9 +170,9 @@ const VotesPageFiltersModal = (props) => {
                                 value={registerDateTo}
                             />
                         </div>
-                        <div className={'content-date-start-reg__increment-bnt'} onClick={toggleRegisterDateAscending}>
+                        {/* <div className={'content-date-start-reg__increment-bnt'} onClick={toggleRegisterDateAscending}>
                             <span>{isRegisterDateAscending ? 'По возрастанию' : 'По убыванию'}</span><img alt={'кнопка по возрастанию'} src={isRegisterDateAscending ? filter_modal_increment_button : sorting_modal_decrease_btn} />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className={'filters-modal__content-date-start-vote'}>
@@ -194,9 +194,9 @@ const VotesPageFiltersModal = (props) => {
                                 value={eventStartDateTo}
                             />
                         </div>
-                        <div className={'content-date-start-reg__increment-bnt'} onClick={toggleEventDateAscending}>
+                        {/* <div className={'content-date-start-reg__increment-bnt'} onClick={toggleEventDateAscending}>
                             <span>{isEventDateAscending ? 'По возрастанию' : 'По убыванию'}</span><img alt={'кнопка по возрастанию'} src={isEventDateAscending ? filter_modal_increment_button : sorting_modal_decrease_btn} />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className={'filters-modal__buttons-container'}>
