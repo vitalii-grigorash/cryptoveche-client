@@ -253,12 +253,18 @@ function App() {
 			console.log('Необходимо отметить ознакомление с политикой');
 		}
 	}
-	//
+	
+	const handleRegistrationUserInEvents = (votesData) => {
+		requestHelper(Events.registrationUserInEvents, votesData.id)
+			.then((data) => {
+				console.log(data);
+			});
+	};
+
 	function handleCurrentEvents(data) {
 		setCurrentEventData(data)
 		navigate('/call-voting-page')
 	}
-	//
 
 	return (
 		<CallVotingProvider>
@@ -300,6 +306,7 @@ function App() {
 									allEvents={allEvents}
 									requestHelper={requestHelper}
 									handleCurrentEvents={handleCurrentEvents}
+									handleRegistrationUserInEvents={handleRegistrationUserInEvents}
 								/>}
 								/>
 								<Route exact path='/call-voting-page' element={<CallVotingPage currentEventData={currentEventData}/>} />
@@ -314,6 +321,8 @@ function App() {
 										currentRowArchiveEvents={currentRowArchiveEvents}
 										handleShowMoreArchiveEvents={handleShowMoreArchiveEvents}
 										hideArchiveEvents={hideArchiveEvents}
+										handleCurrentEvents={handleCurrentEvents}
+										handleRegistrationUserInEvents={handleRegistrationUserInEvents}
 									/>}
 								/>
 								<Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />

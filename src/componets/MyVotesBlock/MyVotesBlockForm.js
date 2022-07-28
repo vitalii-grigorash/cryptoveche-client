@@ -11,7 +11,8 @@ const MyVotesBlockForm = React.memo((props) => {
 	const {
 		votesData,
 		requestHelper,
-		handleCurrentEvents
+		handleCurrentEvents,
+		handleRegistrationUserInEvents
 	} = props;
 
 	//   const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
@@ -77,12 +78,12 @@ const MyVotesBlockForm = React.memo((props) => {
 		return btnText
 	};
 
-	const registrationUserInEvents = () => {
-		requestHelper(Events.registrationUserInEvents, votesData.id)
-			.then((data) => {
-				console.log(data);
-			});
-	};
+	// const registrationUserInEvents = () => {
+	// 	requestHelper(Events.registrationUserInEvents, votesData.id)
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 		});
+	// };
 
 	// const sendEventData = () => {
 	// 	handleCurrentEvents(votesData);
@@ -125,7 +126,7 @@ const MyVotesBlockForm = React.memo((props) => {
 						Переголосовать
 					</button>}
 				<button className={votesData.isRegistration && votesData.status !== 'ended' && renderBtnRegistration(votesData) !== '' ? 'cancel-reg' : 'cancel-reg-hide'}
-					onClick={() => { registrationUserInEvents() }}>
+					onClick={() => { handleRegistrationUserInEvents(votesData) }}>
 					{renderBtnRegistration(votesData)}
 				</button>
 			</div>

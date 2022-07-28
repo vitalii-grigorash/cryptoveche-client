@@ -19,7 +19,10 @@ const VotesPage = (props) => {
         hideActiveEvents,
         currentRowArchiveEvents,
         handleShowMoreArchiveEvents,
-        hideArchiveEvents
+        hideArchiveEvents,
+				handleCurrentEvents,
+				handleRegistrationUserInEvents
+
     } = props;
 
     const [btnActiveVotes, setBtnActiveVotes] = useState(true);
@@ -235,6 +238,8 @@ const VotesPage = (props) => {
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
+																handleCurrentEvents={handleCurrentEvents}
+																handleRegistrationUserInEvents={handleRegistrationUserInEvents}
                             />
                         )
                         )}
@@ -259,6 +264,8 @@ const VotesPage = (props) => {
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
+																handleCurrentEvents={handleCurrentEvents}
+																handleRegistrationUserInEvents={handleRegistrationUserInEvents}
                             />
                         )
                         )}
