@@ -1,20 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import './CallVotingList.css';
+import {useCallVotingCount, useCallVotingList} from "../../../contexts/CallVotingListContext";
 
 
-const CallVotingList = ({labelCheckbox, activeCheck, onClickCheck}) => {
+
+const CallVotingList = ({nameAnswer, onClickCheck, checkListId}) => {
 
 
+    const setCount = useCallVotingList()
+
+    // console.log(Object.entries(checkCount).length)
+
+    function onClickCheck () {
+        console.log(checkListId)
+        console.log(nameAnswer)
+    }
+    const [getIdAnswer, setGetIdAnswer] = useState({
+        id: checkListId
+    })
+
+  // console.log(checkCount)
 
     return (
                 <div>
                     <label className={'checkbox_container'}>
-                        <input onClick={onClickCheck} type="checkbox" value="yes" defaultChecked={activeCheck}/>{labelCheckbox}
+                        <input onClick={setCount.setCount}  type="checkbox" name={checkListId}/>{nameAnswer}
                         <span className={'checkmark-row'}/>
                     </label>
                 </div>
-
     )
 }
-
 export default CallVotingList;

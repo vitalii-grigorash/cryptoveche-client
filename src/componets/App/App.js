@@ -15,7 +15,7 @@ import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { CallVotingProvider } from "../../contexts/CallVotingContext";
+import {CallVotingListProvider, CallVotingProvider} from "../../contexts/CallVotingListContext";
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
@@ -253,7 +253,7 @@ function App() {
     }
 
     return (
-        <CallVotingProvider>
+         <CallVotingListProvider>
             <CurrentUserContext.Provider value={currentUser}>
                 <div className="App">
                     {isLoggedIn && (
@@ -316,7 +316,7 @@ function App() {
                     )}
                 </div>
             </CurrentUserContext.Provider>
-        </CallVotingProvider>
+         </CallVotingListProvider>
     );
 }
 
