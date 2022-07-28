@@ -41,7 +41,7 @@ function App() {
             if (localStorage.getItem('jwt')) {
                 const jwt = localStorage.getItem('jwt');
                 const jwtTokens = JSON.parse(jwt);
-                request(jwtTokens.access_token, body)
+                request(jwtTokens.access_token, body, id)
                     .then((res) => {
                         if (res.text === 'Expired token') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
@@ -234,6 +234,12 @@ function App() {
             console.log('Необходимо отметить ознакомление с политикой');
         }
     }
+    //
+    function handleCurrentEvents(data) {
+        setCurrentEventData(data)
+        navigate('/call-voting-page')
+    }
+    //
 
     return (
         <CallVotingProvider>
@@ -274,9 +280,10 @@ function App() {
                                 <Route exact path='/' element={<MainPage
                                     allEvents={allEvents}
                                     requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
                                 />}
                                 />
-                                <Route exact path='/call-voting-page' element={<CallVotingPage />} />
+                                <Route exact path='/call-voting-page' element={<CallVotingPage currentEventData={currentEventData} />} />
                                 <Route exact path='/my-profile' element={<MyProfilePage />} />
                                 <Route exact path='/details-vote' element={<DetailsVotesPage />} />
                                 <Route exact path='/votes-page'
