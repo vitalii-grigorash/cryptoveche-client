@@ -34,24 +34,7 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
-    const [currentRowActiveEvents, setCurrentRowActiveEvents] = useState(0);
-    const [currentRowArchiveEvents, setCurrentRowArchiveEvents] = useState(0);
-
-    function handleShowMoreActiveEvents() {
-        setCurrentRowActiveEvents(currentRowActiveEvents + 1);
-    }
-
-    function hideActiveEvents() {
-        setCurrentRowActiveEvents(0);
-    }
-
-    function handleShowMoreArchiveEvents() {
-        setCurrentRowArchiveEvents(currentRowArchiveEvents + 1);
-    }
-
-    function hideArchiveEvents() {
-        setCurrentRowArchiveEvents(0);
-    }
+    const [currentEventData, setCurrentEventData] = useState({});
 
     function requestHelper(request, body = {}, id) {
         return new Promise((resolve, reject) => {
@@ -251,73 +234,84 @@ function App() {
             console.log('Необходимо отметить ознакомление с политикой');
         }
     }
+	
+	const handleRegistrationUserInEvents = (votesData) => {
+		requestHelper(Events.registrationUserInEvents, votesData.id)
+			.then((data) => {
+				console.log(data);
+			});
+	};
 
-    return (
-         <CallVotingListProvider>
-            <CurrentUserContext.Provider value={currentUser}>
-                <div className="App">
-                    {isLoggedIn && (
-                        <Header
-                            handleLogout={logout}
-                            userName={userName}
-                        />
-                    )}
-                    <main className={'main'}>
-                        <div className={'main-content _container'}>
-                            <Routes>
-                                <Route path='/auth'
-                                    element={<Authorization
-                                        handleLogin={handleLogin}
-                                        authError={authError}
-                                        handleRememberMe={handleRememberMe}
-                                        isRememberMe={isRememberMe}
-                                    />}
-                                />
-                                <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                                <Route path='/reset' element={<AuthorizationSetPassword />} />
-                                <Route path='/reg-page'
-                                    element={<Registration
-                                        handleRegister={handleRegister}
-                                        handlePolicyAccept={handlePolicyAccept}
-                                        isPolicyAccept={isPolicyAccept}
-                                        modalActive={modalActive}
-                                        emailErrorMessage={emailErrorMessage}
-                                        changeBorderInputEmail={changeBorderInputEmail}
-                                        hideRegisterModal={hideRegisterModal}
-                                        hideRegForm={hideRegForm}
-                                        hideRegEmailErrors={hideRegEmailErrors}
-                                    />}
-                                />
-                                <Route exact path='/' element={<MainPage
-                                    allEvents={allEvents}
-                                    requestHelper={requestHelper}
-                                />}
-                                />
-                                <Route exact path='/call-voting-page' element={<CallVotingPage />} />
-                                <Route exact path='/my-profile' element={<MyProfilePage />} />
-                                <Route exact path='/details-vote' element={<DetailsVotesPage />} />
-                                <Route exact path='/votes-page'
-                                    element={<VotesPage
-                                        allEvents={allEvents}
-                                        currentRowActiveEvents={currentRowActiveEvents}
-                                        handleShowMoreActiveEvents={handleShowMoreActiveEvents}
-                                        hideActiveEvents={hideActiveEvents}
-                                        currentRowArchiveEvents={currentRowArchiveEvents}
-                                        handleShowMoreArchiveEvents={handleShowMoreArchiveEvents}
-                                        hideArchiveEvents={hideArchiveEvents}
-                                    />}
-                                />
-                                <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
-                            </Routes>
-                        </div>
-                    </main>
-                    {isLoggedIn && (
-                        <Footer />
-                    )}
-                </div>
-            </CurrentUserContext.Provider>
-         </CallVotingListProvider>
-    );
+	function handleCurrentEvents(data) {
+		setCurrentEventData(data)
+		navigate('/call-voting-page')
+	}
+
+	return (
+		<CallVotingListProvider>
+			<CurrentUserContext.Provider value={currentUser}>
+				<div className="App">
+					{isLoggedIn && (
+						<Header
+							handleLogout={logout}
+							userName={userName}
+						/>
+					)}
+					<main className={'main'}>
+						<div className={'main-content _container'}>
+							<Routes>
+								<Route path='/auth'
+									element={<Authorization
+										handleLogin={handleLogin}
+										authError={authError}
+										handleRememberMe={handleRememberMe}
+										isRememberMe={isRememberMe}
+									/>}
+								/>
+								<Route path='/forget-password' element={<AuthorizationForgetPassword />} />
+								<Route path='/reset' element={<AuthorizationSetPassword />} />
+								<Route path='/reg-page'
+									element={<Registration
+										handleRegister={handleRegister}
+										handlePolicyAccept={handlePolicyAccept}
+										isPolicyAccept={isPolicyAccept}
+										modalActive={modalActive}
+										emailErrorMessage={emailErrorMessage}
+										changeBorderInputEmail={changeBorderInputEmail}
+										hideRegisterModal={hideRegisterModal}
+										hideRegForm={hideRegForm}
+										hideRegEmailErrors={hideRegEmailErrors}
+									/>}
+								/>
+								<Route exact path='/' element={<MainPage
+									allEvents={allEvents}
+									requestHelper={requestHelper}
+									handleCurrentEvents={handleCurrentEvents}
+									handleRegistrationUserInEvents={handleRegistrationUserInEvents}
+								/>}
+								/>
+								<Route exact path='/call-voting-page' element={<CallVotingPage currentEventData={currentEventData}/>} />
+								<Route exact path='/my-profile' element={<MyProfilePage />} />
+								<Route exact path='/details-vote' element={<DetailsVotesPage />} />
+								<Route exact path='/votes-page'
+									element={<VotesPage
+										allEvents={allEvents}
+										handleCurrentEvents={handleCurrentEvents}
+										handleRegistrationUserInEvents={handleRegistrationUserInEvents}
+									/>}
+								/>
+								<Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
+							</Routes>
+						</div>
+					</main>
+					{isLoggedIn && (
+						<Footer />
+					)}
+				</div>
+			</CurrentUserContext.Provider>
+		</CallVotingListProvider>
+	);
+
 }
 
 export default App;

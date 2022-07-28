@@ -18,7 +18,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
 
 
- const CallVotingPage = () => {
+ const CallVotingPage = ({currentEventData}) => {
 
      const linkDetailsPage = useNavigate();
      const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)

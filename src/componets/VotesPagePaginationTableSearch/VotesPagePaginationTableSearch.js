@@ -1,32 +1,112 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './VotesPagePaginationTableSearch.css';
 import votes_page_change_row_left from "../../img/VotesPageBlock_change_page_row_icon_left.svg";
 import votes_page_change_row_right from "../../img/VotesPageBlock_change_page_row_icon_right.svg";
 import votes_page_search_icon from "../../img/VotesPageBlock_icon_search.svg";
 
+const VotesPagePaginationTableSearch = (props) => {
 
-const VotesPagePaginationTableSearch = () => {
+    const {
+        sortList,
+        eventsSearchActive,
+        eventsSearchArchive,
+        eventsSearchInput,
+        btnActiveVotes,
+        btnArchiveVotes,
+        onChoiceClick,
+        selectedResultsShow,
+        pageCount,
+        showPrevResults,
+        showNextResults
+    } = props;
+
+    const [isOptionsActive, setOptionsActive] = useState(false);
+    const [allPages, setAllPages] = useState(0);
+
+    useEffect(() => {
+        const pages = sortList.length / selectedResultsShow
+        setAllPages(Math.ceil(pages));
+    }, [sortList.length, selectedResultsShow]);
+
+    useEffect(() => {
+        if (btnActiveVotes) {
+            eventsSearchInput(eventsSearchActive.value);
+        } else if (btnArchiveVotes) {
+            eventsSearchInput(eventsSearchArchive.value);
+        }
+    },
+        [
+            eventsSearchActive.value,
+            eventsSearchArchive.value,
+            btnActiveVotes,
+            btnArchiveVotes,
+            eventsSearchInput
+        ]
+    );
+
+    function handleShowOptionsContainer() {
+        if (isOptionsActive) {
+            setOptionsActive(false);
+        } else {
+            setOptionsActive(true);
+        }
+    }
 
     return (
+        <div className='navigation-menu__pagination-search-block'>
 
-            <div className={'navigation-menu__pagination-search-block'}>
-                <div className={'pagination-search-block__show-page'}><span>Показывать на странице: 25</span>
-                    <select>
-                    </select>
-                </div>
-                <div className={'pagination-search-block__change-page'}>
-                    <span>1-10 из 150</span>
-                    <img alt={'стрелка переключатель страниц'} src={votes_page_change_row_left}/>
-                    <img alt={'стрелка переключатель страниц'} src={votes_page_change_row_right}/>
-                </div>
-                <div className={'pagination-search-block__search-table'}>
-                    <a href={'votes-page'}><img alt={'иконка поиска'} src={votes_page_search_icon}/></a><span>Поиск по таблице</span>
-                </div>
+            <div className='pagination-search-block__show-page' onClick={handleShowOptionsContainer}>
+
+                <p className="pagination-search-block__text">Показывать на странице: {selectedResultsShow}</p>
+                <div className="pagination-search-block__arrow" />
+                {isOptionsActive && (
+                    <div className="pagination-search-block__options-container">
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(5)}>
+                            <p className="pagination-search-block__option">5</p>
+                        </div>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(10)}>
+                            <p className="pagination-search-block__option">10</p>
+                        </div>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(20)}>
+                            <p className="pagination-search-block__option">20</p>
+                        </div>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(30)}>
+                            <p className="pagination-search-block__option">30</p>
+                        </div>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(40)}>
+                            <p className="pagination-search-block__option">40</p>
+                        </div>
+                    </div>
+                )}
             </div>
 
-
+            <div className='pagination-search-block__change-page'>
+                <span>{pageCount} из {allPages}</span>
+                <img alt='стрелка переключатель страниц' src={votes_page_change_row_left} onClick={showPrevResults} />
+                <img alt='стрелка переключатель страниц' src={votes_page_change_row_right} onClick={showNextResults} />
+            </div>
+            <div className='pagination-search-block__search-table'>
+                <img alt='иконка поиска' src={votes_page_search_icon} />
+                {btnActiveVotes ? (
+                    <input
+                        type="text"
+                        name="searchInput"
+                        placeholder='Поиск по таблице'
+                        value={eventsSearchActive.value}
+                        onChange={eventsSearchActive.onChange}
+                    />
+                ) : (
+                    <input
+                        type="text"
+                        name="searchInput"
+                        placeholder='Поиск по таблице'
+                        value={eventsSearchArchive.value}
+                        onChange={eventsSearchArchive.onChange}
+                    />
+                )}
+            </div>
+        </div>
     )
 }
 
 export default VotesPagePaginationTableSearch;
-

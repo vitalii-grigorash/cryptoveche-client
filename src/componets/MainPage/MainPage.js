@@ -13,7 +13,9 @@ const MainPage = React.memo((props) => {
 
 	const {
 		allEvents,
-		requestHelper
+		requestHelper,
+		handleCurrentEvents,
+		handleRegistrationUserInEvents
 	} = props;
 
 	const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
@@ -46,7 +48,11 @@ const MainPage = React.memo((props) => {
 			</div>
 			<CounterBlock stats={statsData} />
 			<div className={'main-content__my-votes-actual'}>
-				<MyVotesBlock myVotes={sortActualEvents} requestHelper={requestHelper} />
+				<MyVotesBlock 
+				myVotes={sortActualEvents} 
+				requestHelper={requestHelper} 
+				handleCurrentEvents={handleCurrentEvents}
+				handleRegistrationUserInEvents={handleRegistrationUserInEvents} />
 				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock actualVote={actualVote} />}
 				<ScanQRMobile />
 			</div>
