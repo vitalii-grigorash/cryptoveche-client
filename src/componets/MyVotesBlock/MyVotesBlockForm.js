@@ -3,7 +3,10 @@ import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/Curren
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import * as Events from '../../Api/Events';
+import './MyVotesBlock.css';
+
 // import handleCurrentEvents from '../App/App'
+
 // import moment from 'moment';
 
 const MyVotesBlockForm = React.memo((props) => {
