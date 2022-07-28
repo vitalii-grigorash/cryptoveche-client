@@ -14,14 +14,55 @@
 .pagination-search-block__show-page {
     display: flex;
     align-items: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.9);
     border-right: 1px rgba(54, 59, 77, 0.3) solid;
     padding-right: 20px;
     height: 24px;
     opacity: 60%;
+    cursor: pointer;
+    position: relative;
 }
-.pagination-search-block__show-page select {
-    background-color: #FBFBFC;
-    width: 20px;
+.pagination-search-block__text {
+    margin: 0 6px 0 0;
+}
+.pagination-search-block__arrow {
+    background-image: url('../../img/options-dropdown-arrow.svg');
+    width: 10px;
+    height: 6px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.pagination-search-block__options-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 50px;
+    top: 24px;
+    right: 10px;
+    border: 0.5px solid #EEEEEE;
+    box-shadow: 0px 4px 8px rgba(54, 59, 77, 0.1);
+    border-radius: 4px;
+    cursor: default;
+    overflow: hidden;
+}
+.pagination-search-block__option-container {
+    display: flex;
+    height: 30px;
+    border-bottom: 1px rgba(54, 59, 77, 0.3) solid;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+.pagination-search-block__option-container:last-of-type {
+    border: none;
+}
+.pagination-search-block__option-container:hover {
+    background: #cfcdcd;
+}
+.pagination-search-block__option {
+    margin: auto;
 }
 /*------Cтилизация для переключения страниц--------------------------------------------------------------------------*/
 .pagination-search-block__change-page {
