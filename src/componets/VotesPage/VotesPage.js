@@ -14,7 +14,9 @@ import { Validation } from '../../utils/Validation';
 const VotesPage = (props) => {
 
     const {
-        allEvents
+        allEvents,
+				handleCurrentEvents,
+				handleRegistrationUserInEvents
     } = props;
 
     const eventsSearchActive = Validation();
@@ -347,6 +349,8 @@ const VotesPage = (props) => {
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
+																handleCurrentEvents={handleCurrentEvents}
+																handleRegistrationUserInEvents={handleRegistrationUserInEvents}
                             />
                         )
                         )}
@@ -358,6 +362,8 @@ const VotesPage = (props) => {
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
+																handleCurrentEvents={handleCurrentEvents}
+																handleRegistrationUserInEvents={handleRegistrationUserInEvents}
                             />
                         )
                         )}
