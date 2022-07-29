@@ -66,5 +66,4 @@ const MainPage = React.memo((props) => {
 		</div>
 	)
 })
-
 export default MainPage;
