@@ -21,8 +21,6 @@ const CallVotingPageQuestionCardList = (props) => {
    const {countAnswer} = useCallVotingList()
 
 
-    console.log(countAnswer)
-
     return (
                 <div className={'call-voting-page-question-card-list__wrapper'}>
                         <div className={'call-voting-page-question-card-list__title'}>
@@ -38,7 +36,6 @@ const CallVotingPageQuestionCardList = (props) => {
                         </div>
                     <CallVotingPageVoteButtonList/>
                 </div>
-
     )
 }
 export default CallVotingPageQuestionCardList;
