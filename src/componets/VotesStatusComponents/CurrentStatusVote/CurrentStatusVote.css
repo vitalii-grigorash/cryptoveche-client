@@ -43,6 +43,13 @@
     padding: 5px 12px 5px 24px;
     color: #FF2957;
 }
+.current-status__quorum_unpresant {
+    display: flex;
+    border: 1px #F9C521 solid;
+    border-radius: 8px;
+    padding: 5px 12px 5px 24px;
+    color: #F9C521;
+}
 
 .current-status__types-vote {
     border: 1px rgba(54, 59, 77, 0.4) solid;
