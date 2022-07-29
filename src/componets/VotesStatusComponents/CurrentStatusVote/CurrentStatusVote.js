@@ -10,6 +10,7 @@ const CurrentStatusVote = ({ regStatus, voteStatus }) => {
         'Идет голосование': 'current-status__voiting',
         'Регистрация и голосование': 'current-status__registration-and-votes',
         'Голосование завершено': 'current-status__ended-voiting',
+        'Кворум не достигнут': 'current-status__quorum_unpresant'
     }
 
     const findStyleForRegStatus = (regStatus) => {
