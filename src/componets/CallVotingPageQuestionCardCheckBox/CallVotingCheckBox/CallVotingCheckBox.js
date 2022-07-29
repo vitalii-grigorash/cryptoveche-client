@@ -6,6 +6,7 @@ const CallVotingCheckBox = ({onGetIdCheck, activeRadioCheck, checkColumn, checkI
     const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
     const [activeViewListCheck, setActiveViewListCheck] = useState(false)
 
+
     onGetIdCheck = function () {
         console.log(checkIdRow)
         console.log(checkColumn)
@@ -13,7 +14,6 @@ const CallVotingCheckBox = ({onGetIdCheck, activeRadioCheck, checkColumn, checkI
     }
 
     return (
-
             <>
                 {activeViewTableCheck &&
                     <td className={'call-voting-checkbox__wrapper'}>
@@ -34,7 +34,6 @@ const CallVotingCheckBox = ({onGetIdCheck, activeRadioCheck, checkColumn, checkI
                     </span>
                 }
             </>
-
     )
 }
 
