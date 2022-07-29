@@ -13,9 +13,9 @@ const MyVotesBlockForm = React.memo((props) => {
 
 	const {
 		votesData,
-		requestHelper,
 		handleCurrentEvents,
-		handleRegistrationUserInEvents
+		toggleEventRegistration,
+		showEventResult
 	} = props;
 
 	//   const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
@@ -39,47 +39,24 @@ const MyVotesBlockForm = React.memo((props) => {
 	// "ended"; завершено 
 
 	useEffect(() => {
-		console.log(votesData);
-
 		if (votesData.status === 'waiting') {
 			setLabelText('Ожидание регистрации');
 		} else if (votesData.status === 'registration') {
-			if (!votesData.isRegistered) {
-				setLabelText('Идет регистрация')
-			} else if (votesData.isRegistered) {
-				if (votesData.isVoting) {
-					setLabelText('Регистрация и голосование');
-				} else {
-					setLabelText('Ожидание голосования');
-				}
+			if (votesData.isVoting) {
+				setLabelText('Регистрация и голосование');
+			} else {
+				setLabelText('Идет регистрация');
 			}
 		} else if (votesData.status === 'event waiting') {
 			setLabelText('Ожидание голосования');
-		} else if (votesData.isRegistration && votesData.isVoting) {
-			setLabelText('Регистрация и голосование');
 		} else if (votesData.status === 'voting') {
 			setLabelText('Идет голосование');
-		} else if (votesData.status === false) {
+		} else if (votesData.status === 'ended') {
 			setLabelText('Голосование завершено');
-		} else if (votesData.quorum_type === 'quorum_unpresant') {
+		} else if (votesData.status === 'quorum_unpresant') {
 			setLabelText('Кворум не достигнут');
 		}
 	}, [votesData])
-
-	const renderBtnRegistration = (votesData) => {
-		let btnText;
-
-		if ((votesData.status === 'registration' || votesData.status === 'event waiting') && !votesData.isRegistered) {
-			btnText = 'Зарегистрироваться';
-		} else if ((votesData.status === 'registration' || votesData.status === 'event waiting') && votesData.isRegistered && votesData.re_registration && !votesData.isVoting) {
-			btnText = 'Отменить регистрацию';
-		} else if ((votesData.status === 'registration' || votesData.status === 'event waiting') ||
-			(votesData.isRegistered && !votesData.re_registration) ||
-			(votesData.status = 'registration' && votesData.isVoting)) {
-			btnText = ''
-		}
-		return btnText
-	};
 
 	// const registrationUserInEvents = () => {
 	// 	requestHelper(Events.registrationUserInEvents, votesData.id)
@@ -100,7 +77,10 @@ const MyVotesBlockForm = React.memo((props) => {
 				<CurrentStatusVote
 					regStatus={labelText}
 					voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
-				<StartDateVote dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
+				<StartDateVote
+					dateTimeDate={startEventDate}
+					dateTimeWatch={startEventTime}
+				/>
 				<div className={'status-and-start-reg-start-vote__add-border-left'}>
 					<ConfirmRegMaterialsVote
 						isRegistered={votesData.isRegistered}
@@ -110,28 +90,104 @@ const MyVotesBlockForm = React.memo((props) => {
 				</div>
 			</div>
 			<div className={'votes-form__button-vote-cancel-reg'}>
-				{!votesData.re_voting ?
-					<button className={
-						(votesData.status === 'voting' && votesData.isRegistered) ||
-							(votesData.status === 'registration' && votesData.isVoting && votesData.isRegistered)
-							? 'button-vote'
-							: 'button-vote-hide'}
-						onClick={() => { handleCurrentEvents(votesData) }}
-					>
-						Проголосовать
-					</button>
-					:
-					<button className={votesData.status === 'voting' && votesData.isRegistered && votesData.re_voting
-						? 'button-vote'
-						: 'button-vote-hide'}
-						onClick={() => { handleCurrentEvents(votesData) }}
-					>
-						Переголосовать
-					</button>}
-				<button className={votesData.isRegistration && votesData.status !== 'ended' && renderBtnRegistration(votesData) !== '' ? 'cancel-reg' : 'cancel-reg-hide'}
-					onClick={() => { handleRegistrationUserInEvents(votesData) }}>
-					{renderBtnRegistration(votesData)}
-				</button>
+				{votesData.status === "registration" && (
+					<>
+						{!votesData.isRegistered ? (
+							<button className='reg'
+								onClick={() => { toggleEventRegistration(votesData.id) }}
+							>
+								Зарегистрироваться
+							</button>
+						) : (
+							<>
+								{votesData.re_registration && (
+									<>
+										{!votesData.isVoting && (
+											<button className='cancel-reg'
+												onClick={() => { toggleEventRegistration(votesData.id) }}
+											>
+												Отменить регистрацию
+											</button>
+										)}
+									</>
+								)}
+							</>
+						)}
+						{votesData.isVoting && (
+							<>
+								{votesData.isRegistered && (
+									<>
+										{!votesData.isVoted ? (
+											<>
+												<button className='button-vote'
+													onClick={() => { handleCurrentEvents(votesData) }}
+												>
+													Проголосовать
+												</button>
+											</>
+										) : (
+											<>
+												{votesData.re_voting && (
+													<button className='button-vote'
+														onClick={() => { handleCurrentEvents(votesData) }}
+													>
+														Переголосовать
+													</button>
+												)}
+											</>
+										)}
+									</>
+								)}
+							</>
+						)}
+					</>
+				)}
+				{votesData.status === 'voting' && (
+					<>
+						{votesData.isRegistered ? (
+							<>
+								{!votesData.isVoted ? (
+									<button className='button-vote'
+										onClick={() => { handleCurrentEvents(votesData) }}
+									>
+										Проголосовать
+									</button>
+								) : (
+									<>
+										{votesData.re_voting && (
+											<button className='button-vote'
+												onClick={() => { handleCurrentEvents(votesData) }}
+											>
+												Переголосовать
+											</button>
+										)}
+									</>
+								)}
+							</>
+						) : (
+							<>
+								{votesData.isRegistration && (
+									<button className='reg'
+										onClick={() => { toggleEventRegistration(votesData.id) }}
+									>
+										Зарегистрироваться
+									</button>
+								)}
+							</>
+						)}
+					</>
+				)}
+				{votesData.status === 'ended' && (
+					<>
+						{votesData.isVoted && (
+							<button className='cancel-reg'
+								onClick={showEventResult}
+							>
+								Результаты
+							</button>
+						)}
+					</>
+				)}
 			</div>
 		</div>
 	)

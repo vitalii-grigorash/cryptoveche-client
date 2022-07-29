@@ -23,8 +23,8 @@ export const getEvents = (accessToken) => {
         });
 }
 
-export const registrationUserInEvents = (accessToken, eventId) => {
-    return fetch(`${API_URL}/events/toggle_register/${eventId}`, {
+export const registrationUserInEvents = (accessToken, body) => {
+    return fetch(`${API_URL}/events/toggle_register/${body.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
