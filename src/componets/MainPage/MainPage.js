@@ -66,6 +66,7 @@ const MainPage = (props) => {
 			</div>
 		</div>
 	)
+
 }
 
 export default MainPage;
