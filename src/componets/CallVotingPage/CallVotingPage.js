@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './CallVotingPage.css';
 import mobile_icon_details_vote from '../../img/CallVotingMobileIcon.svg';
 import DetailsVotesPageDaysEndRegStartVote
@@ -22,36 +22,29 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
 
      const linkDetailsPage = useNavigate();
      const [activeRadioCheckbox, setActiveRadioCheckbox] = useState(false)
-     const titleVote = callVotingEvent.map(item => item.title)
-     const [allQuestionsVote] = callVotingEvent.map(item => item.questions)
-     const questionsTemplateRow = allQuestionsVote.filter(e => e.template === 'ynq')
-     const questionsTemplateGrid = allQuestionsVote.filter(e => e.template === 'grid')
-     const getId = questionsTemplateRow.map(elem => elem.options.rows)
-
-     // const countColumns = getId.find(el => el.id[2])
-     //  const bun = Object.values(countColumns)
+     const allQuestionsVote = currentEventData.questions
+     const questionsTemplateRow = allQuestionsVote.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions')
+     const questionsTemplateGrid = allQuestionsVote.filter(e => e.template === 'grid' || e.template === 'radio_grid')
 
 
+     // const findRadioGrid = (questionsTemplateGrid) => {
+     //     for (let key in questionsTemplateGrid) {
+     //         if (questionsTemplateGrid.template === 'radio_grid') {
+     //             return setActiveRadioCheckbox(true)
+     //         }
+     //     }
+     // };
 
-     // const ethnicities = [1, 2, 3, 4]
-     //
-     // const ethnicitiesObject = Object.assign({}, ethnicities);
-     // //
-     // //
-     // //
-     // const vit = Object.entries(ethnicitiesObject)
-     //
-     // console.log(ethnicitiesObject);
+    console.log(currentEventData)
 
      return (
-
              <div className={'call-voting-page__wrapper'}>
                <TitleVotesDetailsCallVotingProfile
                     firstLetter={'КлиентКриптовече'}
                     secondLetter={'Голосование по повестке'}
                     titleName={'Голосование по повестке'} mobileLetter={'Назад на главную'}/>
                  <div className={'call-voting-page__title'}>
-                     <h2 className={'call-voting-page-title__title'}>{titleVote}</h2>
+                     <h2 className={'call-voting-page-title__title'}>{currentEventData.title}</h2>
                      <button className={'call-voting-page-title__details-btn'} onClick={() => linkDetailsPage('/details-vote')}>Детали голосования</button>
                      <span className={'call-voting-page-title__details-icon'} onClick={() => linkDetailsPage('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote}/>ДЕТАЛИ ГОЛОСОВАНИЯ</span>
                  </div>
@@ -117,7 +110,6 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                      }))
                  }
              </div>
-
      )
  }
 export default CallVotingPage;
