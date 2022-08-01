@@ -54,7 +54,11 @@ const MainPage = (props) => {
 					toggleEventRegistration={toggleEventRegistration}
 					showEventResult={showEventResult}
 				/>
-				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock actualVote={actualVote} />}
+				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock 
+				actualVote={actualVote} 
+				handleCurrentEvents={handleCurrentEvents}
+				toggleEventRegistration={toggleEventRegistration}
+				/>}
 				<ScanQRMobile />
 			</div>
 			<div className={'main-content__amount-votes-and-calendar-votes'}>
