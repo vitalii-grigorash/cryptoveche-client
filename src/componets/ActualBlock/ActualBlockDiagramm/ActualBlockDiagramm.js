@@ -10,18 +10,20 @@ const ActualBlockDiagramm = (props) => {
 	} = props;
 
 
+	const [nowTime, setNowTime] = useState(0);
 	const [startTime, setStartTime] = useState(0);
 	const [endTime, setEndTime] = useState(0);
 	const [sectorCircle, setSectorCircle] = useState(null);
 
 	useEffect(() => {
 		if (actualVote && Object.keys(actualVote).length > 0) {
+			setNowTime(Number(new Date().getTime()));
+			setStartTime(Number(new Date(actualVote.event_start_time).getTime()));
 			setEndTime(Number(new Date(actualVote.event_end_time).getTime()));
-			setStartTime(Number(new Date().getTime()));
-			setSectorCircle(Number(startTime / endTime));
+
+			setSectorCircle(Number((nowTime - startTime) / (endTime - startTime)));
 		};
 	}, [sectorCircle])
-
 
 	function drawCircles(radius, sectorCircle, colorsCircle) {
 
