@@ -15,8 +15,9 @@ const VotesPage = (props) => {
 
     const {
         allEvents,
-				handleCurrentEvents,
-				handleRegistrationUserInEvents
+        handleCurrentEvents,
+        toggleEventRegistration,
+        showEventResult
     } = props;
 
     const eventsSearchActive = Validation();
@@ -49,6 +50,9 @@ const VotesPage = (props) => {
     const [resultArchive, setResultArchive] = useState(5);
     const [pageCountArchive, setPageCountArchive] = useState(1);
     const [selectedResultsShowArchive, setSelectedResultsShowArchive] = useState(5);
+
+    console.log(activeEventsForRender);
+    console.log(archiveEventsForRender);
 
     useEffect(() => {
         splitEvents(allEvents);
@@ -189,7 +193,7 @@ const VotesPage = (props) => {
         setArchiveEvents([]);
         if (events.length !== 0) {
             events.forEach((event) => {
-                if (event.status === 'ended') {
+                if (event.status === 'ended' || event.status === 'quorum_unpresant') {
                     setArchiveEvents(archiveEvents => [...archiveEvents, event]);
                 } else {
                     setActiveEvents(activeEvents => [...activeEvents, event]);
@@ -349,8 +353,9 @@ const VotesPage = (props) => {
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
-																handleCurrentEvents={handleCurrentEvents}
-																handleRegistrationUserInEvents={handleRegistrationUserInEvents}
+                                handleCurrentEvents={handleCurrentEvents}
+                                toggleEventRegistration={toggleEventRegistration}
+                                showEventResult={showEventResult}
                             />
                         )
                         )}
@@ -362,8 +367,9 @@ const VotesPage = (props) => {
                             <MyVotesBlockForm
                                 key={event.id}
                                 votesData={event}
-																handleCurrentEvents={handleCurrentEvents}
-																handleRegistrationUserInEvents={handleRegistrationUserInEvents}
+                                handleCurrentEvents={handleCurrentEvents}
+                                toggleEventRegistration={toggleEventRegistration}
+                                showEventResult={showEventResult}
                             />
                         )
                         )}

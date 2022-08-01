@@ -9,18 +9,18 @@ import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import * as Stats from '../../Api/Stats';
 
-const MainPage = React.memo((props) => {
+const MainPage = (props) => {
 
 	const {
 		allEvents,
 		requestHelper,
 		handleCurrentEvents,
-		handleRegistrationUserInEvents
+		toggleEventRegistration,
+		showEventResult
 	} = props;
 
-	const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-	const sortActualEvents = allEvents.filter(el => el.status !== 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-
+	// const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+	const sortActualEvents = allEvents.filter(el => el.status !== 'ended').filter(el => el.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
 
 	const [statsData, setStatsData] = useState({});
 	const [actualVote, setActualVote] = useState({});
@@ -48,11 +48,12 @@ const MainPage = React.memo((props) => {
 			</div>
 			<CounterBlock stats={statsData} />
 			<div className={'main-content__my-votes-actual'}>
-				<MyVotesBlock 
-				myVotes={sortActualEvents} 
-				requestHelper={requestHelper} 
-				handleCurrentEvents={handleCurrentEvents}
-				handleRegistrationUserInEvents={handleRegistrationUserInEvents} />
+				<MyVotesBlock
+					myVotes={sortActualEvents}
+					handleCurrentEvents={handleCurrentEvents}
+					toggleEventRegistration={toggleEventRegistration}
+					showEventResult={showEventResult}
+				/>
 				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock actualVote={actualVote} />}
 				<ScanQRMobile />
 			</div>
@@ -65,6 +66,7 @@ const MainPage = React.memo((props) => {
 			</div>
 		</div>
 	)
-})
+
+}
 
 export default MainPage;

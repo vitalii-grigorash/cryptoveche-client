@@ -90,7 +90,7 @@ const VotesPageFiltersModal = (props) => {
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Регистрация и голосование'}
-                        status={"registration and voting"}
+                        status={"registration"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
                         isResetAllCheckboxClick={isResetAllCheckboxClick}
@@ -122,7 +122,7 @@ const VotesPageFiltersModal = (props) => {
                     />
                     <FiltersModalCheckBox
                         nameSearchVote={'Кворум не достигнут'}
-                        status={"quorum not reached"}
+                        status={"quorum_unpresant"}
                         checkboxFilterArrayAdd={checkboxFilterArrayAdd}
                         checkboxFilterArrayRemove={checkboxFilterArrayRemove}
                         isResetAllCheckboxClick={isResetAllCheckboxClick}
