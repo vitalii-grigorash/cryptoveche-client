@@ -18,7 +18,7 @@
     color: rgba(54, 59, 77, 0.9);
 }
 /*------Стили для обоих блоков---------------------------------------------------------------------------------------*/
-.my-votes-block__reg-form, .my-votes-block__vote-form {
+.my-votes-block__vote-form {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -26,19 +26,26 @@
     border-bottom: 1px #EEEEEE;
     border-style: solid;
     padding-bottom: 24px;
-    max-width: 760px;
+}
+.my-votes-block__vote-form_votes-page {
+    flex-direction: row;
+}
+.my-votes-block__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 .reg-form__status-block, .vote-form__status-block {
     display: flex;
     flex-direction: row;
     max-height: 56px;
 }
-.my-votes-block__reg-form h3, .my-votes-block__vote-form h3 {
+.my-votes-block__vote-form h3 {
     font-size: 18px;
     font-weight: 400;
     line-height: 133%;
 }
-.my-votes-block__reg-form h5, .my-votes-block__vote-form h5 {
+.my-votes-block__vote-form h5 {
     font-size: 16px;
     font-weight: 400;
     line-height: 110%;
@@ -50,7 +57,19 @@
 }
 .status-and-start-reg-start-vote__add-border-left {
     border-left: 1px rgba(54, 59, 77, 0.2) solid;
-
+}
+.my-votes-block__utc-container {
+    display: flex;
+}
+.my-votes-block__utc-icon {
+    margin: auto 8px auto 0;
+}
+.my-votes-block__utc-value {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(54, 59, 77, 0.6);
+    margin: auto auto auto 0;
 }
 /*------Стилизация кнопки зарегистрироваться ------------------------------------------------------------------------*/
 .reg-form__button-reg {
@@ -66,10 +85,17 @@
 }
 /*------Блок с кнопкой проголосовать----------------------------------------------------------------------------------*/
 .votes-form__button-vote-cancel-reg {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+.votes-form__button-vote-cancel-reg_votes-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: end;
+    margin: auto 0 0 auto;
 }
 .button-vote {
     width: 169px;
@@ -145,10 +171,10 @@
     .my-votes-block__votes-form {
         padding-bottom: 0;
     }
-    .my-votes-block__reg-form h3, .my-votes-block__vote-form h3 {
+    .my-votes-block__vote-form h3 {
         font-size: 14px;
     }
-    .my-votes-block__reg-form h5, .my-votes-block__vote-form h5 {
+    .my-votes-block__vote-form h5 {
         font-size: 13px;
     }
     .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
@@ -184,7 +210,7 @@
     .link-arrow__show-all {
         display: none;
     }
-    .my-votes-block__reg-form, .my-votes-block__votes-form {
+    .my-votes-block__votes-form {
         display: none;
     }
     .my-votes-block__vote-form {

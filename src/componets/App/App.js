@@ -241,7 +241,6 @@ function App() {
         }
         requestHelper(Events.registrationUserInEvents, body)
             .then((data) => {
-                console.log(data);
                 if (data.status === 'ok') {
                     requestHelper(Events.getEvents)
                         .then((data) => {
