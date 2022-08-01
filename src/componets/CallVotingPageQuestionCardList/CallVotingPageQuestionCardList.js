@@ -11,7 +11,7 @@ const CallVotingPageQuestionCardList = (props) => {
 
     const {
         questionName,
-        chooseAnswer,
+        rulesAnswer,
         listNameAnswers
     } = props;
 
@@ -26,7 +26,7 @@ const CallVotingPageQuestionCardList = (props) => {
                         <div className={'call-voting-page-question-card-list__title'}>
                             <h3>{questionName}</h3>
                             <div className={'call-voting-page-question-card-list__select-answer'}>
-                                <span>{chooseAnswer}</span>
+                                <span>{rulesAnswer}</span>
                                 <span ref={colorGreen}>Сейчас выбрано: {countAnswer.count}</span>
                             </div>
                             <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
