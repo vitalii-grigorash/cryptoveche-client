@@ -71,7 +71,7 @@ const CallVotingPage = (props) => {
         } else {
             navigate('/');
         }
-    }, [])
+    }, [navigate, requestHelper])
 
     return (
         <div className={'call-voting-page__wrapper'}>

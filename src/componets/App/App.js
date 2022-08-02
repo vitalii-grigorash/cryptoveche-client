@@ -15,7 +15,6 @@ import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { CallVotingListProvider } from "../../contexts/CallVotingListContext";
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
