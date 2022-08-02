@@ -5,7 +5,7 @@ import row_icon_button from '../../../img/ActualBlockDiagramm_row.svg';
 
 const ActualBlockDiagramm = (props) => {
 
-  const {
+  const { 
     actualVote
   } = props;
 
