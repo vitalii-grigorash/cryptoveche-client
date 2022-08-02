@@ -6,30 +6,23 @@ import row_icon_button from '../../../img/ActualBlockDiagramm_row.svg';
 const ActualBlockDiagramm = (props) => {
 
   const {
-    actualVote,
-    switchActualEventForward,
-    switchActualEventBack,
-    arrowRightStyle,
-    arrowLeftStyle
+    actualVote
   } = props;
 
 
-  const [nowTime, setNowTime] = useState(0);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
-  const [sectorCircle, setSectorCircle] = useState();
+  const [sectorCircle, setSectorCircle] = useState(null);
 
   useEffect(() => {
     if (actualVote && Object.keys(actualVote).length > 0) {
-      setNowTime(Number(new Date().getTime()));
-      setStartTime(Number(new Date(actualVote.event_start_time).getTime()));
       setEndTime(Number(new Date(actualVote.event_end_time).getTime()));
-
-      setSectorCircle(Number(Number(nowTime - startTime) / (endTime - startTime)));
+      setStartTime(Number(new Date().getTime()));
+      setSectorCircle(Number(startTime / endTime));
     };
-  }, [actualVote,startTime, endTime, sectorCircle])
+  }, [sectorCircle])
 
-  
+
   function drawCircles(radius, sectorCircle, colorsCircle) {
 
     let circleFull = 2 * Math.PI * radius;
@@ -51,18 +44,12 @@ const ActualBlockDiagramm = (props) => {
     )
   }
 
-
-
   return (
     <>
       {sectorCircle && typeof (sectorCircle) === 'number' && (
         <div className={'diagramm-container'}>
-          <a href={'main'}>
-            <img className={arrowLeftStyle} src={row_icon_button} alt={'кнопка стрелка'} onClick={switchActualEventBack} />
-          </a>
-          <a href={'main'} >
-            <img className={arrowRightStyle} src={row_icon_button} alt={'кнопка стрелка'} onClick={switchActualEventForward} />
-          </a>
+          <a href={'main'}><img className={'diagramm-container__row-button-left'} src={row_icon_button} alt={'кнопка стрелка'} /></a>
+          <a href={'main'}><img className={'diagramm-container__row-button-right'} src={row_icon_button} alt={'кнопка стрелка'} /></a>
           <span className={'diagramm-container__info'}>
             <h3>{(sectorCircle * 100).toFixed(0)}%</h3>
             <p>времени прошло</p>
@@ -73,5 +60,4 @@ const ActualBlockDiagramm = (props) => {
     </>
   )
 }
-
 export default ActualBlockDiagramm;
