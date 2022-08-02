@@ -6,7 +6,6 @@ import {CallVotingListContext} from "../../../contexts/CallVotingListContext";
 
 const CallVotingList = ({nameAnswer, onClickCheck, checkListId}) => {
 
-
     const setCount = useContext(CallVotingListContext)
 
     // console.log(Object.entries(checkCount).length)
@@ -22,11 +21,12 @@ const CallVotingList = ({nameAnswer, onClickCheck, checkListId}) => {
   // console.log(checkCount)
 
     return (
-                <div>
+                <div className={'www'}>
                     <label className={'checkbox_container'}>
-                        <input onClick={setCount.changeCountAnswer}  type="checkbox" name={checkListId}/>{nameAnswer}
+                        <input onClick={setCount.changeCountAnswer}  type="checkbox" name={checkListId}/>
                         <span className={'checkmark-row'}/>
                     </label>
+                    <span className={'call-voting-list__name-answer'}>{nameAnswer}</span>
                 </div>
     )
 }

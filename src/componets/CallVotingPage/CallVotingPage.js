@@ -40,22 +40,6 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
              return obj;
          })
 
-     // useEffect(() => {
-     //     for (let i = 0; i < questionsTemplateGrid.length; i++) {
-     //         if (questionsTemplateGrid[i].template === 'radio_grid') {
-     //            return questionsTemplateGrid.map(obj => ({...obj, Active: false}))
-     //         }
-     //     }
-     // }, [])
-
-     // useEffect(() => {
-     //     for (let key in templateGrid) {
-     //         if (templateGrid.template === 'radio_grid') {
-     //            setActiveRadioCheckbox(true)
-     //         }
-     //     }
-     // }, [templateGrid])
-
     console.log(currentEventData)
 
      return (
