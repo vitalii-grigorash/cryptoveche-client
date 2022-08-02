@@ -4,6 +4,7 @@ import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote"
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import * as Events from '../../Api/Events';
 import './MyVotesBlock.css';
+import StartDateRegVote from "../VotesStatusComponents/StartDateRegVote/StartDateRegVote";
 
 // import handleCurrentEvents from '../App/App'
 

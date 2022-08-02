@@ -43,7 +43,7 @@
     top: 24px;
     right: 10px;
     border: 0.5px solid #EEEEEE;
-    box-shadow: 0px 4px 8px rgba(54, 59, 77, 0.1);
+    box-shadow: 0 4px 8px rgba(54, 59, 77, 0.1);
     border-radius: 4px;
     cursor: default;
     overflow: hidden;
@@ -77,6 +77,11 @@
 .pagination-search-block__change-page i {
     font-weight: 100;
 }
+.pagination-search-block__change-page img {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
 
 /*------Cтилизация для поиска по таблице-----------------------------------------------------------------------------*/
 .pagination-search-block__search-table {
@@ -84,14 +89,24 @@
     gap: 12px;
     opacity: 60%;
 }
+.pagination-search-block__search-table input {
+    outline: none;
+}
+
 /*------Адаптивная версия--------------------------------------------------------------------------------------------*/
 @media (max-width: 1160px) {
     .navigation-menu__pagination-search-block {
         font-size: 12px;
+        gap: 12px;
     }
-
+    .pagination-search-block__text {
+        font-size: 12px;
+    }
+    .pagination-search-block__search-table input {
+        font-size: 12px;
+    }
 }
-@media (max-width: 900px) {
+@media (max-width: 850px) {
     .navigation-menu__pagination-search-block {
        display: none;
     }
