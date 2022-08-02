@@ -8,6 +8,7 @@
 .call-voting-name-rows__name-row {
     width: 240px;
     word-break: break-word;
+    font-size: 18px;
 }
 /*------Стилизация квадратного чекбокса--------------------------------------------------------------------------------*/
 .call-voting-checkbox__container {
@@ -114,8 +115,12 @@
     border-radius: 100%;
 }
 
-
 /*------Адаптивная версия(830px)---------------------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+    .call-voting-name-rows__name-row {
+        font-size: 16px;
+    }
+}
 @media (max-width: 830px) {
     .call-voting-card-checkbox__name-question {
         word-wrap: break-word;

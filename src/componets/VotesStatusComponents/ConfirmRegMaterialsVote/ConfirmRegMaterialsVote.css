@@ -14,12 +14,17 @@
     font-weight: 400;
     color: rgba(54, 59, 77, 0.9);
 }
-.status-icon__color-status_isRegistered {
+.status-icon__color-status_registered {
     color: #4ED4A9;
 }
-
-.status-icon__color-status_notRegistered {
+.status-icon__color-status_not-registered {
     color: #FF4970;
+}
+.status-icon__color-status_voted {
+    color: #4569FF;
+}
+.status-icon__color-status_warning {
+    color: #FF8A00;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {

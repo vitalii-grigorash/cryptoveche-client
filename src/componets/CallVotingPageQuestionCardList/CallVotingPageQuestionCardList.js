@@ -1,32 +1,41 @@
-import React, {useState, useReducer, useContext, useRef} from "react";
+import React, {useState, useRef} from "react";
 import './CallVotingPageQuestionCardList.css';
 import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
-import {CallVotingListProvider, useCallVotingList} from "../../contexts/CallVotingListContext";
-
-
+import {CallVotingListContext} from "../../contexts/CallVotingListContext";
 
 
 const CallVotingPageQuestionCardList = (props) => {
 
     const {
         questionName,
-        chooseAnswer,
+        rulesAnswer,
         listNameAnswers
     } = props;
 
     const colorGreen = useRef(null)
 
-   //
-   const {countAnswer} = useCallVotingList()
+    const { Provider } = CallVotingListContext;
 
+    const [countAnswer, setCountAnswer] = useState({
+        count: 0,
+        changeCountAnswer: changeCountAnswer
+    })
+
+    function changeCountAnswer() {
+        if (countAnswer.count === 0) {
+            setCountAnswer({...countAnswer, count: +1})
+            colorGreen.current.style.color = '#4ED4A9'
+        }
+    }
 
     return (
+        <Provider value={countAnswer}>
                 <div className={'call-voting-page-question-card-list__wrapper'}>
                         <div className={'call-voting-page-question-card-list__title'}>
                             <h3>{questionName}</h3>
                             <div className={'call-voting-page-question-card-list__select-answer'}>
-                                <span>{chooseAnswer}</span>
+                                <span>{rulesAnswer}</span>
                                 <span ref={colorGreen}>Сейчас выбрано: {countAnswer.count}</span>
                             </div>
                             <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
@@ -36,6 +45,7 @@ const CallVotingPageQuestionCardList = (props) => {
                         </div>
                     <CallVotingPageVoteButtonList/>
                 </div>
+        </Provider>
     )
 }
 export default CallVotingPageQuestionCardList;

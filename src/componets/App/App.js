@@ -241,7 +241,6 @@ function App() {
         }
         requestHelper(Events.registrationUserInEvents, body)
             .then((data) => {
-                console.log(data);
                 if (data.status === 'ok') {
                     requestHelper(Events.getEvents)
                         .then((data) => {
@@ -264,7 +263,6 @@ function App() {
     }
 
     return (
-        <CallVotingListProvider>
             <CurrentUserContext.Provider value={currentUser}>
                 <div className="App">
                     {isLoggedIn && (
@@ -328,7 +326,6 @@ function App() {
                     )}
                 </div>
             </CurrentUserContext.Provider>
-        </CallVotingListProvider>
     );
 
 }
