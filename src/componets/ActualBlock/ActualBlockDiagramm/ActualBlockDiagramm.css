@@ -42,12 +42,22 @@
 .diagramm-container__row-button-right {
     position: absolute;
     right: 0;
+    z-index: 1;
+}
+
+.diagramm-container__row-button-right_hide {
+    display: none;
 }
 
 .diagramm-container__row-button-left {
     transform: rotate(180deg);
     position: absolute;
     left: 0;
+    z-index: 1;
+}
+
+.diagramm-container__row-button-left_hide {
+    display: none;
 }
 /*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {
