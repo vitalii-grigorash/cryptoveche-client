@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './CallVotingPage.css';
 import mobile_icon_details_vote from '../../img/CallVotingMobileIcon.svg';
 import DetailsVotesPageDaysEndRegStartVote
@@ -21,39 +21,26 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
      const linkDetailsPage = useNavigate();
      const allQuestionsVote = currentEventData.questions
      const questionsTemplateRow = allQuestionsVote.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions')
+                                                  .map(obj => {
+                                                      if (obj.template === 'ynq' || obj.template === 'none') {
+                                                         return {...obj, ruleText: 'Необходимо выбрать ровно: ' + obj.rules.pick_eq}
+                                                      } else if(obj.template === 'position_single' || obj.template === 'position_multiple' || obj.template === 'same_positions') {
+                                                          return {...obj, ruleText: 'Количество должностных позиций доступных для выбора: ' + obj.rules.pick_le}
+                                                      }
+                                                      return obj;
+                                                  })
      const questionsTemplateGrid = allQuestionsVote
          .filter(e => e.template === 'grid' || e.template === 'radio_grid')
          .map(obj => {
              if(obj.template === 'radio_grid') {
                  return {...obj, activeRadioCheck: true}
+             } else if(obj.is_required_grid_rows === true) {
+                 return {...obj, ruleText: 'Все строки обязательны для заполнения'}
              }
-             return obj
+             return obj;
          })
 
-    // const que = questionsTemplateGrid.map(obj => {
-    //     if(obj.template === 'radio_grid') {
-    //         return {...obj, activeRadioCheck: true}
-    //     }
-    //     return obj;
-    // })
-
-     // useEffect(() => {
-     //     for (let i = 0; i < questionsTemplateGrid.length; i++) {
-     //         if (questionsTemplateGrid[i].template === 'radio_grid') {
-     //            return questionsTemplateGrid.map(obj => ({...obj, Active: false}))
-     //         }
-     //     }
-     // }, [])
-
-     // useEffect(() => {
-     //     for (let key in templateGrid) {
-     //         if (templateGrid.template === 'radio_grid') {
-     //            setActiveRadioCheckbox(true)
-     //         }
-     //     }
-     // }, [templateGrid])
-
-    console.log(questionsTemplateGrid)
+    console.log(currentEventData)
 
      return (
                 <div className={'call-voting-page__wrapper'}>
@@ -77,7 +64,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                  key={item.id}
                                  id={item.id}
                                  questionName={item.title}
-                                 chooseAnswer={'Необходимо выбрать ровно 1'}
+                                 rulesAnswer={item.ruleText}
                                  listNameAnswers={item.options.rows.map(elem => {
                                      return <CallVotingList
                                          key={elem.id}
@@ -96,7 +83,7 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                                  key={item.id}
                                  id={item.id}
                                  questionName={item.title}
-                                 chooseAnswer={'Выберите один из вариантов ответа напротив каждого кандидата'}
+                                 rulesAnswer={item.ruleText}
                                  answerSelected={'Выбрано: 0'}
                                  columnsGrid={item.options.columns.map(el => {
                                      return <CallVotingNameColumns
@@ -132,7 +119,6 @@ import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVoting
                      }))
                  }
              </div>
-
      )
  }
 export default CallVotingPage;

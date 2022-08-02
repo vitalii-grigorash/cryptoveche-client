@@ -9,7 +9,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
 
     const {
         questionName,
-        chooseAnswer,
+        rulesAnswer,
         answerSelected,
         columnsGrid,
         rowsGrid,
@@ -24,7 +24,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                     <div className={'call-voting-page-question-card-check__title'}>
                         <h3>{questionName}</h3>
                         <div className={'call-voting-page-question-card-check__select-answer'}>
-                            <span>{chooseAnswer}</span>
+                            <span>Выберите один из вариантов ответа напротив каждого кандидата<p>{rulesAnswer}</p></span>
                             <span>{answerSelected}</span></div>
                         <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
                     </div>

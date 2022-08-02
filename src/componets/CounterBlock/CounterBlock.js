@@ -26,9 +26,9 @@ const CounterBlock = ({ stats }) => {
 				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
 			</div>
 			<div className={'count-block__style _orange'}>
-				<h3>23 456 789</h3>
+				<h3>10</h3>
 				<span>
-					сотрудников
+					Бизнес-партнеров
 				</span>
 				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
 			</div>

@@ -44,6 +44,8 @@ const VotesPagePaginationTableSearch = (props) => {
         ]
     );
 
+
+
     function handleShowOptionsContainer() {
         if (isOptionsActive) {
             setOptionsActive(false);

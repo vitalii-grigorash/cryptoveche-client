@@ -44,8 +44,6 @@ const ActualBlockDiagramm = (props) => {
 		)
 	}
 
-
-
 	return (
 		<>
 			{sectorCircle && typeof (sectorCircle) === 'number' && (
@@ -62,5 +60,4 @@ const ActualBlockDiagramm = (props) => {
 		</>
 	)
 }
-
 export default ActualBlockDiagramm;
