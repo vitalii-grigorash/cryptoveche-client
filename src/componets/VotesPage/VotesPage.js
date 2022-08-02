@@ -51,9 +51,6 @@ const VotesPage = (props) => {
     const [pageCountArchive, setPageCountArchive] = useState(1);
     const [selectedResultsShowArchive, setSelectedResultsShowArchive] = useState(5);
 
-    console.log(activeEventsForRender);
-    console.log(archiveEventsForRender);
-
     useEffect(() => {
         splitEvents(allEvents);
     }, [allEvents])
