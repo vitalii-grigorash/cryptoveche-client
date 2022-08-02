@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import './ MyProfilePagePersonalData.css';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { config } from "../../config";
+import {changeUserName} from "../../Api/MyProfile";
 
 const MyProfilePagePersonalData = () => {
 
@@ -38,7 +39,6 @@ const MyProfilePagePersonalData = () => {
     }, [firstName, lastName, secondName]);
 
 
-
     const lastNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setLastName(e.target.value)
@@ -73,9 +73,7 @@ const MyProfilePagePersonalData = () => {
         }
     }
 
-
-
-    function updateUserName(jwt) {
+    function updateUserName() {
         if (validLastName || validFirstName || validSecondName === true) {
             console.log('wrong data')
             console.log(validFirstName, validLastName, validSecondName)
@@ -89,33 +87,6 @@ const MyProfilePagePersonalData = () => {
 
             Object.filter = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
             const newItem = Object.filter(item, ([key, score]) => score !== '')
-
-            fetch(`${API_URL}/users/${userId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${jwt}`,
-
-                },
-                body: JSON.stringify(newItem)
-            }
-            ).then(res => res.ok ? res : Promise.reject(res))
-                .then((res) => {
-                    if (res.ok) {
-                        return res.json();
-                    }
-                })
-                .then((data) => {
-                    return data;
-                })
-                .catch((err) => {
-                    if (err.status === 500) {
-                        throw new Error('Сервер временно недоступен');
-                    } else {
-                        console.log(err);
-                    }
-                }
-                )
             console.log(newItem)
             setActiveBtn(true)
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
@@ -127,6 +98,7 @@ const MyProfilePagePersonalData = () => {
 
         }
     }
+
 
 
     return (
@@ -160,7 +132,7 @@ const MyProfilePagePersonalData = () => {
                     <input disabled={true} type={"email"} placeholder={userEmail} />
                 </div>
             </div>
-            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => { updateUserName() }} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUserName()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
         </div>
     )
 }
