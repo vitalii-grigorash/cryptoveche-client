@@ -55,7 +55,8 @@ const MainPage = (props) => {
 					showEventResult={showEventResult}
 				/>
 				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock 
-				actualVote={actualVote} 
+				actualVote={actualVote} // удалить в дальнейшем
+				sortActualEvents={sortActualEvents}
 				handleCurrentEvents={handleCurrentEvents}
 				toggleEventRegistration={toggleEventRegistration}
 				/>}
