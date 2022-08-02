@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import './MyVotesBlock.css';
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
-import * as Events from '../../Api/Events';
-import './MyVotesBlock.css';
-
-// import handleCurrentEvents from '../App/App'
-
+import utcIcon from '../../img/VotesPageActiveVotes_time_icon.svg';
+import { useLocation } from "react-router-dom";
 // import moment from 'moment';
 
 const MyVotesBlockForm = React.memo((props) => {
@@ -21,22 +19,15 @@ const MyVotesBlockForm = React.memo((props) => {
 	//   const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
 	//   const timeNow = `${moment().format()}`.slice(11, 16); // Получение текущего времени в формате, аналогичном  с данными от сервера
 
+	const { pathname } = useLocation();
+
 	const startEventDate = votesData.event_start_time.slice(0, 10).split('-').reverse().join('.');
-	const startEventTime = votesData.event_start_time.slice(11, votesData.event_start_time.length - 4)
+	const startEventTime = votesData.event_start_time.slice(11, votesData.event_start_time.length - 4);
+
+	const startEventRegDate = votesData.registration_start_time.slice(0, 10).split('-').reverse().join('.');
+	const startEventRegTime = votesData.registration_start_time.slice(11, votesData.registration_start_time.length - 4);
 
 	const [labelText, setLabelText] = useState('');
-
-	// isRegistration: false началась ли регистрация
-	// isRegistered: true зарегистрирован ли юзер на текущее голосование
-	// isVoting: false началось ли голосование
-	// isVoted: true проголосовал ли юзе по текущему евенту
-
-	// "waiting"; ожидание регистарции
-	// "registration"; идет регистрация
-	// "event waiting"; ожидание голосования
-	// "voting"; идет голосование
-	// "quorum_unpresant"; куорум не достигнут
-	// "ended"; завершено 
 
 	useEffect(() => {
 		if (votesData.status === 'waiting') {
@@ -58,38 +49,41 @@ const MyVotesBlockForm = React.memo((props) => {
 		}
 	}, [votesData])
 
-	// const registrationUserInEvents = () => {
-	// 	requestHelper(Events.registrationUserInEvents, votesData.id)
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 		});
-	// };
-
-	// const sendEventData = () => {
-	// 	handleCurrentEvents(votesData);
-	// };
-
 	return (
-		<div className={'my-votes-block__vote-form'}>
-			<h3>{votesData.title}</h3>
-			<h5>{votesData.owner.title}</h5>
-			<div className={'vote-form__status-block'}>
-				<CurrentStatusVote
-					regStatus={labelText}
-					voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
-				<StartDateVote
-					dateTimeDate={startEventDate}
-					dateTimeWatch={startEventTime}
-				/>
-				<div className={'status-and-start-reg-start-vote__add-border-left'}>
-					<ConfirmRegMaterialsVote
-						isRegistered={votesData.isRegistered}
-						isVoted={votesData.isVoted}
-						isVoting={votesData.isVoting}
-						statusEvent={labelText} />
+		<div className={`my-votes-block__vote-form ${pathname === '/votes-page' && 'my-votes-block__vote-form_votes-page'}`}>
+			<div className='my-votes-block__container'>
+				<h3>{votesData.title}</h3>
+				<h5>{votesData.owner.title}</h5>
+				{pathname === '/votes-page' && (
+					<div className='my-votes-block__utc-container'>
+						<img alt='Иконка часового пояса' src={utcIcon} className='my-votes-block__utc-icon' />
+						<p className='my-votes-block__utc-value'>(UTC+3) Россия - Москва</p>
+					</div>
+				)}
+				<div className='vote-form__status-block'>
+					<CurrentStatusVote
+						regStatus={labelText}
+						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
+					{pathname === '/votes-page' && (
+						<StartDateVote
+							dateTimeDate={startEventRegDate}
+							dateTimeWatch={startEventRegTime}
+							title={'Начало регистрации:'}
+						/>
+					)}
+					<StartDateVote
+						dateTimeDate={startEventDate}
+						dateTimeWatch={startEventTime}
+						title={'Начало голосования:'}
+					/>
+					<div className='status-and-start-reg-start-vote__add-border-left'>
+						<ConfirmRegMaterialsVote
+							votesData={votesData}
+						/>
+					</div>
 				</div>
 			</div>
-			<div className={'votes-form__button-vote-cancel-reg'}>
+			<div className={`votes-form__button-vote-cancel-reg ${pathname === '/votes-page' && 'votes-form__button-vote-cancel-reg_votes-page'}`}>
 				{votesData.status === "registration" && (
 					<>
 						{!votesData.isRegistered ? (
