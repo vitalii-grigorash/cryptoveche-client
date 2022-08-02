@@ -1,61 +1,105 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './ConfirmRegMaterialsVote.css';
 import notRegisteredEventIcon from "../../../img/MyVotes_icon_info.svg";
-import registeredEventIcon from '../../../img/MyVotes_icon_checkmark.svg'
+import registeredEventIcon from '../../../img/MyVotes_icon_checkmark.svg';
+import warningIcon from '../../../img/warning-status-icon.svg';
+import votedBlueIcon from '../../../img/my-votes-blue-checkmark.svg';
 import MaterialsVoteQuestion from "../MaterialsVoteQuestion/MaterialsVoteQuestion";
 
-const ConfirmRegMaterialsVote = ({ isRegistered, isVoted, isVoting,statusEvent }) => {
+const ConfirmRegMaterialsVote = (props) => {
 
-	// status: "ended", 
-	// isRegistration: false началась ли регистрация
-	// isRegistered: true зарегистрирован ли юзер на текущее голосование
-	// isVoting: false началось ли голосование
-	// isVoted: true проголосовал ли юзе по текущему евенту
+  const {
+    votesData
+  } = props;
 
+  const [statusIcon, setStatusIcon] = useState('');
+  const [statusText, setStatusText] = useState('');
+  const [statusClassName, setStatusClassName] = useState('');
 
-  const renderLabelStatus = (isRegistered, isVoted, statusEvent) => {
-    let labelText;
-    if ((statusEvent === 'Ожидание регистрации' || statusEvent === 'Идет регистрация' || statusEvent === 'Идет голосование' || statusEvent === 'Ожидание голосования') && !isRegistered) {
-      labelText = 'Вы не зарегистрированны';
-    } else if ((statusEvent === 'Ожидание регистрации' || statusEvent === 'Идет регистрация') && isRegistered) {
-      labelText = 'Вы зарегистрированны'
-    } else if ((statusEvent === 'Ожидание голосования' || statusEvent === 'Идет голосование' || statusEvent === 'Регистрация и голосование') && !isVoted) {
-      labelText = 'Вы не проголосовали'
-		} else if (statusEvent === 'Голосование завершено' || !isVoted) {
-			labelText = 'Вы не проголосовали'
-		} else if ((statusEvent === 'Ожидание голосования' || statusEvent === 'Идет голосование') && isVoted) {
-      labelText = 'Вы проголосовали'
+  useEffect(() => {
+    if (votesData.status === 'waiting') {
+      setStatusIcon(warningIcon);
+      setStatusText('Ожидайте регистрации');
+      setStatusClassName('status-icon__color-status_warning');
+    } else if (votesData.status === 'registration') {
+      if (votesData.isRegistered) {
+        if (votesData.isVoting) {
+          if (votesData.isVoted) {
+            setStatusIcon(votedBlueIcon);
+            setStatusText('Вы проголосовали');
+            setStatusClassName('status-icon__color-status_voted');
+          } else {
+            setStatusIcon(notRegisteredEventIcon);
+            setStatusText('Вы не проголосовали');
+            setStatusClassName('status-icon__color-status_not-registered');
+          }
+        } else {
+          setStatusIcon(registeredEventIcon);
+          setStatusText('Вы зарегистрированы');
+          setStatusClassName('status-icon__color-status_registered');
+        }
+      } else {
+        setStatusIcon(notRegisteredEventIcon);
+        setStatusText('Вы не зарегистрированы');
+        setStatusClassName('status-icon__color-status_not-registered');
+      }
+    } else if (votesData.status === 'event waiting') {
+      if (votesData.isRegistered) {
+        setStatusIcon(registeredEventIcon);
+        setStatusText('Вы зарегистрированы');
+        setStatusClassName('status-icon__color-status_registered');
+      } else {
+        setStatusIcon(notRegisteredEventIcon);
+        setStatusText('Вы не зарегистрированы');
+        setStatusClassName('status-icon__color-status_not-registered');
+      }
+    } else if (votesData.status === 'voting') {
+      if (votesData.isRegistered) {
+        if (votesData.isVoted) {
+          setStatusIcon(votedBlueIcon);
+          setStatusText('Вы проголосовали');
+          setStatusClassName('status-icon__color-status_voted');
+        } else {
+          setStatusIcon(notRegisteredEventIcon);
+          setStatusText('Вы не проголосовали');
+          setStatusClassName('status-icon__color-status_not-registered');
+        }
+      } else {
+        setStatusIcon(notRegisteredEventIcon);
+        setStatusText('Вы не зарегистрированы');
+        setStatusClassName('status-icon__color-status_not-registered');
+      }
+    } else if (votesData.status === 'ended' || votesData.status === 'quorum_unpresant') {
+      if (votesData.isVoted) {
+        setStatusIcon(votedBlueIcon);
+        setStatusText('Вы проголосовали');
+        setStatusClassName('status-icon__color-status_voted');
+      } else {
+        setStatusIcon(notRegisteredEventIcon);
+        setStatusText('Вы не проголосовали');
+        setStatusClassName('status-icon__color-status_not-registered');
+      }
     }
-
-    return labelText;
-  };
+  },
+    [
+      votesData.isRegistered,
+      votesData.isVoted,
+      votesData.status
+    ])
 
   return (
-    <div className={'status-block__materials-vote'}>
-      <div className={'materials-vote__status-icon'}>
-        <span>
-          <img className={'status-icon__color-icon'} alt={'иконка статуса регистрации'} src={
-            renderLabelStatus(isRegistered, isVoted, statusEvent) === 'Вы проголосовали' ||
-              renderLabelStatus(isRegistered, isVoted, statusEvent) === 'Вы зарегистрированны'
-              ? registeredEventIcon
-              : notRegisteredEventIcon
-          } />
-        </span>
-        <p>
-          <span className={
-            renderLabelStatus(isRegistered, isVoted, statusEvent) === 'Вы проголосовали' ||
-              renderLabelStatus(isRegistered, isVoted, statusEvent) === 'Вы зарегистрированны'
-              ? 'status-icon__color-status_isRegistered'
-              : 'status-icon__color-status_notRegistered'
-          }>
-            {renderLabelStatus(isRegistered, isVoted, statusEvent)}
-          </span>
+    <div className='status-block__materials-vote'>
+      <div className='materials-vote__status-icon'>
+        <img className='status-icon__color-icon' alt='иконка статуса регистрации' src={statusIcon} />
+        <p className={statusClassName}>
+          {statusText}
         </p>
       </div>
       <div className={'materials-vote__hidden-materials'}>
-        <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'} />
+        <MaterialsVoteQuestion materialsVoteQuestion='Материалы голосования' />
       </div>
     </div>
   )
 }
+
 export default ConfirmRegMaterialsVote;
