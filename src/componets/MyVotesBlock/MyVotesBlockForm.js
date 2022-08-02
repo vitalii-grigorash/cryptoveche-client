@@ -52,7 +52,7 @@ const MyVotesBlockForm = React.memo((props) => {
 	return (
 		<div className={`my-votes-block__vote-form ${pathname === '/votes-page' && 'my-votes-block__vote-form_votes-page'}`}>
 			<div className='my-votes-block__container'>
-				<h3>{votesData.title}</h3>
+				<h3 className={'my-votes-block__container-title-h3'}>{votesData.title}</h3>
 				<h5>{votesData.owner.title}</h5>
 				{pathname === '/votes-page' && (
 					<div className='my-votes-block__utc-container'>

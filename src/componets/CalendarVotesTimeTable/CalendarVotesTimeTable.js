@@ -25,7 +25,7 @@ const CalendarVotesTimeTable = (props) => {
        const [endVoteEvent, setEndVoteEvent] = useState(false);
        const [startRegEvent, setStartRegEvent] = useState(false);
        const [endRegEvent, setEndRegEvent] = useState(false);
-       const currentDays = ['', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+       const currentDays = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
        const currentMonths = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
        const colors_circle = ['#49B3FF', '#FF8A00', '#4ED4A9', '#FF4970'];
        const dateEventStartReg = events_calendar[0].registration_start_time.substring(0, 10);
@@ -34,7 +34,7 @@ const CalendarVotesTimeTable = (props) => {
        const dateEventEndVote = events_calendar[0].event_end_time.substring(0, 10);
        const [colorEventDay, setColorEventDay] = useState('#49B3FF')
 
-
+console.log(currentDay)
         useEffect(() => {
             if(dateEventStartReg === currentEventDate) {
                 setStartRegEvent(true)

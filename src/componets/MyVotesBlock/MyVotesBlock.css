@@ -3,7 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     background-color: #FFFFFF;
     border-radius: 24px;
     padding: 32px 32px 32px 32px;
@@ -14,8 +14,11 @@
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
-    padding-bottom: 24px;
+    padding-bottom: 0;
     color: rgba(54, 59, 77, 0.9);
+}
+.my-votes-block-wrapper:last-child {
+    margin-bottom: 30px;
 }
 /*------Стили для обоих блоков---------------------------------------------------------------------------------------*/
 .my-votes-block__vote-form {
@@ -29,6 +32,8 @@
 }
 .my-votes-block__vote-form_votes-page {
     flex-direction: row;
+    display: flex;
+    margin-bottom: 24px;
 }
 .my-votes-block__container {
     display: flex;
@@ -40,10 +45,11 @@
     flex-direction: row;
     max-height: 56px;
 }
-.my-votes-block__vote-form h3 {
+.my-votes-block__container-title-h3 {
     font-size: 18px;
     font-weight: 400;
     line-height: 133%;
+    color: rgba(54, 59, 77, 0.9);
 }
 .my-votes-block__vote-form h5 {
     font-size: 16px;
@@ -144,6 +150,7 @@
     align-items: center;
     color: #0075FF;
     gap: 5px;
+    margin-top: auto;
 }
 .link-arrow__show-all {
     font-size: 16px;
@@ -180,7 +187,7 @@
     .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
         font-size: 10px;
     }
-    .reg-form__button-reg, .button-vote {
+    .reg-form__button-reg, .button-vote, .reg {
         width: 150px;
         height: 40px;
         font-size: 12px;
@@ -200,7 +207,7 @@
         max-height: 50px;
     }
 }
-/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия(600px)--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
     .my-votes-block-wrapper {
         max-width: 600px;
@@ -210,12 +217,12 @@
     .link-arrow__show-all {
         display: none;
     }
-    .my-votes-block__votes-form {
-        display: none;
-    }
-    .my-votes-block__vote-form {
-        display: none;
-    }
+    /*.my-votes-block__votes-form {*/
+    /*    display: none;*/
+    /*}*/
+    /*.my-votes-block__vote-form {*/
+    /*    display: none;*/
+    /*}*/
     .my-votes__link-arrow img {
         position: absolute;
         top: 20px;

@@ -13,7 +13,7 @@ import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestio
 import VotesPageSuccessRegLaterModal from "../VotesPageSuccessRegLaterModal/VotesPageSuccessRegLaterModal";
 
 
-const DetailsVotesPageGeneralInformation = () => {
+const DetailsVotesPageGeneralInformation = ({votesData}) => {
 
 
     const  [successRegModal, setSuccessRegModal] = useState(false)
@@ -35,7 +35,7 @@ const DetailsVotesPageGeneralInformation = () => {
                             </span>
                         <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
                             <span><CurrentStatusVote regStatus={generalInfoRegStatus} voteStatus={generalInfoVoteStatus}/></span>
-                            <span><ConfirmRegMaterialsVote confirmStatus={generalInfoConfirmReg}/></span>
+                            <span><ConfirmRegMaterialsVote votesData={'Вы не зарегистрированы'}/></span>
                             <span className={'_hidden-possible-cancel-block'}><DetailsVotesPageStatusPossibleRevoteCancelReg/></span>
                         </div>
                     </div>

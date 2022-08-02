@@ -35,7 +35,7 @@
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        padding: 8px 24px 0 12px;
+        padding: 5px 24px 0 6px;
         gap: 12px;
     }
     .materials-vote__status-icon {
