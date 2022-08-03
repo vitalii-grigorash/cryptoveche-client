@@ -21,7 +21,7 @@ const AmountVotesBlock = ({ statsData }) => {
 
             setAverageValueVoiting(sumVoiting / statsData.voted.length)
         }
-    }, [statsData.voted])
+    }, [statsData])
 
     return (
 
