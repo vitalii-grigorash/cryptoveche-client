@@ -5,7 +5,6 @@ import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote"
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
 import utcIcon from '../../img/VotesPageActiveVotes_time_icon.svg';
 import { useLocation } from "react-router-dom";
-// import moment from 'moment';
 
 const MyVotesBlockForm = React.memo((props) => {
 
@@ -15,9 +14,6 @@ const MyVotesBlockForm = React.memo((props) => {
 		toggleEventRegistration,
 		showEventResult
 	} = props;
-
-	//   const dateToday = `${moment().format('L')}`; // Получение текущей даты в формате, аналогичном с данными от сервера
-	//   const timeNow = `${moment().format()}`.slice(11, 16); // Получение текущего времени в формате, аналогичном  с данными от сервера
 
 	const { pathname } = useLocation();
 
@@ -52,7 +48,7 @@ const MyVotesBlockForm = React.memo((props) => {
 	return (
 		<div className={`my-votes-block__vote-form ${pathname === '/votes-page' && 'my-votes-block__vote-form_votes-page'}`}>
 			<div className='my-votes-block__container'>
-				<h3>{votesData.title}</h3>
+				<h3 onClick={() => { handleCurrentEvents(votesData, true) }}>{votesData.title}</h3>
 				<h5>{votesData.owner.title}</h5>
 				{pathname === '/votes-page' && (
 					<div className='my-votes-block__utc-container'>
@@ -63,7 +59,8 @@ const MyVotesBlockForm = React.memo((props) => {
 				<div className='vote-form__status-block'>
 					<CurrentStatusVote
 						regStatus={labelText}
-						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
+						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'}
+					/>
 					{pathname === '/votes-page' && (
 						<StartDateVote
 							dateTimeDate={startEventRegDate}
@@ -88,7 +85,7 @@ const MyVotesBlockForm = React.memo((props) => {
 					<>
 						{!votesData.isRegistered ? (
 							<button className='reg'
-									onClick={() => { toggleEventRegistration(votesData.id) }}
+								onClick={() => { toggleEventRegistration(votesData.id) }}
 							>
 								Зарегистрироваться
 							</button>
@@ -98,7 +95,7 @@ const MyVotesBlockForm = React.memo((props) => {
 									<>
 										{!votesData.isVoting && (
 											<button className='cancel-reg'
-													onClick={() => { toggleEventRegistration(votesData.id) }}
+												onClick={() => { toggleEventRegistration(votesData.id) }}
 											>
 												Отменить регистрацию
 											</button>
@@ -114,7 +111,7 @@ const MyVotesBlockForm = React.memo((props) => {
 										{!votesData.isVoted ? (
 											<>
 												<button className='button-vote'
-														onClick={() => { handleCurrentEvents(votesData) }}
+													onClick={() => { handleCurrentEvents(votesData, false) }}
 												>
 													Проголосовать
 												</button>
@@ -123,7 +120,7 @@ const MyVotesBlockForm = React.memo((props) => {
 											<>
 												{votesData.re_voting && (
 													<button className='button-vote'
-															onClick={() => { handleCurrentEvents(votesData) }}
+														onClick={() => { handleCurrentEvents(votesData, false) }}
 													>
 														Переголосовать
 													</button>
@@ -142,7 +139,7 @@ const MyVotesBlockForm = React.memo((props) => {
 							<>
 								{!votesData.isVoted ? (
 									<button className='button-vote'
-											onClick={() => { handleCurrentEvents(votesData) }}
+										onClick={() => { handleCurrentEvents(votesData, false) }}
 									>
 										Проголосовать
 									</button>
@@ -150,7 +147,7 @@ const MyVotesBlockForm = React.memo((props) => {
 									<>
 										{votesData.re_voting && (
 											<button className='button-vote'
-													onClick={() => { handleCurrentEvents(votesData) }}
+												onClick={() => { handleCurrentEvents(votesData, false) }}
 											>
 												Переголосовать
 											</button>
@@ -162,7 +159,7 @@ const MyVotesBlockForm = React.memo((props) => {
 							<>
 								{votesData.isRegistration && (
 									<button className='reg'
-											onClick={() => { toggleEventRegistration(votesData.id) }}
+										onClick={() => { toggleEventRegistration(votesData.id) }}
 									>
 										Зарегистрироваться
 									</button>
@@ -175,7 +172,7 @@ const MyVotesBlockForm = React.memo((props) => {
 					<>
 						{votesData.isVoted && (
 							<button className='cancel-reg'
-									onClick={showEventResult}
+								onClick={showEventResult}
 							>
 								Результаты
 							</button>
