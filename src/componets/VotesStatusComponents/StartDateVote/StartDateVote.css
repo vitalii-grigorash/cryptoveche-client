@@ -29,8 +29,8 @@
 }
 @media (max-width: 420px) {
     .status-block__start-vote {
-        padding: 0 10px 0 8px;
-        border-left: 1px rgba(54, 59, 77, 0.2) solid;
+        padding: 0 0 0 0;
+        /*border-left: 1px rgba(54, 59, 77, 0.2) solid;*/
     }
     .status-block__start-vote h4 {
         font-size: 14px;

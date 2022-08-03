@@ -88,8 +88,10 @@
         flex-direction: row;
         justify-content: flex-start;
         border: none;
+        gap: 10px;
     }
     .current-status__registration-in-progress, .current-status__types-vote {
         font-size: 12px;
     }
+
 }

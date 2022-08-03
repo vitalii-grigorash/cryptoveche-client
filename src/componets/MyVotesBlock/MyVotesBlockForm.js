@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MyVotesBlock.css';
-import '../../componets/VotesPageActiveVotes/VotesPageActiveVotes.css';
+import './VotesPageActiveVotes.css';
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
@@ -63,11 +63,12 @@ const MyVotesBlockForm = React.memo((props) => {
 						</div>
 					)}
 			</div>
-
-				<div className='vote-form__status-block'>
+				<div className={pathname === '/' ? 'vote-form__status-block' : 'status-and-start-reg-start-vote'}>
 					<CurrentStatusVote
 						regStatus={labelText}
 						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
+					<div className={'status-and-start-reg-start-vote__reg-vote-date'}>
+						<div className={'reg-vote-date__border-right-mobile'}>
 					{pathname === '/votes-page' && (
 						<StartDateVote
 							dateTimeDate={startEventRegDate}
@@ -75,11 +76,14 @@ const MyVotesBlockForm = React.memo((props) => {
 							title={'Начало регистрации:'}
 						/>
 					)}
+						</div>
 					<StartDateVote
 						dateTimeDate={startEventDate}
 						dateTimeWatch={startEventTime}
 						title={'Начало голосования:'}
 					/>
+
+					</div>
 					<div className='status-and-start-reg-start-vote__add-border-left'>
 						<ConfirmRegMaterialsVote
 							votesData={votesData}

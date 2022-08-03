@@ -242,7 +242,7 @@
 }
 @media (max-width: 420px) {
     .filters-modal {
-        top: 45px;
+        top: 145px;
         left: -14px;
     }
     .filters-modal__content {
@@ -266,6 +266,15 @@
    }
     .filters-modal__content-date-start-vote {
         gap: normal;
+    }
+    .filters-modal__buttons-container {
+        padding-top: 10px;
+    }
+    .filters-modal__button-apply, .filters-modal__button-reset {
+        margin: 0 10px 0 0;
+        width: 150px;
+        height: 40px;
+        font-size: 12px;
     }
 }
 
