@@ -15,7 +15,6 @@ import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { CallVotingListProvider } from "../../contexts/CallVotingListContext";
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
@@ -34,7 +33,6 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
-    const [currentEventData, setCurrentEventData] = useState({});
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -146,6 +144,9 @@ function App() {
         if (localStorage.getItem('jwt')) {
             localStorage.removeItem('jwt');
         }
+        if (localStorage.getItem('currentEvent')) {
+            localStorage.removeItem('currentEvent');
+        }
         setLoggedIn(false);
         setCurrentUser({});
         navigate('/auth');
@@ -250,12 +251,23 @@ function App() {
                             throw new Error(err.message);
                         })
                 }
-            });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     };
 
     function handleCurrentEvents(data) {
-        setCurrentEventData(data)
-        navigate('/call-voting-page')
+        const currentEvent = {
+            id: data.id
+        }
+        if (localStorage.getItem('currentEvent')) {
+            localStorage.removeItem('currentEvent');
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        } else {
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        }
+        navigate('/call-voting-page');
     }
 
     function showEventResult() {
@@ -263,69 +275,73 @@ function App() {
     }
 
     return (
-            <CurrentUserContext.Provider value={currentUser}>
-                <div className="App">
-                    {isLoggedIn && (
-                        <Header
-                            handleLogout={logout}
-                            userName={userName}
-                        />
-                    )}
-                    <main className={'main'}>
-                        <div className={'main-content _container'}>
-                            <Routes>
-                                <Route path='/auth'
-                                    element={<Authorization
-                                        handleLogin={handleLogin}
-                                        authError={authError}
-                                        handleRememberMe={handleRememberMe}
-                                        isRememberMe={isRememberMe}
-                                    />}
-                                />
-                                <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                                <Route path='/reset' element={<AuthorizationSetPassword />} />
-                                <Route path='/reg-page'
-                                    element={<Registration
-                                        handleRegister={handleRegister}
-                                        handlePolicyAccept={handlePolicyAccept}
-                                        isPolicyAccept={isPolicyAccept}
-                                        modalActive={modalActive}
-                                        emailErrorMessage={emailErrorMessage}
-                                        changeBorderInputEmail={changeBorderInputEmail}
-                                        hideRegisterModal={hideRegisterModal}
-                                        hideRegForm={hideRegForm}
-                                        hideRegEmailErrors={hideRegEmailErrors}
-                                    />}
-                                />
-                                <Route exact path='/'
-                                    element={<MainPage
-                                        allEvents={allEvents}
-                                        requestHelper={requestHelper}
-                                        handleCurrentEvents={handleCurrentEvents}
-                                        toggleEventRegistration={toggleEventRegistration}
-                                        showEventResult={showEventResult}
-                                    />}
-                                />
-                                <Route exact path='/call-voting-page' element={<CallVotingPage currentEventData={currentEventData} />} />
-                                <Route exact path='/my-profile' element={<MyProfilePage />} />
-                                <Route exact path='/details-vote' element={<DetailsVotesPage />} />
-                                <Route exact path='/votes-page'
-                                    element={<VotesPage
-                                        allEvents={allEvents}
-                                        handleCurrentEvents={handleCurrentEvents}
-                                        toggleEventRegistration={toggleEventRegistration}
-                                        showEventResult={showEventResult}
-                                    />}
-                                />
-                                <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
-                            </Routes>
-                        </div>
-                    </main>
-                    {isLoggedIn && (
-                        <Footer />
-                    )}
-                </div>
-            </CurrentUserContext.Provider>
+        <CurrentUserContext.Provider value={currentUser}>
+            <div className="App">
+                {isLoggedIn && (
+                    <Header
+                        handleLogout={logout}
+                        userName={userName}
+                    />
+                )}
+                <main className={'main'}>
+                    <div className={'main-content _container'}>
+                        <Routes>
+                            <Route path='/auth'
+                                element={<Authorization
+                                    handleLogin={handleLogin}
+                                    authError={authError}
+                                    handleRememberMe={handleRememberMe}
+                                    isRememberMe={isRememberMe}
+                                />}
+                            />
+                            <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
+                            <Route path='/reset' element={<AuthorizationSetPassword />} />
+                            <Route path='/reg-page'
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
+                                />}
+                            />
+                            <Route exact path='/'
+                                element={<MainPage
+                                    allEvents={allEvents}
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                />}
+                            />
+                            <Route exact path='/call-voting-page'
+                                element={<CallVotingPage
+                                    requestHelper={requestHelper}
+                                />}
+                            />
+                            <Route exact path='/my-profile' element={<MyProfilePage />} />
+                            <Route exact path='/details-vote' element={<DetailsVotesPage />} />
+                            <Route exact path='/votes-page'
+                                element={<VotesPage
+                                    allEvents={allEvents}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                />}
+                            />
+                            <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
+                        </Routes>
+                    </div>
+                </main>
+                {isLoggedIn && (
+                    <Footer />
+                )}
+            </div>
+        </CurrentUserContext.Provider>
     );
 
 }
