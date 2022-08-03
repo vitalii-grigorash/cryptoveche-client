@@ -24,7 +24,7 @@
 .items__block-logo, .items__block-map-site, .items__block-settings, .items__block-support {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     gap: 28px;
     font-size: 16px;
     font-weight: 400;

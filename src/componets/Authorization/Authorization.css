@@ -319,7 +319,12 @@ a {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
+.auth__remember-me-checklabel {
+    color: #363B4D;
+    opacity: 0.9;
+    font-size: 18px;
+    padding-left: 32px;
+}
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
 @media (max-height: 800px) {
     .wrapper-auth {
@@ -359,6 +364,9 @@ a {
         font-size: 14px;
         display: flex;
         align-items: center;
+    }
+    .auth__remember-me-checklabel {
+        font-size: 14px;
     }
     .main-block__reg {
         padding: 32px 32px;
@@ -548,7 +556,10 @@ a {
         padding-top: 1px;
         font-size: 16px;
         padding-left: 28px;
-
+    }
+    .auth__remember-me-checklabel {
+        font-size: 16px;
+        padding-left: 24px;
     }
     .checkmark {
         height: 18px;

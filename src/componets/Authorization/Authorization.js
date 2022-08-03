@@ -85,15 +85,18 @@ const Authorization = (props) => {
                                     <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</span>
                                     <a href={'https://admin.cryptoveche.local'} target={"_blank"} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
                                 </div>
+                                <div>
                                 <label className={'checkbox_container'}>
                                     <input
                                         type="checkbox"
                                         checked={isRememberMe}
                                         onChange={handleRememberMe}
                                     />
-                                    Запомнить меня
+
                                     <span className={'checkmark'} />
                                 </label>
+                                <span className={'auth__remember-me-checklabel'}>Запомнить меня</span>
+                                </div>
                             </div>
                             <div className={'form__button'}>
                                 <button onClick={inputHandler} type={'button'}>Войти</button>
