@@ -11,7 +11,7 @@ const MyVotesBlock = (props) => {
     myVotes,
     handleCurrentEvents,
     toggleEventRegistration,
-    showEventResult = { showEventResult }
+    showEventResult
   } = props;
 
   const shortEventsData = myVotes.slice(0, 2)
