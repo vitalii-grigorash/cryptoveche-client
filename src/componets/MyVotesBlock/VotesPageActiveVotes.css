@@ -74,7 +74,6 @@
         padding-right: 8px;
     }
 }
-
 @media (max-width: 420px) {
     .votes-page-active-votes__wrapper {
         padding: 8px 0 16px 0;

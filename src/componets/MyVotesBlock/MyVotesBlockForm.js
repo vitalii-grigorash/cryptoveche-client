@@ -82,7 +82,6 @@ const MyVotesBlockForm = React.memo((props) => {
 						dateTimeWatch={startEventTime}
 						title={'Начало голосования:'}
 					/>
-
 					</div>
 					<div className='status-and-start-reg-start-vote__add-border-left'>
 						<ConfirmRegMaterialsVote
