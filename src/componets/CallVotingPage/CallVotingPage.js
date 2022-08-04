@@ -18,7 +18,8 @@ import * as Events from '../../Api/Events';
 const CallVotingPage = (props) => {
 
     const {
-        requestHelper
+        requestHelper,
+        handleCurrentEvents
     } = props;
 
     const navigate = useNavigate();
@@ -74,18 +75,20 @@ const CallVotingPage = (props) => {
     }, [navigate, requestHelper])
 
     return (
-        <div className={'call-voting-page__wrapper'}>
+        <div className='call-voting-page__wrapper'>
             <TitleVotesDetailsCallVotingProfile
-                firstLetter={'КлиентКриптовече'}
-                secondLetter={'Голосование по повестке'}
-                titleName={'Голосование по повестке'} mobileLetter={'Назад на главную'} />
-            <div className={'call-voting-page__title'}>
-                <h2 className={'call-voting-page-title__title'}>{currentEventData.title}</h2>
-                <button className={'call-voting-page-title__details-btn'}
-                    onClick={() => navigate('/details-vote')}>Детали голосования
+                firstLetter='КлиентКриптовече'
+                secondLetter='Голосование по повестке'
+                titleName='Голосование по повестке' mobileLetter='Назад на главную' />
+            <div className='call-voting-page__title'>
+                <h2 className='call-voting-page-title__title'>{currentEventData.title}</h2>
+                <button className='call-voting-page-title__details-btn'
+                    onClick={() => { handleCurrentEvents(currentEventData, true) }}>Детали голосования
                 </button>
-                <span className={'call-voting-page-title__details-icon'}
-                    onClick={() => navigate('/details-vote')}><img alt={'иконка'} src={mobile_icon_details_vote} />ДЕТАЛИ ГОЛОСОВАНИЯ</span>
+                <span className='call-voting-page-title__details-icon'
+                    onClick={() => { handleCurrentEvents(currentEventData, true) }}><img alt='иконка' src={mobile_icon_details_vote} />
+                    ДЕТАЛИ ГОЛОСОВАНИЯ
+                </span>
             </div>
             <DetailsVotesPageDaysEndRegStartVote />
             {

@@ -14,6 +14,7 @@ import CallVotingPage from "../CallVotingPage/CallVotingPage";
 import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
+import VotesPageSuccessRegLaterModal from "../VotesPageSuccessRegLaterModal/VotesPageSuccessRegLaterModal";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
@@ -33,6 +34,8 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
+    const [isSuccessModalActive, setSuccessModalActive] = useState(false);
+    const [successModalText, setSuccessModalText] = useState('');
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -246,6 +249,14 @@ function App() {
                     requestHelper(Events.getEvents)
                         .then((data) => {
                             setAllEvents(data);
+                            const curentEvent = data.find(event => event.id === eventId);
+                            if (curentEvent.isRegistered) {
+                                handleShowSuccessModal();
+                                setSuccessModalText('Вы успешно зарегистрировались!');
+                            } else {
+                                handleShowSuccessModal();
+                                setSuccessModalText('Вы успешно отменили зарегистрацию!');
+                            }
                         })
                         .catch((err) => {
                             throw new Error(err.message);
@@ -257,7 +268,7 @@ function App() {
             })
     };
 
-    function handleCurrentEvents(data) {
+    function handleCurrentEvents(data, isDetailsClick) {
         const currentEvent = {
             id: data.id
         }
@@ -267,11 +278,23 @@ function App() {
         } else {
             localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
         }
-        navigate('/call-voting-page');
+        if (isDetailsClick) {
+            navigate('/details-vote');
+        } else {
+            navigate('/call-voting-page');
+        }
     }
 
     function showEventResult() {
-        console.log('Тут будет переход на результаты голосования, если мы проголосовали');
+        console.log('Тут будет переход на результаты голосования, если событие закончено и оно НЕ тайное');
+    }
+
+    function handleShowSuccessModal() {
+        if (isSuccessModalActive) {
+            setSuccessModalActive(false);
+        } else {
+            setSuccessModalActive(true);
+        }
     }
 
     return (
@@ -321,10 +344,18 @@ function App() {
                             <Route exact path='/call-voting-page'
                                 element={<CallVotingPage
                                     requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
                                 />}
                             />
                             <Route exact path='/my-profile' element={<MyProfilePage />} />
-                            <Route exact path='/details-vote' element={<DetailsVotesPage />} />
+                            <Route exact path='/details-vote'
+                                element={<DetailsVotesPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                />}
+                            />
                             <Route exact path='/votes-page'
                                 element={<VotesPage
                                     allEvents={allEvents}
@@ -335,6 +366,11 @@ function App() {
                             />
                             <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
                         </Routes>
+                        <VotesPageSuccessRegLaterModal
+                            isActive={isSuccessModalActive}
+                            handleShowSuccessModal={handleShowSuccessModal}
+                            successModalText={successModalText}
+                        />
                     </div>
                 </main>
                 {isLoggedIn && (
