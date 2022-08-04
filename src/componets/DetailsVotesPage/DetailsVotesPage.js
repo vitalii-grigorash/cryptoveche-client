@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './DetailsVotesPage.css';
-// import votes_page_row_icon from "../../img/VotesPageBlock_icon_row.svg";
+import './DetailsVotesPageResultVotes.css';
 import DetailsVotesPageDaysEndRegStartVote from '.././DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote';
 import DetailsVotesPageGeneralInformation
     from "../DetailsVotesPageGeneralInformation/DetailsVotesPageGeneralInformation";
+import DetailsVotesPageResultVotesCardQuestion
+    from "../DetailsVotesPageResultVotesCardQuestion/DetailsVotesPageResultVotesCardQuestion";
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
+import DetailsVotesPageMyBulletin from "../DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
+// import DetailsVotesPageResultVotesWaitingResults
+//     from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import * as Events from '../../Api/Events';
 
 const DetailsVotesPage = (props) => {
@@ -23,15 +28,37 @@ const DetailsVotesPage = (props) => {
 
     const [btnGeneralInfo, setBtnGeneralInfo] = useState(false);
     const [btnReadQuestions, setBtnReadQuestions] = useState(false);
+    const [btnResult, setBtnResult] = useState(false);
+    const [btnMyBulletin, setBtnMyBulletin] = useState(false);
     const [currentEventData, setCurrentEventData] = useState({});
+    const [isShowResults, setShowResults] = useState(false);
+    const [isShowTimer, setShowTimer] = useState(true);
 
-    function toggleGenerelInfoHide() {
-        setBtnGeneralInfo(true)
-        setBtnReadQuestions(false)
+    function onGenerelInfoClick() {
+        setBtnGeneralInfo(true);
+        setBtnReadQuestions(false);
+        setBtnResult(false);
+        setBtnMyBulletin(false);
     }
-    function toggleReadQuestionShow() {
-        setBtnGeneralInfo(false)
-        setBtnReadQuestions(true)
+    function onReadQuestionsClick() {
+        setBtnReadQuestions(true);
+        setBtnGeneralInfo(false);
+        setBtnResult(false);
+        setBtnMyBulletin(false);
+    }
+
+    function onResultsClick() {
+        setBtnResult(true);
+        setBtnGeneralInfo(false);
+        setBtnReadQuestions(false);
+        setBtnMyBulletin(false);
+    }
+
+    function onMyBulletinClick() {
+        setBtnMyBulletin(true);
+        setBtnGeneralInfo(false);
+        setBtnReadQuestions(false);
+        setBtnResult(false);
     }
 
     useEffect(() => {
@@ -55,7 +82,23 @@ const DetailsVotesPage = (props) => {
         } else {
             navigate('/');
         }
-    }, [navigate, requestHelper])
+    }, // eslint-disable-next-line
+        [
+            navigate,
+            requestHelper
+        ]
+    )
+
+    useEffect(() => {
+        if (currentEventData.status === 'ended' || currentEventData.status === 'quorum_unpresant') {
+            setShowTimer(false);
+            if (currentEventData.type === 'secret') {
+                setShowResults(false);
+            } else if (currentEventData.type === 'open') {
+                setShowResults(true);
+            }
+        }
+    }, [currentEventData])
 
     return (
         <div className={'details-votes-page__wrapper'}>
@@ -65,18 +108,22 @@ const DetailsVotesPage = (props) => {
                 titleName={'Детали голосования'}
                 mobileLetter={'Назад к списку голосований'}
             />
-            <DetailsVotesPageDaysEndRegStartVote />
+            {isShowTimer && (
+                <DetailsVotesPageDaysEndRegStartVote />
+            )}
             <div className={'details-votes-page__main-content'}>
                 <div className={'details-votes-page-switch__buttons'}>
-                    <div>
-                        <h2 onClick={toggleGenerelInfoHide} className={btnGeneralInfo ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>Общая информация</h2>
-                    </div>
-                    <div>
-                        <h2 onClick={toggleReadQuestionShow} className={btnReadQuestions ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>
-                            <span className={'_read-questions-bnt'}>Ознакомиться с вопросами</span>
-                            <span className={'_mobile-read-questions-bnt'}>Вопросы</span>
-                        </h2>
-                    </div>
+                    <h2 onClick={onGenerelInfoClick} className={btnGeneralInfo ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>Общая информация</h2>
+                    <h2 onClick={onReadQuestionsClick} className={btnReadQuestions ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>
+                        <span className={'_read-questions-bnt'}>Ознакомиться с вопросами</span>
+                        <span className={'_mobile-read-questions-bnt'}>Вопросы</span>
+                    </h2>
+                    {isShowResults && (
+                        <>
+                            <h2 onClick={onResultsClick} className={btnResult ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Результат</h2>
+                            <h2 onClick={onMyBulletinClick} className={btnMyBulletin ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Мой бюллетень</h2>
+                        </>
+                    )}
                 </div>
                 {btnGeneralInfo && (
                     <DetailsVotesPageGeneralInformation
@@ -93,6 +140,17 @@ const DetailsVotesPage = (props) => {
                         toggleEventRegistration={toggleEventRegistration}
                         showEventResult={showEventResult}
                     />
+                )}
+                {isShowResults && (
+                    <>
+                        {btnResult && (
+                            <DetailsVotesPageResultVotesCardQuestion titleName={'1. Согласны ли вы с решением №576?'} answerSelected={'Выберите ровно 1'} />
+                        )}
+                        {btnMyBulletin && (
+                            <DetailsVotesPageMyBulletin />
+                        )}
+                        {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
+                    </>
                 )}
             </div>
         </div>
