@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './VotesPageActiveVotes.css'
+import '../MyVotesBlock/VotesPageActiveVotes.css'
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import StartDateRegVote from "../VotesStatusComponents/StartDateRegVote/StartDateRegVote";
 import StartDateVote from "../VotesStatusComponents/StartDateVote/StartDateVote";

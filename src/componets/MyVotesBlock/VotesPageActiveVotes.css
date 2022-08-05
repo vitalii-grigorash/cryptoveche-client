@@ -22,6 +22,10 @@
     border-left: 1px rgba(54, 59, 77, 0.2) solid;
 
 }
+.reg-vote-date__border-right-mobile {
+    display: flex;
+    justify-content: center;
+}
  .status-and-start-reg-start-vote {
     display: flex;
     flex-direction: row;
@@ -30,7 +34,6 @@
 .status-and-start-reg-start-vote__reg-vote-date {
     display: flex;
     flex-direction: row;
-
 }
 /*-----Блок с кнопками------------------------------------------------------------------------------------------------*/
 .votes-page-active-votes__buttons {
@@ -45,8 +48,8 @@
         display: block;
     }
     .status-and-start-reg-start-vote {
-        padding-bottom: 20px;
-        height: 75px;
+        padding-bottom: 5px;
+        /*height: 75px;*/
     }
     .votes-page-active-votes__buttons {
         text-align: left;
@@ -63,8 +66,14 @@
     .status-and-start-reg-start-vote__add-border-left {
         border: none;
     }
+    .status-and-start-reg-start-vote__reg-vote-date {
+        gap: 8px;
+    }
+    .reg-vote-date__border-right-mobile {
+        border-right: 0.5px solid rgba(54, 59, 77, 0.4);
+        padding-right: 8px;
+    }
 }
-
 @media (max-width: 420px) {
     .votes-page-active-votes__wrapper {
         padding: 8px 0 16px 0;
@@ -73,4 +82,5 @@
     .status-and-start-reg-start-vote {
         padding-bottom: 0;
     }
+
 }

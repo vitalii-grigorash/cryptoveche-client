@@ -6,7 +6,7 @@
     align-items: center;
     gap: 32px;
     font-size: 16px;
-    color: rgba(54, 59, 77, 0.9);
+    /*color: rgba(54, 59, 77, 0.9);*/
     padding: 20px 0 32px 0;
 }
 
@@ -21,7 +21,8 @@
     border-right: 1px rgba(54, 59, 77, 0.3) solid;
     padding-right: 20px;
     height: 24px;
-    opacity: 60%;
+    /*opacity: 60%;*/
+    letter-spacing: 0.0025em;
     cursor: pointer;
     position: relative;
 }
@@ -33,6 +34,7 @@
     width: 10px;
     height: 6px;
     background-size: cover;
+    margin-left: 12px;
     background-repeat: no-repeat;
 }
 .pagination-search-block__options-container {
@@ -44,14 +46,14 @@
     right: 10px;
     border: 0.5px solid #EEEEEE;
     box-shadow: 0 4px 8px rgba(54, 59, 77, 0.1);
-    border-radius: 4px;
     cursor: default;
     overflow: hidden;
+    border-radius: 8px;
 }
 .pagination-search-block__option-container {
     display: flex;
     height: 30px;
-    border-bottom: 1px rgba(54, 59, 77, 0.3) solid;
+    /*border-bottom: 1px rgba(54, 59, 77, 0.3) solid;*/
     background: #FFFFFF;
     cursor: pointer;
 }

@@ -7,6 +7,7 @@ import DataTime from "../DateTime/DateTime";
 
 const StartDateRegVote = ({dateTimeDate, dateTimeWatch}) => {
 
+
     return  (
             <div className={'status-block__start-reg'}>
                 <h4>Начало регистрации:</h4>

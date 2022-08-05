@@ -18,7 +18,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
         toggleEventRegistration,
         showEventResult
     } = props;
-    
+
     const [labelText, setLabelText] = useState('');
 
     useEffect(() => {

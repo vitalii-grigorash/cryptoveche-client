@@ -3,7 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 24px;
     background-color: #FFFFFF;
     border-radius: 24px;
     padding: 32px 32px 32px 32px;
@@ -14,8 +14,11 @@
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
-    padding-bottom: 24px;
+    padding-bottom: 0;
     color: rgba(54, 59, 77, 0.9);
+}
+.my-votes-block-wrapper:last-child {
+    margin-bottom: 30px;
 }
 /*------Стили для обоих блоков---------------------------------------------------------------------------------------*/
 .my-votes-block__vote-form {
@@ -29,6 +32,8 @@
 }
 .my-votes-block__vote-form_votes-page {
     flex-direction: row;
+    display: flex;
+    margin-bottom: 24px;
 }
 .my-votes-block__container {
     display: flex;
@@ -40,19 +45,24 @@
     flex-direction: row;
     max-height: 56px;
 }
-.my-votes-block__vote-form h3 {
+.my-votes-block__container-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.my-votes-block__container-title-h3 {
     font-size: 18px;
     font-weight: 400;
     line-height: 133%;
+    color: rgba(54, 59, 77, 0.9);
     margin: 0 auto 0 0;
     cursor: pointer;
 }
-.my-votes-block__vote-form h5 {
+.my-votes-block__container-title-h5 {
     font-size: 16px;
     font-weight: 400;
-    line-height: 110%;
-    color: #363B4D;
-    opacity: 50%;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.6);
 }
 .my-votes-block__votes-form {
     padding-bottom: 24px;
@@ -91,6 +101,7 @@
     flex-direction: row;
     gap: 20px;
     align-items: center;
+    margin-top: auto;
 }
 .votes-form__button-vote-cancel-reg_votes-page {
     display: flex;
@@ -146,6 +157,7 @@
     align-items: center;
     color: #0075FF;
     gap: 5px;
+    margin-top: auto;
 }
 .link-arrow__show-all {
     font-size: 16px;
@@ -173,16 +185,16 @@
     .my-votes-block__votes-form {
         padding-bottom: 0;
     }
-    .my-votes-block__vote-form h3 {
-        font-size: 14px;
-    }
-    .my-votes-block__vote-form h5 {
-        font-size: 13px;
-    }
+    /*.my-votes-block__vote-form h3 {*/
+    /*    font-size: 14px;*/
+    /*}*/
+    /*.my-votes-block__vote-form h5 {*/
+    /*    font-size: 13px;*/
+    /*}*/
     .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
         font-size: 10px;
     }
-    .reg-form__button-reg, .button-vote {
+    .reg-form__button-reg, .button-vote, .reg {
         width: 150px;
         height: 40px;
         font-size: 12px;
@@ -201,8 +213,23 @@
     .vote-form__status-block {
         max-height: 50px;
     }
+    .my-votes-block__utc-value {
+          font-size: 10px;
+    }
 }
-/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
+/*------Адаптивная версия--------------------------------------------------------------------------------------*/
+@media (max-width: 1180px) {
+    .my-votes-block__vote-form_votes-page {
+        flex-direction: column;
+    }
+    .votes-form__button-vote-cancel-reg_votes-page {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: start;
+        margin: 0;
+    }
+}
 @media (max-width: 600px) {
     .my-votes-block-wrapper {
         max-width: 600px;
@@ -212,15 +239,46 @@
     .link-arrow__show-all {
         display: none;
     }
-    .my-votes-block__votes-form {
-        display: none;
-    }
-    .my-votes-block__vote-form {
-        display: none;
-    }
     .my-votes__link-arrow img {
         position: absolute;
         top: 20px;
         right: 27px;
+    }
+    .vote-form__status-block {
+        display: none;
+    }
+    .my-votes-block__container {
+        gap: 16px;
+    }
+    .my-votes-block__utc-container {
+        display: none;
+    }
+    .my-votes-block__container-title-block {
+        gap: 8px;
+    }
+    .my-votes-block__container-title-h3 {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .my-votes-block__container-title-h5 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+@media (max-width: 420px) {
+    .reg-form__button-reg, .button-vote, .reg {
+        width: 100%;
+        height: 48px;
+        font-size: 16px;
+    }
+    .my-votes-block__vote-form_votes-page {
+        margin-bottom: 16px;
+    }
+    .my-votes-block__vote-form {
+        padding-bottom: 16px;
+    }
+    .votes-page-switch-buttons {
+        margin-bottom: 16px;
     }
 }
