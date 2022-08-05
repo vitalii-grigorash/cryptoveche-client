@@ -55,7 +55,7 @@ const CalendarVotes = () => {
         setShowCalendar(false)
         setShowCalendarList(true)
         setShowBackRow(true)
-        setGetEventDay(date.getDay())
+        setGetEventDay(date.getUTCDay())
         setGetEventDate(date.getDate())
         setGetEventMonth(date.getMonth())
         setGetEventYear(date.getFullYear())

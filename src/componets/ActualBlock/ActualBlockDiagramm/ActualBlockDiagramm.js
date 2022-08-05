@@ -13,7 +13,6 @@ const ActualBlockDiagramm = (props) => {
     arrowLeftStyle
   } = props;
 
-
   const [nowTime, setNowTime] = useState(0);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);

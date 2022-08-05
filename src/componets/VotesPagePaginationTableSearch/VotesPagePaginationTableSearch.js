@@ -56,10 +56,8 @@ const VotesPagePaginationTableSearch = (props) => {
 
     return (
         <div className='navigation-menu__pagination-search-block'>
-
             <div className='pagination-search-block__show-page' onClick={handleShowOptionsContainer}>
-
-                <p className="pagination-search-block__text">Показывать на странице: {selectedResultsShow}</p>
+                <p className="pagination-search-block__text">Показать {selectedResultsShow}</p>
                 <div className="pagination-search-block__arrow" />
                 {isOptionsActive && (
                     <div className="pagination-search-block__options-container">

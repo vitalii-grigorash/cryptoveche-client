@@ -14,8 +14,8 @@ import CallVotingPage from "../CallVotingPage/CallVotingPage";
 import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
+import VotesPageSuccessRegLaterModal from "../VotesPageSuccessRegLaterModal/VotesPageSuccessRegLaterModal";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { CallVotingListProvider } from "../../contexts/CallVotingListContext";
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
@@ -34,7 +34,8 @@ function App() {
     const [changeBorderInputEmail, setChangeBorderInputEmail] = useState('_input-border-black-reg-page');
     const [hideRegForm, setHideRegForm] = useState(false);
     const [allEvents, setAllEvents] = useState([]);
-    const [currentEventData, setCurrentEventData] = useState({});
+    const [isSuccessModalActive, setSuccessModalActive] = useState(false);
+    const [successModalText, setSuccessModalText] = useState('');
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -146,6 +147,9 @@ function App() {
         if (localStorage.getItem('jwt')) {
             localStorage.removeItem('jwt');
         }
+        if (localStorage.getItem('currentEvent')) {
+            localStorage.removeItem('currentEvent');
+        }
         setLoggedIn(false);
         setCurrentUser({});
         navigate('/auth');
@@ -245,87 +249,135 @@ function App() {
                     requestHelper(Events.getEvents)
                         .then((data) => {
                             setAllEvents(data);
+                            const curentEvent = data.find(event => event.id === eventId);
+                            if (curentEvent.isRegistered) {
+                                handleShowSuccessModal();
+                                setSuccessModalText('Вы успешно зарегистрировались!');
+                            } else {
+                                handleShowSuccessModal();
+                                setSuccessModalText('Вы успешно отменили зарегистрацию!');
+                            }
                         })
                         .catch((err) => {
                             throw new Error(err.message);
                         })
                 }
-            });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     };
 
-    function handleCurrentEvents(data) {
-        setCurrentEventData(data)
-        navigate('/call-voting-page')
+    function handleCurrentEvents(data, isDetailsClick) {
+        const currentEvent = {
+            id: data.id
+        }
+        if (localStorage.getItem('currentEvent')) {
+            localStorage.removeItem('currentEvent');
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        } else {
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        }
+        if (isDetailsClick) {
+            navigate('/details-vote');
+        } else {
+            navigate('/call-voting-page');
+        }
     }
 
     function showEventResult() {
-        console.log('Тут будет переход на результаты голосования, если мы проголосовали');
+        console.log('Тут будет переход на результаты голосования, если событие закончено и оно НЕ тайное');
+    }
+
+    function handleShowSuccessModal() {
+        if (isSuccessModalActive) {
+            setSuccessModalActive(false);
+        } else {
+            setSuccessModalActive(true);
+        }
     }
 
     return (
-            <CurrentUserContext.Provider value={currentUser}>
-                <div className="App">
-                    {isLoggedIn && (
-                        <Header
-                            handleLogout={logout}
-                            userName={userName}
+        <CurrentUserContext.Provider value={currentUser}>
+            <div className="App">
+                {isLoggedIn && (
+                    <Header
+                        handleLogout={logout}
+                        userName={userName}
+                    />
+                )}
+                <main className={'main'}>
+                    <div className={'main-content _container'}>
+                        <Routes>
+                            <Route path='/auth'
+                                element={<Authorization
+                                    handleLogin={handleLogin}
+                                    authError={authError}
+                                    handleRememberMe={handleRememberMe}
+                                    isRememberMe={isRememberMe}
+                                />}
+                            />
+                            <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
+                            <Route path='/reset' element={<AuthorizationSetPassword />} />
+                            <Route path='/reg-page'
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
+                                />}
+                            />
+                            <Route exact path='/'
+                                element={<MainPage
+                                    allEvents={allEvents}
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                />}
+                            />
+                            <Route exact path='/call-voting-page'
+                                element={<CallVotingPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                />}
+                            />
+                            <Route exact path='/my-profile' element={<MyProfilePage />} />
+                            <Route exact path='/details-vote'
+                                element={<DetailsVotesPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                />}
+                            />
+                            <Route exact path='/votes-page'
+                                element={<VotesPage
+                                    allEvents={allEvents}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                />}
+                            />
+                            <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
+                        </Routes>
+                        <VotesPageSuccessRegLaterModal
+                            isActive={isSuccessModalActive}
+                            handleShowSuccessModal={handleShowSuccessModal}
+                            successModalText={successModalText}
                         />
-                    )}
-                    <main className={'main'}>
-                        <div className={'main-content _container'}>
-                            <Routes>
-                                <Route path='/auth'
-                                    element={<Authorization
-                                        handleLogin={handleLogin}
-                                        authError={authError}
-                                        handleRememberMe={handleRememberMe}
-                                        isRememberMe={isRememberMe}
-                                    />}
-                                />
-                                <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                                <Route path='/reset' element={<AuthorizationSetPassword />} />
-                                <Route path='/reg-page'
-                                    element={<Registration
-                                        handleRegister={handleRegister}
-                                        handlePolicyAccept={handlePolicyAccept}
-                                        isPolicyAccept={isPolicyAccept}
-                                        modalActive={modalActive}
-                                        emailErrorMessage={emailErrorMessage}
-                                        changeBorderInputEmail={changeBorderInputEmail}
-                                        hideRegisterModal={hideRegisterModal}
-                                        hideRegForm={hideRegForm}
-                                        hideRegEmailErrors={hideRegEmailErrors}
-                                    />}
-                                />
-                                <Route exact path='/'
-                                    element={<MainPage
-                                        allEvents={allEvents}
-                                        requestHelper={requestHelper}
-                                        handleCurrentEvents={handleCurrentEvents}
-                                        toggleEventRegistration={toggleEventRegistration}
-                                        showEventResult={showEventResult}
-                                    />}
-                                />
-                                <Route exact path='/call-voting-page' element={<CallVotingPage currentEventData={currentEventData} />} />
-                                <Route exact path='/my-profile' element={<MyProfilePage />} />
-                                <Route exact path='/details-vote' element={<DetailsVotesPage />} />
-                                <Route exact path='/votes-page'
-                                    element={<VotesPage
-                                        allEvents={allEvents}
-                                        handleCurrentEvents={handleCurrentEvents}
-                                        toggleEventRegistration={toggleEventRegistration}
-                                        showEventResult={showEventResult}
-                                    />}
-                                />
-                                <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
-                            </Routes>
-                        </div>
-                    </main>
-                    {isLoggedIn && (
-                        <Footer />
-                    )}
-                </div>
-            </CurrentUserContext.Provider>
+                    </div>
+                </main>
+                {isLoggedIn && (
+                    <Footer />
+                )}
+            </div>
+        </CurrentUserContext.Provider>
     );
 
 }

@@ -65,7 +65,7 @@ const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualE
       <div className={'actual-block-wrapper__title'}>
         <img alt={'иконка для заголовка'} src={logo_icon} /><h2>Актуальное</h2>
       </div>
-      <h3>{eventTitle}</h3>
+      <h3 className="actual-block__event-name" onClick={() => { handleCurrentEvents(currentVote, true) }} >{eventTitle}</h3>
       <div className={'actual-block__start--end-vote'}>
         <div className={'start-end-vote__start-data'}>
           <h5>Начало голосования:</h5>
@@ -118,7 +118,7 @@ const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualE
                     {!currentVote.isVoted ? (
                       <>
                         <button className='button-vote'
-                          onClick={() => { handleCurrentEvents(currentVote) }}
+                          onClick={() => { handleCurrentEvents(currentVote, false) }}
                         >
                           Проголосовать
                         </button>
@@ -127,7 +127,7 @@ const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualE
                       <>
                         {currentVote.re_voting && (
                           <button className='button-vote'
-                            onClick={() => { handleCurrentEvents(currentVote) }}
+                            onClick={() => { handleCurrentEvents(currentVote, false) }}
                           >
                             Переголосовать
                           </button>
@@ -146,7 +146,7 @@ const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualE
               <>
                 {!currentVote.isVoted ? (
                   <button className='button-vote'
-                    onClick={() => { handleCurrentEvents(currentVote) }}
+                    onClick={() => { handleCurrentEvents(currentVote, false) }}
                   >
                     Проголосовать
                   </button>
@@ -154,7 +154,7 @@ const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualE
                   <>
                     {currentVote.re_voting && (
                       <button className='button-vote'
-                        onClick={() => { handleCurrentEvents(currentVote) }}
+                        onClick={() => { handleCurrentEvents(currentVote, false) }}
                       >
                         Переголосовать
                       </button>

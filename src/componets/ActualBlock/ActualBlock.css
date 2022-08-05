@@ -24,6 +24,14 @@
     line-height: 110%;
     color: rgba(54, 59, 77, 0.9);
 }
+.actual-block__event-name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 110%;
+    color: rgba(54, 59, 77, 0.9);
+    margin: 0 auto 0 0;
+    cursor: pointer;
+}
 /*------Блок с датой начала и конца голосования----------------------------------------------------------------------*/
 .actual-block__start--end-vote {
     display: flex;
@@ -72,7 +80,7 @@
     .actual-block-wrapper {
         padding: 16px 16px 16px 16px;
         max-width: 343px;
-        height: 540px;
+        /*height: 540px;*/
     }
     .actual-block-wrapper__title {
         font-size: 21px;
@@ -80,6 +88,10 @@
         font-weight: 500;
     }
     .actual-block-wrapper h3 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .actual-block__event-name {
         font-size: 16px;
         line-height: 24px;
     }
@@ -101,7 +113,7 @@
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
     .actual-block-wrapper {
-        height: 469px;
+        min-height: 490px;
         gap: 16px;
         max-width: 800px;
     }

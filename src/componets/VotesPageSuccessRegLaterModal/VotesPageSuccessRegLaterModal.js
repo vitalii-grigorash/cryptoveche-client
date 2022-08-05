@@ -1,15 +1,25 @@
 import React from "react";
 import './VotesPageSuccessRegLaterModal.css';
 
-const VotesPageSuccessRegLaterModal = ({active, setActive}) => {
+const VotesPageSuccessRegLaterModal = (props) => {
 
+    const {
+        isActive,
+        handleShowSuccessModal,
+        successModalText
+    } = props;
 
+    setTimeout(() => {
+        if (isActive) {
+            handleShowSuccessModal();
+        }
+    }, 5000)
 
     return (
-        <div className={active ? 'details-votes-success-reg-modal__wrapper active' : 'details-votes-success-reg-modal__wrapper'}>
-            <div className={active ? 'details-votes-success-reg-modal__content active' : 'details-votes-success-reg-modal__content'}>
-                <span>Вы успешно зарегистрировались! Проголосовать можно будет через 5 часов, 8 минут.</span>
-                <button className={'details-votes-success-reg-modal__button'} onClick={() => setActive(false)}>Понятно!</button>
+        <div className={isActive ? 'details-votes-success-reg-modal__wrapper active' : 'details-votes-success-reg-modal__wrapper'}>
+            <div className={isActive ? 'details-votes-success-reg-modal__content active' : 'details-votes-success-reg-modal__content'}>
+                <span>{successModalText}</span>
+                <button className={'details-votes-success-reg-modal__button'} onClick={handleShowSuccessModal}>Понятно!</button>
             </div>
         </div>
     )

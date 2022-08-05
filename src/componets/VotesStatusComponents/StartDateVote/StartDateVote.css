@@ -4,7 +4,7 @@
     padding: 0 36px 0 36px;
     justify-content: center;
     font-size: 14px;
-    gap: 18px;
+    gap: 16px;
     /*border-left: 1px rgba(54, 59, 77, 0.4) solid;*/
 }
 .status-block__start-vote h4 {
@@ -13,24 +13,24 @@
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 890px) {
     .status-block__start-vote {
-        padding: 0 10px 0 10px;
-        font-size: 10px;
+        padding: 0 6px 0 6px;
+        font-size: 11px;
         gap: 12px;
     }
 }
 @media (max-width: 830px) {
     .status-block__start-vote {
         padding: 0 10px 0 10px;
-        font-size: 10px;
+        font-size: 11px;
     }
     .status-block__start-vote h5, .vote-form__status-block-start-vote h5 {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
 @media (max-width: 420px) {
     .status-block__start-vote {
-        padding: 0 10px 0 8px;
-        border-left: 1px rgba(54, 59, 77, 0.2) solid;
+        padding: 0 0 0 0;
+        /*border-left: 1px rgba(54, 59, 77, 0.2) solid;*/
     }
     .status-block__start-vote h4 {
         font-size: 14px;
