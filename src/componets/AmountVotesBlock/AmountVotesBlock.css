@@ -40,10 +40,28 @@
     line-height: 20px;
     color: #4ED4A9;
 }
+
+.gistogramma-and-total-amount__procent_negative {
+	position: absolute;
+	top: 0;
+	left: 310px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20px;
+	color: #FF4970;
+}
 .gistogramma-and-total-amount__row {
     position: absolute;
     top: 4px;
     left: 287px;
+}
+
+.gistogramma-and-total-amount__row_negative {
+	color: #FF4970;
+	transform: scale(-1);
+	position: absolute;
+	top: 4px;
+	left: 287px;
 }
 
 .total-amount {
