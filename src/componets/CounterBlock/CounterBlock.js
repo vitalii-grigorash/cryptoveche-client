@@ -4,7 +4,6 @@ import count_block_img from '../../img/CountBlock_image.svg';
 
 const CounterBlock = ({ stats }) => {
 
-
 	// Добавление правильной формы существительных рядом с числом
 	const CountForm = (number, titles) => {
 		number = Math.abs(number);
@@ -21,14 +20,14 @@ const CounterBlock = ({ stats }) => {
 			<div className={'count-block__style _blue'}>
 				<h3>{stats.eventsCount}</h3>
 				<span>
-					{CountForm(stats.eventsCount, ['голосование', 'голосования', 'голосований'])}
+					{CountForm(stats.eventsCount, ['Голосование состоялось', 'Голосования состоялось', 'Голосований состоялось'])}
 				</span>
 				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
 			</div>
 			<div className={'count-block__style _orange'}>
-				<h3>10</h3>
+				<h3>{stats.activeEvents}</h3>
 				<span>
-					Бизнес-партнеров
+					{CountForm(stats.eventsCount, ['Голосование активных', 'Голосования активных', 'Голосований активных'])}
 				</span>
 				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
 			</div>
