@@ -8,7 +8,19 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    pointer-events: none;
+    cursor: default;
+}
+.call-voting-page-vote-button-list__button-active {
+    max-width: 169px;
+    max-height: 48px;
+    padding: 12px 24px 12px 24px;
+    background: #0084FE;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 .call-voting-page-vote-button-list__button.active {
     /*color: #FFFFFF;*/

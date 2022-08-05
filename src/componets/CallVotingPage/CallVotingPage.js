@@ -9,7 +9,6 @@ import CallVotingPageQuestionCardList from "../CallVotingPageQuestionCardList/Ca
 import CallVotingPageQuestionCardCheckBox
     from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
 import { useNavigate } from "react-router-dom";
-import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
 import CallVotingNameColumns from "../CallVotingPageQuestionCardCheckBox/CallVotingNameColumns/CallVotingNameColumns";
 import CallVotingNameRows from "../CallVotingPageQuestionCardCheckBox/CallVotingNameRows/CallVotingNameRows";
 import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVotingCheckBox/CallVotingCheckBox";
@@ -27,6 +26,8 @@ const CallVotingPage = (props) => {
     const [currentEventData, setCurrentEventData] = useState({});
     const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
     const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
+
+    console.log(currentEventData);
 
     function templateRow(questions) {
         const filteredQuestions = questions
@@ -65,10 +66,11 @@ const CallVotingPage = (props) => {
             }
             requestHelper(Events.getEvent, body)
                 .then((data) => {
+                    console.log(data);
                     setCurrentEventData(data);
                     templateRow(data.questions);
                     templateGrid(data.questions);
-                });
+                })
         } else {
             navigate('/');
         }
@@ -96,16 +98,13 @@ const CallVotingPage = (props) => {
                     return (
                         <CallVotingPageQuestionCardList
                             key={item.id}
-                            id={item.id}
                             questionName={item.title}
                             rulesAnswer={item.ruleText}
-                            listNameAnswers={item.options.rows.map(elem => {
-                                return <CallVotingList
-                                    key={elem.id}
-                                    checkListId={elem.id}
-                                    nameAnswer={elem.value}
-                                />
-                            })}
+                            questionColumns={item.options.columns}
+                            questionRows={item.options.rows}
+                            question={item}
+                            eventId={currentEventData.id}
+                            requestHelper={requestHelper}
                         />
                     )
                 }))

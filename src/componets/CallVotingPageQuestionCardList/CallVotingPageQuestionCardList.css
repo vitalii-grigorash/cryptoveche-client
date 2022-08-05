@@ -45,6 +45,18 @@
     padding-right: 16px;
     border-right: 1px solid rgba(54, 59, 77, 0.3)
 }
+.call-voting-page-question-card-list__selected-answers {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.4);
+}
+.call-voting-page-question-card-list__selected-answers_green {
+    color: #4ED4A9;
+}
+.call-voting-page-question-card-list__selected-answers_red {
+    color: #FF4970;
+}
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 670px) {
     .call-voting-page-question-card-list__wrapper {

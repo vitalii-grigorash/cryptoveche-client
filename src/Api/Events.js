@@ -62,3 +62,28 @@ export const registrationUserInEvents = (accessToken, body) => {
             throw new Error(err.message);
         });
 }
+
+export const vote = (accessToken, body) => {
+    console.log(body.eventId);
+    console.log(body.eventArray);
+    return fetch(`${API_URL}/events/vote/${body.eventId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(
+            body.eventArray
+        )
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(data => data)
+        .catch((err) => {
+            throw new Error(err.message);
+        });
+}
