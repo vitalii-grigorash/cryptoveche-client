@@ -18,9 +18,7 @@
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
     padding-right: 32px;
-    /*border-right: 1px rgba(54, 59, 77, 0.3) solid;*/
     height: 24px;
-    /*opacity: 60%;*/
     letter-spacing: 0.0025em;
     cursor: pointer;
     position: relative;
@@ -81,8 +79,6 @@
     display: flex;
     align-items: center;
     gap: 40px;
-    /*opacity: 60%;*/
-    /*border-right: 1px rgba(54, 59, 77, 0.3) solid;*/
     padding-right: 40px;
     height: 24px;
 }
@@ -160,7 +156,18 @@
         font-size: 12px;
     }
 }
-@media (max-width: 850px) {
+@media (max-width: 1045px) {
+    .pagination-search-block__search-table input {
+        width: 250px;
+    }
+    .change-page__rows {
+        gap: 30px;
+    }
+    .pagination-search-block__change-page {
+        gap: 20px;
+    }
+}
+@media (max-width: 925px) {
     .navigation-menu__pagination-search-block {
        display: none;
     }

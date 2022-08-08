@@ -7,9 +7,9 @@ const DataTime = ({dateTimeDate, dateTimeWatch}) => {
 
     return (
         <div className={'start-reg__data'}>
-            <img alt={'иконка календарь'} src={icon_data}/>
+            <img className={'data__calendar-icon'} alt={'иконка календарь'} src={icon_data}/>
             <span>{dateTimeDate}</span>
-            <img alt={'иконка часы'} src={icon_time}/>
+            <img className={'data__watch-icon'} alt={'иконка часы'} src={icon_time}/>
             <span>{dateTimeWatch}</span>
         </div>
     )

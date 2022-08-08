@@ -20,6 +20,9 @@
     flex-direction: column;
     gap: 34px;
 }
+.status-vote-possible-revote__width-block {
+    max-width: 168px;
+}
 /*-----Стилизация div для статусов рег-ции и голосоваия-------------------------------------------------------------*/
 .main-content-current-status-vote__status-vote-possible-revote {
     display: flex;
@@ -36,7 +39,7 @@
     display: none;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 1280px) {
+@media (max-width: 1350px) {
     .details-votes-page-general-info__main-content-current-status-vote {
         gap: 16px;
     }
@@ -50,22 +53,25 @@
 }
 @media (max-width: 600px) {
     .details-votes-page-general-info__main-content {
-        gap: 24px;
-        padding-bottom: 16px;
+        /*gap: 24px;*/
+        padding-bottom: 32px;
     }
     .main-content-current-status-vote__status-vote-possible-revote {
         display: grid;
-        row-gap: 8px;
+        /*row-gap: 8px;*/
     }
-
     ._hidden-materials-vote {
         display: block;
+        padding-bottom: 24px;
     }
     ._hidden-possible-cancel-block {
         display: none;
     }
     ._show-possible-cancel-block{
         display: block;
+    }
+    .status-vote-possible-revote__width-block {
+        max-width: 100%;
     }
 }
 

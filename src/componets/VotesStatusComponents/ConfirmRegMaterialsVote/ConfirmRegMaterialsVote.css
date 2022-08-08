@@ -3,8 +3,10 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    padding: 6px 24px 6px 24px;
-    gap: 17px;
+    padding: 0 32px 0 32px;
+    gap: 16px;
+    justify-content: center;
+    height: 56px;
 }
 .materials-vote__status-icon {
     display: flex;
@@ -32,14 +34,20 @@
         white-space: nowrap;
     }
 }
+
 @media (max-width: 890px) {
     .status-block__materials-vote {
         white-space: nowrap;
-        padding: 5px 24px 0 6px;
+        padding: 0 6px 0 6px;
         gap: 12px;
     }
     .materials-vote__status-icon {
         font-size: 11px;
+    }
+}
+@media (max-width: 830px) {
+    .status-block__materials-vote {
+       height: 37px;
     }
 }
 @media (max-width: 600px) {
@@ -54,6 +62,5 @@
     .materials-vote__hidden-materials {
         display: none;
     }
-
 }
 

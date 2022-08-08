@@ -51,10 +51,12 @@ const DetailsVotesPageGeneralInformation = (props) => {
                         />
                     </span>
                     <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
+                        <div className={'status-vote-possible-revote__width-block'}>
                         <CurrentStatusVote
                             regStatus={labelText}
                             voteStatus={currentEventData.type === 'secret' ? 'Тайное' : 'Открытое'}
                         />
+                        </div>
                         <ConfirmRegMaterialsVote
                             votesData={currentEventData}
                         />
