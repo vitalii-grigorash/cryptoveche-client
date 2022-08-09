@@ -8,8 +8,11 @@ const CallVotingList = (props) => {
         nameAnswer,
         addAnswerToArray,
         removeAnswerFromArray,
-        questionColumns
+        questionColumns,
+        isBulletinVoted
     } = props;
+
+    console.log(isBulletinVoted);
 
     const columnId = questionColumns[0].id
 
@@ -21,7 +24,6 @@ const CallVotingList = (props) => {
             removeAnswerFromArray(rowId);
         } else {
             setCheckboxChecked(true);
-            console.log(rowId);
             addAnswerToArray(rowId, columnId);
         }
     }

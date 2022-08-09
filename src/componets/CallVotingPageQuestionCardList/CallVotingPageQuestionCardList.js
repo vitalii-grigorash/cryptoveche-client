@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import './CallVotingPageQuestionCardList.css';
 import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
@@ -9,26 +9,231 @@ const CallVotingPageQuestionCardList = (props) => {
 
     const {
         questionName,
-        rulesAnswer,
         questionColumns,
         questionRows,
         question,
         eventId,
-        requestHelper
+        requestHelper,
+        isReVoting
     } = props;
 
-    console.log(question);
+    console.log(question)
 
     const [answersArray, setAnswersArray] = useState([]);
+    const [rule, setRule] = useState('');
+    const [ruleText, setRuleText] = useState('');
+    const [selectedAnswersTextColor, setSelectedAnswersTextColor] = useState('');
+    const [isButtonActive, setButtonActive] = useState(false);
+    const [isBulletinVoted, setBulletinVoted] = useState(false);
 
-    console.log(answersArray);
+    function simpleQuestion(answers) {
+        setRule(question.rules.pick_eq);
+        setRuleText('Необходимо выбрать ровно ' + question.rules.pick_eq);
+        if (answers.length === 0) {
+            setButtonActive(false);
+            setSelectedAnswersTextColor('');
+        } else if (answers.length === rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        } else if (answers.length > rule || answers.length < rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        }
+    }
+
+    function positionSingleQuestion(answers) {
+        setRule(question.rules.pick_le);
+        setRuleText('Количество должностных позиций доступных для выбора ' + question.rules.pick_le);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(true);
+        } else if (answers.length === rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function positionMultipleQuestion(answers) {
+        setRule(question.rules.pick_le);
+        setRuleText('Количество кандидатов доступных для выбора ' + question.rules.pick_le);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(true);
+        } else if (answers.length === rule) {
+            setButtonActive(true);
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+        } else if (answers.length > rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        }
+    }
+
+    function samePositionsQuestion(answers) {
+        setRule(question.rules.pick_le);
+        setRuleText('Количество кандидатов доступных для выбора ' + question.rules.pick_le);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(true);
+        } else if (answers.length <= rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        } else if (answers.length > rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        }
+    }
+
+    function arbitraryQuestionNoRules(answers) {
+        setRule(0);
+        setRuleText('Необходимо выбрать один или несколько');
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(true);
+        } else if (answers.length > rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function arbitraryQuestionLessThan(answers) {
+        setRule(question.rules.pick_lt);
+        setRuleText('Необходимо выбрать меньше чем ' + question.rules.pick_lt);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(true);
+        } else if (answers.length < rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        } else if (answers.length >= rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        }
+    }
+
+    function arbitraryQuestionMoreThan(answers) {
+        setRule(question.rules.pick_gt);
+        setRuleText('Необходимо выбрать больше чем ' + question.rules.pick_gt);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(false);
+        } else if (answers.length <= rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        } else if (answers.length > rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function arbitraryQuestionLessOrEqual(answers) {
+        setRule(question.rules.pick_le);
+        setRuleText('Необходимо выбрать меньше или ровно ' + question.rules.pick_le);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(true);
+        } else if (answers.length <= rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        } else if (answers.length > rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        }
+    }
+
+    function arbitraryQuestionMoreOrEqual(answers) {
+        setRule(question.rules.pick_ge);
+        setRuleText('Необходимо выбрать больше или ровно ' + question.rules.pick_ge);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(false);
+        } else if (answers.length < rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        } else if (answers.length >= rule) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function arbitraryQuestionFewRules(answers) {
+        console.log('Сочетание нескольких правил');
+    }
+
+    function arbitraryQuestion(answers) {
+        if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionNoRules(answers);
+        } else if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq !== -1
+        ) {
+            simpleQuestion(answers);
+        } else if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt !== -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionLessThan(answers);
+        } else if (
+            question.rules.pick_gt !== -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionMoreThan(answers);
+        } else if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le !== -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionLessOrEqual(answers);
+        } else if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge !== -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionMoreOrEqual(answers);
+        } else {
+            arbitraryQuestionFewRules(answers);
+        }
+    }
+
+    useEffect(() => {
+        if (question.template === 'ynq') {
+            simpleQuestion(answersArray);
+        } else if (question.template === 'none') {
+            arbitraryQuestion(answersArray);
+        } else if (question.template === 'position_single') {
+            positionSingleQuestion(answersArray);
+        } else if (question.template === 'position_multiple') {
+            positionMultipleQuestion(answersArray);
+        } else if (question.template === 'same_positions') {
+            samePositionsQuestion(answersArray);
+        }
+        // eslint-disable-next-line
+    }, [question.template, answersArray])
 
     function addAnswerToArray(rowId, columnId) {
         const dataToAdd = {
             id: rowId, // здесь мы отправляем id строк rows.id
             values: [
-                columnId
-            ] // здесь мы отправляем массив из id колонок columns.id
+                columnId // здесь мы отправляем массив из id колонок columns.id
+            ]
         }
         setAnswersArray([...answersArray, dataToAdd]);
     }
@@ -43,31 +248,6 @@ const CallVotingPageQuestionCardList = (props) => {
             for_user_id: "",
             question_id: question.id, // здесь мы отправляем id вопроса questions.id
             res: answersArray
-            // res: [
-            //     {
-            //         id: '249f2ae0-af6e-4130-b326-da04c27907dc', // здесь мы отправляем id строк rows.id
-            //         values: [
-            //             'cbfed193-b99d-418a-829c-d4f407434fca',
-            //             '905451cc-e34d-4da0-b646-7307023385a5'
-            //         ] // здесь мы отправляем массив из id колонки columns.id
-            //     },
-            //     {
-            //         id: 'f64579e8-e590-4c95-9dc9-f71572862dcd', // здесь мы отправляем id строк rows.id
-            //         values: [
-            //             'f031c96d-02e1-4c3c-a391-eaed8390c402',
-            //             'e63b6cce-c064-4273-8b33-6fa717ce702e'
-            //         ] // здесь мы отправляем массив из id колонки columns.id
-            //     },
-            //     {
-            //         id: '96d2b2d8-766e-48d6-8a2a-448d7dec336c', // здесь мы отправляем id строк rows.id
-            //         values: [
-            //             'cbfed193-b99d-418a-829c-d4f407434fca',
-            //             'f031c96d-02e1-4c3c-a391-eaed8390c402',
-            //             '905451cc-e34d-4da0-b646-7307023385a5',
-            //             'e63b6cce-c064-4273-8b33-6fa717ce702e'
-            //         ] // здесь мы отправляем массив из id колонки columns.id
-            //     }
-            // ]
         }
 
         const body = {
@@ -77,11 +257,10 @@ const CallVotingPageQuestionCardList = (props) => {
             ]
         }
 
-        // console.log(body);
-
         requestHelper(Events.vote, body)
             .then((data) => {
                 console.log(data);
+                setBulletinVoted(true);
             })
     }
 
@@ -90,10 +269,8 @@ const CallVotingPageQuestionCardList = (props) => {
             <div className='call-voting-page-question-card-list__title'>
                 <h3>{questionName}</h3>
                 <div className='call-voting-page-question-card-list__select-answer'>
-                    <span>{rulesAnswer}</span>
-                    <span
-                        className={`call-voting-page-question-card-list__selected-answers ${answersArray.length === 0 ? '' : answersArray.length > 1 ? 'call-voting-page-question-card-list__selected-answers_red' : 'call-voting-page-question-card-list__selected-answers_green'}`}
-                    >
+                    <span>{ruleText}</span>
+                    <span className={`call-voting-page-question-card-list__selected-answers ${selectedAnswersTextColor}`}>
                         Сейчас выбрано: {answersArray.length}
                     </span>
                 </div>
@@ -108,12 +285,15 @@ const CallVotingPageQuestionCardList = (props) => {
                         addAnswerToArray={addAnswerToArray}
                         removeAnswerFromArray={removeAnswerFromArray}
                         questionColumns={questionColumns}
+                        isBulletinVoted={isBulletinVoted}
                     />
                 })}
             </div>
             <CallVotingPageVoteButtonList
                 sendVote={sendVote}
-                answersArray={answersArray}
+                isReVoting={isReVoting}
+                isButtonActive={isButtonActive}
+                isBulletinVoted={isBulletinVoted}
             />
         </div>
     )

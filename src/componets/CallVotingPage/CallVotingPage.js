@@ -27,19 +27,8 @@ const CallVotingPage = (props) => {
     const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
     const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
 
-    console.log(currentEventData);
-
     function templateRow(questions) {
-        const filteredQuestions = questions
-            .filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions')
-            .map(obj => {
-                if (obj.template === 'ynq' || obj.template === 'none') {
-                    return { ...obj, ruleText: 'Необходимо выбрать ровно: ' + obj.rules.pick_eq }
-                } else if (obj.template === 'position_single' || obj.template === 'position_multiple' || obj.template === 'same_positions') {
-                    return { ...obj, ruleText: 'Количество должностных позиций доступных для выбора: ' + obj.rules.pick_le }
-                }
-                return obj;
-            })
+        const filteredQuestions = questions.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions');
         setQuestionsTemplateRow(filteredQuestions);
     }
 
@@ -66,7 +55,6 @@ const CallVotingPage = (props) => {
             }
             requestHelper(Events.getEvent, body)
                 .then((data) => {
-                    console.log(data);
                     setCurrentEventData(data);
                     templateRow(data.questions);
                     templateGrid(data.questions);
@@ -99,12 +87,12 @@ const CallVotingPage = (props) => {
                         <CallVotingPageQuestionCardList
                             key={item.id}
                             questionName={item.title}
-                            rulesAnswer={item.ruleText}
                             questionColumns={item.options.columns}
                             questionRows={item.options.rows}
                             question={item}
                             eventId={currentEventData.id}
                             requestHelper={requestHelper}
+                            isReVoting={currentEventData.re_voting}
                         />
                     )
                 }))

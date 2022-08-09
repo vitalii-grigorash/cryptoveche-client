@@ -2,7 +2,6 @@ import { config } from '../config';
 
 const API_URL = config.java_api_url;
 
-
 export const getEvents = (accessToken) => {
     return fetch(`${API_URL}/events/me`, {
         method: 'GET',
@@ -64,8 +63,6 @@ export const registrationUserInEvents = (accessToken, body) => {
 }
 
 export const vote = (accessToken, body) => {
-    console.log(body.eventId);
-    console.log(body.eventArray);
     return fetch(`${API_URL}/events/vote/${body.eventId}`, {
         method: 'PUT',
         headers: {
