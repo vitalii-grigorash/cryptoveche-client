@@ -13,7 +13,6 @@ import MainPage from "../MainPage/MainPage";
 import CallVotingPage from "../CallVotingPage/CallVotingPage";
 import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
-import DetailsVotesPageResultVotes from "../DetailsVotesPageResultVotes/DetailsVotesPageResultVotes";
 import VotesPageSuccessRegLaterModal from "../VotesPageSuccessRegLaterModal/VotesPageSuccessRegLaterModal";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
@@ -364,7 +363,6 @@ function App() {
                                     showEventResult={showEventResult}
                                 />}
                             />
-                            <Route exact path='/result-vote' element={<DetailsVotesPageResultVotes />} />
                         </Routes>
                         <VotesPageSuccessRegLaterModal
                             isActive={isSuccessModalActive}
@@ -379,6 +377,6 @@ function App() {
             </div>
         </CurrentUserContext.Provider>
     );
-
 }
+
 export default App;
