@@ -7,14 +7,19 @@ import MyProfilePageAdditionalSettings from "../ MyProfilePageAdditionalSettings
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import MyProfilePageSetPassword from "../ MyProfilePageSetPassword/ MyProfilePageSetPassword";
 
-const MyProfilePage = () => {
+const MyProfilePage = (props) => {
+
+    const {
+        requestHelper
+    } = props;
 
     return (
             <div className={'my-profile-page__wrapper'}>
                 <TitleVotesDetailsCallVotingProfile firstLetter={'Главная'} secondLetter={'Мой профиль'} titleName={'Мой профиль'} hiddenRowBack={true}/>
                    <div className={'my-profile-page__main-content'}>
                        <div className={'main-content__grid-item_1'}>
-                            <MyProfilePagePersonalData/>
+                            <MyProfilePagePersonalData
+                                requestHelper={requestHelper}/>
                        </div>
                        <div className={'main-content__grid-item_2'}>
                              <MyProfilePageAdditionalSettings/>

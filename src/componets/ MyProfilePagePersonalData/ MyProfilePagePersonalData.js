@@ -1,14 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import './ MyProfilePagePersonalData.css';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { config } from "../../config";
-import {changeUserName} from "../../Api/MyProfile";
+import * as MyProfile from '../../Api/MyProfile';
 
-const MyProfilePagePersonalData = () => {
 
-    const API_URL = config.java_api_url
+
+
+const MyProfilePagePersonalData = (props) => {
+
+    const {
+        requestHelper
+    } = props;
+
     const currentUser = React.useContext(CurrentUserContext);
-
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [secondName, setSecondName] = useState('')
@@ -21,7 +25,6 @@ const MyProfilePagePersonalData = () => {
     const userEmail = currentUser.email
 
     useEffect(() => {
-
         if (firstName || lastName || secondName !== '') {
             setActiveBtn(false);
             btnChangeColor.current.style.background = '#0084FE';
@@ -37,7 +40,6 @@ const MyProfilePagePersonalData = () => {
             btnChangeColor.current.style.cursor = 'initial';
         }
     }, [firstName, lastName, secondName]);
-
 
     const lastNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
@@ -73,21 +75,31 @@ const MyProfilePagePersonalData = () => {
         }
     }
 
+    let itemFields = {
+        first_name: firstName,
+        last_name: lastName,
+        second_name: secondName,
+        "userFields":[]
+    }
+
     function updateUserName() {
         if (validLastName || validFirstName || validSecondName === true) {
             console.log('wrong data')
             console.log(validFirstName, validLastName, validSecondName)
-
         } else {
-            let item = {
-                first_name: firstName,
-                last_name: lastName,
-                second_name: secondName
-            }
 
             Object.filter = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
-            const newItem = Object.filter(item, ([key, score]) => score !== '')
-            console.log(newItem)
+            const newItemFields = Object.filter(itemFields, ([key, score]) => score !== '')
+
+            const body = {
+                userNameId: userId,
+                userNameFields: newItemFields
+            }
+            requestHelper(MyProfile.changeUserName, body)
+                .then((data) => {
+                    console.log(data);
+                })
+            console.log(body)
             setActiveBtn(true)
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
@@ -95,11 +107,8 @@ const MyProfilePagePersonalData = () => {
             setFirstName('')
             setLastName('')
             setSecondName('')
-
         }
     }
-
-
 
     return (
         <div className={'my-profile-page-personal-data__wrapper'}>
@@ -132,9 +141,8 @@ const MyProfilePagePersonalData = () => {
                     <input disabled={true} type={"email"} placeholder={userEmail} />
                 </div>
             </div>
-            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUserName()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => updateUserName()} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
         </div>
     )
 }
-
 export default MyProfilePagePersonalData;
