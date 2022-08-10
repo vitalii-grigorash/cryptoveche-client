@@ -4,6 +4,7 @@ import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVo
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
 import * as Events from '../../Api/Events';
+import successIcon from '../../img/votet-status-icon.svg';
 
 const CallVotingPageQuestionCardList = (props) => {
 
@@ -17,10 +18,10 @@ const CallVotingPageQuestionCardList = (props) => {
         isReVoting
     } = props;
 
-    console.log(question)
-
     const [answersArray, setAnswersArray] = useState([]);
     const [rule, setRule] = useState('');
+    const [ruleFrom, setRuleFrom] = useState('');
+    const [ruleTo, setRuleTo] = useState('');
     const [ruleText, setRuleText] = useState('');
     const [selectedAnswersTextColor, setSelectedAnswersTextColor] = useState('');
     const [isButtonActive, setButtonActive] = useState(false);
@@ -155,8 +156,104 @@ const CallVotingPageQuestionCardList = (props) => {
         }
     }
 
+    function arbitraryQuestionFromTo(answers) {
+        setRuleFrom(question.rules.pick_gt);
+        setRuleTo(question.rules.pick_lt);
+        setRuleText(`Необходимо выбрать от ${question.rules.pick_gt} до ${question.rules.pick_lt}`);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(false);
+        } else if (answers.length <= ruleFrom || answers.length >= ruleTo) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        } else {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function arbitraryQuestionFromEqualToEqual(answers) {
+        setRuleFrom(question.rules.pick_ge);
+        setRuleTo(question.rules.pick_le);
+        setRuleText(`Необходимо выбрать от ${question.rules.pick_ge} (включительно) до ${question.rules.pick_le} (включительно)`);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(false);
+        } else if (answers.length < ruleFrom || answers.length > ruleTo) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        } else {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function arbitraryQuestionFromEqualTo(answers) {
+        setRuleFrom(question.rules.pick_ge);
+        setRuleTo(question.rules.pick_lt);
+        setRuleText(`Необходимо выбрать от ${question.rules.pick_ge} (включительно) до ${question.rules.pick_lt}`);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(false);
+        } else if (answers.length < ruleFrom || answers.length >= ruleTo) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        } else {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
+    function arbitraryQuestionFromToEqual(answers) {
+        setRuleFrom(question.rules.pick_gt);
+        setRuleTo(question.rules.pick_le);
+        setRuleText(`Необходимо выбрать от ${question.rules.pick_gt} до ${question.rules.pick_le} (включительно)`);
+        if (answers.length === 0) {
+            setSelectedAnswersTextColor('');
+            setButtonActive(false);
+        } else if (answers.length <= ruleFrom || answers.length > ruleTo) {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
+            setButtonActive(false);
+        } else {
+            setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
+            setButtonActive(true);
+        }
+    }
+
     function arbitraryQuestionFewRules(answers) {
-        console.log('Сочетание нескольких правил');
+        if (
+            question.rules.pick_gt !== -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt !== -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionFromTo(answers);
+        } else if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge !== -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le !== -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionFromEqualToEqual(answers);
+        } else if (
+            question.rules.pick_gt === -1 &&
+            question.rules.pick_ge !== -1 &&
+            question.rules.pick_lt !== -1 &&
+            question.rules.pick_le === -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionFromEqualTo(answers);
+        } else if (
+            question.rules.pick_gt !== -1 &&
+            question.rules.pick_ge === -1 &&
+            question.rules.pick_lt === -1 &&
+            question.rules.pick_le !== -1 &&
+            question.rules.pick_eq === -1
+        ) {
+            arbitraryQuestionFromToEqual(answers);
+        }
     }
 
     function arbitraryQuestion(answers) {
@@ -243,58 +340,72 @@ const CallVotingPageQuestionCardList = (props) => {
         setAnswersArray(filteredAnswers);
     }
 
+    function onReVoteButtonClick() {
+        setBulletinVoted(false);
+    }
+
     function sendVote() {
         const dataToSend = {
             for_user_id: "",
             question_id: question.id, // здесь мы отправляем id вопроса questions.id
             res: answersArray
         }
-
         const body = {
             eventId: eventId,
             eventArray: [
                 dataToSend
             ]
         }
-
         requestHelper(Events.vote, body)
             .then((data) => {
-                console.log(data);
-                setBulletinVoted(true);
+                if (data.status === 'ok') {
+                    setBulletinVoted(true);
+                    setAnswersArray([]);
+                }
             })
     }
 
     return (
-        <div className='call-voting-page-question-card-list__wrapper'>
-            <div className='call-voting-page-question-card-list__title'>
-                <h3>{questionName}</h3>
-                <div className='call-voting-page-question-card-list__select-answer'>
-                    <span>{ruleText}</span>
-                    <span className={`call-voting-page-question-card-list__selected-answers ${selectedAnswersTextColor}`}>
-                        Сейчас выбрано: {answersArray.length}
-                    </span>
+        <div className={`call-voting-page-question-card-list__main ${isBulletinVoted && 'call-voting-page-question-card-list__main_voted'}`}>
+            <div className='call-voting-page-question-card-list__wrapper'>
+                <div className='call-voting-page-question-card-list__title'>
+                    <h3>{questionName}</h3>
+                    <div className='call-voting-page-question-card-list__select-answer'>
+                        <span>{ruleText}</span>
+                        {isBulletinVoted ? (
+                            <div className="call-voting-page-question-card-list__success-container">
+                                <img src={successIcon} className="call-voting-page-question-card-list__success-icon" alt="Иконка успешного голосования" />
+                                <p className="call-voting-page-question-card-list__success-text">Вы проголосовали</p>
+                            </div>
+                        ) : (
+                            <span className={`call-voting-page-question-card-list__selected-answers ${selectedAnswersTextColor}`}>
+                                Сейчас выбрано: {answersArray.length}
+                            </span>
+                        )}
+                    </div>
+                    <MaterialsVoteQuestion materialsVoteQuestion='Материалы вопроса' />
                 </div>
-                <MaterialsVoteQuestion materialsVoteQuestion='Материалы вопроса' />
+                <div className='call-voting-page-question-card-list__main-content'>
+                    {questionRows.map(elem => {
+                        return <CallVotingList
+                            key={elem.id}
+                            rowId={elem.id}
+                            nameAnswer={elem.value}
+                            addAnswerToArray={addAnswerToArray}
+                            removeAnswerFromArray={removeAnswerFromArray}
+                            questionColumns={questionColumns}
+                            isBulletinVoted={isBulletinVoted}
+                        />
+                    })}
+                </div>
+                <CallVotingPageVoteButtonList
+                    sendVote={sendVote}
+                    isReVoting={isReVoting}
+                    isButtonActive={isButtonActive}
+                    isBulletinVoted={isBulletinVoted}
+                    onReVoteClick={onReVoteButtonClick}
+                />
             </div>
-            <div className='call-voting-page-question-card-list__main-content'>
-                {questionRows.map(elem => {
-                    return <CallVotingList
-                        key={elem.id}
-                        rowId={elem.id}
-                        nameAnswer={elem.value}
-                        addAnswerToArray={addAnswerToArray}
-                        removeAnswerFromArray={removeAnswerFromArray}
-                        questionColumns={questionColumns}
-                        isBulletinVoted={isBulletinVoted}
-                    />
-                })}
-            </div>
-            <CallVotingPageVoteButtonList
-                sendVote={sendVote}
-                isReVoting={isReVoting}
-                isButtonActive={isButtonActive}
-                isBulletinVoted={isBulletinVoted}
-            />
         </div>
     )
 }

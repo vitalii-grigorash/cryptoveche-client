@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './CallVotingList.css';
 
 const CallVotingList = (props) => {
@@ -12,11 +12,15 @@ const CallVotingList = (props) => {
         isBulletinVoted
     } = props;
 
-    console.log(isBulletinVoted);
-
-    const columnId = questionColumns[0].id
+    const columnId = questionColumns[0].id;
 
     const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+
+    useEffect(() => {
+        if (isBulletinVoted) {
+            setCheckboxChecked(false);
+        }
+    }, [isBulletinVoted])
 
     function onCheckboxClick() {
         if (isCheckboxChecked) {
@@ -30,16 +34,25 @@ const CallVotingList = (props) => {
 
     return (
         <div className='www'>
-            <label className='checkbox_container'>
-                <input
-                    type="checkbox"
-                    name={rowId}
-                    checked={isCheckboxChecked}
-                    onChange={onCheckboxClick}
-                />
-                <span className='checkmark-row' />
-            </label>
-            <span className='call-voting-list__name-answer'>{nameAnswer}</span>
+            {isBulletinVoted ? (
+                <div className='call-voting-list__blue-square-container'>
+                    <div className="call-voting-list__blue-square" />
+                    <span className='call-voting-list__text'>{nameAnswer}</span>
+                </div>
+            ) : (
+                <>
+                    <label className='checkbox_container'>
+                        <input
+                            type="checkbox"
+                            name={rowId}
+                            checked={isCheckboxChecked}
+                            onChange={onCheckboxClick}
+                        />
+                        <span className='checkmark-row' />
+                    </label>
+                    <span className='call-voting-list__name-answer'>{nameAnswer}</span>
+                </>
+            )}
         </div>
     )
 }
