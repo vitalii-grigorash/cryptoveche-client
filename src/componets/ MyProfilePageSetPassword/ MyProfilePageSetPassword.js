@@ -2,10 +2,16 @@ import React, {useEffect, useRef, useState} from "react";
 import './ MyProfilePageSetPassword.css';
 import icon_show_password from '../../img/Auth_show_pass_icon.svg';
 import icon_hide_password from '../../img/Auth_hidden_pass.svg';
+import * as MyProfile from "../../Api/MyProfile";
 
 
 
-const MyProfilePageSetPassword = () => {
+const MyProfilePageSetPassword = (props) => {
+
+    const {
+        requestHelper,
+        userId
+    } = props;
 
     const [newPass, setNewPass] = useState('')
     const [repeatNewPass, setRepeatNewPass] = useState('')
@@ -17,6 +23,7 @@ const MyProfilePageSetPassword = () => {
     const [showIconRepeatPass, setShowIconRepeatPass] = useState(false)
     const [activeBtn, setActiveBtn] = useState(true)
     const btnChangeColor = useRef(null)
+    const [activeSuccessPass, setActiveSuccessPass] = useState(false)
 
 
     const showHiddenPass = () => {
@@ -65,10 +72,12 @@ const MyProfilePageSetPassword = () => {
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';
-            setErrorPass('')
         }
     },[newPass, repeatNewPass]);
 
+    let newPassItem = {
+        password: newPass
+    }
 
     function onSaveChangePass() {
         const passRegExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*,.:;+<>{}?\\[\]/_-]{8,64}$/
@@ -78,10 +87,17 @@ const MyProfilePageSetPassword = () => {
         else if (passRegExp.test(newPass) === false) {
             setErrorPass('Пароль должен содержать от 8 до 64 символов, состоять из латинских букв верхнего, нижнего регистра и цифр');
         } else {
-            setErrorPass('');
-            console.log('Complete')
-            console.log(activeBtn)
+            const body = {
+                userNameId: userId,
+                userNameFields: newPassItem
+            }
+            requestHelper(MyProfile.changeUserName, body)
+                .then((data) => {
+                    console.log(data);
+                })
+            setErrorPass('Пароль успешно изменен');
             setActiveBtn(true)
+            setActiveSuccessPass(true)
             setNewPass('')
             setRepeatNewPass('')
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
@@ -90,6 +106,17 @@ const MyProfilePageSetPassword = () => {
         }
     }
 
+    setTimeout(() => {
+        if (activeSuccessPass === true) {
+            setActiveSuccessPass(false)
+        }
+    }, 2000)
+
+    setTimeout(() => {
+        if(errorPass !== '') {
+            setErrorPass('')
+        }
+    }, 2000)
 
     return (
             <div className={'my-profile-page-set-pass__wrapper'}>
@@ -116,7 +143,7 @@ const MyProfilePageSetPassword = () => {
                             value={repeatNewPass}
                             onChange={e => setRepeatNewPass(e.target.value)}/>
                         <img className={showIconRepeatPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeRepeatNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenRepeatNewPass()}}/>
-                        <span className={'my-profile-page-set-pass__error-message'}>{errorPass}</span>
+                        <span className={activeSuccessPass ? 'my-profile-page-set-pass__success-message' : 'my-profile-page-set-pass__error-message'}>{errorPass}</span>
                     </div>
                 </div>
                 <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {onSaveChangePass()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
