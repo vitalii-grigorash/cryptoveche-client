@@ -1,59 +1,78 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import './CallVotingPageQuestionCardCheckBox.css';
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import CallVotingPageVoteButtonCheckBox from "../CallVotingPageVoteButtonCheckBox/CallVotingPageVoteButtonCheckBox";
-
-
+import CallVotingNameRows from './CallVotingNameRows/CallVotingNameRows';
 
 const CallVotingPageQuestionCardCheckBox = (props) => {
 
     const {
-        questionName,
-        rulesAnswer,
-        answerSelected,
-        columnsGrid,
-        rowsGrid,
+        uestionTitle,
+        columns,
+        rows,
+        question
     } = props;
 
-    const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
-    const [activeViewListCheck, setActiveViewListCheck] = useState(false)
+    const [isListView, setListView] = useState(false);
 
+    useEffect(() => {
+        if (columns.length > 4) {
+            setListView(true);
+        }
+    }, [columns.length])
 
     return (
-                <div className={'call-voting-page-question-card-check__wrapper'}>
-                    <div className={'call-voting-page-question-card-check__title'}>
-                        <h3>{questionName}</h3>
-                        <div className={'call-voting-page-question-card-check__select-answer'}>
-                            <span>Выберите один из вариантов ответа напротив каждого кандидата<p>{rulesAnswer}</p></span>
-                            <span>{answerSelected}</span></div>
-                        <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'}/>
+        <div className={'call-voting-page-question-card-check__wrapper'}>
+            <div className={'call-voting-page-question-card-check__title'}>
+                <h3>{uestionTitle}</h3>
+                <div className={'call-voting-page-question-card-check__select-answer'}>
+                    <span>
+                        Выберите один из вариантов ответа напротив каждого кандидата
+                        {question.is_required_grid_rows && (
+                            <p>Все строки обязательны для заполнения</p>
+                        )}
+                    </span>
+                    <span>Выбрано: 0</span></div>
+                <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+            </div>
+            {!isListView ? (
+                <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
+                    <div className={'select-checkboxes-block__name-columns'}>
+                        <div className={'name-columns__width-column'} />
+                        {columns.map(el => (
+                            <p key={el.id} className={'call-voting-name-columns__wrapper'}>{el.value}</p>
+                        ))}
                     </div>
-                    {activeViewTableCheck &&
-                        <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
-                            <table>
-                                <thead>
-                                <tr className={'select-checkboxes-block__name-columns'}>
-                                    <th className={'name-columns__width-column'}></th>
-                                    {columnsGrid}
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    {rowsGrid}
-                                </tbody>
-                            </table>
-                        </div>
-                    }
-                    {activeViewListCheck &&
-                        <div>
-                            <table>
-                                <tbody>
-                                {rowsGrid}
-                                </tbody>
-                            </table>
-                        </div>
-                    }
-                    <CallVotingPageVoteButtonCheckBox/>
+                    <div>
+                        {rows.map(row => (
+                            <CallVotingNameRows
+                                key={row.id}
+                                rowId={row.id}
+                                rowValue={row.value}
+                                question={question}
+                                columns={question.options.columns}
+                                isListView={isListView}
+                            />
+                        ))}
+                    </div>
                 </div>
+            ) : (
+                <div>
+                    {rows.map(row => (
+                        <CallVotingNameRows
+                            key={row.id}
+                            rowId={row.id}
+                            rowValue={row.value}
+                            question={question}
+                            columns={question.options.columns}
+                            isListView={isListView}
+                        />
+                    ))}
+                </div>
+            )}
+            <CallVotingPageVoteButtonCheckBox />
+        </div>
     )
 }
+
 export default CallVotingPageQuestionCardCheckBox;

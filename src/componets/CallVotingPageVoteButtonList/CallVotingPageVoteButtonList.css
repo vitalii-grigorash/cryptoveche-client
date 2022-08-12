@@ -8,7 +8,19 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    pointer-events: none;
+    cursor: default;
+}
+.call-voting-page-vote-button-list__button-active {
+    max-width: 169px;
+    max-height: 48px;
+    padding: 12px 24px 12px 24px;
+    background: #0084FE;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 .call-voting-page-vote-button-list__button.active {
     /*color: #FFFFFF;*/
@@ -34,6 +46,33 @@
 }
 .call-voting-page-revote-button-list__button.active {
     display: initial;
+}
+.call-voting-page-revote__container {
+    display: flex;
+    margin: 0 auto 0 0;
+}
+.call-voting-page-revote__button {
+    width: 177px;
+    height: 48px;
+    margin: auto 24px auto 0;
+    border: 1px solid #0084FE;
+    border-radius: 4px;
+    background: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0084FE;
+    cursor: pointer;
+}
+.call-voting-page-revote__success-text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4ED4A9;
+    opacity: 0.9;
+    margin: auto auto auto 0;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 670px) {

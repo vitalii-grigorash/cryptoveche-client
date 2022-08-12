@@ -1,33 +1,60 @@
-import React, {useContext, useState} from "react";
+import React, { useEffect, useState } from "react";
 import './CallVotingList.css';
-import {CallVotingListContext} from "../../../contexts/CallVotingListContext";
 
+const CallVotingList = (props) => {
 
+    const {
+        rowId,
+        nameAnswer,
+        addAnswerToArray,
+        removeAnswerFromArray,
+        questionColumns,
+        isBulletinVoted
+    } = props;
 
-const CallVotingList = ({nameAnswer, onClickCheck, checkListId}) => {
+    const columnId = questionColumns[0].id;
 
-    const setCount = useContext(CallVotingListContext)
+    const [isCheckboxChecked, setCheckboxChecked] = useState(false);
 
-    // console.log(Object.entries(checkCount).length)
+    useEffect(() => {
+        if (isBulletinVoted) {
+            setCheckboxChecked(false);
+        }
+    }, [isBulletinVoted])
 
-    function onClickCheck () {
-        console.log(checkListId)
-        console.log(nameAnswer)
+    function onCheckboxClick() {
+        if (isCheckboxChecked) {
+            setCheckboxChecked(false);
+            removeAnswerFromArray(rowId);
+        } else {
+            setCheckboxChecked(true);
+            addAnswerToArray(rowId, columnId);
+        }
     }
-    const [getIdAnswer, setGetIdAnswer] = useState({
-        id: checkListId
-    })
-
-  // console.log(checkCount)
 
     return (
-                <div className={'www'}>
-                    <label className={'checkbox_container'}>
-                        <input onClick={setCount.changeCountAnswer}  type="checkbox" name={checkListId}/>
-                        <span className={'checkmark-row'}/>
-                    </label>
-                    <span className={'call-voting-list__name-answer'}>{nameAnswer}</span>
+        <div className='www'>
+            {isBulletinVoted ? (
+                <div className='call-voting-list__blue-square-container'>
+                    <div className="call-voting-list__blue-square" />
+                    <span className='call-voting-list__text'>{nameAnswer}</span>
                 </div>
+            ) : (
+                <>
+                    <label className='checkbox_container'>
+                        <input
+                            type="checkbox"
+                            name={rowId}
+                            checked={isCheckboxChecked}
+                            onChange={onCheckboxClick}
+                        />
+                        <span className='checkmark-row' />
+                    </label>
+                    <span className='call-voting-list__name-answer'>{nameAnswer}</span>
+                </>
+            )}
+        </div>
     )
 }
+
 export default CallVotingList;
