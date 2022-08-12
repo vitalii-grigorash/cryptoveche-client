@@ -1,39 +1,31 @@
-import React, {useState} from "react";
+import React from "react";
 import './CallVotingCheckBox.css';
 
-const CallVotingCheckBox = ({onGetIdCheck, activeRadioCheck, checkColumn, checkIdRow, checkRow}) => {
+const CallVotingCheckBox = (props) => {
 
-    const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
-    const [activeViewListCheck, setActiveViewListCheck] = useState(false)
+    const {
+        id,
+        question,
+        isListView,
+        rowId
+    } = props;
 
-
-    onGetIdCheck = function () {
-        console.log(checkIdRow)
-        console.log(checkColumn)
-        console.log(checkRow)
+    function onGetIdCheck() {
+        console.log(`id строки ${rowId}`);
+        console.log(`id столбца ${id}`);
     }
 
     return (
-            <>
-                {activeViewTableCheck &&
-                    <td className={'call-voting-checkbox__wrapper'}>
-                        <label
-                            className={activeRadioCheck ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
-                            <input onClick={onGetIdCheck} type="checkbox" value={checkRow} name={checkColumn} id={checkIdRow}/>
-                            <span
-                                className={activeRadioCheck ? 'call-voting-checkbox-radio__checkmark' : 'call-voting-checkbox__checkmark'}/>
-                        </label>
-                    </td>
-                }
-                {activeViewListCheck &&
-                    <span className={'call-voting-checkbox__wrapper-view-list'}>
-                        <label className={activeRadioCheck ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
-                            <input type="checkbox" value="yes"/>
-                            <span className={activeRadioCheck ? 'call-voting-checkbox-radio__checkmark call-voting-checkbox__view-left' : 'call-voting-checkbox__checkmark call-voting-checkbox__view-left'}/>
-                        </label>
-                    </span>
-                }
-            </>
+        <div className={!isListView ? 'call-voting-checkbox__wrapper' : 'call-voting-checkbox__wrapper-view-list'}>
+            <label className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
+                <input onClick={onGetIdCheck} type="checkbox" />
+                {!isListView ? (
+                    <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark' : 'call-voting-checkbox__checkmark'} />
+                ) : (
+                    <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark call-voting-checkbox__view-left' : 'call-voting-checkbox__checkmark call-voting-checkbox__view-left'} />
+                )}
+            </label>
+        </div>
     )
 }
 

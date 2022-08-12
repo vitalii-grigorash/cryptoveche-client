@@ -1,35 +1,53 @@
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 import './CallVotingPageVoteButtonList.css';
 
-const CallVotingPageVoteButtonList = ({activeVoteBtn,  activeRevoteBtn}) => {
+const CallVotingPageVoteButtonList = (props) => {
 
-
-
-    // let countSelectAnswer = currentSelectAnswer;
-    const [enableVoting, setEnableVoting] = useState(false)
-    const [enableRevoting, setEnableRevoting] = useState(true)
-    const changeColorBtn = useRef(null)
-
-    // const currentCount = React.useContext()
-
-
+    const {
+        sendVote,
+        isReVoting,
+        isButtonActive,
+        isBulletinVoted,
+        onReVoteClick
+    } = props;
 
     return (
-            <>
-                {enableRevoting && (
-                    <>
-                        <button ref={changeColorBtn} className={activeVoteBtn ? 'call-voting-page-vote-button-list__button active' :'call-voting-page-vote-button-list__button'}>Проголосовать</button>
-                        <button className={activeRevoteBtn ? 'call-voting-page-revote-button-list__button active' : 'call-voting-page-revote-button-list__button'}>Переголосовать</button>
-                    </>
-                )
-                }
-                {enableVoting && (
-                    <>
-                    <button ref={changeColorBtn} className={activeVoteBtn ? 'call-voting-page-vote-button-list__button active' :'call-voting-page-vote-button-list__button'}>Проголосовать</button>
-                    </>
-                )
-                }
-            </>
+        <>
+            {isBulletinVoted ? (
+                <div className="call-voting-page-revote__container">
+                    {isReVoting && (
+                        <button
+                            type="button"
+                            className='call-voting-page-revote__button'
+                            onClick={onReVoteClick}
+                        >
+                            Переголосовать
+                        </button>
+                    )}
+                    <p className="call-voting-page-revote__success-text">Ваш бюллетень учтен!</p>
+                </div>
+            ) : (
+                <>
+                    {isButtonActive ? (
+                        <button
+                            type="button"
+                            onClick={sendVote}
+                            className='call-voting-page-vote-button-list__button-active'
+                        >
+                            Проголосовать
+                        </button>
+                    ) : (
+                        <button
+                            type="button"
+                            className='call-voting-page-vote-button-list__button'
+                        >
+                            Проголосовать
+                        </button>
+                    )}
+                </>
+            )}
+        </>
     )
 }
+
 export default CallVotingPageVoteButtonList;
