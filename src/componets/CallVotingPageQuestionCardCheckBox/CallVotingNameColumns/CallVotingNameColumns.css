@@ -1,12 +1,11 @@
 .call-voting-name-columns__wrapper {
     width: 140px;
     word-break: break-word;
+    text-align: center;
 }
 .call-voting-name-columns__wrapper-active-view-list {
     display: flex;
-    flex-direction: row;
     gap: 8px;
-    width: 100%;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {

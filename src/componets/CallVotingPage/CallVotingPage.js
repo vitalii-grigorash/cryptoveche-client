@@ -9,9 +9,6 @@ import CallVotingPageQuestionCardList from "../CallVotingPageQuestionCardList/Ca
 import CallVotingPageQuestionCardCheckBox
     from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
 import { useNavigate } from "react-router-dom";
-import CallVotingNameColumns from "../CallVotingPageQuestionCardCheckBox/CallVotingNameColumns/CallVotingNameColumns";
-import CallVotingNameRows from "../CallVotingPageQuestionCardCheckBox/CallVotingNameRows/CallVotingNameRows";
-import CallVotingCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVotingCheckBox/CallVotingCheckBox";
 import * as Events from '../../Api/Events';
 
 const CallVotingPage = (props) => {
@@ -33,16 +30,7 @@ const CallVotingPage = (props) => {
     }
 
     function templateGrid(questions) {
-        const filteredQuestions = questions
-            .filter(e => e.template === 'grid' || e.template === 'radio_grid')
-            .map(obj => {
-                if (obj.template === 'radio_grid') {
-                    return { ...obj, activeRadioCheck: true }
-                } else if (obj.is_required_grid_rows === true) {
-                    return { ...obj, ruleText: 'Все строки обязательны для заполнения' }
-                }
-                return obj;
-            })
+        const filteredQuestions = questions.filter(e => e.template === 'grid' || e.template === 'radio_grid');
         setQuestionsTemplateGrid(filteredQuestions);
     }
 
@@ -98,44 +86,15 @@ const CallVotingPage = (props) => {
                 }))
             }
             {
-                questionsTemplateGrid.map((item => {
+                questionsTemplateGrid.map((question => {
                     return (
                         <CallVotingPageQuestionCardCheckBox
-                            key={item.id}
-                            id={item.id}
-                            questionName={item.title}
-                            rulesAnswer={item.ruleText}
-                            answerSelected={'Выбрано: 0'}
-                            columnsGrid={item.options.columns.map(el => {
-                                return <CallVotingNameColumns
-                                    key={el.id}
-                                    nameColumnAnswer={el.value}
-                                />
-                            })}
-                            rowsGrid={item.options.rows.map(el => {
-                                return <CallVotingNameRows
-                                    key={el.id}
-                                    nameRowAnswer={el.value}
-                                    checkGridId={item.options.columns.map(elem => {
-                                        return (
-                                            <CallVotingCheckBox
-                                                key={elem.id}
-                                                checkIdRow={elem.id}
-                                                checkColumn={elem.value}
-                                                checkRow={elem.value}
-                                                activeRadioCheck={item.activeRadioCheck}
-                                            />
-                                        )
-                                    })}
-                                    columnGrid={item.options.columns.map(el => {
-                                        return <CallVotingNameColumns
-                                            key={el.id}
-                                            nameColumnAnswer={el.value}
-                                            activeRadioCheck={el.activeRadioCheck}
-                                        />
-                                    })}
-                                />
-                            })} />
+                            key={question.id}
+                            questionTitle={question.title}
+                            columns={question.options.columns}
+                            rows={question.options.rows}
+                            question={question}
+                        />
                     )
                 }))
             }
