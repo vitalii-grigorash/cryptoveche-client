@@ -2,11 +2,12 @@
 .status-block__current-status {
     display: flex;
     flex-direction: column;
-    padding: 0 36px 0 0;
+    padding: 0 32px 0 0;
     gap: 8px;
     font-size: 12px;
     border-right: 1px rgba(54, 59, 77, 0.2) solid;
     justify-content: center;
+    height: 56px;
 }
 .current-status__registration-and-votes {
     display: flex;
@@ -71,27 +72,31 @@
     .status-block__current-status {
         padding-right: 6px;
         gap: 5px;
+        height: 37px;
     }
     .current-status__types-vote {
         gap: 4px;
         padding-right: 5px;
     }
     .current-status__registration-in-progress, .current-status__types-vote {
-        padding: 5px 10px 5px 20px;
+        padding: 5px 12px 5px 20px;
         font-size: 8px;
     }
 
 }
-/*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 590px) {
+/*------Адаптивная версия(600px)--------------------------------------------------------------------------------------*/
+@media (max-width: 600px) {
     .status-block__current-status {
         flex-direction: row;
         justify-content: flex-start;
         border: none;
         gap: 10px;
+        font-size: 12px;
     }
     .current-status__registration-in-progress, .current-status__types-vote {
         font-size: 12px;
     }
-
+    .status-block__current-status {
+        padding: 7px 0 6px 2px;
+    }
 }
