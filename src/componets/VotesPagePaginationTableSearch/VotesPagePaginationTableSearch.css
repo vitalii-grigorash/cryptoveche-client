@@ -2,9 +2,8 @@
 .navigation-menu__pagination-search-block {
     display: flex;
     flex-direction: row;
-     justify-content: end;
+    justify-content: end;
     align-items: center;
-    gap: 32px;
     font-size: 16px;
     /*color: rgba(54, 59, 77, 0.9);*/
     padding: 20px 0 32px 0;
@@ -18,16 +17,26 @@
     font-size: 16px;
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
-    border-right: 1px rgba(54, 59, 77, 0.3) solid;
-    padding-right: 20px;
+    padding-right: 32px;
     height: 24px;
-    /*opacity: 60%;*/
     letter-spacing: 0.0025em;
     cursor: pointer;
     position: relative;
 }
 .pagination-search-block__text {
     margin: 0 6px 0 0;
+}
+.pagination-search-block__arrow-count-page {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /*gap: 12px;*/
+    padding: 4px 8px 4px 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(54, 59, 77, 0.2);
+    width: 68px;
+
 }
 .pagination-search-block__arrow {
     background-image: url('../../img/options-dropdown-arrow.svg');
@@ -41,9 +50,9 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 50px;
-    top: 24px;
-    right: 10px;
+    width: 68px;
+    top: 32px;
+    right: 32px;
     border: 0.5px solid #EEEEEE;
     box-shadow: 0 4px 8px rgba(54, 59, 77, 0.1);
     cursor: default;
@@ -52,8 +61,7 @@
 }
 .pagination-search-block__option-container {
     display: flex;
-    height: 30px;
-    /*border-bottom: 1px rgba(54, 59, 77, 0.3) solid;*/
+    height: 32px;
     background: #FFFFFF;
     cursor: pointer;
 }
@@ -64,38 +72,63 @@
     background: #cfcdcd;
 }
 .pagination-search-block__option {
-    margin: auto;
+    padding: 4px 40px 4px 8px;
 }
 /*------Cтилизация для переключения страниц--------------------------------------------------------------------------*/
 .pagination-search-block__change-page {
     display: flex;
     align-items: center;
-    gap: 8px;
-    opacity: 60%;
-    border-right: 1px rgba(54, 59, 77, 0.3) solid;
-    padding-right: 20px;
+    gap: 40px;
+    padding-right: 40px;
     height: 24px;
 }
 .pagination-search-block__change-page i {
     font-weight: 100;
 }
 .pagination-search-block__change-page img {
-    width: 15px;
-    height: 15px;
     cursor: pointer;
 }
-
+.change-page__rows {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.change-page__counter-page {
+    width: 62px;
+    text-align: center;
+}
 /*------Cтилизация для поиска по таблице-----------------------------------------------------------------------------*/
 .pagination-search-block__search-table {
     display: flex;
     gap: 12px;
     opacity: 60%;
+    position: relative;
 }
 .pagination-search-block__search-table input {
     outline: none;
+    background-color: #FFFFFF;
+    height: 40px;
+    box-shadow: 0 4px 8px rgba(101, 105, 117, 0.05);
+    border-radius: 8px;
+    width: 432px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(54, 59, 77, 0.9);
+    padding: 10px 0 10px 56px;
+}
+.search-table__search-table-icon {
+    position: absolute;
+    top: 12px;
+    left: 30px;
+    opacity: 0.5;
 }
 
 /*------Адаптивная версия--------------------------------------------------------------------------------------------*/
+@media (max-width: 1190px) {
+    .pagination-search-block__search-table input {
+        width: 300px;
+    }
+}
 @media (max-width: 1160px) {
     .navigation-menu__pagination-search-block {
         font-size: 12px;
@@ -107,11 +140,36 @@
     .pagination-search-block__search-table input {
         font-size: 12px;
     }
+    .pagination-search-block__show-page {
+        padding-right: 16px;
+    }
+    .pagination-search-block__change-page {
+        padding-right: 24px;
+    }
+    .pagination-search-block__options-container {
+        right: 16px;
+    }
+    .pagination-search-block__arrow-count-page {
+        font-size: 12px;
+    }
+    .pagination-search-block__option-container {
+        font-size: 12px;
+    }
 }
-@media (max-width: 850px) {
+@media (max-width: 1045px) {
+    .pagination-search-block__search-table input {
+        width: 250px;
+    }
+    .change-page__rows {
+        gap: 30px;
+    }
+    .pagination-search-block__change-page {
+        gap: 20px;
+    }
+}
+@media (max-width: 925px) {
     .navigation-menu__pagination-search-block {
        display: none;
     }
-
 }
 

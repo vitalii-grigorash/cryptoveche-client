@@ -57,8 +57,10 @@ const VotesPagePaginationTableSearch = (props) => {
     return (
         <div className='navigation-menu__pagination-search-block'>
             <div className='pagination-search-block__show-page' onClick={handleShowOptionsContainer}>
-                <p className="pagination-search-block__text">Показать {selectedResultsShow}</p>
-                <div className="pagination-search-block__arrow" />
+                <p className="pagination-search-block__text">Показать</p>
+                <div className="pagination-search-block__arrow-count-page">
+                    {selectedResultsShow} <div className="pagination-search-block__arrow" />
+                </div>
                 {isOptionsActive && (
                     <div className="pagination-search-block__options-container">
                         <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(5)}>
@@ -67,31 +69,32 @@ const VotesPagePaginationTableSearch = (props) => {
                         <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(10)}>
                             <p className="pagination-search-block__option">10</p>
                         </div>
-                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(20)}>
-                            <p className="pagination-search-block__option">20</p>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(50)}>
+                            <p className="pagination-search-block__option">50</p>
                         </div>
-                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(30)}>
-                            <p className="pagination-search-block__option">30</p>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(100)}>
+                            <p className="pagination-search-block__option">100</p>
                         </div>
-                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(40)}>
-                            <p className="pagination-search-block__option">40</p>
+                        <div className="pagination-search-block__option-container" onClick={() => onChoiceClick(200)}>
+                            <p className="pagination-search-block__option">200</p>
                         </div>
                     </div>
                 )}
             </div>
-
             <div className='pagination-search-block__change-page'>
-                <span>{pageCount} из {allPages}</span>
-                <img alt='стрелка переключатель страниц' src={votes_page_change_row_left} onClick={showPrevResults} />
-                <img alt='стрелка переключатель страниц' src={votes_page_change_row_right} onClick={showNextResults} />
+                <span className="change-page__counter-page">{pageCount} из {allPages}</span>
+                <span className="change-page__rows">
+                    <img alt='стрелка переключатель страниц' src={votes_page_change_row_left} onClick={showPrevResults} />
+                    <img alt='стрелка переключатель страниц' src={votes_page_change_row_right} onClick={showNextResults} />
+                </span>
             </div>
             <div className='pagination-search-block__search-table'>
-                <img alt='иконка поиска' src={votes_page_search_icon} />
+                <img className='search-table__search-table-icon' alt='иконка поиска' src={votes_page_search_icon} />
                 {btnActiveVotes ? (
                     <input
                         type="text"
                         name="searchInput"
-                        placeholder='Поиск по таблице'
+                        placeholder='Поиск'
                         value={eventsSearchActive.value}
                         onChange={eventsSearchActive.onChange}
                     />
@@ -99,7 +102,7 @@ const VotesPagePaginationTableSearch = (props) => {
                     <input
                         type="text"
                         name="searchInput"
-                        placeholder='Поиск по таблице'
+                        placeholder='Поиск'
                         value={eventsSearchArchive.value}
                         onChange={eventsSearchArchive.onChange}
                     />

@@ -18,6 +18,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
+
 function App() {
 
     const navigate = useNavigate();
@@ -346,7 +347,8 @@ function App() {
                                     handleCurrentEvents={handleCurrentEvents}
                                 />}
                             />
-                            <Route exact path='/my-profile' element={<MyProfilePage />} />
+                            <Route exact path='/my-profile' element={<MyProfilePage
+                                requestHelper={requestHelper} />} />
                             <Route exact path='/details-vote'
                                 element={<DetailsVotesPage
                                     requestHelper={requestHelper}

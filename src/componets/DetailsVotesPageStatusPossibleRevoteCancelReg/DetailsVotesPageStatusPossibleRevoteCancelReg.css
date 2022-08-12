@@ -3,9 +3,8 @@
     display: flex;
     flex-direction: column;
     border-left: 1px solid rgba(54, 59, 77, 0.2);
-    height: 58px;
-    gap: 4px;
-    padding: 2px 0 0 24px;
+    gap: 8px;
+    padding: 0 32px 0 32px;
 }
 /*-----Стилизация div  элементами-------------------------------------------------------------------------------------*/
 .details-votes-page-status-possible-revote-cancelreg__possible-revote {
@@ -24,19 +23,19 @@
 @media (max-width: 890px) {
     .details-votes-page-status-possible-revote-cancelreg__wrapper {
         justify-content: center;
-        padding: 0 0 0 12px;
-        height: 56px;
+        padding: 0 0 0 6px;
+        gap: 4px;
+        /*height: 37px;*/
     }
     .details-votes-page-status-possible-revote-cancelreg__possible-revote {
         font-size: 10px;
+        white-space: nowrap;
     }
 }
-
-@media (max-width: 890px) {
+@media (max-width: 830px) {
     .details-votes-page-status-possible-revote-cancelreg__wrapper {
-        justify-content: center;
-        padding: 5px 0 0 12px;
-        height: 45px;
+
+        height: 37px;
     }
 }
 @media (max-width: 600px) {
@@ -47,6 +46,7 @@
     }
     .details-votes-page-status-possible-revote-cancelreg__possible-revote {
         font-size: 14px;
+
     }
 }
 

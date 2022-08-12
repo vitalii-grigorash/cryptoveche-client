@@ -1,9 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './HeaderSettingsModal.css';
 import header_modal_plus_icon from '../../../img/HeaderSettingsModal_icon_plus.svg';
 // import header_modal_minus_icon from '../../../img/HeaderSettingsModal_icon_minus.svg.svg';
 
-const HeaderSettingsModal = ({active}) => {
+const HeaderSettingsModal = ({active, setActive}) => {
+
+
+    useOnClickOutsideSettingsModal(active, () => setActive(false));
+
+    function useOnClickOutsideSettingsModal(active, handler) {
+        useEffect(() => {
+            const listener = (e) => {
+                if (!active) {
+                    return;
+                }
+                handler(e);
+            };
+            document.addEventListener('click', listener);
+            return function () {
+                document.removeEventListener('click', listener);
+            };
+        }, [active, handler])
+    }
 
     return (
             <div className={active ? 'header-settings-modal__wrapper active' : 'header-settings-modal__wrapper'}>
