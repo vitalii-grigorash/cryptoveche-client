@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './CallVotingCheckBox.css';
 
 const CallVotingCheckBox = (props) => {
@@ -7,18 +7,32 @@ const CallVotingCheckBox = (props) => {
         id,
         question,
         isListView,
-        rowId
+        rowId,
+        addAnswerToArray,
+        removeAnswerFromArray
     } = props;
 
-    function onGetIdCheck() {
-        console.log(`id строки ${rowId}`);
-        console.log(`id столбца ${id}`);
+    const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+
+    function onCheckboxClick() {
+        if (isCheckboxChecked) {
+            setCheckboxChecked(false);
+            removeAnswerFromArray(rowId);
+        } else {
+            setCheckboxChecked(true);
+            addAnswerToArray(rowId, id);
+        }
     }
 
     return (
         <div className={!isListView ? 'call-voting-checkbox__wrapper' : 'call-voting-checkbox__wrapper-view-list'}>
             <label className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
-                <input onClick={onGetIdCheck} type="checkbox" />
+                <input
+                    type="checkbox"
+                    name={rowId}
+                    checked={isCheckboxChecked}
+                    onChange={onCheckboxClick}
+                />
                 {!isListView ? (
                     <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark' : 'call-voting-checkbox__checkmark'} />
                 ) : (

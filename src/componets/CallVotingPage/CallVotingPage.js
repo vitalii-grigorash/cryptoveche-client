@@ -94,6 +94,8 @@ const CallVotingPage = (props) => {
                             columns={question.options.columns}
                             rows={question.options.rows}
                             question={question}
+                            eventId={currentEventData.id}
+                            requestHelper={requestHelper}
                         />
                     )
                 }))

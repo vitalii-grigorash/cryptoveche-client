@@ -1,13 +1,15 @@
 import React from "react";
 import './CallVotingPageVoteButtonCheckBox.css';
 
-const CallVotingPageVoteButtonCheckBox = () => {
+const CallVotingPageVoteButtonCheckBox = (props) => {
 
-
+    const {
+        sendVote
+    } = props;
 
     return (
         <>
-            <button className={'call-voting-page-vote-button-check__button'}>Проголосовать</button>
+            <button className={'call-voting-page-vote-button-check__button'} onClick={sendVote}>Проголосовать</button>
         </>
     )
 }
