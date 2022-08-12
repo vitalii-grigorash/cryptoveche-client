@@ -16,6 +16,9 @@ const MyProfilePagePersonalData = (props) => {
     const [secondName, setSecondName] = useState('')
     const [activeBtn, setActiveBtn] = useState(false)
     const btnChangeColor = useRef(null)
+    const borderErrorFirstName = useRef(null)
+    const borderErrorLastName = useRef(null)
+    const borderErrorSecondName = useRef(null)
     const [validFirstName, setValidFirstName] = useState(false)
     const [validLastName, setValidLastName] = useState(false)
     const [validSecondName, setValidSecondName] = useState(false)
@@ -36,33 +39,46 @@ const MyProfilePagePersonalData = (props) => {
         }
     }, [firstName, lastName, secondName]);
 
+
     const lastNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setLastName(e.target.value)
-        if (!nameRegExp.test(e.target.value)) {
-            setValidLastName(true)
-        } else {
+        if (e.target.value === '') {
             setValidLastName(false)
+        } else {
+            if (!nameRegExp.test(e.target.value)) {
+                setValidLastName(true)
+            } else {
+                setValidLastName(false)
+            }
         }
     }
 
     const firstNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setFirstName(e.target.value)
-        if (!nameRegExp.test(e.target.value)) {
-            setValidFirstName(true)
-        } else {
+        if (e.target.value === '') {
             setValidFirstName(false)
+        } else  {
+            if (!nameRegExp.test(e.target.value)) {
+                setValidFirstName(true)
+            } else {
+                setValidFirstName(false)
+            }
         }
     }
 
     const secondNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setSecondName(e.target.value)
-        if (!nameRegExp.test(e.target.value)) {
-            setValidSecondName(true)
-        } else {
+        if (e.target.value === '') {
             setValidSecondName(false)
+        } else {
+            if (!nameRegExp.test(e.target.value)) {
+                setValidSecondName(true)
+            } else {
+                setValidSecondName(false)
+            }
         }
     }
 
@@ -74,8 +90,11 @@ const MyProfilePagePersonalData = (props) => {
     }
 
     const updateUserName = () => {
-        if (validLastName || validFirstName || validSecondName === true) {
+        if (validLastName === true || validFirstName === true || validSecondName === true) {
             setErrorFields('Поля заполнены неккоректно')
+            borderErrorFirstName.current.style.border = '1px red solid';
+            borderErrorLastName.current.style.border = '1px red solid';
+            borderErrorSecondName.current.style.border = '1px red solid';
             console.log(validLastName, validFirstName, validLastName)
         } else {
             const body = {
@@ -90,6 +109,9 @@ const MyProfilePagePersonalData = (props) => {
             setActiveBtn(true)
             setActiveSuccess(true)
             setErrorFields('Данные успешно изменены')
+            borderErrorFirstName.current.style.border = '1px #4ED4A9 solid';
+            borderErrorLastName.current.style.border = '1px #4ED4A9 solid';
+            borderErrorSecondName.current.style.border = '1px #4ED4A9 solid';
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';
@@ -104,9 +126,11 @@ const MyProfilePagePersonalData = (props) => {
         if (activeSuccess === true) {
             setActiveSuccess(false)
             setErrorFields('')
+            borderErrorFirstName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+            borderErrorLastName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+            borderErrorSecondName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
         }
-    }, 1000)
-
+    }, 2000)
 
     return (
         <div className={'my-profile-page-personal-data__wrapper'}>
@@ -116,6 +140,7 @@ const MyProfilePagePersonalData = (props) => {
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Фамилия</label>
                     <input
+                        ref={borderErrorLastName}
                         type={"text"}
                         value={lastName}
                         onChange={e => lastNameHandler(e)} />
@@ -123,6 +148,7 @@ const MyProfilePagePersonalData = (props) => {
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Имя</label>
                     <input
+                        ref={borderErrorFirstName}
                         type={"text"}
                         value={firstName}
                         onChange={e => firstNameHandler(e)} />
@@ -130,6 +156,7 @@ const MyProfilePagePersonalData = (props) => {
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Отчетсво</label>
                     <input
+                        ref={borderErrorSecondName}
                         type={"text"}
                         value={secondName}
                         onChange={e => secondNameHandler(e)} />

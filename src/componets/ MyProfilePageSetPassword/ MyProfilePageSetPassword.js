@@ -23,6 +23,8 @@ const MyProfilePageSetPassword = (props) => {
     const [showIconRepeatPass, setShowIconRepeatPass] = useState(false)
     const [activeBtn, setActiveBtn] = useState(true)
     const btnChangeColor = useRef(null)
+    const borderRefNewPass = useRef(null)
+    const borderRefRepeatPass = useRef(null)
     const [activeSuccessPass, setActiveSuccessPass] = useState(false)
 
 
@@ -83,9 +85,13 @@ const MyProfilePageSetPassword = (props) => {
         const passRegExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*,.:;+<>{}?\\[\]/_-]{8,64}$/
         if (newPass !== repeatNewPass) {
             setErrorPass('Пароли не совпадают');
+            borderRefNewPass.current.style.border = '1px red solid'
+            borderRefRepeatPass.current.style.border = '1px red solid'
         }
         else if (passRegExp.test(newPass) === false) {
             setErrorPass('Пароль должен содержать от 8 до 64 символов, состоять из латинских букв верхнего, нижнего регистра и цифр');
+            borderRefNewPass.current.style.border = '1px red solid'
+            borderRefRepeatPass.current.style.border = '1px red solid'
         } else {
             const body = {
                 userNameId: userId,
@@ -100,23 +106,24 @@ const MyProfilePageSetPassword = (props) => {
             setActiveSuccessPass(true)
             setNewPass('')
             setRepeatNewPass('')
-            btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
-            btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
-            btnChangeColor.current.style.cursor = 'initial';
+            borderRefNewPass.current.style.border = '1px #4ED4A9 solid'
+            borderRefRepeatPass.current.style.border = '1px #4ED4A9 solid'
+            btnChangeColor.current.style = { background: 'rgba(54, 59, 77, 0.08)',
+                                             color: 'rgba(54, 59, 77, 0.35)',
+                                             cursor: 'initial'}
+
         }
     }
 
     setTimeout(() => {
         if (activeSuccessPass === true) {
             setActiveSuccessPass(false)
+            setErrorPass('')
+            borderRefNewPass.current.style.border = '1px rgba(54, 59, 77, 0.3) solid'
+            borderRefRepeatPass.current.style.border = '1px rgba(54, 59, 77, 0.3) solid'
         }
     }, 2000)
 
-    setTimeout(() => {
-        if(errorPass !== '') {
-            setErrorPass('')
-        }
-    }, 2000)
 
     return (
             <div className={'my-profile-page-set-pass__wrapper'}>
@@ -125,20 +132,25 @@ const MyProfilePageSetPassword = (props) => {
                     <div className={'my-profile-page-set-pass__form-input __my-profile-page-set-pass-hidden'}>
                         <label>Пароль</label>
                         <input type={typePass}
+                               className={'form-input__pass-fields'}
                                autoComplete="new-password"/>
                         <img className={'my-profile-page-set-pass__icon-pass'} alt={'иконка скрыть пароль'} src={typePass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenPass()}}/>
                     </div>
                     <div className={'my-profile-page-set-pass__form-input'}>
                         <label>Новый пароль</label>
                         <input
+                            className={'form-input__pass-fields'}
+                            ref={borderRefNewPass}
                             type={typeNewPass}
                             value={newPass}
                             onChange={e => setNewPass(e.target.value)}/>
                         <img className={showIconNewPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenNewPass()}}/>
                     </div>
-                    <div className={'my-profile-page-set-pass__form-input '}>
+                    <div className={'my-profile-page-set-pass__form-input'}>
                         <label>Повторите новый пароль</label>
                         <input
+                            className={'form-input__pass-fields'}
+                            ref={borderRefRepeatPass}
                             type={typeRepeatNewPass}
                             value={repeatNewPass}
                             onChange={e => setRepeatNewPass(e.target.value)}/>
@@ -150,5 +162,4 @@ const MyProfilePageSetPassword = (props) => {
             </div>
     )
 }
-
 export default MyProfilePageSetPassword;

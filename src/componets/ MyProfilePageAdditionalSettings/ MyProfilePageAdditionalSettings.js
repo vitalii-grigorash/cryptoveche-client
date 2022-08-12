@@ -18,6 +18,7 @@ const MyProfilePageAdditionalSettings = (props) => {
     const [successInfo, setSuccessInfo] = useState('')
     const btnChangeColor = useRef(null)
     const [activeBtn, setActiveBtn] = useState(true)
+    const borderGreenSuccess = useRef(null)
 
     function onSelectTimeZoneClick(location) {
         setTimeZoneValue(location.VALUE);
@@ -52,6 +53,7 @@ const MyProfilePageAdditionalSettings = (props) => {
             })
         setActiveBtn(false)
         setSuccessInfo('Часовой пояс изменен')
+        borderGreenSuccess.current.style.border = '1px #4ED4A9 solid';
         btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
         btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
         btnChangeColor.current.style.cursor = 'initial';
@@ -60,15 +62,16 @@ const MyProfilePageAdditionalSettings = (props) => {
     setTimeout(() => {
         if (successInfo !== '') {
             setSuccessInfo('')
+            borderGreenSuccess.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
         }
-    }, 1000)
+    }, 2000)
 
     return (
             <div className={'my-profile-page-add-settings__wrapper'}>
                 <h3>Дополнительные настройки</h3>
                 <div className={'my-profile-page-add-settings__form'}>
                     <label>Часовой пояс</label>
-                    <div className="my-profile-form__time-zone-select-container" onClick={handleTimeZoneOptionsOpen}>
+                    <div className="my-profile-form__time-zone-select-container" ref={borderGreenSuccess} onClick={handleTimeZoneOptionsOpen}>
                         <p className="my-profile-form__time-zone-select-value">{timeZoneLocation}</p>
                         <img className="my-profile-form__time-zone-select-arrow" src={optionRow} alt="Стрелочка открытия меню" />
                         {isTimeZoneOptionsOpen && (

@@ -58,6 +58,7 @@
     }
     .materials-vote__status-icon {
         font-size: 14px;
+        padding-bottom: 8px;
     }
     .materials-vote__hidden-materials {
         display: none;
