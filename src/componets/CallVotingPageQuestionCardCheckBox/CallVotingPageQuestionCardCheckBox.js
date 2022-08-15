@@ -26,54 +26,80 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         }
     }, [columns.length])
 
-    function addAnswerToArray(rowId, columnId) {
-        if (answersArray.length === 0) {
+    function addGridAnswer(rowId, columnId) {
+        const objToAdd = answersArray.find(obj => obj.id === rowId);
+        if (objToAdd === undefined) {
             const dataToAdd = {
-                id: rowId, // здесь мы отправляем id строк rows.id
+                id: rowId,
                 values: [
-                    columnId // здесь мы отправляем массив из id колонок columns.id
+                    columnId
                 ]
             }
             setAnswersArray([...answersArray, dataToAdd]);
         } else {
-            const newColumnsArray = answersArray.map((row) => {
-
-                const dataToAdd = {
-                    id: row.id,
-                    values: []
-                }
-
-                if (row.id === rowId) {
-
-                    const newColumnsArray = row.values.map((column) => {
-                        const columnsArray = []
-                        if (column !== columnId) {
-                            columnsArray.push(columnId);
-                        } else {
-                            columnsArray.push(column);
-                        }
-                        return columnsArray
-                    })
-                    console.log(newColumnsArray);
-                    dataToAdd.values.push(newColumnsArray);
-                }
-
-                return dataToAdd;
-            })
-
-            console.log(newColumnsArray);
+            objToAdd.values.push(columnId);
+            const filteredAnswersArray = answersArray.filter((answer => answer.id !== rowId));
+            filteredAnswersArray.push(objToAdd);
+            setAnswersArray(filteredAnswersArray);
         }
     }
 
-    function removeAnswerFromArray(rowId) {
+    function removeGridAnswer(rowId, columnId) {
+        const obj = answersArray.find(obj => obj.id === rowId);
+        const filteredAnswersArray = answersArray.filter((answer => answer.id !== rowId));
+        const newValues = obj.values.filter((column => column !== columnId));
+        obj.values = newValues;
+        if (obj.values.length === 0) {
+            setAnswersArray(filteredAnswersArray);
+        } else {
+            filteredAnswersArray.push(obj);
+            setAnswersArray(filteredAnswersArray);
+        }
+    }
+
+    function addRadioGridAnswer(rowId, columnId) {
+        const objToAdd = answersArray.find(obj => obj.id === rowId);
+        if (objToAdd === undefined) {
+            const dataToAdd = {
+                id: rowId,
+                values: [
+                    columnId
+                ]
+            }
+            setAnswersArray([...answersArray, dataToAdd]);
+        } else {
+            objToAdd.values = [columnId];
+            const filteredAnswersArray = answersArray.filter((answer => answer.id !== rowId));
+            filteredAnswersArray.push(objToAdd);
+            setAnswersArray(filteredAnswersArray);
+        }
+    }
+
+    function removeRadioGridAnswer(rowId) {
         const filteredAnswers = answersArray.filter((answer => answer.id !== rowId));
         setAnswersArray(filteredAnswers);
+    }
+
+    function addAnswerToArray(rowId, columnId) {
+        if (question.template === 'grid') {
+            addGridAnswer(rowId, columnId);
+        } else {
+            addRadioGridAnswer(rowId, columnId);
+        }
+    }
+
+    function removeAnswerFromArray(rowId, columnId) {
+        if (question.template === 'grid') {
+            removeGridAnswer(rowId, columnId);
+        } else {
+            removeRadioGridAnswer(rowId);
+        }
     }
 
     function sendVote() {
         const dataToSend = {
             for_user_id: "",
-            question_id: question.id, // здесь мы отправляем id вопроса questions.id
+            question_id: question.id,
             res: answersArray
         }
         const body = {
@@ -82,15 +108,13 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                 dataToSend
             ]
         }
-
-        console.log(body);
-        // requestHelper(Events.vote, body)
-        //     .then((data) => {
-        //         if (data.status === 'ok') {
-        //             setBulletinVoted(true);
-        //             setAnswersArray([]);
-        //         }
-        //     })
+        requestHelper(Events.vote, body)
+            .then((data) => {
+                if (data.status === 'ok') {
+                    setBulletinVoted(true);
+                    setAnswersArray([]);
+                }
+            })
     }
 
     return (
@@ -127,6 +151,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                                 isListView={isListView}
                                 addAnswerToArray={addAnswerToArray}
                                 removeAnswerFromArray={removeAnswerFromArray}
+                                isBulletinVoted={isBulletinVoted}
+                                answersArray={answersArray}
                             />
                         ))}
                     </div>
@@ -143,12 +169,15 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                             isListView={isListView}
                             addAnswerToArray={addAnswerToArray}
                             removeAnswerFromArray={removeAnswerFromArray}
+                            isBulletinVoted={isBulletinVoted}
+                            answersArray={answersArray}
                         />
                     ))}
                 </div>
             )}
             <CallVotingPageVoteButtonCheckBox
                 sendVote={sendVote}
+                isBulletinVoted={isBulletinVoted}
             />
         </div>
     )

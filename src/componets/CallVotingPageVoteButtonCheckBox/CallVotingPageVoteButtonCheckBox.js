@@ -4,13 +4,13 @@ import './CallVotingPageVoteButtonCheckBox.css';
 const CallVotingPageVoteButtonCheckBox = (props) => {
 
     const {
-        sendVote
+        sendVote,
+        isBulletinVoted
     } = props;
 
     return (
-        <>
-            <button className={'call-voting-page-vote-button-check__button'} onClick={sendVote}>Проголосовать</button>
-        </>
+        <button className={'call-voting-page-vote-button-check__button'} onClick={sendVote}>Проголосовать</button>
     )
 }
+
 export default CallVotingPageVoteButtonCheckBox;
