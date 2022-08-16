@@ -47,7 +47,7 @@ function App() {
                         if (res.text === 'Expired token') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
-                                    if (newTokens.text === 'Expired token') {
+                                    if (newTokens.status === 'failure') {
                                         logout();
                                     } else {
                                         localStorage.setItem('jwt', JSON.stringify(newTokens));

@@ -21,6 +21,7 @@
     font-weight: 600;
     line-height: 24px;
     color: rgba(54, 59, 77, 0.9);
+    margin: auto auto auto 0;
 }
 .call-voting-page-question-card-check__select-answer {
     display: flex;
@@ -30,10 +31,34 @@
     font-weight: 400;
     line-height: 24px;
     color: rgba(54, 59, 77, 0.4);
+    margin: auto auto auto 0;
 }
-.call-voting-page-question-card-check__select-answer span:first-child {
+.call-voting-page-question-card-check__rule-text {
+    padding-right: 16px;
+}
+.call-voting-page-question-card-check__rule-text_voted {
     padding-right: 16px;
     border-right: 1px solid rgba(54, 59, 77, 0.3)
+}
+.call-voting-page-question-card-check__voted-container {
+    display: flex;
+    background: rgba(78, 212, 169, 0.15);
+    border-radius: 24px;
+    margin: auto auto auto 0;
+}
+.call-voting-page-question-card-check__icon {
+    width: 4px;
+    height: 4px;
+    margin: auto 8px auto 12px;
+}
+.call-voting-page-question-card-check__voted-text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: #4ED4A9;
+    opacity: 0.9;
+    margin: auto 12px auto 0;
 }
 /*------Стилизация для блока с чекбоксам------------------------------------------------------------------------------*/
 .call-voting-page-question-card-check__select-checkboxes-block {
