@@ -74,7 +74,7 @@ const CalendarVotes = (props) => {
     ]
 
     const dateArrayEndReg = [
-        {date: "2022-08-22T12:09:00Z", className: "blue__circle"},
+        {date: "2022-08-18T12:09:00Z", className: "blue__circle"},
         {date: "2022-08-21T14:20:00Z", className: "blue__circle"},
         {date: "2022-08-19T13:00:00Z", className: "blue__circle"}
     ]
@@ -106,9 +106,21 @@ const CalendarVotes = (props) => {
                 date.getDate() === new Date(el.date).getDate()
             )
         })
-        return dateobjStartReg ? <div className={'blue__circle'}></div> : null
+        const dateobjEndReg = dateArrayEndReg.find((el) => {
+            return (
+                date.getDay() === new Date(el.date).getDay() &&
+                date.getMonth() === new Date(el.date).getMonth() &&
+                date.getDate() === new Date(el.date).getDate()
+            )
+        })
+       let content = []
+       if(dateobjStartReg) {
+           return [...content, dateobjStartReg ? <div className={'blue__circle'}></div> : null]
+       } else if(dateobjEndReg) {
+           return [...content, dateobjEndReg ? <div className={'orange__circle'}></div> : null]
+       }
+        return React.Children.toArray([content])
     }
-
         //     const dateRegVote = {
         //         searchStartRegDate: date.getDate() === dayStartReg && date.getMonth() === monthStartReg && date.getFullYear() === yearStartReg,
         //         searchEndRegDate: date.getDate() === dayEndReg && date.getMonth() === monthEndReg && date.getFullYear() === yearEndReg,
