@@ -3,6 +3,7 @@ import './CallVotingPageQuestionCardCheckBox.css';
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import CallVotingPageVoteButtonCheckBox from "../CallVotingPageVoteButtonCheckBox/CallVotingPageVoteButtonCheckBox";
 import CallVotingNameRows from './CallVotingNameRows/CallVotingNameRows';
+import greenIcon from '../../img/votet-status-icon.svg';
 import * as Events from '../../Api/Events';
 
 const CallVotingPageQuestionCardCheckBox = (props) => {
@@ -13,7 +14,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         rows,
         question,
         eventId,
-        requestHelper
+        requestHelper,
+        isReVoting
     } = props;
 
     const [isListView, setListView] = useState(false);
@@ -96,6 +98,10 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         }
     }
 
+    function onRevoteClick() {
+        setBulletinVoted(false);
+    }
+
     function sendVote() {
         const dataToSend = {
             for_user_id: "",
@@ -122,13 +128,18 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
             <div className={'call-voting-page-question-card-check__title'}>
                 <h3>{questionTitle}</h3>
                 <div className={'call-voting-page-question-card-check__select-answer'}>
-                    <span>
+                    <span className={`call-voting-page-question-card-check__rule-text ${isBulletinVoted && 'call-voting-page-question-card-check__rule-text_voted'}`}>
                         Выберите один из вариантов ответа напротив каждого кандидата
                         {question.is_required_grid_rows && (
                             <p>Все строки обязательны для заполнения</p>
                         )}
                     </span>
-                    <span>Вы проголосовали</span>
+                    {isBulletinVoted && (
+                        <div className="call-voting-page-question-card-check__voted-container">
+                            <img className="call-voting-page-question-card-check__icon" src={greenIcon} alt="Иконка" />
+                            <p className="call-voting-page-question-card-check__voted-text">Вы проголосовали</p>
+                        </div>
+                    )}
                 </div>
                 <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
             </div>
@@ -178,6 +189,11 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
             <CallVotingPageVoteButtonCheckBox
                 sendVote={sendVote}
                 isBulletinVoted={isBulletinVoted}
+                isReVoting={isReVoting}
+                onRevoteClick={onRevoteClick}
+                isRequiredGridRows={question.is_required_grid_rows}
+                rows={rows}
+                answersArray={answersArray}
             />
         </div>
     )

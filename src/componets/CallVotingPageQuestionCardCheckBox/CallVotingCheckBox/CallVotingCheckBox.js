@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import checkboxIcon from '../../../img/checkbox-icon.svg';
+import radioIcon from '../../../img/radio-icon.svg';
 import './CallVotingCheckBox.css';
 
 const CallVotingCheckBox = (props) => {
@@ -55,25 +57,39 @@ const CallVotingCheckBox = (props) => {
     return (
         <div className={!isListView ? 'call-voting-checkbox__wrapper' : 'call-voting-checkbox__wrapper-view-list'}>
             <label className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
-                {question.template === 'radio_grid' ? (
-                    <input
-                        type="checkbox"
-                        name={rowId}
-                        checked={isCheckboxChecked}
-                        onChange={onRadioClick}
-                    />
-                ) : (
-                    <input
-                        type="checkbox"
-                        name={rowId}
-                        checked={isCheckboxChecked}
-                        onChange={onCheckboxClick}
-                    />
+                {!isBulletinVoted && (
+                    <>
+                        {question.template === 'radio_grid' ? (
+                            <input
+                                type="checkbox"
+                                name={rowId}
+                                checked={isCheckboxChecked}
+                                onChange={onRadioClick}
+                            />
+                        ) : (
+                            <input
+                                type="checkbox"
+                                name={rowId}
+                                checked={isCheckboxChecked}
+                                onChange={onCheckboxClick}
+                            />
+                        )}
+                    </>
                 )}
-                {!isListView ? (
-                    <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark' : 'call-voting-checkbox__checkmark'} />
+                {isBulletinVoted ? (
+                    <img
+                        src={question.template === 'radio_grid' ? radioIcon : checkboxIcon}
+                        alt="Иконка чекбокса"
+                        className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
+                    />
                 ) : (
-                    <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark call-voting-checkbox__view-left' : 'call-voting-checkbox__checkmark call-voting-checkbox__view-left'} />
+                    <>
+                        {!isListView ? (
+                            <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark' : 'call-voting-checkbox__checkmark'} />
+                        ) : (
+                            <span className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__checkmark call-voting-checkbox__view-left' : 'call-voting-checkbox__checkmark call-voting-checkbox__view-left'} />
+                        )}
+                    </>
                 )}
             </label>
         </div>

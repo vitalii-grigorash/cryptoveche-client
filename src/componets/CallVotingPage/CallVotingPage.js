@@ -96,6 +96,7 @@ const CallVotingPage = (props) => {
                             question={question}
                             eventId={currentEventData.id}
                             requestHelper={requestHelper}
+                            isReVoting={currentEventData.re_voting}
                         />
                     )
                 }))
