@@ -21,7 +21,8 @@ const DetailsVotesPage = (props) => {
         requestHelper,
         handleCurrentEvents,
         toggleEventRegistration,
-        showEventResult
+        showEventResult,
+        isResultTabOpen
     } = props;
 
     const navigate = useNavigate();
@@ -33,6 +34,8 @@ const DetailsVotesPage = (props) => {
     const [currentEventData, setCurrentEventData] = useState({});
     const [isShowResults, setShowResults] = useState(false);
     const [isShowTimer, setShowTimer] = useState(true);
+
+    console.log(isResultTabOpen);
 
     function onGenerelInfoClick() {
         setBtnGeneralInfo(true);
