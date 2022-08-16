@@ -348,7 +348,7 @@ function App() {
                                 />}
                             />
                             <Route exact path='/my-profile' element={<MyProfilePage
-                                requestHelper={requestHelper} />} />
+                                requestHelper={requestHelper}/>} />
                             <Route exact path='/details-vote'
                                 element={<DetailsVotesPage
                                     requestHelper={requestHelper}

@@ -124,7 +124,6 @@ const MyProfilePageSetPassword = (props) => {
         }
     }, 2000)
 
-
     return (
             <div className={'my-profile-page-set-pass__wrapper'}>
                 <h3>Пароль</h3>
