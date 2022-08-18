@@ -164,6 +164,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                                 removeAnswerFromArray={removeAnswerFromArray}
                                 isBulletinVoted={isBulletinVoted}
                                 answersArray={answersArray}
+                                isMyBulletinTabActive={false}
                             />
                         ))}
                     </div>
@@ -182,6 +183,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                             removeAnswerFromArray={removeAnswerFromArray}
                             isBulletinVoted={isBulletinVoted}
                             answersArray={answersArray}
+                            isMyBulletinTabActive={false}
                         />
                     ))}
                 </div>

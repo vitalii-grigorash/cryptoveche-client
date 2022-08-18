@@ -18,7 +18,6 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
-
 function App() {
 
     const navigate = useNavigate();

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import checkboxIcon from '../../../img/checkbox-icon.svg';
+import checkboxActive from '../../../img/checkbox-active.svg';
 import radioIcon from '../../../img/radio-icon.svg';
+import radioActive from '../../../img/radio-active.svg';
 import './CallVotingCheckBox.css';
 
 const CallVotingCheckBox = (props) => {
@@ -14,7 +16,8 @@ const CallVotingCheckBox = (props) => {
         addAnswerToArray,
         removeAnswerFromArray,
         isBulletinVoted,
-        answersArray
+        answersArray,
+        isMyBulletinTabActive
     } = props;
 
     const { pathname } = useLocation();
@@ -61,11 +64,21 @@ const CallVotingCheckBox = (props) => {
         <div className={!isListView ? 'call-voting-checkbox__wrapper' : 'call-voting-checkbox__wrapper-view-list'}>
             <label className={question.template === 'radio_grid' ? 'call-voting-checkbox-radio__container' : 'call-voting-checkbox__container'}>
                 {pathname === '/details-vote' ? (
-                    <img
-                        src={question.template === 'radio_grid' ? radioIcon : checkboxIcon}
-                        alt="Иконка чекбокса"
-                        className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
-                    />
+                    <>
+                        {!isMyBulletinTabActive ? (
+                            <img
+                                src={question.template === 'radio_grid' ? radioIcon : checkboxIcon}
+                                alt="Иконка чекбокса"
+                                className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
+                            />
+                        ) : (
+                            <img
+                                src={question.template === 'radio_grid' ? radioActive : checkboxActive}
+                                alt="Иконка чекбокса"
+                                className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
+                            />
+                        )}
+                    </>
                 ) : (
                     <>
                         {!isBulletinVoted && (

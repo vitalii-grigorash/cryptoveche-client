@@ -6,7 +6,8 @@ import ReadQuestionsCardList from "../DetailsVotesPageReadQuestionsCardList/Read
 const DetailsVotesPageReadQuestionsCardList = (props) => {
 
     const {
-        question
+        question,
+        isMyBulletinTabActive
     } = props;
 
     const [ruleText, setRuleText] = useState('');
@@ -172,13 +173,18 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
         <div className={'read-questions-card-list__list-question-block'}>
             <div className={'list-question-block__title'}>
                 <h3>{question.title}</h3>
-                <h5>{ruleText}</h5>
-                <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                {!isMyBulletinTabActive && (
+                    <>
+                        <h5>{ruleText}</h5>
+                        <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                    </>
+                )}
             </div>
             {question.options.rows.map((row) => (
                 <ReadQuestionsCardList
                     key={row.id}
                     value={row.value}
+                    isMyBulletinTabActive={isMyBulletinTabActive}
                 />
             ))}
         </div>

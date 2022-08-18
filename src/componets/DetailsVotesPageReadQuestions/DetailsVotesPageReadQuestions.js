@@ -12,7 +12,8 @@ const DetailsVotesPageReadQuestions = (props) => {
         toggleEventRegistration,
         showEventResult,
         questionsTemplateRow,
-        questionsTemplateGrid
+        questionsTemplateGrid,
+        isMyBulletinTabActive
     } = props;
 
     return (
@@ -23,6 +24,7 @@ const DetailsVotesPageReadQuestions = (props) => {
                     <DetailsVotesPageReadQuestionsCardList
                         key={question.id}
                         question={question}
+                        isMyBulletinTabActive={isMyBulletinTabActive}
                     />
                 )
             }))}
@@ -31,6 +33,7 @@ const DetailsVotesPageReadQuestions = (props) => {
                     <DetailsVotesPageReadQuestionsCardCheckbox
                         key={question.id}
                         question={question}
+                        isMyBulletinTabActive={isMyBulletinTabActive}
                     />
                 )
             }))
