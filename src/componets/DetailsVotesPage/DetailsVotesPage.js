@@ -21,7 +21,8 @@ const DetailsVotesPage = (props) => {
         requestHelper,
         handleCurrentEvents,
         toggleEventRegistration,
-        showEventResult
+        showEventResult,
+        isResultTabOpen
     } = props;
 
     const navigate = useNavigate();
@@ -31,6 +32,8 @@ const DetailsVotesPage = (props) => {
     const [btnResult, setBtnResult] = useState(false);
     const [btnMyBulletin, setBtnMyBulletin] = useState(false);
     const [currentEventData, setCurrentEventData] = useState({});
+    const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
+    const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
     const [isShowResults, setShowResults] = useState(false);
     const [isShowTimer, setShowTimer] = useState(true);
 
@@ -61,6 +64,16 @@ const DetailsVotesPage = (props) => {
         setBtnResult(false);
     }
 
+    function templateRow(questions) {
+        const filteredQuestions = questions.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions');
+        setQuestionsTemplateRow(filteredQuestions);
+    }
+
+    function templateGrid(questions) {
+        const filteredQuestions = questions.filter(e => e.template === 'grid' || e.template === 'radio_grid');
+        setQuestionsTemplateGrid(filteredQuestions);
+    }
+
     useEffect(() => {
         if (localStorage.getItem('currentEvent')) {
             const currentEvent = localStorage.getItem('currentEvent');
@@ -71,12 +84,25 @@ const DetailsVotesPage = (props) => {
             requestHelper(Events.getEvent, body)
                 .then((data) => {
                     setCurrentEventData(data);
-                    if (btnGeneralInfo) {
-                        setBtnGeneralInfo(true);
-                    } else if (btnReadQuestions) {
-                        setBtnReadQuestions(true);
+                    templateRow(data.questions);
+                    templateGrid(data.questions);
+                    if (isResultTabOpen) {
+                        if (isShowResults) {
+                            setBtnResult(true);
+                            setBtnGeneralInfo(false);
+                            setBtnReadQuestions(false);
+                            setBtnMyBulletin(false);
+                        } else {
+                            setBtnGeneralInfo(true);
+                        }
                     } else {
-                        setBtnGeneralInfo(true);
+                        if (btnGeneralInfo) {
+                            setBtnGeneralInfo(true);
+                        } else if (btnReadQuestions) {
+                            setBtnReadQuestions(true);
+                        } else {
+                            setBtnGeneralInfo(true);
+                        }
                     }
                 });
         } else {
@@ -85,7 +111,9 @@ const DetailsVotesPage = (props) => {
     }, // eslint-disable-next-line
         [
             navigate,
-            requestHelper
+            requestHelper,
+            isResultTabOpen,
+            isShowResults
         ]
     )
 
@@ -136,9 +164,12 @@ const DetailsVotesPage = (props) => {
                 {btnReadQuestions && (
                     <DetailsVotesPageReadQuestions
                         currentEventData={currentEventData}
+                        questionsTemplateRow={questionsTemplateRow}
+                        questionsTemplateGrid={questionsTemplateGrid}
                         handleCurrentEvents={handleCurrentEvents}
                         toggleEventRegistration={toggleEventRegistration}
                         showEventResult={showEventResult}
+                        requestHelper={requestHelper}
                     />
                 )}
                 {isShowResults && (

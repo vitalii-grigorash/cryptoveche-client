@@ -36,6 +36,7 @@ function App() {
     const [allEvents, setAllEvents] = useState([]);
     const [isSuccessModalActive, setSuccessModalActive] = useState(false);
     const [successModalText, setSuccessModalText] = useState('');
+    const [isResultTabOpen, setResultTabOpen] = useState(false);
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -285,8 +286,18 @@ function App() {
         }
     }
 
-    function showEventResult() {
-        console.log('Тут будет переход на результаты голосования, если событие закончено и оно НЕ тайное');
+    function showEventResult(data) {
+        const currentEvent = {
+            id: data.id
+        }
+        if (localStorage.getItem('currentEvent')) {
+            localStorage.removeItem('currentEvent');
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        } else {
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        }
+        setResultTabOpen(true);
+        navigate('/details-vote');
     }
 
     function handleShowSuccessModal() {
@@ -355,6 +366,7 @@ function App() {
                                     handleCurrentEvents={handleCurrentEvents}
                                     toggleEventRegistration={toggleEventRegistration}
                                     showEventResult={showEventResult}
+                                    isResultTabOpen={isResultTabOpen}
                                 />}
                             />
                             <Route exact path='/votes-page'

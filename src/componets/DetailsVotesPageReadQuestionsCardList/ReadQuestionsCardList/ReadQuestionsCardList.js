@@ -1,18 +1,19 @@
 import React from "react";
 import './ReadQuestionsCardList.css';
 
+const ReadQuestionsCardList = (props) => {
 
-const ReadQuestionsCardList = ({nameCardList}) => {
+    const {
+        value
+    } = props;
 
     return (
-           <>
-                <ul className={'card-list__list-answer'} type={"square"}>
-                    <li><span>{nameCardList}</span></li>
-                </ul>
-           </>
-
+        <>
+            <ul className='card-list__list-answer' type="square">
+                <li><span>{value}</span></li>
+            </ul>
+        </>
     )
 }
 
 export default ReadQuestionsCardList;
-
