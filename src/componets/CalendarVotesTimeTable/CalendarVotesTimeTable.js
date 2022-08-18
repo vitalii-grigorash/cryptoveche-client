@@ -34,7 +34,7 @@ const CalendarVotesTimeTable = (props) => {
                return obj;
            })
 
-
+           console.log(currentDay)
     return (
             <div className={'calendar-votes-timetable__wrapper'}>
                 <div>
