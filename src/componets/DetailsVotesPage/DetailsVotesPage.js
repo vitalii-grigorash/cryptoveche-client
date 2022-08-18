@@ -94,14 +94,18 @@ const DetailsVotesPage = (props) => {
                             setBtnMyBulletin(false);
                         } else {
                             setBtnGeneralInfo(true);
+                            setBtnReadQuestions(false);
                         }
                     } else {
                         if (btnGeneralInfo) {
                             setBtnGeneralInfo(true);
+                            setBtnReadQuestions(false);
                         } else if (btnReadQuestions) {
                             setBtnReadQuestions(true);
+                            setBtnGeneralInfo(false);
                         } else {
                             setBtnGeneralInfo(true);
+                            setBtnReadQuestions(false);
                         }
                     }
                 });
