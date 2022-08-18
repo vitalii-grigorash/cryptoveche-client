@@ -20,30 +20,28 @@ const CalendarVotes = (props) => {
     const [showBackRow, setShowBackRow] = useState(false)
     const [date, onChange] = useState(new Date())
     const [getEventDay, setGetEventDay] = useState(new Date())
-    const [getEventDate, setGetEventDate] = useState(new Date())
+    const [getEventDate, setGetEventDate] = useState('')
     const [getEventMonth, setGetEventMonth] = useState(new Date())
-    const [getEventYear, setGetEventYear] = useState(new Date())
-
 
     function getActualVotesDates(status) {
         const sortActualVotesCalendar = status.filter(el => el.status !== 'ended').filter(el => el.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
         setActualVotesDate(sortActualVotesCalendar)
     }
 
-        const startRegDate = actualVotesDate.map(item => item.registration_start_time).map(function (el) {
-            return {date : el}
+        const startRegDate = actualVotesDate.map(item => item.registration_start_time).map(function (elem) {
+            return {dateEvent : elem}
         })
 
-        const endRegDate = actualVotesDate.map(item => item.registration_end_time).map(function (el) {
-            return {date : el}
+        const endRegDate = actualVotesDate.map(item => item.registration_end_time).map(function (elem) {
+            return {dateEvent : elem}
         })
 
-        const startVoteDate = actualVotesDate.map(item => item.event_start_time).map(function (el) {
-            return {date : el}
+        const startVoteDate = actualVotesDate.map(item => item.event_start_time).map(function (elem) {
+            return {dateEvent : elem}
         })
 
-        const endVoteDate = actualVotesDate.map(item => item.event_end_time).map(function (el) {
-            return {date : el}
+        const endVoteDate = actualVotesDate.map(item => item.event_end_time).map(function (elem) {
+            return {dateEvent : elem}
         })
 
     useEffect(() => {
@@ -51,7 +49,7 @@ const CalendarVotes = (props) => {
             .then((data) => {
                 getActualVotesDates(data)
             })
-    }, [requestHelper]);
+    }, [requestHelper]); 
 
     function toggleCalendarShow() {
         setShowCalendar(true)
@@ -64,38 +62,37 @@ const CalendarVotes = (props) => {
         setShowCalendarList(true)
         setShowBackRow(true)
         setGetEventDay(date.getDay())
-        setGetEventDate(date.getDate())
         setGetEventMonth(date.getMonth())
-        setGetEventYear(date.getFullYear())
+        setGetEventDate(date.toLocaleString())
     }
 
     const addColorDotsCalendar = ({ date }) => {
         const dateStartReg = startRegDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         const dateEndReg = endRegDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         const dateStartVote = startVoteDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         const dateEndVote = endVoteDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         let content = [
@@ -118,30 +115,30 @@ const CalendarVotes = (props) => {
     const activeEventButton = ({ date }) => {
         const activeDateStartReg = startRegDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         const activeDateEndReg = endRegDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         const activeDateStartVote = startVoteDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         const activeDateEndVote = endVoteDate.find((el) => {
             return (
-                date.getDay() === new Date(el.date).getDay() &&
-                date.getMonth() === new Date(el.date).getMonth() &&
-                date.getDate() === new Date(el.date).getDate()
+                date.getDay() === new Date(el.dateEvent).getDay() &&
+                date.getMonth() === new Date(el.dateEvent).getMonth() &&
+                date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
         if (activeDateStartReg) {
@@ -197,10 +194,9 @@ const CalendarVotes = (props) => {
             )}
             {showCalendarList && (
                 <CalendarVotesTimeTable
-                    activeDay={getEventDay}
-                    activeDate={getEventDate}
-                    activeMonth={getEventMonth}
-                    activeYear={getEventYear}
+                    getEventDay={getEventDay}
+                    getEventMonth={getEventMonth}
+                    getEventDate={getEventDate}
                     actualVotesDate={actualVotesDate}/>
             )
             }
