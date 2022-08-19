@@ -3,7 +3,6 @@ import './ActualBlock.css';
 import '../ActualBlock/ActualBlockDiagramm/ActualBlockDiagramm.css'
 import logo_icon from '../../img/ActualBlock_logo.svg';
 import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
-
 import DataTime from '../VotesStatusComponents/DateTime/DateTime';
 
 

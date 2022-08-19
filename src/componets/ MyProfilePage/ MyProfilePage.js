@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './ MyProfilePage.css';
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
@@ -8,15 +8,19 @@ import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import MyProfilePageSetPassword from "../ MyProfilePageSetPassword/ MyProfilePageSetPassword";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
+
+
 const MyProfilePage = (props) => {
 
     const {
         requestHelper
     } = props;
 
+
     const currentUser = React.useContext(CurrentUserContext);
     const userId = currentUser.id
     const userEmail = currentUser.email
+
 
     return (
             <div className={'my-profile-page__wrapper'}>
@@ -34,7 +38,7 @@ const MyProfilePage = (props) => {
                                  userId={userId}/>
                        </div>
                        <div className={'main-content__grid-item_3'}>
-                           <CalendarVotes/>
+                           <CalendarVotes requestHelper={requestHelper} />
                        </div>
                        <div className={'main-content__grid-item_4'}>
                            <MyProfilePageSetPassword

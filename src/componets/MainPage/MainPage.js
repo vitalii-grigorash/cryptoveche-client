@@ -67,7 +67,7 @@ const MainPage = (props) => {
 					<AmountVotesBlock statsData={statsData} />
 					<ObserverCryptoBlock />
 				</div>
-				<CalendarVotes />
+				<CalendarVotes requestHelper={requestHelper} />
 			</div>
 		</div>
 	)
