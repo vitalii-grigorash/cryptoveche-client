@@ -14,7 +14,8 @@ const CallVotingNameColumns = (props) => {
         removeAnswerFromArray,
         isBulletinVoted,
         answersArray,
-        isMyBulletinTabActive
+        isMyBulletinTabActive,
+        results
     } = props;
 
     return (
@@ -29,6 +30,7 @@ const CallVotingNameColumns = (props) => {
                 isBulletinVoted={isBulletinVoted}
                 answersArray={answersArray}
                 isMyBulletinTabActive={isMyBulletinTabActive}
+                results={results}
             />
             <p>{columnValue}</p>
         </div>

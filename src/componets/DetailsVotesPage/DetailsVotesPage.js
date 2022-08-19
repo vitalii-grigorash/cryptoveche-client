@@ -10,9 +10,7 @@ import DetailsVotesPageResultVotesCardQuestion
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
-// import DetailsVotesPageMyBulletin from "../DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
-// import DetailsVotesPageResultVotesWaitingResults
-//     from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
+// import DetailsVotesPageResultVotesWaitingResults from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import * as Events from '../../Api/Events';
 
 const DetailsVotesPage = (props) => {
@@ -36,8 +34,7 @@ const DetailsVotesPage = (props) => {
     const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
     const [isShowResults, setShowResults] = useState(false);
     const [isShowTimer, setShowTimer] = useState(true);
-
-    console.log(currentEventData)
+    const [results, setResults] = useState([]);
 
     function onGenerelInfoClick() {
         setBtnGeneralInfo(true);
@@ -88,6 +85,9 @@ const DetailsVotesPage = (props) => {
                     setCurrentEventData(data);
                     templateRow(data.questions);
                     templateGrid(data.questions);
+                    if (data.results.questions) {
+                        setResults(data.results.questions);
+                    }
                     if (isResultTabOpen) {
                         if (isShowResults) {
                             setBtnResult(true);
@@ -177,6 +177,7 @@ const DetailsVotesPage = (props) => {
                         showEventResult={showEventResult}
                         requestHelper={requestHelper}
                         isMyBulletinTabActive={false}
+                        results={results}
                     />
                 )}
                 {isShowResults && (
@@ -197,13 +198,8 @@ const DetailsVotesPage = (props) => {
                                 showEventResult={showEventResult}
                                 requestHelper={requestHelper}
                                 isMyBulletinTabActive={true}
+                                results={results}
                             />
-                            // <DetailsVotesPageMyBulletin
-                            //     currentEventData={currentEventData}
-                            //     questionsTemplateRow={questionsTemplateRow}
-                            //     questionsTemplateGrid={questionsTemplateGrid}
-                            //     isMyBulletinTabActove={btnMyBulletin}
-                            // />
                         )}
                         {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
                     </>

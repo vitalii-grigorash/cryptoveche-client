@@ -7,7 +7,8 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
 
     const {
         question,
-        isMyBulletinTabActive
+        isMyBulletinTabActive,
+        results
     } = props;
 
     const [ruleText, setRuleText] = useState('');
@@ -183,8 +184,11 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
             {question.options.rows.map((row) => (
                 <ReadQuestionsCardList
                     key={row.id}
+                    id={row.id}
                     value={row.value}
                     isMyBulletinTabActive={isMyBulletinTabActive}
+                    results={results}
+                    question={question}
                 />
             ))}
         </div>

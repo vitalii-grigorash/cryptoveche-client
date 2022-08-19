@@ -7,7 +7,8 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
 
     const {
         question,
-        isMyBulletinTabActive
+        isMyBulletinTabActive,
+        results
     } = props;
 
     const [isListView, setListView] = useState(false);
@@ -56,6 +57,7 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
                                 isBulletinVoted={isBulletinVoted}
                                 answersArray={answersArray}
                                 isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
                             />
                         ))}
                     </div>
@@ -73,6 +75,7 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
                             isBulletinVoted={isBulletinVoted}
                             answersArray={answersArray}
                             isMyBulletinTabActive={isMyBulletinTabActive}
+                            results={results}
                         />
                     ))}
                 </div>

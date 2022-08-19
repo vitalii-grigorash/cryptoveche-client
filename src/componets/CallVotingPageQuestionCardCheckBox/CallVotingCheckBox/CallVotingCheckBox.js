@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import checkboxIcon from '../../../img/checkbox-icon.svg';
 import checkboxActive from '../../../img/checkbox-active.svg';
 import radioIcon from '../../../img/radio-icon.svg';
@@ -17,12 +18,38 @@ const CallVotingCheckBox = (props) => {
         removeAnswerFromArray,
         isBulletinVoted,
         answersArray,
-        isMyBulletinTabActive
+        isMyBulletinTabActive,
+        results
     } = props;
 
     const { pathname } = useLocation();
 
+    const currentUser = React.useContext(CurrentUserContext);
+
     const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+    const [isCheckBoxActive, setCheckBoxActive] = useState(false);
+
+    // console.log(results);
+    // console.log(id);
+    // console.log(rowId);
+    // console.log(question);
+
+    useEffect(() => {
+        if (results.length !== 0) {
+            const currentResult = results.find(result => result.id === question.id);
+            if (currentResult.users.length !== 0) {
+                const userResult = currentResult.users.find(user => user.id === currentUser.id);
+                const result = userResult.answers.find(result => result.id === id);
+                if (result !== undefined) {
+                    if (result.id === id) {
+                        setCheckBoxActive(true);
+                    }
+                }
+            } else {
+                setCheckBoxActive(false);
+            }
+        }
+    }, [results, question.id, currentUser.id, id])
 
     useEffect(() => {
         if (isBulletinVoted) {
