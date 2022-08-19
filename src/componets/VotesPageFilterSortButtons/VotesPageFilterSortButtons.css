@@ -17,6 +17,8 @@
     border: 1px #0084FE solid;
     border-radius: 4px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 .select-buttons__filters-button img {
     padding-right: 14px;
