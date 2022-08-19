@@ -18,8 +18,6 @@ const ReadQuestionsCardList = (props) => {
 
     const [isCheckBoxActive, setCheckBoxActive] = useState(false);
 
-    console.log(results);
-
     useEffect(() => {
         if (results.length !== 0) {
             const currentResult = results.find(result => result.id === question.id);
