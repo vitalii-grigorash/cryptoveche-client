@@ -15,7 +15,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         question,
         eventId,
         requestHelper,
-        isReVoting
+        isReVoting,
+        results
     } = props;
 
     const [isListView, setListView] = useState(false);
@@ -164,6 +165,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                                 removeAnswerFromArray={removeAnswerFromArray}
                                 isBulletinVoted={isBulletinVoted}
                                 answersArray={answersArray}
+                                isMyBulletinTabActive={false}
+                                results={results}
                             />
                         ))}
                     </div>
@@ -182,6 +185,8 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                             removeAnswerFromArray={removeAnswerFromArray}
                             isBulletinVoted={isBulletinVoted}
                             answersArray={answersArray}
+                            isMyBulletinTabActive={false}
+                            results={results}
                         />
                     ))}
                 </div>

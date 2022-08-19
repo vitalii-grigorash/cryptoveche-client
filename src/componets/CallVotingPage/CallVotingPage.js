@@ -23,6 +23,7 @@ const CallVotingPage = (props) => {
     const [currentEventData, setCurrentEventData] = useState({});
     const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
     const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
+    const [results, setResults] = useState([]);
 
     function templateRow(questions) {
         const filteredQuestions = questions.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions');
@@ -46,6 +47,10 @@ const CallVotingPage = (props) => {
                     setCurrentEventData(data);
                     templateRow(data.questions);
                     templateGrid(data.questions);
+                    if (data.results.questions) {
+                        setResults(data.results.questions);
+                        console.log(data.results.questions);
+                    }
                 })
         } else {
             navigate('/');
@@ -97,6 +102,7 @@ const CallVotingPage = (props) => {
                             eventId={currentEventData.id}
                             requestHelper={requestHelper}
                             isReVoting={currentEventData.re_voting}
+                            results={results}
                         />
                     )
                 }))

@@ -6,7 +6,9 @@ import CallVotingNameRows from '../CallVotingPageQuestionCardCheckBox/CallVoting
 const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
 
     const {
-        question
+        question,
+        isMyBulletinTabActive,
+        results
     } = props;
 
     const [isListView, setListView] = useState(false);
@@ -23,13 +25,17 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
         <div className={'read-questions-card-checkbox__checkbox-question-block'}>
             <div className={'checkbox-question-block__title'}>
                 <h3>{question.title}</h3>
-                <h5>
-                    Выберите один из вариантов ответа напротив каждого кандидата
-                    {question.is_required_grid_rows && (
-                        <p>Все строки обязательны для заполнения</p>
-                    )}
-                </h5>
-                <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                {!isMyBulletinTabActive && (
+                    <>
+                        <h5>
+                            Выберите один из вариантов ответа напротив каждого кандидата
+                            {question.is_required_grid_rows && (
+                                <p>Все строки обязательны для заполнения</p>
+                            )}
+                        </h5>
+                        <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                    </>
+                )}
             </div>
             {!isListView ? (
                 <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
@@ -50,6 +56,8 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
                                 isListView={isListView}
                                 isBulletinVoted={isBulletinVoted}
                                 answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
                             />
                         ))}
                     </div>
@@ -66,6 +74,8 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
                             isListView={isListView}
                             isBulletinVoted={isBulletinVoted}
                             answersArray={answersArray}
+                            isMyBulletinTabActive={isMyBulletinTabActive}
+                            results={results}
                         />
                     ))}
                 </div>

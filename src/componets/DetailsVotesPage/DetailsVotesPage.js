@@ -10,9 +10,7 @@ import DetailsVotesPageResultVotesCardQuestion
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
-import DetailsVotesPageMyBulletin from "../DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
-// import DetailsVotesPageResultVotesWaitingResults
-//     from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
+// import DetailsVotesPageResultVotesWaitingResults from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import * as Events from '../../Api/Events';
 
 const DetailsVotesPage = (props) => {
@@ -36,6 +34,7 @@ const DetailsVotesPage = (props) => {
     const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
     const [isShowResults, setShowResults] = useState(false);
     const [isShowTimer, setShowTimer] = useState(true);
+    const [results, setResults] = useState([]);
 
     function onGenerelInfoClick() {
         setBtnGeneralInfo(true);
@@ -86,6 +85,9 @@ const DetailsVotesPage = (props) => {
                     setCurrentEventData(data);
                     templateRow(data.questions);
                     templateGrid(data.questions);
+                    if (data.results.questions) {
+                        setResults(data.results.questions);
+                    }
                     if (isResultTabOpen) {
                         if (isShowResults) {
                             setBtnResult(true);
@@ -174,15 +176,30 @@ const DetailsVotesPage = (props) => {
                         toggleEventRegistration={toggleEventRegistration}
                         showEventResult={showEventResult}
                         requestHelper={requestHelper}
+                        isMyBulletinTabActive={false}
+                        results={results}
                     />
                 )}
                 {isShowResults && (
                     <>
                         {btnResult && (
-                            <DetailsVotesPageResultVotesCardQuestion titleName={'1. Согласны ли вы с решением №576?'} answerSelected={'Выберите ровно 1'} />
+                            <DetailsVotesPageResultVotesCardQuestion
+                                titleName={'1. Согласны ли вы с решением №576?'}
+                                answerSelected={'Выберите ровно 1'}
+                            />
                         )}
                         {btnMyBulletin && (
-                            <DetailsVotesPageMyBulletin />
+                            <DetailsVotesPageReadQuestions
+                                currentEventData={currentEventData}
+                                questionsTemplateRow={questionsTemplateRow}
+                                questionsTemplateGrid={questionsTemplateGrid}
+                                handleCurrentEvents={handleCurrentEvents}
+                                toggleEventRegistration={toggleEventRegistration}
+                                showEventResult={showEventResult}
+                                requestHelper={requestHelper}
+                                isMyBulletinTabActive={true}
+                                results={results}
+                            />
                         )}
                         {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
                     </>

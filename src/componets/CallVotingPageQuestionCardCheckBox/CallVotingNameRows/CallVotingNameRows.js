@@ -14,7 +14,9 @@ const CallVotingNameRows = (props) => {
         addAnswerToArray,
         removeAnswerFromArray,
         isBulletinVoted,
-        answersArray
+        answersArray,
+        isMyBulletinTabActive,
+        results
     } = props;
 
     return (
@@ -36,6 +38,8 @@ const CallVotingNameRows = (props) => {
                                 removeAnswerFromArray={removeAnswerFromArray}
                                 isBulletinVoted={isBulletinVoted}
                                 answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
                             />
                         )
                     ))}
@@ -56,6 +60,8 @@ const CallVotingNameRows = (props) => {
                                 removeAnswerFromArray={removeAnswerFromArray}
                                 isBulletinVoted={isBulletinVoted}
                                 answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
                             />
                         ))}
                     </div>
