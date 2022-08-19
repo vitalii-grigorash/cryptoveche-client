@@ -29,27 +29,25 @@ const CallVotingCheckBox = (props) => {
     const [isCheckboxChecked, setCheckboxChecked] = useState(false);
     const [isCheckBoxActive, setCheckBoxActive] = useState(false);
 
-    // console.log(results);
-    // console.log(id);
-    // console.log(rowId);
-    // console.log(question);
-
     useEffect(() => {
         if (results.length !== 0) {
             const currentResult = results.find(result => result.id === question.id);
             if (currentResult.users.length !== 0) {
                 const userResult = currentResult.users.find(user => user.id === currentUser.id);
-                const result = userResult.answers.find(result => result.id === id);
-                if (result !== undefined) {
-                    if (result.id === id) {
-                        setCheckBoxActive(true);
+                if (userResult.answers.length !== 0) {
+                    const result = userResult.answers.find(result => result.id === rowId);
+                    const value = result.values.find(value => value === id);
+                    if (value !== undefined) {
+                        if (value === id) {
+                            setCheckBoxActive(true);
+                        }
                     }
                 }
             } else {
                 setCheckBoxActive(false);
             }
         }
-    }, [results, question.id, currentUser.id, id])
+    }, [results, question.id, currentUser.id, id, rowId])
 
     useEffect(() => {
         if (isBulletinVoted) {
@@ -99,11 +97,21 @@ const CallVotingCheckBox = (props) => {
                                 className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
                             />
                         ) : (
-                            <img
-                                src={question.template === 'radio_grid' ? radioActive : checkboxActive}
-                                alt="Иконка чекбокса"
-                                className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
-                            />
+                            <>
+                                {isCheckBoxActive ? (
+                                    <img
+                                        src={question.template === 'radio_grid' ? radioActive : checkboxActive}
+                                        alt="Иконка чекбокса"
+                                        className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
+                                    />
+                                ) : (
+                                    <img
+                                        src={question.template === 'radio_grid' ? radioIcon : checkboxIcon}
+                                        alt="Иконка чекбокса"
+                                        className={!isListView ? 'call-voting-checkbox__icons' : 'call-voting-checkbox__icons call-voting-checkbox__icons_left'}
+                                    />
+                                )}
+                            </>
                         )}
                     </>
                 ) : (
