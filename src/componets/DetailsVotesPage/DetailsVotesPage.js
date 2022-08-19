@@ -10,9 +10,7 @@ import DetailsVotesPageResultVotesCardQuestion
 import TitleVotesDetailsCallVotingProfile
     from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
-import DetailsVotesPageMyBulletin from "../DetailsVotesPageMyBulletin/DetailsVotesPageMyBulletin";
-// import DetailsVotesPageResultVotesWaitingResults
-//     from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
+// import DetailsVotesPageResultVotesWaitingResults from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import * as Events from '../../Api/Events';
 
 const DetailsVotesPage = (props) => {
@@ -21,7 +19,8 @@ const DetailsVotesPage = (props) => {
         requestHelper,
         handleCurrentEvents,
         toggleEventRegistration,
-        showEventResult
+        showEventResult,
+        isResultTabOpen
     } = props;
 
     const navigate = useNavigate();
@@ -31,8 +30,11 @@ const DetailsVotesPage = (props) => {
     const [btnResult, setBtnResult] = useState(false);
     const [btnMyBulletin, setBtnMyBulletin] = useState(false);
     const [currentEventData, setCurrentEventData] = useState({});
+    const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
+    const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
     const [isShowResults, setShowResults] = useState(false);
     const [isShowTimer, setShowTimer] = useState(true);
+    const [results, setResults] = useState([]);
 
     function onGenerelInfoClick() {
         setBtnGeneralInfo(true);
@@ -61,6 +63,16 @@ const DetailsVotesPage = (props) => {
         setBtnResult(false);
     }
 
+    function templateRow(questions) {
+        const filteredQuestions = questions.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions');
+        setQuestionsTemplateRow(filteredQuestions);
+    }
+
+    function templateGrid(questions) {
+        const filteredQuestions = questions.filter(e => e.template === 'grid' || e.template === 'radio_grid');
+        setQuestionsTemplateGrid(filteredQuestions);
+    }
+
     useEffect(() => {
         if (localStorage.getItem('currentEvent')) {
             const currentEvent = localStorage.getItem('currentEvent');
@@ -71,12 +83,32 @@ const DetailsVotesPage = (props) => {
             requestHelper(Events.getEvent, body)
                 .then((data) => {
                     setCurrentEventData(data);
-                    if (btnGeneralInfo) {
-                        setBtnGeneralInfo(true);
-                    } else if (btnReadQuestions) {
-                        setBtnReadQuestions(true);
+                    templateRow(data.questions);
+                    templateGrid(data.questions);
+                    if (data.results.questions) {
+                        setResults(data.results.questions);
+                    }
+                    if (isResultTabOpen) {
+                        if (isShowResults) {
+                            setBtnResult(true);
+                            setBtnGeneralInfo(false);
+                            setBtnReadQuestions(false);
+                            setBtnMyBulletin(false);
+                        } else {
+                            setBtnGeneralInfo(true);
+                            setBtnReadQuestions(false);
+                        }
                     } else {
-                        setBtnGeneralInfo(true);
+                        if (btnGeneralInfo) {
+                            setBtnGeneralInfo(true);
+                            setBtnReadQuestions(false);
+                        } else if (btnReadQuestions) {
+                            setBtnReadQuestions(true);
+                            setBtnGeneralInfo(false);
+                        } else {
+                            setBtnGeneralInfo(true);
+                            setBtnReadQuestions(false);
+                        }
                     }
                 });
         } else {
@@ -85,7 +117,9 @@ const DetailsVotesPage = (props) => {
     }, // eslint-disable-next-line
         [
             navigate,
-            requestHelper
+            requestHelper,
+            isResultTabOpen,
+            isShowResults
         ]
     )
 
@@ -136,18 +170,36 @@ const DetailsVotesPage = (props) => {
                 {btnReadQuestions && (
                     <DetailsVotesPageReadQuestions
                         currentEventData={currentEventData}
+                        questionsTemplateRow={questionsTemplateRow}
+                        questionsTemplateGrid={questionsTemplateGrid}
                         handleCurrentEvents={handleCurrentEvents}
                         toggleEventRegistration={toggleEventRegistration}
                         showEventResult={showEventResult}
+                        requestHelper={requestHelper}
+                        isMyBulletinTabActive={false}
+                        results={results}
                     />
                 )}
                 {isShowResults && (
                     <>
                         {btnResult && (
-                            <DetailsVotesPageResultVotesCardQuestion titleName={'1. Согласны ли вы с решением №576?'} answerSelected={'Выберите ровно 1'} />
+                            <DetailsVotesPageResultVotesCardQuestion
+                                titleName={'1. Согласны ли вы с решением №576?'}
+                                answerSelected={'Выберите ровно 1'}
+                            />
                         )}
                         {btnMyBulletin && (
-                            <DetailsVotesPageMyBulletin />
+                            <DetailsVotesPageReadQuestions
+                                currentEventData={currentEventData}
+                                questionsTemplateRow={questionsTemplateRow}
+                                questionsTemplateGrid={questionsTemplateGrid}
+                                handleCurrentEvents={handleCurrentEvents}
+                                toggleEventRegistration={toggleEventRegistration}
+                                showEventResult={showEventResult}
+                                requestHelper={requestHelper}
+                                isMyBulletinTabActive={true}
+                                results={results}
+                            />
                         )}
                         {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
                     </>

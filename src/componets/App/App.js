@@ -18,7 +18,6 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
 
-
 function App() {
 
     const navigate = useNavigate();
@@ -36,6 +35,7 @@ function App() {
     const [allEvents, setAllEvents] = useState([]);
     const [isSuccessModalActive, setSuccessModalActive] = useState(false);
     const [successModalText, setSuccessModalText] = useState('');
+    const [isResultTabOpen, setResultTabOpen] = useState(false);
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -47,7 +47,7 @@ function App() {
                         if (res.text === 'Expired token') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
-                                    if (newTokens.text === 'Expired token') {
+                                    if (newTokens.status === 'failure') {
                                         logout();
                                     } else {
                                         localStorage.setItem('jwt', JSON.stringify(newTokens));
@@ -285,8 +285,18 @@ function App() {
         }
     }
 
-    function showEventResult() {
-        console.log('Тут будет переход на результаты голосования, если событие закончено и оно НЕ тайное');
+    function showEventResult(data) {
+        const currentEvent = {
+            id: data.id
+        }
+        if (localStorage.getItem('currentEvent')) {
+            localStorage.removeItem('currentEvent');
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        } else {
+            localStorage.setItem('currentEvent', JSON.stringify(currentEvent));
+        }
+        setResultTabOpen(true);
+        navigate('/details-vote');
     }
 
     function handleShowSuccessModal() {
@@ -355,6 +365,7 @@ function App() {
                                     handleCurrentEvents={handleCurrentEvents}
                                     toggleEventRegistration={toggleEventRegistration}
                                     showEventResult={showEventResult}
+                                    isResultTabOpen={isResultTabOpen}
                                 />}
                             />
                             <Route exact path='/votes-page'

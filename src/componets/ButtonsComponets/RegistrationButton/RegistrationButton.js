@@ -101,9 +101,20 @@ const RegistrationButton = (props) => {
             )}
             {votesData.status === 'ended' && (
                 <>
-                    {votesData.isVoted && (
+                    {votesData.type === 'open' && (
                         <button className='cancel-reg'
-                            onClick={showEventResult}
+                            onClick={() => showEventResult(votesData)}
+                        >
+                            Результаты
+                        </button>
+                    )}
+                </>
+            )}
+            {votesData.status === 'quorum_unpresant' && (
+                <>
+                    {votesData.type === 'open' && (
+                        <button className='cancel-reg'
+                            onClick={() => showEventResult(votesData)}
                         >
                             Результаты
                         </button>

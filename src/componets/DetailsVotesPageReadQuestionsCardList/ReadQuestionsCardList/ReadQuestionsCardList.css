@@ -13,6 +13,24 @@
 .card-list__list-answer span {
     padding-left: 12px;
 }
+.card-list__checkbox-container {
+    display: flex;
+    margin: 0 auto 14px 0;
+}
+.card-list__checkbox-icon {
+    width: 24px;
+    height: 24px;
+    margin: auto 16px auto 0;
+}
+.card-list__checkbox-value {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 0.9;
+    margin: auto auto auto 0;
+}
 /*------Адаптивная версия(800px)---------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
     .card-list__list-answer {

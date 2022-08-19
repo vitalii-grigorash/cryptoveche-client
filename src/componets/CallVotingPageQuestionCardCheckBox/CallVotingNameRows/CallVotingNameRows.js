@@ -10,7 +10,13 @@ const CallVotingNameRows = (props) => {
         rowValue,
         question,
         columns,
-        isListView
+        isListView,
+        addAnswerToArray,
+        removeAnswerFromArray,
+        isBulletinVoted,
+        answersArray,
+        isMyBulletinTabActive,
+        results
     } = props;
 
     return (
@@ -28,6 +34,12 @@ const CallVotingNameRows = (props) => {
                                 question={question}
                                 isListView={isListView}
                                 rowId={rowId}
+                                addAnswerToArray={addAnswerToArray}
+                                removeAnswerFromArray={removeAnswerFromArray}
+                                isBulletinVoted={isBulletinVoted}
+                                answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
                             />
                         )
                     ))}
@@ -44,6 +56,12 @@ const CallVotingNameRows = (props) => {
                                 isListView={isListView}
                                 column={column}
                                 rowId={rowId}
+                                addAnswerToArray={addAnswerToArray}
+                                removeAnswerFromArray={removeAnswerFromArray}
+                                isBulletinVoted={isBulletinVoted}
+                                answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
                             />
                         ))}
                     </div>
