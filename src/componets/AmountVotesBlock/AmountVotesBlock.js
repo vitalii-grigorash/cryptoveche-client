@@ -29,13 +29,9 @@ const AmountVotesBlock = ({ statsData }) => {
 	}, [statsData])
 
 	useEffect(() => {
-		const a = 964;
-		const b = 602;
-		// const a = sortedArray[sortedArray.length - 2];
-		// const b = sortedArray[sortedArray.length - 1];
-		if (sortedArray && sortedArray.length > 0 && (a / b) === 1) {
-			setDifference(0)
-		} else if (sortedArray && sortedArray.length > 0) {
+		if (sortedArray && sortedArray.length > 0) {
+			const a = sortedArray[sortedArray.length - 2].voted;
+			const b = sortedArray[sortedArray.length - 1].voted;
 			setDifference(
 				(a > b)
 					?
@@ -43,6 +39,8 @@ const AmountVotesBlock = ({ statsData }) => {
 					:
 					Number((((b * 100) / a) - 100).toFixed(1))
 			)
+		} else {
+			setDifference(0)
 		}
 	}, [sortedArray, difference])
 
@@ -54,6 +52,9 @@ const AmountVotesBlock = ({ statsData }) => {
 		}
 	}, [difference])
 
+	//
+	console.log('difference', difference);
+	//
 	return (
 		<div className={'amount-votes-wrapper main-content__elem3'}>
 			<h3>Количество голосующих</h3>
