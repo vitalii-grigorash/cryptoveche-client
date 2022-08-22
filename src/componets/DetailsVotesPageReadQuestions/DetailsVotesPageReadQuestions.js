@@ -27,6 +27,7 @@ const DetailsVotesPageReadQuestions = (props) => {
                         question={question}
                         isMyBulletinTabActive={isMyBulletinTabActive}
                         results={results}
+                        materialsQuestion={question.materials}
                     />
                 )
             }))}
@@ -37,6 +38,7 @@ const DetailsVotesPageReadQuestions = (props) => {
                         question={question}
                         isMyBulletinTabActive={isMyBulletinTabActive}
                         results={results}
+                        materialsQuestion={question.materials}
                     />
                 )
             }))

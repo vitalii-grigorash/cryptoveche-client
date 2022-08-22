@@ -15,6 +15,8 @@ const ConfirmRegMaterialsVote = (props) => {
   const [statusIcon, setStatusIcon] = useState('');
   const [statusText, setStatusText] = useState('');
   const [statusClassName, setStatusClassName] = useState('');
+  const [activeMaterials, setActiveMaterials] = useState(false)
+  const [currentMaterialsVote, setCurrentMaterialsVote] = useState([])
 
   useEffect(() => {
     if (votesData.status === 'waiting') {
@@ -87,6 +89,13 @@ const ConfirmRegMaterialsVote = (props) => {
       votesData.status
     ])
 
+  useEffect(() => {
+    if(votesData.materials.length !== 0 ) {
+        setActiveMaterials(true)
+        setCurrentMaterialsVote(votesData.materials)
+    } else setCurrentMaterialsVote([])
+  }, [votesData.materials])
+
   return (
     <div className='status-block__materials-vote'>
       <div className='materials-vote__status-icon'>
@@ -95,11 +104,12 @@ const ConfirmRegMaterialsVote = (props) => {
           {statusText}
         </p>
       </div>
-      <div className={'materials-vote__hidden-materials'}>
-        <MaterialsVoteQuestion materialsVoteQuestion='Материалы голосования' />
-      </div>
+      {activeMaterials &&
+        <div className={'materials-vote__hidden-materials'}>
+          <MaterialsVoteQuestion currentMaterialsVote={currentMaterialsVote} materialsVoteName={'Материалы голосования'}/>
+        </div>
+      }
     </div>
   )
 }
-
 export default ConfirmRegMaterialsVote;

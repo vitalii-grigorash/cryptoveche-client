@@ -110,5 +110,8 @@
     .document-icons__icons-block {
         padding-left: 0;
     }
+    .materials-vote-question-modal__link-materials {
+        min-width: 250px;
+    }
 
 }

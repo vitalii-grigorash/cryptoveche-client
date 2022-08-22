@@ -5,6 +5,8 @@ import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestio
 import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
 import * as Events from '../../Api/Events';
 import successIcon from '../../img/votet-status-icon.svg';
+import materialsVoteQuestionModalLinks
+    from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestionModal/MaterialsVoteQuestionModalLinks/MaterialsVoteQuestionModalLinks";
 
 const CallVotingPageQuestionCardList = (props) => {
 
@@ -15,7 +17,8 @@ const CallVotingPageQuestionCardList = (props) => {
         question,
         eventId,
         requestHelper,
-        isReVoting
+        isReVoting,
+        materialsQuestion
     } = props;
 
     const [answersArray, setAnswersArray] = useState([]);
@@ -26,6 +29,8 @@ const CallVotingPageQuestionCardList = (props) => {
     const [selectedAnswersTextColor, setSelectedAnswersTextColor] = useState('');
     const [isButtonActive, setButtonActive] = useState(false);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
+    const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
+    const [currentMaterialsQuestion, setCurrentMaterialsQuestion] = useState([])
 
     function simpleQuestion(answers) {
         setRule(question.rules.pick_eq);
@@ -325,6 +330,13 @@ const CallVotingPageQuestionCardList = (props) => {
         // eslint-disable-next-line
     }, [question.template, answersArray])
 
+    useEffect(() => {
+        if(materialsQuestion.length !== 0) {
+            setActiveMaterialsQuestion(true)
+            setCurrentMaterialsQuestion(materialsQuestion)
+        } else setCurrentMaterialsQuestion([])
+    }, [materialsQuestion])
+
     function addAnswerToArray(rowId, columnId) {
         const dataToAdd = {
             id: rowId, // здесь мы отправляем id строк rows.id
@@ -383,7 +395,9 @@ const CallVotingPageQuestionCardList = (props) => {
                             </span>
                         )}
                     </div>
-                    <MaterialsVoteQuestion materialsVoteQuestion='Материалы вопроса' />
+                    {activeMaterialsQuestion &&
+                        <MaterialsVoteQuestion currentMaterialsQuestion={currentMaterialsQuestion} materialsVoteName={'Материалы вопроса'}/>
+                    }
                 </div>
                 <div className='call-voting-page-question-card-list__main-content'>
                     {questionRows.map(elem => {

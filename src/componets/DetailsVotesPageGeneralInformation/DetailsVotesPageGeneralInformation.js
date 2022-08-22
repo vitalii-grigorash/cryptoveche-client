@@ -77,7 +77,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
                 </span>
             </div>
             <div className={'_hidden-materials-vote'}>
-                <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'} />
+                <MaterialsVoteQuestion materialsVoteName={'Материалы голосования'} />
             </div>
             <RegistrationButton
                 votesData={currentEventData}

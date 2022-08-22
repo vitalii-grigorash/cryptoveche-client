@@ -8,18 +8,24 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
     const {
         question,
         isMyBulletinTabActive,
-        results
+        results,
+        materialsQuestion
     } = props;
 
     const [isListView, setListView] = useState(false);
     const answersArray = [];
     const isBulletinVoted = false;
+    const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
+    const [currentMaterialsQuestion, setCurrentMaterialsQuestion] = useState([])
 
     useEffect(() => {
         if (question.options.columns.length > 4) {
             setListView(true);
+        } if (materialsQuestion.length !== 0) {
+            setActiveMaterialsQuestion(true)
+            setCurrentMaterialsQuestion(materialsQuestion)
         }
-    }, [question.options.columns.length])
+    }, [question.options.columns.length, materialsQuestion.length])
 
     return (
         <div className={'read-questions-card-checkbox__checkbox-question-block'}>
@@ -33,7 +39,9 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
                                 <p>Все строки обязательны для заполнения</p>
                             )}
                         </h5>
-                        <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                        {activeMaterialsQuestion &&
+                            <MaterialsVoteQuestion currentMaterialsQuestion={currentMaterialsQuestion} materialsVoteName={'Материалы вопроса'} />
+                        }
                     </>
                 )}
             </div>

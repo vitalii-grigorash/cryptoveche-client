@@ -86,6 +86,7 @@ const CallVotingPage = (props) => {
                             eventId={currentEventData.id}
                             requestHelper={requestHelper}
                             isReVoting={currentEventData.re_voting}
+                            materialsQuestion={item.materials}
                         />
                     )
                 }))
@@ -103,6 +104,7 @@ const CallVotingPage = (props) => {
                             requestHelper={requestHelper}
                             isReVoting={currentEventData.re_voting}
                             results={results}
+                            materialsQuestion={question.materials}
                         />
                     )
                 }))
