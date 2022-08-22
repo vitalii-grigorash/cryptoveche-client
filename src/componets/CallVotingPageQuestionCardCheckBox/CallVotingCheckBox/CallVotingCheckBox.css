@@ -6,9 +6,20 @@
 .call-voting-checkbox__wrapper-view-list {
     position: relative;
 }
+.call-voting-checkbox__icons {
+    position: absolute;
+    top: -2px;
+    left: 58px;
+    height: 24px;
+    width: 24px;
+    cursor: default;
+}
+.call-voting-checkbox__icons_left {
+    left: 0;
+}
 /*---------Стилизация для смены вида на список-------------------------------------------------------------------------*/
 .call-voting-checkbox__view-left {
-     left: 0;
+    left: 0;
  }
 
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/

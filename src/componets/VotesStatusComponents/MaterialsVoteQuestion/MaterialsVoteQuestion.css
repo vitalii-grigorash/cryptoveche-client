@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 }
 .materials-vote-question-select-arrow {
     width: 10px;
@@ -17,9 +18,6 @@
 @media (max-width: 890px) {
     .materials-vote-question__wrapper {
         font-size: 11px;
-    }
-    .materials-vote-question__wrapper {
-
     }
 }
 @media (max-width: 600px) {

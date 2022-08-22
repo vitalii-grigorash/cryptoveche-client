@@ -50,34 +50,34 @@ const MyVotesBlockForm = React.memo((props) => {
 		<div className={`my-votes-block__vote-form ${pathname === '/votes-page' && 'my-votes-block__vote-form_votes-page'}`}>
 			<div className='my-votes-block__container'>
 				<div className={'my-votes-block__container-title-block'} >
-				<h3 className={'my-votes-block__container-title-h3'} onClick={() => { handleCurrentEvents(votesData, true) }}>{votesData.title}</h3>
-				<h5 className={'my-votes-block__container-title-h5'}>{votesData.owner.title}</h5>
+					<h3 className={'my-votes-block__container-title-h3'} onClick={() => { handleCurrentEvents(votesData, true) }}>{votesData.title}</h3>
+					<h5 className={'my-votes-block__container-title-h5'}>{votesData.owner.title}</h5>
 					{pathname === '/votes-page' && (
 						<div className='my-votes-block__utc-container'>
 							<img alt='Иконка часового пояса' src={utcIcon} className='my-votes-block__utc-icon' />
 							<p className='my-votes-block__utc-value'>(UTC+3) Россия - Москва</p>
 						</div>
 					)}
-			</div>
+				</div>
 				<div className={pathname === '/' ? 'vote-form__status-block' : 'status-and-start-reg-start-vote'}>
 					<CurrentStatusVote
 						regStatus={labelText}
 						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
 					<div className={'status-and-start-reg-start-vote__reg-vote-date'}>
 						<div className={'reg-vote-date__border-right-mobile'}>
-					{pathname === '/votes-page' && (
-						<StartDateVote
-							dateTimeDate={startEventRegDate}
-							dateTimeWatch={startEventRegTime}
-							title={'Начало регистрации:'}
-						/>
-					)}
+							{pathname === '/votes-page' && (
+								<StartDateVote
+									dateTimeDate={startEventRegDate}
+									dateTimeWatch={startEventRegTime}
+									title={'Начало регистрации:'}
+								/>
+							)}
 						</div>
-					<StartDateVote
-						dateTimeDate={startEventDate}
-						dateTimeWatch={startEventTime}
-						title={'Начало голосования:'}
-					/>
+						<StartDateVote
+							dateTimeDate={startEventDate}
+							dateTimeWatch={startEventTime}
+							title={'Начало голосования:'}
+						/>
 					</div>
 					<div className='status-and-start-reg-start-vote__add-border-left'>
 						<ConfirmRegMaterialsVote
@@ -176,9 +176,20 @@ const MyVotesBlockForm = React.memo((props) => {
 				)}
 				{votesData.status === 'ended' && (
 					<>
-						{votesData.isVoted && (
+						{votesData.type === 'open' && (
 							<button className='cancel-reg'
-								onClick={showEventResult}
+								onClick={() => showEventResult(votesData)}
+							>
+								Результаты
+							</button>
+						)}
+					</>
+				)}
+				{votesData.status === 'quorum_unpresant' && (
+					<>
+						{votesData.type === 'open' && (
+							<button className='cancel-reg'
+								onClick={() => showEventResult(votesData)}
 							>
 								Результаты
 							</button>

@@ -1,4 +1,12 @@
 /*------Основной конейнер----------------------------------------------------------------------------------------------*/
+.call-voting-page-question-card-list__main {
+    display: flex;
+}
+.call-voting-page-question-card-list__main_voted {
+    background: #4ED4A9;
+    border-radius: 16px;
+    padding: 6px 0 0;
+}
 .call-voting-page-question-card-list__wrapper {
     display: flex;
     flex-direction: column;
@@ -7,6 +15,7 @@
     box-shadow: 0 3px 16px rgba(54, 58, 72, 0.08);
     padding: 32px 32px 40px 32px;
     gap: 24px;
+    width: 100%;
 }
 /*------Стилизация для div основгого контента-------------------------------------------------------------------------*/
 .call-voting-page-question-card-list__main-content {
@@ -44,6 +53,38 @@
 .call-voting-page-question-card-list__select-answer span:first-child {
     padding-right: 16px;
     border-right: 1px solid rgba(54, 59, 77, 0.3)
+}
+.call-voting-page-question-card-list__selected-answers {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(54, 59, 77, 0.4);
+}
+.call-voting-page-question-card-list__selected-answers_green {
+    color: #4ED4A9;
+}
+.call-voting-page-question-card-list__selected-answers_red {
+    color: #FF4970;
+}
+.call-voting-page-question-card-list__success-container {
+    display: flex;
+    background: rgba(78, 212, 169, 0.15);
+    border-radius: 24px;
+    margin: auto auto auto 0;
+}
+.call-voting-page-question-card-list__success-icon {
+    width: 4px;
+    height: 4px;
+    margin: auto 8px auto 12px;
+}
+.call-voting-page-question-card-list__success-text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: #4ED4A9;
+    opacity: 0.9;
+    margin: 2px 12px 2px 0;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 670px) {

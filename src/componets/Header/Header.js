@@ -25,11 +25,26 @@ const Header = (props) => {
     const [showInputSearch, setShowInputSearch] = useState(false)
     const { pathname } = useLocation();
 
-    const toogleInputSearch = () => {
+    const toogleInputSearch = (e) => {
         setShowInputSearch(true)
     }
 
+    useOnClickOutsideInputSearch(showInputSearch, () => setShowInputSearch(false));
 
+    function useOnClickOutsideInputSearch(active, handler) {
+        useEffect(() => {
+            const listener = (e) => {
+                if (!active) {
+                    return;
+                }
+                handler(e);
+            };
+            document.addEventListener('click', listener);
+            return function () {
+                document.removeEventListener('click', listener);
+            };
+        }, [active, handler])
+    }
 
     return (
         <div>
@@ -56,7 +71,7 @@ const Header = (props) => {
                             <img alt={'icon-search'} src={search_icon}/>
                                 <span>Поиск</span>
                             </div>
-                        <div className={showInputSearch ? 'general-block-search-settings-lk__search-input active' : 'general-block-search-settings-lk__search-input'}>
+                        <div onClick={e => e.stopPropagation()} className={showInputSearch ? 'general-block-search-settings-lk__search-input active' : 'general-block-search-settings-lk__search-input'}>
                             <input className={'search-input'}/>
                             <img className={'search-input-icon'} alt={'иконка поиска'} src={search_icon}/>
                         </div>
@@ -74,7 +89,5 @@ const Header = (props) => {
             <HeaderBurgerMenu active={burgerMenuActive} setActive={setBurgerMenuActive} />
         </div>
     )
-
 }
-
 export default Header;

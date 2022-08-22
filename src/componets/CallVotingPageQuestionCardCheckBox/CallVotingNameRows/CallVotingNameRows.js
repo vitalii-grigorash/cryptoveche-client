@@ -1,32 +1,72 @@
-import React, {useState} from "react";
+import React from "react";
 import './CallVotingNameRows.css';
+import CallVotingCheckBox from '../CallVotingCheckBox/CallVotingCheckBox';
+import CallVotingNameColumns from '../CallVotingNameColumns/CallVotingNameColumns';
 
+const CallVotingNameRows = (props) => {
 
-
-const CallVotingNameRows = ({nameRowAnswer, nameColumn, checkGridId}) => {
-
-
-    const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
-    const [activeViewListCheck, setActiveViewListCheck] = useState(false)
+    const {
+        rowId,
+        rowValue,
+        question,
+        columns,
+        isListView,
+        addAnswerToArray,
+        removeAnswerFromArray,
+        isBulletinVoted,
+        answersArray,
+        isMyBulletinTabActive,
+        results
+    } = props;
 
     return (
         <>
-            {activeViewTableCheck &&
-                <tr className={'call-voting-name-rows__wrapper'}>
-                    <td className={'call-voting-name-rows__name-row'}>
-                        {nameRowAnswer}
-                    </td>
-                    {checkGridId}
-                </tr>
-            }
-            {activeViewListCheck &&
-                <tr>
-                    <td style={{display: 'flex', flexDirection: 'column', gap: '24px', paddingBottom: '24px'}}>
-                        {nameRowAnswer}
-                        {nameColumn}
-                    </td>
-                </tr>
-            }
+            {!isListView ? (
+                <div className={'call-voting-name-rows__wrapper'}>
+                    <div className={'call-voting-name-rows__name-row'}>
+                        <p>{rowValue}</p>
+                    </div>
+                    {columns.map(column => (
+                        (
+                            <CallVotingCheckBox
+                                key={column.id}
+                                id={column.id}
+                                question={question}
+                                isListView={isListView}
+                                rowId={rowId}
+                                addAnswerToArray={addAnswerToArray}
+                                removeAnswerFromArray={removeAnswerFromArray}
+                                isBulletinVoted={isBulletinVoted}
+                                answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
+                            />
+                        )
+                    ))}
+                </div>
+            ) : (
+                <div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingBottom: '24px' }}>
+                        <p>{rowValue}</p>
+                        {columns.map(column => (
+                            <CallVotingNameColumns
+                                key={column.id}
+                                columnValue={column.value}
+                                question={question}
+                                isListView={isListView}
+                                column={column}
+                                rowId={rowId}
+                                addAnswerToArray={addAnswerToArray}
+                                removeAnswerFromArray={removeAnswerFromArray}
+                                isBulletinVoted={isBulletinVoted}
+                                answersArray={answersArray}
+                                isMyBulletinTabActive={isMyBulletinTabActive}
+                                results={results}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
         </>
     )
 }

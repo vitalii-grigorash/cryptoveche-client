@@ -44,6 +44,8 @@
     display: flex;
     flex-direction: row;
     max-height: 56px;
+    align-items: center;
+    /*margin-bottom: 24px;*/
 }
 .my-votes-block__container-title-block {
     display: flex;
@@ -170,7 +172,20 @@
 .my-votes__link-arrow img {
 
 }
-/*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
+
+/*------Адаптивная версия--------------------------------------------------------------------------------------*/
+@media (max-width: 1180px) {
+    .my-votes-block__vote-form_votes-page {
+        flex-direction: column;
+    }
+    .votes-form__button-vote-cancel-reg_votes-page {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: start;
+        margin: 0;
+    }
+}
 @media (max-width: 830px) {
     .my-votes-block-wrapper {
         max-width: 440px;
@@ -217,19 +232,7 @@
           font-size: 10px;
     }
 }
-/*------Адаптивная версия--------------------------------------------------------------------------------------*/
-@media (max-width: 1180px) {
-    .my-votes-block__vote-form_votes-page {
-        flex-direction: column;
-    }
-    .votes-form__button-vote-cancel-reg_votes-page {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        justify-content: start;
-        margin: 0;
-    }
-}
+
 @media (max-width: 600px) {
     .my-votes-block-wrapper {
         max-width: 600px;
@@ -277,6 +280,7 @@
     }
     .my-votes-block__vote-form {
         padding-bottom: 16px;
+        gap: 0;
     }
     .votes-page-switch-buttons {
         margin-bottom: 16px;

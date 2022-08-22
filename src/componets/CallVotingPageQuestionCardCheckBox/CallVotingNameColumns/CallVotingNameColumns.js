@@ -1,27 +1,40 @@
-import React, {useState} from "react";
+import React from "react";
 import './CallVotingNameColumns.css';
-import callVotingCheckBox from "../CallVotingCheckBox/CallVotingCheckBox";
 import CallVotingCheckBox from "../CallVotingCheckBox/CallVotingCheckBox";
 
+const CallVotingNameColumns = (props) => {
 
-const CallVotingNameColumns = ({nameColumnAnswer, activeRadioCheck}) => {
-
-
-
-    const [activeViewTableCheck, setActiveViewTableCheck] = useState(true)
-    const [activeViewListCheck, setActiveViewListCheck] = useState(false)
-
-
+    const {
+        columnValue,
+        question,
+        isListView,
+        column,
+        rowId,
+        addAnswerToArray,
+        removeAnswerFromArray,
+        isBulletinVoted,
+        answersArray,
+        isMyBulletinTabActive,
+        results
+    } = props;
 
     return (
-        <>
-            {activeViewTableCheck &&
-                <th className={'call-voting-name-columns__wrapper'}>{nameColumnAnswer}</th>
-            }
-            {activeViewListCheck &&
-                <span className={'call-voting-name-columns__wrapper-active-view-list'}><CallVotingCheckBox activeRadioCheck={activeRadioCheck}/>{nameColumnAnswer}</span>
-            }
-        </>
-        )
+        <div className={'call-voting-name-columns__wrapper-active-view-list'}>
+            <CallVotingCheckBox
+                id={column.id}
+                question={question}
+                isListView={isListView}
+                rowId={rowId}
+                addAnswerToArray={addAnswerToArray}
+                removeAnswerFromArray={removeAnswerFromArray}
+                isBulletinVoted={isBulletinVoted}
+                answersArray={answersArray}
+                isMyBulletinTabActive={isMyBulletinTabActive}
+                results={results}
+            />
+            <p>{columnValue}</p>
+        </div>
+    )
 }
+
 export default CallVotingNameColumns;

@@ -9,6 +9,7 @@
     opacity: 0;
     z-index: 2;
     pointer-events: none;
+    cursor: auto;
 }
 .materials-vote-question-modal__wrapper.active {
     opacity: 1;
@@ -31,13 +32,18 @@
 .materials-vote-question-modal__content.active {
     transform: scale(1);
 }
+.materials-vote-question-modal__link-materials {
+    min-width: 380px;
+}
 .materials-vote-question-modal__content a {
     color: #0084FE;
     font-size: 18px;
     line-height: 133%;
     opacity: 0.9;
-    max-width: 380px;
+    white-space: break-spaces;
+    word-break: break-word;
 }
+
 /*------Стилизация для div с документами------------------------------------------------------------------------------*/
 .materials-vote-question-modal__document-icons {
     display: inline-flex;
@@ -52,6 +58,7 @@
      max-width: 310px;
      line-height: 24px;
      color: rgba(54, 59, 77, 0.9);
+     white-space: break-spaces;
 }
 
 /*------Стилизация для div с иконками--------------------------------------------------------------------------------*/

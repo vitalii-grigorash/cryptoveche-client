@@ -13,7 +13,7 @@
     border-left: 1px rgba(54, 59, 77, 0.2) solid;
     font-size: 14px;
     line-height: 24px;
-    padding-left: 2vw;
+    padding-left: 32px;
 }
 /*-----Стилизация div для блоков с датой и временем и названием голосования--------------------------------------------*/
 .main-content__datetime-status-reg-vote {
@@ -42,7 +42,7 @@
         font-size: 10px;
     }
 }
-@media (max-width: 590px) {
+@media (max-width: 600px) {
     .main-content__datetime-status-reg-vote {
         font-size: 14px;
     }

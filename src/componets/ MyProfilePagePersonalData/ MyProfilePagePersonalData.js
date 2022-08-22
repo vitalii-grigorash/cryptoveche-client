@@ -1,27 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import './ MyProfilePagePersonalData.css';
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { config } from "../../config";
-import {changeUserName} from "../../Api/MyProfile";
+import * as MyProfile from '../../Api/MyProfile';
 
-const MyProfilePagePersonalData = () => {
 
-    const API_URL = config.java_api_url
-    const currentUser = React.useContext(CurrentUserContext);
+const MyProfilePagePersonalData = (props) => {
+
+    const {
+        requestHelper,
+        userId,
+        userEmail
+    } = props;
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [secondName, setSecondName] = useState('')
-    const [activeBtn, setActiveBtn] = useState(true)
+    const [activeBtn, setActiveBtn] = useState(false)
     const btnChangeColor = useRef(null)
+    const borderErrorFirstName = useRef(null)
+    const borderErrorLastName = useRef(null)
+    const borderErrorSecondName = useRef(null)
     const [validFirstName, setValidFirstName] = useState(false)
     const [validLastName, setValidLastName] = useState(false)
     const [validSecondName, setValidSecondName] = useState(false)
-    const userId = currentUser.id
-    const userEmail = currentUser.email
+    const [errorFields, setErrorFields] = useState('')
+    const [activeSuccess, setActiveSuccess] = useState(false)
 
     useEffect(() => {
-
         if (firstName || lastName || secondName !== '') {
             setActiveBtn(false);
             btnChangeColor.current.style.background = '#0084FE';
@@ -29,9 +33,6 @@ const MyProfilePagePersonalData = () => {
             btnChangeColor.current.style.cursor = 'pointer';
         } else {
             setActiveBtn(true);
-            setValidFirstName(false)
-            setValidLastName(false)
-            setValidSecondName(false)
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';
@@ -42,64 +43,94 @@ const MyProfilePagePersonalData = () => {
     const lastNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setLastName(e.target.value)
-        if (!nameRegExp.test(e.target.value)) {
-            console.log('ErrorName')
-            setValidLastName(true)
-        } else {
+        if (e.target.value === '') {
             setValidLastName(false)
-
+        } else {
+            if (!nameRegExp.test(e.target.value)) {
+                setValidLastName(true)
+            } else {
+                setValidLastName(false)
+            }
         }
     }
 
     const firstNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setFirstName(e.target.value)
-        if (!nameRegExp.test(e.target.value)) {
-            console.log('ErrorName')
-            setValidFirstName(true)
-        } else {
+        if (e.target.value === '') {
             setValidFirstName(false)
+        } else  {
+            if (!nameRegExp.test(e.target.value)) {
+                setValidFirstName(true)
+            } else {
+                setValidFirstName(false)
+            }
         }
     }
 
     const secondNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
         setSecondName(e.target.value)
-        if (!nameRegExp.test(e.target.value)) {
-            console.log('ErrorName')
-            setValidSecondName(true)
-        } else {
+        if (e.target.value === '') {
             setValidSecondName(false)
+        } else {
+            if (!nameRegExp.test(e.target.value)) {
+                setValidSecondName(true)
+            } else {
+                setValidSecondName(false)
+            }
         }
     }
 
-    function updateUserName() {
-        if (validLastName || validFirstName || validSecondName === true) {
-            console.log('wrong data')
-            console.log(validFirstName, validLastName, validSecondName)
+    let itemFields = {
+        first_name: firstName,
+        last_name: lastName,
+        second_name: secondName,
+        userFields:[],
+    }
 
+    const updateUserName = () => {
+        if (validLastName === true || validFirstName === true || validSecondName === true) {
+            setErrorFields('Поля заполнены неккоректно')
+            borderErrorFirstName.current.style.border = '1px red solid';
+            borderErrorLastName.current.style.border = '1px red solid';
+            borderErrorSecondName.current.style.border = '1px red solid';
+            console.log(validLastName, validFirstName, validLastName)
         } else {
-            let item = {
-                first_name: firstName,
-                last_name: lastName,
-                second_name: secondName
+            const body = {
+                userNameId: userId,
+                userNameFields: itemFields
             }
-
-            Object.filter = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
-            const newItem = Object.filter(item, ([key, score]) => score !== '')
-            console.log(newItem)
+            requestHelper(MyProfile.changeUserName, body)
+                .then((data) => {
+                    console.log(data);
+                })
+            console.log(body)
             setActiveBtn(true)
+            setActiveSuccess(true)
+            setErrorFields('Данные успешно изменены')
+            borderErrorFirstName.current.style.border = '1px #4ED4A9 solid';
+            borderErrorLastName.current.style.border = '1px #4ED4A9 solid';
+            borderErrorSecondName.current.style.border = '1px #4ED4A9 solid';
             btnChangeColor.current.style.background = 'rgba(54, 59, 77, 0.08)';
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';
             setFirstName('')
             setLastName('')
             setSecondName('')
-
+            console.log(validSecondName, validFirstName, validLastName, 1)
         }
     }
 
-
+    setTimeout(() => {
+        if (activeSuccess === true) {
+            setActiveSuccess(false)
+            setErrorFields('')
+            borderErrorFirstName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+            borderErrorLastName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+            borderErrorSecondName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+        }
+    }, 2000)
 
     return (
         <div className={'my-profile-page-personal-data__wrapper'}>
@@ -109,6 +140,7 @@ const MyProfilePagePersonalData = () => {
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Фамилия</label>
                     <input
+                        ref={borderErrorLastName}
                         type={"text"}
                         value={lastName}
                         onChange={e => lastNameHandler(e)} />
@@ -116,6 +148,7 @@ const MyProfilePagePersonalData = () => {
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Имя</label>
                     <input
+                        ref={borderErrorFirstName}
                         type={"text"}
                         value={firstName}
                         onChange={e => firstNameHandler(e)} />
@@ -123,6 +156,7 @@ const MyProfilePagePersonalData = () => {
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Отчетсво</label>
                     <input
+                        ref={borderErrorSecondName}
                         type={"text"}
                         value={secondName}
                         onChange={e => secondNameHandler(e)} />
@@ -131,10 +165,10 @@ const MyProfilePagePersonalData = () => {
                     <label>E-mail</label>
                     <input disabled={true} type={"email"} placeholder={userEmail} />
                 </div>
+                <span className={activeSuccess ? 'my-profile-page-personal-data__success-message' : 'my-profile-page-personal-data__error-message'}>{errorFields}</span>
             </div>
-            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {updateUserName()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => updateUserName()} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
         </div>
     )
 }
-
 export default MyProfilePagePersonalData;

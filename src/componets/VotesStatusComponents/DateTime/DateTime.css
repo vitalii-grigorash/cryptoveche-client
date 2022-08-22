@@ -4,6 +4,14 @@
     gap: 9px;
     color: #363B4D;
 }
+.data__calendar-icon {
+    width: 12px;
+    height: 13px;
+}
+.data__watch-icon {
+    width: 13px;
+    height: 13px;
+}
 @media (max-width: 890px) {
     .start-reg__data {
         font-size: 10px;
@@ -14,5 +22,4 @@
         font-size: 13px;
         gap: 6px;
     }
-
 }

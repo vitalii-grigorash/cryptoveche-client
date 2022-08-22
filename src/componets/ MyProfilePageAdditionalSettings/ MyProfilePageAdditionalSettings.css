@@ -23,6 +23,7 @@
     color: rgba(54, 59, 77, 0.9);
     width: 100%;
     padding-bottom: 32px;
+    position: relative;
 }
 
 .my-profile-page-add-settings__form label {
@@ -110,6 +111,14 @@
     color: rgba(54, 59, 77, 0.35);
     height: 48px;
 }
+/*------Сообщение об ошибки данных полей------------------------------------------------------------------------------*/
+.my-profile-page-add-settings__message {
+    color: #4ED4A9;
+    font-size: 12px;
+    position: absolute;
+    bottom: 8px;
+}
+
 /*------Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 1070px) {
     .my-profile-page-add-settings__wrapper {

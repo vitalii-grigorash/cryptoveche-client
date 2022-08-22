@@ -1,4 +1,8 @@
-.call-voting-page-vote-button-check__button {
+.call-voting-page-vote-button-check__button-container {
+    margin: auto auto auto 0;
+    display: flex;
+}
+.call-voting-page-vote-button-check__vote-button {
     max-width: 169px;
     max-height: 48px;
     padding: 12px 24px 12px 24px;
@@ -9,6 +13,42 @@
     font-size: 16px;
     line-height: 24px;
     cursor: pointer;
+    margin: auto 0;
+}
+.call-voting-page-vote-button-check__disabled-vote-button {
+    width: 170px;
+    height: 48px;
+    padding: 12px 24px 12px 24px;
+    background: rgba(54, 59, 77, 0.08);
+    border-radius: 4px;
+    color: rgba(54, 59, 77, 0.35);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: default;
+    margin: auto 0;
+}
+.call-voting-page-vote-button-check__revote-button {
+    width: 177px;
+    height: 48px;
+    border: 1px solid #0084FE;
+    border-radius: 4px;
+    background: #FFFFFF;
+    color: #0084FE;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    margin: auto 24px auto 0;
+}
+.call-voting-page-vote-button-check__button-voted-message {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4ED4A9;
+    opacity: 0.9;
+    margin: auto auto auto 0;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 670px) {
