@@ -20,7 +20,8 @@ const DetailsVotesPage = (props) => {
         handleCurrentEvents,
         toggleEventRegistration,
         showEventResult,
-        isResultTabOpen
+        isResultTabOpen,
+        handleResultTabOpen
     } = props;
 
     const navigate = useNavigate();
