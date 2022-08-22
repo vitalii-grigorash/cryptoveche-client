@@ -13,7 +13,6 @@ const CounterBlock = ({ stats }) => {
 		}
 		return titles[1];
 	}
-	//
 
 	return (
 		<div className={'count-block'}>
