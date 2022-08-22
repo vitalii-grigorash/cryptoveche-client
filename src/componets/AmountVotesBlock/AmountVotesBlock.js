@@ -52,9 +52,6 @@ const AmountVotesBlock = ({ statsData }) => {
 		}
 	}, [difference])
 
-	//
-	console.log('difference', difference);
-	//
 	return (
 		<div className={'amount-votes-wrapper main-content__elem3'}>
 			<h3>Количество голосующих</h3>
