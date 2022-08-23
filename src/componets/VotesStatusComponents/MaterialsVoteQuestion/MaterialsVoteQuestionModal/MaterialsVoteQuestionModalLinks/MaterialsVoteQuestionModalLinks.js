@@ -1,5 +1,6 @@
 import React from "react";
 import './MaterialsVoteQuestionModalLinks.css';
+import '../../MaterialsVoteQuestionModal/MaterialsVoteQuestionModal.css';
 
 const MaterialsVoteQuestionModalLinks = (props) => {
 

@@ -206,5 +206,4 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
         </div>
     )
 }
-
 export default DetailsVotesPageReadQuestionsCardList;

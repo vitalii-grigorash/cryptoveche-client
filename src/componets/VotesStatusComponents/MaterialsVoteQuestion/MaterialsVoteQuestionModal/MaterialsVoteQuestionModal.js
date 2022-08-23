@@ -45,7 +45,6 @@ const MaterialsVoteQuestionModal = (props) => {
                 getTypeDocumentMaterialsQuestion(currentMaterialsQuestion)
                 getTypeLinkMaterialsQuestion(currentMaterialsQuestion)
         }
-
         }
     }, [currentMaterialsVote, currentMaterialsQuestion])
 
