@@ -33,22 +33,22 @@ const Gistogramma = ({ statsVoted }) => {
 						<rect width="10" height={sortedArray[11]} fill={'#87CEFA'} x="126" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[10]} fill={'#87CEFA'} x="140" y="6" rx="0" ry="0" /> */}
 						{/* <rect width="10" height={sortedArray[9].voted} fill={'#87CEFA'} x="154" y="6" rx="0" ry="0" /> */}
-						<rect width="10" height={sortedArray[8].voted} fill={'#0084FE'} x="168" y="6" rx="0" ry="0" />
+						{/* <rect width="10" height={sortedArray[8].voted} fill={'#0084FE'} x="168" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[7].voted} fill={'#87CEFA'} x="182" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[6].voted} fill={'#87CEFA'} x="196" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[5].voted} fill={'#87CEFA'} x="210" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[4].voted} fill={'#0084FE'} x="224" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[3].voted} fill={'#87CEFA'} x="238" y="6" rx="0" ry="0" />
 						<rect width="10" height={sortedArray[2].voted} fill={'#87CEFA'} x="252" y="6" rx="0" ry="0" />
-						<rect width="10" height={sortedArray[1].voted} fill={'#87CEFA'} x="266" y="6" rx="0" ry="0" />
+						<rect width="10" height={sortedArray[1].voted} fill={'#87CEFA'} x="266" y="6" rx="0" ry="0" /> */}
 						<rect width="10" height={sortedArray[0].voted} fill={'#0084FE'} x="280" y="6" rx="0" ry="0" />
           </svg>
           <div className={'gistogramma-block__date'}>
             <span>{sortedArray[0].day.slice(5, 10).split('-').reverse().join('.')}</span>
-            <span>{sortedArray[2].day.slice(5, 10).split('-').reverse().join('.')}</span>
+            {/* <span>{sortedArray[2].day.slice(5, 10).split('-').reverse().join('.')}</span>
             <span>{sortedArray[4].day.slice(5, 10).split('-').reverse().join('.')}</span>
             <span>{sortedArray[6].day.slice(5, 10).split('-').reverse().join('.')}</span>
-            <span>{sortedArray[8].day.slice(5, 10).split('-').reverse().join('.')}</span>
+            <span>{sortedArray[8].day.slice(5, 10).split('-').reverse().join('.')}</span> */}
             {/* <span>{sortedArray[10].day.slice(5, 10).split('-').reverse().join('.')}</span> */}
           </div>
         </div>
