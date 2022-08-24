@@ -16,14 +16,12 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
     const answersArray = [];
     const isBulletinVoted = false;
     const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
-    const [currentMaterialsQuestion, setCurrentMaterialsQuestion] = useState([])
 
     useEffect(() => {
         if (question.options.columns.length > 4) {
             setListView(true);
         } if (materialsQuestion.length !== 0) {
             setActiveMaterialsQuestion(true)
-            setCurrentMaterialsQuestion(materialsQuestion)
         }
     }, [question.options.columns.length, materialsQuestion.length])
 
@@ -40,7 +38,7 @@ const DetailsVotesPageReadQuestionsCardCheckbox = (props) => {
                             )}
                         </h5>
                         {activeMaterialsQuestion &&
-                            <MaterialsVoteQuestion currentMaterialsQuestion={currentMaterialsQuestion} materialsVoteName={'Материалы вопроса'} />
+                            <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
                         }
                     </>
                 )}

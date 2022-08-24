@@ -30,7 +30,6 @@ const CallVotingPageQuestionCardList = (props) => {
     const [isButtonActive, setButtonActive] = useState(false);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
     const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
-    const [currentMaterialsQuestion, setCurrentMaterialsQuestion] = useState([])
 
     function simpleQuestion(answers) {
         setRule(question.rules.pick_eq);
@@ -333,9 +332,8 @@ const CallVotingPageQuestionCardList = (props) => {
     useEffect(() => {
         if(materialsQuestion.length !== 0) {
             setActiveMaterialsQuestion(true)
-            setCurrentMaterialsQuestion(materialsQuestion)
-        } else setCurrentMaterialsQuestion([])
-    }, [materialsQuestion])
+        }
+    }, [materialsQuestion.length])
 
     function addAnswerToArray(rowId, columnId) {
         const dataToAdd = {
@@ -396,7 +394,7 @@ const CallVotingPageQuestionCardList = (props) => {
                         )}
                     </div>
                     {activeMaterialsQuestion &&
-                        <MaterialsVoteQuestion currentMaterialsQuestion={currentMaterialsQuestion} materialsVoteName={'Материалы вопроса'}/>
+                        <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'}/>
                     }
                 </div>
                 <div className='call-voting-page-question-card-list__main-content'>

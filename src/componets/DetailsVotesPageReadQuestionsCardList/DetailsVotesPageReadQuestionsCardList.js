@@ -14,7 +14,6 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
 
     const [ruleText, setRuleText] = useState('');
     const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
-    const [currentMaterialsQuestion, setCurrentMaterialsQuestion] = useState([])
 
     function simpleQuestion() {
         setRuleText('Необходимо выбрать ровно ' + question.rules.pick_eq);
@@ -176,9 +175,8 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
     useEffect(() => {
         if(materialsQuestion.length !== 0) {
             setActiveMaterialsQuestion(true)
-            setCurrentMaterialsQuestion(materialsQuestion)
-        } else setCurrentMaterialsQuestion([])
-    }, [materialsQuestion])
+        }
+    }, [materialsQuestion.length])
 
     return (
         <div className={'read-questions-card-list__list-question-block'}>
@@ -188,7 +186,7 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
                     <>
                         <h5>{ruleText}</h5>
                         {activeMaterialsQuestion &&
-                            <MaterialsVoteQuestion currentMaterialsQuestion={currentMaterialsQuestion} materialsVoteName={'Материалы вопроса'} />
+                            <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
                         }
                     </>
                 )}

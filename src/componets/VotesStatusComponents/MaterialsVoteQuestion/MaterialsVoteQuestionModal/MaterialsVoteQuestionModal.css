@@ -96,7 +96,7 @@
 }
 @media (max-width: 420px) {
     .materials-vote-question-modal__wrapper.active {
-        /*left: -220px;*/
+        left: -25px;
     }
     .materials-vote-question-modal__document-icons span  {
         font-size: 12px;

@@ -24,14 +24,12 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
     const [answersArray, setAnswersArray] = useState([]);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
     const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
-    const [currentMaterialsQuestion, setCurrentMaterialsQuestion] = useState([])
 
     useEffect(() => {
         if (columns.length > 4) {
             setListView(true);
         } if (materialsQuestion.length !== 0) {
             setActiveMaterialsQuestion(true)
-            setCurrentMaterialsQuestion(materialsQuestion)
         }
     }, [columns.length, materialsQuestion.length])
 
@@ -149,7 +147,7 @@ console.log(materialsQuestion)
                     )}
                 </div>
                 {activeMaterialsQuestion &&
-                    <MaterialsVoteQuestion currentMaterialsQuestion={currentMaterialsQuestion} materialsVoteName={'Материалы вопроса'}/>
+                    <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'}/>
                 }
             </div>
             {!isListView ? (

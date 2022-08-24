@@ -39,6 +39,8 @@ const VotesPage = (props) => {
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
 
+    const [sortType, setSortType] = useState(0)
+
     const [showResultsFrom, setShowResultsFrom] = useState(0);
     const [resultsShow, setResultsShow] = useState(5);
     const [result, setResult] = useState(5);
@@ -320,6 +322,8 @@ const VotesPage = (props) => {
                     eventStartDateTo={eventStartDateTo}
                     changeAllCheckbox={changeAllCheckbox}
                     isResetAllCheckboxClick={isResetAllCheckboxClick}
+                    sortType={sortType}
+                    onClickSortType={(i) => setSortType(i)}
                 />
                 <VotesPagePaginationTableSearch
                     eventsSearchActive={eventsSearchActive}
