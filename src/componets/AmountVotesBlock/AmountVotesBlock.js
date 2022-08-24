@@ -29,7 +29,7 @@ const AmountVotesBlock = ({ statsData }) => {
 	}, [statsData])
 
 	useEffect(() => {
-		if (sortedArray && sortedArray.length > 0) {
+		if (sortedArray && sortedArray.length > 1) {
 			const a = sortedArray[sortedArray.length - 2].voted;
 			const b = sortedArray[sortedArray.length - 1].voted;
 			setDifference(
