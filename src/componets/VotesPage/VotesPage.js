@@ -39,7 +39,7 @@ const VotesPage = (props) => {
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
 
-    const [sortType, setSortType] = useState(0)
+    const [sortType, setSortType] = useState({})
 
     const [showResultsFrom, setShowResultsFrom] = useState(0);
     const [resultsShow, setResultsShow] = useState(5);
@@ -150,6 +150,58 @@ const VotesPage = (props) => {
         }
     }
 
+
+    useEffect(() => {
+        if(sortType === '-eventName') {
+            activeEvents.sort((a, b) => a.status.length > b.status.length ? 1 : -1)
+        } else {
+            if(sortType === 'eventName'){
+                activeEvents.sort((a, b) => b.status.length > a.status.length ? 1 : -1)
+            }
+        }
+            // switch (sortType) {
+            //     case '-eventName':
+            //         activeEvents.sort((a, b) => a.status.length > b.status.length ? 1 : -1)
+            //         break;
+            //     case 'eventName':
+            //         activeEvents.sort((a, b) => b.status.length > a.status.length ? 1 : -1)
+            //         break;
+            //     case '-orgName':
+            //         // console.log('Уменьшение org');
+            //         break;
+            //     case 'orgName':
+            //         // console.log('Увеличение org');
+            //         break;
+            //     case '-startReg':
+            //         // console.log('Уменьшение startReg');
+            //         break;
+            //     case 'startReg':
+            //         // console.log('Увеличение startReg')
+            //         break;
+            //     case '-startVote':
+            //         // console.log('Уменьшение startVote')
+            //         break;
+            //     case 'startVote':
+            //         // console.log('Увеличение startVote')
+            //         break;
+            //     case '-endReg':
+            //         // console.log('Уменьшение endReg')
+            //         break;
+            //     case 'endReg':
+            //         // console.log('Увеличение endReg')
+            //         break;
+            //     case '-endVote':
+            //         // console.log('Уменьшение endVote')
+            //         break;
+            //     case 'endVote':
+            //         // console.log('Увеличение endVote')
+            //         break;
+            //     default:
+            //         console.log('error')
+            // }
+
+    }, [sortType, activeEvents])
+
     useEffect(() => {
         if (btnActiveVotes) {
             if (activeEventsSearchInput === '') {
@@ -186,6 +238,8 @@ const VotesPage = (props) => {
             btnArchiveVotes
         ]
     );
+
+    console.log(sortType)
 
     function splitEvents(events) {
         setActiveEvents([]);
@@ -296,7 +350,7 @@ const VotesPage = (props) => {
         setBtnActiveVotes(false)
         setBtnArchiveVotes(true)
     }
-
+    // console.log(activeEventsForRender.sort((a, b) => a.registration_start_time > b.registration_start_time ? 1 : -1))
     return (
         <div className='votes-page-block__wrapper'>
             <TitleVotesDetailsCallVotingProfile

@@ -75,6 +75,7 @@
 }
 .sorting-modal__types-sort img:hover {
     background-color: rgba(54, 59, 77, 0.4);
+    border-radius: 4px;
 }
 .types-sort__decrease-increase-btn {
     display: inline-flex;
