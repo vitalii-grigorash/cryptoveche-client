@@ -25,8 +25,8 @@ const VotesPageFilterSortButtons = (props) => {
         eventStartDateTo,
         changeAllCheckbox,
         isResetAllCheckboxClick,
-        sortType,
-        onClickSortType
+        clickSortTypeInc,
+        clickSortTypeDec
     } = props;
 
     const [filtersModalActive, setFiltersModalActive] = useState(false);
@@ -86,8 +86,8 @@ const VotesPageFilterSortButtons = (props) => {
             <VotesPageSortingModal
                 active={sortingModalActive}
                 setActive={setSortingModalActive}
-                sortType={sortType}
-                onClickSortType={onClickSortType}
+                clickSortTypeInc={clickSortTypeInc}
+                clickSortTypeDec={clickSortTypeDec}
             />
         </div>
     )

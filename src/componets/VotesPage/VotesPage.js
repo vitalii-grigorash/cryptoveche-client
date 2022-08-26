@@ -150,58 +150,6 @@ const VotesPage = (props) => {
         }
     }
 
-
-    useEffect(() => {
-        if(sortType === '-eventName') {
-            activeEvents.sort((a, b) => a.status.length > b.status.length ? 1 : -1)
-        } else {
-            if(sortType === 'eventName'){
-                activeEvents.sort((a, b) => b.status.length > a.status.length ? 1 : -1)
-            }
-        }
-            // switch (sortType) {
-            //     case '-eventName':
-            //         activeEvents.sort((a, b) => a.status.length > b.status.length ? 1 : -1)
-            //         break;
-            //     case 'eventName':
-            //         activeEvents.sort((a, b) => b.status.length > a.status.length ? 1 : -1)
-            //         break;
-            //     case '-orgName':
-            //         // console.log('Уменьшение org');
-            //         break;
-            //     case 'orgName':
-            //         // console.log('Увеличение org');
-            //         break;
-            //     case '-startReg':
-            //         // console.log('Уменьшение startReg');
-            //         break;
-            //     case 'startReg':
-            //         // console.log('Увеличение startReg')
-            //         break;
-            //     case '-startVote':
-            //         // console.log('Уменьшение startVote')
-            //         break;
-            //     case 'startVote':
-            //         // console.log('Увеличение startVote')
-            //         break;
-            //     case '-endReg':
-            //         // console.log('Уменьшение endReg')
-            //         break;
-            //     case 'endReg':
-            //         // console.log('Увеличение endReg')
-            //         break;
-            //     case '-endVote':
-            //         // console.log('Уменьшение endVote')
-            //         break;
-            //     case 'endVote':
-            //         // console.log('Увеличение endVote')
-            //         break;
-            //     default:
-            //         console.log('error')
-            // }
-
-    }, [sortType, activeEvents])
-
     useEffect(() => {
         if (btnActiveVotes) {
             if (activeEventsSearchInput === '') {
@@ -238,8 +186,6 @@ const VotesPage = (props) => {
             btnArchiveVotes
         ]
     );
-
-    console.log(sortType)
 
     function splitEvents(events) {
         setActiveEvents([]);
@@ -346,11 +292,116 @@ const VotesPage = (props) => {
         setBtnActiveVotes(true)
         setBtnArchiveVotes(false)
     }
+
     function toggleArchiveShow() {
         setBtnActiveVotes(false)
         setBtnArchiveVotes(true)
     }
-    // console.log(activeEventsForRender.sort((a, b) => a.registration_start_time > b.registration_start_time ? 1 : -1))
+
+    const clickSortTypeDec = (i) => {
+        setSortType(i)
+        if(btnActiveVotes) {
+            switch (i) {
+                case '-eventName':
+                    activeEventsForRender.sort((a, b) => b.status.length > a.status.length ? 1 : -1);
+                    console.log('Уменьшение', 'event')
+                    break;
+                case '-orgName':
+                    activeEventsForRender.sort((a, b) => b.owner.title > a.owner.title ? 1 : -1);
+                    console.log('Уменьшение', 'org')
+                    break;
+                case '-startReg':
+                    activeEventsForRender.sort((a, b) => b.registration_start_time > a.registration_start_time ? 1 : -1);
+                    break;
+                case '-startVote':
+                    activeEventsForRender.sort((a, b) => b.event_start_time > a.event_start_time ? 1 : -1);
+                    break;
+                case '-endReg':
+                    activeEventsForRender.sort((a, b) => b.registration_end_time > a.registration_end_time ? 1 : -1);
+                    break;
+                case '-endVote':
+                    activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
+                    break;
+                default: {}
+            }
+        } else {
+            if (btnArchiveVotes) {
+                switch (i) {
+                    case '-eventName':
+                        activeEventsForRender.sort((a, b) => b.status.length > a.status.length ? 1 : -1);
+                        break;
+                    case '-orgName':
+                        activeEventsForRender.sort((a, b) => b.owner.title > a.owner.title ? 1 : -1);
+                        break;
+                    case '-startReg':
+                        activeEventsForRender.sort((a, b) => b.registration_start_time > a.registration_start_time ? 1 : -1);
+                        break;
+                    case '-startVote':
+                        activeEventsForRender.sort((a, b) => b.event_start_time > a.event_start_time ? 1 : -1);
+                        break;
+                    case '-endReg':
+                        activeEventsForRender.sort((a, b) => b.registration_end_time > a.registration_end_time ? 1 : -1);
+                        break;
+                    case '-endVote':
+                        activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
+                        break;
+                    default: {}
+                }
+            }
+        }
+    }
+
+    function clickSortTypeInc(i) {
+        setSortType(i)
+        if (btnActiveVotes) {
+            switch (i) {
+                case 'eventName':
+                    activeEventsForRender.sort((a, b) => a.status.length > b.status.length ? 1 : -1);
+                    break;
+                case 'orgName':
+                    activeEventsForRender.sort((a, b) => a.owner.title > b.owner.title ? 1 : -1);
+                    break;
+                case 'startReg':
+                    activeEventsForRender.sort((a, b) => a.registration_start_time > b.registration_start_time ? 1 : -1);
+                    break;
+                case 'startVote':
+                    activeEventsForRender.sort((a, b) => a.event_start_time > b.event_start_time ? 1 : -1);
+                    break;
+                case '-endReg':
+                    activeEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+                    break;   
+                case '-endVote':
+                    activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
+                    break;      
+                default: {}
+            } 
+        } else {
+            if (btnArchiveVotes) {
+                switch (i) {
+                    case 'eventName':
+                        activeEventsForRender.sort((a, b) => a.status.length > b.status.length ? 1 : -1);
+                        break;
+                    case 'orgName':
+                        activeEventsForRender.sort((a, b) => a.owner.title > b.owner.title ? 1 : -1);
+                        break;
+                    case 'startReg':
+                        activeEventsForRender.sort((a, b) => a.registration_start_time > b.registration_start_time ? 1 : -1);
+                        break;
+                    case 'startVote':
+                        activeEventsForRender.sort((a, b) => a.event_start_time > b.event_start_time ? 1 : -1);
+                        break;
+                    case '-endReg':
+                        activeEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+                        break;   
+                    case '-endVote':
+                        activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
+                        break;      
+                    default: {}
+                }            
+            }
+        }
+    }
+
     return (
         <div className='votes-page-block__wrapper'>
             <TitleVotesDetailsCallVotingProfile
@@ -377,7 +428,8 @@ const VotesPage = (props) => {
                     changeAllCheckbox={changeAllCheckbox}
                     isResetAllCheckboxClick={isResetAllCheckboxClick}
                     sortType={sortType}
-                    onClickSortType={(i) => setSortType(i)}
+                    clickSortTypeInc={clickSortTypeInc}
+                    clickSortTypeDec={clickSortTypeDec}
                 />
                 <VotesPagePaginationTableSearch
                     eventsSearchActive={eventsSearchActive}
@@ -430,37 +482,6 @@ const VotesPage = (props) => {
                         )}
                     </>
                 )}
-                {/* {btnActiveVotes && (
-                    <>
-                        {activeVotesData.map((item) => (
-                            <VotesPageActiveVotes
-                                key={item.id}
-                                id={item.id}
-                                titleVoteData={item.titleVoteData}
-                                regStatus={item.regStatus}
-                                voteStatus={item.voteStatus}
-                                dateTimeDate={item.DateReg}
-                                dateTimeWatch={item.TimeReg}
-                                dateTimeDate1={item.DateVote}
-                                dateTimeWatch1={item.TimeVote}
-                                confirmStatus={item.confirmStatus}
-                                nameRegButton={item.nameRegButton} />
-                        )
-                        )}
-                    </>
-                )} */}
-                {/* {btnArchiveVotes && (
-                    <>
-                        <VotesPageArchiveVotes titleVoteData={'Выбор делегатов конференции в Ученый Совет СПбГУ и еще парочка слов чтобы совсем уже было длинно'}
-                            regStatus={'Регистрация'}
-                            voteStatus={'Тайное'}
-                            dateTimeWatch={'12:00'}
-                            dateTimeDate={'03.10.2022'}
-                            dateTimeDate1={'03.10.2022'}
-                            dateTimeWatch1={'15:00'} confirmStatus={'Регистрация завершина'}
-                        />
-                    </>
-                )} */}
             </div>
             <VotesPagePaginationTableSearch
                 eventsSearchActive={eventsSearchActive}

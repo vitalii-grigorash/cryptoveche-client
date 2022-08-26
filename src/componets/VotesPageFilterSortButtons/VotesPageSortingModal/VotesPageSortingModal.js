@@ -9,8 +9,8 @@ const VotesPageSortingModal = (props) => {
     const {
         active,
         setActive,
-        sortType,
-        onClickSortType,
+        clickSortTypeDec,
+        clickSortTypeInc
     } = props;
 
     const listSortName = [
@@ -22,9 +22,8 @@ const VotesPageSortingModal = (props) => {
             {name: 'Времени окончания голосования', sortPropertyDec: '-endVote', sortPropertyInc: 'endVote'}
             ];
 
-    function clickSortType(i) {
-        onClickSortType(i);
-    }
+    //clickSortTypeDec функция для сортовки на уменьшение
+    // clickSortTypeInc функция для сортировки на увеличение
 
     useOnClickOutsideSortModal(active, () => setActive(false))
 
@@ -53,8 +52,8 @@ const VotesPageSortingModal = (props) => {
                         <div key={i} className={'sorting-modal__types-sort'}>
                             <span>{obj.name}</span>
                             <div className={'types-sort__decrease-increase-btn'}>
-                                <img onClickCapture={() => clickSortType(obj.sortPropertyDec)} alt={'иконка сортировки на убывание'} src={sorting_modal_decrease_btn}/>
-                                <img onClickCapture={() => clickSortType(obj.sortPropertyInc)} alt={'иконка сортировки на увеличение'} src={sorting_modal_increase_bnt}/>
+                                <img onClick={() => clickSortTypeDec(obj.sortPropertyDec, setActive(false))} alt={'иконка сортировки на убывание'} src={sorting_modal_decrease_btn}/>
+                                <img onClick={() => clickSortTypeInc(obj.sortPropertyInc, setActive(false))} alt={'иконка сортировки на увеличение'} src={sorting_modal_increase_bnt}/>
                             </div>
                         </div>
                     ))
