@@ -20,6 +20,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
     } = props;
 
     const [labelText, setLabelText] = useState('');
+    const [activeMaterials, setActiveMaterials] = useState(false)
 
     useEffect(() => {
         if (currentEventData.status === 'waiting') {
@@ -40,6 +41,12 @@ const DetailsVotesPageGeneralInformation = (props) => {
             setLabelText('Кворум не достигнут');
         }
     }, [currentEventData])
+
+    useEffect(() => {
+        if(currentEventData.materials.length !== 0 ) {
+            setActiveMaterials(true)
+        }
+    }, [currentEventData.materials])
 
     return (
         <div>
@@ -76,9 +83,11 @@ const DetailsVotesPageGeneralInformation = (props) => {
                     />
                 </span>
             </div>
-            <div className={'_hidden-materials-vote'}>
-                <MaterialsVoteQuestion materialsVoteQuestion={'Материалы голосования'} />
-            </div>
+            {activeMaterials &&
+                <div className={'_hidden-materials-vote'}>
+                    <MaterialsVoteQuestion materialsVoteName={'Материалы голосования'} currentMaterialsVote={currentEventData}/>
+                </div>
+            }
             <RegistrationButton
                 votesData={currentEventData}
                 handleCurrentEvents={handleCurrentEvents}

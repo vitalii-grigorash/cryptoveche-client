@@ -168,8 +168,22 @@
     }
 }
 @media (max-width: 925px) {
-    .navigation-menu__pagination-search-block {
-       display: none;
+    .pagination-search-block__search-table, .pagination-search-block__change-page {
+        display: none;
     }
 }
-
+@media (max-width: 925px) {
+    .pagination-search-block__search-table, .pagination-search-block__change-page {
+        display: none;
+    }
+}
+@media (max-width: 590px) {
+    .pagination-search-block__text {
+        display: none;
+    }
+}
+@media (max-width: 420px) {
+    .pagination-search-block__arrow-count-page  {
+        height: 26px;
+    }
+}

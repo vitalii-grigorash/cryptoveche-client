@@ -31,6 +31,7 @@ const MainPage = (props) => {
 			.then((data) => {
 				setStatsData(data)
 			})
+			return () => setStatsData({})
 	}, []);
 
 	useEffect(() => {
@@ -38,6 +39,7 @@ const MainPage = (props) => {
 		if (nextVote) {
 			setActualVote(nextVote)
 		}
+		return () => setActualVote({})
 	}, [allEvents])
 
 

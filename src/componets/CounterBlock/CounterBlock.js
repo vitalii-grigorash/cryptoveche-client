@@ -13,7 +13,6 @@ const CounterBlock = ({ stats }) => {
 		}
 		return titles[1];
 	}
-	//
 
 	return (
 		<div className={'count-block'}>
@@ -27,7 +26,7 @@ const CounterBlock = ({ stats }) => {
 			<div className={'count-block__style _orange'}>
 				<h3>{stats.activeEvents}</h3>
 				<span>
-					{CountForm(stats.eventsCount, ['Голосование активных', 'Голосования активных', 'Голосований активных'])}
+					{CountForm(stats.activeEvents, ['Голосование активных', 'Голосования активных', 'Голосований активных'])}
 				</span>
 				<img alt={'картинка для блока справа'} className={'count-block__style-image'} src={count_block_img} />
 			</div>

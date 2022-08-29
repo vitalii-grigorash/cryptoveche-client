@@ -16,18 +16,22 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         eventId,
         requestHelper,
         isReVoting,
-        results
+        results,
+        materialsQuestion
     } = props;
 
     const [isListView, setListView] = useState(false);
     const [answersArray, setAnswersArray] = useState([]);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
+    const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
 
     useEffect(() => {
         if (columns.length > 4) {
             setListView(true);
+        } if (materialsQuestion.length !== 0) {
+            setActiveMaterialsQuestion(true)
         }
-    }, [columns.length])
+    }, [columns.length, materialsQuestion.length])
 
     function addGridAnswer(rowId, columnId) {
         const objToAdd = answersArray.find(obj => obj.id === rowId);
@@ -123,7 +127,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                 }
             })
     }
-
+console.log(materialsQuestion)
     return (
         <div className={'call-voting-page-question-card-check__wrapper'}>
             <div className={'call-voting-page-question-card-check__title'}>
@@ -142,7 +146,9 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                         </div>
                     )}
                 </div>
-                <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                {activeMaterialsQuestion &&
+                    <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'}/>
+                }
             </div>
             {!isListView ? (
                 <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>

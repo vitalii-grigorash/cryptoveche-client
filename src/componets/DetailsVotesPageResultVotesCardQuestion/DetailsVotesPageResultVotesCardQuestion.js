@@ -6,8 +6,6 @@ import DetailsVotesPageResultVotesCardQuestionGraph
     from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraph";
 
 
-
-
 const DetailsVotesPageResultVotesCardQuestion = ({titleName, answerSelected}) => {
 
     const [graphResult, setGraphResult] = useState(false)
