@@ -28,6 +28,9 @@
 .status-icon__color-status_warning {
     color: #FF8A00;
 }
+.materials-vote__hidden-materials.active {
+    display: none;
+}
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
 @media (max-width: 1305px) {
     .status-block__materials-vote {

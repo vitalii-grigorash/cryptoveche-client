@@ -28,7 +28,6 @@ const CalendarVotes = (props) => {
         setActualVotesDate(sortActualVotesCalendar)
     }
 
-    console.log(actualVotesDate)
         const startRegDate = actualVotesDate.map(item => item.registration_start_time).map(function (elem) {
             return {dateEvent : elem}
         })

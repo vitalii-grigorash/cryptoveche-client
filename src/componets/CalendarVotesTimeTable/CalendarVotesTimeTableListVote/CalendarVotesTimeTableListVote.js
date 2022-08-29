@@ -26,6 +26,7 @@ const CalendarVotesTimeTableListVote = (props) => {
             setStartRegEvent(true)
             setColorCurrentDay('#49B3FF')
         }
+        return () => setStartRegEvent()
     }, [currentEventDate, timeStartReg, setColorCurrentDay])
 
     useEffect(() => {
@@ -33,6 +34,7 @@ const CalendarVotesTimeTableListVote = (props) => {
             setEndRegEvent(true)
             setColorCurrentDay('#FF8A00')
         }
+        return () => setEndRegEvent()
     }, [currentEventDate, timeEndReg, setColorCurrentDay])
 
     useEffect(() => {
@@ -40,6 +42,7 @@ const CalendarVotesTimeTableListVote = (props) => {
             setStartVoteEvent(true)
             setColorCurrentDay('#4ED4A9')
         }
+        return () => setStartVoteEvent()
     }, [currentEventDate, timeStartVote, setColorCurrentDay])
 
     useEffect(() => {
@@ -47,6 +50,7 @@ const CalendarVotesTimeTableListVote = (props) => {
             setEndVoteEvent(true)
             setColorCurrentDay('#FF4970')
         }
+        return () => setEndVoteEvent()
     }, [currentEventDate, timeEndVote, setColorCurrentDay])
 
             return (

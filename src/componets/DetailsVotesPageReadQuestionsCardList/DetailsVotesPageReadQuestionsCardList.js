@@ -8,10 +8,12 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
     const {
         question,
         isMyBulletinTabActive,
-        results
+        results,
+        materialsQuestion
     } = props;
 
     const [ruleText, setRuleText] = useState('');
+    const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
 
     function simpleQuestion() {
         setRuleText('Необходимо выбрать ровно ' + question.rules.pick_eq);
@@ -170,6 +172,12 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
         // eslint-disable-next-line
     }, [question.template])
 
+    useEffect(() => {
+        if(materialsQuestion.length !== 0) {
+            setActiveMaterialsQuestion(true)
+        }
+    }, [materialsQuestion.length])
+
     return (
         <div className={'read-questions-card-list__list-question-block'}>
             <div className={'list-question-block__title'}>
@@ -177,7 +185,9 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
                 {!isMyBulletinTabActive && (
                     <>
                         <h5>{ruleText}</h5>
-                        <MaterialsVoteQuestion materialsVoteQuestion={'Материалы вопроса'} />
+                        {activeMaterialsQuestion &&
+                            <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
+                        }
                     </>
                 )}
             </div>
@@ -194,5 +204,4 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
         </div>
     )
 }
-
 export default DetailsVotesPageReadQuestionsCardList;
