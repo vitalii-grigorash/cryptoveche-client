@@ -43,15 +43,18 @@ const MaterialsVoteQuestionModal = React.memo((props) => {
             const filteredCurrentMaterialsVoteLink = currentMaterialsVote.materials.filter(elem => elem.type === 'link');
                  setTypeLink(filteredCurrentMaterialsVoteLink);
         }
-        else {
-            if(currentMaterialsQuestion !== undefined) {
-                const filteredCurrentMaterialsQuestionDocument = currentMaterialsQuestion.filter(elem => elem.type === 'doc');
-                    setTypeDocument(filteredCurrentMaterialsQuestionDocument);
-                const filteredCurrentMaterialsQuestionLink = currentMaterialsQuestion.filter(elem => elem.type === 'link');
-                    setTypeLink(filteredCurrentMaterialsQuestionLink);
+        return () => setTypeDocument([]) || setTypeLink([])
+    }, [currentMaterialsVote]);
+
+    useEffect(() => {
+        if(currentMaterialsQuestion !== undefined) {
+            const filteredCurrentMaterialsQuestionDocument = currentMaterialsQuestion.filter(elem => elem.type === 'doc');
+                setTypeDocument(filteredCurrentMaterialsQuestionDocument);
+            const filteredCurrentMaterialsQuestionLink = currentMaterialsQuestion.filter(elem => elem.type === 'link');
+                setTypeLink(filteredCurrentMaterialsQuestionLink);
         }
-        }
-    }, [currentMaterialsVote, currentMaterialsQuestion])
+        return () => setTypeDocument([]) || setTypeLink([])
+    }, [currentMaterialsQuestion]);
 
     useOnClickOutsideMaterialsVoteModal(active, () => setActive(false));
 

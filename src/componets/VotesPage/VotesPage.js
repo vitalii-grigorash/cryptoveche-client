@@ -304,11 +304,9 @@ const VotesPage = (props) => {
             switch (i) {
                 case '-eventName':
                     activeEventsForRender.sort((a, b) => b.status.length > a.status.length ? 1 : -1);
-                    console.log('Уменьшение', 'event')
                     break;
                 case '-orgName':
                     activeEventsForRender.sort((a, b) => b.owner.title > a.owner.title ? 1 : -1);
-                    console.log('Уменьшение', 'org')
                     break;
                 case '-startReg':
                     activeEventsForRender.sort((a, b) => b.registration_start_time > a.registration_start_time ? 1 : -1);

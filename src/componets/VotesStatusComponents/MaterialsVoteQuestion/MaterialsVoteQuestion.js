@@ -16,7 +16,7 @@ const MaterialsVoteQuestion = (props) => {
 
     return (
             <div onClick={() => setMaterialsModalActive(!materialsModalActive)} className={'materials-vote-question__wrapper'}>
-                <span className={'materials-vote-question__materials-name'} >{materialsVoteName}</span>
+                <span className={'materials-vote-question__materials-name'}>{materialsVoteName}</span>
                     <img className="materials-vote-question-select-arrow" src={material_vote_row} alt="Стрелочка открытия меню"/>
                 <MaterialsVoteQuestionModal currentMaterialsQuestion={currentMaterialsQuestion} currentMaterialsVote={currentMaterialsVote} active={materialsModalActive} setActive={setMaterialsModalActive}/>
             </div>
