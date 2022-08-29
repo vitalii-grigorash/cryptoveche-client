@@ -3,12 +3,9 @@ import { useNavigate } from "react-router-dom";
 import './DetailsVotesPage.css';
 import './DetailsVotesPageResultVotes.css';
 import DetailsVotesPageDaysEndRegStartVote from '.././DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote';
-import DetailsVotesPageGeneralInformation
-    from "../DetailsVotesPageGeneralInformation/DetailsVotesPageGeneralInformation";
-import DetailsVotesPageResultVotesCardQuestion
-    from "../DetailsVotesPageResultVotesCardQuestion/DetailsVotesPageResultVotesCardQuestion";
-import TitleVotesDetailsCallVotingProfile
-    from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
+import DetailsVotesPageGeneralInformation from "../DetailsVotesPageGeneralInformation/DetailsVotesPageGeneralInformation";
+import DetailsVotesPageResultVotesCardQuestion from "../DetailsVotesPageResultVotesCardQuestion/DetailsVotesPageResultVotesCardQuestion";
+import TitleVotesDetailsCallVotingProfile from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
 // import DetailsVotesPageResultVotesWaitingResults from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import * as Events from '../../Api/Events';
@@ -20,8 +17,7 @@ const DetailsVotesPage = (props) => {
         handleCurrentEvents,
         toggleEventRegistration,
         showEventResult,
-        isResultTabOpen,
-        handleResultTabOpen
+        isResultTabOpen
     } = props;
 
     const navigate = useNavigate();
@@ -185,6 +181,7 @@ const DetailsVotesPage = (props) => {
                     <>
                         {btnResult && (
                             <DetailsVotesPageResultVotesCardQuestion
+                                currentEventData={currentEventData}
                                 titleName={'1. Согласны ли вы с решением №576?'}
                                 answerSelected={'Выберите ровно 1'}
                             />

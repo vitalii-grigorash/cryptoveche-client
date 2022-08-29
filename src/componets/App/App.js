@@ -310,8 +310,8 @@ function App() {
     useEffect(() => {
         const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
         socket.onopen = () => {
-            console.log('соединение установлено')
-            socket.send(JSON.stringify( {
+            console.log('соединение установлено');
+            socket.send(JSON.stringify({
                 id: currentUser.id,
                 username: userName,
                 method: "connection"
@@ -370,7 +370,7 @@ function App() {
                                 />}
                             />
                             <Route exact path='/my-profile' element={<MyProfilePage
-                                requestHelper={requestHelper}/>} />
+                                requestHelper={requestHelper} />} />
                             <Route exact path='/details-vote'
                                 element={<DetailsVotesPage
                                     requestHelper={requestHelper}
