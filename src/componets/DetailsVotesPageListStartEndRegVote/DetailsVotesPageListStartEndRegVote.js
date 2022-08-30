@@ -8,22 +8,13 @@ import StatusDayColorYellow from "./StatusDayColorYellow/StatusDayColorYellow";
 import ListStartEndRegMobile from "./ListStartEndRegMobile/ListStartEndRegMobile";
 import ListStartEndVoteMobile from "./ListStartEndVoteMobile/ListStartEndVoteMobile";
 
-
 const DetailsVotesPageListStartEndRegVote = (props) => {
 
     const {
-        voteData
+        voteData,
+        formatDate,
+        formatTime
     } = props;
-
-    const startEventDate = voteData.event_start_time.slice(0, 10).split('-').reverse().join('.');
-    const startEventTime = voteData.event_start_time.slice(11, voteData.event_start_time.length - 4);
-    const endEventDate = voteData.event_end_time.slice(0, 10).split('-').reverse().join('.');
-    const endEventTime = voteData.event_end_time.slice(11, voteData.event_end_time.length - 4);
-
-    const startEventRegDate = voteData.registration_start_time.slice(0, 10).split('-').reverse().join('.');
-    const startEventRegTime = voteData.registration_start_time.slice(11, voteData.registration_start_time.length - 4);
-    const endEventRegDate = voteData.registration_end_time.slice(0, 10).split('-').reverse().join('.');
-    const endEventRegTime = voteData.registration_end_time.slice(11, voteData.registration_end_time.length - 4);
 
     return (
         <div className={'details-votes-page-list-start-end-reg-vote__wrapper'}>
@@ -36,10 +27,10 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
                     <NameStatusRegAndVote nameStatusRegAndVote={'Конец голосования:'} />
                 </div>
                 <div className={'main-content__datetime-status-reg-vote'}>
-                    <DataTime dateTimeDate={startEventRegDate} dateTimeWatch={startEventRegTime} />
-                    <DataTime dateTimeDate={endEventRegDate} dateTimeWatch={endEventRegTime} />
-                    <DataTime dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
-                    <DataTime dateTimeDate={endEventDate} dateTimeWatch={endEventTime} />
+                    <DataTime dateTimeDate={formatDate(voteData.registration_start_time)} dateTimeWatch={formatTime(voteData.registration_start_time)} />
+                    <DataTime dateTimeDate={formatDate(voteData.registration_end_time)} dateTimeWatch={formatTime(voteData.registration_end_time)} />
+                    <DataTime dateTimeDate={formatDate(voteData.event_start_time)} dateTimeWatch={formatTime(voteData.event_start_time)} />
+                    <DataTime dateTimeDate={formatDate(voteData.event_end_time)} dateTimeWatch={formatTime(voteData.event_end_time)} />
                 </div>
                 <div className={'main-content__datetime-status-reg-vote-color-day'}>
                     <StatusDayColorRed nameStatusDay={'2 дня назад'} />
@@ -49,17 +40,17 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
                 </div>
                 <ListStartEndRegMobile
                     title={'Начало и конец регистрации:'}
-                    startDate={startEventRegDate}
-                    startTime={startEventRegTime}
-                    endDate={endEventRegDate}
-                    endTime={endEventRegTime}
+                    startDate={formatDate(voteData.registration_start_time)}
+                    startTime={formatTime(voteData.registration_start_time)}
+                    endDate={formatDate(voteData.registration_end_time)}
+                    endTime={formatTime(voteData.registration_end_time)}
                 />
                 <ListStartEndVoteMobile
                     title={'Начало и конец голосования:'}
-                    startDate={startEventDate}
-                    startTime={startEventTime}
-                    endDate={endEventDate}
-                    endTime={endEventTime}
+                    startDate={formatDate(voteData.event_start_time)}
+                    startTime={formatTime(voteData.event_start_time)}
+                    endDate={formatDate(voteData.event_end_time)}
+                    endTime={formatTime(voteData.event_end_time)}
                 />
             </div>
         </div>

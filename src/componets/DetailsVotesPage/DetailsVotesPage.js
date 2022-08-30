@@ -17,7 +17,10 @@ const DetailsVotesPage = (props) => {
         handleCurrentEvents,
         toggleEventRegistration,
         showEventResult,
-        isResultTabOpen
+        isResultTabOpen,
+        formatDate,
+        formatTime,
+        utcOffset
     } = props;
 
     const navigate = useNavigate();
@@ -162,6 +165,9 @@ const DetailsVotesPage = (props) => {
                         handleCurrentEvents={handleCurrentEvents}
                         toggleEventRegistration={toggleEventRegistration}
                         showEventResult={showEventResult}
+                        formatDate={formatDate}
+                        formatTime={formatTime}
+                        utcOffset={utcOffset}
                     />
                 )}
                 {btnReadQuestions && (

@@ -17,12 +17,14 @@ const VotesPage = (props) => {
         allEvents,
         handleCurrentEvents,
         toggleEventRegistration,
-        showEventResult
+        showEventResult,
+        formatDate,
+        formatTime,
+        utcOffset
     } = props;
 
     const eventsSearchActive = Validation();
     const eventsSearchArchive = Validation();
-
     const [btnActiveVotes, setBtnActiveVotes] = useState(true);
     const [btnArchiveVotes, setBtnArchiveVotes] = useState(false);
     const [activeEvents, setActiveEvents] = useState([]);
@@ -38,15 +40,12 @@ const VotesPage = (props) => {
     const [archiveEventsSearchInput, setArchiveEventsSearchInput] = useState('');
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
-
     const [sortType, setSortType] = useState({})
-
     const [showResultsFrom, setShowResultsFrom] = useState(0);
     const [resultsShow, setResultsShow] = useState(5);
     const [result, setResult] = useState(5);
     const [pageCount, setPageCount] = useState(1);
     const [selectedResultsShow, setSelectedResultsShow] = useState(5);
-
     const [showResultsFromArchive, setShowResultsFromArchive] = useState(0);
     const [resultsShowArchive, setResultsShowArchive] = useState(5);
     const [resultArchive, setResultArchive] = useState(5);
@@ -300,7 +299,7 @@ const VotesPage = (props) => {
 
     const clickSortTypeDec = (i) => {
         setSortType(i)
-        if(btnActiveVotes) {
+        if (btnActiveVotes) {
             switch (i) {
                 case '-eventName':
                     activeEventsForRender.sort((a, b) => b.status.length > a.status.length ? 1 : -1);
@@ -320,7 +319,7 @@ const VotesPage = (props) => {
                 case '-endVote':
                     activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
                     break;
-                default: {}
+                default: { }
             }
         } else {
             if (btnArchiveVotes) {
@@ -343,7 +342,7 @@ const VotesPage = (props) => {
                     case '-endVote':
                         activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
                         break;
-                    default: {}
+                    default: { }
                 }
             }
         }
@@ -367,12 +366,12 @@ const VotesPage = (props) => {
                     break;
                 case '-endReg':
                     activeEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-                    break;   
+                    break;
                 case '-endVote':
                     activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
-                    break;      
-                default: {}
-            } 
+                    break;
+                default: { }
+            }
         } else {
             if (btnArchiveVotes) {
                 switch (i) {
@@ -390,12 +389,12 @@ const VotesPage = (props) => {
                         break;
                     case '-endReg':
                         activeEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-                        break;   
+                        break;
                     case '-endVote':
                         activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
-                        break;      
-                    default: {}
-                }            
+                        break;
+                    default: { }
+                }
             }
         }
     }
@@ -461,6 +460,9 @@ const VotesPage = (props) => {
                                 handleCurrentEvents={handleCurrentEvents}
                                 toggleEventRegistration={toggleEventRegistration}
                                 showEventResult={showEventResult}
+                                formatDate={formatDate}
+                                formatTime={formatTime}
+                                utcOffset={utcOffset}
                             />
                         )
                         )}
@@ -475,6 +477,9 @@ const VotesPage = (props) => {
                                 handleCurrentEvents={handleCurrentEvents}
                                 toggleEventRegistration={toggleEventRegistration}
                                 showEventResult={showEventResult}
+                                formatDate={formatDate}
+                                formatTime={formatTime}
+                                utcOffset={utcOffset}
                             />
                         )
                         )}
@@ -497,4 +502,5 @@ const VotesPage = (props) => {
         </div>
     )
 }
+
 export default VotesPage;

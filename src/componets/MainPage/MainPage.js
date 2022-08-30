@@ -16,7 +16,10 @@ const MainPage = (props) => {
 		requestHelper,
 		handleCurrentEvents,
 		toggleEventRegistration,
-		showEventResult
+		showEventResult,
+		formatDate,
+		formatTime,
+		utcOffset
 	} = props;
 
 	// const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
@@ -31,7 +34,7 @@ const MainPage = (props) => {
 			.then((data) => {
 				setStatsData(data)
 			})
-			return () => setStatsData({})
+		return () => setStatsData({})
 	}, []);
 
 	useEffect(() => {
@@ -55,12 +58,17 @@ const MainPage = (props) => {
 					handleCurrentEvents={handleCurrentEvents}
 					toggleEventRegistration={toggleEventRegistration}
 					showEventResult={showEventResult}
+					formatDate={formatDate}
+					formatTime={formatTime}
+					utcOffset={utcOffset}
 				/>
-				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock 
-				actualVote={actualVote} // удалить в дальнейшем
-				sortActualEvents={sortActualEvents}
-				handleCurrentEvents={handleCurrentEvents}
-				toggleEventRegistration={toggleEventRegistration}
+				{actualVote && Object.keys(actualVote).length > 0 && <ActualBlock
+					actualVote={actualVote} // удалить в дальнейшем
+					sortActualEvents={sortActualEvents}
+					handleCurrentEvents={handleCurrentEvents}
+					toggleEventRegistration={toggleEventRegistration}
+					formatDate={formatDate}
+					formatTime={formatTime}
 				/>}
 				<ScanQRMobile />
 			</div>
