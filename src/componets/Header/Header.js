@@ -10,8 +10,6 @@ import {Link, useLocation} from "react-router-dom";
 import HeaderMyProfileModal from "./HeaderMyProfileModal/HeaderMyProfileModal";
 import HeaderSettingsModal from "./HeaderSettingsModal/HeaderSettingsModal";
 
-
-
 const Header = (props) => {
 
     const {

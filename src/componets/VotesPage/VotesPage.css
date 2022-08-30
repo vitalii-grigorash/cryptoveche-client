@@ -64,6 +64,19 @@
     padding-top: 24px;
     cursor: pointer;
 }
+.votes-page-block__empty-state-message.active {
+    display: none;
+}
+.votes-page-block__empty-state-message {
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    line-height: 24px;
+    font-size: 18px;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 60%;
+    margin: 0 auto;
+}
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1020px) {
     .votes-page-switch-buttons {
@@ -76,6 +89,9 @@
 @media (max-width: 815px) {
     .votes-page-block__main-content {
         padding: 16px 16px;
+    }
+    .votes-page-block__empty-state-message {
+        font-size: 16px;
     }
 }
 @media (max-width: 800px) {

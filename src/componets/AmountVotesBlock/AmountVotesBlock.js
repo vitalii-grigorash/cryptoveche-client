@@ -53,7 +53,7 @@ const AmountVotesBlock = ({ statsData }) => {
 	}, [difference])
 
 	return (
-		<div className={'amount-votes-wrapper main-content__elem3'}>
+		<div className={'amount-votes-wrapper'}>
 			<h3>Количество голосующих</h3>
 			<h4>Динамика голосующих по дням</h4>
 			<div className={'amount-votes__gistogramma-and-total-amount'}>

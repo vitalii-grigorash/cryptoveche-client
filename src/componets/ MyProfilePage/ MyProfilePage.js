@@ -13,14 +13,13 @@ import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 const MyProfilePage = (props) => {
 
     const {
-        requestHelper
+        requestHelper,
+        handleLogout
     } = props;
-
 
     const currentUser = React.useContext(CurrentUserContext);
     const userId = currentUser.id
     const userEmail = currentUser.email
-
 
     return (
             <div className={'my-profile-page__wrapper'}>
@@ -46,7 +45,7 @@ const MyProfilePage = (props) => {
                                userId={userId}/>
                        </div>
                    </div>
-                <button className={'my-profile-page__exit-button-profile'}>Выйти из профиля</button>
+                <button onClick={handleLogout} className={'my-profile-page__exit-button-profile'}>Выйти из профиля</button>
             </div>
     )
 }

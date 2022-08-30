@@ -38,6 +38,7 @@ const VotesPage = (props) => {
     const [archiveEventsSearchInput, setArchiveEventsSearchInput] = useState('');
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
+    const [activeEmptyStateMessage, setActiveStateEmptyMessage] = useState(false)
 
     const [sortType, setSortType] = useState({})
 
@@ -400,6 +401,22 @@ const VotesPage = (props) => {
         }
     }
 
+    useEffect(() => {
+        if(btnActiveVotes) {
+            if(activeEventsForRender.length !== 0) {
+                setActiveStateEmptyMessage(true)
+            } else {
+                setActiveStateEmptyMessage(false)
+            }
+        } else if(btnArchiveVotes) {
+            if(activeEventsForRender.length !== 0) {
+                setActiveStateEmptyMessage(true)
+            } else {
+                setActiveStateEmptyMessage(false)
+            }
+        }
+    }, [activeEmptyStateMessage, activeEventsForRender])
+
     return (
         <div className='votes-page-block__wrapper'>
             <TitleVotesDetailsCallVotingProfile
@@ -480,6 +497,7 @@ const VotesPage = (props) => {
                         )}
                     </>
                 )}
+                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет активных голосований, но они здесь появятся, когда вас пригласят и еще немного текста для количества</span>
             </div>
             <VotesPagePaginationTableSearch
                 eventsSearchActive={eventsSearchActive}

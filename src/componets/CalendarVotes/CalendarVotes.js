@@ -7,7 +7,6 @@ import CalendarVotesTimeTable from "../CalendarVotesTimeTable/CalendarVotesTimeT
 import calendar_row_back from "../../img/CalendarVotesTimeTable_back_row.svg";
 import * as Events from "../../Api/Events";
 
-
 const CalendarVotes = (props) => {
 
     const {
@@ -161,7 +160,7 @@ const CalendarVotes = (props) => {
     }
 
     return (
-        <div className={'calendar-container main-content__elem1'}>
+        <div className={'calendar-container'}>
             <div className={'calendar-container-timetable__title-row'}>
                 {showBackRow && (
                     <img onClick={() => toggleCalendarShow()} alt={'стрелка'} src={calendar_row_back} className={'title-row__row'} />
@@ -198,7 +197,7 @@ const CalendarVotes = (props) => {
                     getEventMonth={getEventMonth}
                     getEventDate={getEventDate}
                     actualVotesDate={actualVotesDate}/>
-            )
+                )
             }
         </div>
     )

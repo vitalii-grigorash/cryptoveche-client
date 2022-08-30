@@ -370,6 +370,7 @@ function App() {
                                 />}
                             />
                             <Route exact path='/my-profile' element={<MyProfilePage
+                                handleLogout={logout}
                                 requestHelper={requestHelper}/>} />
                             <Route exact path='/details-vote'
                                 element={<DetailsVotesPage
@@ -403,5 +404,4 @@ function App() {
         </CurrentUserContext.Provider>
     );
 }
-
 export default App;

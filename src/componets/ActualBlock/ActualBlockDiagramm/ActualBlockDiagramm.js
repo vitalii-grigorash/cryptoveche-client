@@ -43,7 +43,6 @@ const ActualBlockDiagramm = (props) => {
     let circleEmpty = circleFull - circleFill;
     let circleOffset = circleFull / 4;
 
-
     return (
       <>
         {sectorCircle && typeof (sectorCircle) === 'number' && (

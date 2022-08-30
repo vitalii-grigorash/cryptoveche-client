@@ -7,7 +7,6 @@ const HeaderMyProfileModal = ({active, setActive, handleLogout}) => {
 
     const changeCurrentStyle = useRef(setActive)
 
-
     function closeModal () {
         changeCurrentStyle.current.value = setActive(false)
     }
@@ -37,5 +36,4 @@ const HeaderMyProfileModal = ({active, setActive, handleLogout}) => {
             </div>
     )
 }
-
 export default HeaderMyProfileModal;
