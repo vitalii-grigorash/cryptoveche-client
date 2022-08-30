@@ -17,7 +17,10 @@ const MainPage = (props) => {
 		requestHelper,
 		handleCurrentEvents,
 		toggleEventRegistration,
-		showEventResult
+		showEventResult,
+		formatDate,
+		formatTime,
+		utcOffset
 	} = props;
 
 	// const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
@@ -35,6 +38,7 @@ const MainPage = (props) => {
 			})
 			return () => setStatsData({})
 	}, [requestHelper]);
+
 
 	useEffect(() => {
 		if (sortActualEvents.length > 0) {
@@ -63,6 +67,9 @@ const MainPage = (props) => {
 							handleCurrentEvents={handleCurrentEvents}
 							toggleEventRegistration={toggleEventRegistration}
 							showEventResult={showEventResult}
+							formatDate={formatDate}
+							formatTime={formatTime}
+							utcOffset={utcOffset}
 						/>
 						{sortActualEvents.length > 0 && (
 							<ActualBlock
@@ -70,6 +77,8 @@ const MainPage = (props) => {
 								sortActualEvents={sortActualEvents}
 								handleCurrentEvents={handleCurrentEvents}
 								toggleEventRegistration={toggleEventRegistration}
+								formatDate={formatDate}
+								formatTime={formatTime}
 							/>)}
 						<ScanQRMobile/>
 					</div>
@@ -93,6 +102,9 @@ const MainPage = (props) => {
 									handleCurrentEvents={handleCurrentEvents}
 									toggleEventRegistration={toggleEventRegistration}
 									showEventResult={showEventResult}
+									formatDate={formatDate}
+									formatTime={formatTime}
+									utcOffset={utcOffset}
 								/>
 							</div>
 							<div className={'main-content__empty-states-observer-amount'}>

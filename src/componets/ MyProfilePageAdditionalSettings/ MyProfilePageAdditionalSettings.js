@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import './ MyProfilePageAdditionalSettings.css';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 import optionRow from "../../img/INPUT-ICONS-24-ARROW.svg";
@@ -9,16 +9,23 @@ const MyProfilePageAdditionalSettings = (props) => {
 
     const {
         requestHelper,
-        userId
+        userId,
+        utc
     } = props;
 
-    const [timeZoneLocation, setTimeZoneLocation] = useState('(UTC+3) Россия - Москва - московское время');
+    const [timeZoneLocation, setTimeZoneLocation] = useState('');
     const [timeZoneValue, setTimeZoneValue] = useState(3);
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
     const [successInfo, setSuccessInfo] = useState('')
     const btnChangeColor = useRef(null)
     const [activeBtn, setActiveBtn] = useState(true)
     const borderGreenSuccess = useRef(null)
+
+    useEffect (() => {
+        if (utc !== '') {
+            setTimeZoneLocation(utc);
+        }
+    }, [utc]);
 
     function onSelectTimeZoneClick(location) {
         setTimeZoneValue(location.VALUE);
