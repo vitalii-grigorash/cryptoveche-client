@@ -13,7 +13,8 @@ import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 const MyProfilePage = (props) => {
 
     const {
-        requestHelper
+        requestHelper,
+        utcOffset
     } = props;
 
 
@@ -35,7 +36,9 @@ const MyProfilePage = (props) => {
                        <div className={'main-content__grid-item_2'}>
                              <MyProfilePageAdditionalSettings
                                  requestHelper={requestHelper}
-                                 userId={userId}/>
+                                 userId={userId}
+                                 utc={utcOffset}
+                                 />
                        </div>
                        <div className={'main-content__grid-item_3'}>
                            <CalendarVotes requestHelper={requestHelper} />

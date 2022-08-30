@@ -16,7 +16,10 @@ const DetailsVotesPageGeneralInformation = (props) => {
         currentEventData,
         handleCurrentEvents,
         toggleEventRegistration,
-        showEventResult
+        showEventResult,
+        formatDate,
+        formatTime,
+        utcOffset
     } = props;
 
     const [labelText, setLabelText] = useState('');
@@ -43,7 +46,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
     }, [currentEventData])
 
     useEffect(() => {
-        if(currentEventData.materials.length !== 0 ) {
+        if (currentEventData.materials.length !== 0) {
             setActiveMaterials(true)
         }
     }, [currentEventData.materials])
@@ -55,14 +58,15 @@ const DetailsVotesPageGeneralInformation = (props) => {
                     <span className={'main-content-current-status-vote__title'}>
                         <VotesPageTitleTimeZone
                             voteData={currentEventData}
+                            utcOffset={utcOffset}
                         />
                     </span>
                     <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
                         <div className={'status-vote-possible-revote__width-block'}>
-                        <CurrentStatusVote
-                            regStatus={labelText}
-                            voteStatus={currentEventData.type === 'secret' ? 'Тайное' : 'Открытое'}
-                        />
+                            <CurrentStatusVote
+                                regStatus={labelText}
+                                voteStatus={currentEventData.type === 'secret' ? 'Тайное' : 'Открытое'}
+                            />
                         </div>
                         <ConfirmRegMaterialsVote
                             votesData={currentEventData}
@@ -76,6 +80,8 @@ const DetailsVotesPageGeneralInformation = (props) => {
                 </div>
                 <DetailsVotesPageListStartEndRegVote
                     voteData={currentEventData}
+                    formatDate={formatDate}
+                    formatTime={formatTime}
                 />
                 <span className={'_show-possible-cancel-block'}>
                     <DetailsVotesPageStatusPossibleRevoteCancelReg
@@ -85,7 +91,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
             </div>
             {activeMaterials &&
                 <div className={'_hidden-materials-vote'}>
-                    <MaterialsVoteQuestion materialsVoteName={'Материалы голосования'} currentMaterialsVote={currentEventData}/>
+                    <MaterialsVoteQuestion materialsVoteName={'Материалы голосования'} currentMaterialsVote={currentEventData} />
                 </div>
             }
             <RegistrationButton
