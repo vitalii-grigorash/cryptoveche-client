@@ -1,3 +1,4 @@
+/*------Заголовок для главной страницы--------------------------------------------------------------------------------*/
 .main-content__title {
     font-size: 32px;
     line-height: 125%;
@@ -26,6 +27,24 @@
     flex-direction: column;
     gap: 16px;
 }
+/*------Стилизация для компонентов пустые состояния-------------------------------------------------------------------*/
+.main-content__empty-states-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 125px;
+}
+.main-content__empty-states-observer-amount {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.main-content__empty-states-myvotes-block {
+    display: none;
+}
+.main-content__empty-states-qr-code {
+    display: none;
+}
 /*------Адаптивная версия--------------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {
     .main-content__my-votes-actual {
@@ -49,10 +68,26 @@
         gap: 11px;
     }
     .main-content__amount-votes-and-calendar-votes {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 16px;
     }
-    .main-content__elem1{order: 0}
-    .main-content__elem2{order: 2}
-    .main-content__elem3{order: 1}
+    .main-content__empty-states-wrapper{
+        flex-direction: column;
+        padding-bottom: 42px;
+    }
+    .main-content__empty-states-myvotes-block {
+        display: block;
+        height: 60px;
+    }
+    .main-content__empty-states-wrapper {
+        gap: 16px;
+    }
+    .main-content__empty-states-qr-code {
+        display: block;
+    }
+    .gistogramma-and-observer-cryptoveche {
+        flex-direction: column-reverse;
+    }
+    .main-content__empty-states-component{order: 0}
+    .main-content__empty-states-observer-amount{order: 1}
 }

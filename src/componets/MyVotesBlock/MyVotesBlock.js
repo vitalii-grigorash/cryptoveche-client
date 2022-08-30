@@ -41,5 +41,4 @@ const MyVotesBlock = (props) => {
     </div>
   )
 }
-
 export default MyVotesBlock;

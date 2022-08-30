@@ -196,5 +196,4 @@ const MyVotesBlockForm = React.memo((props) => {
 		</div>
 	)
 })
-
 export default MyVotesBlockForm;

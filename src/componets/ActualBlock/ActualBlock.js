@@ -19,11 +19,11 @@ const ActualBlock = (props) => {
   const [countIndexofSortActualEvents, setCountIndexofSortActualEvents] = useState(sortActualEvents.findIndex(el => el.id === currentVote.id))
   const [arrowLeftStyle, setArrowLeftStyle] = useState('diagramm-container__row-button-left_hide')
   const [arrowRightStyle, setArrowRightStyle] = useState(
-    sortActualEvents.length > 1
-      ?
-      'diagramm-container__row-button-right'
-      :
-      'diagramm-container__row-button-right_hide'
+      sortActualEvents.length > 1
+          ?
+          'diagramm-container__row-button-right'
+          :
+          'diagramm-container__row-button-right_hide'
   )
 
   const switchActualEventBack = (e) => {
@@ -65,127 +65,123 @@ const ActualBlock = (props) => {
     };
   }, [currentVote, sortActualEvents, countIndexofSortActualEvents])
 
-
   return (
-    <div className={'actual-block-wrapper'}>
-      <div className={'actual-block-wrapper__title'}>
-        <img alt={'иконка для заголовка'} src={logo_icon} /><h2>Актуальное</h2>
-      </div>
-      <h3 className="actual-block__event-name" onClick={() => { handleCurrentEvents(currentVote, true) }} >{eventTitle}</h3>
-      <div className={'actual-block__start--end-vote'}>
-        <div className={'start-end-vote__start-data'}>
-          <h5>Начало голосования:</h5>
-          <DataTime dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
+      <div className={'actual-block-wrapper'}>
+        <div className={'actual-block-wrapper__title'}>
+          <img alt={'иконка для заголовка'} src={logo_icon} /><h2>Актуальное</h2>
         </div>
-        <div className={'start-end-vote__end-data'}>
-          <h5>Конец голосования:</h5>
-          <DataTime dateTimeDate={endEventDate} dateTimeWatch={endEventTime} />
+        <h3 className="actual-block__event-name" onClick={() => { handleCurrentEvents(currentVote, true) }} >{eventTitle}</h3>
+        <div className={'actual-block__start--end-vote'}>
+          <div className={'start-end-vote__start-data'}>
+            <h5>Начало голосования:</h5>
+            <DataTime dateTimeDate={startEventDate} dateTimeWatch={startEventTime} />
+          </div>
+          <div className={'start-end-vote__end-data'}>
+            <h5>Конец голосования:</h5>
+            <DataTime dateTimeDate={endEventDate} dateTimeWatch={endEventTime} />
+          </div>
         </div>
-      </div>
-      <ActualBlockDiagramm
-        actualVote={currentVote}
-        startEventDate={startEventDate}
-        startEventTime={startEventTime}
-        endEventDate={endEventDate}
-        endEventTime={endEventTime}
-        switchActualEventForward={switchActualEventForward}
-        switchActualEventBack={switchActualEventBack}
-        arrowLeftStyle={arrowLeftStyle}
-        arrowRightStyle={arrowRightStyle} />
+        <ActualBlockDiagramm
+            actualVote={currentVote}
+            startEventDate={startEventDate}
+            startEventTime={startEventTime}
+            endEventDate={endEventDate}
+            endEventTime={endEventTime}
+            switchActualEventForward={switchActualEventForward}
+            switchActualEventBack={switchActualEventBack}
+            arrowLeftStyle={arrowLeftStyle}
+            arrowRightStyle={arrowRightStyle} />
 
-      <div className={'votes-form__button-vote-cancel-reg'}>
-        {currentVote.status === "registration" && (
-          <>
-            {!currentVote.isRegistered ? (
-              <button className='reg'
-                onClick={() => { toggleEventRegistration(currentVote.id) }}
-              >
-                Зарегистрироваться
-              </button>
-            ) : (
+        <div className={'votes-form__button-vote-cancel-reg'}>
+          {currentVote.status === "registration" && (
               <>
-                {currentVote.re_registration && (
-                  <>
-                    {!currentVote.isVoting && (
-                      <button className='cancel-reg'
-                        onClick={() => { toggleEventRegistration(currentVote.id) }}
-                      >
-                        Отменить регистрацию
-                      </button>
-                    )}
-                  </>
-                )}
-              </>
-            )}
-            {currentVote.isVoting && (
-              <>
-                {currentVote.isRegistered && (
-                  <>
-                    {!currentVote.isVoted ? (
-                      <>
-                        <button className='button-vote'
-                          onClick={() => { handleCurrentEvents(currentVote, false) }}
-                        >
-                          Проголосовать
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        {currentVote.re_voting && (
-                          <button className='button-vote'
-                            onClick={() => { handleCurrentEvents(currentVote, false) }}
-                          >
-                            Переголосовать
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </>
-                )}
-              </>
-            )}
-          </>
-        )}
-        {currentVote.status === 'voting' && (
-          <>
-            {currentVote.isRegistered ? (
-              <>
-                {!currentVote.isVoted ? (
-                  <button className='button-vote'
-                    onClick={() => { handleCurrentEvents(currentVote, false) }}
-                  >
-                    Проголосовать
-                  </button>
+                {!currentVote.isRegistered ? (
+                    <button className='reg'
+                            onClick={() => { toggleEventRegistration(currentVote.id) }}
+                    >
+                      Зарегистрироваться
+                    </button>
                 ) : (
-                  <>
-                    {currentVote.re_voting && (
-                      <button className='button-vote'
-                        onClick={() => { handleCurrentEvents(currentVote, false) }}
-                      >
-                        Переголосовать
-                      </button>
-                    )}
-                  </>
+                    <>
+                      {currentVote.re_registration && (
+                          <>
+                            {!currentVote.isVoting && (
+                                <button className='cancel-reg'
+                                        onClick={() => { toggleEventRegistration(currentVote.id) }}
+                                >
+                                  Отменить регистрацию
+                                </button>
+                            )}
+                          </>
+                      )}
+                    </>
+                )}
+                {currentVote.isVoting && (
+                    <>
+                      {currentVote.isRegistered && (
+                          <>
+                            {!currentVote.isVoted ? (
+                                <>
+                                  <button className='button-vote'
+                                          onClick={() => { handleCurrentEvents(currentVote, false) }}
+                                  >
+                                    Проголосовать
+                                  </button>
+                                </>
+                            ) : (
+                                <>
+                                  {currentVote.re_voting && (
+                                      <button className='button-vote'
+                                              onClick={() => { handleCurrentEvents(currentVote, false) }}
+                                      >
+                                        Переголосовать
+                                      </button>
+                                  )}
+                                </>
+                            )}
+                          </>
+                      )}
+                    </>
                 )}
               </>
-            ) : (
+          )}
+          {currentVote.status === 'voting' && (
               <>
-                {currentVote.isRegistration && (
-                  <button className='reg'
-                    onClick={() => { toggleEventRegistration(currentVote.id) }}
-                  >
-                    Зарегистрироваться
-                  </button>
+                {currentVote.isRegistered ? (
+                    <>
+                      {!currentVote.isVoted ? (
+                          <button className='button-vote'
+                                  onClick={() => { handleCurrentEvents(currentVote, false) }}
+                          >
+                            Проголосовать
+                          </button>
+                      ) : (
+                          <>
+                            {currentVote.re_voting && (
+                                <button className='button-vote'
+                                        onClick={() => { handleCurrentEvents(currentVote, false) }}
+                                >
+                                  Переголосовать
+                                </button>
+                            )}
+                          </>
+                      )}
+                    </>
+                ) : (
+                    <>
+                      {currentVote.isRegistration && (
+                          <button className='reg'
+                                  onClick={() => { toggleEventRegistration(currentVote.id) }}
+                          >
+                            Зарегистрироваться
+                          </button>
+                      )}
+                    </>
                 )}
               </>
-            )}
-          </>
-        )}
-
+          )}
+        </div>
       </div>
-
-      {/*<EmptyStatesComponent/>*/}
-    </div>
   )
 
 }
