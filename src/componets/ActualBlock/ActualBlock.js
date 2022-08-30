@@ -5,7 +5,15 @@ import logo_icon from '../../img/ActualBlock_logo.svg';
 import ActualBlockDiagramm from "./ActualBlockDiagramm/ActualBlockDiagramm";
 import DataTime from '../VotesStatusComponents/DateTime/DateTime';
 
-const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualEvents }) => {
+const ActualBlock = (props) => {
+
+  const {
+    handleCurrentEvents,
+    toggleEventRegistration,
+    sortActualEvents,
+    formatDate,
+    formatTime
+  } = props;
 
   const [currentVote, setCurrentVote] = useState(sortActualEvents[0]);
   const [countIndexofSortActualEvents, setCountIndexofSortActualEvents] = useState(sortActualEvents.findIndex(el => el.id === currentVote.id))
@@ -42,10 +50,10 @@ const ActualBlock = ({ handleCurrentEvents, toggleEventRegistration, sortActualE
     if (currentVote && Object.keys(currentVote).length > 0) {
       setCurrentVote(sortActualEvents[countIndexofSortActualEvents]);
       setEventTitle(currentVote.title);
-      setStartEventDate(currentVote.event_start_time.slice(0, 10).split('-').reverse().join('.'));
-      setStartEventTime(currentVote.event_start_time.slice(11, currentVote.event_start_time.length - 4));
-      setEndEventDate(currentVote.event_end_time.slice(0, 10).split('-').reverse().join('.'));
-      setEndEventTime(currentVote.event_end_time.slice(11, currentVote.event_end_time.length - 4));
+      setStartEventDate(formatDate(currentVote.event_start_time));
+      setStartEventTime(formatTime(currentVote.event_start_time));
+      setEndEventDate(formatDate(currentVote.event_end_time));
+      setEndEventTime(formatTime(currentVote.event_end_time));
       if (countIndexofSortActualEvents === sortActualEvents.length - 1) {
         setArrowRightStyle('diagramm-container__row-button-right_hide')
       } else {

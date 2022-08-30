@@ -46,8 +46,8 @@ export const authorize = (email, password) => {
         .then((data) => {
             if (data.jwt) {
                 localStorage.setItem('jwt', JSON.stringify(data.jwt));
-                return data;
             }
+            return data;
         })
         .catch((err) => {
             console.log(err);

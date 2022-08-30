@@ -13,17 +13,13 @@ const MyVotesBlockForm = React.memo((props) => {
 		votesData,
 		handleCurrentEvents,
 		toggleEventRegistration,
-		showEventResult
+		showEventResult,
+		formatDate,
+		formatTime,
+		utcOffset
 	} = props;
 
 	const { pathname } = useLocation();
-
-	const startEventDate = votesData.event_start_time.slice(0, 10).split('-').reverse().join('.');
-	const startEventTime = votesData.event_start_time.slice(11, votesData.event_start_time.length - 4);
-
-	const startEventRegDate = votesData.registration_start_time.slice(0, 10).split('-').reverse().join('.');
-	const startEventRegTime = votesData.registration_start_time.slice(11, votesData.registration_start_time.length - 4);
-
 	const [labelText, setLabelText] = useState('');
 
 	useEffect(() => {
@@ -55,7 +51,7 @@ const MyVotesBlockForm = React.memo((props) => {
 					{pathname === '/votes-page' && (
 						<div className='my-votes-block__utc-container'>
 							<img alt='Иконка часового пояса' src={utcIcon} className='my-votes-block__utc-icon' />
-							<p className='my-votes-block__utc-value'>(UTC+3) Россия - Москва</p>
+							<p className='my-votes-block__utc-value'>{utcOffset}</p>
 						</div>
 					)}
 				</div>
@@ -67,15 +63,15 @@ const MyVotesBlockForm = React.memo((props) => {
 						<div className={'reg-vote-date__border-right-mobile'}>
 							{pathname === '/votes-page' && (
 								<StartDateVote
-									dateTimeDate={startEventRegDate}
-									dateTimeWatch={startEventRegTime}
+									dateTimeDate={formatDate(votesData.registration_start_time)}
+									dateTimeWatch={formatTime(votesData.registration_start_time)}
 									title={'Начало регистрации:'}
 								/>
 							)}
 						</div>
 						<StartDateVote
-							dateTimeDate={startEventDate}
-							dateTimeWatch={startEventTime}
+							dateTimeDate={formatDate(votesData.event_start_time)}
+							dateTimeWatch={formatTime(votesData.event_start_time)}
 							title={'Начало голосования:'}
 						/>
 					</div>
@@ -200,5 +196,4 @@ const MyVotesBlockForm = React.memo((props) => {
 		</div>
 	)
 })
-
 export default MyVotesBlockForm;

@@ -11,7 +11,10 @@ const MyVotesBlock = (props) => {
     myVotes,
     handleCurrentEvents,
     toggleEventRegistration,
-    showEventResult
+    showEventResult,
+    formatDate,
+    formatTime,
+    utcOffset
   } = props;
 
   const shortEventsData = myVotes.slice(0, 2)
@@ -26,6 +29,9 @@ const MyVotesBlock = (props) => {
           handleCurrentEvents={handleCurrentEvents}
           toggleEventRegistration={toggleEventRegistration}
           showEventResult={showEventResult}
+          formatDate={formatDate}
+          formatTime={formatTime}
+          utcOffset={utcOffset}
         />
       ))}
       <div className={'my-votes__link-arrow'}>
@@ -35,5 +41,4 @@ const MyVotesBlock = (props) => {
     </div>
   )
 }
-
 export default MyVotesBlock;
