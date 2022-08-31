@@ -143,7 +143,11 @@ const DetailsVotesPage = (props) => {
                 mobileLetter={'Назад к списку голосований'}
             />
             {isShowTimer && (
-                <DetailsVotesPageDaysEndRegStartVote />
+                <DetailsVotesPageDaysEndRegStartVote
+                    formatDate={formatDate}
+                    pointEndTimeReg={currentEventData.registration_end_time}
+                    pointStartTimeVote={currentEventData.event_start_time}
+                />
             )}
             <div className={'details-votes-page__main-content'}>
                 <div className={'details-votes-page-switch__buttons'}>
