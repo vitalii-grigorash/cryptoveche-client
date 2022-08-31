@@ -188,8 +188,6 @@ const DetailsVotesPage = (props) => {
                         {btnResult && (
                             <DetailsVotesPageResultVotesCardQuestion
                                 currentEventData={currentEventData}
-                                titleName={'1. Согласны ли вы с решением №576?'}
-                                answerSelected={'Выберите ровно 1'}
                             />
                         )}
                         {btnMyBulletin && (

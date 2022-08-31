@@ -49,7 +49,6 @@ const CallVotingPage = (props) => {
                     templateGrid(data.questions);
                     if (data.results.questions) {
                         setResults(data.results.questions);
-                        console.log(data.results.questions);
                     }
                 })
         } else {
