@@ -9,13 +9,15 @@ import MaterialsVoteQuestion from "../MaterialsVoteQuestion/MaterialsVoteQuestio
 const ConfirmRegMaterialsVote = (props) => {
 
   const {
-    votesData
+    votesData,
+    isVoted,
+    isNotFullyVoted
   } = props;
 
   const [statusIcon, setStatusIcon] = useState('');
   const [statusText, setStatusText] = useState('');
   const [statusClassName, setStatusClassName] = useState('');
-  const [activeMaterials, setActiveMaterials] = useState(false)
+  const [activeMaterials, setActiveMaterials] = useState(false);
 
   useEffect(() => {
     if (votesData.status === 'waiting') {
@@ -25,14 +27,20 @@ const ConfirmRegMaterialsVote = (props) => {
     } else if (votesData.status === 'registration') {
       if (votesData.isRegistered) {
         if (votesData.isVoting) {
-          if (votesData.isVoted) {
+          if (isVoted) {
             setStatusIcon(votedBlueIcon);
             setStatusText('Вы проголосовали');
             setStatusClassName('status-icon__color-status_voted');
           } else {
-            setStatusIcon(notRegisteredEventIcon);
-            setStatusText('Вы не проголосовали');
-            setStatusClassName('status-icon__color-status_not-registered');
+            if (isNotFullyVoted) {
+              setStatusIcon(warningIcon);
+              setStatusText('Вы проголосовали не по всем вопросам');
+              setStatusClassName('status-icon__color-status_warning');
+            } else {
+              setStatusIcon(notRegisteredEventIcon);
+              setStatusText('Вы не проголосовали');
+              setStatusClassName('status-icon__color-status_not-registered');
+            }
           }
         } else {
           setStatusIcon(registeredEventIcon);
@@ -56,14 +64,20 @@ const ConfirmRegMaterialsVote = (props) => {
       }
     } else if (votesData.status === 'voting') {
       if (votesData.isRegistered) {
-        if (votesData.isVoted) {
+        if (isVoted) {
           setStatusIcon(votedBlueIcon);
           setStatusText('Вы проголосовали');
           setStatusClassName('status-icon__color-status_voted');
         } else {
-          setStatusIcon(notRegisteredEventIcon);
-          setStatusText('Вы не проголосовали');
-          setStatusClassName('status-icon__color-status_not-registered');
+          if (isNotFullyVoted) {
+            setStatusIcon(warningIcon);
+            setStatusText('Вы проголосовали не по всем вопросам');
+            setStatusClassName('status-icon__color-status_warning');
+          } else {
+            setStatusIcon(notRegisteredEventIcon);
+            setStatusText('Вы не проголосовали');
+            setStatusClassName('status-icon__color-status_not-registered');
+          }
         }
       } else {
         setStatusIcon(notRegisteredEventIcon);
@@ -71,26 +85,33 @@ const ConfirmRegMaterialsVote = (props) => {
         setStatusClassName('status-icon__color-status_not-registered');
       }
     } else if (votesData.status === 'ended' || votesData.status === 'quorum_unpresant') {
-      if (votesData.isVoted) {
+      if (isVoted) {
         setStatusIcon(votedBlueIcon);
         setStatusText('Вы проголосовали');
         setStatusClassName('status-icon__color-status_voted');
       } else {
-        setStatusIcon(notRegisteredEventIcon);
-        setStatusText('Вы не проголосовали');
-        setStatusClassName('status-icon__color-status_not-registered');
+        if (isNotFullyVoted) {
+          setStatusIcon(warningIcon);
+          setStatusText('Вы проголосовали не по всем вопросам');
+          setStatusClassName('status-icon__color-status_warning');
+        } else {
+          setStatusIcon(notRegisteredEventIcon);
+          setStatusText('Вы не проголосовали');
+          setStatusClassName('status-icon__color-status_not-registered');
+        }
       }
     }
   },
     [
       votesData.isRegistered,
-      votesData.isVoted,
+      isVoted,
+      isNotFullyVoted,
       votesData.status
     ])
 
   useEffect(() => {
-    if(votesData.materials.length !== 0 ) {
-        setActiveMaterials(true)
+    if (votesData.materials.length !== 0) {
+      setActiveMaterials(true)
     }
   }, [votesData.materials.length])
 
@@ -104,10 +125,11 @@ const ConfirmRegMaterialsVote = (props) => {
       </div>
       {activeMaterials &&
         <div className={'materials-vote__hidden-materials'}>
-          <MaterialsVoteQuestion currentMaterialsVote={votesData} materialsVoteName={'Материалы голосования'}/>
+          <MaterialsVoteQuestion currentMaterialsVote={votesData} materialsVoteName={'Материалы голосования'} />
         </div>
       }
     </div>
   )
 }
+
 export default ConfirmRegMaterialsVote;

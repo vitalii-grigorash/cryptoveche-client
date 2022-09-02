@@ -35,7 +35,7 @@ const CallVotingPage = (props) => {
         setQuestionsTemplateGrid(filteredQuestions);
     }
 
-    useEffect(() => {
+    function getEvent() {
         if (localStorage.getItem('currentEvent')) {
             const currentEvent = localStorage.getItem('currentEvent');
             const event = JSON.parse(currentEvent);
@@ -44,6 +44,7 @@ const CallVotingPage = (props) => {
             }
             requestHelper(Events.getEvent, body)
                 .then((data) => {
+                    console.log(data);
                     setCurrentEventData(data);
                     templateRow(data.questions);
                     templateGrid(data.questions);
@@ -54,7 +55,12 @@ const CallVotingPage = (props) => {
         } else {
             navigate('/');
         }
-    }, [navigate, requestHelper])
+    }
+
+    useEffect(() => {
+        getEvent();
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className='call-voting-page__wrapper'>
@@ -86,6 +92,8 @@ const CallVotingPage = (props) => {
                             requestHelper={requestHelper}
                             isReVoting={currentEventData.re_voting}
                             materialsQuestion={item.materials}
+                            getEvent={getEvent}
+                            currentEventData={currentEventData}
                         />
                     )
                 }))
@@ -104,6 +112,8 @@ const CallVotingPage = (props) => {
                             isReVoting={currentEventData.re_voting}
                             results={results}
                             materialsQuestion={question.materials}
+                            getEvent={getEvent}
+                            currentEventData={currentEventData}
                         />
                     )
                 }))

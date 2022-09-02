@@ -227,11 +227,9 @@ function App() {
     }
 
     function handleRegister(registerData) {
-        // console.log(registerData);
         if (isPolicyAccept) {
             Auth.registration(registerData)
                 .then((res) => {
-                    // console.log(res);
                     if (res.text === 'User has already exist') {
                         setChangeBorderInputEmail('_input-border-red');
                         setEmailErrorMessage('Пользователь с данным email уже существует');

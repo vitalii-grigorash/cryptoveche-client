@@ -17,13 +17,24 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         requestHelper,
         isReVoting,
         results,
-        materialsQuestion
+        materialsQuestion,
+        getEvent,
+        currentEventData
     } = props;
 
     const [isListView, setListView] = useState(false);
     const [answersArray, setAnswersArray] = useState([]);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
     const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
+
+    useEffect(() => {
+        const filteredBulletin = currentEventData.ballots.find(ballot => ballot.bulletinId === question.bulletinId);
+        if (filteredBulletin !== undefined) {
+            if (filteredBulletin.bulletinId === question.bulletinId) {
+                setBulletinVoted(true);
+            }
+        }
+    }, [currentEventData.ballots, question.bulletinId])
 
     useEffect(() => {
         if (columns.length > 4) {
@@ -122,12 +133,12 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         requestHelper(Events.vote, body)
             .then((data) => {
                 if (data.status === 'ok') {
-                    setBulletinVoted(true);
                     setAnswersArray([]);
+                    getEvent();
                 }
             })
     }
-console.log(materialsQuestion)
+
     return (
         <div className={'call-voting-page-question-card-check__wrapper'}>
             <div className={'call-voting-page-question-card-check__title'}>
@@ -147,7 +158,7 @@ console.log(materialsQuestion)
                     )}
                 </div>
                 {activeMaterialsQuestion &&
-                    <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'}/>
+                    <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
                 }
             </div>
             {!isListView ? (

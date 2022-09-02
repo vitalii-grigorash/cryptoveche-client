@@ -19,7 +19,9 @@ const DetailsVotesPageGeneralInformation = (props) => {
         showEventResult,
         formatDate,
         formatTime,
-        utcOffset
+        utcOffset,
+        isVoted,
+        isNotFullyVoted
     } = props;
 
     const [labelText, setLabelText] = useState('');
@@ -70,6 +72,8 @@ const DetailsVotesPageGeneralInformation = (props) => {
                         </div>
                         <ConfirmRegMaterialsVote
                             votesData={currentEventData}
+                            isVoted={isVoted}
+							isNotFullyVoted={isNotFullyVoted}
                         />
                         <span className={'_hidden-possible-cancel-block'}>
                             <DetailsVotesPageStatusPossibleRevoteCancelReg
@@ -99,6 +103,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
                 handleCurrentEvents={handleCurrentEvents}
                 toggleEventRegistration={toggleEventRegistration}
                 showEventResult={showEventResult}
+                isVoted={isVoted}
             />
         </div>
     )

@@ -40,9 +40,7 @@ const VotesPage = (props) => {
     const [archiveEventsSearchInput, setArchiveEventsSearchInput] = useState('');
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
-
     const [activeEmptyStateMessage, setActiveStateEmptyMessage] = useState(false)
-
     const [sortType, setSortType] = useState({})
     const [showResultsFrom, setShowResultsFrom] = useState(0);
     const [resultsShow, setResultsShow] = useState(5);
@@ -403,14 +401,14 @@ const VotesPage = (props) => {
     }
 
     useEffect(() => {
-        if(btnActiveVotes) {
-            if(activeEventsForRender.length !== 0) {
+        if (btnActiveVotes) {
+            if (activeEventsForRender.length !== 0) {
                 setActiveStateEmptyMessage(true)
             } else {
                 setActiveStateEmptyMessage(false)
             }
-        } else if(btnArchiveVotes) {
-            if(activeEventsForRender.length !== 0) {
+        } else if (btnArchiveVotes) {
+            if (activeEventsForRender.length !== 0) {
                 setActiveStateEmptyMessage(true)
             } else {
                 setActiveStateEmptyMessage(false)
