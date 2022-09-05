@@ -10,7 +10,7 @@ export function getRemainingTimePointStartVote(timePointStartVote) {
             seconds: '00',
             minutes: '00',
             hours: '00',
-            days: 0
+            days: '0'
         }
     }
     return {
@@ -38,7 +38,7 @@ function getRemainingHours(nowDayjs, timePointStartVoteDayjs) {
 
 function getRemainingDays(nowDayjs, timePointStartVoteDayjs) {
     const days = timePointStartVoteDayjs.diff(nowDayjs, 'days');
-    return days;
+    return days.toString();
 }
 
 function padWithZeros(number, minLength) {

@@ -12,6 +12,9 @@
 .datetime-info__two-numbers {
     width: 2ch;
 }
+.details-votes-page-datetime-end-reg-start-vote__wrapper.active {
+    max-width: 664px;
+}
 /*------Cтилизация контейнера для div конец регистрации----------------------------------------------------------------*/
 .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg {
     display: flex;
@@ -22,6 +25,9 @@
     border-right: 1px solid rgba(54, 59, 77, 0.2);
     padding-right: 48px;
     margin-right: 48px;
+}
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg.active {
+    display: none;
 }
 /*------Cтилизация контейнера для div начало голосования--------------------------------------------------------------*/
 .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
@@ -187,6 +193,15 @@
         gap: 8px;
     }
 }
+@media (max-width: 860px) {
+    .datetime-info__end-registration, .datetime-info__start-vote {
+        display: block;
+
+    }
+    .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
+
+    }
+}
 @media (max-width: 808px) {
     .details-votes-page-datetime-end-reg-start-vote__wrapper {
         max-height: 150px;
@@ -225,6 +240,7 @@
     .end-registration__time-info, .start-vote__time-info {
         font-size: 11px;
         padding-top: 10px;
+        display: block;
     }
 }
 

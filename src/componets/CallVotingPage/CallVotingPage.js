@@ -76,6 +76,7 @@ const CallVotingPage = (props) => {
             <DetailsVotesPageDaysEndRegStartVote
                 pointEndTimeReg={currentEventData.registration_end_time}
                 pointStartTimeVote={currentEventData.event_start_time}
+                pointStartTimeReg={currentEventData.registration_start_time}
             />
             {
                 questionsTemplateRow.map((item => {

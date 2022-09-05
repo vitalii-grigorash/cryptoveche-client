@@ -39,7 +39,7 @@
     display: none;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 1350px) {
+@media (max-width: 1365px) {
     .details-votes-page-general-info__main-content-current-status-vote {
         gap: 16px;
     }

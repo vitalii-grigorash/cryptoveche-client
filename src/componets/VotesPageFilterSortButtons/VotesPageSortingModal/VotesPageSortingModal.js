@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './VotesPageSortingModal.css';
 import sorting_modal_close_button from "../../../img/VotesPageBlockFilterModal_close_button.svg";
 import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
@@ -25,6 +25,7 @@ const VotesPageSortingModal = (props) => {
     //clickSortTypeDec функция для сортовки на уменьшение
     // clickSortTypeInc функция для сортировки на увеличение
 
+    const [act, setAct] = useState(false)
     useOnClickOutsideSortModal(active, () => setActive(false))
 
     function useOnClickOutsideSortModal(active, handler) {

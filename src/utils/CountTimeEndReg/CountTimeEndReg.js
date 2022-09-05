@@ -1,23 +1,25 @@
 import dayjs from "dayjs";
-import React from "react";
 
-export function getRemainingTimePointEndReg(timePointEndReg) {
+export function getRemainingTimePointEndReg (timePointEndReg) {
 
     const timePointEndRegDayjs = dayjs(timePointEndReg);
     const nowDayjs = dayjs();
+
     if(timePointEndRegDayjs.isBefore(nowDayjs)) {
         return {
             seconds: '00',
             minutes: '00',
             hours: '00',
-            days: 0
+            days: '0',
+            hiddenBlock: true
         }
     }
     return {
         seconds : getRemainingSeconds(nowDayjs, timePointEndRegDayjs),
         minutes : getRemainingMinutes(nowDayjs, timePointEndRegDayjs),
         hours : getRemainingHours(nowDayjs, timePointEndRegDayjs),
-        days : getRemainingDays(nowDayjs, timePointEndRegDayjs)
+        days : getRemainingDays(nowDayjs, timePointEndRegDayjs),
+        hiddenBlock: false
     }
 }
 
@@ -38,7 +40,7 @@ function getRemainingHours(nowDayjs, timePointEndRegDayjs) {
 
 function getRemainingDays(nowDayjs, timePointEndRegDayjs) {
     const days = timePointEndRegDayjs.diff(nowDayjs, 'days');
-    return days;
+    return days.toString();
 }
 
 function padWithZeros(number, minLength) {

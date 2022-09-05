@@ -145,6 +145,7 @@ const DetailsVotesPage = (props) => {
             {isShowTimer && (
                 <DetailsVotesPageDaysEndRegStartVote
                     formatDate={formatDate}
+                    pointStartTimeReg={currentEventData.registration_start_time}
                     pointEndTimeReg={currentEventData.registration_end_time}
                     pointStartTimeVote={currentEventData.event_start_time}
                 />

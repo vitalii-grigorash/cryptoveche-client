@@ -19,9 +19,9 @@ const HeaderBurgerMenu = ({active, setActive}) => {
                         <div><span>РУС</span><span>ENG</span></div>
                     </div>
                     <div className={'burger-menu__link-page'}>
-                        <Link to={'/'}>Главная</Link>
-                        <Link to={'/votes-page'}>Голосования</Link>
-                        <Link to={'/my-profile'}>Мой профиль</Link>
+                        <Link to={'/'} onClick={() => setActive(false)}>Главная</Link>
+                        <Link to={'/votes-page'} onClick={() => setActive(false)}>Голосования</Link>
+                        <Link to={'/my-profile'} onClick={() => setActive(false)}>Мой профиль</Link>
                     </div>
                     <div className={'burger-menu__toggle-font'}>
                         <span>Увеличить шрифт</span>
