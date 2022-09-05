@@ -24,7 +24,6 @@ const DetailsVotesPage = (props) => {
     } = props;
 
     const navigate = useNavigate();
-
     const [btnGeneralInfo, setBtnGeneralInfo] = useState(false);
     const [btnReadQuestions, setBtnReadQuestions] = useState(false);
     const [btnResult, setBtnResult] = useState(false);
@@ -39,21 +38,21 @@ const DetailsVotesPage = (props) => {
     const [isVoted, setVoted] = useState(false);
     const [isNotFullyVoted, setNotFullyVoted] = useState(false);
 
-    console.log(currentEventData);
-
     useEffect(() => {
         if (currentEventData.questions !== undefined) {
-            const filteredAnswer = currentEventData.questions.filter(a => currentEventData.ballots.find(p => p.bulletinId === a.bulletinId))
-            if (filteredAnswer.length === 0) {
-                setVoted(false);
-                setNotFullyVoted(false);
-            } else {
-                if (filteredAnswer.length === currentEventData.questions.length) {
-                    setVoted(true);
+            if (currentEventData.ballots !== undefined) {
+                const filteredAnswer = currentEventData.questions.filter(a => currentEventData.ballots.find(p => p.bulletinId === a.bulletinId))
+                if (filteredAnswer.length === 0) {
+                    setVoted(false);
                     setNotFullyVoted(false);
                 } else {
-                    setNotFullyVoted(true);
-                    setVoted(false);
+                    if (filteredAnswer.length === currentEventData.questions.length) {
+                        setVoted(true);
+                        setNotFullyVoted(false);
+                    } else {
+                        setNotFullyVoted(true);
+                        setVoted(false);
+                    }
                 }
             }
         }
@@ -137,10 +136,9 @@ const DetailsVotesPage = (props) => {
         } else {
             navigate('/');
         }
-    }, // eslint-disable-next-line
+    },
         [
             navigate,
-            requestHelper,
             isResultTabOpen,
             isShowResults
         ]

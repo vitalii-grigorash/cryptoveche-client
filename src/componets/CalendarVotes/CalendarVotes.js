@@ -1,16 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarVotes.css';
 import CalendarVotesStartEndRegVoteEvent from "./CalendarVotesStartEndRegVoteEvent/CalendarVotesStartEndRegVoteEvent";
 import CalendarVotesTimeTable from "../CalendarVotesTimeTable/CalendarVotesTimeTable";
 import calendar_row_back from "../../img/CalendarVotesTimeTable_back_row.svg";
-import * as Events from "../../Api/Events";
 
 const CalendarVotes = (props) => {
 
     const {
-        requestHelper
+        allEvents
     } = props;
 
     const [actualVotesDate, setActualVotesDate] = useState([])
@@ -22,33 +21,30 @@ const CalendarVotes = (props) => {
     const [getEventDate, setGetEventDate] = useState('')
     const [getEventMonth, setGetEventMonth] = useState(new Date())
 
-    function getActualVotesDates(status) {
-        const sortActualVotesCalendar = status.filter(el => el.status !== 'ended').filter(el => el.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-        setActualVotesDate(sortActualVotesCalendar)
+    function getActualVotesDates(allEvents) {
+        const sortActualVotesCalendar = allEvents.filter(event => event.status !== 'ended').filter(event => event.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+        setActualVotesDate(sortActualVotesCalendar);
     }
 
-        const startRegDate = actualVotesDate.map(item => item.registration_start_time).map(function (elem) {
-            return {dateEvent : elem}
-        })
+    const startRegDate = actualVotesDate.map(item => item.registration_start_time).map(function (elem) {
+        return { dateEvent: elem }
+    })
 
-        const endRegDate = actualVotesDate.map(item => item.registration_end_time).map(function (elem) {
-            return {dateEvent : elem}
-        })
+    const endRegDate = actualVotesDate.map(item => item.registration_end_time).map(function (elem) {
+        return { dateEvent: elem }
+    })
 
-        const startVoteDate = actualVotesDate.map(item => item.event_start_time).map(function (elem) {
-            return {dateEvent : elem}
-        })
+    const startVoteDate = actualVotesDate.map(item => item.event_start_time).map(function (elem) {
+        return { dateEvent: elem }
+    })
 
-        const endVoteDate = actualVotesDate.map(item => item.event_end_time).map(function (elem) {
-            return {dateEvent : elem}
-        })
+    const endVoteDate = actualVotesDate.map(item => item.event_end_time).map(function (elem) {
+        return { dateEvent: elem }
+    })
 
     useEffect(() => {
-        requestHelper(Events.getEvents)
-            .then((data) => {
-                getActualVotesDates(data)
-            })
-    }, [requestHelper]);
+        getActualVotesDates(allEvents);
+    }, [allEvents]);
 
     function toggleCalendarShow() {
         setShowCalendar(true)
@@ -95,7 +91,7 @@ const CalendarVotes = (props) => {
             )
         })
         let content = [
-           dateStartReg
+            dateStartReg
                 ? <div className={'blue__circle'}></div>
                 : null,
             dateEndReg
@@ -196,10 +192,12 @@ const CalendarVotes = (props) => {
                     getEventDay={getEventDay}
                     getEventMonth={getEventMonth}
                     getEventDate={getEventDate}
-                    actualVotesDate={actualVotesDate}/>
-                )
+                    actualVotesDate={actualVotesDate}
+                />
+            )
             }
         </div>
     )
 }
+
 export default CalendarVotes;

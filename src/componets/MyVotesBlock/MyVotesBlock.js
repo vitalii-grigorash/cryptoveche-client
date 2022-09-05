@@ -17,23 +17,25 @@ const MyVotesBlock = (props) => {
     utcOffset
   } = props;
 
-  const shortEventsData = myVotes.slice(0, 2)
-
   return (
     <div className={'my-votes-block-wrapper'}>
       <h2>Мои голосования</h2>
-      {shortEventsData.map((event) => (
-        <MyVotesBlockForm
-          key={event.id}
-          votesData={event}
-          handleCurrentEvents={handleCurrentEvents}
-          toggleEventRegistration={toggleEventRegistration}
-          showEventResult={showEventResult}
-          formatDate={formatDate}
-          formatTime={formatTime}
-          utcOffset={utcOffset}
-        />
-      ))}
+      {myVotes.length !== 0 && (
+        <>
+          {myVotes.slice(0, 2).map((event) => (
+            <MyVotesBlockForm
+              key={event.id}
+              votesData={event}
+              handleCurrentEvents={handleCurrentEvents}
+              toggleEventRegistration={toggleEventRegistration}
+              showEventResult={showEventResult}
+              formatDate={formatDate}
+              formatTime={formatTime}
+              utcOffset={utcOffset}
+            />
+          ))}
+        </>
+      )}
       <div className={'my-votes__link-arrow'}>
         <span className={'link-arrow__show-all'}><Link to={'/votes-page'}>ПОКАЗАТЬ ПОЛНОСТЬЮ</Link></span>
         <span><Link to={'/votes-page'}><img alt={'logo_arrow'} src={icon_arrow} /></Link></span>
@@ -41,4 +43,5 @@ const MyVotesBlock = (props) => {
     </div>
   )
 }
+
 export default MyVotesBlock;

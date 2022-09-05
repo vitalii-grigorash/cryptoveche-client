@@ -403,18 +403,18 @@ const VotesPage = (props) => {
     useEffect(() => {
         if (btnActiveVotes) {
             if (activeEventsForRender.length !== 0) {
-                setActiveStateEmptyMessage(true)
+                setActiveStateEmptyMessage(true);
             } else {
-                setActiveStateEmptyMessage(false)
+                setActiveStateEmptyMessage(false);
             }
         } else if (btnArchiveVotes) {
             if (activeEventsForRender.length !== 0) {
-                setActiveStateEmptyMessage(true)
+                setActiveStateEmptyMessage(true);
             } else {
-                setActiveStateEmptyMessage(false)
+                setActiveStateEmptyMessage(false);
             }
         }
-    }, [activeEmptyStateMessage, activeEventsForRender])
+    }, [activeEventsForRender.length, btnActiveVotes, btnArchiveVotes]);
 
     return (
         <div className='votes-page-block__wrapper'>

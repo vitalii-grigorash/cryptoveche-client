@@ -20,37 +20,41 @@ const MainPage = (props) => {
 		showEventResult,
 		formatDate,
 		formatTime,
-		utcOffset
+		utcOffset,
+		isLoggedIn
 	} = props;
 
-	// const sortArchiveEvents = allEvents.filter(el => el.status === 'ended').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-	const sortActualEvents = allEvents.filter(el => el.status !== 'ended').filter(el => el.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
-
 	const [statsData, setStatsData] = useState({});
-	// const [actualVote, setActualVote] = useState({});
-    const [activeEmptyState, setActiveEmptyState] = useState(true)
-	const [activeActualState, setActiveActualState] = useState(false)
+	const [activeEmptyState, setActiveEmptyState] = useState(false);
+	const [activeActualState, setActiveActualState] = useState(false);
+	const [sortActualEvents, setSortActualEvents] = useState([]);
 
 	useEffect(() => {
-		requestHelper(Stats.getStats)
-			.then((data) => {
-				setStatsData(data)
-			})
-			return () => setStatsData({})
-	}, [requestHelper]);
-
+		if (allEvents.length !== 0) {
+			const sortedActualEvents = allEvents.filter(el => el.status !== 'ended').filter(el => el.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+			setSortActualEvents(sortedActualEvents);
+		}
+	}, [allEvents]);
 
 	useEffect(() => {
-		if (sortActualEvents.length > 0) {
-			setActiveActualState(true)
-			setActiveEmptyState(false)
+		if (isLoggedIn) {
+			requestHelper(Stats.getStats)
+				.then((data) => {
+					setStatsData(data);
+				})
 		}
-		else {
-			setActiveEmptyState(true)
-			setActiveActualState(false)
+		// eslint-disable-next-line
+	}, [isLoggedIn]);
+
+	useEffect(() => {
+		if (sortActualEvents.length !== 0) {
+			setActiveActualState(true);
+			setActiveEmptyState(false);
+		} else {
+			setActiveEmptyState(true);
+			setActiveActualState(false);
 		}
-		return () => sortActualEvents
-	}, [allEvents, activeActualState, activeEmptyState])
+	}, [sortActualEvents.length]);
 
 	return (
 		<div>
@@ -58,8 +62,7 @@ const MainPage = (props) => {
 				Добро пожаловать в КриптоВече!
 			</div>
 			<CounterBlock stats={statsData} />
-			{
-				activeActualState && (
+			{activeActualState && (
 				<>
 					<div className={'main-content__my-votes-actual'}>
 						<MyVotesBlock
@@ -71,57 +74,53 @@ const MainPage = (props) => {
 							formatTime={formatTime}
 							utcOffset={utcOffset}
 						/>
-						{sortActualEvents.length > 0 && (
+						{sortActualEvents.length !== 0 && (
 							<ActualBlock
-								// actualVote={actualVote} // удалить в дальнейшем
 								sortActualEvents={sortActualEvents}
 								handleCurrentEvents={handleCurrentEvents}
 								toggleEventRegistration={toggleEventRegistration}
 								formatDate={formatDate}
 								formatTime={formatTime}
-							/>)}
-						<ScanQRMobile/>
+							/>
+						)}
+						<ScanQRMobile />
 					</div>
-				<div className={'main-content__amount-votes-and-calendar-votes'}>
-				<div className={'gistogramma-and-observer-cryptoveche'}>
-					<AmountVotesBlock statsData={statsData} />
-					<ObserverCryptoBlock />
-				</div>
-					<CalendarVotes requestHelper={requestHelper} />
-				</div>
-				</>
-				)
-			}
-			{
-				activeEmptyState && (
-					<>
-						<div className={'main-content__empty-states-wrapper'}>
-							<div className={'main-content__empty-states-myvotes-block'}>
-								<MyVotesBlock
-									myVotes={sortActualEvents}
-									handleCurrentEvents={handleCurrentEvents}
-									toggleEventRegistration={toggleEventRegistration}
-									showEventResult={showEventResult}
-									formatDate={formatDate}
-									formatTime={formatTime}
-									utcOffset={utcOffset}
-								/>
-							</div>
-							<div className={'main-content__empty-states-observer-amount'}>
-								<ObserverCryptoBlock />
-								<AmountVotesBlock statsData={statsData} />
-							</div>
-							<div className={'main-content__empty-states-component'}>
-								<EmptyStatesComponent/>
-							</div>
-							<div className={'main-content__empty-states-qr-code'}>
-								<ScanQRMobile/>
-							</div>
+					<div className={'main-content__amount-votes-and-calendar-votes'}>
+						<div className={'gistogramma-and-observer-cryptoveche'}>
+							<AmountVotesBlock statsData={statsData} />
+							<ObserverCryptoBlock />
 						</div>
-					</>
-				)
-			}
+						<CalendarVotes allEvents={allEvents} />
+					</div>
+				</>
+			)}
+			{activeEmptyState && (
+				<div className={'main-content__empty-states-wrapper'}>
+					<div className={'main-content__empty-states-myvotes-block'}>
+						<MyVotesBlock
+							myVotes={sortActualEvents}
+							handleCurrentEvents={handleCurrentEvents}
+							toggleEventRegistration={toggleEventRegistration}
+							showEventResult={showEventResult}
+							formatDate={formatDate}
+							formatTime={formatTime}
+							utcOffset={utcOffset}
+						/>
+					</div>
+					<div className={'main-content__empty-states-observer-amount'}>
+						<ObserverCryptoBlock />
+						<AmountVotesBlock statsData={statsData} />
+					</div>
+					<div className={'main-content__empty-states-component'}>
+						<EmptyStatesComponent />
+					</div>
+					<div className={'main-content__empty-states-qr-code'}>
+						<ScanQRMobile />
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }
+
 export default MainPage;

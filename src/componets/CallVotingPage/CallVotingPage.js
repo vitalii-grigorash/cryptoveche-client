@@ -44,12 +44,15 @@ const CallVotingPage = (props) => {
             }
             requestHelper(Events.getEvent, body)
                 .then((data) => {
-                    console.log(data);
-                    setCurrentEventData(data);
-                    templateRow(data.questions);
-                    templateGrid(data.questions);
-                    if (data.results.questions) {
-                        setResults(data.results.questions);
+                    if (data.status !== 'ended' || data.status !== 'quorum_unpresant') {
+                        setCurrentEventData(data);
+                        templateRow(data.questions);
+                        templateGrid(data.questions);
+                        if (data.results.questions) {
+                            setResults(data.results.questions);
+                        }
+                    } else {
+                        navigate('/');
                     }
                 })
         } else {
