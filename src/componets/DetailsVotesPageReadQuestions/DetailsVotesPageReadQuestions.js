@@ -14,7 +14,8 @@ const DetailsVotesPageReadQuestions = (props) => {
         questionsTemplateRow,
         questionsTemplateGrid,
         isMyBulletinTabActive,
-        results
+        results,
+        isVoted
     } = props;
 
     return (
@@ -48,6 +49,7 @@ const DetailsVotesPageReadQuestions = (props) => {
                 handleCurrentEvents={handleCurrentEvents}
                 toggleEventRegistration={toggleEventRegistration}
                 showEventResult={showEventResult}
+                isVoted={isVoted}
             />
         </div>
     )

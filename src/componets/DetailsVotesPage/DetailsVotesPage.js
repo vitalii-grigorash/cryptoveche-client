@@ -20,12 +20,12 @@ const DetailsVotesPage = (props) => {
         isResultTabOpen,
         formatDate,
         formatTime,
-        utcOffset
+        utcOffset,
+        handleResultTabOpen
     } = props;
 
     const navigate = useNavigate();
-
-    const [btnGeneralInfo, setBtnGeneralInfo] = useState(false);
+    const [btnGeneralInfo, setBtnGeneralInfo] = useState(true);
     const [btnReadQuestions, setBtnReadQuestions] = useState(false);
     const [btnResult, setBtnResult] = useState(false);
     const [btnMyBulletin, setBtnMyBulletin] = useState(false);
@@ -33,20 +33,46 @@ const DetailsVotesPage = (props) => {
     const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
     const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
     const [isShowResults, setShowResults] = useState(false);
+    const [isShowMyBulletin, setShowMyBulletin] = useState(false);
     const [isShowTimer, setShowTimer] = useState(true);
     const [results, setResults] = useState([]);
+    const [isVoted, setVoted] = useState(false);
+    const [isNotFullyVoted, setNotFullyVoted] = useState(false);
+
+    useEffect(() => {
+        if (currentEventData.questions !== undefined) {
+            if (currentEventData.ballots !== undefined) {
+                const filteredAnswer = currentEventData.questions.filter(a => currentEventData.ballots.find(p => p.bulletinId === a.bulletinId))
+                if (filteredAnswer.length === 0) {
+                    setVoted(false);
+                    setNotFullyVoted(false);
+                } else {
+                    if (filteredAnswer.length === currentEventData.questions.length) {
+                        setVoted(true);
+                        setNotFullyVoted(false);
+                    } else {
+                        setNotFullyVoted(true);
+                        setVoted(false);
+                    }
+                }
+            }
+        }
+    }, [currentEventData.ballots, currentEventData.questions]);
 
     function onGenerelInfoClick() {
         setBtnGeneralInfo(true);
         setBtnReadQuestions(false);
         setBtnResult(false);
         setBtnMyBulletin(false);
+        handleResultTabOpen();
     }
+    
     function onReadQuestionsClick() {
         setBtnReadQuestions(true);
         setBtnGeneralInfo(false);
         setBtnResult(false);
         setBtnMyBulletin(false);
+        handleResultTabOpen();
     }
 
     function onResultsClick() {
@@ -54,6 +80,7 @@ const DetailsVotesPage = (props) => {
         setBtnGeneralInfo(false);
         setBtnReadQuestions(false);
         setBtnMyBulletin(false);
+        handleResultTabOpen();
     }
 
     function onMyBulletinClick() {
@@ -61,6 +88,7 @@ const DetailsVotesPage = (props) => {
         setBtnGeneralInfo(false);
         setBtnReadQuestions(false);
         setBtnResult(false);
+        handleResultTabOpen();
     }
 
     function templateRow(questions) {
@@ -72,6 +100,31 @@ const DetailsVotesPage = (props) => {
         const filteredQuestions = questions.filter(e => e.template === 'grid' || e.template === 'radio_grid');
         setQuestionsTemplateGrid(filteredQuestions);
     }
+
+    useEffect(() => {
+        if (currentEventData.id !== undefined) {
+            if (isResultTabOpen) {
+                if (isShowResults) {
+                    setBtnResult(true);
+                    setBtnGeneralInfo(false);
+                    setBtnReadQuestions(false);
+                    setBtnMyBulletin(false);
+                    handleResultTabOpen();
+                } else {
+                    setBtnGeneralInfo(true);
+                    setBtnReadQuestions(false);
+                    setBtnResult(false);
+                    setBtnMyBulletin(false);
+                }
+            }
+        }
+    },  // eslint-disable-next-line
+        [
+            isResultTabOpen,
+            isShowResults,
+            currentEventData.id
+        ]
+    );
 
     useEffect(() => {
         if (localStorage.getItem('currentEvent')) {
@@ -88,51 +141,27 @@ const DetailsVotesPage = (props) => {
                     if (data.results.questions) {
                         setResults(data.results.questions);
                     }
-                    if (isResultTabOpen) {
-                        if (isShowResults) {
-                            setBtnResult(true);
-                            setBtnGeneralInfo(false);
-                            setBtnReadQuestions(false);
-                            setBtnMyBulletin(false);
-                        } else {
-                            setBtnGeneralInfo(true);
-                            setBtnReadQuestions(false);
-                        }
-                    } else {
-                        if (btnGeneralInfo) {
-                            setBtnGeneralInfo(true);
-                            setBtnReadQuestions(false);
-                        } else if (btnReadQuestions) {
-                            setBtnReadQuestions(true);
-                            setBtnGeneralInfo(false);
-                        } else {
-                            setBtnGeneralInfo(true);
-                            setBtnReadQuestions(false);
-                        }
-                    }
                 });
         } else {
             navigate('/');
         }
-    }, // eslint-disable-next-line
-        [
-            navigate,
-            requestHelper,
-            isResultTabOpen,
-            isShowResults
-        ]
-    )
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         if (currentEventData.status === 'ended' || currentEventData.status === 'quorum_unpresant') {
             setShowTimer(false);
+            setShowResults(true);
             if (currentEventData.type === 'secret') {
-                setShowResults(false);
+                setShowMyBulletin(false);
             } else if (currentEventData.type === 'open') {
-                setShowResults(true);
+                setShowMyBulletin(true);
             }
+        } else {
+            setShowResults(false);
+            setShowMyBulletin(false);
         }
-    }, [currentEventData])
+    }, [currentEventData]);
 
     return (
         <div className={'details-votes-page__wrapper'}>
@@ -160,20 +189,30 @@ const DetailsVotesPage = (props) => {
                     {isShowResults && (
                         <>
                             <h2 onClick={onResultsClick} className={btnResult ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Результат</h2>
-                            <h2 onClick={onMyBulletinClick} className={btnMyBulletin ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Мой бюллетень</h2>
+                            {isShowMyBulletin && (
+                                <h2 onClick={onMyBulletinClick} className={btnMyBulletin ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Мой бюллетень</h2>
+                            )}
                         </>
                     )}
                 </div>
                 {btnGeneralInfo && (
-                    <DetailsVotesPageGeneralInformation
-                        currentEventData={currentEventData}
-                        handleCurrentEvents={handleCurrentEvents}
-                        toggleEventRegistration={toggleEventRegistration}
-                        showEventResult={showEventResult}
-                        formatDate={formatDate}
-                        formatTime={formatTime}
-                        utcOffset={utcOffset}
-                    />
+                    <>
+                        {currentEventData.id !== undefined && (
+                            <>
+                                <DetailsVotesPageGeneralInformation
+                                    currentEventData={currentEventData}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                    isVoted={isVoted}
+                                    isNotFullyVoted={isNotFullyVoted}
+                                />
+                            </>
+                        )}
+                    </>
                 )}
                 {btnReadQuestions && (
                     <DetailsVotesPageReadQuestions
@@ -186,6 +225,7 @@ const DetailsVotesPage = (props) => {
                         requestHelper={requestHelper}
                         isMyBulletinTabActive={false}
                         results={results}
+                        isVoted={isVoted}
                     />
                 )}
                 {isShowResults && (
@@ -193,22 +233,25 @@ const DetailsVotesPage = (props) => {
                         {btnResult && (
                             <DetailsVotesPageResultVotesCardQuestion
                                 currentEventData={currentEventData}
-                                titleName={'1. Согласны ли вы с решением №576?'}
-                                answerSelected={'Выберите ровно 1'}
                             />
                         )}
-                        {btnMyBulletin && (
-                            <DetailsVotesPageReadQuestions
-                                currentEventData={currentEventData}
-                                questionsTemplateRow={questionsTemplateRow}
-                                questionsTemplateGrid={questionsTemplateGrid}
-                                handleCurrentEvents={handleCurrentEvents}
-                                toggleEventRegistration={toggleEventRegistration}
-                                showEventResult={showEventResult}
-                                requestHelper={requestHelper}
-                                isMyBulletinTabActive={true}
-                                results={results}
-                            />
+                        {isShowMyBulletin && (
+                            <>
+                                {btnMyBulletin && (
+                                    <DetailsVotesPageReadQuestions
+                                        currentEventData={currentEventData}
+                                        questionsTemplateRow={questionsTemplateRow}
+                                        questionsTemplateGrid={questionsTemplateGrid}
+                                        handleCurrentEvents={handleCurrentEvents}
+                                        toggleEventRegistration={toggleEventRegistration}
+                                        showEventResult={showEventResult}
+                                        requestHelper={requestHelper}
+                                        isMyBulletinTabActive={true}
+                                        results={results}
+                                        isVoted={isVoted}
+                                    />
+                                )}
+                            </>
                         )}
                         {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
                     </>

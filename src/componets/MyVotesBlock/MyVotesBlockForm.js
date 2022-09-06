@@ -21,6 +21,28 @@ const MyVotesBlockForm = React.memo((props) => {
 
 	const { pathname } = useLocation();
 	const [labelText, setLabelText] = useState('');
+	const [isVoted, setVoted] = useState(false);
+	const [isNotFullyVoted, setNotFullyVoted] = useState(false);
+
+	useEffect(() => {
+		if (votesData.questions !== undefined) {
+			if (votesData.ballots !== undefined) {
+				const filteredAnswer = votesData.questions.filter(a => votesData.ballots.find(p => p.bulletinId === a.bulletinId))
+			if (filteredAnswer.length === 0) {
+				setVoted(false);
+				setNotFullyVoted(false);
+			} else {
+				if (filteredAnswer.length === votesData.questions.length) {
+					setVoted(true);
+					setNotFullyVoted(false);
+				} else {
+					setNotFullyVoted(true);
+					setVoted(false);
+				}
+			}
+			}
+		}
+	}, [votesData.ballots, votesData.questions]);
 
 	useEffect(() => {
 		if (votesData.status === 'waiting') {
@@ -78,6 +100,8 @@ const MyVotesBlockForm = React.memo((props) => {
 					<div className='status-and-start-reg-start-vote__add-border-left'>
 						<ConfirmRegMaterialsVote
 							votesData={votesData}
+							isVoted={isVoted}
+							isNotFullyVoted={isNotFullyVoted}
 						/>
 					</div>
 				</div>
@@ -110,7 +134,7 @@ const MyVotesBlockForm = React.memo((props) => {
 							<>
 								{votesData.isRegistered && (
 									<>
-										{!votesData.isVoted ? (
+										{!isVoted ? (
 											<>
 												<button className='button-vote'
 													onClick={() => { handleCurrentEvents(votesData, false) }}
@@ -139,7 +163,7 @@ const MyVotesBlockForm = React.memo((props) => {
 					<>
 						{votesData.isRegistered ? (
 							<>
-								{!votesData.isVoted ? (
+								{!isVoted ? (
 									<button className='button-vote'
 										onClick={() => { handleCurrentEvents(votesData, false) }}
 									>
@@ -171,29 +195,22 @@ const MyVotesBlockForm = React.memo((props) => {
 					</>
 				)}
 				{votesData.status === 'ended' && (
-					<>
-						{votesData.type === 'open' && (
-							<button className='cancel-reg'
-								onClick={() => showEventResult(votesData)}
-							>
-								Результаты
-							</button>
-						)}
-					</>
+					<button className='cancel-reg'
+						onClick={() => showEventResult(votesData)}
+					>
+						Результаты
+					</button>
 				)}
 				{votesData.status === 'quorum_unpresant' && (
-					<>
-						{votesData.type === 'open' && (
-							<button className='cancel-reg'
-								onClick={() => showEventResult(votesData)}
-							>
-								Результаты
-							</button>
-						)}
-					</>
+					<button className='cancel-reg'
+						onClick={() => showEventResult(votesData)}
+					>
+						Результаты
+					</button>
 				)}
 			</div>
 		</div>
 	)
 })
+
 export default MyVotesBlockForm;

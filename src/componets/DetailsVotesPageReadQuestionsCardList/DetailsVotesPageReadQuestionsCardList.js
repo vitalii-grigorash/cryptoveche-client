@@ -173,7 +173,7 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
     }, [question.template])
 
     useEffect(() => {
-        if(materialsQuestion.length !== 0) {
+        if (materialsQuestion.length !== 0) {
             setActiveMaterialsQuestion(true)
         }
     }, [materialsQuestion.length])
@@ -204,4 +204,5 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
         </div>
     )
 }
+
 export default DetailsVotesPageReadQuestionsCardList;

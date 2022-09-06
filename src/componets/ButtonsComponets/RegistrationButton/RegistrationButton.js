@@ -7,7 +7,8 @@ const RegistrationButton = (props) => {
         votesData,
         handleCurrentEvents,
         toggleEventRegistration,
-        showEventResult
+        showEventResult,
+        isVoted
     } = props;
 
     return (
@@ -39,7 +40,7 @@ const RegistrationButton = (props) => {
                         <>
                             {votesData.isRegistered && (
                                 <>
-                                    {!votesData.isVoted ? (
+                                    {!isVoted ? (
                                         <>
                                             <button className='button-vote'
                                                 onClick={() => { handleCurrentEvents(votesData, false) }}
@@ -68,7 +69,7 @@ const RegistrationButton = (props) => {
                 <>
                     {votesData.isRegistered ? (
                         <>
-                            {!votesData.isVoted ? (
+                            {!isVoted ? (
                                 <button className='button-vote'
                                     onClick={() => { handleCurrentEvents(votesData, false) }}
                                 >
@@ -100,26 +101,18 @@ const RegistrationButton = (props) => {
                 </>
             )}
             {votesData.status === 'ended' && (
-                <>
-                    {votesData.type === 'open' && (
-                        <button className='cancel-reg'
-                            onClick={() => showEventResult(votesData)}
-                        >
-                            Результаты
-                        </button>
-                    )}
-                </>
+                <button className='cancel-reg'
+                    onClick={() => showEventResult(votesData)}
+                >
+                    Результаты
+                </button>
             )}
             {votesData.status === 'quorum_unpresant' && (
-                <>
-                    {votesData.type === 'open' && (
-                        <button className='cancel-reg'
-                            onClick={() => showEventResult(votesData)}
-                        >
-                            Результаты
-                        </button>
-                    )}
-                </>
+                <button className='cancel-reg'
+                    onClick={() => showEventResult(votesData)}
+                >
+                    Результаты
+                </button>
             )}
         </>
     )

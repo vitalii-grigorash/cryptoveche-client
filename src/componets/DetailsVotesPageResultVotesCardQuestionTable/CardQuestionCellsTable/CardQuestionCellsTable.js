@@ -1,8 +1,12 @@
 import React from "react";
 import './CardQuestionCellsTable.css';
 
-const CardQuestionCellsTable = ({varinantAnswer, result}) => {
+const CardQuestionCellsTable = (props) => {
 
+    const {
+        varinantAnswer,
+        result
+    } = props;
 
     return (
         <>
