@@ -9,46 +9,82 @@
     flex-direction: row;
     justify-content: space-between;
 }
-/*------Cтилизация общего контейнера для div end-reg и start-vote-----------------------------------------------------*/
-.details-votes-page-datetime-end-reg-start-vote__datetime-info {
+.datetime-info__two-numbers {
+    width: 2ch;
+}
+.details-votes-page-datetime-end-reg-start-vote__wrapper.active {
+    max-width: 664px;
+}
+/*------Cтилизация контейнера для div конец регистрации----------------------------------------------------------------*/
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     gap: 8px;
     border-right: 1px solid rgba(54, 59, 77, 0.2);
-}
-.details-votes-page-datetime-end-reg-start-vote__datetime-info:first-child {
     padding-right: 48px;
+    margin-right: 48px;
 }
-.details-votes-page-datetime-end-reg-start-vote__datetime-info:last-child {
-    padding-left: 48px;
-    border: none;
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg.active {
+    display: none;
 }
-/*------Cтилизация div c информацией конца регистарции и начала голосования-------------------------------------------*/
-.datetime-info__end-registration-start-vote {
+/*------Cтилизация контейнера для div начало голосования--------------------------------------------------------------*/
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 8px;
+}
+/*------Cтилизация div c информацией конца регистрации----------------------------------------------------------------*/
+.datetime-info__end-registration {
     display: flex;
     flex-direction: row;
-    width: 592px;
     gap: 16px;
     color: rgba(54, 59, 77, 0.9);
 }
-.datetime-info__end-registration-start-vote h2 {
+.datetime-info__end-registration h2 {
     font-size: 32px;
     font-weight: 600;
     line-height: 40px;
 }
-.datetime-info__end-registration-start-vote span {
+.end-registration__time-info {
     opacity: 40%;
     font-size: 14px;
     font-weight: 400;
     line-height: 26px;
     padding-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+/*------Cтилизация div c информацией начала голосования---------------------------------------------------------------*/
+.datetime-info__start-vote {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    color: rgba(54, 59, 77, 0.9);
+}
+.datetime-info__start-vote h2 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.start-vote__time-info {
+    opacity: 40%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    padding-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 /*------Cтилизация div с цветным ползунком отсчета дней---------------------------------------------------------------*/
 .datetime-info__range {
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
     width: 100%;
     pointer-events: none;
 }
@@ -70,10 +106,11 @@
 }
 .datetime-info__range-orange::-webkit-slider-runnable-track {
     width: 100%;
+    position: absolute;
+    top: 6px;
     height: 6px;
-    background: #FF8A00;
-    opacity: 40%;
-    content: '';
+    -webkit-appearance: none;
+    background: #FFE4C4;
 }
 .datetime-info__range-green::-moz-range-track {
     width: 100%;
@@ -83,11 +120,12 @@
 }
 .datetime-info__range-green::-webkit-slider-runnable-track {
     width: 100%;
+    position: absolute;
+    top: 6px;
     height: 6px;
-    background: #4ED4A9;
-    opacity: 40%;
+    -webkit-appearance: none;
+    background: #DCF9F0;
 }
-
 /*------Cтилизация ползунка-------------------------------------------------------------------------------------------*/
 .datetime-info__range-orange::-moz-range-thumb {
     height: 20px;
@@ -99,9 +137,10 @@
 .datetime-info__range-orange::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
-    width: 3px;
+    width: 5px;
     background: #FF8A00;
     cursor: pointer;
+    border-radius: 4px;
     margin-top: -7px;
 }
 .datetime-info__range-green::-moz-range-thumb {
@@ -114,40 +153,86 @@
 .datetime-info__range-green::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
-    width: 3px;
+    width: 5px;
     background: #4ED4A9;
     cursor: pointer;
+    border-radius: 4px;
     margin-top: -7px;
 }
+/*------Стилизация div для таймера Конец Голосования------------------------------------------------------------------*/
+.end-registration__time-info-input-reg {
+    position: relative;
+}
+.time-info-input-reg__timer-strip {
+    position: absolute;
+    background-color: #FF8A00;
+    width: 100%;
+    height: 6px;
+    top: 6px;
+}
+/*------Стилизация div для таймера Начало Голосования------------------------------------------------------------------*/
+.start-vote__time-info-input-vote {
+    position: relative;
+}
+.time-info-input-vote__timer-strip {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    top: 6px;
+    background: #4ED4A9;
+}
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
-@media (max-width: 1040px) {
+@media (max-width: 1120px) {
     .details-votes-page-datetime-end-reg-start-vote__wrapper {
-        padding: 16px 7px 16px 16px;
+        padding: 8px 8px 8px 8px;
     }
-    .details-votes-page-datetime-end-reg-start-vote__datetime-info {
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg, .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
         gap: 0;
     }
-    .datetime-info__end-registration-start-vote h2 {
-        font-size: 16px;
+    .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
+        font-size: 18px;
     }
-    .datetime-info__end-registration-start-vote span {
-        font-size: 14px;
-        padding-top: 7px;
+    .end-registration__time-info, .start-vote__time-info {
+        font-size: 12px;
+        padding-top: 0;
         padding-right: 15px;
     }
-    .details-votes-page-datetime-end-reg-start-vote__datetime-info:first-child {
+}
+@media (max-width: 1020px) {
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg {
         padding-right: 16px;
+        margin-right: 16px;
     }
-    .details-votes-page-datetime-end-reg-start-vote__datetime-info:last-child {
-        padding-left: 16px;
-        border: none;
+    .datetime-info__end-registration span, .datetime-info__start-vote span {
+        padding-right: 6px;
+    }
+    .details-votes-page-datetime-end-reg-start-vote__wrapper {
+        max-height: 150px;
+    }
+}
+@media (max-width: 940px) {
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg {
+        padding-right: 16px;
+        margin-right: 16px;
+    }
+    .datetime-info__end-registration, .datetime-info__start-vote {
+        gap: 8px;
+    }
+}
+@media (max-width: 860px) {
+    .datetime-info__end-registration, .datetime-info__start-vote {
+        display: block;
+
+    }
+    .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
+
     }
 }
 @media (max-width: 808px) {
     .details-votes-page-datetime-end-reg-start-vote__wrapper {
-        max-height: 110px;
+        max-height: 150px;
     }
-    .datetime-info__end-registration-start-vote {
+    .datetime-info__end-registration, .datetime-info__start-vote {
         display: block;
     }
 }
@@ -156,25 +241,33 @@
         max-height: 79px;
         padding: 8px 7px 10px 0;
     }
-    .details-votes-page-datetime-end-reg-start-vote__datetime-info {
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg, .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
         width: 100%;
         padding: 0 13px 5px 10px;
     }
-    .datetime-info__end-registration-start-vote {
+    .datetime-info__end-registration, .datetime-info__start-vote {
         display: inline-flex;
         gap: 6px;
     }
-    .datetime-info__end-registration-start-vote h2 {
+    .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
         white-space: nowrap;
     }
-    .datetime-info__end-registration-start-vote span {
+    .end-registration__time-info, .start-vote__time-info {
         white-space: nowrap;
+        padding-top: 7px;
     }
-    .datetime-info__end-registration-start-vote input {
+    .datetime-info__end-registration input, .datetime-info__start-vote input {
         margin-bottom: 16px;
     }
     ._hidden-block__end-registration-start-vote {
         display: none;
+    }
+}
+@media (max-width: 420px) {
+    .end-registration__time-info, .start-vote__time-info {
+        font-size: 11px;
+        padding-top: 10px;
+        display: block;
     }
 }
 

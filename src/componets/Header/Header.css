@@ -28,7 +28,6 @@
     z-index: 1;
     padding: 16px 16px 16px 16px;
 }
-
 .header-burger-menu__button {
     width: 32px;
     height: 32px;
@@ -64,7 +63,6 @@
     width: 13px;
     height: 1px;
 }
-
 .header-burger-menu__input-search {
     width: 100%;
     height: 32px;
@@ -97,7 +95,6 @@
     border-bottom: 4px solid #373C4E;
     text-align: center;
     padding: 28px 0 23px 0;
-
 }
 .logotype-block__votes {
     padding: 28px 0 23px 0;
@@ -117,7 +114,6 @@
 .logotype-block__votes.active {
     border-bottom: 4px solid #4569FF;
 }
-
 /*------Стилизация общего блока с иконками поиск, настройки, личный кабинет-------------------------------------------*/
 .header__general-block-search-settings-lk {
     display: flex;
@@ -195,13 +191,10 @@
     }
     .logotype-block__main {
         padding: 31px 0 23px 0;
-
     }
     .logotype-block__votes {
         padding: 31px 0 23px 0;
-
     }
-
 }
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
 @media (max-width: 815px) {
@@ -227,9 +220,7 @@
     }
     .logotype-block__votes {
         margin-left: 35px;
-
     }
-
 }
 /*------Адаптивная версия(660px)--------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
@@ -256,7 +247,6 @@
     }
 }
 @media (max-width: 410px) {
-
     .search-input {
         max-width: 130px;
     }
@@ -264,6 +254,9 @@
         right: 110px;
         width: 14px;
         height: 14px;
+    }
+    .general-block-search-settings-lk__search, .general-block-search-settings-lk__search-input, .general-block-search-settings-lk__settings {
+        display: none;
     }
 }
 /*------Адаптивная версия(375px)--------------------------------------------------------------------------------------*/
@@ -283,7 +276,6 @@
         display: flex;
         align-items: center;
     }
-
 }
 
 
