@@ -39,7 +39,6 @@ const MainPage = (props) => {
 			return () => setStatsData({})
 	}, [requestHelper]);
 
-
 	useEffect(() => {
 		if (sortActualEvents.length > 0) {
 			setActiveActualState(true)

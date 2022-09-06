@@ -14,7 +14,8 @@ const MyProfilePage = (props) => {
 
     const {
         requestHelper,
-        utcOffset
+        utcOffset,
+        handleLogout
     } = props;
 
 
@@ -49,7 +50,7 @@ const MyProfilePage = (props) => {
                         userId={userId}/>
                 </div>
             </div>
-            <button className={'my-profile-page__exit-button-profile'}>Выйти из профиля</button>
+            <button onClick={handleLogout} className={'my-profile-page__exit-button-profile'}>Выйти из профиля</button>
         </div>
     )
 }

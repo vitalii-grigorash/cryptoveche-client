@@ -25,7 +25,6 @@
     padding-bottom: 32px;
     position: relative;
 }
-
 .my-profile-page-add-settings__form label {
     font-size: 18px;
     color: rgba(54, 59, 77, 0.9);
@@ -140,5 +139,13 @@
         gap: 6px;
         padding-bottom: 24px;
     }
-
+    .my-profile-page__save-change  {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 420px) {
+    .my-profile-page__save-change  {
+        max-width: 343px
+    }
 }

@@ -1,7 +1,7 @@
 import React from "react";
-import './StatusDayColorRed.css';
+import './StatusDayStartRegColorRed.css';
 
-const StatusDayColorRed = ({nameStatusDay}) => {
+const StatusDayStartRegColorRed = ({nameStatusDay}) => {
 
 
     return (
@@ -11,4 +11,4 @@ const StatusDayColorRed = ({nameStatusDay}) => {
     )
 }
 
-export default StatusDayColorRed;
+export default StatusDayStartRegColorRed;

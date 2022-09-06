@@ -31,7 +31,7 @@
     white-space: nowrap;
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
-@media (max-width: 1320px) {
+@media (max-width: 1350px) {
     .details-votes-page-list-start-end-reg-vote__main-content {
         border: none;
         padding-left: 0;

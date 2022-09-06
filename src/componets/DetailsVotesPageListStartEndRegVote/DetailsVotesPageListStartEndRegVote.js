@@ -2,11 +2,13 @@ import React from "react";
 import './DetailsVotesPageListStartEndRegVote.css';
 import DataTime from '../VotesStatusComponents/DateTime/DateTime';
 import NameStatusRegAndVote from "./NameStatusRegAndVote/NameStatusRegAndVote";
-import StatusDayColorRed from "./StatusDayColorRed/StatusDayColorRed";
-import StatusDayColorGreen from "./StatusDayColorGreen/StatusDayColorGreen";
-import StatusDayColorYellow from "./StatusDayColorYellow/StatusDayColorYellow";
+import StatusDayStartRegColorRed from "./StatusDayStartRegColorRed/StatusDayStartRegColorRed";
+import StatusDayStartVoteColorGreen from "./StatusDayStartVoteColorGreen/StatusDayStartVoteColorGreen";
+import StatusDayEndVoteColorYellow from "./StatusDayEndVoteColorYellow/StatusDayEndVoteColorYellow";
+import StatusDayEndRegColorRed from "./StatusDayEndRegColorRed/StatusDayEndRegColorRed";
 import ListStartEndRegMobile from "./ListStartEndRegMobile/ListStartEndRegMobile";
 import ListStartEndVoteMobile from "./ListStartEndVoteMobile/ListStartEndVoteMobile";
+
 
 const DetailsVotesPageListStartEndRegVote = (props) => {
 
@@ -33,10 +35,10 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
                     <DataTime dateTimeDate={formatDate(voteData.event_end_time)} dateTimeWatch={formatTime(voteData.event_end_time)} />
                 </div>
                 <div className={'main-content__datetime-status-reg-vote-color-day'}>
-                    <StatusDayColorRed nameStatusDay={'2 дня назад'} />
-                    <StatusDayColorRed nameStatusDay={'сегодня'} />
-                    <StatusDayColorGreen nameStatusDay={'сегодня'} />
-                    <StatusDayColorYellow nameStatusDay={'через неделю'} />
+                    <StatusDayStartRegColorRed nameStatusDay={'2 дня назад'} />
+                    <StatusDayEndRegColorRed nameStatusDay={'сегодня'} />
+                    <StatusDayStartVoteColorGreen nameStatusDay={'сегодня'} />
+                    <StatusDayEndVoteColorYellow nameStatusDay={'через неделю'} />
                 </div>
                 <ListStartEndRegMobile
                     title={'Начало и конец регистрации:'}

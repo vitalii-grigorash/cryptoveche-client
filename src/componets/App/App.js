@@ -336,17 +336,17 @@ function App() {
         return `${hours + ':' + minutes}`;
     }
 
-    useEffect(() => {
-        const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
-        socket.onopen = () => {
-            console.log('соединение установлено');
-            socket.send(JSON.stringify({
-                id: currentUser.id,
-                username: userName,
-                method: "connection"
-            }))
-        }
-    }, [currentUser, userName])
+    // useEffect(() => {
+    //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
+    //     socket.onopen = () => {
+    //         console.log('соединение установлено');
+    //         socket.send(JSON.stringify({
+    //             id: currentUser.id,
+    //             username: userName,
+    //             method: "connection"
+    //         }))
+    //     }
+    // }, [currentUser, userName])
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -405,6 +405,7 @@ function App() {
                                    element={<MyProfilePage
                                        requestHelper={requestHelper}
                                        utcOffset={utcOffset}
+                                       handleLogout={logout}
                                    />}
                             />
                             <Route exact path='/details-vote'
