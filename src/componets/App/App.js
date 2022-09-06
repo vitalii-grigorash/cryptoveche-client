@@ -40,31 +40,21 @@ function App() {
     const [utcOffset, setUtcOffset] = useState('');
 
     function requestHelper(request, body = {}) {
-        console.log(`${request}`);
         return new Promise((resolve, reject) => {
             if (localStorage.getItem('jwt')) {
                 const jwt = localStorage.getItem('jwt');
                 const jwtTokens = JSON.parse(jwt);
-                console.log(jwtTokens);
-                console.log(jwtTokens.access_token);
-                console.log(jwtTokens.refresh_token);
                 request(jwtTokens.access_token, body)
                     .then((res) => {
-                        console.log('Ответ на запрос');
-                        console.log(res);
-                        if (res.text === 'Expired token') {
+                        if (res.status === 'failure') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
-                                    console.log('Ответ на смену токена');
-                                    console.log(newTokens);
                                     if (newTokens.status === 'failure') {
                                         logout();
                                     } else {
                                         localStorage.setItem('jwt', JSON.stringify(newTokens));
                                         request(newTokens.access_token, body)
                                             .then((res) => {
-                                                console.log('Ответ на запрос после смены токена');
-                                                console.log(res);
                                                 resolve(res);
                                             })
                                             .catch((err) => {
@@ -309,6 +299,10 @@ function App() {
         }
     }
 
+    function handleResultTabOpen () {
+        setResultTabOpen(false);
+    }
+
     function showEventResult(data) {
         const currentEvent = {
             id: data.id
@@ -432,6 +426,7 @@ function App() {
                                     formatDate={formatDate}
                                     formatTime={formatTime}
                                     utcOffset={utcOffset}
+                                    handleResultTabOpen={handleResultTabOpen}
                                 />}
                             />
                             <Route exact path='/votes-page'

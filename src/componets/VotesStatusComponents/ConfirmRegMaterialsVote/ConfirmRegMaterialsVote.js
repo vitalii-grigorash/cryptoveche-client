@@ -106,14 +106,18 @@ const ConfirmRegMaterialsVote = (props) => {
       votesData.isRegistered,
       isVoted,
       isNotFullyVoted,
-      votesData.status
-    ])
+      votesData.status,
+      votesData.isVoting
+    ]
+  );
 
   useEffect(() => {
-    if (votesData.materials.length !== 0) {
-      setActiveMaterials(true)
+    if (votesData.materials !== undefined) {
+      if (votesData.materials.length !== 0) {
+        setActiveMaterials(true);
+      }
     }
-  }, [votesData.materials.length])
+  }, [votesData.materials]);
 
   return (
     <div className='status-block__materials-vote'>

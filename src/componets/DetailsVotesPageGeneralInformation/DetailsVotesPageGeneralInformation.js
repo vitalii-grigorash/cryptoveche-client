@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './DetailsVotesPageGeneralInformation.css';
 import VotesPageTitleTimeZone from "../VotesPageTitleTimeZone/VotesPageTitleTimeZone";
-import DetailsVotesPageStatusPossibleRevoteCancelReg
-    from "../DetailsVotesPageStatusPossibleRevoteCancelReg/DetailsVotesPageStatusPossibleRevoteCancelReg";
+import DetailsVotesPageStatusPossibleRevoteCancelReg from "../DetailsVotesPageStatusPossibleRevoteCancelReg/DetailsVotesPageStatusPossibleRevoteCancelReg";
 import CurrentStatusVote from "../VotesStatusComponents/CurrentStatusVote/CurrentStatusVote";
 import ConfirmRegMaterialsVote from "../VotesStatusComponents/ConfirmRegMaterialsVote/ConfirmRegMaterialsVote";
-import DetailsVotesPageListStartEndRegVote
-    from "../DetailsVotesPageListStartEndRegVote/DetailsVotesPageListStartEndRegVote";
+import DetailsVotesPageListStartEndRegVote from "../DetailsVotesPageListStartEndRegVote/DetailsVotesPageListStartEndRegVote";
 import RegistrationButton from "../ButtonsComponets/RegistrationButton/RegistrationButton";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 
@@ -73,7 +71,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
                         <ConfirmRegMaterialsVote
                             votesData={currentEventData}
                             isVoted={isVoted}
-							isNotFullyVoted={isNotFullyVoted}
+                            isNotFullyVoted={isNotFullyVoted}
                         />
                         <span className={'_hidden-possible-cancel-block'}>
                             <DetailsVotesPageStatusPossibleRevoteCancelReg

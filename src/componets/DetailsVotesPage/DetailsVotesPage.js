@@ -20,11 +20,12 @@ const DetailsVotesPage = (props) => {
         isResultTabOpen,
         formatDate,
         formatTime,
-        utcOffset
+        utcOffset,
+        handleResultTabOpen
     } = props;
 
     const navigate = useNavigate();
-    const [btnGeneralInfo, setBtnGeneralInfo] = useState(false);
+    const [btnGeneralInfo, setBtnGeneralInfo] = useState(true);
     const [btnReadQuestions, setBtnReadQuestions] = useState(false);
     const [btnResult, setBtnResult] = useState(false);
     const [btnMyBulletin, setBtnMyBulletin] = useState(false);
@@ -63,12 +64,15 @@ const DetailsVotesPage = (props) => {
         setBtnReadQuestions(false);
         setBtnResult(false);
         setBtnMyBulletin(false);
+        handleResultTabOpen();
     }
+    
     function onReadQuestionsClick() {
         setBtnReadQuestions(true);
         setBtnGeneralInfo(false);
         setBtnResult(false);
         setBtnMyBulletin(false);
+        handleResultTabOpen();
     }
 
     function onResultsClick() {
@@ -76,6 +80,7 @@ const DetailsVotesPage = (props) => {
         setBtnGeneralInfo(false);
         setBtnReadQuestions(false);
         setBtnMyBulletin(false);
+        handleResultTabOpen();
     }
 
     function onMyBulletinClick() {
@@ -83,6 +88,7 @@ const DetailsVotesPage = (props) => {
         setBtnGeneralInfo(false);
         setBtnReadQuestions(false);
         setBtnResult(false);
+        handleResultTabOpen();
     }
 
     function templateRow(questions) {
@@ -94,6 +100,31 @@ const DetailsVotesPage = (props) => {
         const filteredQuestions = questions.filter(e => e.template === 'grid' || e.template === 'radio_grid');
         setQuestionsTemplateGrid(filteredQuestions);
     }
+
+    useEffect(() => {
+        if (currentEventData.id !== undefined) {
+            if (isResultTabOpen) {
+                if (isShowResults) {
+                    setBtnResult(true);
+                    setBtnGeneralInfo(false);
+                    setBtnReadQuestions(false);
+                    setBtnMyBulletin(false);
+                    handleResultTabOpen();
+                } else {
+                    setBtnGeneralInfo(true);
+                    setBtnReadQuestions(false);
+                    setBtnResult(false);
+                    setBtnMyBulletin(false);
+                }
+            }
+        }
+    },  // eslint-disable-next-line
+        [
+            isResultTabOpen,
+            isShowResults,
+            currentEventData.id
+        ]
+    );
 
     useEffect(() => {
         if (localStorage.getItem('currentEvent')) {
@@ -110,39 +141,12 @@ const DetailsVotesPage = (props) => {
                     if (data.results.questions) {
                         setResults(data.results.questions);
                     }
-                    if (isResultTabOpen) {
-                        if (isShowResults) {
-                            setBtnResult(true);
-                            setBtnGeneralInfo(false);
-                            setBtnReadQuestions(false);
-                            setBtnMyBulletin(false);
-                        } else {
-                            setBtnGeneralInfo(true);
-                            setBtnReadQuestions(false);
-                        }
-                    } else {
-                        if (btnGeneralInfo) {
-                            setBtnGeneralInfo(true);
-                            setBtnReadQuestions(false);
-                        } else if (btnReadQuestions) {
-                            setBtnReadQuestions(true);
-                            setBtnGeneralInfo(false);
-                        } else {
-                            setBtnGeneralInfo(true);
-                            setBtnReadQuestions(false);
-                        }
-                    }
                 });
         } else {
             navigate('/');
         }
-    },
-        [
-            navigate,
-            isResultTabOpen,
-            isShowResults
-        ]
-    )
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         if (currentEventData.status === 'ended' || currentEventData.status === 'quorum_unpresant') {
@@ -157,7 +161,7 @@ const DetailsVotesPage = (props) => {
             setShowResults(false);
             setShowMyBulletin(false);
         }
-    }, [currentEventData])
+    }, [currentEventData]);
 
     return (
         <div className={'details-votes-page__wrapper'}>
@@ -187,17 +191,23 @@ const DetailsVotesPage = (props) => {
                     )}
                 </div>
                 {btnGeneralInfo && (
-                    <DetailsVotesPageGeneralInformation
-                        currentEventData={currentEventData}
-                        handleCurrentEvents={handleCurrentEvents}
-                        toggleEventRegistration={toggleEventRegistration}
-                        showEventResult={showEventResult}
-                        formatDate={formatDate}
-                        formatTime={formatTime}
-                        utcOffset={utcOffset}
-                        isVoted={isVoted}
-                        isNotFullyVoted={isNotFullyVoted}
-                    />
+                    <>
+                        {currentEventData.id !== undefined && (
+                            <>
+                                <DetailsVotesPageGeneralInformation
+                                    currentEventData={currentEventData}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                    isVoted={isVoted}
+                                    isNotFullyVoted={isNotFullyVoted}
+                                />
+                            </>
+                        )}
+                    </>
                 )}
                 {btnReadQuestions && (
                     <DetailsVotesPageReadQuestions
