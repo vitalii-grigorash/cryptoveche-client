@@ -18,15 +18,24 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
         formatTime
     } = props;
 
+    const titleStatusRegAndVote = [
+        {name: 'Начало регистрации:'},
+        {name: 'Конец регистрации:'},
+        {name: 'Начало голосования:'},
+        {name: 'Конец голосования:'}
+    ]
+
     return (
         <div className={'details-votes-page-list-start-end-reg-vote__wrapper'}>
             <div />
             <div className={'details-votes-page-list-start-end-reg-vote__main-content'}>
                 <div className={'main-content__datetime-status-reg-vote'}>
-                    <NameStatusRegAndVote nameStatusRegAndVote={'Начало регистрации:'} />
-                    <NameStatusRegAndVote nameStatusRegAndVote={'Конец регистрации:'} />
-                    <NameStatusRegAndVote nameStatusRegAndVote={'Начало голосования:'} />
-                    <NameStatusRegAndVote nameStatusRegAndVote={'Конец голосования:'} />
+                    {React.Children.toArray(titleStatusRegAndVote.map((el) => {
+                        return <NameStatusRegAndVote
+                            nameStatusRegAndVote={el.name}
+                        />
+                        }))
+                    }
                 </div>
                 <div className={'main-content__datetime-status-reg-vote'}>
                     <DataTime dateTimeDate={formatDate(voteData.registration_start_time)} dateTimeWatch={formatTime(voteData.registration_start_time)} />
@@ -35,10 +44,10 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
                     <DataTime dateTimeDate={formatDate(voteData.event_end_time)} dateTimeWatch={formatTime(voteData.event_end_time)} />
                 </div>
                 <div className={'main-content__datetime-status-reg-vote-color-day'}>
-                    <StatusDayStartRegColorRed nameStatusDay={'2 дня назад'} />
-                    <StatusDayEndRegColorRed nameStatusDay={'сегодня'} />
-                    <StatusDayStartVoteColorGreen nameStatusDay={'сегодня'} />
-                    <StatusDayEndVoteColorYellow nameStatusDay={'через неделю'} />
+                    <StatusDayStartRegColorRed timeDate={voteData.registration_start_time}/>
+                    <StatusDayEndRegColorRed timeDate={voteData.registration_end_time}/>
+                    <StatusDayStartVoteColorGreen timeDate={voteData.event_start_time}/>
+                    <StatusDayEndVoteColorYellow timeDate={voteData.event_end_time}/>
                 </div>
                 <ListStartEndRegMobile
                     title={'Начало и конец регистрации:'}
@@ -58,5 +67,4 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
         </div>
     )
 }
-
 export default DetailsVotesPageListStartEndRegVote;

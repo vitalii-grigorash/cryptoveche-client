@@ -1,12 +1,15 @@
 import React from "react";
 import './StatusDayEndRegColorRed.css';
 
-const StatusDayEndRegColorRed = ({nameStatusDay}) => {
+const StatusDayEndRegColorRed = (props) => {
 
+    const {
+        timeDate
+    } = props;
 
     return (
         <>
-            <span className={'status-day-color__red-color-item'}>{nameStatusDay}</span>
+            <span className={'status-day-color__red-color-item'}>353535353</span>
         </>
     )
 }

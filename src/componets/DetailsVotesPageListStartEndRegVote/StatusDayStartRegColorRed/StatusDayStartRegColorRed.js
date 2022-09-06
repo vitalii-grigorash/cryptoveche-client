@@ -1,12 +1,15 @@
 import React from "react";
 import './StatusDayStartRegColorRed.css';
 
-const StatusDayStartRegColorRed = ({nameStatusDay}) => {
+const StatusDayStartRegColorRed = (props) => {
 
+    const {
+        timeDate
+    } = props;
 
     return (
             <>
-                <span className={'status-day-color__red-color-item'}>{nameStatusDay}</span>
+                <span className={'status-day-start-reg-color__red-color-item'}>через 333 дня</span>
             </>
     )
 }

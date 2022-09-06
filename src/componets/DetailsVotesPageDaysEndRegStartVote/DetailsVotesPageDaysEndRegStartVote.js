@@ -33,14 +33,16 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
     useEffect(() => {
         updateRemainingRegTime(pointEndTimeReg);
         updateRemainingVoteTime(pointStartTimeVote);
-        changeRangeInputRegEnd()
-        changeRangeInputStartVote()
+        changeRangeInputRegEnd();
+        changeRangeInputStartVote();
     },[pointEndTimeReg, pointStartTimeVote])
 
     useEffect(() => {
         const intervalId = setInterval(() => {
               updateRemainingRegTime(pointEndTimeReg);
               updateRemainingVoteTime(pointStartTimeVote);
+              changeRangeInputRegEnd();
+              changeRangeInputStartVote();
         }, 1000);
         return () => clearInterval(intervalId)
     }, [pointEndTimeReg, pointStartTimeVote])
@@ -56,9 +58,9 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
     function differentBetweenDays(pointEndDay) {
         let getEndPointDayMs = Date.parse(pointEndDay);
         let currentDayBeforeEnd = Date.now();
-        let secDiffEndDay = Math.floor((getEndPointDayMs - currentDayBeforeEnd) / 1000);
-        let minDiffEndDay = Math.floor(secDiffEndDay / 60);
-        let hourDiffEndDay = Math.floor(minDiffEndDay / 60);
+        let secDiffEndDay = (getEndPointDayMs - currentDayBeforeEnd) / 1000;
+        let minDiffEndDay = secDiffEndDay / 60;
+        let hourDiffEndDay = minDiffEndDay / 60;
         // let dayDiffEndRegDay = Math.floor(hourDiffEndRegDay / 24);
         {
             return hourDiffEndDay;
@@ -70,7 +72,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         let startRegPoint = Date.parse(pointStartTimeReg);
         let secPointDayEndReg = (endRegPoint - startRegPoint) / 1000;
         let minPointDayEndReg = secPointDayEndReg / 60;
-        let hourPointDayEndReg = Math.floor(minPointDayEndReg / 60);
+        let hourPointDayEndReg = minPointDayEndReg / 60;
         // let dayDiffStartVote = Math.floor(hourDiffStartVote / 24);
         {
             return hourPointDayEndReg;
@@ -82,29 +84,29 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         let startRegPoint = Date.parse(pointStartTimeReg);
         let secPointStartVote = (startVotePoint - startRegPoint) / 1000;
         let minPointStartVote = secPointStartVote / 60;
-        let hourPointStartVote = Math.floor(minPointStartVote / 60);
+        let hourPointStartVote = minPointStartVote / 60;
         {
             return hourPointStartVote;
         }
     }
 
     function changeRangeInputRegEnd() {
-        const valPercent = Math.floor((inputEndRegRef.current.value / inputEndRegRef.current.max) * 102);
+        const valPercent = (inputEndRegRef.current.value / inputEndRegRef.current.max) * 100;
         const getIdEndRegDivStrip = document.getElementById('width-time-info-input-reg');
-        if(valPercent !== null || undefined || NaN) {
+        if(valPercent) {
             getIdEndRegDivStrip.style.width = `${valPercent}%`;
         } else {
-            console.log('error')
+            getIdEndRegDivStrip.style.width = '0%';
         }
     }
 
     function changeRangeInputStartVote() {
-        const valPercent = Math.floor((inputStartVoteRef.current.value / inputStartVoteRef.current.max) * 102);
+        const valPercent = (inputStartVoteRef.current.value / inputStartVoteRef.current.max) * 100;
         const getIdStartVoteDivStrip = document.getElementById('width-time-info-input-vote');
-        if(valPercent !== null || undefined || NaN) {
+        if(valPercent) {
             getIdStartVoteDivStrip.style.width = `${valPercent}%`;
         } else {
-            console.log('error')
+            getIdStartVoteDivStrip.style.width = '0%';
         }
     }
 
