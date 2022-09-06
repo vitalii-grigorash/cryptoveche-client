@@ -299,7 +299,7 @@ function App() {
         }
     }
 
-    function handleResultTabOpen() {
+    function handleResultTabOpen () {
         setResultTabOpen(false);
     }
 
