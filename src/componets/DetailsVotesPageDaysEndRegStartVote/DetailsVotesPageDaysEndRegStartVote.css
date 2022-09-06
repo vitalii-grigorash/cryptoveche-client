@@ -37,7 +37,7 @@
     width: 100%;
     gap: 8px;
 }
-/*------Cтилизация div c информацией конца регистарции----------------------------------------------------------------*/
+/*------Cтилизация div c информацией конца регистрации----------------------------------------------------------------*/
 .datetime-info__end-registration {
     display: flex;
     flex-direction: row;
@@ -85,7 +85,6 @@
 .datetime-info__range {
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
     width: 100%;
     pointer-events: none;
 }
@@ -107,10 +106,11 @@
 }
 .datetime-info__range-orange::-webkit-slider-runnable-track {
     width: 100%;
+    position: absolute;
+    top: 6px;
     height: 6px;
-    background: #FF8A00;
-    opacity: 40%;
-    content: '';
+    -webkit-appearance: none;
+    background: #FFE4C4;
 }
 .datetime-info__range-green::-moz-range-track {
     width: 100%;
@@ -120,9 +120,11 @@
 }
 .datetime-info__range-green::-webkit-slider-runnable-track {
     width: 100%;
+    position: absolute;
+    top: 6px;
     height: 6px;
-    background: #4ED4A9;
-    opacity: 40%;
+    -webkit-appearance: none;
+    background: #DCF9F0;
 }
 /*------Cтилизация ползунка-------------------------------------------------------------------------------------------*/
 .datetime-info__range-orange::-moz-range-thumb {
@@ -135,9 +137,10 @@
 .datetime-info__range-orange::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
-    width: 3px;
+    width: 5px;
     background: #FF8A00;
     cursor: pointer;
+    border-radius: 4px;
     margin-top: -7px;
 }
 .datetime-info__range-green::-moz-range-thumb {
@@ -150,15 +153,38 @@
 .datetime-info__range-green::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
-    width: 3px;
+    width: 5px;
     background: #4ED4A9;
     cursor: pointer;
+    border-radius: 4px;
     margin-top: -7px;
+}
+/*------Стилизация div для таймера Конец Голосования------------------------------------------------------------------*/
+.end-registration__time-info-input-reg {
+    position: relative;
+}
+.time-info-input-reg__timer-strip {
+    position: absolute;
+    background-color: #FF8A00;
+    width: 100%;
+    height: 6px;
+    top: 6px;
+}
+/*------Стилизация div для таймера Начало Голосования------------------------------------------------------------------*/
+.start-vote__time-info-input-vote {
+    position: relative;
+}
+.time-info-input-vote__timer-strip {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    top: 6px;
+    background: #4ED4A9;
 }
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1120px) {
     .details-votes-page-datetime-end-reg-start-vote__wrapper {
-        padding: 16px 7px 16px 16px;
+        padding: 8px 8px 8px 8px;
     }
     .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg, .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
         gap: 0;
@@ -167,8 +193,8 @@
         font-size: 18px;
     }
     .end-registration__time-info, .start-vote__time-info {
-        font-size: 14px;
-        padding-top: 7px;
+        font-size: 12px;
+        padding-top: 0;
         padding-right: 15px;
     }
 }
@@ -228,6 +254,7 @@
     }
     .end-registration__time-info, .start-vote__time-info {
         white-space: nowrap;
+        padding-top: 7px;
     }
     .datetime-info__end-registration input, .datetime-info__start-vote input {
         margin-bottom: 16px;

@@ -410,13 +410,13 @@ const VotesPage = (props) => {
                 setActiveStateEmptyMessage(false)
             }
         } else if(btnArchiveVotes) {
-            if(activeEventsForRender.length !== 0) {
+            if(archiveEventsForRender.length !== 0) {
                 setActiveStateEmptyMessage(true)
             } else {
                 setActiveStateEmptyMessage(false)
             }
         }
-    }, [activeEmptyStateMessage, activeEventsForRender])
+    }, [activeEmptyStateMessage, activeEventsForRender, archiveEventsForRender, btnActiveVotes, btnArchiveVotes])
 
     return (
         <div className='votes-page-block__wrapper'>
@@ -522,5 +522,4 @@ const VotesPage = (props) => {
         </div>
     )
 }
-
 export default VotesPage;

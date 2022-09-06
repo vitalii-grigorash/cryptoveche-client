@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import './VotesPageSortingModal.css';
 import sorting_modal_close_button from "../../../img/VotesPageBlockFilterModal_close_button.svg";
 import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
@@ -14,18 +14,17 @@ const VotesPageSortingModal = (props) => {
     } = props;
 
     const listSortName = [
-            {name: 'Названию события', sortPropertyDec: '-eventName', sortPropertyInc: 'eventName'},
-            {name: 'Названию организации', sortPropertyDec: '-orgName', sortPropertyInc: 'orgName'},
-            {name: 'Времени начала регистрации', sortPropertyDec: '-startReg', sortPropertyInc: 'startReg'},
-            {name: 'Времени начала голосования', sortPropertyDec: '-startVote', sortPropertyInc: 'startVote'},
-            {name: 'Времени окончания регистрации', sortPropertyDec: '-endReg', sortPropertyInc: 'endReg'},
-            {name: 'Времени окончания голосования', sortPropertyDec: '-endVote', sortPropertyInc: 'endVote'}
+                {name: 'Названию события', sortPropertyDec: '-eventName', sortPropertyInc: 'eventName'},
+                {name: 'Названию организации', sortPropertyDec: '-orgName', sortPropertyInc: 'orgName'},
+                {name: 'Времени начала регистрации', sortPropertyDec: '-startReg', sortPropertyInc: 'startReg'},
+                {name: 'Времени начала голосования', sortPropertyDec: '-startVote', sortPropertyInc: 'startVote'},
+                {name: 'Времени окончания регистрации', sortPropertyDec: '-endReg', sortPropertyInc: 'endReg'},
+                {name: 'Времени окончания голосования', sortPropertyDec: '-endVote', sortPropertyInc: 'endVote'}
             ];
 
     //clickSortTypeDec функция для сортовки на уменьшение
     // clickSortTypeInc функция для сортировки на увеличение
 
-    const [act, setAct] = useState(false)
     useOnClickOutsideSortModal(active, () => setActive(false))
 
     function useOnClickOutsideSortModal(active, handler) {

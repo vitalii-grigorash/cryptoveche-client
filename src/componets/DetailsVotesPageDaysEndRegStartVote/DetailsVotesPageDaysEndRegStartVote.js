@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import './DetailsVotesPageDaysEndRegStartVote.css';
 import {getRemainingTimePointEndReg} from "../../utils/CountTimeEndReg/CountTimeEndReg";
 import {getRemainingTimePointStartVote} from "../../utils/CountTimeStartVote/CountTimeStartVote";
-import dayjs from "dayjs";
 
 const DetailsVotesPageDaysEndRegStartVote = (props) => {
 
     const {
         pointEndTimeReg,
         pointStartTimeVote,
-        pointStartTimeReg,
-        formatDate
+        pointStartTimeReg
     } = props;
 
     const defaultRegTime = {
@@ -27,9 +25,17 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         days: '0'
     }
 
-    const [remainingRegTime, setRemainingRegTime] = useState(defaultRegTime)
-    const [remainingVoteTime, setRemainingVoteTime] = useState(defaultVoteTime)
-    const timePointStartVoteDayjs = dayjs(pointStartTimeVote);
+    const [remainingRegTime, setRemainingRegTime] = useState(defaultRegTime);
+    const [remainingVoteTime, setRemainingVoteTime] = useState(defaultVoteTime);
+    const inputEndRegRef = useRef(null);
+    const inputStartVoteRef = useRef(null);
+
+    useEffect(() => {
+        updateRemainingRegTime(pointEndTimeReg);
+        updateRemainingVoteTime(pointStartTimeVote);
+        changeRangeInputRegEnd()
+        changeRangeInputStartVote()
+    },[pointEndTimeReg, pointStartTimeVote])
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -47,27 +53,15 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         setRemainingVoteTime(getRemainingTimePointStartVote(countStartTimeVote));
     }
 
-    function differentBetweenDaysEndReg() {
-        let getEndPointDayMs = Date.parse(pointEndTimeReg);
-        let currentDayForEnd = Date.now();
-        let secDiffEndRegDay = Math.floor((getEndPointDayMs - currentDayForEnd) / 1000);
-        let minDiffEndRegDay = Math.floor(secDiffEndRegDay / 60);
-        let hourDiffEndRegDay = Math.floor(minDiffEndRegDay / 60);
+    function differentBetweenDays(pointEndDay) {
+        let getEndPointDayMs = Date.parse(pointEndDay);
+        let currentDayBeforeEnd = Date.now();
+        let secDiffEndDay = Math.floor((getEndPointDayMs - currentDayBeforeEnd) / 1000);
+        let minDiffEndDay = Math.floor(secDiffEndDay / 60);
+        let hourDiffEndDay = Math.floor(minDiffEndDay / 60);
         // let dayDiffEndRegDay = Math.floor(hourDiffEndRegDay / 24);
         {
-            return hourDiffEndRegDay;
-        }
-    }
-
-    function differentBetweenDaysStartVote() {
-        let getStartVotePointDayMs = Date.parse(pointStartTimeVote);
-        let currentDayStartVote = Date.now();
-        let secDiffStartVote = Math.floor((getStartVotePointDayMs - currentDayStartVote) / 1000);
-        let minDiffStartVote = Math.floor(secDiffStartVote / 60);
-        let hourDiffStartVote = Math.floor(minDiffStartVote / 60);
-        // let dayDiffStartVote = Math.floor(hourDiffStartVote / 24);
-        {
-            return hourDiffStartVote;
+            return hourDiffEndDay;
         }
     }
 
@@ -88,11 +82,32 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         let startRegPoint = Date.parse(pointStartTimeReg);
         let secPointStartVote = (startVotePoint - startRegPoint) / 1000;
         let minPointStartVote = secPointStartVote / 60;
-        let hourPointStartVote = Math.floor(minPointStartVote / 60)
+        let hourPointStartVote = Math.floor(minPointStartVote / 60);
         {
             return hourPointStartVote;
         }
     }
+
+    function changeRangeInputRegEnd() {
+        const valPercent = Math.floor((inputEndRegRef.current.value / inputEndRegRef.current.max) * 102);
+        const getIdEndRegDivStrip = document.getElementById('width-time-info-input-reg');
+        if(valPercent !== null || undefined || NaN) {
+            getIdEndRegDivStrip.style.width = `${valPercent}%`;
+        } else {
+            console.log('error')
+        }
+    }
+
+    function changeRangeInputStartVote() {
+        const valPercent = Math.floor((inputStartVoteRef.current.value / inputStartVoteRef.current.max) * 102);
+        const getIdStartVoteDivStrip = document.getElementById('width-time-info-input-vote');
+        if(valPercent !== null || undefined || NaN) {
+            getIdStartVoteDivStrip.style.width = `${valPercent}%`;
+        } else {
+            console.log('error')
+        }
+    }
+
     // Добавление правильной формы окончания слова в зависимости от числа
     const CorrectWordTimerDay = (value,  words) => {
         let cases = [2, 0, 1, 1, 1, 2];
@@ -109,8 +124,9 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
                                 <span className={'datetime-info__two-numbers'}>{remainingRegTime.hours}</span> час <span className={'datetime-info__two-numbers'}>{remainingRegTime.minutes}</span> мин <span className={'datetime-info__two-numbers'}>{remainingRegTime.seconds}</span>сек до конца регистрации
                             </div>
                         </div>
-                        <div>
-                            <input min={0} max={getPointDaysEndReg(pointStartTimeReg, pointEndTimeReg).toString()} value={differentBetweenDaysEndReg(pointEndTimeReg).toString()} onChange={e => remainingRegTime.hours(e)} className={'datetime-info__range datetime-info__range-orange'} type={'range'}/>
+                        <div className={'end-registration__time-info-input-reg'}>
+                            <input ref={inputEndRegRef} min={0} max={getPointDaysEndReg(pointStartTimeReg, pointEndTimeReg).toString()} value={differentBetweenDays(pointEndTimeReg).toString()} onChange={e => remainingRegTime.hours(e)} className={'datetime-info__range datetime-info__range-orange'} type={'range'}/>
+                            <div id={'width-time-info-input-reg'} className={'time-info-input-reg__timer-strip'}></div>
                         </div>
                     </div>
                     <div className={'details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote'}>
@@ -120,8 +136,9 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
                                 <span className={'datetime-info__two-numbers'}>{remainingVoteTime.hours}</span> час <span className={'datetime-info__two-numbers'}>{remainingVoteTime.minutes}</span> мин <span className={'datetime-info__two-numbers'}>{remainingVoteTime.seconds}</span>сек до начала голосования
                             </div>
                         </div>
-                        <div>
-                            <input min={0} max={getPointDaysStartVote(pointStartTimeVote, pointStartTimeReg).toString()} value={differentBetweenDaysStartVote(pointStartTimeVote).toString()} onChange={e => remainingVoteTime.hours(e)} className={'datetime-info__range datetime-info__range-green'} type={'range'}/>
+                        <div className={'start-vote__time-info-input-vote'}>
+                            <input ref={inputStartVoteRef} min={0} max={getPointDaysStartVote(pointStartTimeVote, pointStartTimeReg).toString()} value={differentBetweenDays(pointStartTimeVote).toString()} onChange={e => remainingVoteTime.hours(e)} className={'datetime-info__range datetime-info__range-green'} type={'range'}/>
+                            <div id={'width-time-info-input-vote'} className={'time-info-input-vote__timer-strip'}></div>
                         </div>
                     </div>
             </div>
