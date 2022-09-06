@@ -5,8 +5,6 @@ import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestio
 import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
 import * as Events from '../../Api/Events';
 import successIcon from '../../img/votet-status-icon.svg';
-import materialsVoteQuestionModalLinks
-    from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestionModal/MaterialsVoteQuestionModalLinks/MaterialsVoteQuestionModalLinks";
 
 const CallVotingPageQuestionCardList = (props) => {
 
@@ -18,7 +16,9 @@ const CallVotingPageQuestionCardList = (props) => {
         eventId,
         requestHelper,
         isReVoting,
-        materialsQuestion
+        materialsQuestion,
+        getEvent,
+        currentEventData
     } = props;
 
     const [answersArray, setAnswersArray] = useState([]);
@@ -30,6 +30,15 @@ const CallVotingPageQuestionCardList = (props) => {
     const [isButtonActive, setButtonActive] = useState(false);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
     const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
+
+    useEffect(() => {
+        const filteredBulletin = currentEventData.ballots.find(ballot => ballot.bulletinId === question.bulletinId);
+        if (filteredBulletin !== undefined) {
+            if (filteredBulletin.bulletinId === question.bulletinId) {
+                setBulletinVoted(true);
+            }
+        }
+    }, [currentEventData.ballots, question.bulletinId])
 
     function simpleQuestion(answers) {
         setRule(question.rules.pick_eq);
@@ -330,7 +339,7 @@ const CallVotingPageQuestionCardList = (props) => {
     }, [question.template, answersArray])
 
     useEffect(() => {
-        if(materialsQuestion.length !== 0) {
+        if (materialsQuestion.length !== 0) {
             setActiveMaterialsQuestion(true)
         }
     }, [materialsQuestion.length])
@@ -368,9 +377,10 @@ const CallVotingPageQuestionCardList = (props) => {
         }
         requestHelper(Events.vote, body)
             .then((data) => {
+                console.log(data.text);
                 if (data.status === 'ok') {
-                    setBulletinVoted(true);
                     setAnswersArray([]);
+                    getEvent();
                 }
             })
     }
@@ -394,7 +404,7 @@ const CallVotingPageQuestionCardList = (props) => {
                         )}
                     </div>
                     {activeMaterialsQuestion &&
-                        <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'}/>
+                        <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
                     }
                 </div>
                 <div className='call-voting-page-question-card-list__main-content'>

@@ -63,6 +63,7 @@ export const registrationUserInEvents = (accessToken, body) => {
 }
 
 export const vote = (accessToken, body) => {
+    console.log(body);
     return fetch(`${API_URL}/events/vote/${body.eventId}`, {
         method: 'PUT',
         headers: {

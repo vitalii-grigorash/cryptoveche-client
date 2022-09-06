@@ -5,10 +5,10 @@ const CallVotingPageVoteButtonList = (props) => {
 
     const {
         sendVote,
-        isReVoting,
-        isButtonActive,
         isBulletinVoted,
-        onReVoteClick
+        isReVoting,
+        onReVoteClick,
+        isButtonActive,
     } = props;
 
     return (

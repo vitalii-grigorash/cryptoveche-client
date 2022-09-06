@@ -1,0 +1,41 @@
+/*------Основной контейнер--------------------------------------------------------------------------------------------*/
+.details-votes-page-result-grid-table__wrapper {
+    max-width: 738px;
+    border-bottom: 1px solid rgba(54, 59, 77, 0.3);
+}
+.details-votes-page-result-grid-table__wrapper:last-of-type {
+    border-bottom: none;
+}
+/*------Стилизация таблицы---------------------------------------------------------------------------------------------*/
+.details-votes-page-result-grid-table__table td {
+    border-right: 1px solid rgba(54, 59, 77, 0.3);
+    padding: 28px 0 28px 28px;
+    border-top: 1px solid rgba(54, 59, 77, 0.3);
+    font-size: 16px;
+    opacity: 0.9;
+}
+.details-votes-page-result-grid-table__table td:last-child {
+    border-right: none;
+}
+.details-votes-page-result-grid-table__table th {
+    text-align: left;
+    border-right: 1px solid rgba(54, 59, 77, 0.3);
+    padding: 24px 24px;
+    font-size: 16px;
+    width: 738px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+.details-votes-page-result-grid-table__table th:last-child {
+    border-right: none;
+}
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 790px) {
+    .details-votes-page-result-grid-table__table th {
+        font-size: 14px;
+        padding: 16px 16px;
+    }
+    .details-votes-page-result-grid-table__table td {
+        padding: 15px 0 15px 15px;
+    }
+}

@@ -1,53 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './DetailsVotesPageResultVotesCardQuestion.css';
-import DetailsVotesPageResultVotesCardQuestionTable from "../DetailsVotesPageResultVotesCardQuestionTable/DetailsVotesPageResultVotesCardQuestionTable";
-import DetailsVotesPageResultVotesCardQuestionGraph from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraph";
+import DetailsVotesPageResultQuestionRow from '../DetailsVotesPageResultQuestionRow/DetailsVotesPageResultQuestionRow';
+import DetailsVotesPageResultQuestionGrid from '../DetailsVotesPageResultQuestionGrid/DetailsVotesPageResultQuestionGrid';
 
 const DetailsVotesPageResultVotesCardQuestion = (props) => {
 
     const {
-        titleName,
-        answerSelected,
         currentEventData
     } = props;
 
-    console.log(currentEventData);
+    const [questionsTemplateRow, setQuestionsTemplateRow] = useState([]);
+    const [questionsTemplateGrid, setQuestionsTemplateGrid] = useState([]);
 
-    const [graphResult, setGraphResult] = useState(false)
-    const [tableResult, setTableResult] = useState(true)
-
-    function toggleGraphShow() {
-        setGraphResult(true)
-        setTableResult(false)
+    function templateRow(questions) {
+        const filteredQuestions = questions.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions');
+        setQuestionsTemplateRow(filteredQuestions);
     }
 
-    function toggleTableShow() {
-        setTableResult(true)
-        setGraphResult(false)
+    function templateGrid(questions) {
+        const filteredQuestions = questions.filter(e => e.template === 'grid' || e.template === 'radio_grid');
+        setQuestionsTemplateGrid(filteredQuestions);
     }
+
+    useEffect(() => {
+        if (currentEventData.results.questions.length !== 0) {
+            templateRow(currentEventData.results.questions);
+            templateGrid(currentEventData.results.questions);
+        }
+    }, [currentEventData.results.questions]);
 
     return (
-        <div className={'details-votes-page-result-votes-card__wrapper'}>
-            <div className={'details-votes-page-result-votes-card__title'}>
-                <h1 className={'details-votes-page-result-votes__title'}>Выбор делегатов конференции в Ученый Совет СПбГУ</h1>
-                <h3>{titleName}</h3>
-                <h5>{answerSelected}</h5>
+        <div className='details-votes-page-result-votes-card__wrapper'>
+            <div className='details-votes-page-result-votes-card__title'>
+                <h1 className='details-votes-page-result-votes__title'>{currentEventData.title}</h1>
             </div>
-            <div className={'details-votes-page-result-votes-card__switch-table-gistogramma'}>
-                <div className={'tooltip'}>
-                    <div onClick={() => { toggleGraphShow() }} className={'switch-table-gistogramma__gistogramma'}></div>
-                    <span className={'tooltiptext'}>Показать графиком</span>
-                </div>
-                <div className={'tooltip'}>
-                    <div onClick={() => { toggleTableShow() }} className={'switch-table-gistogramma__table'}></div>
-                    <span className={'tooltiptext'}>Показать таблицей</span>
-                </div>
-            </div>
-            {tableResult && (
-                <DetailsVotesPageResultVotesCardQuestionTable />
+            {questionsTemplateRow.length !== 0 && (
+                <>
+                    {questionsTemplateRow.map((question) => (
+                        <DetailsVotesPageResultQuestionRow
+                            key={question.id}
+                            question={question}
+                            currentEventData={currentEventData}
+                        />
+                    ))}
+                </>
             )}
-            {graphResult && (
-                <DetailsVotesPageResultVotesCardQuestionGraph />
+            {questionsTemplateGrid.length !== 0 && (
+                <>
+                    {questionsTemplateGrid.map((question) => (
+                        <DetailsVotesPageResultQuestionGrid
+                            key={question.id}
+                            question={question}
+                        />
+                    ))}
+                </>
             )}
         </div>
     )

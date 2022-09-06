@@ -3,8 +3,6 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    border-bottom: 1px solid rgba(54, 59, 77, 0.2);
-    padding-bottom: 24px;
 }
 /*------Стилизация заголовка-------------------------------------------------------------------------------------------*/
 .details-votes-page-result-votes-card__title {
@@ -29,6 +27,7 @@
     display: flex;
     flex-direction: row;
     gap: 8px;
+    margin: 0 auto 24px 0;
 }
 .switch-table-gistogramma__gistogramma {
     background: url("../../img/DetailsVotesPageResult_noactive_gistogram_icon.svg") no-repeat;
