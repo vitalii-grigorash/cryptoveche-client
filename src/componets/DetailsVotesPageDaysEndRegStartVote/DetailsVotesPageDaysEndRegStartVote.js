@@ -63,7 +63,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         let hourDiffEndDay = minDiffEndDay / 60;
         // let dayDiffEndRegDay = Math.floor(hourDiffEndRegDay / 24);
         {
-            return hourDiffEndDay;
+            return minDiffEndDay;
         }
     }
 
@@ -75,7 +75,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         let hourPointDayEndReg = minPointDayEndReg / 60;
         // let dayDiffStartVote = Math.floor(hourDiffStartVote / 24);
         {
-            return hourPointDayEndReg;
+            return minPointDayEndReg;
         }
     }
 
@@ -86,10 +86,10 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         let minPointStartVote = secPointStartVote / 60;
         let hourPointStartVote = minPointStartVote / 60;
         {
-            return hourPointStartVote;
+            return minPointStartVote;
         }
     }
-
+    // Функция для расчета длины в процентах для полоски таймера конец регистрации
     function changeRangeInputRegEnd() {
         const valPercent = (inputEndRegRef.current.value / inputEndRegRef.current.max) * 100;
         const getIdEndRegDivStrip = document.getElementById('width-time-info-input-reg');
@@ -99,7 +99,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
             getIdEndRegDivStrip.style.width = '0%';
         }
     }
-
+    // Функция для расчета длины в процентах для полоски таймера начало голосования
     function changeRangeInputStartVote() {
         const valPercent = (inputStartVoteRef.current.value / inputStartVoteRef.current.max) * 100;
         const getIdStartVoteDivStrip = document.getElementById('width-time-info-input-vote');

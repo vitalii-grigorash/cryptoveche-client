@@ -118,7 +118,7 @@
     opacity: 40%;
 }
 .datetime-info__range-green::-webkit-slider-runnable-track {
-    width: 101%;
+    width: 100%;
     position: absolute;
     top: 6px;
     height: 6px;
