@@ -414,6 +414,7 @@ function App() {
                                     requestHelper={requestHelper}
                                     utcOffset={utcOffset}
                                     allEvents={allEvents}
+                                    formatTime={formatTime}
                                 />}
                             />
                             <Route exact path='/details-vote'

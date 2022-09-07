@@ -6,14 +6,15 @@ import CalendarVotesTimeTableListVote from "./CalendarVotesTimeTableListVote/Cal
 import {CurrentDayCalendarColorContext} from "../../contexts/CurrentDayCalendarColorContext";
 
 
-
 const CalendarVotesTimeTable = (props) => {
 
       const {
           getEventDay,
           getEventMonth,
           getEventDate,
-          actualVotesDate
+          actualVotesDate,
+          formatTime,
+          formatDate
     } = props;
 
        const currentEventDate = getEventDate.substring(0, 10).split('.').reverse().join('-')
@@ -21,13 +22,14 @@ const CalendarVotesTimeTable = (props) => {
        const currentMonths = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
        const [colorCurrentDay, setColorCurrentDay] = useState('')
 
+
        const sortCurrentDateVote = actualVotesDate.filter(el => el.registration_start_time.substring(0, 10) === currentEventDate
-           || el.registration_end_time.substring(0, 10) === currentEventDate
-           || el.event_start_time.substring(0, 10) === currentEventDate
-           || el.event_end_time.substring(0, 10) === currentEventDate)
-           .map(obj => {
-               return obj;
-           })
+               || el.registration_end_time.substring(0, 10) === currentEventDate
+               || el.event_start_time.substring(0, 10) === currentEventDate
+               || el.event_end_time.substring(0, 10) === currentEventDate)
+               .map(obj => {
+                   return obj;
+               })
 
         return (
             <CurrentDayCalendarColorContext.Provider value={[colorCurrentDay, setColorCurrentDay]}>
@@ -52,6 +54,8 @@ const CalendarVotesTimeTable = (props) => {
                                            timeEndReg={item.registration_end_time}
                                            timeStartVote={item.event_start_time}
                                            timeEndVote={item.event_end_time}
+                                           formatTime={formatTime}
+                                           formatDate={formatDate}
                                      />
                                  )})
                         }

@@ -186,4 +186,7 @@
     .pagination-search-block__arrow-count-page  {
         height: 26px;
     }
+    .navigation-menu__pagination-search-block {
+        padding: 12px 0 12px 0;
+    }
 }

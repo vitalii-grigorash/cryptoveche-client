@@ -12,7 +12,8 @@ const MyProfilePage = (props) => {
     const {
         requestHelper,
         utcOffset,
-        allEvents
+        allEvents,
+        formatTime
     } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
@@ -43,7 +44,9 @@ const MyProfilePage = (props) => {
                     />
                 </div>
                 <div className={'main-content__grid-item_3'}>
-                    <CalendarVotes allEvents={allEvents} />
+                    <CalendarVotes
+                        allEvents={allEvents}
+                        formatTime={formatTime}/>
                 </div>
                 <div className={'main-content__grid-item_4'}>
                     <MyProfilePageSetPassword
@@ -56,5 +59,4 @@ const MyProfilePage = (props) => {
         </div>
     )
 }
-
 export default MyProfilePage;

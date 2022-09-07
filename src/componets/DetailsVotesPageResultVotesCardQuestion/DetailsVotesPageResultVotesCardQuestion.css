@@ -101,6 +101,7 @@
     .details-votes-page-result-votes-card__wrapper {
         gap: 16px;
         padding-bottom: 16px;
+        display: block;
     }
     .details-votes-page-result-votes-card__title {
         gap: 8px;

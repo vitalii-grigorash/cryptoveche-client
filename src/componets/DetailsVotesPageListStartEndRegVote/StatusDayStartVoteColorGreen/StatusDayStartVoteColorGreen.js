@@ -10,26 +10,24 @@ const StatusDayStartVoteColorGreen = (props) => {
         timeDate
     } = props;
 
-    const defaultVoteTime = {
+    const defaultEventTime = {
         days: '0'
     }
 
-    const [startRegTime, setStartRegTime] = useState(defaultVoteTime);
+    const [eventTime, setEventTime] = useState(defaultEventTime);
 
     useEffect(() => {
         updateRemainingVoteTime(timeDate)
     }, [timeDate])
 
-    function updateRemainingVoteTime(count) {
-        setStartRegTime(getRemainingTimePointEventsVote(count))
+    function updateRemainingVoteTime(countEventTime) {
+        setEventTime(getRemainingTimePointEventsVote(countEventTime))
     }
-
 
     return (
         <>
-            <span className={'status-day-color__green-color-item'}>{startRegTime.days}</span>
+            <span className={'status-day-color__green-color-item'}>{eventTime.days}</span>
         </>
     )
 }
-
 export default StatusDayStartVoteColorGreen;

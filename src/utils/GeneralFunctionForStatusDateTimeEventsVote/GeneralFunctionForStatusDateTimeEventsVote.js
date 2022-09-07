@@ -4,7 +4,7 @@ import React from "react";
 export function getRemainingTimePointEventsVote(point) {
     const timePointEventsDayjs = dayjs(point);
     const nowDayjs = dayjs();
-        if (timePointEventsDayjs.isBefore(nowDayjs)) {
+        if (nowDayjs.isAfter(timePointEventsDayjs)) {
             return {
                 days: getRemainingDaysAfter(nowDayjs, timePointEventsDayjs)
             }
@@ -24,7 +24,7 @@ const CorrectWordTimerDay = (value,  words) => {
 
 function getRemainingDays(nowDayjs, timePointEventDay) {
     const days = timePointEventDay.diff(nowDayjs, 'days');
-    if (nowDayjs.day() === timePointEventDay.day()) {
+    if (nowDayjs.date() === timePointEventDay.date()) {
         return 'сегодня';
     } else {
         if (days === 0) {
@@ -37,9 +37,13 @@ function getRemainingDays(nowDayjs, timePointEventDay) {
 
 function getRemainingDaysAfter(nowDayjs, timePointEventDay) {
     const days = nowDayjs.diff(timePointEventDay, 'days');
-    if (days === 0) {
-        return 'вчера';
+    if (nowDayjs.date() === timePointEventDay.date()) {
+        return 'сегодня';
     } else {
-        return  `${days.toString()} ${CorrectWordTimerDay(days.toString(), ['день', 'дня', 'дней'])} назад`;
+        if (days === 0) {
+            return 'вчера';
+        } else {
+            return `${days.toString()} ${CorrectWordTimerDay(days.toString(), ['день', 'дня', 'дней'])} назад`;
+        }
     }
 }

@@ -92,11 +92,11 @@
         border: none;
         gap: 10px;
         font-size: 12px;
+        padding: 7px 0 6px 2px;
+        margin-bottom: 6px;
     }
     .current-status__registration-in-progress, .current-status__types-vote {
         font-size: 12px;
     }
-    .status-block__current-status {
-        padding: 7px 0 6px 2px;
-    }
+
 }

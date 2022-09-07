@@ -90,7 +90,10 @@ const MainPage = (props) => {
 							<AmountVotesBlock statsData={statsData} />
 							<ObserverCryptoBlock />
 						</div>
-						<CalendarVotes allEvents={allEvents} />
+						<CalendarVotes
+							allEvents={allEvents}
+						    formatTime={formatTime}
+							formatDate={formatDate} />
 					</div>
 				</>
 			)}
