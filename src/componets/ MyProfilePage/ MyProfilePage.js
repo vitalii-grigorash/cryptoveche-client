@@ -13,7 +13,8 @@ const MyProfilePage = (props) => {
         requestHelper,
         utcOffset,
         allEvents,
-        formatTime
+        formatTime,
+        createUserName
     } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
@@ -34,6 +35,7 @@ const MyProfilePage = (props) => {
                         requestHelper={requestHelper}
                         userId={userId}
                         userEmail={userEmail}
+                        createUserName={createUserName}
                     />
                 </div>
                 <div className={'main-content__grid-item_2'}>

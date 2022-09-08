@@ -368,78 +368,78 @@ function App() {
                     <div className={'main-content _container'}>
                         <Routes>
                             <Route path='/auth'
-                                element={<Authorization
-                                    handleLogin={handleLogin}
-                                    authError={authError}
-                                    handleRememberMe={handleRememberMe}
-                                    isRememberMe={isRememberMe}
-                                />}
+                                   element={<Authorization
+                                       handleLogin={handleLogin}
+                                       authError={authError}
+                                       handleRememberMe={handleRememberMe}
+                                       isRememberMe={isRememberMe}
+                                   />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
                             <Route path='/reset' element={<AuthorizationSetPassword />} />
                             <Route path='/reg-page'
-                                element={<Registration
-                                    handleRegister={handleRegister}
-                                    handlePolicyAccept={handlePolicyAccept}
-                                    isPolicyAccept={isPolicyAccept}
-                                    modalActive={modalActive}
-                                    emailErrorMessage={emailErrorMessage}
-                                    changeBorderInputEmail={changeBorderInputEmail}
-                                    hideRegisterModal={hideRegisterModal}
-                                    hideRegForm={hideRegForm}
-                                    hideRegEmailErrors={hideRegEmailErrors}
-                                />}
+                                   element={<Registration
+                                       handleRegister={handleRegister}
+                                       handlePolicyAccept={handlePolicyAccept}
+                                       isPolicyAccept={isPolicyAccept}
+                                       modalActive={modalActive}
+                                       emailErrorMessage={emailErrorMessage}
+                                       changeBorderInputEmail={changeBorderInputEmail}
+                                       hideRegisterModal={hideRegisterModal}
+                                       hideRegForm={hideRegForm}
+                                       hideRegEmailErrors={hideRegEmailErrors}
+                                   />}
                             />
                             <Route exact path='/'
-                                element={<MainPage
-                                    allEvents={allEvents}
-                                    requestHelper={requestHelper}
-                                    handleCurrentEvents={handleCurrentEvents}
-                                    toggleEventRegistration={toggleEventRegistration}
-                                    showEventResult={showEventResult}
-                                    formatDate={formatDate}
-                                    formatTime={formatTime}
-                                    utcOffset={utcOffset}
-                                    isLoggedIn={isLoggedIn}
-                                />}
+                                   element={<MainPage
+                                       allEvents={allEvents}
+                                       requestHelper={requestHelper}
+                                       handleCurrentEvents={handleCurrentEvents}
+                                       toggleEventRegistration={toggleEventRegistration}
+                                       showEventResult={showEventResult}
+                                       formatDate={formatDate}
+                                       formatTime={formatTime}
+                                       utcOffset={utcOffset}
+                                       isLoggedIn={isLoggedIn}
+                                   />}
                             />
                             <Route exact path='/call-voting-page'
-                                element={<CallVotingPage
-                                    requestHelper={requestHelper}
-                                    handleCurrentEvents={handleCurrentEvents}
-                                />}
+                                   element={<CallVotingPage
+                                       requestHelper={requestHelper}
+                                       handleCurrentEvents={handleCurrentEvents}
+                                   />}
                             />
                             <Route exact path='/my-profile'
-                                element={<MyProfilePage
-                                    requestHelper={requestHelper}
-                                    utcOffset={utcOffset}
-                                    allEvents={allEvents}
-                                    formatTime={formatTime}
-                                />}
+                                   element={<MyProfilePage
+                                       requestHelper={requestHelper}
+                                       utcOffset={utcOffset}
+                                       allEvents={allEvents}
+                                       createUserName={createUserName}
+                                   />}
                             />
                             <Route exact path='/details-vote'
-                                element={<DetailsVotesPage
-                                    requestHelper={requestHelper}
-                                    handleCurrentEvents={handleCurrentEvents}
-                                    toggleEventRegistration={toggleEventRegistration}
-                                    showEventResult={showEventResult}
-                                    isResultTabOpen={isResultTabOpen}
-                                    formatDate={formatDate}
-                                    formatTime={formatTime}
-                                    utcOffset={utcOffset}
-                                    handleResultTabOpen={handleResultTabOpen}
-                                />}
+                                   element={<DetailsVotesPage
+                                       requestHelper={requestHelper}
+                                       handleCurrentEvents={handleCurrentEvents}
+                                       toggleEventRegistration={toggleEventRegistration}
+                                       showEventResult={showEventResult}
+                                       isResultTabOpen={isResultTabOpen}
+                                       formatDate={formatDate}
+                                       formatTime={formatTime}
+                                       utcOffset={utcOffset}
+                                       handleResultTabOpen={handleResultTabOpen}
+                                   />}
                             />
                             <Route exact path='/votes-page'
-                                element={<VotesPage
-                                    allEvents={allEvents}
-                                    handleCurrentEvents={handleCurrentEvents}
-                                    toggleEventRegistration={toggleEventRegistration}
-                                    showEventResult={showEventResult}
-                                    formatDate={formatDate}
-                                    formatTime={formatTime}
-                                    utcOffset={utcOffset}
-                                />}
+                                   element={<VotesPage
+                                       allEvents={allEvents}
+                                       handleCurrentEvents={handleCurrentEvents}
+                                       toggleEventRegistration={toggleEventRegistration}
+                                       showEventResult={showEventResult}
+                                       formatDate={formatDate}
+                                       formatTime={formatTime}
+                                       utcOffset={utcOffset}
+                                   />}
                             />
                         </Routes>
                         <VotesPageSuccessRegLaterModal

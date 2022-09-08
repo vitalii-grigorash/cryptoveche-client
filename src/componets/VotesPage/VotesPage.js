@@ -502,7 +502,7 @@ const VotesPage = (props) => {
                         )}
                     </>
                 )}
-                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет активных голосований, но они здесь появятся, когда вас пригласят и еще немного текста для количества</span>
+                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет активных голосований, но они здесь появятся, когда вас пригласят!</span>
             </div>
             <VotesPagePaginationTableSearch
                 eventsSearchActive={eventsSearchActive}

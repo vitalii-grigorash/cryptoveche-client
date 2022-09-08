@@ -8,7 +8,8 @@ const MyProfilePagePersonalData = (props) => {
     const {
         requestHelper,
         userId,
-        userEmail
+        userEmail,
+        createUserName
     } = props;
 
     const [firstName, setFirstName] = useState('')
@@ -24,6 +25,7 @@ const MyProfilePagePersonalData = (props) => {
     const [validSecondName, setValidSecondName] = useState(false)
     const [errorFields, setErrorFields] = useState('')
     const [activeSuccess, setActiveSuccess] = useState(false)
+    const [name, setName] = useState({})
 
     useEffect(() => {
         if (firstName || lastName || secondName !== '') {
@@ -95,7 +97,7 @@ const MyProfilePagePersonalData = (props) => {
             borderErrorFirstName.current.style.border = '1px red solid';
             borderErrorLastName.current.style.border = '1px red solid';
             borderErrorSecondName.current.style.border = '1px red solid';
-            console.log(validLastName, validFirstName, validLastName)
+            // console.log(validLastName, validFirstName, validLastName)
         } else {
             const body = {
                 userNameId: userId,
@@ -103,9 +105,9 @@ const MyProfilePagePersonalData = (props) => {
             }
             requestHelper(MyProfile.changeUserName, body)
                 .then((data) => {
-                    console.log(data);
+                    localStorage.setItem('user', JSON.stringify(data));
+                    createUserName(data)
                 })
-            console.log(body)
             setActiveBtn(true)
             setActiveSuccess(true)
             setErrorFields('Данные успешно изменены')
@@ -118,19 +120,21 @@ const MyProfilePagePersonalData = (props) => {
             setFirstName('')
             setLastName('')
             setSecondName('')
-            console.log(validSecondName, validFirstName, validLastName, 1)
         }
     }
 
-    setTimeout(() => {
-        if (activeSuccess === true) {
-            setActiveSuccess(false)
-            setErrorFields('')
-            borderErrorFirstName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-            borderErrorLastName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-            borderErrorSecondName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-        }
-    }, 2000)
+     useEffect(() => {
+        const successTimeout = setTimeout(() => {
+             if (activeSuccess === true) {
+                 setActiveSuccess(false)
+                 setErrorFields('')
+                 borderErrorFirstName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+                 borderErrorLastName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+                 borderErrorSecondName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+             }
+         }, 2000)
+         return () => clearTimeout(successTimeout )
+     }, [activeSuccess])
 
     return (
         <div className={'my-profile-page-personal-data__wrapper'}>
@@ -154,7 +158,7 @@ const MyProfilePagePersonalData = (props) => {
                         onChange={e => firstNameHandler(e)} />
                 </div>
                 <div className={'my-profile-page-personal-data__form-input'}>
-                    <label>Отчетсво</label>
+                    <label>Отчество</label>
                     <input
                         ref={borderErrorSecondName}
                         type={"text"}

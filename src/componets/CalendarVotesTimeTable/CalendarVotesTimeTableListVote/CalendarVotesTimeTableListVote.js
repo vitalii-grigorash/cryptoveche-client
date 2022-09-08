@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import './CalendarVotesTimeTableListVote.css';
 import {CurrentDayCalendarColorContext} from "../../../contexts/CurrentDayCalendarColorContext";
 
-
 const CalendarVotesTimeTableListVote = (props) => {
 
     const {

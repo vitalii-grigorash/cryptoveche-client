@@ -22,7 +22,6 @@ const CalendarVotesTimeTable = (props) => {
        const currentMonths = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
        const [colorCurrentDay, setColorCurrentDay] = useState('')
 
-
        const sortCurrentDateVote = actualVotesDate.filter(el => el.registration_start_time.substring(0, 10) === currentEventDate
                || el.registration_end_time.substring(0, 10) === currentEventDate
                || el.event_start_time.substring(0, 10) === currentEventDate

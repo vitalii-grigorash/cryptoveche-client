@@ -24,7 +24,7 @@ const CorrectWordTimerDay = (value,  words) => {
 
 function getRemainingDays(nowDayjs, timePointEventDay) {
     const days = timePointEventDay.diff(nowDayjs, 'days');
-    if (nowDayjs.date() === timePointEventDay.date()) {
+    if (nowDayjs.date() === timePointEventDay.date() && nowDayjs.month() === timePointEventDay.month() && nowDayjs.year() === timePointEventDay.year()) {
         return 'сегодня';
     } else {
         if (days === 0) {
@@ -37,7 +37,7 @@ function getRemainingDays(nowDayjs, timePointEventDay) {
 
 function getRemainingDaysAfter(nowDayjs, timePointEventDay) {
     const days = nowDayjs.diff(timePointEventDay, 'days');
-    if (nowDayjs.date() === timePointEventDay.date()) {
+    if (nowDayjs.date() === timePointEventDay.date() && nowDayjs.month() === timePointEventDay.month() && nowDayjs.year() === timePointEventDay.year()) {
         return 'сегодня';
     } else {
         if (days === 0) {
