@@ -10,7 +10,8 @@ const MyProfilePageAdditionalSettings = (props) => {
     const {
         requestHelper,
         userId,
-        utc
+        utc,
+        setOffset
     } = props;
 
     const [timeZoneLocation, setTimeZoneLocation] = useState('');
@@ -56,7 +57,8 @@ const MyProfilePageAdditionalSettings = (props) => {
         }
         requestHelper(MyProfile.changeUserName, body)
             .then((data) => {
-                console.log(data)
+                localStorage.setItem('user', JSON.stringify(data));
+                setOffset(data.utc_offset)
             })
         setActiveBtn(false)
         setSuccessInfo('Часовой пояс изменен')
@@ -66,12 +68,15 @@ const MyProfilePageAdditionalSettings = (props) => {
         btnChangeColor.current.style.cursor = 'initial';
     }
 
-    setTimeout(() => {
-        if (successInfo !== '') {
-            setSuccessInfo('')
-            borderGreenSuccess.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-        }
-    }, 2000)
+    useEffect(() => {
+       const successTimeout  = setTimeout(() => {
+            if (successInfo !== '') {
+                setSuccessInfo('')
+                borderGreenSuccess.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+            }
+        }, 2000)
+        return () => clearTimeout(successTimeout)
+    },[successInfo])
 
     return (
             <div className={'my-profile-page-add-settings__wrapper'}>

@@ -117,6 +117,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
             (value % 100 > 4 && value % 100 < 20) ? 2 : cases[(value % 10 < 5) ? value % 10 : 5]
             ];
     }
+
     return (
             <div className={remainingRegTime.hiddenBlock ? 'details-votes-page-datetime-end-reg-start-vote__wrapper active' : 'details-votes-page-datetime-end-reg-start-vote__wrapper'}>
                     <div className={remainingRegTime.hiddenBlock ? 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg active' : 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg _hidden-block__end-registration-start-vote'}>

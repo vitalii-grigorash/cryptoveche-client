@@ -9,6 +9,9 @@ const MyProfilePagePersonalData = (props) => {
         requestHelper,
         userId,
         userEmail,
+        userFirstName,
+        userLastName,
+        userSecondName,
         createUserName
     } = props;
 
@@ -147,7 +150,8 @@ const MyProfilePagePersonalData = (props) => {
                         ref={borderErrorLastName}
                         type={"text"}
                         value={lastName}
-                        onChange={e => lastNameHandler(e)} />
+                        onChange={e => lastNameHandler(e)}
+                        placeholder={userLastName}/>
                 </div>
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Имя</label>
@@ -155,7 +159,8 @@ const MyProfilePagePersonalData = (props) => {
                         ref={borderErrorFirstName}
                         type={"text"}
                         value={firstName}
-                        onChange={e => firstNameHandler(e)} />
+                        onChange={e => firstNameHandler(e)}
+                        placeholder={userFirstName}/>
                 </div>
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Отчество</label>
@@ -163,7 +168,8 @@ const MyProfilePagePersonalData = (props) => {
                         ref={borderErrorSecondName}
                         type={"text"}
                         value={secondName}
-                        onChange={e => secondNameHandler(e)} />
+                        onChange={e => secondNameHandler(e)}
+                        placeholder={userSecondName}/>
                 </div>
                 <div className={'my-profile-page-personal-data__form-input __my-profile-page-personal-date__hidden-e-mail'}>
                     <label>E-mail</label>

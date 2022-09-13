@@ -29,10 +29,10 @@ const HeaderSettingsModal = ({active, setActive}) => {
                     <div className={'modal-content__size-font'}>
                         <span>Размер шрифта</span><img alt={'иконка выхода из приложения'} src={header_modal_plus_icon}/>
                     </div>
-                    <div className={'modal-content__change-lang'}>
-                        <span>РУС</span>
-                        <span>ENG</span>
-                    </div>
+                    {/*<div className={'modal-content__change-lang'}>*/}
+                    {/*    <span>РУС</span>*/}
+                    {/*    <span>ENG</span>*/}
+                    {/*</div>*/}
                 </div>
             </div>
     )

@@ -1,10 +1,39 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './Footer.css';
 import logo_footer from '../../img/FooterLogo.svg';
 import { Link } from "react-router-dom";
 
+const Footer = (props) => {
 
-const Footer = () => {
+    const {
+        utc,
+        setOffset
+    } = props;
+
+    const [timeZoneLocation, setTimeZoneLocation] = useState('');
+    const [timeZoneValue, setTimeZoneValue] = useState(3);
+    const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
+
+    useEffect (() => {
+        if (utc !== '') {
+            setTimeZoneLocation(utc);
+        }
+    }, [utc]);
+
+    function onSelectTimeZoneClick(location) {
+        setTimeZoneValue(location.VALUE);
+        setTimeZoneLocation(location.LABEL);
+    }
+
+    function handleTimeZoneOptionsOpen() {
+        if (isTimeZoneOptionsOpen) {
+            setTimeZoneOptionsOpen(false);
+        } else {
+            setTimeZoneOptionsOpen(true);
+
+        }
+    }
+
 
     return (
         <div>
@@ -22,9 +51,9 @@ const Footer = () => {
                     </div>
                     <div className={'items__block-settings'}>
                         <h3>Настройки</h3>
-                        <span>Язык:<select><option>Русский</option></select></span>
+                        <span>Язык: Русский </span>
                         <span>Размер шрифта:<select><option>Стандартный</option></select></span>
-                        <span>Часовой пояс:<select><option>GMT+03:00</option></select></span>
+                        <span>Часовой пояс:<select><option>{timeZoneLocation.slice(1, 6)}</option></select></span>
                     </div>
                     <div className={'items__block-support'}>
                         <h3>Поддержка</h3>

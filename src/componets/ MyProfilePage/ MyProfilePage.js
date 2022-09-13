@@ -14,11 +14,16 @@ const MyProfilePage = (props) => {
         utcOffset,
         allEvents,
         formatTime,
-        createUserName
+        createUserName,
+        handleLogout,
+        setOffset
     } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
     const userId = currentUser.id;
+    const userFirstName = currentUser.first_name;
+    const userLastName = currentUser.last_name;
+    const userSecondName = currentUser.second_name;
     const userEmail = currentUser.email;
 
     return (
@@ -35,6 +40,9 @@ const MyProfilePage = (props) => {
                         requestHelper={requestHelper}
                         userId={userId}
                         userEmail={userEmail}
+                        userFirstName={userFirstName}
+                        userLastName={userLastName}
+                        userSecondName={userSecondName}
                         createUserName={createUserName}
                     />
                 </div>
@@ -43,6 +51,7 @@ const MyProfilePage = (props) => {
                         requestHelper={requestHelper}
                         userId={userId}
                         utc={utcOffset}
+                        setOffset={setOffset}
                     />
                 </div>
                 <div className={'main-content__grid-item_3'}>
@@ -57,7 +66,7 @@ const MyProfilePage = (props) => {
                     />
                 </div>
             </div>
-            <button className={'my-profile-page__exit-button-profile'}>Выйти из профиля</button>
+            <button onClick={() => handleLogout()} className={'my-profile-page__exit-button-profile'}>Выйти из профиля</button>
         </div>
     )
 }
