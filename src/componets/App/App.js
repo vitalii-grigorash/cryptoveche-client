@@ -299,7 +299,7 @@ function App() {
         }
     }
 
-    function handleResultTabOpen () {
+    function handleResultTabOpen() {
         setResultTabOpen(false);
     }
 
@@ -344,16 +344,25 @@ function App() {
         return `${hours + ':' + minutes}`;
     }
 
-    useEffect(() => {
-        const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
-        socket.onopen = () => {
-            socket.send(JSON.stringify({
-                id: currentUser.id,
-                username: userName,
-                method: "connection"
-            }))
-        }
-    }, [currentUser, userName])
+    var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
+
+    useEffect (() => {
+        ws.addEventListener('message', (e) => {
+            console.log('WebSocketMessage');
+            console.log(JSON.parse(e.data));
+        })
+    }, [])
+
+    // useEffect(() => {
+    //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
+    //     socket.onopen = () => {
+    //         socket.send(JSON.stringify({
+    //             id: currentUser.id,
+    //             username: userName,
+    //             method: "connection"
+    //         }))
+    //     }
+    // }, [currentUser, userName])
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
