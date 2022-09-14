@@ -492,6 +492,7 @@ function App() {
                     <Footer
                         utc={utcOffset}
                         setOffset={setOffset}
+                        requestHelper={requestHelper}
                     />
                 )}
             </div>

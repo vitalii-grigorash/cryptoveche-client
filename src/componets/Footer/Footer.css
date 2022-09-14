@@ -1,4 +1,4 @@
-/*------Основной стиль для footer-------------------------------------------------------------------------------------*/
+/*------Основной стиль для footer--------------------------------------------------------------------------------------*/
 .footer {
     position: relative;
     width: 100%;
@@ -7,15 +7,15 @@
     text-decoration: none;
     color: #4A4F5F;
 }
-/*------Стилизация для контейнера блоков footer-------------------------------------------------------------------------*/
+/*------Стилизация для контейнера блоков footer------------------------------------------------------------------------*/
 .footer__items {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 20% 12% 20% 16%;
+    grid-template-columns: 20% 15% 20% 16%;
     padding: 88px 15px 78px 15px;
     border-top: 1px #E0E0E0 solid;
 }
-/*------Общие стили для заголовков блоков footer------------------------------------------------------------------------*/
+/*------Общие стили для заголовков блоков footer-----------------------------------------------------------------------*/
 .items__block-map-site h3, .items__block-settings h3, .items__block-support h3 {
     font-size: 32px;
     font-weight: 600;
@@ -41,7 +41,72 @@
     background-color: #FBFBFC;
     color: #4A4F5F;
 }
-/*------Cтилизация для блока авторских прав---------------------------------------------------------------*/
+.block-settings__time-zone {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+}
+/*------Стилизация часового пояса-------------------------------------------------------------------------------------*/
+/* Переделал */
+.time-zone__time-zone-select-container {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+.time-zone__time-zone-select-value {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(54, 59, 77, 0.9);
+    opacity: 0.9;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.time-zone__time-zone-select-arrow {
+    width: 12px;
+    height: 12px;
+    object-fit: cover;
+    margin: auto auto auto 4px;
+}
+.time-zone__time-zone-options-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    overflow-y: scroll;
+    top: 25px;
+    left: -1px;
+    width: 350px;
+    max-height: 70px;
+    box-shadow: 0 4px 8px rgba(54, 59, 77, 0.1);
+    border: 0.5px solid rgba(54, 59, 77, 0.2);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 16px 16px;
+    cursor: default;
+    z-index: 9;
+}
+.time-zone__time-zone-options-container::-webkit-scrollbar {
+    width: 4px;
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+.time-zone__time-zone-options-container::-webkit-scrollbar-thumb {
+    background: #CFD4DD;
+    border-radius: 4px;
+}
+.time-zone__time-zone-option {
+    line-height: 24px;
+    color: #363B4D;
+    opacity: 0.9;
+    margin: 16px auto 0 0;
+}
+.time-zone__time-zone-option:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+/*------Cтилизация для блока авторских прав----------------------------------------------------------------------------*/
 .items__block-logo_mobile-position {
     display: none;
     font-size: 15px;
@@ -50,7 +115,12 @@
     color: #4A4F5F;
     opacity: 0.7;
 }
-/*------Адаптивная версия(1028px)-------------------------------------------------------------------------------------*/
+/*------Адаптивная версия--------------------------------------------------------------------------------------------*/
+@media (max-width: 1263px) {
+    .block-settings__time-zone {
+        display: block;
+    }
+}
 @media (max-width: 1028px) {
     .items__block-settings select{
         font-size: 14px;
@@ -69,6 +139,9 @@
     .footer__items {
         padding: 20px 20px;
     }
+    .block-logo__copy {
+        width: 200px;
+    }
 }
 /*------Адаптивная версия(700px)---------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
@@ -86,6 +159,9 @@
     }
     .items__block-logo img {
 
+    }
+    .block-settings__time-zone {
+        display: inline-flex;
     }
 
 }

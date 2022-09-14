@@ -80,5 +80,8 @@
         width: 100%;
         padding: 16px 16px 23px 16px;
     }
+    .observer-crypto-block__link-arrow {
+        margin-top: auto;
+    }
 
 }
