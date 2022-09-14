@@ -50,7 +50,6 @@ export const authorize = (email, password) => {
             return data;
         })
         .catch((err) => {
-            console.log(err);
             if (err.status === 500) {
                 throw new Error('Сервер временно недоступен');
             }
@@ -120,9 +119,11 @@ export const resetUserPassword = (token, password) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            password: password
-        })
+        body: JSON.stringify(
+            {
+                password: password
+            }
+        )
     })
         .then(res => res.ok ? res : Promise.reject(res))
         .then((res) => {

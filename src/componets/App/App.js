@@ -206,7 +206,7 @@ function App() {
             if (
                 pathname === '/auth' ||
                 pathname === '/forget-password' ||
-                pathname === '/reset' ||
+                pathname === '/rstpwd' ||
                 pathname === '/reg-page' ||
                 pathname === '/reg-second-page'
             ) {
@@ -376,7 +376,7 @@ function App() {
                                 />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                            <Route path='/reset' element={<AuthorizationSetPassword />} />
+                            <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
                             <Route path='/reg-page'
                                 element={<Registration
                                     handleRegister={handleRegister}
