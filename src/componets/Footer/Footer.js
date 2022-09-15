@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import './Footer.css';
 import logo_footer from '../../img/FooterLogo.svg';
 import { Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import timeZone from "../../utils/TimeZoneData/TimeZoneRu.json";
 import optionRow from "../../img/INPUT-ICONS-24-ARROW.svg";
 import * as MyProfile from "../../Api/MyProfile";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-import {changeUserName} from "../../Api/MyProfile";
 
 const Footer = (props) => {
 
@@ -21,6 +20,7 @@ const Footer = (props) => {
     const [timeZoneLocation, setTimeZoneLocation] = useState('');
     const [timeZoneValue, setTimeZoneValue] = useState(3);
     const [isTimeZoneOptionsOpen, setTimeZoneOptionsOpen] = useState(false);
+    const [active, setActive] = useState(false)
 
     useEffect (() => {
         if (utc !== '') {
@@ -28,12 +28,12 @@ const Footer = (props) => {
         }
     }, [utc]);
 
+
     function onSelectTimeZoneClick(location) {
         setTimeZoneValue(location.VALUE);
         setTimeZoneLocation(location.LABEL);
+        setActive(true)
     }
-
-console.log(timeZoneLocation)
 
     let utfOffset = {
         utc_offset: timeZoneValue,
@@ -60,7 +60,6 @@ console.log(timeZoneLocation)
         }
     }
 
-    console.log(currentUser)
     return (
         <div>
             <footer className="footer">
@@ -79,14 +78,14 @@ console.log(timeZoneLocation)
                         <h3>Настройки</h3>
                         <span>Язык: Русский </span>
                         <span>Размер шрифта:<select><option>Стандартный</option></select></span>
-                        <span onClick={() => onChangeTimeZone()} className={'block-settings__time-zone'}>Часовой пояс:
+                        <span className={'block-settings__time-zone'}>Часовой пояс:
                          <div className="time-zone__time-zone-select-container" onClick={handleTimeZoneOptionsOpen}>
                         <p className="time-zone__time-zone-select-value">{timeZoneLocation.slice(0, 8)}</p>
                         <img className="time-zone__time-zone-select-arrow" src={optionRow} alt="Стрелочка открытия меню" />
                              {isTimeZoneOptionsOpen && (
                                  <div className="time-zone__time-zone-options-container">
                                      {timeZone.map((location, index) => (
-                                         <p className="time-zone__time-zone-option" key={index} onClick={() => onSelectTimeZoneClick(location)}>{location.LABEL}</p>
+                                         <p className="time-zone__time-zone-option" key={index} onClick={() => {onSelectTimeZoneClick(location)}}>{location.LABEL}</p>
                                      ))}
                                  </div>
                              )}
