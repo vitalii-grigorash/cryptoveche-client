@@ -4,11 +4,11 @@
     flex-direction: column;
     background-color: #FFFFFF;
     border-radius: 24px;
-    gap: 32px;
+    gap: 12px;
 }
 /*------Заголовок основного контейнера--------------------------------------------------------------------------------*/
 .details-votes-page-read-questions__wrapper-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 32px;
     color: #4A4F5F;

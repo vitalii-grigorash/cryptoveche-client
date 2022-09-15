@@ -34,7 +34,7 @@ const MainPage = (props) => {
 			const sortedActualEvents = allEvents.filter(el => el.status !== 'ended').filter(el => el.status !== 'quorum_unpresant').sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
 			setSortActualEvents(sortedActualEvents);
 		}
-	}, [allEvents]);
+	}, [allEvents.length]);
 
 	useEffect(() => {
 		if (isLoggedIn) {
@@ -90,7 +90,10 @@ const MainPage = (props) => {
 							<AmountVotesBlock statsData={statsData} />
 							<ObserverCryptoBlock />
 						</div>
-						<CalendarVotes allEvents={allEvents} />
+						<CalendarVotes
+							allEvents={allEvents}
+						    formatTime={formatTime}
+							formatDate={formatDate} />
 					</div>
 				</>
 			)}
