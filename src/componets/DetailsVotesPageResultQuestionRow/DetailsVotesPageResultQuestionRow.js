@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './DetailsVotesPageResultQuestionRow.css';
 import DetailsVotesPageResultVotesCardQuestionTable from "../DetailsVotesPageResultVotesCardQuestionTable/DetailsVotesPageResultVotesCardQuestionTable";
-import DetailsVotesPageResultVotesCardQuestionGraph from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraph";
+import DetailsVotesPageResultVotesCardQuestionGraphRow from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraphRow";
 
 const DetailsVotesPageResultQuestionRow = (props) => {
 
@@ -196,11 +196,11 @@ const DetailsVotesPageResultQuestionRow = (props) => {
             </div>
             <div className='details-votes-page-result-votes-card__switch-table-gistogramma'>
                 <div className='tooltip'>
-                    <div onClick={toggleGraphShow} className='switch-table-gistogramma__gistogramma'></div>
+                    <div onClick={toggleGraphShow} className={graphResult ? 'switch-table-gistogramma__gistogramma active' : 'switch-table-gistogramma__gistogramma'}></div>
                     <span className='tooltiptext'>Показать графиком</span>
                 </div>
                 <div className='tooltip'>
-                    <div onClick={toggleTableShow} className='switch-table-gistogramma__table'></div>
+                    <div onClick={toggleTableShow} className={tableResult ? 'switch-table-gistogramma__table active' : 'switch-table-gistogramma__table'}></div>
                     <span className='tooltiptext'>Показать таблицей</span>
                 </div>
             </div>
@@ -211,7 +211,10 @@ const DetailsVotesPageResultQuestionRow = (props) => {
                 />
             )}
             {graphResult && (
-                <DetailsVotesPageResultVotesCardQuestionGraph />
+                <DetailsVotesPageResultVotesCardQuestionGraphRow
+                    answersTemplateRow={question.answers}
+                    numInvalid={question.numInvalid}
+                />
             )}
         </div>
     )

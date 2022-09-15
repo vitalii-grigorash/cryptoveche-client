@@ -1,9 +1,9 @@
 import React from "react";
-import './CardQuestionVerticalGraph.css';
+import './CardQuestionVerticalGraphGrid.css';
 import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
 import CardQuestionVerticalGraphWideColumn from "../CardQuestionVerticalGraphWideColumn/CardQuestionVerticalGraphWideColumn";
 
-const CardQuestionVerticalGraph = () => {
+const CardQuestionVerticalGraphGrid = () => {
     return (
         <div className={'card-question-vertical-graph__vertical-grid'}>
             <table className={'vertical-grid__position-table'}>
@@ -23,11 +23,11 @@ const CardQuestionVerticalGraph = () => {
             {/*<CardQuestionVerticalGraphWideColumn/>*/}
             {/*<CardQuestionVerticalGraphWideColumn/>*/}
             {/*<CardQuestionVerticalGraphWideColumn/>*/}
+            {/*<CardQuestionVerticalGraphWideColumn/>*/}
             <CardQuestionVerticalGraphThinColumn />
             <CardQuestionVerticalGraphThinColumn />
             <CardQuestionVerticalGraphThinColumn />
         </div>
     )
 }
-
-export default CardQuestionVerticalGraph;
+export default CardQuestionVerticalGraphGrid;

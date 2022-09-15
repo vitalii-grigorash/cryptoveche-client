@@ -15,7 +15,7 @@ const CardQuestionVerticalGraphThinColumn = () => {
                         <rect width={'28'} height={'128'} fill={'#FF4970'} opacity={0.5}/>
                     </svg>
                     <svg className={'card-question-vertical-graph-thin-column__column-svg'}>
-                        <rect width={'28'} height={'100'} fill={'#F9C521'}  opacity={0.5}/>
+                        <rect min={'30'} width={'28'} height={'100'} fill={'#F9C521'}  opacity={0.5}/>
                     </svg>
                 </div>
                     <div className={'card-question-vertical-graph-thin-column__name-column'}>Вариант один какой-то</div>
