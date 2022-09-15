@@ -63,7 +63,6 @@ export const registrationUserInEvents = (accessToken, body) => {
 }
 
 export const vote = (accessToken, body) => {
-    console.log(body);
     return fetch(`${API_URL}/events/vote/${body.eventId}`, {
         method: 'PUT',
         headers: {
@@ -73,6 +72,26 @@ export const vote = (accessToken, body) => {
         body: JSON.stringify(
             body.eventArray
         )
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(data => data)
+        .catch((err) => {
+            throw new Error(err.message);
+        });
+}
+
+export const joinEventByLink = (accessToken, body) => {
+    return fetch(`${API_URL}/events/join/${body.id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        }
     })
         .then(res => res.ok ? res : Promise.reject(res))
         .then((res) => {

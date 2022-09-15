@@ -22,7 +22,7 @@ import * as Events from '../../Api/Events';
 function App() {
 
     const navigate = useNavigate();
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [authError, setAuthError] = useState('');
@@ -38,7 +38,8 @@ function App() {
     const [successModalText, setSuccessModalText] = useState('');
     const [isResultTabOpen, setResultTabOpen] = useState(false);
     const [utcOffset, setUtcOffset] = useState('');
-    const [changeUtcOffset, setChangeUtcOffset] = useState('')
+    const [changeUtcOffset, setChangeUtcOffset] = useState('');
+    const [joinId, setJoinId] = useState('');
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -79,7 +80,38 @@ function App() {
         })
     }
 
+    function joinEvent(id) {
+        const body = {
+            id: id
+        }
+        requestHelper(Events.joinEventByLink, body)
+            .then((data) => {
+                console.log(data);
+                if (data.status === "ok") {
+                    setJoinId('');
+                    requestHelper(Events.getEvents)
+                        .then((data) => {
+                            setAllEvents(data);
+                        })
+                        .catch((err) => {
+                            throw new Error(err.message);
+                        })
+                } else if (data.status === "failure") {
+                    setJoinId('');
+                    if (data.text === "User has already joined") {
+                        console.log('Вы уже присоединились к данному голосованию');
+                    } else if (data.text === "Registration is over") {
+                        console.log('Вы не можете быть добавлены, так как регистрация завершена или событие окончено');
+                    }
+                }
+            })
+            .catch((err) => {
+                throw new Error(err.message);
+            })
+    }
+
     useEffect(() => {
+        const url = window.location.href.split('/');
         if (isLoggedIn) {
             if (
                 pathname === '/' ||
@@ -93,6 +125,9 @@ function App() {
                     .catch((err) => {
                         throw new Error(err.message);
                     })
+            } else if (url[3] === 'join') {
+                joinEvent(url[4]);
+                navigate('/');
             }
         }
         // eslint-disable-next-line
@@ -188,7 +223,12 @@ function App() {
                         setCurrentUser(res);
                         createUserName(res);
                         setOffset(res.utc_offset);
-                        navigate('/');
+                        if (joinId !== '') {
+                            joinEvent(joinId);
+                            navigate('/');
+                        } else {
+                            navigate('/');
+                        }
                     }
                 })
                 .catch((err) => {
@@ -215,6 +255,7 @@ function App() {
                 navigate('/');
             }
         } else {
+            const url = window.location.href.split('/');
             if (
                 pathname === '/' ||
                 pathname === '/call-voting-page' ||
@@ -223,6 +264,9 @@ function App() {
                 pathname === '/result-vote' ||
                 pathname === '/votes-page'
             ) {
+                logout();
+            } else if (url[3] === 'join') {
+                setJoinId(url[4]);
                 logout();
             }
         }
@@ -261,6 +305,7 @@ function App() {
         }
         requestHelper(Events.registrationUserInEvents, body)
             .then((data) => {
+                console.log(data);
                 if (data.status === 'ok') {
                     requestHelper(Events.getEvents)
                         .then((data) => {
@@ -369,7 +414,7 @@ function App() {
             const hoursChangeUtc = `${defaultHours.toString().length === 1 ? `${'0' + defaultHours}` : `${defaultHours}`}`;
             const defaultMinutes = localDate.getMinutes();
             const minutes = `${defaultMinutes.toString().length === 1 ? `${'0' + defaultMinutes}` : `${defaultMinutes}`}`;
-            return `${hoursChangeUtc  + ':' + minutes}`;
+            return `${hoursChangeUtc + ':' + minutes}`;
         }
         else {
             const defaultHours = localDate.getHours();
@@ -382,7 +427,7 @@ function App() {
 
     var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
 
-    useEffect (() => {
+    useEffect(() => {
         ws.addEventListener('message', (e) => {
             console.log('WebSocketMessage');
             console.log(JSON.parse(e.data));
@@ -413,81 +458,81 @@ function App() {
                     <div className={'main-content _container'}>
                         <Routes>
                             <Route path='/auth'
-                                   element={<Authorization
-                                       handleLogin={handleLogin}
-                                       authError={authError}
-                                       handleRememberMe={handleRememberMe}
-                                       isRememberMe={isRememberMe}
-                                   />}
+                                element={<Authorization
+                                    handleLogin={handleLogin}
+                                    authError={authError}
+                                    handleRememberMe={handleRememberMe}
+                                    isRememberMe={isRememberMe}
+                                />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
                             <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
                             <Route path='/reg-page'
-                                   element={<Registration
-                                       handleRegister={handleRegister}
-                                       handlePolicyAccept={handlePolicyAccept}
-                                       isPolicyAccept={isPolicyAccept}
-                                       modalActive={modalActive}
-                                       emailErrorMessage={emailErrorMessage}
-                                       changeBorderInputEmail={changeBorderInputEmail}
-                                       hideRegisterModal={hideRegisterModal}
-                                       hideRegForm={hideRegForm}
-                                       hideRegEmailErrors={hideRegEmailErrors}
-                                   />}
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
+                                />}
                             />
                             <Route exact path='/'
-                                   element={<MainPage
-                                       allEvents={allEvents}
-                                       requestHelper={requestHelper}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                       toggleEventRegistration={toggleEventRegistration}
-                                       showEventResult={showEventResult}
-                                       formatDate={formatDate}
-                                       formatTime={formatTime}
-                                       utcOffset={utcOffset}
-                                       isLoggedIn={isLoggedIn}
-                                   />}
+                                element={<MainPage
+                                    allEvents={allEvents}
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                    isLoggedIn={isLoggedIn}
+                                />}
                             />
                             <Route exact path='/call-voting-page'
-                                   element={<CallVotingPage
-                                       requestHelper={requestHelper}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                   />}
+                                element={<CallVotingPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                />}
                             />
                             <Route exact path='/my-profile'
-                                   element={<MyProfilePage
-                                       requestHelper={requestHelper}
-                                       utcOffset={utcOffset}
-                                       allEvents={allEvents}
-                                       createUserName={createUserName}
-                                       setOffset={setOffset}
-                                       handleLogout={logout}
-                                       formatTime={formatTime}
-                                   />}
+                                element={<MyProfilePage
+                                    requestHelper={requestHelper}
+                                    utcOffset={utcOffset}
+                                    allEvents={allEvents}
+                                    createUserName={createUserName}
+                                    setOffset={setOffset}
+                                    handleLogout={logout}
+                                    formatTime={formatTime}
+                                />}
                             />
                             <Route exact path='/details-vote'
-                                   element={<DetailsVotesPage
-                                       requestHelper={requestHelper}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                       toggleEventRegistration={toggleEventRegistration}
-                                       showEventResult={showEventResult}
-                                       isResultTabOpen={isResultTabOpen}
-                                       formatDate={formatDate}
-                                       formatTime={formatTime}
-                                       utcOffset={utcOffset}
-                                       handleResultTabOpen={handleResultTabOpen}
-                                   />}
+                                element={<DetailsVotesPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    isResultTabOpen={isResultTabOpen}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                    handleResultTabOpen={handleResultTabOpen}
+                                />}
                             />
                             <Route exact path='/votes-page'
-                                   element={<VotesPage
-                                       allEvents={allEvents}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                       toggleEventRegistration={toggleEventRegistration}
-                                       showEventResult={showEventResult}
-                                       formatDate={formatDate}
-                                       formatTime={formatTime}
-                                       utcOffset={utcOffset}
-                                   />}
+                                element={<VotesPage
+                                    allEvents={allEvents}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                />}
                             />
                         </Routes>
                         <VotesPageSuccessRegLaterModal
