@@ -46,11 +46,9 @@ const AuthorizationSetPassword = () => {
     }
 
     useEffect(() => {
-        if (pathname === '/reset') {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const token = urlParams.get('token');
-            setToken(token);
+        const url = window.location.href.split('/');
+        if (url[4]) {
+            setToken(`${url[4]}`);
         }
     }, [pathname]);
 
@@ -67,13 +65,17 @@ const AuthorizationSetPassword = () => {
         } else {
             setPasswordError('');
             Auth.resetUserPassword(token, password.value)
-                .then(() => {
-                    setPasswordError('');
-                    if (getWidthBlock() < 600) {
-                        setHideBlock(true);
-                        setModalActive(true);
+                .then((res) => {
+                    if (res.status === 'ok') {
+                        setPasswordError('');
+                        if (getWidthBlock() < 600) {
+                            setHideBlock(true);
+                            setModalActive(true);
+                        } else {
+                            setModalActive(true);
+                        }
                     } else {
-                        setModalActive(true);
+                        setPasswordError('Что-то пошло не так, повторите попытку позже');
                     }
                 })
                 .catch((err) => {
@@ -83,62 +85,62 @@ const AuthorizationSetPassword = () => {
     }
 
     return (
-            <div className={'wrapper-auth'}>
-                <div id={'container-auth'} className={'container-auth'}>
-                    <div className={'main-block _modificator-main-block__height'}>
-                        <div className={hideBlock ? 'main-block__auth active _modificator-main-block__auth-set-pass-padding' : 'main-block__auth _modificator-main-block__auth-set-pass-padding'}>
-                            <div className={'auth__title  _modificator-auth__title-padding-bottom'}>
-                                <h3>Установка пароля</h3>
-                                <div><span>РУС</span><span>ENG</span></div>
+        <div className={'wrapper-auth'}>
+            <div id={'container-auth'} className={'container-auth'}>
+                <div className={'main-block _modificator-main-block__height'}>
+                    <div className={hideBlock ? 'main-block__auth active _modificator-main-block__auth-set-pass-padding' : 'main-block__auth _modificator-main-block__auth-set-pass-padding'}>
+                        <div className={'auth__title  _modificator-auth__title-padding-bottom'}>
+                            <h3>Установка пароля</h3>
+                            <div><span>РУС</span><span>ENG</span></div>
+                        </div>
+                        <div className={'auth__form'}>
+                            <div className={'form__password'}>
+                                <img alt={'иконка показать пароль'} className={'form__password__show-pass-icon'} src={changeTypePassFirst === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPassFirstField} />
+                                <span>Новый пароль</span>
+                                <input
+                                    type={changeTypePassFirst}
+                                    name="passwordReset"
+                                    value={password.value}
+                                    onChange={password.onChange}
+                                />
                             </div>
-                            <div className={'auth__form'}>
-                                <div className={'form__password'}>
-                                    <img alt={'иконка показать пароль'} className={'form__password__show-pass-icon'} src={changeTypePassFirst === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPassFirstField} />
-                                    <span>Новый пароль</span>
-                                    <input
-                                        type={changeTypePassFirst}
-                                        name="passwordReset"
-                                        value={password.value}
-                                        onChange={password.onChange}
-                                    />
-                                </div>
-                                <div className={'form__password'}>
-                                    <img alt={'иконка показать пароль'} className={'form__password__show-pass-icon'} src={changeTypePassSecond === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPassSecondField} />
-                                    <span>Повторите новый пароль</span>
-                                    <input
-                                        type={changeTypePassSecond}
-                                        name="repeatPasswordReset"
-                                        value={repeatPassword.value}
-                                        onChange={repeatPassword.onChange}
-                                    />
-                                    <p className="form__password-error">{passwordError}</p>
-                                </div>
-                            </div>
-                            <div className={'auth__button-save'}>
-                                <button type={'submit'} onClick={onSaveNewPasswordClick}>Сохранить</button>
+                            <div className={'form__password'}>
+                                <img alt={'иконка показать пароль'} className={'form__password__show-pass-icon'} src={changeTypePassSecond === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPassSecondField} />
+                                <span>Повторите новый пароль</span>
+                                <input
+                                    type={changeTypePassSecond}
+                                    name="repeatPasswordReset"
+                                    value={repeatPassword.value}
+                                    onChange={repeatPassword.onChange}
+                                />
+                                <p className="form__password-error">{passwordError}</p>
                             </div>
                         </div>
-                        <div className={'main-block__reg _modificator-main-block__reg-padding '}>
-                            <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
-                            <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
-                            <div className={'auth-image_1'}>
-                                <img alt={'изображение'} src={bg_image3} />
-                            </div>
-                            <div className={'auth-image_3'}>
-                                <img alt={'изображение'} src={bg_image4} />
-                            </div>
-                            <img alt={'изображение'} className={'auth-image-mobile _modificator-auth-image-mobile-height'} src={bg_image_mobile} />
-                            <div className={'reg__logo _modificator-reg__logo-padding-bottom'}>
-                                <img alt="Логотип" src={logo} />
-                            </div>
-                            <div className={'reg__title _modificator-reg__title-set-pass-top'}>
-                                Система электронных голосований
-                            </div>
+                        <div className={'auth__button-save'}>
+                            <button type={'submit'} onClick={onSaveNewPasswordClick}>Сохранить</button>
+                        </div>
+                    </div>
+                    <div className={'main-block__reg _modificator-main-block__reg-padding '}>
+                        <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
+                        <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
+                        <div className={'auth-image_1'}>
+                            <img alt={'изображение'} src={bg_image3} />
+                        </div>
+                        <div className={'auth-image_3'}>
+                            <img alt={'изображение'} src={bg_image4} />
+                        </div>
+                        <img alt={'изображение'} className={'auth-image-mobile _modificator-auth-image-mobile-height'} src={bg_image_mobile} />
+                        <div className={'reg__logo _modificator-reg__logo-padding-bottom'}>
+                            <img alt="Логотип" src={logo} />
+                        </div>
+                        <div className={'reg__title _modificator-reg__title-set-pass-top'}>
+                            Система электронных голосований
                         </div>
                     </div>
                 </div>
-                <AuthorizationSetPasswordModal active={modalActive} />
             </div>
+            <AuthorizationSetPasswordModal active={modalActive} />
+        </div>
     )
 
 }

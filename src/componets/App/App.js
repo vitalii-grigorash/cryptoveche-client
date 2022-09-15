@@ -208,7 +208,7 @@ function App() {
             if (
                 pathname === '/auth' ||
                 pathname === '/forget-password' ||
-                pathname === '/reset' ||
+                pathname === '/rstpwd' ||
                 pathname === '/reg-page' ||
                 pathname === '/reg-second-page'
             ) {
@@ -380,16 +380,25 @@ function App() {
         }
     }
 
-    useEffect(() => {
-        const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
-        socket.onopen = () => {
-            socket.send(JSON.stringify({
-                id: currentUser.id,
-                username: userName,
-                method: "connection"
-            }))
-        }
-    }, [currentUser, userName])
+    var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
+
+    useEffect (() => {
+        ws.addEventListener('message', (e) => {
+            console.log('WebSocketMessage');
+            console.log(JSON.parse(e.data));
+        })
+    }, [])
+
+    // useEffect(() => {
+    //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
+    //     socket.onopen = () => {
+    //         socket.send(JSON.stringify({
+    //             id: currentUser.id,
+    //             username: userName,
+    //             method: "connection"
+    //         }))
+    //     }
+    // }, [currentUser, userName])
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -412,7 +421,7 @@ function App() {
                                    />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
-                            <Route path='/reset' element={<AuthorizationSetPassword />} />
+                            <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
                             <Route path='/reg-page'
                                    element={<Registration
                                        handleRegister={handleRegister}
