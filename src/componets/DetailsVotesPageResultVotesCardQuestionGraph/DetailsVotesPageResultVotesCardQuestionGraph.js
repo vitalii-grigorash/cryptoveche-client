@@ -17,6 +17,7 @@ const DetailsVotesPageResultVotesCardQuestionGraph = () => {
                     <CardQuestionGraphNameColumn nameColumn={'Только через КриптоВече'} colorSquare={'blue'}/>
                     <CardQuestionGraphNameColumn nameColumn={'На общем собрании'} colorSquare={'red'}/>
                     <CardQuestionGraphNameColumn nameColumn={'Недействительные бюллетени'} colorSquare={'yellow'}/>
+
                 </div>
             </div>
     )

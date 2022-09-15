@@ -31,5 +31,4 @@ const VotesPageArchiveVotes = ({titleVoteData, regStatus, voteStatus, dateTimeDa
             </div>
     )
 }
-
 export default VotesPageArchiveVotes;

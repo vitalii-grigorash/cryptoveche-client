@@ -204,5 +204,4 @@ const ActualBlock = (props) => {
     </div>
   )
 }
-
 export default ActualBlock

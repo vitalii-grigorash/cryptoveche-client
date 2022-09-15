@@ -9,7 +9,9 @@ import calendar_row_back from "../../img/CalendarVotesTimeTable_back_row.svg";
 const CalendarVotes = (props) => {
 
     const {
-        allEvents
+        allEvents,
+        formatTime,
+        formatDate
     } = props;
 
     const [actualVotesDate, setActualVotesDate] = useState([])
@@ -90,6 +92,7 @@ const CalendarVotes = (props) => {
                 date.getDate() === new Date(el.dateEvent).getDate()
             )
         })
+
         let content = [
             dateStartReg
                 ? <div className={'blue__circle'}></div>
@@ -193,11 +196,12 @@ const CalendarVotes = (props) => {
                     getEventMonth={getEventMonth}
                     getEventDate={getEventDate}
                     actualVotesDate={actualVotesDate}
+                    formatTime={formatTime}
+                    formatDate={formatDate}
                 />
             )
             }
         </div>
     )
 }
-
 export default CalendarVotes;

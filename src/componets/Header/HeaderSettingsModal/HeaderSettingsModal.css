@@ -2,9 +2,9 @@
 .header-settings-modal__wrapper {
     background-color: #4A4F60;
     min-width: 220px;
-    height: 112px;
+    /*height: 112px;*/
     position: absolute;
-    right: 55px;
+    right: 15px;
     top: 56px;
     opacity: 0;
     z-index: 2;
@@ -63,9 +63,9 @@
 /*------Адаптивная версия(660px)--------------------------------------------------------------------------------------*/
 @media (max-width: 660px) {
     .header-settings-modal__wrapper {
-        min-width: 180px;
+        min-width: 160px;
         right: 44px;
-        height: 90px;
+        /*height: 90px;*/
     }
     .header-settings-modal__modal-content {
         font-size: 12px;

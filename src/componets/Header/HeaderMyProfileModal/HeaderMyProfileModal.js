@@ -27,6 +27,7 @@ const HeaderMyProfileModal = ({active, setActive, handleLogout}) => {
             };
         }, [active, handler])
     }
+
     return (
             <div ref={changeCurrentStyle} className={active ? 'header-my-profile-modal__wrapper active' : 'header-my-profile-modal__wrapper'}>
                 <div className={active ? 'header-my-profile-modal__modal-content active' : 'header-my-profile-modal__modal-content'} onClick={e => e.stopPropagation()}>

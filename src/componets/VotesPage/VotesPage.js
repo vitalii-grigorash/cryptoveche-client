@@ -326,24 +326,24 @@ const VotesPage = (props) => {
             if (btnArchiveVotes) {
                 switch (i) {
                     case '-eventName':
-                        activeEventsForRender.sort((a, b) => b.status.length > a.status.length ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => b.status.length > a.status.length ? 1 : -1);
                         break;
                     case '-orgName':
-                        activeEventsForRender.sort((a, b) => b.owner.title > a.owner.title ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => b.owner.title > a.owner.title ? 1 : -1);
                         break;
                     case '-startReg':
-                        activeEventsForRender.sort((a, b) => b.registration_start_time > a.registration_start_time ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => b.registration_start_time > a.registration_start_time ? 1 : -1);
                         break;
                     case '-startVote':
-                        activeEventsForRender.sort((a, b) => b.event_start_time > a.event_start_time ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => b.event_start_time > a.event_start_time ? 1 : -1);
                         break;
                     case '-endReg':
-                        activeEventsForRender.sort((a, b) => b.registration_end_time > a.registration_end_time ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => b.registration_end_time > a.registration_end_time ? 1 : -1);
                         break;
                     case '-endVote':
-                        activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
                         break;
-                    default: { }
+                    default: {}
                 }
             }
         }
@@ -365,36 +365,36 @@ const VotesPage = (props) => {
                 case 'startVote':
                     activeEventsForRender.sort((a, b) => a.event_start_time > b.event_start_time ? 1 : -1);
                     break;
-                case '-endReg':
+                case 'endReg':
                     activeEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
                     break;
-                case '-endVote':
+                case 'endVote':
                     activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
                     break;
-                default: { }
+                default: {}
             }
         } else {
             if (btnArchiveVotes) {
                 switch (i) {
                     case 'eventName':
-                        activeEventsForRender.sort((a, b) => a.status.length > b.status.length ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => a.status.length > b.status.length ? 1 : -1);
                         break;
                     case 'orgName':
-                        activeEventsForRender.sort((a, b) => a.owner.title > b.owner.title ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => a.owner.title > b.owner.title ? 1 : -1);
                         break;
                     case 'startReg':
-                        activeEventsForRender.sort((a, b) => a.registration_start_time > b.registration_start_time ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => a.registration_start_time > b.registration_start_time ? 1 : -1);
                         break;
                     case 'startVote':
-                        activeEventsForRender.sort((a, b) => a.event_start_time > b.event_start_time ? 1 : -1);
+                        archiveEventsForRender.sort((a, b) => a.event_start_time > b.event_start_time ? 1 : -1);
                         break;
-                    case '-endReg':
-                        activeEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
+                    case 'endReg':
+                        archiveEventsForRender.sort((a, b) => a.registration_end_time > b.registration_end_time ? 1 : -1);
                         break;
-                    case '-endVote':
-                        activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
+                    case 'endVote':
+                        archiveEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
                         break;
-                    default: { }
+                    default: {}
                 }
             }
         }
@@ -502,7 +502,7 @@ const VotesPage = (props) => {
                         )}
                     </>
                 )}
-                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет активных голосований, но они здесь появятся, когда вас пригласят и еще немного текста для количества</span>
+                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет активных голосований, но они здесь появятся, когда вас пригласят!</span>
             </div>
             <VotesPagePaginationTableSearch
                 eventsSearchActive={eventsSearchActive}

@@ -8,6 +8,7 @@
     border-radius: 24px;
     padding: 32px 32px 39px 32px;
     max-width: 488px;
+    min-height: 689px;
     box-shadow: 0 3px 16px 0 rgba(54, 58, 72, 0.08);
 }
 .actual-block-wrapper__title {
@@ -18,12 +19,7 @@
     color: rgba(54, 59, 77, 0.9);
     gap: 12px;
 }
-.actual-block-wrapper h3 {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 110%;
-    color: rgba(54, 59, 77, 0.9);
-}
+
 .actual-block__event-name {
     font-size: 18px;
     font-weight: 500;
@@ -31,6 +27,10 @@
     color: rgba(54, 59, 77, 0.9);
     margin: 0 auto 0 0;
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 424px;
+    min-height: 40px;
 }
 /*------Блок с датой начала и конца голосования----------------------------------------------------------------------*/
 .actual-block__start--end-vote {
@@ -80,7 +80,7 @@
     .actual-block-wrapper {
         padding: 16px 16px 16px 16px;
         max-width: 343px;
-        /*height: 540px;*/
+        min-height: 570px;
     }
     .actual-block-wrapper__title {
         font-size: 21px;
@@ -94,6 +94,7 @@
     .actual-block__event-name {
         font-size: 16px;
         line-height: 24px;
+        min-height: 48px;
     }
     .start-end-vote__start-data {
         gap: 8px;
@@ -113,7 +114,7 @@
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
 @media (max-width: 600px) {
     .actual-block-wrapper {
-        min-height: 490px;
+        min-height: 496px;
         gap: 16px;
         max-width: 800px;
     }

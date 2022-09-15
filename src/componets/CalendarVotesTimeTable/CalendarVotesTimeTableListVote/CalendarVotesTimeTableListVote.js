@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import './CalendarVotesTimeTableListVote.css';
 import {CurrentDayCalendarColorContext} from "../../../contexts/CurrentDayCalendarColorContext";
 
-
 const CalendarVotesTimeTableListVote = (props) => {
 
     const {
@@ -12,6 +11,8 @@ const CalendarVotesTimeTableListVote = (props) => {
         timeEndVote,
         votingTheme,
         currentEventDate,
+        formatTime,
+        formatDate
     } = props;
 
     const [startRegEvent, setStartRegEvent] = useState(false);
@@ -26,37 +27,33 @@ const CalendarVotesTimeTableListVote = (props) => {
             setStartRegEvent(true)
             setColorCurrentDay('#49B3FF')
         }
-        return () => setStartRegEvent()
-    }, [currentEventDate, timeStartReg, setColorCurrentDay])
+    }, [timeStartReg.substring(0, 10)])
 
     useEffect(() => {
         if(timeEndReg.substring(0, 10) === currentEventDate) {
             setEndRegEvent(true)
             setColorCurrentDay('#FF8A00')
         }
-        return () => setEndRegEvent()
-    }, [currentEventDate, timeEndReg, setColorCurrentDay])
+    }, [timeEndReg.substring(0, 10)])
 
     useEffect(() => {
         if(timeStartVote.substring(0, 10) === currentEventDate) {
             setStartVoteEvent(true)
             setColorCurrentDay('#4ED4A9')
         }
-        return () => setStartVoteEvent()
-    }, [currentEventDate, timeStartVote, setColorCurrentDay])
+    }, [timeStartVote.substring(0, 10)])
 
     useEffect(() => {
         if(timeEndVote.substring(0, 10) === currentEventDate) {
             setEndVoteEvent(true)
             setColorCurrentDay('#FF4970')
         }
-        return () => setEndVoteEvent()
-    }, [currentEventDate, timeEndVote, setColorCurrentDay])
+    }, [timeStartVote.substring(0, 10)])
 
             return (
                     <div className={'calendar-votes-timetable-list__wrapper'}>
                         <div className={'calendar-votes-timetable-list__time-and-event'}>
-                            <span className={'calendar-votes-timetable-list__time-vote'}>{startRegEvent? timeStartReg.substring(11, 16) : null}
+                            <span className={'calendar-votes-timetable-list__time-vote'}>{startRegEvent? formatTime(timeStartReg) : null}
                             </span>
                             <div className={'calendar-votes-timetable-list__event-reg-vote'}>
                                 <div className={'event-reg-vote__circle-event-name'}>
@@ -66,7 +63,7 @@ const CalendarVotesTimeTableListVote = (props) => {
                                             <span className={'circle-event-name__name-event'}>{startRegEvent ? 'Начало регистрации' : null}
                                             </span>
                                         </div>
-                                        <span className={'calendar-votes-timetable-list__time-vote'}>{endRegEvent ? timeEndReg.substring(11, 16) : null}
+                                        <span className={'calendar-votes-timetable-list__time-vote'}>{endRegEvent ? formatTime(timeEndReg) : null}
                                         </span>
                                         <div className={'circle-event-name__end-reg'}>
                                             <div className={'color__circle-end-reg'} style={{backgroundColor: endRegEvent ? colors_circle[1] : null}}>
@@ -74,7 +71,7 @@ const CalendarVotesTimeTableListVote = (props) => {
                                                 <span className={'circle-event-name__name-event'}>{endRegEvent ? 'Конец регистрации' : null}
                                             </span>
                                         </div>
-                                        <span className={'calendar-votes-timetable-list__time-vote'}>{startVoteEvent ? timeStartVote.substring(11, 16) : null}
+                                        <span className={'calendar-votes-timetable-list__time-vote'}>{startVoteEvent ? formatTime(timeStartVote) : null}
                                         </span>
                                         <div className={'circle-event-name__start-vote'}>
                                             <div className={'color__circle-start-vote'} style={{backgroundColor: startVoteEvent ? colors_circle[2] : null}}>
@@ -82,7 +79,7 @@ const CalendarVotesTimeTableListVote = (props) => {
                                         <span className={'circle-event-name__name-event'}>{startVoteEvent ? 'Начало голосования' : null}
                                         </span>
                                     </div>
-                                    <span className={'calendar-votes-timetable-list__time-vote'}>{endVoteEvent ? timeEndVote.substring(11, 16) : null}
+                                    <span className={'calendar-votes-timetable-list__time-vote'}>{endVoteEvent ? formatTime(timeEndVote) : null}
                                     </span>
                                     <div className={'circle-event-name__end-vote'} >
                                         <div className={'color__circle-end-vote'} style={{backgroundColor: endVoteEvent ? colors_circle[3] : null}}>
