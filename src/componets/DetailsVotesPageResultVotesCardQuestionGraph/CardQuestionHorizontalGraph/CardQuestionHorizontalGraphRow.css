@@ -1,11 +1,13 @@
 /*------Стилизация горизонтальной сетки для графика------------------------------------------------------------------*/
 .card-question-horizontal-graph__horizontal-grid {
-    width: 45%;
+    width: 600px;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     margin-right: 95px;
+    overflow: auto;
+    height: 400px;
 }
 .horizontal-grid__position-table {
     position: absolute;
@@ -14,7 +16,7 @@
     width: 376px;
     rotate: -90deg;
     top: -75px;
-    left: 74px;
+    left: 72px;
     /*width: 568px;*/
 }
 .horizontal-grid__position-table td {
@@ -25,6 +27,23 @@
 .horizontal-grid__position-table td:nth-child(10) {
     border: none;
 }
+.card-question-horizontal-graph__horizontal-grid::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;/* ширина всей полосы прокрутки */
+}
+
+.card-question-horizontal-graph__horizontal-grid::-webkit-scrollbar-track {
+    background: rgba(54, 59, 77, 0.1);        /* цвет зоны отслеживания */
+}
+
+.card-question-horizontal-graph__horizontal-grid::-webkit-scrollbar-thumb {
+    background-color: darkgray;    /* цвет бегунка */
+    border-radius: 20px;       /* округлось бегунка */
+    /* отступ вокруг бегунка */
+}
+
+
+
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 960px) {
     .card-question-horizontal-graph__horizontal-grid {

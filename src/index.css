@@ -41,5 +41,16 @@ button {
     font-family: Inter;
 }
 
+body::-webkit-scrollbar {
+    width: 8px;               /* ширина всей полосы прокрутки */
+}
+body::-webkit-scrollbar-track {
+    background: rgba(54, 59, 77, 0.1);        /* цвет зоны отслеживания */
+}
+body::-webkit-scrollbar-thumb {
+    background-color: gray;    /* цвет бегунка */
+    border-radius: 20px;       /* округлось бегунка */
+   /* отступ вокруг бегунка */
+}
 
 

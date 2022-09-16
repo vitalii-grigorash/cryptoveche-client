@@ -3,7 +3,13 @@ import './CardQuestionVerticalGraphGrid.css';
 import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
 import CardQuestionVerticalGraphWideColumn from "../CardQuestionVerticalGraphWideColumn/CardQuestionVerticalGraphWideColumn";
 
-const CardQuestionVerticalGraphRow = () => {
+const CardQuestionVerticalGraphRow = (props) => {
+
+    const {
+        numInvalid,
+        resultVote
+    } = props;
+
     return (
         <div className={'card-question-vertical-graph__vertical-grid'}>
             <table className={'vertical-grid__position-table'}>
@@ -20,13 +26,21 @@ const CardQuestionVerticalGraphRow = () => {
                 <tr><td></td></tr>
                 </tbody>
             </table>
-            <CardQuestionVerticalGraphWideColumn/>
-            <CardQuestionVerticalGraphWideColumn/>
-            <CardQuestionVerticalGraphWideColumn/>
-            <CardQuestionVerticalGraphWideColumn/>
-            {/*<CardQuestionVerticalGraphThinColumn />*/}
-            {/*<CardQuestionVerticalGraphThinColumn />*/}
-            {/*<CardQuestionVerticalGraphThinColumn />*/}
+            {
+                resultVote.map(item => {
+                    return (
+                        <CardQuestionVerticalGraphWideColumn
+                            key={item.id}
+                            result={item.columns[0].favor}
+                            colorForColumn={item.color}
+                        />
+                        )
+                })
+            }
+            <CardQuestionVerticalGraphWideColumn
+                result={numInvalid}
+                colorForColumn={'#9FA1A8'}
+            />
         </div>
     )
 }

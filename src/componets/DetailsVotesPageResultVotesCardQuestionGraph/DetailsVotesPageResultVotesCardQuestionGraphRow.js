@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './DetailsVotesPageResultVotesCardQuestionGraphRow.css';
-import CardQuestionGraphNameColumn from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumn";
-import CardQuestionHorizontalGraph from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraph";
+import CardQuestionGraphNameColumnRow from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumnRow";
+import CardQuestionHorizontalGraphRow from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraphRow";
 import CardQuestionVerticalGraphRow from "./CardQuestionVerticalGraph/CardQuestionVerticalGraphRow";
 
 const DetailsVotesPageResultVotesCardQuestionGraphRow = (props) => {
@@ -13,20 +13,16 @@ const DetailsVotesPageResultVotesCardQuestionGraphRow = (props) => {
 
     const [showGraphTypeVertical, setShowGraphTypeVertical] = useState(true)
     const [showGraphTypeHorizontal, setShowGraphTypeHorizontal] = useState(false)
-    const getAllColumn = answersTemplateRow.map(el => el.columns)
+    const resultWithColor = answersTemplateRow.map(function (item) {
+        return {...item, color: `rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)})`}
+    })
+
+    function getRandom(min, max){
+        return Math.floor(Math.random() * (max - min) + min)
+    }
 
     useEffect(() => {
-        if(answersTemplateRow !== undefined) {
-            setShowGraphTypeHorizontal(true);
-            setShowGraphTypeVertical(false)
-        } else {
-            setShowGraphTypeHorizontal(false)
-            setShowGraphTypeVertical(true)
-        }
-    }, [answersTemplateRow])
-
-    useEffect(() => {
-        if (answersTemplateRow.length > 3 || getAllColumn > 3) {
+        if (answersTemplateRow.length > 3) {
             setShowGraphTypeHorizontal(true);
             setShowGraphTypeVertical(false)
         } else {
@@ -35,31 +31,34 @@ const DetailsVotesPageResultVotesCardQuestionGraphRow = (props) => {
         }
     }, [answersTemplateRow.length])
 
-    console.log(answersTemplateRow)
-
     return (
             <div className={'details-votes-page-result-card-graph__wrapper'}>
                 {showGraphTypeHorizontal && (
-                    <CardQuestionHorizontalGraph/>
+                    <CardQuestionHorizontalGraphRow
+                        resultVote={resultWithColor}
+                        numInvalid = {numInvalid}
+                    />
                 )
                 }
                 {showGraphTypeVertical && (
                     <CardQuestionVerticalGraphRow
-                        numInvalid = {numInvalid}/>
+                        resultVote={resultWithColor}
+                        numInvalid = {numInvalid}
+                    />
                     )
                 }
                 <div className={'details-votes-page-result-card-graph__column-list'}>
                     {
-                        answersTemplateRow.map((item, i) => {
+                        resultWithColor.map((item, i) => {
                             return (
-                                <CardQuestionGraphNameColumn
+                                <CardQuestionGraphNameColumnRow
                                     key={i}
                                     nameColumn={item.title}
-                                    colorSquare={'blue'}/>
+                                    colorSquare={item.color}/>
                             )
                         })
                     }
-                    <CardQuestionGraphNameColumn nameColumn={'Недействительные бюллетени'} colorSquare={'blue'}/>
+                    <CardQuestionGraphNameColumnRow nameColumn={'Недействительные бюллетени'} colorSquare={'#9FA1A8'}/>
                 </div>
             </div>
     )

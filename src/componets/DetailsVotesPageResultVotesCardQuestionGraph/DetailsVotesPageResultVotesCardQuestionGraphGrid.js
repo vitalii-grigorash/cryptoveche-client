@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import './DetailsVotesPageResultVotesCardQuestionGraphRow.css';
-import CardQuestionGraphNameColumn from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumn";
 import CardQuestionVerticalGraphGrid from "./CardQuestionVerticalGraph/CardQuestionVerticalGraphGrid";
-import CardQuestionHorizontalGraph from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraph";
+import CardQuestionGraphNameColumnGrid from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumnGrid";
+import CardQuestionHorizontalGraphGrid from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraphGrid";
 
 const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
 
@@ -29,7 +29,7 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
     return (
         <div className={'details-votes-page-result-card-graph__wrapper'}>
             {showGraphTypeHorizontal && (
-                <CardQuestionHorizontalGraph/>
+                <CardQuestionHorizontalGraphGrid/>
             )
             }
             {showGraphTypeVertical && (
@@ -41,7 +41,7 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
                 {
                     answersTemplateGrid.map((item, i) => {
                         return (
-                            <CardQuestionGraphNameColumn
+                            <CardQuestionGraphNameColumnGrid
                                 key={i}
                                 nameColumn={item.title}
                                 colorSquare={'blue'}/>

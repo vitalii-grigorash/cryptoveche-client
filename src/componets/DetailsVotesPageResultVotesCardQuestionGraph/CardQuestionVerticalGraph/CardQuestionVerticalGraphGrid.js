@@ -1,7 +1,6 @@
 import React from "react";
 import './CardQuestionVerticalGraphGrid.css';
 import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
-import CardQuestionVerticalGraphWideColumn from "../CardQuestionVerticalGraphWideColumn/CardQuestionVerticalGraphWideColumn";
 
 const CardQuestionVerticalGraphGrid = () => {
     return (
@@ -20,10 +19,6 @@ const CardQuestionVerticalGraphGrid = () => {
                     <tr><td></td></tr>
                 </tbody>
             </table>
-            {/*<CardQuestionVerticalGraphWideColumn/>*/}
-            {/*<CardQuestionVerticalGraphWideColumn/>*/}
-            {/*<CardQuestionVerticalGraphWideColumn/>*/}
-            {/*<CardQuestionVerticalGraphWideColumn/>*/}
             <CardQuestionVerticalGraphThinColumn />
             <CardQuestionVerticalGraphThinColumn />
             <CardQuestionVerticalGraphThinColumn />

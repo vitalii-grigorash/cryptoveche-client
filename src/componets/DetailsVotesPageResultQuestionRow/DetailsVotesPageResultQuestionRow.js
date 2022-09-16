@@ -13,6 +13,7 @@ const DetailsVotesPageResultQuestionRow = (props) => {
     const [ruleText, setRuleText] = useState('');
     const [graphResult, setGraphResult] = useState(false)
     const [tableResult, setTableResult] = useState(true)
+    const [hideBorderBottom, setHideBorderBottom] = useState(false)
 
     function toggleGraphShow() {
         setGraphResult(true)
@@ -188,8 +189,16 @@ const DetailsVotesPageResultQuestionRow = (props) => {
         ]
     );
 
+    useEffect(() => {
+        if(currentEventData.questions.length === 1) {
+            setHideBorderBottom(true)
+        } else {
+            setHideBorderBottom(false)
+        }
+    }, [currentEventData.questions.length])
+
     return (
-        <div className='details-votes-page-result-question-row'>
+        <div className={hideBorderBottom ? 'details-votes-page-result-question-row active' : 'details-votes-page-result-question-row'}>
             <div className='details-votes-page-result-question-row__title-container'>
                 <h3 className="details-votes-page-result-question-row__title">{question.title}</h3>
                 <h5 className="details-votes-page-result-question-row__rule">{ruleText}</h5>

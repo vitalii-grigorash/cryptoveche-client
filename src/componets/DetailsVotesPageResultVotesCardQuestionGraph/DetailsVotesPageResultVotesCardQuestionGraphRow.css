@@ -23,6 +23,6 @@
         margin-bottom: 0;
     }
     .details-votes-page-result-card-graph__column-list {
-
+        gap: 8px;
     }
 }

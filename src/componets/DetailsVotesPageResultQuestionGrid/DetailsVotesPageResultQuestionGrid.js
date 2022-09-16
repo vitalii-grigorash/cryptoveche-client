@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import './DetailsVotesPageResultQuestionGrid.css';
 import DetailsVotesPageResultGridTable from '../DetailsVotesPageResultGridTable/DetailsVotesPageResultGridTable';
-import DetailsVotesPageResultVotesCardQuestionGraphRow from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraphRow";
 import DetailsVotesPageResultVotesCardQuestionGraphGrid
     from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraphGrid";
 

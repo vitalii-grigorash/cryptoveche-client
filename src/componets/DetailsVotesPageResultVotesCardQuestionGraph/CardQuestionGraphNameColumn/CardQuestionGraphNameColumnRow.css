@@ -7,6 +7,10 @@
     font-weight: 400;
     line-height: 28px;
     color: rgba(54, 59, 77, 0.9);
+    position: relative;
+}
+.card-question-graph-column__name-column {
+    padding-left: 24px;
 }
 /*.card-question-graph-column__color-square {*/
 /*    width: 10px;*/

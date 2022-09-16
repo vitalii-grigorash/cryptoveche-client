@@ -4,6 +4,10 @@
     flex-direction: column;
     gap: 24px;
 }
+.details-votes-page-result-votes-card__wrapper:first-child(1) {
+    border: 1px solid red;
+
+}
 /*------Стилизация заголовка-------------------------------------------------------------------------------------------*/
 .details-votes-page-result-votes-card__title {
     display: flex;
@@ -142,6 +146,16 @@
         height: 32px;
     }
     .switch-table-gistogramma__table:hover {
+        background: url("../../img/DetailsVotesPageResult_active_table_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__gistogramma.active {
+        background: url("../../img/DetailsVotesPageResult_active_gistogram_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__table.active {
         background: url("../../img/DetailsVotesPageResult_active_table_icon_mobile.svg") no-repeat;
         width: 32px;
         height: 32px;
