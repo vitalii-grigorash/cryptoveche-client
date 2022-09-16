@@ -21,7 +21,9 @@ const DetailsVotesPage = (props) => {
         formatDate,
         formatTime,
         utcOffset,
-        handleResultTabOpen
+        handleResultTabOpen,
+        isReloadDetailsPage,
+        handleReloadDetailsPage
     } = props;
 
     const navigate = useNavigate();
@@ -66,7 +68,7 @@ const DetailsVotesPage = (props) => {
         setBtnMyBulletin(false);
         handleResultTabOpen();
     }
-    
+
     function onReadQuestionsClick() {
         setBtnReadQuestions(true);
         setBtnGeneralInfo(false);
@@ -126,7 +128,7 @@ const DetailsVotesPage = (props) => {
         ]
     );
 
-    useEffect(() => {
+    function getCurrentEvent() {
         if (localStorage.getItem('currentEvent')) {
             const currentEvent = localStorage.getItem('currentEvent');
             const event = JSON.parse(currentEvent);
@@ -145,8 +147,22 @@ const DetailsVotesPage = (props) => {
         } else {
             navigate('/');
         }
-        // eslint-disable-next-line
-    }, []);
+    }
+    useEffect(() => {
+        getCurrentEvent();
+    }, [])
+
+    useEffect(() => {
+        if (isReloadDetailsPage) {
+            getCurrentEvent();
+            handleReloadDetailsPage();
+            setBtnGeneralInfo(true);
+            setBtnResult(false);
+            setBtnReadQuestions(false);
+            setBtnMyBulletin(false);
+            handleResultTabOpen();
+        }
+    }, [isReloadDetailsPage]);
 
     useEffect(() => {
         if (currentEventData.status === 'ended' || currentEventData.status === 'quorum_unpresant') {
@@ -214,46 +230,50 @@ const DetailsVotesPage = (props) => {
                         )}
                     </>
                 )}
-                {btnReadQuestions && (
-                    <DetailsVotesPageReadQuestions
-                        currentEventData={currentEventData}
-                        questionsTemplateRow={questionsTemplateRow}
-                        questionsTemplateGrid={questionsTemplateGrid}
-                        handleCurrentEvents={handleCurrentEvents}
-                        toggleEventRegistration={toggleEventRegistration}
-                        showEventResult={showEventResult}
-                        requestHelper={requestHelper}
-                        isMyBulletinTabActive={false}
-                        results={results}
-                        isVoted={isVoted}
-                    />
-                )}
-                {isShowResults && (
+                {currentEventData.id !== undefined && (
                     <>
-                        {btnResult && (
-                            <DetailsVotesPageResultVotesCardQuestion
+                        {btnReadQuestions && (
+                            <DetailsVotesPageReadQuestions
                                 currentEventData={currentEventData}
+                                questionsTemplateRow={questionsTemplateRow}
+                                questionsTemplateGrid={questionsTemplateGrid}
+                                handleCurrentEvents={handleCurrentEvents}
+                                toggleEventRegistration={toggleEventRegistration}
+                                showEventResult={showEventResult}
+                                requestHelper={requestHelper}
+                                isMyBulletinTabActive={false}
+                                results={results}
+                                isVoted={isVoted}
                             />
                         )}
-                        {isShowMyBulletin && (
+                        {isShowResults && (
                             <>
-                                {btnMyBulletin && (
-                                    <DetailsVotesPageReadQuestions
+                                {btnResult && (
+                                    <DetailsVotesPageResultVotesCardQuestion
                                         currentEventData={currentEventData}
-                                        questionsTemplateRow={questionsTemplateRow}
-                                        questionsTemplateGrid={questionsTemplateGrid}
-                                        handleCurrentEvents={handleCurrentEvents}
-                                        toggleEventRegistration={toggleEventRegistration}
-                                        showEventResult={showEventResult}
-                                        requestHelper={requestHelper}
-                                        isMyBulletinTabActive={true}
-                                        results={results}
-                                        isVoted={isVoted}
                                     />
                                 )}
+                                {isShowMyBulletin && (
+                                    <>
+                                        {btnMyBulletin && (
+                                            <DetailsVotesPageReadQuestions
+                                                currentEventData={currentEventData}
+                                                questionsTemplateRow={questionsTemplateRow}
+                                                questionsTemplateGrid={questionsTemplateGrid}
+                                                handleCurrentEvents={handleCurrentEvents}
+                                                toggleEventRegistration={toggleEventRegistration}
+                                                showEventResult={showEventResult}
+                                                requestHelper={requestHelper}
+                                                isMyBulletinTabActive={true}
+                                                results={results}
+                                                isVoted={isVoted}
+                                            />
+                                        )}
+                                    </>
+                                )}
+                                {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
                             </>
                         )}
-                        {/*<DetailsVotesPageResultVotesWaitingResults/>*/}
                     </>
                 )}
             </div>

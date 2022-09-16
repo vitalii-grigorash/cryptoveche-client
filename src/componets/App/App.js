@@ -40,6 +40,7 @@ function App() {
     const [utcOffset, setUtcOffset] = useState('');
     const [changeUtcOffset, setChangeUtcOffset] = useState('');
     const [joinId, setJoinId] = useState('');
+    const [isReloadDetailsPage, setReloadDetailsPage] = useState(false);
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -116,7 +117,8 @@ function App() {
             if (
                 pathname === '/' ||
                 pathname === '/votes-page' ||
-                pathname === '/my-profile'
+                pathname === '/my-profile' ||
+                pathname === '/details-vote'
             ) {
                 requestHelper(Events.getEvents)
                     .then((data) => {
@@ -329,6 +331,16 @@ function App() {
             })
     };
 
+    function handleReloadDetailsPage() {
+        if (pathname === '/details-vote') {
+            if (isReloadDetailsPage) {
+                setReloadDetailsPage(false);
+            } else {
+                setReloadDetailsPage(true);
+            }
+        }
+    }
+
     function handleCurrentEvents(data, isDetailsClick) {
         const currentEvent = {
             id: data.id
@@ -452,6 +464,9 @@ function App() {
                     <Header
                         handleLogout={logout}
                         userName={userName}
+                        allEvents={allEvents}
+                        handleCurrentEvents={handleCurrentEvents}
+                        handleReloadDetailsPage={handleReloadDetailsPage}
                     />
                 )}
                 <main className={'main'}>
@@ -521,6 +536,8 @@ function App() {
                                     formatTime={formatTime}
                                     utcOffset={utcOffset}
                                     handleResultTabOpen={handleResultTabOpen}
+                                    isReloadDetailsPage={isReloadDetailsPage}
+                                    handleReloadDetailsPage={handleReloadDetailsPage}
                                 />}
                             />
                             <Route exact path='/votes-page'
