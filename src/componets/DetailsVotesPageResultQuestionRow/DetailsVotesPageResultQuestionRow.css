@@ -10,6 +10,10 @@
     border-bottom: none;
     padding-bottom: 8px;
 }
+.details-votes-page-result-question-row:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
 .details-votes-page-result-question-row__title-container {
     display: flex;
     flex-direction: column;
@@ -44,5 +48,8 @@
     }
     .details-votes-page-result-question-row__rule {
         font-size: 12px;
+    }
+    .details-votes-page-result-question-row {
+        margin-bottom: 16px;
     }
 }

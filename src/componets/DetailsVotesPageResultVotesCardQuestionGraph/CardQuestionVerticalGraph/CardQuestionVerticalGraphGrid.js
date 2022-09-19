@@ -2,10 +2,15 @@ import React from "react";
 import './CardQuestionVerticalGraphGrid.css';
 import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
 
-const CardQuestionVerticalGraphGrid = () => {
+const CardQuestionVerticalGraphGrid = (props) => {
+
+    const {
+        resultVote
+    } = props;
+
     return (
-        <div className={'card-question-vertical-graph__vertical-grid'}>
-            <table className={'vertical-grid__position-table'}>
+        <div className={'card-question-vertical-graph-grid__vertical-grid'}>
+            <table className={'vertical-grid__position-table-grid'}>
                 <tbody>
                     <tr><td></td></tr>
                     <tr><td></td></tr>
@@ -19,9 +24,17 @@ const CardQuestionVerticalGraphGrid = () => {
                     <tr><td></td></tr>
                 </tbody>
             </table>
-            <CardQuestionVerticalGraphThinColumn />
-            <CardQuestionVerticalGraphThinColumn />
-            <CardQuestionVerticalGraphThinColumn />
+            {
+                resultVote.map(el => {
+                    return (
+                        <CardQuestionVerticalGraphThinColumn
+                            key={el.id}
+                            nameAnswer={el.title}
+                            result={el.columns}
+                        />
+                    )
+                })
+            }
         </div>
     )
 }

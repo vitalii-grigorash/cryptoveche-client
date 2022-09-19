@@ -1,6 +1,5 @@
 import React from "react";
-import './CardQuestionVerticalGraphGrid.css';
-import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThinColumn/CardQuestionVerticalGraphThinColumn";
+import './CardQuestionVerticalGraphRow.css';
 import CardQuestionVerticalGraphWideColumn from "../CardQuestionVerticalGraphWideColumn/CardQuestionVerticalGraphWideColumn";
 
 const CardQuestionVerticalGraphRow = (props) => {

@@ -32,7 +32,7 @@ const CallVotingCheckBox = (props) => {
     useEffect(() => {
         if (results.length !== 0) {
             const currentResult = results.find(result => result.id === question.id);
-            console.log(currentResult)
+            // console.log(currentResult)
             if (currentResult.users.length !== 0) {
                 const userResult = currentResult.users.find(user => user.id === currentUser.id);
                 if (userResult.answers.length !== 0) {

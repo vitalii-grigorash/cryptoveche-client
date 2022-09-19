@@ -85,7 +85,13 @@
    display: none;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 420px) {
+@media (max-width: 650px) {
+    .sorting-modal.active {
+        left: 0;
+    }
+}
+
+@media (max-width: 470px) {
     .sorting-modal {
         top: 180px;
         left: -1px;

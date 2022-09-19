@@ -63,19 +63,18 @@
 }
 @media (max-width: 760px) {
     .card-question-horizontal-graph__horizontal-grid {
-        height: 187px;
+        height: 100%;
         width: 100%;
     }
     .horizontal-grid__position-table td {
-        height: 24px;
+        height: 48px;
     }
     .horizontal-grid__position-table {
-       width: 237px;
-
+       width: 400px;
     }
     .horizontal-grid__position-table {
-        top: -22px;
-        left: 16px;
+        top: -122px;
+        left: 0;
     }
 }
 @media (max-width: 530px) {

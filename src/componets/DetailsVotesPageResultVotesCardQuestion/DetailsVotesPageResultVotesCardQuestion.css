@@ -2,7 +2,7 @@
 .details-votes-page-result-votes-card__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
 }
 .details-votes-page-result-votes-card__wrapper:first-child(1) {
     border: 1px solid red;

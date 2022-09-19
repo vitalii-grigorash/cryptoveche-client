@@ -10,11 +10,14 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
         answersTemplateGrid
     } = props;
 
-    const [showGraphTypeVertical, setShowGraphTypeVertical] = useState(true)
-    const [showGraphTypeHorizontal, setShowGraphTypeHorizontal] = useState(false)
-    const [hideChangePlaceColumns, setHideChangePlaceColumns] = useState(true)
-    const getAllColumn = answersTemplateGrid.map(el => el.columns)
+    const [showGraphTypeVertical, setShowGraphTypeVertical] = useState(true);
+    const [showGraphTypeHorizontal, setShowGraphTypeHorizontal] = useState(false);
+    const [hideChangePlaceColumns, setHideChangePlaceColumns] = useState(true);
+    const getAllColumn = answersTemplateGrid.map(el => el.columns);
 
+    function getRandom(min, max){
+        return Math.floor(Math.random() * (max - min) + min)
+    }
 
     useEffect(() => {
         if (answersTemplateGrid.length > 3 || getAllColumn > 3) {
@@ -26,6 +29,8 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
         }
     }, [answersTemplateGrid.length])
 
+ console.log(getAllColumn)
+
     return (
         <div className={'details-votes-page-result-card-graph__wrapper'}>
             {showGraphTypeHorizontal && (
@@ -34,17 +39,18 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
             }
             {showGraphTypeVertical && (
                 <CardQuestionVerticalGraphGrid
+                    resultVote={answersTemplateGrid}
                     />
             )
             }
             <div className={'details-votes-page-result-card-graph__column-list'}>
                 {
-                    answersTemplateGrid.map((item, i) => {
+                    getAllColumn[0].map((item) => {
                         return (
                             <CardQuestionGraphNameColumnGrid
-                                key={i}
-                                nameColumn={item.title}
-                                colorSquare={'blue'}/>
+                                key={item.id}
+                                nameColumn={item.value}
+                                colorSquare={`rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)}`}/>
                         )
                     })
                 }

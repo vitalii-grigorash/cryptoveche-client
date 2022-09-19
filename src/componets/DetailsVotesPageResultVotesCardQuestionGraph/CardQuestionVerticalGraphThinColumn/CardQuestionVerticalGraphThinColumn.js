@@ -1,27 +1,30 @@
 import React from "react";
 import './CardQuestionVerticalGraphThinColumn.css';
+import VerticalGraphThinColumn from "./VerticalGraphThinColumn/VerticalGraphThinColumn";
 
-const CardQuestionVerticalGraphThinColumn = () => {
+const CardQuestionVerticalGraphThinColumn = (props) => {
 
+    const {
+        nameAnswer,
+        result
+    } = props;
 
     return (
-
             <div className={'card-question-vertical-graph-thin-column__wrapper'}>
                 <div className={'card-question-vertical-graph-thin-column__columns'}>
-                    <svg className={'card-question-vertical-graph-thin-column__column-svg'}>
-                        <rect width={'28'} height={'224'} fill={'#0084FE'} opacity={0.8}/>
-                    </svg>
-                    <svg className={'card-question-vertical-graph-thin-column__column-svg'}>
-                        <rect width={'28'} height={'128'} fill={'#FF4970'} opacity={0.5}/>
-                    </svg>
-                    <svg className={'card-question-vertical-graph-thin-column__column-svg'}>
-                        <rect min={'30'} width={'28'} height={'100'} fill={'#F9C521'}  opacity={0.5}/>
-                    </svg>
+                    {
+                        result.map((el, i) => {
+                            return (
+                                <VerticalGraphThinColumn
+                                key={i}
+                                result={el.favor}
+                                />
+                            )
+                        })
+                    }
                 </div>
-                    <div className={'card-question-vertical-graph-thin-column__name-column'}>Вариант один какой-то</div>
+                    <div className={'card-question-vertical-graph-thin-column__name-column'}>{nameAnswer}</div>
             </div>
     )
-
 }
-
 export default CardQuestionVerticalGraphThinColumn;
