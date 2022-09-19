@@ -1,5 +1,5 @@
 import React from "react";
-import './CardQuestionHorizontalGraphColumn.css';
+import './CardQuestionHorizontalGraphColumnRow.css';
 
 
 const CardQuestionHorizontalGraphColumnRowInvalidBallots = (props) => {
@@ -21,8 +21,8 @@ const CardQuestionHorizontalGraphColumnRowInvalidBallots = (props) => {
     }
 
     return (
-        <div className={'card-question-horizontal-graph-column__columns'}>
-            <svg className={'card-question-horizontal-graph-column__column-svg'}>
+        <div className={'card-question-horizontal-graph-column-row__columns'}>
+            <svg className={'card-question-horizontal-graph-column-row__column-svg'}>
                 <g>
                     <rect width={widthRectOneColumn + 2} height={'28'} fill={'#9FA1A8'}/>
                     <text x={movingTextOneColumn(widthRectOneColumn) + 10} y={'35%'} fontSize={14} fill={'rgba(54, 59, 77, 0.9)'}>{widthRectOneColumn}   ({(widthRectOneColumn).toFixed(0) }%)</text>

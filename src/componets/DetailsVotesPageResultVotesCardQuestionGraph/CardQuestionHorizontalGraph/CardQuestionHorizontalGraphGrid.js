@@ -3,11 +3,13 @@ import './CardQuestionHorizontalGraphRow.css';
 import CardQuestionHorizontalGraphColumnGrid
     from "../CardQuestionHorizontalGraphColumn/CardQuestionHorizontalGraphColumnGrid";
 
-const CardQuestionHorizontalGraphGrid = () => {
+const CardQuestionHorizontalGraphGrid = (props) => {
 
+    const {
+        resultVote
+    } = props;
 
     return (
-
         <div className={'card-question-horizontal-graph__horizontal-grid'}>
             <table className={'horizontal-grid__position-table'}>
                 <tbody>
@@ -23,7 +25,18 @@ const CardQuestionHorizontalGraphGrid = () => {
                 <tr><td></td></tr>
                 </tbody>
             </table>
-            <CardQuestionHorizontalGraphColumnGrid/>
+            {
+                resultVote.map(item => {
+                    return (
+                        <CardQuestionHorizontalGraphColumnGrid
+                            key={item.id}
+                            result={item.columns}
+                            colorName={item.color}
+                        />
+                    )
+                })
+            }
+
         </div>
     )
 }

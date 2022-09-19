@@ -14,10 +14,10 @@ const DetailsVotesPageResultVotesCardQuestionGraphRow = (props) => {
     const [showGraphTypeVertical, setShowGraphTypeVertical] = useState(true)
     const [showGraphTypeHorizontal, setShowGraphTypeHorizontal] = useState(false)
     const resultWithColor = answersTemplateRow.map(function (item) {
-        return {...item, color: `rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)})`}
+        return {...item, color: `rgb(${getRandomColor(0, 255)}, ${getRandomColor(0, 255)}, ${getRandomColor(0, 255)})`}
     })
 
-    function getRandom(min, max){
+    function getRandomColor(min, max){
         return Math.floor(Math.random() * (max - min) + min)
     }
 

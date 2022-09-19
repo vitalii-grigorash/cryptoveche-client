@@ -3,6 +3,8 @@ import './DetailsVotesPageResultVotesCardQuestionGraphRow.css';
 import CardQuestionVerticalGraphGrid from "./CardQuestionVerticalGraph/CardQuestionVerticalGraphGrid";
 import CardQuestionGraphNameColumnGrid from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumnGrid";
 import CardQuestionHorizontalGraphGrid from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraphGrid";
+import CardQuestionHorizontalGraphColumnGrid
+    from "./CardQuestionHorizontalGraphColumn/CardQuestionHorizontalGraphColumnGrid";
 
 const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
 
@@ -13,9 +15,13 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
     const [showGraphTypeVertical, setShowGraphTypeVertical] = useState(true);
     const [showGraphTypeHorizontal, setShowGraphTypeHorizontal] = useState(false);
     const [hideChangePlaceColumns, setHideChangePlaceColumns] = useState(true);
+    const [showChangePlaceColumns, setShowChangePlaceColumns] = useState(false)
     const getAllColumn = answersTemplateGrid.map(el => el.columns);
+    const resultWithColor = answersTemplateGrid.map(function (item) {
+        return {...item, color: `rgb(${getRandomColor(0, 255)}, ${getRandomColor(0, 255)}, ${getRandomColor(0, 255)})`}
+    })
 
-    function getRandom(min, max){
+    function getRandomColor(min, max){
         return Math.floor(Math.random() * (max - min) + min)
     }
 
@@ -23,18 +29,21 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
         if (answersTemplateGrid.length > 3 || getAllColumn > 3) {
             setShowGraphTypeHorizontal(true);
             setShowGraphTypeVertical(false)
+            setShowChangePlaceColumns(true)
+            setHideChangePlaceColumns(false)
         } else {
             setShowGraphTypeHorizontal(false)
             setShowGraphTypeVertical(true)
+            setShowChangePlaceColumns(false)
+            setHideChangePlaceColumns(true)
         }
     }, [answersTemplateGrid.length])
-
- console.log(getAllColumn)
 
     return (
         <div className={'details-votes-page-result-card-graph__wrapper'}>
             {showGraphTypeHorizontal && (
-                <CardQuestionHorizontalGraphGrid/>
+                <CardQuestionHorizontalGraphGrid
+                    resultVote={resultWithColor}/>
             )
             }
             {showGraphTypeVertical && (
@@ -44,16 +53,29 @@ const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
             )
             }
             <div className={'details-votes-page-result-card-graph__column-list'}>
-                {
+                {hideChangePlaceColumns && (
                     getAllColumn[0].map((item) => {
                         return (
                             <CardQuestionGraphNameColumnGrid
                                 key={item.id}
                                 nameColumn={item.value}
-                                colorSquare={`rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)}`}/>
+                                colorSquare={`rgb(${getRandomColor(0, 255)}, ${getRandomColor(0, 255)}, ${getRandomColor(0, 255)}`}/>
                         )
                     })
-                }
+                )}
+                {
+                    showChangePlaceColumns && (
+                        resultWithColor.map((el => {
+                            return (
+                                <CardQuestionGraphNameColumnGrid
+                                    key={el.id}
+                                    nameColumn={el.title}
+                                    colorSquare={el.color}
+                                />
+                            )
+                        }))
+
+                    )}
             </div>
         </div>
     )

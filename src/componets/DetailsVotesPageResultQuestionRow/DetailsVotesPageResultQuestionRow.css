@@ -45,6 +45,7 @@
     }
     .details-votes-page-result-question-row__title {
         font-size: 16px;
+        font-weight: 500;
     }
     .details-votes-page-result-question-row__rule {
         font-size: 12px;

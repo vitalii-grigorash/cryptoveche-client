@@ -31,6 +31,10 @@
     line-height: 20px;
     font-weight: 400;
     text-align: center;
+    text-overflow: ellipsis;
+    max-width: 110px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 815px) {

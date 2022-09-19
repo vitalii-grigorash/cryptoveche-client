@@ -1,0 +1,31 @@
+/*------Стилизация колонки графика------------------------------------------------------------------------------------*/
+.card-question-horizontal-graph-column-grid__columns {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 160px;
+    max-width: 500px;
+    margin-bottom: 16px;
+}
+.card-question-horizontal-graph-column-grid__column-svg {
+    max-width: 520px;
+    height: 100%;
+}
+.card-question-horizontal-graph-column-grid__column-svg rect {
+    max-width: 200px;
+}
+/*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 960px) {
+    .card-question-horizontal-graph-column-grid__column-svg text {
+        font-size: 12px;
+    }
+    .card-question-horizontal-graph-column-grid__column-svg text {
+        font-size: 10px;
+    }
+    .card-question-horizontal-graph-column-grid__column-svg rect {
+        height: 22px;
+    }
+    .card-question-horizontal-graph-column-grid__columns {
+        height: 140px;
+    }
+}

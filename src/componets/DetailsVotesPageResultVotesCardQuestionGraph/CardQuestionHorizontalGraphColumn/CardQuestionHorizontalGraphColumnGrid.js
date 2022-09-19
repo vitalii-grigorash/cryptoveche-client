@@ -1,49 +1,37 @@
 import React from "react";
-import './CardQuestionHorizontalGraphColumn.css';
+import './CardQuestionHorizontalGraphColumnGrid.css';
+import HorizontalGraphColumnGrid from "./HorizontalGraphColumnGrid/HorizontalGraphColumnGrid";
 
 
-const CardQuestionHorizontalGraphColumnGrid = () => {
+const CardQuestionHorizontalGraphColumnGrid = (props) => {
 
-    let widthRectOneColumn = 385;
-    let widthRectTwoColumn = 96;
+    const {
+        result,
+        colorName
+    } = props;
 
-    function movingTextOneColumn () {
-        let x = widthRectOneColumn;
-        let sum;
-        if(x > 0) {
-            sum = x + 10
-        } else {
-            sum = x
-        } return sum;
-    }
+    const newCol = result.map(function(el) {
+        return {...el, color: colorName}
+    } )
 
-    function movingTextTwoColumn () {
-        let x = widthRectTwoColumn;
-        let sum;
-        if(x > 0) {
-            sum = x + 10
-        } else {
-            sum = x
-        } return sum;
-    }
+    const bun = new Array(colorName)
+    console.log(newCol)
 
     return (
-        <div className={'card-question-horizontal-graph-column__columns'}>
-            <svg className={'card-question-horizontal-graph-column__column-svg'}>
-                <g>
-                    <rect width={widthRectOneColumn} height={'28'} fill={'#FF4970'}/>
-                    <text x={movingTextOneColumn(widthRectOneColumn)} y={'64%'} fontSize={14} fill={'rgba(54, 59, 77, 0.9)'}>За - {widthRectOneColumn}   ({(widthRectOneColumn*0.208).toFixed(0) }%)</text>
-                </g>
-            </svg>
-            <svg className={'card-question-horizontal-graph-column__column-svg'}>
-                <g>
-                    <rect width={widthRectTwoColumn} height={'28'} fill={'#FF4970'} opacity={0.1}/>
-                    <text x={movingTextTwoColumn(widthRectTwoColumn)} y={'64%'} fontSize={14} fill={'rgba(54, 59, 77, 0.6)'}>Против - {widthRectTwoColumn} ({(widthRectTwoColumn*0.208).toFixed(0) }%)</text>
-                </g>
-            </svg>
+        <div className={'card-question-horizontal-graph-column-grid__columns'}>
+            {
+                newCol.map((el, i) => {
+                    return (
+                        <HorizontalGraphColumnGrid
+                            key={i}
+                            resultValue={el.favor}
+                            nameColumns={el.value}
+                            colorColumns={el.color}
+                        />
+                    )
+                })
+            }
         </div>
-
     )
 }
-
 export default CardQuestionHorizontalGraphColumnGrid;
