@@ -15,7 +15,8 @@ const DetailsVotesPageReadQuestions = (props) => {
         questionsTemplateGrid,
         isMyBulletinTabActive,
         results,
-        isVoted
+        isVoted,
+        ballots
     } = props;
 
     return (
@@ -29,6 +30,8 @@ const DetailsVotesPageReadQuestions = (props) => {
                         isMyBulletinTabActive={isMyBulletinTabActive}
                         results={results}
                         materialsQuestion={question.materials}
+                        ballots={ballots}
+                        currentEventData={currentEventData}
                     />
                 )
             }))}
@@ -40,6 +43,8 @@ const DetailsVotesPageReadQuestions = (props) => {
                         isMyBulletinTabActive={isMyBulletinTabActive}
                         results={results}
                         materialsQuestion={question.materials}
+                        ballots={ballots}
+                        currentEventData={currentEventData}
                     />
                 )
             }))

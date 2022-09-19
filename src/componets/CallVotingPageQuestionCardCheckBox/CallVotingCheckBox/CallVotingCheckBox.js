@@ -19,7 +19,9 @@ const CallVotingCheckBox = (props) => {
         isBulletinVoted,
         answersArray,
         isMyBulletinTabActive,
-        results
+        results,
+        ballots,
+        currentEventData
     } = props;
 
     const { pathname } = useLocation();
@@ -30,24 +32,47 @@ const CallVotingCheckBox = (props) => {
     const [isCheckBoxActive, setCheckBoxActive] = useState(false);
 
     useEffect(() => {
-        if (results.length !== 0) {
-            const currentResult = results.find(result => result.id === question.id);
-            console.log(currentResult)
-            if (currentResult.users.length !== 0) {
-                const userResult = currentResult.users.find(user => user.id === currentUser.id);
-                if (userResult.answers.length !== 0) {
-                    const result = userResult.answers.find(result => result.id === rowId);
-                    if (result !== undefined) {
-                        const value = result.values.find(value => value === id);
-                        if (value !== undefined) {
-                            if (value === id) {
-                                setCheckBoxActive(true);
+        if (currentEventData.type !== "secret") {
+            if (results.length !== 0) {
+                const currentResult = results.find(result => result.id === question.id);
+                if (currentResult.users.length !== 0) {
+                    const userResult = currentResult.users.find(user => user.id === currentUser.id);
+                    if (userResult.answers.length !== 0) {
+                        const result = userResult.answers.find(result => result.id === rowId);
+                        if (result !== undefined) {
+                            const value = result.values.find(value => value === id);
+                            if (value !== undefined) {
+                                if (value === id) {
+                                    setCheckBoxActive(true);
+                                }
                             }
                         }
                     }
+                } else {
+                    setCheckBoxActive(false);
                 }
-            } else {
-                setCheckBoxActive(false);
+            }
+        } else {
+            if (ballots !== undefined) {
+                if (ballots.length !== 0) {
+                    const currentBulletin = ballots.find(ballot => ballot.bulletinId === question.bulletinId);
+                    if (currentBulletin !== undefined) {
+                        const currentQuestion = currentBulletin.questions.find(bulletin => bulletin.question_id === question.id);
+                        if (currentQuestion !== undefined) {
+                            const result = currentQuestion.res.find(result => result.id === rowId);
+                            if (result !== undefined) {
+                                const value = result.values.find(value => value === id);
+                                if (value !== undefined) {
+                                    if (value === id) {
+                                        setCheckBoxActive(true);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        setCheckBoxActive(false);
+                    }
+                }
             }
         }
     }, [results, question.id, currentUser.id, id, rowId])

@@ -1,4 +1,12 @@
 /*------Основной конейнер----------------------------------------------------------------------------------------------*/
+.call-voting-page-question-card-check {
+    display: flex;
+}
+.call-voting-page-question-card-check__main_voted {
+    background: #4ED4A9;
+    border-radius: 16px;
+    padding: 6px 0 0;
+}
 .call-voting-page-question-card-check__wrapper {
     display: flex;
     flex-direction: column;
@@ -7,6 +15,7 @@
     box-shadow: 0 3px 16px rgba(54, 58, 72, 0.08);
     padding: 32px 32px 40px 32px;
     gap: 24px;
+    width: 100%;
 }
 /*------Стилизация для заголовка--------------------------------------------------------------------------------------*/
 .call-voting-page-question-card-check__title {

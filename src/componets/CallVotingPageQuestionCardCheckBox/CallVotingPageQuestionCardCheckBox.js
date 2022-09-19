@@ -140,35 +140,57 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
     }
 
     return (
-        <div className={'call-voting-page-question-card-check__wrapper'}>
-            <div className={'call-voting-page-question-card-check__title'}>
-                <h3>{questionTitle}</h3>
-                <div className={'call-voting-page-question-card-check__select-answer'}>
-                    <span className={`call-voting-page-question-card-check__rule-text ${isBulletinVoted && 'call-voting-page-question-card-check__rule-text_voted'}`}>
-                        Выберите один из вариантов ответа напротив каждого кандидата
-                        {question.is_required_grid_rows && (
-                            <p>Все строки обязательны для заполнения</p>
+        <div className={`call-voting-page-question-card-check__main ${isBulletinVoted && 'call-voting-page-question-card-check__main_voted'}`}>
+            <div className={'call-voting-page-question-card-check__wrapper'}>
+                <div className={'call-voting-page-question-card-check__title'}>
+                    <h3>{questionTitle}</h3>
+                    <div className={'call-voting-page-question-card-check__select-answer'}>
+                        <span className={`call-voting-page-question-card-check__rule-text ${isBulletinVoted && 'call-voting-page-question-card-check__rule-text_voted'}`}>
+                            Выберите один из вариантов ответа напротив каждого кандидата
+                            {question.is_required_grid_rows && (
+                                <p>Все строки обязательны для заполнения</p>
+                            )}
+                        </span>
+                        {isBulletinVoted && (
+                            <div className="call-voting-page-question-card-check__voted-container">
+                                <img className="call-voting-page-question-card-check__icon" src={greenIcon} alt="Иконка" />
+                                <p className="call-voting-page-question-card-check__voted-text">Вы проголосовали</p>
+                            </div>
                         )}
-                    </span>
-                    {isBulletinVoted && (
-                        <div className="call-voting-page-question-card-check__voted-container">
-                            <img className="call-voting-page-question-card-check__icon" src={greenIcon} alt="Иконка" />
-                            <p className="call-voting-page-question-card-check__voted-text">Вы проголосовали</p>
-                        </div>
-                    )}
-                </div>
-                {activeMaterialsQuestion &&
-                    <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
-                }
-            </div>
-            {!isListView ? (
-                <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
-                    <div className={'select-checkboxes-block__name-columns'}>
-                        <div className={'name-columns__width-column'} />
-                        {columns.map(el => (
-                            <p key={el.id} className={'call-voting-name-columns__wrapper'}>{el.value}</p>
-                        ))}
                     </div>
+                    {activeMaterialsQuestion &&
+                        <MaterialsVoteQuestion currentMaterialsQuestion={materialsQuestion} materialsVoteName={'Материалы вопроса'} />
+                    }
+                </div>
+                {!isListView ? (
+                    <div className={'call-voting-page-question-card-check__select-checkboxes-block'}>
+                        <div className={'select-checkboxes-block__name-columns'}>
+                            <div className={'name-columns__width-column'} />
+                            {columns.map(el => (
+                                <p key={el.id} className={'call-voting-name-columns__wrapper'}>{el.value}</p>
+                            ))}
+                        </div>
+                        <div>
+                            {rows.map(row => (
+                                <CallVotingNameRows
+                                    key={row.id}
+                                    rowId={row.id}
+                                    rowValue={row.value}
+                                    question={question}
+                                    columns={question.options.columns}
+                                    isListView={isListView}
+                                    addAnswerToArray={addAnswerToArray}
+                                    removeAnswerFromArray={removeAnswerFromArray}
+                                    isBulletinVoted={isBulletinVoted}
+                                    answersArray={answersArray}
+                                    isMyBulletinTabActive={false}
+                                    results={results}
+                                    currentEventData={currentEventData}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ) : (
                     <div>
                         {rows.map(row => (
                             <CallVotingNameRows
@@ -184,39 +206,21 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
                                 answersArray={answersArray}
                                 isMyBulletinTabActive={false}
                                 results={results}
+                                currentEventData={currentEventData}
                             />
                         ))}
                     </div>
-                </div>
-            ) : (
-                <div>
-                    {rows.map(row => (
-                        <CallVotingNameRows
-                            key={row.id}
-                            rowId={row.id}
-                            rowValue={row.value}
-                            question={question}
-                            columns={question.options.columns}
-                            isListView={isListView}
-                            addAnswerToArray={addAnswerToArray}
-                            removeAnswerFromArray={removeAnswerFromArray}
-                            isBulletinVoted={isBulletinVoted}
-                            answersArray={answersArray}
-                            isMyBulletinTabActive={false}
-                            results={results}
-                        />
-                    ))}
-                </div>
-            )}
-            <CallVotingPageVoteButtonCheckBox
-                sendVote={sendVote}
-                isBulletinVoted={isBulletinVoted}
-                isReVoting={isReVoting}
-                onRevoteClick={onRevoteClick}
-                isRequiredGridRows={question.is_required_grid_rows}
-                rows={rows}
-                answersArray={answersArray}
-            />
+                )}
+                <CallVotingPageVoteButtonCheckBox
+                    sendVote={sendVote}
+                    isBulletinVoted={isBulletinVoted}
+                    isReVoting={isReVoting}
+                    onRevoteClick={onRevoteClick}
+                    isRequiredGridRows={question.is_required_grid_rows}
+                    rows={rows}
+                    answersArray={answersArray}
+                />
+            </div>
         </div>
     )
 }

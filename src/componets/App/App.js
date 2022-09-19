@@ -49,15 +49,21 @@ function App() {
                 const jwtTokens = JSON.parse(jwt);
                 request(jwtTokens.access_token, body)
                     .then((res) => {
+                        console.log('Первый ответ:')
+                        console.log(res);
                         if (res.status === 'failure') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
+                                    console.log('Новые токены:')
+                                    console.log(newTokens);
                                     if (newTokens.status === 'failure') {
                                         logout();
                                     } else {
                                         localStorage.setItem('jwt', JSON.stringify(newTokens));
                                         request(newTokens.access_token, body)
                                             .then((res) => {
+                                                console.log('Второй ответ:')
+                                                console.log(res);
                                                 resolve(res);
                                             })
                                             .catch((err) => {

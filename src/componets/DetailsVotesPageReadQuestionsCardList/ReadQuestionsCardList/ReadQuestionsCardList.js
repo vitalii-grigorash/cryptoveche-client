@@ -11,7 +11,9 @@ const ReadQuestionsCardList = (props) => {
         value,
         isMyBulletinTabActive,
         results,
-        question
+        question,
+        ballots,
+        currentEventData
     } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
@@ -19,21 +21,42 @@ const ReadQuestionsCardList = (props) => {
     const [isCheckBoxActive, setCheckBoxActive] = useState(false);
 
     useEffect(() => {
-        if (results.length !== 0) {
-            const currentResult = results.find(result => result.id === question.id);
-            if (currentResult.users.length !== 0) {
-                const userResult = currentResult.users.find(user => user.id === currentUser.id);
-                const result = userResult.answers.find(result => result.id === id);
-                if (result !== undefined) {
-                    if (result.id === id) {
-                        setCheckBoxActive(true);
+        if (currentEventData.type !== "secret") {
+            if (results.length !== 0) {
+                const currentResult = results.find(result => result.id === question.id);
+                if (currentResult.users.length !== 0) {
+                    const userResult = currentResult.users.find(user => user.id === currentUser.id);
+                    const result = userResult.answers.find(result => result.id === id);
+                    if (result !== undefined) {
+                        if (result.id === id) {
+                            setCheckBoxActive(true);
+                        }
                     }
+                } else {
+                    setCheckBoxActive(false);
                 }
-            } else {
-                setCheckBoxActive(false);
+            }
+        } else {
+            if (ballots.length !== 0) {
+                const currentResult = ballots.find(ballot => ballot.bulletinId === question.bulletinId);
+                if (currentResult !== undefined) {
+                    if (currentResult.questions.length !== 0) {
+                        const currentQuestion = currentResult.questions.find(result => result.question_id === question.id);
+                        if (currentQuestion.res !== 0) {
+                            const result = currentQuestion.res.find(result => result.id === id);
+                            if (result !== undefined) {
+                                if (result.id === id) {
+                                    setCheckBoxActive(true);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    setCheckBoxActive(false);
+                }
             }
         }
-    }, [results, question.id, currentUser.id, id])
+    }, [results, question.id, currentUser.id, id, ballots, currentEventData.type, question.bulletinId])
 
     return (
         <>

@@ -377,7 +377,6 @@ const CallVotingPageQuestionCardList = (props) => {
         }
         requestHelper(Events.vote, body)
             .then((data) => {
-                console.log(data.text);
                 if (data.status === 'ok') {
                     setAnswersArray([]);
                     getEvent();
