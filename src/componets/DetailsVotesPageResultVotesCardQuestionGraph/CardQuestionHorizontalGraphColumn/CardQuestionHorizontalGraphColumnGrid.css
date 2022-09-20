@@ -23,9 +23,16 @@
     display: none;
 }
 .card-question-horizontal-graph-column-grid__columns-text-percent.active {
-    display: block;
+    display: inline;
 }
-
+.grid__columns-text-percent {
+    box-sizing: border-box;
+    display: inline-flex;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 220px;
+}
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 960px) {
     .card-question-horizontal-graph-column-grid__column-svg text {

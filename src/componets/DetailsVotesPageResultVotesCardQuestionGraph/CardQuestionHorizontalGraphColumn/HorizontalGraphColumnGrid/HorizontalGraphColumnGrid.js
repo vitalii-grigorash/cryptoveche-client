@@ -35,16 +35,16 @@ const HorizontalGraphColumnGrid = (props) => {
     }, [widthRectColumn])
 
     return (
-        <>
-        <svg className={'card-question-horizontal-graph-column-grid__column-svg'}>
-            <g>
-                <rect width={widthRectColumn + 1} height={'28'} fill={colorColumns}/>
-                <text ref={textSvgRef} x={movingTextOneColumn(widthRectColumn) + 12} y={'55%'} fontSize={12} fill={'rgba(54, 59, 77, 0.9)'}>{nameColumns} - {widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)</text>
-            </g>
-        </svg>
-            <span className={hideSpanPercent ? 'card-question-horizontal-graph-column-grid__columns-text-percent active' : 'card-question-horizontal-graph-column-grid__columns-text-percent'}>
-                {nameColumns} - {widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)
-            </span>
+            <>
+                <svg className={'card-question-horizontal-graph-column-grid__column-svg'}>
+                    <g>
+                        <rect width={widthRectColumn + 1} height={'28'} fill={colorColumns}/>
+                        <text ref={textSvgRef} x={movingTextOneColumn(widthRectColumn) + 12} y={'55%'} fontSize={12} fill={'rgba(54, 59, 77, 0.9)'}>{nameColumns} - {widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)</text>
+                    </g>
+                </svg>
+                <span className={hideSpanPercent ? 'card-question-horizontal-graph-column-grid__columns-text-percent active' : 'card-question-horizontal-graph-column-grid__columns-text-percent'}>
+                    <span className={'grid__columns-text-percent'}>{nameColumns}</span> - {widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)
+                </span>
             </>
     )
 }
