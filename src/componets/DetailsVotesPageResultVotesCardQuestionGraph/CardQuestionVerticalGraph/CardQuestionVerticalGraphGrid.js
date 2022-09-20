@@ -5,7 +5,8 @@ import CardQuestionVerticalGraphThinColumn from "../CardQuestionVerticalGraphThi
 const CardQuestionVerticalGraphGrid = (props) => {
 
     const {
-        resultVote
+        resultVote,
+        getNameColumnColor
     } = props;
 
     return (
@@ -31,6 +32,7 @@ const CardQuestionVerticalGraphGrid = (props) => {
                             key={el.id}
                             nameAnswer={el.title}
                             result={el.columns}
+                            colorColumn={getNameColumnColor.map(el => el.color)}
                         />
                     )
                 })

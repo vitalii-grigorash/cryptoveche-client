@@ -14,9 +14,6 @@ const CardQuestionHorizontalGraphColumnGrid = (props) => {
         return {...el, color: colorName}
     } )
 
-    const bun = new Array(colorName)
-    console.log(newCol)
-
     return (
         <div className={'card-question-horizontal-graph-column-grid__columns'}>
             {

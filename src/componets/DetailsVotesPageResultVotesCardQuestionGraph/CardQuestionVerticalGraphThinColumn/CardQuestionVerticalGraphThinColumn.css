@@ -37,7 +37,7 @@
     white-space: nowrap;
 }
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
-@media (max-width: 815px) {
+@media (max-width: 900px) {
     .card-question-vertical-graph-thin-column__columns {
         width: 95px;
         height: 100%;

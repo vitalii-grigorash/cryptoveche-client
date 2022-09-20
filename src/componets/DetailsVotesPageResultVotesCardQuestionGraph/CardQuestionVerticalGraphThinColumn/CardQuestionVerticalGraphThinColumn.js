@@ -6,18 +6,25 @@ const CardQuestionVerticalGraphThinColumn = (props) => {
 
     const {
         nameAnswer,
-        result
+        result,
+        colorColumn
     } = props;
+
+    const newColumnsObj = result.map((elem, i) => ({
+        value: elem,
+        color: colorColumn[i % colorColumn.length],
+    }))
 
     return (
             <div className={'card-question-vertical-graph-thin-column__wrapper'}>
                 <div className={'card-question-vertical-graph-thin-column__columns'}>
                     {
-                        result.map((el, i) => {
+                        newColumnsObj.map((el, i) => {
                             return (
                                 <VerticalGraphThinColumn
                                 key={i}
-                                result={el.favor}
+                                result={el.value.favor}
+                                colorColumns={el.color}
                                 />
                             )
                         })

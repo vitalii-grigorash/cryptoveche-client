@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import './CardQuestionHorizontalGraphColumnRow.css';
 
 
@@ -9,26 +9,41 @@ const CardQuestionHorizontalGraphColumnRow = (props) => {
         colorColumns
     } = props;
 
-    let widthRectOneColumn = result;
+    const [hideSpanPercent, setHideSpanPercent] = useState(false);
+    const textSvgRef = useRef(null)
 
-    function movingTextOneColumn () {
-           let x = widthRectOneColumn;
-           let sum;
-        if(x > 0) {
-           sum = x + 10
+    let widthRectColumn = result;
+    function movingTextOneColumn(x) {
+        let sum;
+        if (x > 390) {
+            sum = x - 92;
         } else {
-            sum = x
+            sum = x;
         } return sum;
     }
+
+    useEffect(() => {
+        movingTextOneColumn(widthRectColumn)
+        if(widthRectColumn > 450) {
+            setHideSpanPercent(true)
+            textSvgRef.current.style.display = 'none'
+        } else {
+            setHideSpanPercent(false)
+            textSvgRef.current.style.display = 'initial'
+        }
+    }, [widthRectColumn])
 
     return (
                 <div className={'card-question-horizontal-graph-column-row__columns'}>
                     <svg className={'card-question-horizontal-graph-column-row__column-svg'}>
                         <g>
-                            <rect width={widthRectOneColumn + 2} height={'28'} fill={colorColumns}/>
-                            <text x={movingTextOneColumn(widthRectOneColumn) + 10} y={'35%'} fontSize={14} fill={'rgba(54, 59, 77, 0.9)'}>{widthRectOneColumn}  ({(widthRectOneColumn).toFixed(0) }%)</text>
+                            <rect width={widthRectColumn + 2} height={'28'} fill={colorColumns}/>
+                            <text ref={textSvgRef} x={movingTextOneColumn(widthRectColumn) + 10} y={'35%'} fontSize={14} fill={'rgba(54, 59, 77, 0.9)'}>{widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)</text>
                         </g>
                     </svg>
+                    <span className={hideSpanPercent ? 'card-question-horizontal-graph-column-row__columns-text-percent active' : 'card-question-horizontal-graph-column-row__columns-text-percent'}>
+                {widthRectColumn} ({((widthRectColumn / 600) * 100).toFixed(1)}%)
+            </span>
                 </div>
 
     )

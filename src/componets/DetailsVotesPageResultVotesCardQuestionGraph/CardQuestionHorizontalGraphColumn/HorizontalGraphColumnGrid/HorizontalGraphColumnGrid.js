@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../CardQuestionHorizontalGraphColumnGrid.css';
 
 const HorizontalGraphColumnGrid = (props) => {
@@ -9,25 +9,43 @@ const HorizontalGraphColumnGrid = (props) => {
         colorColumns
     } = props;
 
-    let widthRectOneColumn = resultValue;
+    const [hideSpanPercent, setHideSpanPercent] = useState(false);
+    const textSvgRef = useRef(null)
 
-    function movingTextOneColumn (x) {
+    let widthRectColumn = resultValue;
+
+    function movingTextOneColumn(x) {
         let sum;
-        if(x > 0) {
-            sum = x + 10
+        if (x > 350) {
+            sum = x - 150;
         } else {
-            sum = x
-        }
-        return sum;
+            sum = x;
+        } return sum;
     }
 
+    useEffect(() => {
+        movingTextOneColumn(widthRectColumn)
+        if(widthRectColumn > 450) {
+            setHideSpanPercent(true)
+            textSvgRef.current.style.display = 'none'
+        } else {
+            setHideSpanPercent(false)
+            textSvgRef.current.style.display = 'initial'
+        }
+    }, [widthRectColumn])
+
     return (
+        <>
         <svg className={'card-question-horizontal-graph-column-grid__column-svg'}>
             <g>
-                <rect width={widthRectOneColumn + 1} height={'28'} fill={colorColumns}/>
-                <text x={movingTextOneColumn(widthRectOneColumn) + 12} y={'55%'} fontSize={12} fill={'rgba(54, 59, 77, 0.9)'}>{nameColumns} - {widthRectOneColumn}   ({((widthRectOneColumn / 600) * 100).toFixed(1)}%)</text>
+                <rect width={widthRectColumn + 1} height={'28'} fill={colorColumns}/>
+                <text ref={textSvgRef} x={movingTextOneColumn(widthRectColumn) + 12} y={'55%'} fontSize={12} fill={'rgba(54, 59, 77, 0.9)'}>{nameColumns} - {widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)</text>
             </g>
         </svg>
+            <span className={hideSpanPercent ? 'card-question-horizontal-graph-column-grid__columns-text-percent active' : 'card-question-horizontal-graph-column-grid__columns-text-percent'}>
+                {nameColumns} - {widthRectColumn}  ({((widthRectColumn / 600) * 100).toFixed(1)}%)
+            </span>
+            </>
     )
 }
 export default HorizontalGraphColumnGrid;

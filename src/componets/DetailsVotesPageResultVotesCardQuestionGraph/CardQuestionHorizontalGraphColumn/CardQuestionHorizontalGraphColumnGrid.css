@@ -6,6 +6,7 @@
     max-height: 160px;
     max-width: 500px;
     margin-bottom: 16px;
+    position: relative;
 }
 .card-question-horizontal-graph-column-grid__column-svg {
     max-width: 520px;
@@ -14,6 +15,17 @@
 .card-question-horizontal-graph-column-grid__column-svg rect {
     max-width: 200px;
 }
+.card-question-horizontal-graph-column-grid__columns-text-percent {
+    font-size: 14px;
+    color: rgba(54, 59, 77, 0.9);
+    bottom: -12px;
+    right: 0;
+    display: none;
+}
+.card-question-horizontal-graph-column-grid__columns-text-percent.active {
+    display: block;
+}
+
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
 @media (max-width: 960px) {
     .card-question-horizontal-graph-column-grid__column-svg text {
@@ -28,4 +40,8 @@
     .card-question-horizontal-graph-column-grid__columns {
         height: 140px;
     }
+    .card-question-horizontal-graph-column-grid__columns-text-percent {
+        font-size: 12px;
+    }
+
 }
