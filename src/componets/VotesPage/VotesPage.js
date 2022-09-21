@@ -520,5 +520,4 @@ const VotesPage = (props) => {
         </div>
     )
 }
-
 export default VotesPage;
