@@ -3,7 +3,6 @@ import './CallVotingPageQuestionCardList.css';
 import CallVotingPageVoteButtonList from "../CallVotingPageVoteButtonList/CallVotingPageVoteButtonList";
 import MaterialsVoteQuestion from "../VotesStatusComponents/MaterialsVoteQuestion/MaterialsVoteQuestion";
 import CallVotingList from "../CallVotingPageQuestionCardList/CallVotingList/CallVotingList";
-import * as Events from '../../Api/Events';
 import successIcon from '../../img/votet-status-icon.svg';
 
 const CallVotingPageQuestionCardList = (props) => {
@@ -13,12 +12,14 @@ const CallVotingPageQuestionCardList = (props) => {
         questionColumns,
         questionRows,
         question,
-        eventId,
-        requestHelper,
         isReVoting,
         materialsQuestion,
-        getEvent,
-        currentEventData
+        currentEventData,
+        addAnswer,
+        removeAnswer,
+        isEventSended,
+        handleSendEventTrigger,
+        validateSendVoteButton
     } = props;
 
     const [answersArray, setAnswersArray] = useState([]);
@@ -27,9 +28,8 @@ const CallVotingPageQuestionCardList = (props) => {
     const [ruleTo, setRuleTo] = useState('');
     const [ruleText, setRuleText] = useState('');
     const [selectedAnswersTextColor, setSelectedAnswersTextColor] = useState('');
-    const [isButtonActive, setButtonActive] = useState(false);
     const [isBulletinVoted, setBulletinVoted] = useState(false);
-    const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false)
+    const [activeMaterialsQuestion, setActiveMaterialsQuestion] = useState(false);
 
     useEffect(() => {
         const filteredBulletin = currentEventData.ballots.find(ballot => ballot.bulletinId === question.bulletinId);
@@ -40,18 +40,26 @@ const CallVotingPageQuestionCardList = (props) => {
         }
     }, [currentEventData.ballots, question.bulletinId])
 
+    useEffect(() => {
+        if (isEventSended) {
+            setAnswersArray([]);
+            handleSendEventTrigger();
+        }
+        // eslint-disable-next-line
+    }, [isEventSended])
+
     function simpleQuestion(answers) {
         setRule(question.rules.pick_eq);
         setRuleText('Необходимо выбрать ровно ' + question.rules.pick_eq);
         if (answers.length === 0) {
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
             setSelectedAnswersTextColor('');
         } else if (answers.length === rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length > rule || answers.length < rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         }
     }
 
@@ -60,10 +68,10 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Количество должностных позиций доступных для выбора ' + question.rules.pick_le);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length === rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -72,13 +80,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Количество кандидатов доступных для выбора ' + question.rules.pick_le);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length === rule) {
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
         } else if (answers.length > rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         }
     }
 
@@ -87,13 +95,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Количество кандидатов доступных для выбора ' + question.rules.pick_le);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length <= rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length > rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         }
     }
 
@@ -102,10 +110,10 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Необходимо выбрать один или несколько');
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length > rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -114,13 +122,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Необходимо выбрать меньше чем ' + question.rules.pick_lt);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length < rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length >= rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         }
     }
 
@@ -129,13 +137,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Необходимо выбрать больше чем ' + question.rules.pick_gt);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length <= rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length > rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -144,13 +152,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Необходимо выбрать меньше или ровно ' + question.rules.pick_le);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length <= rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         } else if (answers.length > rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         }
     }
 
@@ -159,13 +167,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText('Необходимо выбрать больше или ровно ' + question.rules.pick_ge);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length < rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length >= rule) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -175,13 +183,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText(`Необходимо выбрать от ${question.rules.pick_gt} до ${question.rules.pick_lt}`);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length <= ruleFrom || answers.length >= ruleTo) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -191,13 +199,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText(`Необходимо выбрать от ${question.rules.pick_ge} (включительно) до ${question.rules.pick_le} (включительно)`);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length < ruleFrom || answers.length > ruleTo) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -207,13 +215,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText(`Необходимо выбрать от ${question.rules.pick_ge} (включительно) до ${question.rules.pick_lt}`);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length < ruleFrom || answers.length >= ruleTo) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -223,13 +231,13 @@ const CallVotingPageQuestionCardList = (props) => {
         setRuleText(`Необходимо выбрать от ${question.rules.pick_gt} до ${question.rules.pick_le} (включительно)`);
         if (answers.length === 0) {
             setSelectedAnswersTextColor('');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else if (answers.length <= ruleFrom || answers.length > ruleTo) {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_red');
-            setButtonActive(false);
+            validateSendVoteButton(false, question.id);
         } else {
             setSelectedAnswersTextColor('call-voting-page-question-card-list__selected-answers_green');
-            setButtonActive(true);
+            validateSendVoteButton(true, question.id);
         }
     }
 
@@ -345,43 +353,34 @@ const CallVotingPageQuestionCardList = (props) => {
     }, [materialsQuestion.length])
 
     function addAnswerToArray(rowId, columnId) {
+
         const dataToAdd = {
             id: rowId, // здесь мы отправляем id строк rows.id
             values: [
                 columnId // здесь мы отправляем массив из id колонок columns.id
             ]
         }
+
         setAnswersArray([...answersArray, dataToAdd]);
+
+        const dataToSend = {
+            for_user_id: "",
+            question_id: question.id, // здесь мы отправляем id вопроса questions.id
+            resData: dataToAdd
+        }
+
+        addAnswer(dataToSend);
+
     }
 
     function removeAnswerFromArray(rowId) {
         const filteredAnswers = answersArray.filter((answer => answer.id !== rowId));
         setAnswersArray(filteredAnswers);
+        removeAnswer(question.id, rowId);
     }
 
     function onReVoteButtonClick() {
         setBulletinVoted(false);
-    }
-
-    function sendVote() {
-        const dataToSend = {
-            for_user_id: "",
-            question_id: question.id, // здесь мы отправляем id вопроса questions.id
-            res: answersArray
-        }
-        const body = {
-            eventId: eventId,
-            eventArray: [
-                dataToSend
-            ]
-        }
-        requestHelper(Events.vote, body)
-            .then((data) => {
-                if (data.status === 'ok') {
-                    setAnswersArray([]);
-                    getEvent();
-                }
-            })
     }
 
     return (
@@ -420,9 +419,7 @@ const CallVotingPageQuestionCardList = (props) => {
                     })}
                 </div>
                 <CallVotingPageVoteButtonList
-                    sendVote={sendVote}
                     isReVoting={isReVoting}
-                    isButtonActive={isButtonActive}
                     isBulletinVoted={isBulletinVoted}
                     onReVoteClick={onReVoteButtonClick}
                 />
