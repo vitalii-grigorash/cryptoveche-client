@@ -20,7 +20,7 @@ const AmountVotesBlock = ({ statsData }) => {
 		}
 		return newArray;
 	}
-
+	
 	useEffect(() => {
 		if (statsData && Object.keys(statsData).length > 0) {
 			let sumVoiting = 0;
@@ -44,7 +44,7 @@ const AmountVotesBlock = ({ statsData }) => {
 			let sumLastArrayVoted = getArrayIntoTwoPart[1].reduce((acc, el) => acc + el, 0);
 		    let a = sumPrevArrayVoted;
 		    let b = sumLastArrayVoted;
-
+			
 			setDifference(Number(((b * 100 / a) - 100).toFixed(1)))
 				// (a > b)
 				// 	?
@@ -55,7 +55,7 @@ const AmountVotesBlock = ({ statsData }) => {
 		} else {
 			setDifference(0)
 		}
-	}, [sortedArray, difference])
+	}, [sortedArray])
 
 	useEffect(() => {
 		if (difference >= 0 || isNaN(difference)) {
