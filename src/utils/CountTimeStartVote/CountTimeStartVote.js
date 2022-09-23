@@ -5,6 +5,7 @@ export function getRemainingTimePointStartVote(timePointStartVote) {
 
     const timePointStartVoteDayjs = dayjs(timePointStartVote);
     const nowDayjs = dayjs();
+
     if(timePointStartVoteDayjs.isBefore(nowDayjs)) {
         return {
             seconds: '00',

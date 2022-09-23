@@ -28,6 +28,8 @@ const AmountVotesBlock = ({ statsData }) => {
 				sumVoiting += obj.voted;
 			}
 			setAverageValueVoiting(Math.floor(sumVoiting / statsData.voted.length))
+		} else {
+			setAverageValueVoiting(0)
 		}
 	}, [statsData])
 
@@ -86,7 +88,7 @@ const AmountVotesBlock = ({ statsData }) => {
 				<span className={differenceStyle}>
 					{difference + '%'}
 				</span>
-				{statsData.voted && statsData.voted.length > 0 && <Gistogramma statsVoted={statsData.voted} />}
+				{statsData.voted && statsData.voted.length > 20 && <Gistogramma statsVoted={statsData.voted} />}
 				<div className={'total-amount'}>
 					<h1>{averageValueVoiting.toFixed(0)}</h1>
 					<span>человек голосует ежедневно</span>

@@ -5,7 +5,6 @@ import CalendarVotesTimeTableDayVote
 import CalendarVotesTimeTableListVote from "./CalendarVotesTimeTableListVote/CalendarVotesTimeTableListVote";
 import {CurrentDayCalendarColorContext} from "../../contexts/CurrentDayCalendarColorContext";
 
-
 const CalendarVotesTimeTable = (props) => {
 
       const {
@@ -17,18 +16,18 @@ const CalendarVotesTimeTable = (props) => {
           formatDate
     } = props;
 
-       const currentEventDate = getEventDate.substring(0, 10).split('.').reverse().join('-')
        const currentDays = ['Воскресенье','Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
        const currentMonths = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
        const [colorCurrentDay, setColorCurrentDay] = useState('')
 
-       const sortCurrentDateVote = actualVotesDate.filter(el => el.registration_start_time.substring(0, 10) === currentEventDate
-               || el.registration_end_time.substring(0, 10) === currentEventDate
-               || el.event_start_time.substring(0, 10) === currentEventDate
-               || el.event_end_time.substring(0, 10) === currentEventDate)
-               .map(obj => {
-                   return obj;
-               })
+    const sortCurrentDateVote = actualVotesDate.filter(el =>
+        formatDate(new Date(el.registration_start_time)) === getEventDate.substring(0, 10)
+        || formatDate(new Date(el.registration_end_time)) === getEventDate.substring(0, 10)
+        || formatDate(new Date(el.event_start_time)) === getEventDate.substring(0, 10)
+        || formatDate(new Date(el.event_end_time)) === getEventDate.substring(0, 10))
+        .map(obj => {
+            return obj;
+        })
 
         return (
             <CurrentDayCalendarColorContext.Provider value={[colorCurrentDay, setColorCurrentDay]}>
@@ -47,7 +46,7 @@ const CalendarVotesTimeTable = (props) => {
                                      <CalendarVotesTimeTableListVote
                                            key={item.id}
                                            id={item.id}
-                                           currentEventDate={currentEventDate}
+                                           currentEventDate={getEventDate}
                                            votingTheme={item.title}
                                            timeStartReg={item.registration_start_time}
                                            timeEndReg={item.registration_end_time}

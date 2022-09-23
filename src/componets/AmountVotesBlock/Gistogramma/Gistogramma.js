@@ -10,7 +10,7 @@ const Gistogramma = ({ statsVoted }) => {
   const setVotedColumnForGraph = Array.from(new Set(sortedArray.slice(-20)));
 
   useEffect(() => {
-    if (statsVoted && statsVoted.length > 0) {
+    if (statsVoted && statsVoted.length > 20) {
       setSortedArray(statsVoted.sort((a, b) => a.day > b.day ? 1 : -1))
     }
   }, [statsVoted])

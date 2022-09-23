@@ -1,8 +1,8 @@
 export const config = {
     local_port: "8886",
-    node_ca_url: "http://evote65.dltc.spbu.ru:3000",
-    java_api_url: "https://client.evote65.dltc.spbu.ru:443/api",
-    ws_connect: "wss://client.evote65.dltc.spbu.ru/ws",
+    node_ca_url: "http://evote50.dltc.spbu.ru:3000",
+    java_api_url: "https://client.evote50.dltc.spbu.ru:443/api",
+    ws_connect: "wss://client.evote50.dltc.spbu.ru/ws",
     node_ca_get_auth_url_path: "/esia/get_auth_url_client",
     login_redirect: "/esia/login_redirect",
     java_api_esia_validate_path: "/esia/validate",
@@ -12,10 +12,32 @@ export const config = {
     lang: "ru",
     ws_user: "client",
     ws_pass: "client",
-    admin_url: "https://admin.evote65.dltc.spbu.ru",
-    ca_url: "https://client.evote65.dltc.spbu.ru/hlf/api/v1",
+    admin_url: "https://admin.evote50.dltc.spbu.ru",
+    ca_url: "https://client.evote50.dltc.spbu.ru/hlf/api/v1",
     max_input_length: 100,
     options_number_to_select_all: 4,
     enable_phone: false,
     default_offset: 3
 };
+
+// export const config = {
+//     local_port: "8886",
+//     node_ca_url: "http://evote65.dltc.spbu.ru:3000",
+//     java_api_url: "https://client.evote65.dltc.spbu.ru:443/api",
+//     ws_connect: "wss://client.evote65.dltc.spbu.ru/ws",
+//     node_ca_get_auth_url_path: "/esia/get_auth_url_client",
+//     login_redirect: "/esia/login_redirect",
+//     java_api_esia_validate_path: "/esia/validate",
+//     users_reset: "/users/reset",
+//     enable_esia: false,
+//     system_type: "political",
+//     lang: "ru",
+//     ws_user: "client",
+//     ws_pass: "client",
+//     admin_url: "https://admin.evote65.dltc.spbu.ru",
+//     ca_url: "https://client.evote65.dltc.spbu.ru/hlf/api/v1",
+//     max_input_length: 100,
+//     options_number_to_select_all: 4,
+//     enable_phone: false,
+//     default_offset: 3
+// };
