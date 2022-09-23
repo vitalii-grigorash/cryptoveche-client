@@ -28,6 +28,7 @@ const CallVotingPage = (props) => {
     const [arrayToSend, setArrayToSend] = useState([]);
     const [isEventSended, setEventSended] = useState(false);
     const [buttonValidationArray, setButtonValidationArray] = useState([]);
+    const [votedArray, setVotedArray] = useState([]);
 
     function templateRow(questions) {
         const filteredQuestions = questions.filter(e => e.template === 'ynq' || e.template === 'none' || e.template === 'position_single' || e.template === 'position_multiple' || e.template === 'same_positions');
@@ -94,7 +95,45 @@ const CallVotingPage = (props) => {
         }
     }
 
-    function addAnswer(data) {
+    function addSimpleAnswer(foundObject, filteredArray, data) {
+        foundObject.res.push(data.resData);
+        filteredArray.push(foundObject);
+        setArrayToSend(filteredArray);
+    }
+
+    function addGridAnswer(foundObject, filteredArray, data) {
+        const objToAdd = foundObject.res.find(obj => obj.id === data.resData.id);
+        if (objToAdd === undefined) {
+            foundObject.res.push(data.resData);
+            filteredArray.push(foundObject);
+            setArrayToSend(filteredArray);
+        } else {
+            objToAdd.values.push(data.resData.values[0]);
+            const filteredAnswersArray = foundObject.res.filter((answer => answer.id !== data.resData.id));
+            filteredAnswersArray.push(objToAdd);
+            foundObject.res = filteredAnswersArray;
+            filteredArray.push(foundObject);
+            setArrayToSend(filteredArray);
+        }
+    }
+
+    function addRadioGridAnswer(foundObject, filteredArray, data) {
+        const objToAdd = foundObject.res.find(obj => obj.id === data.resData.id);
+        if (objToAdd === undefined) {
+            foundObject.res.push(data.resData);
+            filteredArray.push(foundObject);
+            setArrayToSend(filteredArray);
+        } else {
+            objToAdd.values = [data.resData.values[0]];
+            const filteredAnswersArray = foundObject.res.filter((answer => answer.id !== data.resData.id));
+            filteredAnswersArray.push(objToAdd);
+            foundObject.res = filteredAnswersArray;
+            filteredArray.push(foundObject);
+            setArrayToSend(filteredArray);
+        }
+    }
+
+    function addAnswer(data, template) {
         const dataToAdd = {
             for_user_id: data.for_user_id,
             question_id: data.question_id,
@@ -103,27 +142,72 @@ const CallVotingPage = (props) => {
             ]
         }
         const foundObject = arrayToSend.find(question => question.question_id === data.question_id);
+        const filteredArray = arrayToSend.filter(question => question.question_id !== data.question_id);
         if (foundObject !== undefined) {
-            foundObject.res.push(data.resData);
-            const filteredArray = arrayToSend.filter(question => question.question_id !== data.question_id);
-            filteredArray.push(foundObject);
-            setArrayToSend(filteredArray);
+            if (template === 'grid') {
+                addGridAnswer(foundObject, filteredArray, data);
+            } else if (template === 'radio_grid') {
+                addRadioGridAnswer(foundObject, filteredArray, data);
+            } else {
+                addSimpleAnswer(foundObject, filteredArray, data);
+            }
         } else {
             setArrayToSend([...arrayToSend, dataToAdd]);
         }
     }
 
-    function removeAnswer(questionId, rowId) {
-        const foundObject = arrayToSend.find(question => question.question_id === questionId);
+    function removeSimpleAnswer(foundObject, filteredArray, rowId) {
         const newResArray = foundObject.res.filter(response => response.id !== rowId);
         foundObject.res = newResArray;
         if (foundObject.res.length === 0) {
-            const filteredArray = arrayToSend.filter(question => question.question_id !== questionId);
             setArrayToSend(filteredArray);
         } else {
-            const filteredArray = arrayToSend.filter(question => question.question_id !== questionId);
             filteredArray.push(foundObject);
             setArrayToSend(filteredArray);
+        }
+    }
+
+    function removeGridAnswer(foundObject, filteredArray, rowId, columnId) {
+        const currentAnswer = foundObject.res.find(answer => answer.id === rowId);
+        const filteredAnswersArray = foundObject.res.filter((answer => answer.id !== rowId));
+        const newValues = currentAnswer.values.filter((column => column !== columnId));
+        currentAnswer.values = newValues;
+        if (filteredAnswersArray.length === 0) {
+            setArrayToSend(filteredArray);
+        } else {
+            if (currentAnswer.values.length === 0) {
+                foundObject.res = filteredAnswersArray;
+                filteredArray.push(foundObject);
+                setArrayToSend(filteredArray);
+            } else {
+                filteredAnswersArray.push(currentAnswer)
+                foundObject.res = filteredAnswersArray;
+                filteredArray.push(foundObject);
+                setArrayToSend(filteredArray);
+            }
+        }
+    }
+
+    function removeRadioGridAnswer(foundObject, filteredArray, rowId) {
+        const filteredAnswersArray = foundObject.res.filter((answer => answer.id !== rowId));
+        foundObject.res = filteredAnswersArray
+        if (foundObject.res.length === 0) {
+            setArrayToSend(filteredArray);
+        } else {
+            filteredArray.push(foundObject);
+            setArrayToSend(filteredArray);
+        }
+    }
+
+    function removeAnswer(questionId, rowId, columnId, template) {
+        const foundObject = arrayToSend.find(question => question.question_id === questionId);
+        const filteredArray = arrayToSend.filter(question => question.question_id !== questionId);
+        if (template === 'grid') {
+            removeGridAnswer(foundObject, filteredArray, rowId, columnId);
+        } else if (template === 'radio_grid') {
+            removeRadioGridAnswer(foundObject, filteredArray, rowId);
+        } else {
+            removeSimpleAnswer(foundObject, filteredArray, rowId);
         }
     }
 
@@ -136,18 +220,15 @@ const CallVotingPage = (props) => {
     }
 
     function sendVote() {
-
         const body = {
             eventId: currentEventData.id,
             eventArray: arrayToSend
         }
-
-        console.log(body);
-
         requestHelper(Events.vote, body)
             .then((data) => {
-                console.log(data);
                 if (data.status === 'ok') {
+                    setVotedArray(arrayToSend);
+                    console.log(arrayToSend);
                     setArrayToSend([]);
                     setButtonValidationArray([]);
                     getEvent();
@@ -194,6 +275,7 @@ const CallVotingPage = (props) => {
                             isEventSended={isEventSended}
                             handleSendEventTrigger={handleSendEventTrigger}
                             validateSendVoteButton={validateSendVoteButton}
+                            votedArray={votedArray}
                         />
                     )
                 }))
@@ -207,13 +289,16 @@ const CallVotingPage = (props) => {
                             columns={question.options.columns}
                             rows={question.options.rows}
                             question={question}
-                            eventId={currentEventData.id}
-                            requestHelper={requestHelper}
                             isReVoting={currentEventData.re_voting}
                             results={results}
                             materialsQuestion={question.materials}
-                            getEvent={getEvent}
                             currentEventData={currentEventData}
+                            addAnswer={addAnswer}
+                            removeAnswer={removeAnswer}
+                            isEventSended={isEventSended}
+                            handleSendEventTrigger={handleSendEventTrigger}
+                            validateSendVoteButton={validateSendVoteButton}
+                            votedArray={votedArray}
                         />
                     )
                 }))

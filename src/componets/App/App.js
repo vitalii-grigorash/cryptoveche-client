@@ -443,7 +443,7 @@ function App() {
         }
     }
 
-    var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
+    var ws = new WebSocket("wss://client.evote50.dltc.spbu.ru/ws");
 
     useEffect(() => {
         ws.addEventListener('message', (e) => {

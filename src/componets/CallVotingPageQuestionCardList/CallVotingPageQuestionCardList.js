@@ -19,7 +19,8 @@ const CallVotingPageQuestionCardList = (props) => {
         removeAnswer,
         isEventSended,
         handleSendEventTrigger,
-        validateSendVoteButton
+        validateSendVoteButton,
+        votedArray
     } = props;
 
     const [answersArray, setAnswersArray] = useState([]);
@@ -37,8 +38,13 @@ const CallVotingPageQuestionCardList = (props) => {
             if (filteredBulletin.bulletinId === question.bulletinId) {
                 setBulletinVoted(true);
             }
+        } else {
+            const currentQuestionAnswer = votedArray.find((answer => answer.question_id === question.id))
+            if (currentQuestionAnswer !== undefined) {
+                setBulletinVoted(true);
+            }
         }
-    }, [currentEventData.ballots, question.bulletinId])
+    }, [currentEventData.ballots, question.bulletinId, votedArray, question.id])
 
     useEffect(() => {
         if (isEventSended) {
