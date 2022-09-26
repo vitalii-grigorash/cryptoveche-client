@@ -124,7 +124,7 @@ a {
 .form__button__link-gosuslugi {
     color: #0075FF;
 }
-.form__button button {
+.form__button-input-btn {
     background-color: #0075FF;
     width: 134px;
     height: 56px;
@@ -134,11 +134,35 @@ a {
     font-size: 18px;
     font-weight: 500;
 }
-.form__button button:hover {
+.form__button-input-btn:hover {
     background-color: #FFFFFF;
     color: #0075FF;
     border: 1px #0075FF solid;
 }
+.form__button-input-btn.active {
+    background-color: rgba(54, 59, 77, 0.08);
+    border: none;
+    cursor: default;
+    color: #0075FF;
+}
+
+/*.form__button-preloader {*/
+/*    z-index: 44;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 0;*/
+/*    overflow: hidden;*/
+/*    transition: 0.3s ease-in-out;*/
+/*    opacity: 0;*/
+/*    visibility: hidden;*/
+/*}*/
+/*.form__button-preloader.active {*/
+/*    width: 19px;*/
+/*    margin-right: 10px;*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*}*/
 /*------Блок регистрации--------------------------------------------------------------------------------------------*/
 .main-block__reg {
     position: relative;
@@ -201,7 +225,6 @@ a {
     line-height: 143%;
     color: #FF4970;
 }
-
 /*------Блок с ссылкой для мобильная версии на страницу регистрации--------------------------------------------------*/
 .main-block__mobile-link-reg {
     display: none;
@@ -357,7 +380,7 @@ a {
     .form__select, .form__login, .form__pass input {
         max-width: 450px;
     }
-    .form__button button {
+    .form__button-input-btn {
         height: 40px;
     }
     .checkbox_container {
@@ -422,7 +445,7 @@ a {
     .form__select input, .form__login input, .form__pass input {
         width: 300px;
     }
-    .form__button button {
+    .form__button-input-btn {
         height: 40px;
     }
     .form__button span {
@@ -496,7 +519,7 @@ a {
         padding-bottom: 52px;
         gap: 12px;
     }
-    .form__button button {
+    .form__button-input-btn {
         width: 132px;
         height: 48px;
         font-size: 16px;

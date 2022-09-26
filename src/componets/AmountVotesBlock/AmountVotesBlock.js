@@ -4,7 +4,12 @@ import Gistogramma from "./Gistogramma/Gistogramma";
 import gistogramma_procent_row_icon from "../../img/AmountVotesGistogramma_procent_icon.svg";
 import gistogramma_procent_row_icon_negative from '../../img/AmountVotesGistogramma_procent_icon_negative.png'
 
-const AmountVotesBlock = ({ statsData }) => {
+const AmountVotesBlock = (props) => {
+
+	const {
+		statsData,
+		formatDate
+	} = props;
 
 	const [averageValueVoiting, setAverageValueVoiting] = useState(0);
 	const [sortedArray, setSortedArray] = useState([]);
@@ -44,10 +49,10 @@ const AmountVotesBlock = ({ statsData }) => {
 			let getArrayIntoTwoPart = splitArrayIntoTwoPart(filterSortedArrayVoted, Math.floor(sortedArray.length / 2));
 			let sumPrevArrayVoted = getArrayIntoTwoPart[0].reduce((acc, el) => acc + el, 0);
 			let sumLastArrayVoted = getArrayIntoTwoPart[1].reduce((acc, el) => acc + el, 0);
-		    let a = sumPrevArrayVoted;
-		    let b = sumLastArrayVoted;
-			
-			setDifference(Number(((b * 100 / a) - 100).toFixed(1)))
+		    let prevResult = sumPrevArrayVoted;
+		    let lastResult = sumLastArrayVoted;
+
+			setDifference(Number(((lastResult * 100 / prevResult) - 100).toFixed(1)))
 				// (a > b)
 				// 	?
 				// 	Number((-(((a * 100) / b) - 100)).toFixed(1))
@@ -88,7 +93,9 @@ const AmountVotesBlock = ({ statsData }) => {
 				<span className={differenceStyle}>
 					{difference + '%'}
 				</span>
-				{statsData.voted && statsData.voted.length > 20 && <Gistogramma statsVoted={statsData.voted} />}
+				{statsData.voted && statsData.voted.length > 0 && <Gistogramma
+					statsVoted={statsData.voted}
+					formatDate={formatDate}/>}
 				<div className={'total-amount'}>
 					<h1>{averageValueVoiting.toFixed(0)}</h1>
 					<span>человек голосует ежедневно</span>

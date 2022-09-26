@@ -6,6 +6,7 @@ import MyProfilePageAdditionalSettings from "../ MyProfilePageAdditionalSettings
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import MyProfilePageSetPassword from "../ MyProfilePageSetPassword/ MyProfilePageSetPassword";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import PreLoaderCallVotingPage from "../PreLoaderCallVotingPage/PreLoaderCallVotingPage";
 
 const MyProfilePage = (props) => {
 
@@ -14,6 +15,7 @@ const MyProfilePage = (props) => {
         utcOffset,
         allEvents,
         formatTime,
+        formatDate,
         createUserName,
         handleLogout,
         setOffset
@@ -57,7 +59,8 @@ const MyProfilePage = (props) => {
                 <div className={'main-content__grid-item_3'}>
                     <CalendarVotes
                         allEvents={allEvents}
-                        formatTime={formatTime}/>
+                        formatTime={formatTime}
+                        formatDate={formatDate}/>
                 </div>
                 <div className={'main-content__grid-item_4'}>
                     <MyProfilePageSetPassword

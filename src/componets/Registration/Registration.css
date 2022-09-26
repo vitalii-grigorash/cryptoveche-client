@@ -111,12 +111,12 @@ a {
     color: rgba(54, 59, 77, 0.9);
     gap: 32px;
 }
-
 .reg-form__title {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     color: rgba(54, 59, 77, 0.9);
+    gap: 19px;
 }
 .reg-form__title h3 {
     font-weight: 600;
@@ -158,7 +158,6 @@ a {
     font-weight: 400;
     color: rgba(54, 59, 77, 0.9);
 }
-
 .username-forms {
     display: flex;
     flex-direction: column;
@@ -184,7 +183,6 @@ a {
     top: 0;
     left: 42px;
 }
-
 /*------Форма регистрации E-mail--------------------------------------------------------------------------------------------*/
 .reg-form__e-mail {
     display: flex;
@@ -410,7 +408,7 @@ a {
     color: #0084FE;
 }
 /*------Кнопка зарегистрироваться--------------------------------------------------------------------------------------*/
-.reg-form__button button {
+.reg-form__button-btn-reg {
     cursor: pointer;
     width: 234px;
     height: 56px;
@@ -425,10 +423,16 @@ a {
 .reg-form__button.active {
     display: initial;
 }
-.reg-form__button button:hover {
+.reg-form__button-btn-reg:hover {
     background-color: #FFFFFF;
     color: #0084FE;
     border: 1px #0084FE solid;
+}
+.reg-form__button-btn-reg.active {
+    background-color: rgba(54, 59, 77, 0.08);
+    border: none;
+    cursor: default;
+    color: #0075FF;
 }
 .reg-form__button span {
     color: rgba(54, 59, 77, 0.4);
@@ -598,7 +602,6 @@ a {
         z-index: 1;
         color: #0075FF;
         gap: 6px;
-
     }
     .reg-form__title span:last-child {
         font-size: 14px;
@@ -612,9 +615,7 @@ a {
     .reg-block-logotype__button button {
         width: 47px;
         height: 24px;
-
     }
-
     .reg-form__username {
         display: flex;
         flex-direction: column;
@@ -744,7 +745,7 @@ a {
         line-height: 22px;
         font-weight: 400;
     }
-    .reg-form__button button {
+    .reg-form__button-btn-reg {
         width: 343px;
         height: 48px;
         font-size: 16px;

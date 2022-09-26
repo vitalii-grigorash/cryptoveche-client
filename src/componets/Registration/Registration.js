@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import './Registration.css';
 import logo from "../../img/Auth_logo_crypto_veche.svg";
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -16,7 +16,6 @@ import { Validation } from '../../utils/Validation';
 import row_icon_title from "../../img/Registration_row_icon.svg";
 import RegistrationPasswordRequireModal from "./RegistrationPasswordRequireModal/RegistrationPasswordRequireModal";
 
-
 const Registration = (props) => {
 
     const {
@@ -28,7 +27,8 @@ const Registration = (props) => {
         changeBorderInputEmail,
         hideRegisterModal,
         hideRegForm,
-        hideRegEmailErrors
+        hideRegEmailErrors,
+        preLoaderReg
     } = props;
 
     const firstName = Validation();
@@ -83,6 +83,10 @@ const Registration = (props) => {
             setChangeTypeRepeatPass('password')
         }
     }
+
+    useEffect(() => {
+
+    })
 
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -215,7 +219,7 @@ const Registration = (props) => {
                         <div className={'reg-form__title'}>
                             <img onClick={() => { mobileHideElem() }} alt={'стрелочка ссылка'} className={showHideElem ? 'reg-form__title-row-icon active' : 'reg-form__title-row-icon'} src={row_icon_title} />
                             <h3>Регистрация</h3>
-                            <div><span>РУС</span><span>ENG</span></div>
+                            {/*<div><span>РУС</span><span>ENG</span></div>*/}
                         </div>
                         <div className={showHideElem ? 'reg-form__username active' : 'reg-form__username'}>
                             <div className={'username-forms'}>
@@ -320,7 +324,7 @@ const Registration = (props) => {
                         </div>
                         <div className={showHideElem ? 'reg-form__button active' : 'reg-form__button _reg-block-show'}>
                             <span className={'_reg-block-hidden'}>Шаг 2 из 2, почти готово</span>
-                            <button type={'submit'}>Зарегистрироваться</button>
+                            <button  className={preLoaderReg ? 'reg-form__button-btn-reg active' : 'reg-form__button-btn-reg'} type={'submit'}>{preLoaderReg ? 'Загрузка...' : 'Зарегистрироваться'}</button>
                             <p className='reg-form__validate-error'>{firsPageError}</p>
                         </div>
                     </form>
