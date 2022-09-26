@@ -49,21 +49,15 @@ function App() {
                 const jwtTokens = JSON.parse(jwt);
                 request(jwtTokens.access_token, body)
                     .then((res) => {
-                        console.log('Первый ответ:')
-                        console.log(res);
                         if (res.status === 'failure') {
                             Auth.getNewTokens(jwtTokens.refresh_token)
                                 .then((newTokens) => {
-                                    console.log('Новые токены:')
-                                    console.log(newTokens);
                                     if (newTokens.status === 'failure') {
                                         logout();
                                     } else {
                                         localStorage.setItem('jwt', JSON.stringify(newTokens));
                                         request(newTokens.access_token, body)
                                             .then((res) => {
-                                                console.log('Второй ответ:')
-                                                console.log(res);
                                                 resolve(res);
                                             })
                                             .catch((err) => {
@@ -307,25 +301,24 @@ function App() {
         }
     }
 
-    const toggleEventRegistration = (eventId) => {
+    const toggleEventRegistration = (eventId, isRegistered) => {
         const body = {
             id: eventId
         }
         requestHelper(Events.registrationUserInEvents, body)
             .then((data) => {
-                console.log(data);
                 if (data.status === 'ok') {
                     requestHelper(Events.getEvents)
                         .then((data) => {
                             setAllEvents(data);
-                            const curentEvent = data.find(event => event.id === eventId);
-                            if (curentEvent.isRegistered) {
+                            if (!isRegistered) {
                                 handleShowSuccessModal();
                                 setSuccessModalText('Вы успешно зарегистрировались!');
                             } else {
                                 handleShowSuccessModal();
                                 setSuccessModalText('Вы успешно отменили зарегистрацию!');
                             }
+                            handleReloadDetailsPage();
                         })
                         .catch((err) => {
                             throw new Error(err.message);

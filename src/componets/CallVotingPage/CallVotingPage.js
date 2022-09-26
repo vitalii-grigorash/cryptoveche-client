@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './CallVotingPage.css';
 import mobile_icon_details_vote from '../../img/CallVotingMobileIcon.svg';
-import DetailsVotesPageDaysEndRegStartVote
-    from "../DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote";
-import TitleVotesDetailsCallVotingProfile
-    from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
+import DetailsVotesPageDaysEndRegStartVote from "../DetailsVotesPageDaysEndRegStartVote/DetailsVotesPageDaysEndRegStartVote";
+import TitleVotesDetailsCallVotingProfile from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import CallVotingPageQuestionCardList from "../CallVotingPageQuestionCardList/CallVotingPageQuestionCardList";
-import CallVotingPageQuestionCardCheckBox
-    from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
+import CallVotingPageQuestionCardCheckBox from "../CallVotingPageQuestionCardCheckBox/CallVotingPageQuestionCardCheckBox";
 import { useNavigate } from "react-router-dom";
 import * as Events from '../../Api/Events';
 import VoteButton from "../VoteButton/VoteButton";
@@ -228,7 +225,6 @@ const CallVotingPage = (props) => {
             .then((data) => {
                 if (data.status === 'ok') {
                     setVotedArray(arrayToSend);
-                    console.log(arrayToSend);
                     setArrayToSend([]);
                     setButtonValidationArray([]);
                     getEvent();

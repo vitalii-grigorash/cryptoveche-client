@@ -20,13 +20,55 @@ const ConfirmRegMaterialsVote = (props) => {
   const [activeMaterials, setActiveMaterials] = useState(false);
 
   useEffect(() => {
-    if (votesData.status === 'waiting') {
+    if (votesData.isProcessing) {
       setStatusIcon(warningIcon);
-      setStatusText('Ожидайте регистрации');
+      setStatusText('В обработке...');
       setStatusClassName('status-icon__color-status_warning');
-    } else if (votesData.status === 'registration') {
-      if (votesData.isRegistered) {
-        if (votesData.isVoting) {
+    } else {
+      if (votesData.status === 'waiting') {
+        setStatusIcon(warningIcon);
+        setStatusText('Ожидайте регистрации');
+        setStatusClassName('status-icon__color-status_warning');
+      } else if (votesData.status === 'registration') {
+        if (votesData.isRegistered) {
+          if (votesData.isVoting) {
+            if (isVoted) {
+              setStatusIcon(votedBlueIcon);
+              setStatusText('Вы проголосовали');
+              setStatusClassName('status-icon__color-status_voted');
+            } else {
+              if (isNotFullyVoted) {
+                setStatusIcon(warningIcon);
+                setStatusText('Вы проголосовали не по всем вопросам');
+                setStatusClassName('status-icon__color-status_warning');
+              } else {
+                setStatusIcon(notRegisteredEventIcon);
+                setStatusText('Вы не проголосовали');
+                setStatusClassName('status-icon__color-status_not-registered');
+              }
+            }
+          } else {
+            setStatusIcon(registeredEventIcon);
+            setStatusText('Вы зарегистрированы');
+            setStatusClassName('status-icon__color-status_registered');
+          }
+        } else {
+          setStatusIcon(notRegisteredEventIcon);
+          setStatusText('Вы не зарегистрированы');
+          setStatusClassName('status-icon__color-status_not-registered');
+        }
+      } else if (votesData.status === 'event waiting') {
+        if (votesData.isRegistered) {
+          setStatusIcon(registeredEventIcon);
+          setStatusText('Вы зарегистрированы');
+          setStatusClassName('status-icon__color-status_registered');
+        } else {
+          setStatusIcon(notRegisteredEventIcon);
+          setStatusText('Вы не зарегистрированы');
+          setStatusClassName('status-icon__color-status_not-registered');
+        }
+      } else if (votesData.status === 'voting') {
+        if (votesData.isRegistered) {
           if (isVoted) {
             setStatusIcon(votedBlueIcon);
             setStatusText('Вы проголосовали');
@@ -43,27 +85,11 @@ const ConfirmRegMaterialsVote = (props) => {
             }
           }
         } else {
-          setStatusIcon(registeredEventIcon);
-          setStatusText('Вы зарегистрированы');
-          setStatusClassName('status-icon__color-status_registered');
+          setStatusIcon(notRegisteredEventIcon);
+          setStatusText('Вы не зарегистрированы');
+          setStatusClassName('status-icon__color-status_not-registered');
         }
-      } else {
-        setStatusIcon(notRegisteredEventIcon);
-        setStatusText('Вы не зарегистрированы');
-        setStatusClassName('status-icon__color-status_not-registered');
-      }
-    } else if (votesData.status === 'event waiting') {
-      if (votesData.isRegistered) {
-        setStatusIcon(registeredEventIcon);
-        setStatusText('Вы зарегистрированы');
-        setStatusClassName('status-icon__color-status_registered');
-      } else {
-        setStatusIcon(notRegisteredEventIcon);
-        setStatusText('Вы не зарегистрированы');
-        setStatusClassName('status-icon__color-status_not-registered');
-      }
-    } else if (votesData.status === 'voting') {
-      if (votesData.isRegistered) {
+      } else if (votesData.status === 'ended' || votesData.status === 'quorum_unpresant') {
         if (isVoted) {
           setStatusIcon(votedBlueIcon);
           setStatusText('Вы проголосовали');
@@ -79,35 +105,17 @@ const ConfirmRegMaterialsVote = (props) => {
             setStatusClassName('status-icon__color-status_not-registered');
           }
         }
-      } else {
-        setStatusIcon(notRegisteredEventIcon);
-        setStatusText('Вы не зарегистрированы');
-        setStatusClassName('status-icon__color-status_not-registered');
-      }
-    } else if (votesData.status === 'ended' || votesData.status === 'quorum_unpresant') {
-      if (isVoted) {
-        setStatusIcon(votedBlueIcon);
-        setStatusText('Вы проголосовали');
-        setStatusClassName('status-icon__color-status_voted');
-      } else {
-        if (isNotFullyVoted) {
-          setStatusIcon(warningIcon);
-          setStatusText('Вы проголосовали не по всем вопросам');
-          setStatusClassName('status-icon__color-status_warning');
-        } else {
-          setStatusIcon(notRegisteredEventIcon);
-          setStatusText('Вы не проголосовали');
-          setStatusClassName('status-icon__color-status_not-registered');
-        }
       }
     }
+
   },
     [
       votesData.isRegistered,
       isVoted,
       isNotFullyVoted,
       votesData.status,
-      votesData.isVoting
+      votesData.isVoting,
+      votesData.isProcessing
     ]
   );
 
