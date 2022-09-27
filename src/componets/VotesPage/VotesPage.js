@@ -41,7 +41,7 @@ const VotesPage = (props) => {
     const [activeEventsForRender, setActiveEventsForRender] = useState([]);
     const [archiveEventsForRender, setArchiveEventsForRender] = useState([]);
     const [activeEmptyStateMessage, setActiveStateEmptyMessage] = useState(false)
-    const [sortType, setSortType] = useState({})
+    const [sortType, setSortType] = useState('')
     const [showResultsFrom, setShowResultsFrom] = useState(0);
     const [resultsShow, setResultsShow] = useState(5);
     const [result, setResult] = useState(5);
@@ -165,7 +165,7 @@ const VotesPage = (props) => {
             }
         } else if (btnArchiveVotes) {
             if (archiveEventsSearchInput === '') {
-                setArchiveEventsForRender(archiveEvents);
+                setArchiveEventsForRender(archiveEvents.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1));
             } else {
                 const dataForRender = [];
                 archiveEvents.forEach((event) => {
@@ -173,7 +173,7 @@ const VotesPage = (props) => {
                         dataForRender.push(event);
                     }
                 })
-                setArchiveEventsForRender(dataForRender);
+                setArchiveEventsForRender(dataForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1));
             }
         }
     },
@@ -320,7 +320,7 @@ const VotesPage = (props) => {
                 case '-endVote':
                     activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
                     break;
-                default: { }
+                default: {}
             }
         } else {
             if (btnArchiveVotes) {

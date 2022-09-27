@@ -111,7 +111,6 @@ const MyProfilePageSetPassword = (props) => {
             btnChangeColor.current.style = { background: 'rgba(54, 59, 77, 0.08)',
                                              color: 'rgba(54, 59, 77, 0.35)',
                                              cursor: 'initial'}
-
         }
     }
 

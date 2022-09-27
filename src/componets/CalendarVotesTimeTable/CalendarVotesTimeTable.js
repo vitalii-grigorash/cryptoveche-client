@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './CalendarVotesTimeTable.css';
 import CalendarVotesTimeTableDayVote
     from "./CalendarVotesTimeTableDayVote/CalendarVotesTimeTableDayVote/CalendarVotesTimeTableDayVote";
@@ -19,15 +19,27 @@ const CalendarVotesTimeTable = (props) => {
        const currentDays = ['Воскресенье','Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
        const currentMonths = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
        const [colorCurrentDay, setColorCurrentDay] = useState('')
+       const [activeColorDay, setActiveColorDay] = useState(false);
+       const colorDayEventNow = new Date().toLocaleString().substring(0, 10);
 
-    const sortCurrentDateVote = actualVotesDate.filter(el =>
-        formatDate(new Date(el.registration_start_time)) === getEventDate.substring(0, 10)
-        || formatDate(new Date(el.registration_end_time)) === getEventDate.substring(0, 10)
-        || formatDate(new Date(el.event_start_time)) === getEventDate.substring(0, 10)
-        || formatDate(new Date(el.event_end_time)) === getEventDate.substring(0, 10))
-        .map(obj => {
-            return obj;
-        })
+       const sortCurrentDateVote = actualVotesDate.filter(el =>
+            formatDate(new Date(el.registration_start_time)) === getEventDate.substring(0, 10)
+            || formatDate(new Date(el.registration_end_time)) === getEventDate.substring(0, 10)
+            || formatDate(new Date(el.event_start_time)) === getEventDate.substring(0, 10)
+            || formatDate(new Date(el.event_end_time)) === getEventDate.substring(0, 10))
+            .map(obj => {
+                return obj;
+            })
+
+        function findColorDay() {
+           if (colorDayEventNow === getEventDate.substring(0, 10)) {
+               setActiveColorDay(true)
+           }
+        }
+
+        useEffect(() => {
+            findColorDay();
+        },[])
 
         return (
             <CurrentDayCalendarColorContext.Provider value={[colorCurrentDay, setColorCurrentDay]}>
@@ -35,7 +47,8 @@ const CalendarVotesTimeTable = (props) => {
                     <div>
                         <CalendarVotesTimeTableDayVote
                             calendarDate={`${getEventDate.substring(0, 2)} ${currentMonths[getEventMonth + 1]} ${getEventDate.substring(6, 10)} года`}
-                            dayWeek={currentDays[getEventDay]}/>
+                            dayWeek={currentDays[getEventDay]}
+                            activeColorDay={activeColorDay}/>
                     </div>
                     <div className={'calendar-votes-timetable__hidden-border'}>
                     </div>

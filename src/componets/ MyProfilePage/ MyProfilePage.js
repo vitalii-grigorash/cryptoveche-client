@@ -6,7 +6,6 @@ import MyProfilePageAdditionalSettings from "../ MyProfilePageAdditionalSettings
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import MyProfilePageSetPassword from "../ MyProfilePageSetPassword/ MyProfilePageSetPassword";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import PreLoaderCallVotingPage from "../PreLoaderCallVotingPage/PreLoaderCallVotingPage";
 
 const MyProfilePage = (props) => {
 

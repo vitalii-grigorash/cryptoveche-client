@@ -56,7 +56,7 @@ const ActualBlock = (props) => {
         }
       }
     }
-  }, [currentVote]);
+  }, [currentVote.ballots]);
 
   useEffect(() => {
     if (currentVote && Object.keys(currentVote).length > 0) {
@@ -74,7 +74,7 @@ const ActualBlock = (props) => {
       if (countIndexofSortActualEvents === 0) {
         setArrowLeftStyle('diagramm-container__row-button-left_hide');
       }
-    };
+    }
   },
     [
       currentVote,
