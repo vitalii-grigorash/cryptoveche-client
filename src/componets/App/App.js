@@ -2,6 +2,7 @@ import './App.css';
 import '../Authorization/Authorization';
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { config } from '../../config';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Authorization from "../Authorization/Authorization";
@@ -21,6 +22,8 @@ import * as Events from '../../Api/Events';
 
 function App() {
 
+    const wsConnect = config.ws_connect;
+    const ws = new WebSocket(wsConnect);
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -41,6 +44,7 @@ function App() {
     const [changeUtcOffset, setChangeUtcOffset] = useState('');
     const [joinId, setJoinId] = useState('');
     const [isReloadDetailsPage, setReloadDetailsPage] = useState(false);
+    const [eventIdByLink, setEventIdByLink] = useState('');
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -87,7 +91,6 @@ function App() {
         }
         requestHelper(Events.joinEventByLink, body)
             .then((data) => {
-                console.log(data);
                 if (data.status === "ok") {
                     setJoinId('');
                     requestHelper(Events.getEvents)
@@ -130,6 +133,11 @@ function App() {
             } else if (url[3] === 'join') {
                 joinEvent(url[4]);
                 navigate('/');
+            } else if (url[3] === 'waiting') {
+                const data = {
+                    id: url[4]
+                }
+                handleCurrentEvents(data, true);
             }
         }
         // eslint-disable-next-line
@@ -228,6 +236,11 @@ function App() {
                         if (joinId !== '') {
                             joinEvent(joinId);
                             navigate('/');
+                        } else if (eventIdByLink !== '') {
+                            const data = {
+                                id: eventIdByLink
+                            }
+                            handleCurrentEvents(data, true);
                         } else {
                             navigate('/');
                         }
@@ -251,7 +264,7 @@ function App() {
                 pathname === '/auth' ||
                 pathname === '/forget-password' ||
                 pathname === '/rstpwd' ||
-                pathname === '/reg-page' ||
+                pathname === '/registration' ||
                 pathname === '/reg-second-page'
             ) {
                 navigate('/');
@@ -270,6 +283,9 @@ function App() {
             } else if (url[3] === 'join') {
                 setJoinId(url[4]);
                 logout();
+            } else if (url[3] === 'waiting') {
+                setEventIdByLink(url[4]);
+                logout();
             }
         }
         // eslint-disable-next-line
@@ -282,20 +298,34 @@ function App() {
 
     function handleRegister(registerData) {
         if (isPolicyAccept) {
-            Auth.registration(registerData)
-                .then((res) => {
-                    if (res.text === 'User has already exist') {
-                        setChangeBorderInputEmail('_input-border-red');
-                        setEmailErrorMessage('Пользователь с данным email уже существует');
-                    } else {
-                        setModalActive(true);
-                        hideRegEmailErrors();
-                        setHideRegForm(true);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                })
+            if (registerData.isRegistrationByToken) {
+                Auth.registrationUserByToken(registerData)
+                    .then((res) => {
+                        if (res.status === 'ok') {
+                            setModalActive(true);
+                            hideRegEmailErrors();
+                            setHideRegForm(true);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                    })
+            } else {
+                Auth.registration(registerData)
+                    .then((res) => {
+                        if (res.text === 'User has already exist') {
+                            setChangeBorderInputEmail('_input-border-red');
+                            setEmailErrorMessage('Пользователь с данным email уже существует');
+                        } else {
+                            setModalActive(true);
+                            hideRegEmailErrors();
+                            setHideRegForm(true);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                    })
+            }
         } else {
             console.log('Необходимо отметить ознакомление с политикой');
         }
@@ -352,6 +382,7 @@ function App() {
         }
         if (isDetailsClick) {
             navigate('/details-vote');
+            setEventIdByLink('');
         } else {
             navigate('/call-voting-page');
         }
@@ -436,14 +467,12 @@ function App() {
         }
     }
 
-    var ws = new WebSocket("wss://client.evote50.dltc.spbu.ru/ws");
-
     useEffect(() => {
         ws.addEventListener('message', (e) => {
             console.log('WebSocketMessage');
             console.log(JSON.parse(e.data));
         })
-    }, [])
+    })
 
     // useEffect(() => {
     //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
@@ -481,7 +510,20 @@ function App() {
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
                             <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
-                            <Route path='/reg-page'
+                            <Route exact path='/registration'
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
+                                />}
+                            />
+                            <Route path='/registration/:token'
                                 element={<Registration
                                     handleRegister={handleRegister}
                                     handlePolicyAccept={handlePolicyAccept}

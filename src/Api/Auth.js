@@ -142,3 +142,53 @@ export const resetUserPassword = (token, password) => {
             }
         });
 };
+
+export const getUserByToken = (token) => {
+    return fetch(`${API_URL}/users/reset/${token}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(data => data)
+        .catch((err) => {
+            throw new Error(err.message);
+        });
+};
+
+export const registrationUserByToken = (userData) => {
+    return fetch(`${API_URL}/users/registration/${userData.token}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            password: userData.password,
+            first_name: userData.first_name,
+            second_name: userData.second_name,
+            last_name: userData.last_name,
+            utc_offset: userData.utc_offset,
+            userFields: userData.userFields
+        })
+    })
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then((data) => {
+            return data;
+        })
+        .catch((err) => {
+            if (err.status === 500) {
+                throw new Error('Сервер временно недоступен');
+            }
+        });
+};
