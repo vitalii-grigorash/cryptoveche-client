@@ -1,6 +1,5 @@
 import React from "react";
 import './CardQuestionHorizontalGraphRow.css';
-import CardQuestionHorizontalGraphColumn from "../CardQuestionHorizontalGraphColumn/CardQuestionHorizontalGraphColumnRow";
 import CardQuestionHorizontalGraphColumnRow
     from "../CardQuestionHorizontalGraphColumn/CardQuestionHorizontalGraphColumnRow";
 import CardQuestionHorizontalGraphColumnRowInvalidBallots

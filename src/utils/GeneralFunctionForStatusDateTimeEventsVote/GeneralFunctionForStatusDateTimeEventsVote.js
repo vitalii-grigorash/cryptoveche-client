@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import React from "react";
 
 export function getRemainingTimePointEventsVote(point) {
     const timePointEventsDayjs = dayjs(point);

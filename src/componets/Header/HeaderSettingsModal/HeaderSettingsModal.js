@@ -10,16 +10,16 @@ const HeaderSettingsModal = ({active, setActive}) => {
 
     function upFonts() {
         //при помощи JS увеличить размер шрифта html на 2px
-        let html = document.getElementById('qqq')
-        html.style.fontSize = html.fontSize  =  '24px';
+        // let html = document.querySelector('header-settings-modal__wrapper')
+        // html.style.fontSize = html.fontSize  =  '24px';
         setShowBtnLowFont(true)
         setHideBtnUpFont(false)
     }
 
     function lowFonts() {
         //при помощи JS увеличить размер шрифта html на 2px
-        let html = document.getElementById('qqq')
-        html.style.fontSize = html.fontSize  =  '16px';
+        // let html = document.getElementById('qqq')
+        // html.style.fontSize = html.fontSize  =  '16px';
         setShowBtnLowFont(false)
         setHideBtnUpFont(true)
     }
@@ -43,7 +43,7 @@ const HeaderSettingsModal = ({active, setActive}) => {
 
     return (
             <div className={active ? 'header-settings-modal__wrapper active' : 'header-settings-modal__wrapper'}>
-                <div id={'qqq'} className={active ? 'header-settings-modal__modal-content active' : 'header-settings-modal__modal-content'} onClick={e => e.stopPropagation()}>
+                <div className={active ? 'header-settings-modal__modal-content active' : 'header-settings-modal__modal-content'} onClick={e => e.stopPropagation()}>
                     <div className={'modal-content__size-font'}>
                         <span>Размер шрифта</span>
                         {

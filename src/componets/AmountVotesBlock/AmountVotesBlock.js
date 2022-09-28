@@ -49,16 +49,12 @@ const AmountVotesBlock = (props) => {
 			let getArrayIntoTwoPart = splitArrayIntoTwoPart(filterSortedArrayVoted, Math.floor(sortedArray.length / 2));
 			let sumPrevArrayVoted = getArrayIntoTwoPart[0].reduce((acc, el) => acc + el, 0);
 			let sumLastArrayVoted = getArrayIntoTwoPart[1].reduce((acc, el) => acc + el, 0);
-		    let prevResult = sumPrevArrayVoted;
-		    let lastResult = sumLastArrayVoted;
-
-			setDifference(Number(((lastResult * 100 / prevResult) - 100).toFixed(1)))
+			setDifference(Number(((sumLastArrayVoted * 100 / sumPrevArrayVoted) - 100).toFixed(1)))
 				// (a > b)
 				// 	?
 				// 	Number((-(((a * 100) / b) - 100)).toFixed(1))
 				// 	:
 				// 	Number((((b * 100) / a) - 100).toFixed(1))
-
 		} else {
 			setDifference(0)
 		}

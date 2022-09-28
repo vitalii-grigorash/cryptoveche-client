@@ -3,8 +3,6 @@ import './DetailsVotesPageResultVotesCardQuestionGraphRow.css';
 import CardQuestionVerticalGraphGrid from "./CardQuestionVerticalGraph/CardQuestionVerticalGraphGrid";
 import CardQuestionGraphNameColumnGrid from "./CardQuestionGraphNameColumn/CardQuestionGraphNameColumnGrid";
 import CardQuestionHorizontalGraphGrid from "./CardQuestionHorizontalGraph/CardQuestionHorizontalGraphGrid";
-import CardQuestionHorizontalGraphColumnGrid
-    from "./CardQuestionHorizontalGraphColumn/CardQuestionHorizontalGraphColumnGrid";
 
 const DetailsVotesPageResultVotesCardQuestionGraphGrid = (props) => {
 
