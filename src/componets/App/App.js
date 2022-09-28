@@ -190,7 +190,6 @@ function App() {
                         if (isRememberMe) {
                             localStorage.setItem('user', JSON.stringify(res));
                         }
-                        setAuthError('');
                         setLoggedIn(true);
                         setCurrentUser(res);
                         createUserName(res);
@@ -201,7 +200,8 @@ function App() {
                 .catch((err) => {
                     console.log(err);
                 })
-            setPreloaderAuthBtn(true)
+            setPreloaderAuthBtn(true);
+            setAuthError('');
         }
     }
 
