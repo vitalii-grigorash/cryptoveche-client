@@ -1,0 +1,17 @@
+.vote-button {
+    width: 170px;
+    height: 48px;
+    margin: 0 auto 0 0;
+    cursor: pointer;
+    background: #0084FE;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.vote-button_disabled {
+    background: rgba(54, 59, 77, 0.08);
+    color: rgba(54, 59, 77, 0.35);
+    cursor: default;
+}

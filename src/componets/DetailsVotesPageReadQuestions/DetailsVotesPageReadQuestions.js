@@ -49,13 +49,17 @@ const DetailsVotesPageReadQuestions = (props) => {
                 )
             }))
             }
-            <RegistrationButton
-                votesData={currentEventData}
-                handleCurrentEvents={handleCurrentEvents}
-                toggleEventRegistration={toggleEventRegistration}
-                showEventResult={showEventResult}
-                isVoted={isVoted}
-            />
+            {!currentEventData.isProcessing && (
+                <>
+                    <RegistrationButton
+                        votesData={currentEventData}
+                        handleCurrentEvents={handleCurrentEvents}
+                        toggleEventRegistration={toggleEventRegistration}
+                        showEventResult={showEventResult}
+                        isVoted={isVoted}
+                    />
+                </>
+            )}
         </div>
     )
 }

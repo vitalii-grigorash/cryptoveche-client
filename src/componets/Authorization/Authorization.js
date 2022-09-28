@@ -122,11 +122,11 @@ const Authorization = (props) => {
                         </div>
                         <div className={'reg__button'}>
                             <span>Еще нет аккаунта?</span>
-                            <button onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</button>
+                            <button onClick={() => linkButtonRegPage('/registration')}>Зарегистрироваться</button>
                         </div>
                     </div>
                     <div className={'main-block__mobile-link-reg'}>
-                        <span>Ещё нет аккаунта?</span><span onClick={() => linkButtonRegPage('/reg-page')}>Зарегистрироваться</span>
+                        <span>Ещё нет аккаунта?</span><span onClick={() => linkButtonRegPage('/registration')}>Зарегистрироваться</span>
                     </div>
                 </div>
             </div>

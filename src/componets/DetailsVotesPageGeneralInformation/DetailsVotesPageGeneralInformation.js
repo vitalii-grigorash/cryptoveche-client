@@ -23,7 +23,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
     } = props;
 
     const [labelText, setLabelText] = useState('');
-    const [activeMaterials, setActiveMaterials] = useState(false)
+    const [activeMaterials, setActiveMaterials] = useState(false);
 
     useEffect(() => {
         if (currentEventData.status === 'waiting') {
@@ -96,13 +96,17 @@ const DetailsVotesPageGeneralInformation = (props) => {
                     <MaterialsVoteQuestion materialsVoteName={'Материалы голосования'} currentMaterialsVote={currentEventData} />
                 </div>
             }
-            <RegistrationButton
-                votesData={currentEventData}
-                handleCurrentEvents={handleCurrentEvents}
-                toggleEventRegistration={toggleEventRegistration}
-                showEventResult={showEventResult}
-                isVoted={isVoted}
-            />
+            {!currentEventData.isProcessing && (
+                <>
+                    <RegistrationButton
+                        votesData={currentEventData}
+                        handleCurrentEvents={handleCurrentEvents}
+                        toggleEventRegistration={toggleEventRegistration}
+                        showEventResult={showEventResult}
+                        isVoted={isVoted}
+                    />
+                </>
+            )}
         </div>
     )
 }
