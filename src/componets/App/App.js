@@ -44,7 +44,9 @@ function App() {
     const [changeUtcOffset, setChangeUtcOffset] = useState('');
     const [joinId, setJoinId] = useState('');
     const [isReloadDetailsPage, setReloadDetailsPage] = useState(false);
-    const [eventIdByLink, setEventIdByLink] = useState('');
+    const [eventWaitingIdByLink, setEventWaitingIdByLink] = useState('');
+    const [eventQuestionsIdByLink, setEventQuestionsIdByLink] = useState('');
+    const [eventResultIdByLink, setEventResultIdByLink] = useState('');
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -131,13 +133,53 @@ function App() {
                         throw new Error(err.message);
                     })
             } else if (url[3] === 'join') {
-                joinEvent(url[4]);
-                navigate('/');
-            } else if (url[3] === 'waiting') {
-                const data = {
-                    id: url[4]
+                if (url[4] !== undefined) {
+                    joinEvent(url[4]);
+                    navigate('/');
+                } else {
+                    navigate('/');
                 }
-                handleCurrentEvents(data, true);
+            } else if (url[3] === 'waiting') {
+                if (url[4] !== undefined) {
+                    const data = {
+                        id: url[4]
+                    }
+                    handleCurrentEvents(data, true);
+                } else {
+                    navigate('/');
+                }
+            } else if (url[3] === 'questions') {
+                if (url[4] !== undefined) {
+                    const data = {
+                        id: url[4]
+                    }
+                    requestHelper(Events.getEvent, data)
+                        .then((res) => {
+                            if (res.status === 'ended' || res.status === 'quorum_unpresant') {
+                                handleCurrentEvents(data, true);
+                            } else {
+                                if (res.isRegistered) {
+                                    handleCurrentEvents(data, false);
+                                } else {
+                                    handleCurrentEvents(data, true);
+                                }
+                            }
+                        })
+                        .catch((err) => {
+                            throw new Error(err.message);
+                        })
+                } else {
+                    navigate('/');
+                }
+            } else if (url[3] === 'results') {
+                if (url[4] !== undefined) {
+                    const data = {
+                        id: url[4]
+                    }
+                    showEventResult(data);
+                } else {
+                    navigate('/');
+                }
             }
         }
         // eslint-disable-next-line
@@ -236,11 +278,35 @@ function App() {
                         if (joinId !== '') {
                             joinEvent(joinId);
                             navigate('/');
-                        } else if (eventIdByLink !== '') {
+                        } else if (eventWaitingIdByLink !== '') {
                             const data = {
-                                id: eventIdByLink
+                                id: eventWaitingIdByLink
                             }
                             handleCurrentEvents(data, true);
+                        } else if (eventQuestionsIdByLink !== '') {
+                            const data = {
+                                id: eventQuestionsIdByLink
+                            }
+                            requestHelper(Events.getEvent, data)
+                                .then((res) => {
+                                    if (res.status === 'ended' || res.status === 'quorum_unpresant') {
+                                        handleCurrentEvents(data, true);
+                                    } else {
+                                        if (res.isRegistered) {
+                                            handleCurrentEvents(data, false);
+                                        } else {
+                                            handleCurrentEvents(data, true);
+                                        }
+                                    }
+                                })
+                                .catch((err) => {
+                                    throw new Error(err.message);
+                                })
+                        } else if (eventResultIdByLink !== '') {
+                            const data = {
+                                id: eventResultIdByLink
+                            }
+                            showEventResult(data);
                         } else {
                             navigate('/');
                         }
@@ -262,12 +328,13 @@ function App() {
             setOffset(user.utc_offset)
             if (
                 pathname === '/auth' ||
-                pathname === '/forget-password' ||
                 pathname === '/rstpwd' ||
                 pathname === '/registration' ||
                 pathname === '/reg-second-page'
             ) {
                 navigate('/');
+            } else if (pathname === '/forget') {
+                navigate('/my-profile');
             }
         } else {
             const url = window.location.href.split('/');
@@ -281,11 +348,33 @@ function App() {
             ) {
                 logout();
             } else if (url[3] === 'join') {
-                setJoinId(url[4]);
-                logout();
+                if (url[4] !== undefined) {
+                    setJoinId(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
             } else if (url[3] === 'waiting') {
-                setEventIdByLink(url[4]);
-                logout();
+                if (url[4] !== undefined) {
+                    setEventWaitingIdByLink(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
+            } else if (url[3] === 'questions') {
+                if (url[4] !== undefined) {
+                    setEventQuestionsIdByLink(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
+            } else if (url[3] === 'results') {
+                if (url[4] !== undefined) {
+                    setEventResultIdByLink(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
             }
         }
         // eslint-disable-next-line
@@ -382,9 +471,11 @@ function App() {
         }
         if (isDetailsClick) {
             navigate('/details-vote');
-            setEventIdByLink('');
+            setEventWaitingIdByLink('');
+            setEventQuestionsIdByLink('');
         } else {
             navigate('/call-voting-page');
+            setEventQuestionsIdByLink('');
         }
     }
 
@@ -404,6 +495,7 @@ function App() {
         }
         setResultTabOpen(true);
         navigate('/details-vote');
+        setEventResultIdByLink('');
     }
 
     function handleShowSuccessModal() {
@@ -508,7 +600,7 @@ function App() {
                                     isRememberMe={isRememberMe}
                                 />}
                             />
-                            <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
+                            <Route path='/forget' element={<AuthorizationForgetPassword />} />
                             <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
                             <Route exact path='/registration'
                                 element={<Registration

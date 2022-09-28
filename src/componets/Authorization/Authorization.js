@@ -82,7 +82,7 @@ const Authorization = (props) => {
                             </div>
                             <div className={'form__checkbox'}>
                                 <div className={'checkbox__link-forget-pass-login-secretary'}>
-                                    <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget-password')}>Забыли пароль?</span>
+                                    <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget')}>Забыли пароль?</span>
                                     <a href={'https://admin.cryptoveche.local'} target={"_blank"} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
                                 </div>
                                 <div>

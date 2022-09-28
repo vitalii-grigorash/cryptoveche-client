@@ -57,6 +57,9 @@ const CallVotingPage = (props) => {
                         navigate('/');
                     }
                 })
+                .catch((err) => {
+                    throw new Error(err.message);
+                })
         } else {
             navigate('/');
         }
@@ -230,6 +233,9 @@ const CallVotingPage = (props) => {
                     getEvent();
                     handleSendEventTrigger();
                 }
+            })
+            .catch((err) => {
+                throw new Error(err.message);
             })
     }
 

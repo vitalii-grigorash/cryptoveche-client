@@ -37,22 +37,24 @@ const ReadQuestionsCardList = (props) => {
                 }
             }
         } else {
-            if (ballots.length !== 0) {
-                const currentResult = ballots.find(ballot => ballot.bulletinId === question.bulletinId);
-                if (currentResult !== undefined) {
-                    if (currentResult.questions.length !== 0) {
-                        const currentQuestion = currentResult.questions.find(result => result.question_id === question.id);
-                        if (currentQuestion.res !== 0) {
-                            const result = currentQuestion.res.find(result => result.id === id);
-                            if (result !== undefined) {
-                                if (result.id === id) {
-                                    setCheckBoxActive(true);
+            if (ballots !== undefined) {
+                if (ballots.length !== 0) {
+                    const currentResult = ballots.find(ballot => ballot.bulletinId === question.bulletinId);
+                    if (currentResult !== undefined) {
+                        if (currentResult.questions.length !== 0) {
+                            const currentQuestion = currentResult.questions.find(result => result.question_id === question.id);
+                            if (currentQuestion.res !== 0) {
+                                const result = currentQuestion.res.find(result => result.id === id);
+                                if (result !== undefined) {
+                                    if (result.id === id) {
+                                        setCheckBoxActive(true);
+                                    }
                                 }
                             }
                         }
+                    } else {
+                        setCheckBoxActive(false);
                     }
-                } else {
-                    setCheckBoxActive(false);
                 }
             }
         }
