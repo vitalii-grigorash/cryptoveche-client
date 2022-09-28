@@ -68,28 +68,32 @@ const CalendarVotes = (props) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         const dateEndReg = endRegDate.find((el) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         const dateStartVote = startVoteDate.find((el) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         const dateEndVote = endVoteDate.find((el) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
 
@@ -115,28 +119,32 @@ const CalendarVotes = (props) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         const activeDateEndReg = endRegDate.find((el) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         const activeDateStartVote = startVoteDate.find((el) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         const activeDateEndVote = endVoteDate.find((el) => {
             return (
                 date.getDay() === new Date(el.dateEvent).getDay() &&
                 date.getMonth() === new Date(el.dateEvent).getMonth() &&
-                date.getDate() === new Date(el.dateEvent).getDate()
+                date.getDate() === new Date(el.dateEvent).getDate() &&
+                date.getFullYear() === new Date(el.dateEvent).getFullYear()
             )
         })
         if (activeDateStartReg) {

@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
-import React from "react";
 
 export function getRemainingTimePointStartVote(timePointStartVote) {
 
     const timePointStartVoteDayjs = dayjs(timePointStartVote);
     const nowDayjs = dayjs();
+
     if(timePointStartVoteDayjs.isBefore(nowDayjs)) {
         return {
             seconds: '00',

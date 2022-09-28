@@ -2,7 +2,11 @@
 .details-votes-page-result-votes-card__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
+}
+.details-votes-page-result-votes-card__wrapper:first-child(1) {
+    border: 1px solid red;
+
 }
 /*------Стилизация заголовка-------------------------------------------------------------------------------------------*/
 .details-votes-page-result-votes-card__title {
@@ -52,6 +56,18 @@
         background: url("../../img/DetailsVotesPageResult_active_table_icon.svg") no-repeat;
         width: 48px;
         height: 48px;
+}
+.switch-table-gistogramma__gistogramma.active {
+    background: url("../../img/DetailsVotesPageResult_active_gistogram_icon.svg");
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+.switch-table-gistogramma__table.active {
+    background: url("../../img/DetailsVotesPageResult_active_table_icon.svg") no-repeat;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
 }
 /*------Всплывающая подсказка для кнопок иконок-----------------------------------------------------------------------*/
 .tooltip {
@@ -130,6 +146,16 @@
         height: 32px;
     }
     .switch-table-gistogramma__table:hover {
+        background: url("../../img/DetailsVotesPageResult_active_table_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__gistogramma.active {
+        background: url("../../img/DetailsVotesPageResult_active_gistogram_icon_mobile.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+    }
+    .switch-table-gistogramma__table.active {
         background: url("../../img/DetailsVotesPageResult_active_table_icon_mobile.svg") no-repeat;
         width: 32px;
         height: 32px;

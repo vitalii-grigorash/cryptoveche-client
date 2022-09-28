@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './DetailsVotesPageResultQuestionGrid.css';
 import DetailsVotesPageResultGridTable from '../DetailsVotesPageResultGridTable/DetailsVotesPageResultGridTable';
-import DetailsVotesPageResultVotesCardQuestionGraph from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraph";
+import DetailsVotesPageResultVotesCardQuestionGraphGrid
+    from "../DetailsVotesPageResultVotesCardQuestionGraph/DetailsVotesPageResultVotesCardQuestionGraphGrid";
 
 const DetailsVotesPageResultQuestionGrid = (props) => {
 
@@ -30,11 +31,11 @@ const DetailsVotesPageResultQuestionGrid = (props) => {
             </div>
             <div className='details-votes-page-result-votes-card__switch-table-gistogramma'>
                 <div className='tooltip'>
-                    <div onClick={toggleGraphShow} className='switch-table-gistogramma__gistogramma'></div>
+                    <div onClick={toggleGraphShow} className={graphResult ? 'switch-table-gistogramma__gistogramma active' : 'switch-table-gistogramma__gistogramma'}></div>
                     <span className='tooltiptext'>Показать графиком</span>
                 </div>
                 <div className='tooltip'>
-                    <div onClick={toggleTableShow} className='switch-table-gistogramma__table'></div>
+                    <div onClick={toggleTableShow} className={tableResult ? 'switch-table-gistogramma__table active' : 'switch-table-gistogramma__table'}></div>
                     <span className='tooltiptext'>Показать таблицей</span>
                 </div>
             </div>
@@ -49,10 +50,11 @@ const DetailsVotesPageResultQuestionGrid = (props) => {
                 </div>
             )}
             {graphResult && (
-                <DetailsVotesPageResultVotesCardQuestionGraph />
+                <DetailsVotesPageResultVotesCardQuestionGraphGrid
+                    answersTemplateGrid={question.answers}
+                />
             )}
         </div>
     )
 }
-
 export default DetailsVotesPageResultQuestionGrid;

@@ -14,6 +14,7 @@ const MyProfilePage = (props) => {
         utcOffset,
         allEvents,
         formatTime,
+        formatDate,
         createUserName,
         handleLogout,
         setOffset
@@ -57,7 +58,8 @@ const MyProfilePage = (props) => {
                 <div className={'main-content__grid-item_3'}>
                     <CalendarVotes
                         allEvents={allEvents}
-                        formatTime={formatTime}/>
+                        formatTime={formatTime}
+                        formatDate={formatDate}/>
                 </div>
                 <div className={'main-content__grid-item_4'}>
                     <MyProfilePageSetPassword

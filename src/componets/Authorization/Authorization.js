@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import './Authorization.css';
 import logo from '../../img/Auth_logo_crypto_veche.svg';
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -17,7 +17,8 @@ const Authorization = (props) => {
         handleLogin,
         authError,
         handleRememberMe,
-        isRememberMe
+        isRememberMe,
+        preLoaderBtn
     } = props;
 
     const email = Validation();
@@ -43,7 +44,6 @@ const Authorization = (props) => {
         }
         handleLogin(email.value, password.value);
     }
-
     return (
         <div className={'wrapper-auth'}>
             <div className={'container-auth'}>
@@ -51,7 +51,7 @@ const Authorization = (props) => {
                     <div className={'main-block__auth'}>
                         <div className={'auth__title'}>
                             <h3>Авторизация</h3>
-                            <div><span>РУС</span><span>ENG</span></div>
+                            {/*<div><span>РУС</span><span>ENG</span></div>*/}
                         </div>
                         <div className={'auth__form'}>
                             <div className={'form__login'}>
@@ -92,14 +92,15 @@ const Authorization = (props) => {
                                         checked={isRememberMe}
                                         onChange={handleRememberMe}
                                     />
-
                                     <span className={'checkmark'} />
                                 </label>
                                 <span className={'auth__remember-me-checklabel'}>Запомнить меня</span>
                                 </div>
                             </div>
                             <div className={'form__button'}>
-                                <button onClick={inputHandler} type={'button'}>Войти</button>
+                                <button className={preLoaderBtn ? 'form__button-input-btn active' : 'form__button-input-btn'}
+                                    onClick={inputHandler}
+                                    type={'button'}>{preLoaderBtn ? 'Загрузка...' : 'Войти'}</button>
                                 <a className={'form__button__link-gosuslugi'} href={'https://esia.gosuslugi.ru/login/'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти через ЕСИА</a>
                             </div>
                         </div>
@@ -132,6 +133,5 @@ const Authorization = (props) => {
             </div>
         </div>
     )
-};
-
+}
 export default Authorization;

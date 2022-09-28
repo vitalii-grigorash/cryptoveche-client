@@ -1,32 +1,40 @@
 /*------Стилизация вертикальной сетки для графика--------------------------------------------------------------------*/
-.card-question-vertical-graph__vertical-grid {
-    width: 45%;
+.card-question-vertical-graph-grid__vertical-grid {
+    width: 600px;
     position: relative;
     display: flex;
     /* align-items: end; */
     justify-content: center;
-
 }
-.vertical-grid__position-table {
+.vertical-grid__position-table-grid {
     position: absolute;
     border-bottom: 1px solid rgba(54, 59, 77, 0.05);
     max-height: 320px;
     /*width: 568px;*/
     width: 100%;
+    top: 0;
 }
-.vertical-grid__position-table td {
+.vertical-grid__position-table-grid td {
     border-top: 1px solid rgba(54, 59, 77, 0.05);
     border-left: 1px solid rgba(54, 59, 77, 0.05);
     height: 32px;
 }
 
 /*-----Адаптивная версия---------------------------------------------------------------------------------------------*/
-@media (max-width: 750px) {
-    .card-question-vertical-graph__vertical-grid {
+@media (max-width: 910px) {
+    .vertical-grid__position-table-grid {
+        top: 10px;
+    }
+}
+@media (max-width: 900px) {
+    .card-question-vertical-graph-grid__vertical-grid {
         width: 100%;
         height: 240px;
     }
-    .vertical-grid__position-table td {
+    .vertical-grid__position-table-grid {
+        top: -2px;
+    }
+    .vertical-grid__position-table-grid td {
         height: 22px;
     }
 }

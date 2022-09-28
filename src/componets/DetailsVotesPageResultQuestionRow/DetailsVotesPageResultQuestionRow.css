@@ -4,6 +4,16 @@
     border-bottom: 1px solid rgba(54, 59, 77, 0.2); 
     padding-bottom: 24px; 
 }
+.details-votes-page-result-question-row.active {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+    padding-bottom: 8px;
+}
+.details-votes-page-result-question-row:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
 .details-votes-page-result-question-row__title-container {
     display: flex;
     flex-direction: column;
@@ -35,8 +45,12 @@
     }
     .details-votes-page-result-question-row__title {
         font-size: 16px;
+        font-weight: 500;
     }
     .details-votes-page-result-question-row__rule {
         font-size: 12px;
+    }
+    .details-votes-page-result-question-row {
+        margin-bottom: 16px;
     }
 }

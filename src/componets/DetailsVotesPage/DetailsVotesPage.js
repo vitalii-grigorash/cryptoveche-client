@@ -177,6 +177,7 @@ const DetailsVotesPage = (props) => {
                     pointStartTimeReg={currentEventData.registration_start_time}
                     pointEndTimeReg={currentEventData.registration_end_time}
                     pointStartTimeVote={currentEventData.event_start_time}
+                    pointEndTimeVote={currentEventData.event_end_time}
                 />
             )}
             <div className={'details-votes-page__main-content'}>

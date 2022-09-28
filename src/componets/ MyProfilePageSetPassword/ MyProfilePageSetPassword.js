@@ -17,10 +17,10 @@ const MyProfilePageSetPassword = (props) => {
     const [repeatNewPass, setRepeatNewPass] = useState('')
     const [errorPass, setErrorPass] = useState('')
     const [typePass, setTypePass] = useState('password')
-    const [typeNewPass, setTypeNewPass] = useState('text')
-    const [typeRepeatNewPass, setTypeRepeatNewPass] = useState('text')
-    const [showIconNewPass, setShowIconNewPass] = useState(false)
-    const [showIconRepeatPass, setShowIconRepeatPass] = useState(false)
+    const [typeNewPass, setTypeNewPass] = useState('password')
+    const [typeRepeatNewPass, setTypeRepeatNewPass] = useState('password')
+    const [showIconNewPass, setShowIconNewPass] = useState(true)
+    const [showIconRepeatPass, setShowIconRepeatPass] = useState(true)
     const [activeBtn, setActiveBtn] = useState(true)
     const btnChangeColor = useRef(null)
     const borderRefNewPass = useRef(null)
@@ -111,7 +111,6 @@ const MyProfilePageSetPassword = (props) => {
             btnChangeColor.current.style = { background: 'rgba(54, 59, 77, 0.08)',
                                              color: 'rgba(54, 59, 77, 0.35)',
                                              cursor: 'initial'}
-
         }
     }
 

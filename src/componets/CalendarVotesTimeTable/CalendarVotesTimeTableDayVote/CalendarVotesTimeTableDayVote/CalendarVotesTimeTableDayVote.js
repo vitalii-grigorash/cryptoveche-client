@@ -5,17 +5,23 @@ import {CurrentDayCalendarColorContext} from "../../../../contexts/CurrentDayCal
 const CalendarVotesTimeTableDayVote = (props) => {
 
     const {
-        dayWeek, calendarDate
+        dayWeek,
+        calendarDate,
+        activeColorDay
     } = props;
 
-    const [colorCurrentDay] = useContext(CurrentDayCalendarColorContext)
+    const [colorCurrentDay] = useContext(CurrentDayCalendarColorContext);
 
     return (
             <div className={'calendar-votes-timetable-day__wrapper'}>
                 <span className={'calendar-votes-timetable-day__calendar-date'}>{calendarDate}</span>
                 <div className={'calendar-votes-timetable-day__day-week'}>
-                    <span>{dayWeek},</span>
-                    <span style={{color: colorCurrentDay}}>сегодня</span>
+                    <span>{dayWeek}</span>
+                    {
+                        activeColorDay && (
+                            <span style={{color: colorCurrentDay}}>, сегодня</span>
+                        )
+                    }
                 </div>
             </div>
     )

@@ -23,7 +23,6 @@ const ActualBlockDiagramm = (props) => {
       setNowTime(Number(new Date().getTime()));
       setStartTime(Number(new Date(actualVote.event_start_time).getTime()));
       setEndTime(Number(new Date(actualVote.event_end_time).getTime()));
-
 			setSectorCircle(Number
 				(Number(nowTime - startTime) / Number(endTime - startTime)) >= 0
 				?
@@ -31,12 +30,10 @@ const ActualBlockDiagramm = (props) => {
 				:
 				Number(0.001)
 				);
-    };
-  }, [actualVote, startTime, endTime, sectorCircle])
-
+    }
+  }, [actualVote, startTime, endTime])
 
   function drawCircles(radius, sectorCircle, colorsCircle) {
-
     let circleFull = 2 * Math.PI * radius;
     let gapBetweenCircle = sectorCircle === 1 ? 0 : 1;
     let circleFill = circleFull * sectorCircle;

@@ -105,7 +105,7 @@
     .total-amount h1 {
         font-size: 42px;
     }
-    .gistogramma-and-total-amount__procent {
+    .gistogramma-and-total-amount__procent, .gistogramma-and-total-amount__procent_negative {
         top: 75px;
     }
     .gistogramma-and-total-amount__row {
@@ -121,7 +121,7 @@
     .total-amount {
         gap: 4px;
     }
-    .gistogramma-and-total-amount__procent {
+    .gistogramma-and-total-amount__procent, .gistogramma-and-total-amount__procent_negative {
         top: 65px;
         left: 310px;
         font-size: 14px;
@@ -133,7 +133,7 @@
 
 }
 @media (max-width: 420px) {
-    .gistogramma-and-total-amount__procent {
+    .gistogramma-and-total-amount__procent, .gistogramma-and-total-amount__procent_negative {
         top: 65px;
         left: 268px;
         font-size: 14px;

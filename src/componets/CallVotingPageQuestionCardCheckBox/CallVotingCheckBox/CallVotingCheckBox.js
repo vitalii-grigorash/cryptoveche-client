@@ -32,14 +32,17 @@ const CallVotingCheckBox = (props) => {
     useEffect(() => {
         if (results.length !== 0) {
             const currentResult = results.find(result => result.id === question.id);
+            // console.log(currentResult)
             if (currentResult.users.length !== 0) {
                 const userResult = currentResult.users.find(user => user.id === currentUser.id);
                 if (userResult.answers.length !== 0) {
                     const result = userResult.answers.find(result => result.id === rowId);
-                    const value = result.values.find(value => value === id);
-                    if (value !== undefined) {
-                        if (value === id) {
-                            setCheckBoxActive(true);
+                    if (result !== undefined) {
+                        const value = result.values.find(value => value === id);
+                        if (value !== undefined) {
+                            if (value === id) {
+                                setCheckBoxActive(true);
+                            }
                         }
                     }
                 }

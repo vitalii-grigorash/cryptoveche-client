@@ -38,7 +38,9 @@ function App() {
     const [successModalText, setSuccessModalText] = useState('');
     const [isResultTabOpen, setResultTabOpen] = useState(false);
     const [utcOffset, setUtcOffset] = useState('');
-    const [changeUtcOffset, setChangeUtcOffset] = useState('')
+    const [changeUtcOffset, setChangeUtcOffset] = useState('');
+    const [preLoaderAuthBtn, setPreloaderAuthBtn] = useState(false);
+    const [preLoaderRegBtn, setPreLoaderRegBtn] = useState(false)
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -100,6 +102,7 @@ function App() {
 
     function hideRegisterModal() {
         setModalActive(false);
+        setPreLoaderRegBtn(false)
     }
 
     function handleRememberMe() {
@@ -163,6 +166,8 @@ function App() {
         setCurrentUser({});
         setUtcOffset('');
         navigate('/auth');
+        setPreloaderAuthBtn(false)
+        setPreLoaderRegBtn(false)
     }
 
     function setOffset(offset) {
@@ -174,16 +179,17 @@ function App() {
     function handleLogin(email, password) {
         if (email === '' || password === '') {
             setAuthError('Необходмо заполнить все поля');
+            setPreloaderAuthBtn(false)
         } else {
             Auth.authorize(email, password)
                 .then((res) => {
                     if (res.status === 'failure') {
                         setAuthError('Неправильное имя пользователя или пароль');
+                        setPreloaderAuthBtn(false)
                     } else {
                         if (isRememberMe) {
                             localStorage.setItem('user', JSON.stringify(res));
                         }
-                        setAuthError('');
                         setLoggedIn(true);
                         setCurrentUser(res);
                         createUserName(res);
@@ -194,6 +200,8 @@ function App() {
                 .catch((err) => {
                     console.log(err);
                 })
+            setPreloaderAuthBtn(true);
+            setAuthError('');
         }
     }
 
@@ -203,6 +211,7 @@ function App() {
             const user = JSON.parse(userData);
             setCurrentUser(user);
             createUserName(user);
+            setPreloaderAuthBtn(false)
             setLoggedIn(true);
             setOffset(user.utc_offset)
             if (
@@ -245,6 +254,7 @@ function App() {
                         setModalActive(true);
                         hideRegEmailErrors();
                         setHideRegForm(true);
+                        setPreLoaderRegBtn(true)
                     }
                 })
                 .catch((err) => {
@@ -271,7 +281,7 @@ function App() {
                                 setSuccessModalText('Вы успешно зарегистрировались!');
                             } else {
                                 handleShowSuccessModal();
-                                setSuccessModalText('Вы успешно отменили зарегистрацию!');
+                                setSuccessModalText('Вы успешно отменили регистрацию!');
                             }
                         })
                         .catch((err) => {
@@ -380,25 +390,25 @@ function App() {
         }
     }
 
-    var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
+    // var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
+    //
+    // useEffect (() => {
+    //     ws.addEventListener('message', (e) => {
+    //         console.log('WebSocketMessage');
+    //         console.log(JSON.parse(e.data));
+    //     })
+    // }, [])
 
-    useEffect (() => {
-        ws.addEventListener('message', (e) => {
-            console.log('WebSocketMessage');
-            console.log(JSON.parse(e.data));
-        })
-    }, [])
-
-    // useEffect(() => {
-    //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
-    //     socket.onopen = () => {
-    //         socket.send(JSON.stringify({
-    //             id: currentUser.id,
-    //             username: userName,
-    //             method: "connection"
-    //         }))
-    //     }
-    // }, [currentUser, userName])
+    useEffect(() => {
+        const socket = new WebSocket("wss://client.evote50.dltc.spbu.ru/ws")
+        socket.onopen = () => {
+            socket.send(JSON.stringify({
+                id: currentUser.id,
+                username: userName,
+                method: "connection"
+            }))
+        }
+    }, [currentUser, userName])
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -418,6 +428,7 @@ function App() {
                                        authError={authError}
                                        handleRememberMe={handleRememberMe}
                                        isRememberMe={isRememberMe}
+                                       preLoaderBtn={preLoaderAuthBtn}
                                    />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
@@ -433,6 +444,7 @@ function App() {
                                        hideRegisterModal={hideRegisterModal}
                                        hideRegForm={hideRegForm}
                                        hideRegEmailErrors={hideRegEmailErrors}
+                                       preLoaderReg={preLoaderRegBtn}
                                    />}
                             />
                             <Route exact path='/'
@@ -463,6 +475,7 @@ function App() {
                                        setOffset={setOffset}
                                        handleLogout={logout}
                                        formatTime={formatTime}
+                                       formatDate={formatDate}
                                    />}
                             />
                             <Route exact path='/details-vote'
