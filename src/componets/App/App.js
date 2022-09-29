@@ -22,7 +22,7 @@ import * as Events from '../../Api/Events';
 function App() {
 
     const navigate = useNavigate();
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [authError, setAuthError] = useState('');
@@ -41,6 +41,11 @@ function App() {
     const [changeUtcOffset, setChangeUtcOffset] = useState('');
     const [preLoaderAuthBtn, setPreloaderAuthBtn] = useState(false);
     const [preLoaderRegBtn, setPreLoaderRegBtn] = useState(false)
+    const [joinId, setJoinId] = useState('');
+    const [isReloadDetailsPage, setReloadDetailsPage] = useState(false);
+    const [eventWaitingIdByLink, setEventWaitingIdByLink] = useState('');
+    const [eventQuestionsIdByLink, setEventQuestionsIdByLink] = useState('');
+    const [eventResultIdByLink, setEventResultIdByLink] = useState('');
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -245,21 +250,34 @@ function App() {
 
     function handleRegister(registerData) {
         if (isPolicyAccept) {
-            Auth.registration(registerData)
-                .then((res) => {
-                    if (res.text === 'User has already exist') {
-                        setChangeBorderInputEmail('_input-border-red');
-                        setEmailErrorMessage('Пользователь с данным email уже существует');
-                    } else {
-                        setModalActive(true);
-                        hideRegEmailErrors();
-                        setHideRegForm(true);
-                        setPreLoaderRegBtn(true)
-                    }
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                })
+            if (registerData.isRegistrationByToken) {
+                Auth.registrationUserByToken(registerData)
+                    .then((res) => {
+                        if (res.status === 'ok') {
+                            setModalActive(true);
+                            hideRegEmailErrors();
+                            setHideRegForm(true);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                    })
+            } else {
+                Auth.registration(registerData)
+                    .then((res) => {
+                        if (res.text === 'User has already exist') {
+                            setChangeBorderInputEmail('_input-border-red');
+                            setEmailErrorMessage('Пользователь с данным email уже существует');
+                        } else {
+                            setModalActive(true);
+                            hideRegEmailErrors();
+                            setHideRegForm(true);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                    })
+            }
         } else {
             console.log('Необходимо отметить ознакомление с политикой');
         }
@@ -379,7 +397,7 @@ function App() {
             const hoursChangeUtc = `${defaultHours.toString().length === 1 ? `${'0' + defaultHours}` : `${defaultHours}`}`;
             const defaultMinutes = localDate.getMinutes();
             const minutes = `${defaultMinutes.toString().length === 1 ? `${'0' + defaultMinutes}` : `${defaultMinutes}`}`;
-            return `${hoursChangeUtc  + ':' + minutes}`;
+            return `${hoursChangeUtc + ':' + minutes}`;
         }
         else {
             const defaultHours = localDate.getHours();
@@ -390,25 +408,23 @@ function App() {
         }
     }
 
-    // var ws = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws");
-    //
-    // useEffect (() => {
-    //     ws.addEventListener('message', (e) => {
-    //         console.log('WebSocketMessage');
-    //         console.log(JSON.parse(e.data));
-    //     })
-    // }, [])
-
     useEffect(() => {
-        const socket = new WebSocket("wss://client.evote50.dltc.spbu.ru/ws")
-        socket.onopen = () => {
-            socket.send(JSON.stringify({
-                id: currentUser.id,
-                username: userName,
-                method: "connection"
-            }))
-        }
-    }, [currentUser, userName])
+        ws.addEventListener('message', (e) => {
+            console.log('WebSocketMessage');
+            console.log(JSON.parse(e.data));
+        })
+    })
+
+    // useEffect(() => {
+    //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
+    //     socket.onopen = () => {
+    //         socket.send(JSON.stringify({
+    //             id: currentUser.id,
+    //             username: userName,
+    //             method: "connection"
+    //         }))
+    //     }
+    // }, [currentUser, userName])
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -423,84 +439,84 @@ function App() {
                     <div className={'main-content _container'}>
                         <Routes>
                             <Route path='/auth'
-                                   element={<Authorization
-                                       handleLogin={handleLogin}
-                                       authError={authError}
-                                       handleRememberMe={handleRememberMe}
-                                       isRememberMe={isRememberMe}
-                                       preLoaderBtn={preLoaderAuthBtn}
-                                   />}
+                                element={<Authorization
+                                    handleLogin={handleLogin}
+                                    authError={authError}
+                                    handleRememberMe={handleRememberMe}
+                                    isRememberMe={isRememberMe}
+                                    preLoaderBtn={preLoaderAuthBtn}
+                                />}
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
                             <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
                             <Route path='/reg-page'
-                                   element={<Registration
-                                       handleRegister={handleRegister}
-                                       handlePolicyAccept={handlePolicyAccept}
-                                       isPolicyAccept={isPolicyAccept}
-                                       modalActive={modalActive}
-                                       emailErrorMessage={emailErrorMessage}
-                                       changeBorderInputEmail={changeBorderInputEmail}
-                                       hideRegisterModal={hideRegisterModal}
-                                       hideRegForm={hideRegForm}
-                                       hideRegEmailErrors={hideRegEmailErrors}
-                                       preLoaderReg={preLoaderRegBtn}
-                                   />}
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
+                                    preLoaderReg={preLoaderRegBtn}
+                                />}
                             />
                             <Route exact path='/'
-                                   element={<MainPage
-                                       allEvents={allEvents}
-                                       requestHelper={requestHelper}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                       toggleEventRegistration={toggleEventRegistration}
-                                       showEventResult={showEventResult}
-                                       formatDate={formatDate}
-                                       formatTime={formatTime}
-                                       utcOffset={utcOffset}
-                                       isLoggedIn={isLoggedIn}
-                                   />}
+                                element={<MainPage
+                                    allEvents={allEvents}
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                    isLoggedIn={isLoggedIn}
+                                />}
                             />
                             <Route exact path='/call-voting-page'
-                                   element={<CallVotingPage
-                                       requestHelper={requestHelper}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                   />}
+                                element={<CallVotingPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                />}
                             />
                             <Route exact path='/my-profile'
-                                   element={<MyProfilePage
-                                       requestHelper={requestHelper}
-                                       utcOffset={utcOffset}
-                                       allEvents={allEvents}
-                                       createUserName={createUserName}
-                                       setOffset={setOffset}
-                                       handleLogout={logout}
-                                       formatTime={formatTime}
-                                       formatDate={formatDate}
-                                   />}
+                                element={<MyProfilePage
+                                    requestHelper={requestHelper}
+                                    utcOffset={utcOffset}
+                                    allEvents={allEvents}
+                                    createUserName={createUserName}
+                                    setOffset={setOffset}
+                                    handleLogout={logout}
+                                    formatTime={formatTime}
+                                    formatDate={formatDate}
+                                />}
                             />
                             <Route exact path='/details-vote'
-                                   element={<DetailsVotesPage
-                                       requestHelper={requestHelper}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                       toggleEventRegistration={toggleEventRegistration}
-                                       showEventResult={showEventResult}
-                                       isResultTabOpen={isResultTabOpen}
-                                       formatDate={formatDate}
-                                       formatTime={formatTime}
-                                       utcOffset={utcOffset}
-                                       handleResultTabOpen={handleResultTabOpen}
-                                   />}
+                                element={<DetailsVotesPage
+                                    requestHelper={requestHelper}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    isResultTabOpen={isResultTabOpen}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                    handleResultTabOpen={handleResultTabOpen}
+                                />}
                             />
                             <Route exact path='/votes-page'
-                                   element={<VotesPage
-                                       allEvents={allEvents}
-                                       handleCurrentEvents={handleCurrentEvents}
-                                       toggleEventRegistration={toggleEventRegistration}
-                                       showEventResult={showEventResult}
-                                       formatDate={formatDate}
-                                       formatTime={formatTime}
-                                       utcOffset={utcOffset}
-                                   />}
+                                element={<VotesPage
+                                    allEvents={allEvents}
+                                    handleCurrentEvents={handleCurrentEvents}
+                                    toggleEventRegistration={toggleEventRegistration}
+                                    showEventResult={showEventResult}
+                                    formatDate={formatDate}
+                                    formatTime={formatTime}
+                                    utcOffset={utcOffset}
+                                />}
                             />
                         </Routes>
                         <VotesPageSuccessRegLaterModal
