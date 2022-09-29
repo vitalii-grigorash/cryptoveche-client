@@ -598,6 +598,7 @@ function App() {
                                     authError={authError}
                                     handleRememberMe={handleRememberMe}
                                     isRememberMe={isRememberMe}
+                                    preLoaderBtn={preLoaderAuthBtn}
                                 />}
                             />
                             <Route path='/forget' element={<AuthorizationForgetPassword />} />
@@ -613,6 +614,7 @@ function App() {
                                     hideRegisterModal={hideRegisterModal}
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
+                                    preLoaderReg={preLoaderRegBtn}
                                 />}
                             />
                             <Route path='/registration/:token'
@@ -626,6 +628,7 @@ function App() {
                                     hideRegisterModal={hideRegisterModal}
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
+                                    preLoaderReg={preLoaderRegBtn}
                                 />}
                             />
                             <Route exact path='/'
@@ -656,6 +659,7 @@ function App() {
                                     setOffset={setOffset}
                                     handleLogout={logout}
                                     formatTime={formatTime}
+                                    formatDate={formatDate}
                                 />}
                             />
                             <Route exact path='/details-vote'
