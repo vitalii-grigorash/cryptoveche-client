@@ -113,41 +113,70 @@ const ActualBlock = (props) => {
         arrowRightStyle={arrowRightStyle}
       />
       <div className={'votes-form__button-vote-cancel-reg'}>
-        {currentVote.status === "registration" && (
+        {!currentVote.isProcessing && (
           <>
-            {!currentVote.isRegistered ? (
-              <button className='reg'
-                onClick={() => { toggleEventRegistration(currentVote.id) }}
-              >
-                Зарегистрироваться
-              </button>
-            ) : (
+            {currentVote.status === "registration" && (
               <>
-                {currentVote.re_registration && (
+                {!currentVote.isRegistered ? (
+                  <button className='reg'
+                    onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered) }}
+                  >
+                    Зарегистрироваться
+                  </button>
+                ) : (
                   <>
-                    {!currentVote.isVoting && (
-                      <button className='cancel-reg'
-                        onClick={() => { toggleEventRegistration(currentVote.id) }}
-                      >
-                        Отменить регистрацию
-                      </button>
+                    {currentVote.re_registration && (
+                      <>
+                        {!currentVote.isVoting && (
+                          <button className='cancel-reg'
+                            onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered) }}
+                          >
+                            Отменить регистрацию
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </>
+                )}
+                {currentVote.isVoting && (
+                  <>
+                    {currentVote.isRegistered && (
+                      <>
+                        {!isVoted ? (
+                          <>
+                            <button className='button-vote'
+                              onClick={() => { handleCurrentEvents(currentVote, false) }}
+                            >
+                              Проголосовать
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            {currentVote.re_voting && (
+                              <button className='button-vote'
+                                onClick={() => { handleCurrentEvents(currentVote, false) }}
+                              >
+                                Переголосовать
+                              </button>
+                            )}
+                          </>
+                        )}
+                      </>
                     )}
                   </>
                 )}
               </>
             )}
-            {currentVote.isVoting && (
+            {currentVote.status === 'voting' && (
               <>
-                {currentVote.isRegistered && (
+                {currentVote.isRegistered ? (
                   <>
                     {!isVoted ? (
-                      <>
-                        <button className='button-vote'
-                          onClick={() => { handleCurrentEvents(currentVote, false) }}
-                        >
-                          Проголосовать
-                        </button>
-                      </>
+                      <button className='button-vote'
+                        onClick={() => { handleCurrentEvents(currentVote, false) }}
+                      >
+                        Проголосовать
+                      </button>
                     ) : (
                       <>
                         {currentVote.re_voting && (
@@ -160,41 +189,16 @@ const ActualBlock = (props) => {
                       </>
                     )}
                   </>
-                )}
-              </>
-            )}
-          </>
-        )}
-        {currentVote.status === 'voting' && (
-          <>
-            {currentVote.isRegistered ? (
-              <>
-                {!isVoted ? (
-                  <button className='button-vote'
-                    onClick={() => { handleCurrentEvents(currentVote, false) }}
-                  >
-                    Проголосовать
-                  </button>
                 ) : (
                   <>
-                    {currentVote.re_voting && (
-                      <button className='button-vote'
-                        onClick={() => { handleCurrentEvents(currentVote, false) }}
+                    {currentVote.isRegistration && (
+                      <button className='reg'
+                        onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered) }}
                       >
-                        Переголосовать
+                        Зарегистрироваться
                       </button>
                     )}
                   </>
-                )}
-              </>
-            ) : (
-              <>
-                {currentVote.isRegistration && (
-                  <button className='reg'
-                    onClick={() => { toggleEventRegistration(currentVote.id) }}
-                  >
-                    Зарегистрироваться
-                  </button>
                 )}
               </>
             )}
@@ -204,4 +208,5 @@ const ActualBlock = (props) => {
     </div>
   )
 }
+
 export default ActualBlock

@@ -33,6 +33,8 @@ const Registration = (props) => {
         preLoaderReg
     } = props;
 
+    const { pathname } = useLocation();
+
     const firstName = Validation();
     const secondName = Validation();
     const lastName = Validation();
@@ -56,7 +58,33 @@ const Registration = (props) => {
     const [passwordRequireModalActive, setPasswordRequireModalActive] = useState(false);
     const [firsPageError, setFirsPageError] = useState('');
 
+    const [token, setToken] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userFields, setUserFields] = useState([]);
+    const [isRegistrationByToken, setRegistrationByToken] = useState(false);
+
     const linkButtonBackPage = useNavigate();
+
+    useEffect(() => {
+        const url = window.location.href.split('/');
+        if (url[4]) {
+            Auth.getUserByToken(url[4])
+                .then((user) => {
+                    setToken(user.token);
+                    setUserFields(user.fields);
+                    setUserEmail(user.email);
+                    setRegistrationByToken(true);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        } else {
+            setToken('');
+            setUserFields([]);
+            setUserEmail('');
+            setRegistrationByToken(false);
+        }
+    }, [pathname]);
 
     function onSelectTimeZoneClick(location) {
         setTimeZoneValue(location.VALUE);
@@ -165,14 +193,28 @@ const Registration = (props) => {
             hideRegEmailErrors();
             setFirsPageError('');
         } else {
-            handleRegister({
-                email: email.value,
-                password: password.value,
-                first_name: firstName.value,
-                second_name: secondName.value,
-                last_name: lastName.value,
-                utc_offset: timeZoneValue
-            });
+            if (isRegistrationByToken) {
+                handleRegister({
+                    password: password.value,
+                    first_name: firstName.value,
+                    second_name: secondName.value,
+                    last_name: lastName.value,
+                    utc_offset: timeZoneValue,
+                    userFields: userFields,
+                    token: token,
+                    isRegistrationByToken: true
+                });
+            } else {
+                handleRegister({
+                    email: email.value,
+                    password: password.value,
+                    first_name: firstName.value,
+                    second_name: secondName.value,
+                    last_name: lastName.value,
+                    utc_offset: timeZoneValue,
+                    isRegistrationByToken: false
+                });
+            }
             setErrorPassReg('');
             setChangeBorderInputPass('_input-border-black-reg-page');
             setPasswordRequireModalActive(false);
@@ -259,19 +301,30 @@ const Registration = (props) => {
                         </div>
                         <div className={showHideElem ? 'reg-form__e-mail active' : 'reg-form__e-mail _reg-block-show'}>
                             <span>E-mail <span className="reg-form__time-zone-heading_span">*</span></span>
-                            <input
-                                type="email"
-                                className={changeBorderInputEmail}
-                                id="register-email-input"
-                                name="emailRegister"
-                                placeholder='user@user.com'
-                                minLength="5"
-                                maxLength="45"
-                                required
-                                value={email.value}
-                                onChange={email.onChange}
-                            />
-                            <div id="register-email-input-error" className='reg-block__error-message'>{emailErrorMessage}</div>
+                            {isRegistrationByToken ? (
+                                <input
+                                    type="email"
+                                    className={changeBorderInputEmail}
+                                    value={userEmail}
+                                    readOnly
+                                />
+                            ) : (
+                                <>
+                                    <input
+                                        type="email"
+                                        className={changeBorderInputEmail}
+                                        id="register-email-input"
+                                        name="emailRegister"
+                                        placeholder='user@user.com'
+                                        minLength="5"
+                                        maxLength="45"
+                                        required
+                                        value={email.value}
+                                        onChange={email.onChange}
+                                    />
+                                    <div id="register-email-input-error" className='reg-block__error-message'>{emailErrorMessage}</div>
+                                </>
+                            )}
                         </div>
                         <div className={showHideElem ? 'reg-form__password active' : 'reg-form__password _reg-block-show'}>
                             <div className={'password-form'}>
@@ -283,6 +336,7 @@ const Registration = (props) => {
                                     name="passwordRegister"
                                     value={password.value}
                                     onChange={password.onChange}
+                                    autoComplete="new-password"
                                 />
                             </div>
                             <div className={'password-form'}>

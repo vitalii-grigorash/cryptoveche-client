@@ -2,6 +2,7 @@ import './App.css';
 import '../Authorization/Authorization';
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { config } from '../../config';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Authorization from "../Authorization/Authorization";
@@ -21,6 +22,8 @@ import * as Events from '../../Api/Events';
 
 function App() {
 
+    const wsConnect = config.ws_connect;
+    const ws = new WebSocket(wsConnect);
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -86,12 +89,43 @@ function App() {
         })
     }
 
+    function joinEvent(id) {
+        const body = {
+            id: id
+        }
+        requestHelper(Events.joinEventByLink, body)
+            .then((data) => {
+                if (data.status === "ok") {
+                    setJoinId('');
+                    requestHelper(Events.getEvents)
+                        .then((data) => {
+                            setAllEvents(data);
+                        })
+                        .catch((err) => {
+                            throw new Error(err.message);
+                        })
+                } else if (data.status === "failure") {
+                    setJoinId('');
+                    if (data.text === "User has already joined") {
+                        console.log('Вы уже присоединились к данному голосованию');
+                    } else if (data.text === "Registration is over") {
+                        console.log('Вы не можете быть добавлены, так как регистрация завершена или событие окончено');
+                    }
+                }
+            })
+            .catch((err) => {
+                throw new Error(err.message);
+            })
+    }
+
     useEffect(() => {
+        const url = window.location.href.split('/');
         if (isLoggedIn) {
             if (
                 pathname === '/' ||
                 pathname === '/votes-page' ||
-                pathname === '/my-profile'
+                pathname === '/my-profile' ||
+                pathname === '/details-vote'
             ) {
                 requestHelper(Events.getEvents)
                     .then((data) => {
@@ -100,6 +134,54 @@ function App() {
                     .catch((err) => {
                         throw new Error(err.message);
                     })
+            } else if (url[3] === 'join') {
+                if (url[4] !== undefined) {
+                    joinEvent(url[4]);
+                    navigate('/');
+                } else {
+                    navigate('/');
+                }
+            } else if (url[3] === 'waiting') {
+                if (url[4] !== undefined) {
+                    const data = {
+                        id: url[4]
+                    }
+                    handleCurrentEvents(data, true);
+                } else {
+                    navigate('/');
+                }
+            } else if (url[3] === 'questions') {
+                if (url[4] !== undefined) {
+                    const data = {
+                        id: url[4]
+                    }
+                    requestHelper(Events.getEvent, data)
+                        .then((res) => {
+                            if (res.status === 'ended' || res.status === 'quorum_unpresant') {
+                                handleCurrentEvents(data, true);
+                            } else {
+                                if (res.isRegistered) {
+                                    handleCurrentEvents(data, false);
+                                } else {
+                                    handleCurrentEvents(data, true);
+                                }
+                            }
+                        })
+                        .catch((err) => {
+                            throw new Error(err.message);
+                        })
+                } else {
+                    navigate('/');
+                }
+            } else if (url[3] === 'results') {
+                if (url[4] !== undefined) {
+                    const data = {
+                        id: url[4]
+                    }
+                    showEventResult(data);
+                } else {
+                    navigate('/');
+                }
             }
         }
         // eslint-disable-next-line
@@ -199,7 +281,41 @@ function App() {
                         setCurrentUser(res);
                         createUserName(res);
                         setOffset(res.utc_offset);
-                        navigate('/');
+                        if (joinId !== '') {
+                            joinEvent(joinId);
+                            navigate('/');
+                        } else if (eventWaitingIdByLink !== '') {
+                            const data = {
+                                id: eventWaitingIdByLink
+                            }
+                            handleCurrentEvents(data, true);
+                        } else if (eventQuestionsIdByLink !== '') {
+                            const data = {
+                                id: eventQuestionsIdByLink
+                            }
+                            requestHelper(Events.getEvent, data)
+                                .then((res) => {
+                                    if (res.status === 'ended' || res.status === 'quorum_unpresant') {
+                                        handleCurrentEvents(data, true);
+                                    } else {
+                                        if (res.isRegistered) {
+                                            handleCurrentEvents(data, false);
+                                        } else {
+                                            handleCurrentEvents(data, true);
+                                        }
+                                    }
+                                })
+                                .catch((err) => {
+                                    throw new Error(err.message);
+                                })
+                        } else if (eventResultIdByLink !== '') {
+                            const data = {
+                                id: eventResultIdByLink
+                            }
+                            showEventResult(data);
+                        } else {
+                            navigate('/');
+                        }
                     }
                 })
                 .catch((err) => {
@@ -221,14 +337,16 @@ function App() {
             setOffset(user.utc_offset)
             if (
                 pathname === '/auth' ||
-                pathname === '/forget-password' ||
                 pathname === '/rstpwd' ||
-                pathname === '/reg-page' ||
+                pathname === '/registration' ||
                 pathname === '/reg-second-page'
             ) {
                 navigate('/');
+            } else if (pathname === '/forget') {
+                navigate('/my-profile');
             }
         } else {
+            const url = window.location.href.split('/');
             if (
                 pathname === '/' ||
                 pathname === '/call-voting-page' ||
@@ -238,6 +356,34 @@ function App() {
                 pathname === '/votes-page'
             ) {
                 logout();
+            } else if (url[3] === 'join') {
+                if (url[4] !== undefined) {
+                    setJoinId(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
+            } else if (url[3] === 'waiting') {
+                if (url[4] !== undefined) {
+                    setEventWaitingIdByLink(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
+            } else if (url[3] === 'questions') {
+                if (url[4] !== undefined) {
+                    setEventQuestionsIdByLink(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
+            } else if (url[3] === 'results') {
+                if (url[4] !== undefined) {
+                    setEventResultIdByLink(url[4]);
+                    logout();
+                } else {
+                    logout();
+                }
             }
         }
         // eslint-disable-next-line
@@ -283,7 +429,7 @@ function App() {
         }
     }
 
-    const toggleEventRegistration = (eventId) => {
+    const toggleEventRegistration = (eventId, isRegistered) => {
         const body = {
             id: eventId
         }
@@ -293,14 +439,14 @@ function App() {
                     requestHelper(Events.getEvents)
                         .then((data) => {
                             setAllEvents(data);
-                            const curentEvent = data.find(event => event.id === eventId);
-                            if (curentEvent.isRegistered) {
+                            if (!isRegistered) {
                                 handleShowSuccessModal();
                                 setSuccessModalText('Вы успешно зарегистрировались!');
                             } else {
                                 handleShowSuccessModal();
                                 setSuccessModalText('Вы успешно отменили регистрацию!');
                             }
+                            handleReloadDetailsPage();
                         })
                         .catch((err) => {
                             throw new Error(err.message);
@@ -311,6 +457,16 @@ function App() {
                 console.log(err);
             })
     };
+
+    function handleReloadDetailsPage() {
+        if (pathname === '/details-vote') {
+            if (isReloadDetailsPage) {
+                setReloadDetailsPage(false);
+            } else {
+                setReloadDetailsPage(true);
+            }
+        }
+    }
 
     function handleCurrentEvents(data, isDetailsClick) {
         const currentEvent = {
@@ -324,8 +480,11 @@ function App() {
         }
         if (isDetailsClick) {
             navigate('/details-vote');
+            setEventWaitingIdByLink('');
+            setEventQuestionsIdByLink('');
         } else {
             navigate('/call-voting-page');
+            setEventQuestionsIdByLink('');
         }
     }
 
@@ -345,6 +504,7 @@ function App() {
         }
         setResultTabOpen(true);
         navigate('/details-vote');
+        setEventResultIdByLink('');
     }
 
     function handleShowSuccessModal() {
@@ -433,6 +593,9 @@ function App() {
                     <Header
                         handleLogout={logout}
                         userName={userName}
+                        allEvents={allEvents}
+                        handleCurrentEvents={handleCurrentEvents}
+                        handleReloadDetailsPage={handleReloadDetailsPage}
                     />
                 )}
                 <main className={'main'}>
@@ -447,7 +610,7 @@ function App() {
                                     preLoaderBtn={preLoaderAuthBtn}
                                 />}
                             />
-                            <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
+                            <Route path='/forget' element={<AuthorizationForgetPassword />} />
                             <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
                             <Route exact path='/registration'
                                 element={<Registration

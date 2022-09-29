@@ -19,7 +19,9 @@ const CallVotingCheckBox = (props) => {
         isBulletinVoted,
         answersArray,
         isMyBulletinTabActive,
-        results
+        results,
+        ballots,
+        currentEventData
     } = props;
 
     const { pathname } = useLocation();

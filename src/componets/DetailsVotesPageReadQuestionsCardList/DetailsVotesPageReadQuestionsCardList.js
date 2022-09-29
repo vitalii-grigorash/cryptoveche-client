@@ -9,7 +9,9 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
         question,
         isMyBulletinTabActive,
         results,
-        materialsQuestion
+        materialsQuestion,
+        ballots,
+        currentEventData
     } = props;
 
     const [ruleText, setRuleText] = useState('');
@@ -199,6 +201,8 @@ const DetailsVotesPageReadQuestionsCardList = (props) => {
                     isMyBulletinTabActive={isMyBulletinTabActive}
                     results={results}
                     question={question}
+                    ballots={ballots}
+                    currentEventData={currentEventData}
                 />
             ))}
         </div>
