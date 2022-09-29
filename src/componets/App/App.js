@@ -449,7 +449,7 @@ function App() {
                             />
                             <Route path='/forget-password' element={<AuthorizationForgetPassword />} />
                             <Route path='/rstpwd/:token' element={<AuthorizationSetPassword />} />
-                            <Route path='/reg-page'
+                            <Route exact path='/registration'
                                 element={<Registration
                                     handleRegister={handleRegister}
                                     handlePolicyAccept={handlePolicyAccept}
@@ -460,7 +460,19 @@ function App() {
                                     hideRegisterModal={hideRegisterModal}
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
-                                    preLoaderReg={preLoaderRegBtn}
+                                />}
+                            />
+                            <Route path='/registration/:token'
+                                element={<Registration
+                                    handleRegister={handleRegister}
+                                    handlePolicyAccept={handlePolicyAccept}
+                                    isPolicyAccept={isPolicyAccept}
+                                    modalActive={modalActive}
+                                    emailErrorMessage={emailErrorMessage}
+                                    changeBorderInputEmail={changeBorderInputEmail}
+                                    hideRegisterModal={hideRegisterModal}
+                                    hideRegForm={hideRegForm}
+                                    hideRegEmailErrors={hideRegEmailErrors}
                                 />}
                             />
                             <Route exact path='/'
@@ -505,6 +517,8 @@ function App() {
                                     formatTime={formatTime}
                                     utcOffset={utcOffset}
                                     handleResultTabOpen={handleResultTabOpen}
+                                    isReloadDetailsPage={isReloadDetailsPage}
+                                    handleReloadDetailsPage={handleReloadDetailsPage}
                                 />}
                             />
                             <Route exact path='/votes-page'
