@@ -40,7 +40,7 @@ function App() {
     const [utcOffset, setUtcOffset] = useState('');
     const [changeUtcOffset, setChangeUtcOffset] = useState('');
     const [preLoaderAuthBtn, setPreloaderAuthBtn] = useState(false);
-    const [preLoaderRegBtn, setPreLoaderRegBtn] = useState(false)
+    const [preLoaderRegBtn, setPreLoaderRegBtn] = useState(false);
     const [joinId, setJoinId] = useState('');
     const [isReloadDetailsPage, setReloadDetailsPage] = useState(false);
     const [eventWaitingIdByLink, setEventWaitingIdByLink] = useState('');
@@ -460,6 +460,7 @@ function App() {
                                     hideRegisterModal={hideRegisterModal}
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
+                                    preLoaderReg={preLoaderRegBtn}
                                 />}
                             />
                             <Route path='/registration/:token'
@@ -473,6 +474,7 @@ function App() {
                                     hideRegisterModal={hideRegisterModal}
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
+                                    preLoaderReg={preLoaderRegBtn}
                                 />}
                             />
                             <Route exact path='/'
