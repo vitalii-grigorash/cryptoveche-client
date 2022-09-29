@@ -9,6 +9,8 @@ import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
 import {Link, useLocation} from "react-router-dom";
 import HeaderMyProfileModal from "./HeaderMyProfileModal/HeaderMyProfileModal";
 import HeaderSettingsModal from "./HeaderSettingsModal/HeaderSettingsModal";
+import SearchModal from "../SearchModal/SearchModal";
+import { Validation } from '../../utils/Validation';
 
 const Header = (props) => {
 

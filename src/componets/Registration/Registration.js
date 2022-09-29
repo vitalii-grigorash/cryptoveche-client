@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import './Registration.css';
 import logo from "../../img/Auth_logo_crypto_veche.svg";
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -15,6 +16,7 @@ import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 import { Validation } from '../../utils/Validation';
 import row_icon_title from "../../img/Registration_row_icon.svg";
 import RegistrationPasswordRequireModal from "./RegistrationPasswordRequireModal/RegistrationPasswordRequireModal";
+import * as Auth from '../../Api/Auth';
 
 const Registration = (props) => {
 
