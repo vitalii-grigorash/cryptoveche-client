@@ -42,6 +42,8 @@ function App() {
     const [isResultTabOpen, setResultTabOpen] = useState(false);
     const [utcOffset, setUtcOffset] = useState('');
     const [changeUtcOffset, setChangeUtcOffset] = useState('');
+    const [preLoaderAuthBtn, setPreloaderAuthBtn] = useState(false);
+    const [preLoaderRegBtn, setPreLoaderRegBtn] = useState(false);
     const [joinId, setJoinId] = useState('');
     const [isReloadDetailsPage, setReloadDetailsPage] = useState(false);
     const [eventWaitingIdByLink, setEventWaitingIdByLink] = useState('');
