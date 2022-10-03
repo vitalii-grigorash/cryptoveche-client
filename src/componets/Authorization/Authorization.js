@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './Authorization.css';
 import logo from '../../img/Auth_logo_crypto_veche.svg';
 import bg_image1 from "../../img/Auth_img1.svg";
@@ -44,6 +44,27 @@ const Authorization = (props) => {
         }
         handleLogin(email.value, password.value);
     }
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            inputHandler();
+        }
+    };
+
+    useEffect(() => {
+        if (email.value !== '' && password.value !== '') {
+            document.addEventListener("keydown", handleKeyDown);
+            return () => {
+                document.removeEventListener("keydown", handleKeyDown);
+            };
+        } else {
+            document.addEventListener("keydown", handleKeyDown);
+            return () => {
+                document.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    }, [email.value, password.value]);
+
     return (
         <div className={'wrapper-auth'}>
             <div className={'container-auth'}>
@@ -86,15 +107,15 @@ const Authorization = (props) => {
                                     <a href={'https://admin.cryptoveche.local'} target={"_blank"} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
                                 </div>
                                 <div>
-                                <label className={'checkbox_container'}>
-                                    <input
-                                        type="checkbox"
-                                        checked={isRememberMe}
-                                        onChange={handleRememberMe}
-                                    />
-                                    <span className={'checkmark'} />
-                                </label>
-                                <span className={'auth__remember-me-checklabel'}>Запомнить меня</span>
+                                    <label className={'checkbox_container'}>
+                                        <input
+                                            type="checkbox"
+                                            checked={isRememberMe}
+                                            onChange={handleRememberMe}
+                                        />
+                                        <span className={'checkmark'} />
+                                    </label>
+                                    <span className={'auth__remember-me-checklabel'}>Запомнить меня</span>
                                 </div>
                             </div>
                             <div className={'form__button'}>

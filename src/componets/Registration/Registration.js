@@ -114,10 +114,6 @@ const Registration = (props) => {
         }
     }
 
-    useEffect(() => {
-
-    })
-
     function handleSubmit(evt) {
         evt.preventDefault();
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
@@ -380,7 +376,7 @@ const Registration = (props) => {
                         </div>
                         <div className={showHideElem ? 'reg-form__button active' : 'reg-form__button _reg-block-show'}>
                             <span className={'_reg-block-hidden'}>Шаг 2 из 2, почти готово</span>
-                            <button  className={preLoaderReg ? 'reg-form__button-btn-reg active' : 'reg-form__button-btn-reg'} type={'submit'}>{preLoaderReg ? 'Загрузка...' : 'Зарегистрироваться'}</button>
+                            <button className={preLoaderReg ? 'reg-form__button-btn-reg active' : 'reg-form__button-btn-reg'} type={'submit'}>{preLoaderReg ? 'Загрузка...' : 'Зарегистрироваться'}</button>
                             <p className='reg-form__validate-error'>{firsPageError}</p>
                         </div>
                     </form>

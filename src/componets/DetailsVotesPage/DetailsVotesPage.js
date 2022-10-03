@@ -41,6 +41,32 @@ const DetailsVotesPage = (props) => {
     const [isNotFullyVoted, setNotFullyVoted] = useState(false);
     const [ballots, setBallots] = useState([]);
 
+    function getCurrentEvent() {
+        if (localStorage.getItem('currentEvent')) {
+            const currentEvent = localStorage.getItem('currentEvent');
+            const event = JSON.parse(currentEvent);
+            const body = {
+                id: event.id
+            }
+            requestHelper(Events.getEvent, body)
+                .then((data) => {
+                    if (!data.isDeleted) {
+                        setCurrentEventData(data);
+                        templateRow(data.questions);
+                        templateGrid(data.questions);
+                        setBallots(data.ballots);
+                        if (data.results.questions) {
+                            setResults(data.results.questions);
+                        }
+                    } else {
+                        navigate('/');
+                    }
+                });
+        } else {
+            navigate('/');
+        }
+    }
+
     useEffect(() => {
         if (currentEventData.questions !== undefined) {
             if (currentEventData.ballots !== undefined) {
@@ -128,27 +154,6 @@ const DetailsVotesPage = (props) => {
         ]
     );
 
-    function getCurrentEvent() {
-        if (localStorage.getItem('currentEvent')) {
-            const currentEvent = localStorage.getItem('currentEvent');
-            const event = JSON.parse(currentEvent);
-            const body = {
-                id: event.id
-            }
-            requestHelper(Events.getEvent, body)
-                .then((data) => {
-                    setCurrentEventData(data);
-                    templateRow(data.questions);
-                    templateGrid(data.questions);
-                    setBallots(data.ballots);
-                    if (data.results.questions) {
-                        setResults(data.results.questions);
-                    }
-                });
-        } else {
-            navigate('/');
-        }
-    }
     useEffect(() => {
         getCurrentEvent();
     }, [])
