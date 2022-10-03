@@ -19,11 +19,9 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 import * as Auth from '../../Api/Auth';
 import * as Events from '../../Api/Events';
+import Stomp from '../../utils/stomp';
 
 function App() {
-
-    const wsConnect = config.ws_connect;
-    const ws = new WebSocket(wsConnect);
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -88,6 +86,61 @@ function App() {
             }
         })
     }
+
+    function initStompClient(ws_connect) {
+        let client = Stomp.Stomp.client(ws_connect);
+        client.debug = function () { };
+        return client;
+    }
+
+    function handleMessage(message) {
+        window.location.reload();
+    }
+
+    function handleMessageDelete(message) {
+        window.location.reload();
+    }
+
+    function subscribeToEvent(eventId, config) {
+        const client = initStompClient(config.ws_connect);
+        const on_connect = function (x) {
+            client.subscribe(`/exchange/${eventId}/time`, handleMessage, {});
+            client.subscribe(`/exchange/${eventId}/delete`, handleMessageDelete, {});
+        };
+
+        const on_error = function (err, tmp) {
+            console.log('rabbitmq error');
+        };
+
+        client.connect(config.ws_user, config.ws_pass, on_connect, on_error, '/');
+    }
+
+    function subscribeToNewEvents(userId, config) {
+        const client = initStompClient(config.ws_connect);
+        const on_connect = function (x) {
+            client.subscribe(`/exchange/events/${userId}`, handleMessage, {})
+        };
+
+        const on_error = function (err, tmp) {
+            console.log('rabbitmq error');
+        };
+
+        client.connect(config.ws_user, config.ws_pass, on_connect, on_error, '/');
+    }
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            if (allEvents.length !== 0) {
+                allEvents.forEach((event) => {
+                    if (event.status !== 'ended') {
+                        if (event.status !== 'quorum_unpresant') {
+                            subscribeToEvent(event.id, config);
+                        }
+                    }
+                })
+            }
+        }
+    }, [isLoggedIn, allEvents]);
 
     function joinEvent(id) {
         const body = {
@@ -281,6 +334,8 @@ function App() {
                         setCurrentUser(res);
                         createUserName(res);
                         setOffset(res.utc_offset);
+                        const subUserId = `${res.user_type + res.id}`
+                        subscribeToNewEvents(subUserId, config);
                         if (joinId !== '') {
                             joinEvent(joinId);
                             navigate('/');
@@ -332,9 +387,11 @@ function App() {
             const user = JSON.parse(userData);
             setCurrentUser(user);
             createUserName(user);
-            setPreloaderAuthBtn(false)
+            setPreloaderAuthBtn(false);
             setLoggedIn(true);
-            setOffset(user.utc_offset)
+            setOffset(user.utc_offset);
+            const subUserId = `${user.user_type + user.id}`;
+            subscribeToNewEvents(subUserId, config);
             if (
                 pathname === '/auth' ||
                 pathname === '/rstpwd' ||
@@ -567,24 +624,6 @@ function App() {
             return `${hours + ':' + minutes}`;
         }
     }
-
-    useEffect(() => {
-        ws.addEventListener('message', (e) => {
-            console.log('WebSocketMessage');
-            console.log(JSON.parse(e.data));
-        })
-    })
-
-    // useEffect(() => {
-    //     const socket = new WebSocket("wss://client.evote65.dltc.spbu.ru/ws")
-    //     socket.onopen = () => {
-    //         socket.send(JSON.stringify({
-    //             id: currentUser.id,
-    //             username: userName,
-    //             method: "connection"
-    //         }))
-    //     }
-    // }, [currentUser, userName])
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
