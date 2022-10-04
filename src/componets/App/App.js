@@ -94,10 +94,12 @@ function App() {
     }
 
     function handleMessage(message) {
+        console.log(message);
         window.location.reload();
     }
 
     function handleMessageDelete(message) {
+        console.log(message);
         window.location.reload();
     }
 
@@ -140,6 +142,7 @@ function App() {
                 })
             }
         }
+        // eslint-disable-next-line
     }, [isLoggedIn, allEvents]);
 
     function joinEvent(id) {
@@ -331,10 +334,10 @@ function App() {
                             localStorage.setItem('user', JSON.stringify(res));
                         }
                         setLoggedIn(true);
-                        setCurrentUser(res);
+                        addCurrentUser(res);
                         createUserName(res);
                         setOffset(res.utc_offset);
-                        const subUserId = `${res.user_type + res.id}`
+                        const subUserId = `${res.authAs + res.id}`;
                         subscribeToNewEvents(subUserId, config);
                         if (joinId !== '') {
                             joinEvent(joinId);
@@ -381,16 +384,20 @@ function App() {
         }
     }
 
+    function addCurrentUser(user) {
+        setCurrentUser(user);
+    }
+
     useEffect(() => {
         if (localStorage.getItem('user')) {
             const userData = localStorage.getItem('user');
             const user = JSON.parse(userData);
-            setCurrentUser(user);
+            addCurrentUser(user);
             createUserName(user);
             setPreloaderAuthBtn(false);
             setLoggedIn(true);
             setOffset(user.utc_offset);
-            const subUserId = `${user.user_type + user.id}`;
+            const subUserId = `${user.authAs + user.id}`;
             subscribeToNewEvents(subUserId, config);
             if (
                 pathname === '/auth' ||
@@ -708,6 +715,7 @@ function App() {
                                     handleLogout={logout}
                                     formatTime={formatTime}
                                     formatDate={formatDate}
+                                    addCurrentUser={addCurrentUser}
                                 />}
                             />
                             <Route exact path='/details-vote'

@@ -156,6 +156,7 @@ const DetailsVotesPage = (props) => {
 
     useEffect(() => {
         getCurrentEvent();
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
@@ -168,6 +169,7 @@ const DetailsVotesPage = (props) => {
             setBtnMyBulletin(false);
             handleResultTabOpen();
         }
+        // eslint-disable-next-line
     }, [isReloadDetailsPage]);
 
     useEffect(() => {

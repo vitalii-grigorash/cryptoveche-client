@@ -6,7 +6,7 @@
     position: relative;
     padding-right: 32px;
     height: 98%;
-    justify-content: end;
+    justify-content: flex-end;
 }
 /*------Стилизация колонки графика------------------------------------------------------------------------------------*/
 

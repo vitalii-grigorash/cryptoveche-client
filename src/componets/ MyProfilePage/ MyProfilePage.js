@@ -17,7 +17,8 @@ const MyProfilePage = (props) => {
         formatDate,
         createUserName,
         handleLogout,
-        setOffset
+        setOffset,
+        addCurrentUser
     } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
@@ -45,6 +46,7 @@ const MyProfilePage = (props) => {
                         userLastName={userLastName}
                         userSecondName={userSecondName}
                         createUserName={createUserName}
+                        addCurrentUser={addCurrentUser}
                     />
                 </div>
                 <div className={'main-content__grid-item_2'}>

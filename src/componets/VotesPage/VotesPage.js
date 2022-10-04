@@ -320,7 +320,7 @@ const VotesPage = (props) => {
                 case '-endVote':
                     activeEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
                     break;
-                default: {}
+                default: { }
             }
         } else {
             if (btnArchiveVotes) {
@@ -343,7 +343,7 @@ const VotesPage = (props) => {
                     case '-endVote':
                         archiveEventsForRender.sort((a, b) => b.event_end_time > a.event_end_time ? 1 : -1);
                         break;
-                    default: {}
+                    default: { }
                 }
             }
         }
@@ -371,7 +371,7 @@ const VotesPage = (props) => {
                 case 'endVote':
                     activeEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
                     break;
-                default: {}
+                default: { }
             }
         } else {
             if (btnArchiveVotes) {
@@ -394,7 +394,7 @@ const VotesPage = (props) => {
                     case 'endVote':
                         archiveEventsForRender.sort((a, b) => a.event_end_time > b.event_end_time ? 1 : -1);
                         break;
-                    default: {}
+                    default: { }
                 }
             }
         }
@@ -408,13 +408,20 @@ const VotesPage = (props) => {
                 setActiveStateEmptyMessage(false);
             }
         } else if (btnArchiveVotes) {
-            if (activeEventsForRender.length !== 0) {
+            if (archiveEventsForRender.length !== 0) {
                 setActiveStateEmptyMessage(true);
             } else {
                 setActiveStateEmptyMessage(false);
             }
         }
-    }, [activeEventsForRender.length, btnActiveVotes, btnArchiveVotes]);
+    },
+        [
+            activeEventsForRender.length,
+            archiveEventsForRender.length,
+            btnActiveVotes,
+            btnArchiveVotes
+        ]
+    );
 
     return (
         <div className='votes-page-block__wrapper'>
@@ -502,7 +509,7 @@ const VotesPage = (props) => {
                         )}
                     </>
                 )}
-                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет активных голосований, но они здесь появятся, когда вас пригласят!</span>
+                <span className={activeEmptyStateMessage ? 'votes-page-block__empty-state-message active' : 'votes-page-block__empty-state-message'}>У вас пока нет голосований, но они здесь появятся, когда вас пригласят!</span>
             </div>
             <VotesPagePaginationTableSearch
                 eventsSearchActive={eventsSearchActive}

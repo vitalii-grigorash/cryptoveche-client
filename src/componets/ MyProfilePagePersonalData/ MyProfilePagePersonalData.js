@@ -1,7 +1,6 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './ MyProfilePagePersonalData.css';
 import * as MyProfile from '../../Api/MyProfile';
-
 
 const MyProfilePagePersonalData = (props) => {
 
@@ -12,7 +11,8 @@ const MyProfilePagePersonalData = (props) => {
         userFirstName,
         userLastName,
         userSecondName,
-        createUserName
+        createUserName,
+        addCurrentUser
     } = props;
 
     const [firstName, setFirstName] = useState('')
@@ -28,7 +28,6 @@ const MyProfilePagePersonalData = (props) => {
     const [validSecondName, setValidSecondName] = useState(false)
     const [errorFields, setErrorFields] = useState('')
     const [activeSuccess, setActiveSuccess] = useState(false)
-    const [name, setName] = useState({})
 
     useEffect(() => {
         if (firstName || lastName || secondName !== '') {
@@ -43,7 +42,6 @@ const MyProfilePagePersonalData = (props) => {
             btnChangeColor.current.style.cursor = 'initial';
         }
     }, [firstName, lastName, secondName]);
-
 
     const lastNameHandler = (e) => {
         const nameRegExp = /^([а-яё]+|[a-z]+)$/i
@@ -64,7 +62,7 @@ const MyProfilePagePersonalData = (props) => {
         setFirstName(e.target.value)
         if (e.target.value === '') {
             setValidFirstName(false)
-        } else  {
+        } else {
             if (!nameRegExp.test(e.target.value)) {
                 setValidFirstName(true)
             } else {
@@ -91,7 +89,7 @@ const MyProfilePagePersonalData = (props) => {
         first_name: firstName,
         last_name: lastName,
         second_name: secondName,
-        userFields:[],
+        userFields: [],
     }
 
     const updateUserName = () => {
@@ -108,8 +106,13 @@ const MyProfilePagePersonalData = (props) => {
             }
             requestHelper(MyProfile.changeUserName, body)
                 .then((data) => {
-                    localStorage.setItem('user', JSON.stringify(data));
-                    createUserName(data)
+                    console.log(data);
+                    if (localStorage.getItem('user')) {
+                        localStorage.removeItem('user');
+                        localStorage.setItem('user', JSON.stringify(data));
+                    }
+                    createUserName(data);
+                    addCurrentUser(data);
                 })
             setActiveBtn(true)
             setActiveSuccess(true)
@@ -126,18 +129,18 @@ const MyProfilePagePersonalData = (props) => {
         }
     }
 
-     useEffect(() => {
+    useEffect(() => {
         const successTimeout = setTimeout(() => {
-             if (activeSuccess === true) {
-                 setActiveSuccess(false)
-                 setErrorFields('')
-                 borderErrorFirstName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-                 borderErrorLastName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-                 borderErrorSecondName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
-             }
-         }, 2000)
-         return () => clearTimeout(successTimeout )
-     }, [activeSuccess])
+            if (activeSuccess === true) {
+                setActiveSuccess(false)
+                setErrorFields('')
+                borderErrorFirstName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+                borderErrorLastName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+                borderErrorSecondName.current.style.border = '1px rgba(54, 59, 77, 0.3) solid';
+            }
+        }, 2000)
+        return () => clearTimeout(successTimeout)
+    }, [activeSuccess])
 
     return (
         <div className={'my-profile-page-personal-data__wrapper'}>
@@ -151,7 +154,7 @@ const MyProfilePagePersonalData = (props) => {
                         type={"text"}
                         value={lastName}
                         onChange={e => lastNameHandler(e)}
-                        placeholder={userLastName}/>
+                        placeholder={userLastName} />
                 </div>
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Имя</label>
@@ -160,7 +163,7 @@ const MyProfilePagePersonalData = (props) => {
                         type={"text"}
                         value={firstName}
                         onChange={e => firstNameHandler(e)}
-                        placeholder={userFirstName}/>
+                        placeholder={userFirstName} />
                 </div>
                 <div className={'my-profile-page-personal-data__form-input'}>
                     <label>Отчество</label>
@@ -169,7 +172,7 @@ const MyProfilePagePersonalData = (props) => {
                         type={"text"}
                         value={secondName}
                         onChange={e => secondNameHandler(e)}
-                        placeholder={userSecondName}/>
+                        placeholder={userSecondName} />
                 </div>
                 <div className={'my-profile-page-personal-data__form-input __my-profile-page-personal-date__hidden-e-mail'}>
                     <label>E-mail</label>
@@ -181,4 +184,5 @@ const MyProfilePagePersonalData = (props) => {
         </div>
     )
 }
+
 export default MyProfilePagePersonalData;
