@@ -23,7 +23,9 @@ const DetailsVotesPage = (props) => {
         utcOffset,
         handleResultTabOpen,
         isReloadDetailsPage,
-        handleReloadDetailsPage
+        handleReloadDetailsPage,
+        handleReloadPage,
+        isReloadPage
     } = props;
 
     const navigate = useNavigate();
@@ -153,6 +155,14 @@ const DetailsVotesPage = (props) => {
             currentEventData.id
         ]
     );
+
+    useEffect(() => {
+        if (isReloadPage) {
+            getCurrentEvent();
+            handleReloadPage();
+        }
+        // eslint-disable-next-line
+    }, [isReloadPage]);
 
     useEffect(() => {
         getCurrentEvent();

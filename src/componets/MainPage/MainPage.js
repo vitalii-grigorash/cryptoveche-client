@@ -89,12 +89,12 @@ const MainPage = (props) => {
 						<div className={'gistogramma-and-observer-cryptoveche'}>
 							<AmountVotesBlock
 								statsData={statsData}
-								formatDate={formatDate}/>
+								formatDate={formatDate} />
 							<ObserverCryptoBlock />
 						</div>
 						<CalendarVotes
 							allEvents={allEvents}
-						    formatTime={formatTime}
+							formatTime={formatTime}
 							formatDate={formatDate} />
 					</div>
 				</>
@@ -116,7 +116,7 @@ const MainPage = (props) => {
 						<ObserverCryptoBlock />
 						<AmountVotesBlock
 							statsData={statsData}
-							formatDate={formatDate}/>
+							formatDate={formatDate} />
 					</div>
 					<div className={'main-content__empty-states-component'}>
 						<EmptyStatesComponent />

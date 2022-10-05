@@ -47,6 +47,7 @@ function App() {
     const [eventWaitingIdByLink, setEventWaitingIdByLink] = useState('');
     const [eventQuestionsIdByLink, setEventQuestionsIdByLink] = useState('');
     const [eventResultIdByLink, setEventResultIdByLink] = useState('');
+    const [isReloadPage, setReloadPage] = useState(false);
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -87,6 +88,31 @@ function App() {
         })
     }
 
+    function handleReloadPage() {
+        setReloadPage(false);
+    }
+
+    useEffect(() => {
+        if (isReloadPage) {
+            requestHelper(Events.getEvents)
+                .then((data) => {
+                    setAllEvents(data);
+                    handleReloadPage();
+                    data.forEach((event) => {
+                        if (event.status !== 'ended') {
+                            if (event.status !== 'quorum_unpresant') {
+                                subscribeToEvent(event.id, config);
+                            }
+                        }
+                    })
+                })
+                .catch((err) => {
+                    throw new Error(err.message);
+                })
+        }
+        // eslint-disable-next-line
+    }, [isReloadPage]);
+
     function initStompClient(ws_connect) {
         let client = Stomp.Stomp.client(ws_connect);
         client.debug = function () { };
@@ -94,12 +120,10 @@ function App() {
     }
 
     function handleMessage(message) {
-        console.log(message);
-        window.location.reload();
+        setReloadPage(true);
     }
 
     function handleMessageDelete(message) {
-        console.log(message);
         window.location.reload();
     }
 
@@ -130,20 +154,17 @@ function App() {
         client.connect(config.ws_user, config.ws_pass, on_connect, on_error, '/');
     }
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            if (allEvents.length !== 0) {
-                allEvents.forEach((event) => {
-                    if (event.status !== 'ended') {
-                        if (event.status !== 'quorum_unpresant') {
-                            subscribeToEvent(event.id, config);
-                        }
+    function firstSubscribeToEvents(events) {
+        if (events.length !== 0) {
+            events.forEach((event) => {
+                if (event.status !== 'ended') {
+                    if (event.status !== 'quorum_unpresant') {
+                        subscribeToEvent(event.id, config);
                     }
-                })
-            }
+                }
+            })
         }
-        // eslint-disable-next-line
-    }, [isLoggedIn, allEvents]);
+    }
 
     function joinEvent(id) {
         const body = {
@@ -153,13 +174,16 @@ function App() {
             .then((data) => {
                 if (data.status === "ok") {
                     setJoinId('');
-                    requestHelper(Events.getEvents)
-                        .then((data) => {
-                            setAllEvents(data);
-                        })
-                        .catch((err) => {
-                            throw new Error(err.message);
-                        })
+                    setTimeout(() => {
+                        requestHelper(Events.getEvents)
+                            .then((data) => {
+                                setAllEvents(data);
+                                firstSubscribeToEvents(data);
+                            })
+                            .catch((err) => {
+                                throw new Error(err.message);
+                            })
+                    }, 3000)
                 } else if (data.status === "failure") {
                     setJoinId('');
                     if (data.text === "User has already joined") {
@@ -186,6 +210,7 @@ function App() {
                 requestHelper(Events.getEvents)
                     .then((data) => {
                         setAllEvents(data);
+                        firstSubscribeToEvents(data);
                     })
                     .catch((err) => {
                         throw new Error(err.message);
@@ -500,21 +525,14 @@ function App() {
         requestHelper(Events.registrationUserInEvents, body)
             .then((data) => {
                 if (data.status === 'ok') {
-                    requestHelper(Events.getEvents)
-                        .then((data) => {
-                            setAllEvents(data);
-                            if (!isRegistered) {
-                                handleShowSuccessModal();
-                                setSuccessModalText('Вы успешно зарегистрировались!');
-                            } else {
-                                handleShowSuccessModal();
-                                setSuccessModalText('Вы успешно отменили регистрацию!');
-                            }
-                            handleReloadDetailsPage();
-                        })
-                        .catch((err) => {
-                            throw new Error(err.message);
-                        })
+                    if (!isRegistered) {
+                        handleShowSuccessModal();
+                        setSuccessModalText('Вы успешно зарегистрировались!');
+                    } else {
+                        handleShowSuccessModal();
+                        setSuccessModalText('Вы успешно отменили регистрацию!');
+                    }
+                    handleReloadDetailsPage();
                 }
             })
             .catch((err) => {
@@ -588,25 +606,6 @@ function App() {
         const year = localDate.getFullYear();
         return `${date + '.' + month + '.' + year}`;
     }
-
-    // function formatTime(serverDate) {
-    //     const localDate = new Date(serverDate.toString());
-    //     const localDateUtc = localDate.getTimezoneOffset();
-    //     if (localDateUtc !== Number(changeUtcOffset * (-60)) || Number(currentUser.utc_offset * (-60))) {
-    //         localDate.setUTCHours(localDate.getUTCHours() + Number(changeUtcOffset));
-    //         const defaultHours = localDate.getUTCHours();
-    //         const hoursChangeUtc = `${defaultHours.toString().length === 1 ? `${'0' + defaultHours}` : `${defaultHours}`}`;
-    //         const defaultMinutes = localDate.getMinutes();
-    //         const minutes = `${defaultMinutes.toString().length === 1 ? `${'0' + defaultMinutes}` : `${defaultMinutes}`}`;
-    //         return `${hoursChangeUtc  + ':' + minutes}`;
-    //     } else {
-    //         const defaultHours = localDate.getHours();
-    //         const hours = `${defaultHours.toString().length === 1 ? `${'0' + defaultHours}` : `${defaultHours}`}`;
-    //         const defaultMinutes = localDate.getMinutes();
-    //         const minutes = `${defaultMinutes.toString().length === 1 ? `${'0' + defaultMinutes}` : `${defaultMinutes}`}`;
-    //         return `${hours + ':' + minutes}`;
-    //     }
-    // }
 
     function formatTime(serverDate) {
         const localDate = new Date(serverDate);
@@ -703,6 +702,8 @@ function App() {
                                 element={<CallVotingPage
                                     requestHelper={requestHelper}
                                     handleCurrentEvents={handleCurrentEvents}
+                                    handleReloadPage={handleReloadPage}
+                                    isReloadPage={isReloadPage}
                                 />}
                             />
                             <Route exact path='/my-profile'
@@ -731,6 +732,8 @@ function App() {
                                     handleResultTabOpen={handleResultTabOpen}
                                     isReloadDetailsPage={isReloadDetailsPage}
                                     handleReloadDetailsPage={handleReloadDetailsPage}
+                                    handleReloadPage={handleReloadPage}
+                                    isReloadPage={isReloadPage}
                                 />}
                             />
                             <Route exact path='/votes-page'
@@ -763,4 +766,5 @@ function App() {
         </CurrentUserContext.Provider>
     );
 }
+
 export default App;
