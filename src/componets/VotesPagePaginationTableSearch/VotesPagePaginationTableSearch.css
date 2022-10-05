@@ -1,8 +1,7 @@
 /*------Cтилизация общего блока для select, переключения между страницами и поиска в таблице -------------------------*/
 .navigation-menu__pagination-search-block {
     display: flex;
-    flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     font-size: 16px;
     /*color: rgba(54, 59, 77, 0.9);*/
@@ -28,7 +27,6 @@
 }
 .pagination-search-block__arrow-count-page {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     /*gap: 12px;*/
