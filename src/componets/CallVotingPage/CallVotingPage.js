@@ -13,7 +13,9 @@ const CallVotingPage = (props) => {
 
     const {
         requestHelper,
-        handleCurrentEvents
+        handleCurrentEvents,
+        handleReloadPage,
+        isReloadPage
     } = props;
 
     const navigate = useNavigate();
@@ -72,6 +74,15 @@ const CallVotingPage = (props) => {
             navigate('/');
         }
     }
+
+    useEffect(() => {
+        console.log(isReloadPage);
+        if (isReloadPage) {
+            getEvent();
+            handleReloadPage();
+        }
+        // eslint-disable-next-line
+    }, [isReloadPage]);
 
     useEffect(() => {
         getEvent();
