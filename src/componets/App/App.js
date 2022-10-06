@@ -15,6 +15,7 @@ import CallVotingPage from "../CallVotingPage/CallVotingPage";
 import MyProfilePage from "../ MyProfilePage/ MyProfilePage";
 import DetailsVotesPage from "../DetailsVotesPage/DetailsVotesPage";
 import VotesPageSuccessRegLaterModal from "../VotesPageSuccessRegLaterModal/VotesPageSuccessRegLaterModal";
+import PreLoaderCallVotingPage from '../PreLoaderCallVotingPage/PreLoaderCallVotingPage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import timeZone from '../../utils/TimeZoneData/TimeZoneRu.json';
 import * as Auth from '../../Api/Auth';
@@ -48,6 +49,7 @@ function App() {
     const [eventQuestionsIdByLink, setEventQuestionsIdByLink] = useState('');
     const [eventResultIdByLink, setEventResultIdByLink] = useState('');
     const [isReloadPage, setReloadPage] = useState(false);
+    const [isPreloaderActive, setPreloaderActive] = useState(false);
 
     function requestHelper(request, body = {}) {
         return new Promise((resolve, reject) => {
@@ -90,6 +92,14 @@ function App() {
 
     function handleReloadPage() {
         setReloadPage(false);
+    }
+
+    function activatePreloader() {
+        setPreloaderActive(true);
+    }
+
+    function disactivatePreloader() {
+        setPreloaderActive(false);
     }
 
     useEffect(() => {
@@ -135,7 +145,7 @@ function App() {
         };
 
         const on_error = function (err, tmp) {
-            console.log('rabbitmq error');
+
         };
 
         client.connect(config.ws_user, config.ws_pass, on_connect, on_error, '/');
@@ -144,11 +154,11 @@ function App() {
     function subscribeToNewEvents(userId, config) {
         const client = initStompClient(config.ws_connect);
         const on_connect = function (x) {
-            client.subscribe(`/exchange/events/${userId}`, handleMessage, {})
+            client.subscribe(`/exchange/events/${userId}`, handleMessage, {});
         };
 
         const on_error = function (err, tmp) {
-            console.log('rabbitmq error');
+
         };
 
         client.connect(config.ws_user, config.ws_pass, on_connect, on_error, '/');
@@ -187,9 +197,11 @@ function App() {
                 } else if (data.status === "failure") {
                     setJoinId('');
                     if (data.text === "User has already joined") {
-                        console.log('Вы уже присоединились к данному голосованию');
+                        handleShowSuccessModal();
+                        setSuccessModalText('Вы уже присоединились к данному голосованию');
                     } else if (data.text === "Registration is over") {
-                        console.log('Вы не можете быть добавлены, так как регистрация завершена или событие окончено');
+                        handleShowSuccessModal();
+                        setSuccessModalText('Вы не можете быть добавлены, так как регистрация завершена или событие окончено');
                     }
                 }
             })
@@ -402,7 +414,7 @@ function App() {
                     }
                 })
                 .catch((err) => {
-                    console.log(err);
+                    throw new Error(err.message);
                 })
             setPreloaderAuthBtn(true);
             setAuthError('');
@@ -495,7 +507,7 @@ function App() {
                         }
                     })
                     .catch((err) => {
-                        console.log(err.message);
+                        throw new Error(err.message);
                     })
             } else {
                 Auth.registration(registerData)
@@ -510,11 +522,22 @@ function App() {
                         }
                     })
                     .catch((err) => {
-                        console.log(err.message);
+                        throw new Error(err.message);
                     })
             }
         } else {
-            console.log('Необходимо отметить ознакомление с политикой');
+            handleShowSuccessModal();
+            setSuccessModalText('Необходимо отметить ознакомление с политикой');
+        }
+    }
+
+    function handleReloadDetailsPage() {
+        if (pathname === '/details-vote') {
+            if (isReloadDetailsPage) {
+                setReloadDetailsPage(false);
+            } else {
+                setReloadDetailsPage(true);
+            }
         }
     }
 
@@ -536,19 +559,9 @@ function App() {
                 }
             })
             .catch((err) => {
-                console.log(err);
+                throw new Error(err.message);
             })
     };
-
-    function handleReloadDetailsPage() {
-        if (pathname === '/details-vote') {
-            if (isReloadDetailsPage) {
-                setReloadDetailsPage(false);
-            } else {
-                setReloadDetailsPage(true);
-            }
-        }
-    }
 
     function handleCurrentEvents(data, isDetailsClick) {
         const currentEvent = {
@@ -633,7 +646,10 @@ function App() {
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-            <div className="App">
+            <div className='App'>
+                {isPreloaderActive && (
+                    <PreLoaderCallVotingPage />
+                )}
                 {isLoggedIn && (
                     <Header
                         handleLogout={logout}
@@ -643,8 +659,8 @@ function App() {
                         handleReloadDetailsPage={handleReloadDetailsPage}
                     />
                 )}
-                <main className={'main'}>
-                    <div className={'main-content _container'}>
+                <main className='main'>
+                    <div className='main-content _container'>
                         <Routes>
                             <Route path='/auth'
                                 element={<Authorization
@@ -653,6 +669,7 @@ function App() {
                                     handleRememberMe={handleRememberMe}
                                     isRememberMe={isRememberMe}
                                     preLoaderBtn={preLoaderAuthBtn}
+                                    config={config}
                                 />}
                             />
                             <Route path='/forget' element={<AuthorizationForgetPassword />} />
@@ -734,6 +751,8 @@ function App() {
                                     handleReloadDetailsPage={handleReloadDetailsPage}
                                     handleReloadPage={handleReloadPage}
                                     isReloadPage={isReloadPage}
+                                    activatePreloader={activatePreloader}
+                                    disactivatePreloader={disactivatePreloader}
                                 />}
                             />
                             <Route exact path='/votes-page'

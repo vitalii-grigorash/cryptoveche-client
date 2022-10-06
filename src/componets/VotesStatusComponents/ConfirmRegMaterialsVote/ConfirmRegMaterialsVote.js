@@ -11,7 +11,8 @@ const ConfirmRegMaterialsVote = (props) => {
   const {
     votesData,
     isVoted,
-    isNotFullyVoted
+    isNotFullyVoted,
+    hideStatus
   } = props;
 
   const [statusIcon, setStatusIcon] = useState('');
@@ -129,12 +130,14 @@ const ConfirmRegMaterialsVote = (props) => {
 
   return (
     <div className='status-block__materials-vote'>
-      <div className='materials-vote__status-icon'>
-        <img className='status-icon__color-icon' alt='иконка статуса регистрации' src={statusIcon} />
-        <p className={statusClassName}>
-          {statusText}
-        </p>
-      </div>
+      {!hideStatus && (
+        <div className='materials-vote__status-icon'>
+          <img className='status-icon__color-icon' alt='иконка статуса регистрации' src={statusIcon} />
+          <p className={statusClassName}>
+            {statusText}
+          </p>
+        </div>
+      )}
       {activeMaterials &&
         <div className={'materials-vote__hidden-materials'}>
           <MaterialsVoteQuestion currentMaterialsVote={votesData} materialsVoteName={'Материалы голосования'} />

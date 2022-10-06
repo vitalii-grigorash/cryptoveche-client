@@ -1,10 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './ MyProfilePageSetPassword.css';
 import icon_show_password from '../../img/Auth_show_pass_icon.svg';
 import icon_hide_password from '../../img/Auth_hidden_pass.svg';
 import * as MyProfile from "../../Api/MyProfile";
-
-
 
 const MyProfilePageSetPassword = (props) => {
 
@@ -27,10 +25,8 @@ const MyProfilePageSetPassword = (props) => {
     const borderRefRepeatPass = useRef(null)
     const [activeSuccessPass, setActiveSuccessPass] = useState(false)
 
-
     const showHiddenPass = () => {
-        if (typePass === 'password')
-        {
+        if (typePass === 'password') {
             setTypePass('text')
         } else {
             setTypePass('password')
@@ -38,8 +34,7 @@ const MyProfilePageSetPassword = (props) => {
     }
 
     const showHiddenNewPass = () => {
-        if (typeNewPass === 'text')
-        {
+        if (typeNewPass === 'text') {
             setTypeNewPass('password')
         } else {
             setTypeNewPass('text')
@@ -47,8 +42,7 @@ const MyProfilePageSetPassword = (props) => {
     }
 
     const showHiddenRepeatNewPass = () => {
-        if (typeRepeatNewPass === 'text')
-        {
+        if (typeRepeatNewPass === 'text') {
             setTypeRepeatNewPass('password')
         } else {
             setTypeRepeatNewPass('text')
@@ -75,7 +69,7 @@ const MyProfilePageSetPassword = (props) => {
             btnChangeColor.current.style.color = 'rgba(54, 59, 77, 0.35)';
             btnChangeColor.current.style.cursor = 'initial';
         }
-    },[newPass, repeatNewPass]);
+    }, [newPass, repeatNewPass]);
 
     let newPassItem = {
         password: newPass
@@ -99,7 +93,7 @@ const MyProfilePageSetPassword = (props) => {
             }
             requestHelper(MyProfile.changeUserName, body)
                 .then((data) => {
-                    console.log(data);
+
                 })
             setErrorPass('Пароль успешно изменен');
             setActiveBtn(true)
@@ -108,9 +102,11 @@ const MyProfilePageSetPassword = (props) => {
             setRepeatNewPass('')
             borderRefNewPass.current.style.border = '1px #4ED4A9 solid'
             borderRefRepeatPass.current.style.border = '1px #4ED4A9 solid'
-            btnChangeColor.current.style = { background: 'rgba(54, 59, 77, 0.08)',
-                                             color: 'rgba(54, 59, 77, 0.35)',
-                                             cursor: 'initial'}
+            btnChangeColor.current.style = {
+                background: 'rgba(54, 59, 77, 0.08)',
+                color: 'rgba(54, 59, 77, 0.35)',
+                cursor: 'initial'
+            }
         }
     }
 
@@ -124,40 +120,41 @@ const MyProfilePageSetPassword = (props) => {
     }, 2000)
 
     return (
-            <div className={'my-profile-page-set-pass__wrapper'}>
-                <h3>Пароль</h3>
-                <div className={'my-profile-page-set-pass__form'}>
-                    <div className={'my-profile-page-set-pass__form-input __my-profile-page-set-pass-hidden'}>
-                        <label>Пароль</label>
-                        <input type={typePass}
-                               className={'form-input__pass-fields'}
-                               autoComplete="new-password"/>
-                        <img className={'my-profile-page-set-pass__icon-pass'} alt={'иконка скрыть пароль'} src={typePass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenPass()}}/>
-                    </div>
-                    <div className={'my-profile-page-set-pass__form-input'}>
-                        <label>Новый пароль</label>
-                        <input
-                            className={'form-input__pass-fields'}
-                            ref={borderRefNewPass}
-                            type={typeNewPass}
-                            value={newPass}
-                            onChange={e => setNewPass(e.target.value)}/>
-                        <img className={showIconNewPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenNewPass()}}/>
-                    </div>
-                    <div className={'my-profile-page-set-pass__form-input'}>
-                        <label>Повторите новый пароль</label>
-                        <input
-                            className={'form-input__pass-fields'}
-                            ref={borderRefRepeatPass}
-                            type={typeRepeatNewPass}
-                            value={repeatNewPass}
-                            onChange={e => setRepeatNewPass(e.target.value)}/>
-                        <img className={showIconRepeatPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeRepeatNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => {showHiddenRepeatNewPass()}}/>
-                        <span className={activeSuccessPass ? 'my-profile-page-set-pass__success-message' : 'my-profile-page-set-pass__error-message'}>{errorPass}</span>
-                    </div>
+        <div className={'my-profile-page-set-pass__wrapper'}>
+            <h3>Пароль</h3>
+            <div className={'my-profile-page-set-pass__form'}>
+                <div className={'my-profile-page-set-pass__form-input __my-profile-page-set-pass-hidden'}>
+                    <label>Пароль</label>
+                    <input type={typePass}
+                        className={'form-input__pass-fields'}
+                        autoComplete="new-password" />
+                    <img className={'my-profile-page-set-pass__icon-pass'} alt={'иконка скрыть пароль'} src={typePass === 'password' ? icon_show_password : icon_hide_password} onClick={() => { showHiddenPass() }} />
                 </div>
-                <button disabled={activeBtn} ref={btnChangeColor} onClick={() => {onSaveChangePass()}} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+                <div className={'my-profile-page-set-pass__form-input'}>
+                    <label>Новый пароль</label>
+                    <input
+                        className={'form-input__pass-fields'}
+                        ref={borderRefNewPass}
+                        type={typeNewPass}
+                        value={newPass}
+                        onChange={e => setNewPass(e.target.value)} />
+                    <img className={showIconNewPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => { showHiddenNewPass() }} />
+                </div>
+                <div className={'my-profile-page-set-pass__form-input'}>
+                    <label>Повторите новый пароль</label>
+                    <input
+                        className={'form-input__pass-fields'}
+                        ref={borderRefRepeatPass}
+                        type={typeRepeatNewPass}
+                        value={repeatNewPass}
+                        onChange={e => setRepeatNewPass(e.target.value)} />
+                    <img className={showIconRepeatPass ? 'my-profile-page-set-pass__icon-pass active' : 'my-profile-page-set-pass__icon-pass __my-profile-show-icon-pass'} alt={'иконка скрыть пароль'} src={typeRepeatNewPass === 'password' ? icon_show_password : icon_hide_password} onClick={() => { showHiddenRepeatNewPass() }} />
+                    <span className={activeSuccessPass ? 'my-profile-page-set-pass__success-message' : 'my-profile-page-set-pass__error-message'}>{errorPass}</span>
+                </div>
             </div>
+            <button disabled={activeBtn} ref={btnChangeColor} onClick={() => { onSaveChangePass() }} className={'my-profile-page__save-change-button'}>Сохранить изменения</button>
+        </div>
     )
 }
+
 export default MyProfilePageSetPassword;

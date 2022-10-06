@@ -61,6 +61,7 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
         } else {
             validateSendVoteButton(true, question.id);
         }
+        // eslint-disable-next-line
     }, [question.is_required_grid_rows, rows.length, answersArray.length, question.id]);
 
     useEffect(() => {
@@ -147,7 +148,6 @@ const CallVotingPageQuestionCardCheckBox = (props) => {
 
     function removeRadioGridAnswer(rowId, columnId) {
         removeAnswer(question.id, rowId, columnId, question.template);
-        console.log(question.template);
         const filteredAnswers = answersArray.filter((answer => answer.id !== rowId));
         setAnswersArray(filteredAnswers);
     }

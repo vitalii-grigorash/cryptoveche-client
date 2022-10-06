@@ -18,7 +18,8 @@ const Authorization = (props) => {
         authError,
         handleRememberMe,
         isRememberMe,
-        preLoaderBtn
+        preLoaderBtn,
+        config
     } = props;
 
     const email = Validation();
@@ -63,33 +64,34 @@ const Authorization = (props) => {
                 document.removeEventListener("keydown", handleKeyDown);
             };
         }
+        // eslint-disable-next-line
     }, [email.value, password.value]);
 
     return (
-        <div className={'wrapper-auth'}>
-            <div className={'container-auth'}>
-                <div className={'main-block'}>
-                    <div className={'main-block__auth'}>
-                        <div className={'auth__title'}>
+        <div className='wrapper-auth'>
+            <div className='container-auth'>
+                <div className='main-block'>
+                    <div className='main-block__auth'>
+                        <div className='auth__title'>
                             <h3>Авторизация</h3>
                             {/*<div><span>РУС</span><span>ENG</span></div>*/}
                         </div>
-                        <div className={'auth__form'}>
-                            <div className={'form__login'}>
+                        <div className='auth__form'>
+                            <div className='form__login'>
                                 <span>Имя пользователя</span>
                                 <input
                                     type="email"
                                     name="email"
-                                    placeholder={'admin@admin.com'}
+                                    placeholder='admin@admin.com'
                                     required
                                     value={email.value}
                                     onChange={email.onChange}
                                     ref={refBorderRedLogin}
                                 />
                             </div>
-                            <div className={'form__pass'}>
+                            <div className='form__pass'>
                                 <span>Пароль</span>
-                                <img alt={'иконка'} className={'form__pass-show-pass-icon'} src={changeTypePass === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPass} />
+                                <img alt='иконка' className='form__pass-show-pass-icon' src={changeTypePass === 'password' ? show_pass_icon : hidden_pass_icon} onClick={showHiddenPass} />
                                 <input
                                     type={changeTypePass}
                                     name="password"
@@ -99,55 +101,68 @@ const Authorization = (props) => {
                                     onChange={password.onChange}
                                     ref={refBorderRedPass}
                                 />
-                                <div className={'form__error'}>{authError}</div>
+                                <div className='form__error'>{authError}</div>
                             </div>
-                            <div className={'form__checkbox'}>
-                                <div className={'checkbox__link-forget-pass-login-secretary'}>
-                                    <span className={'link-forget-pass'} onClick={() => linkButtonForgot('/forget')}>Забыли пароль?</span>
-                                    <a href={'https://admin.cryptoveche.local'} target={"_blank"} rel={'nofollow noreferrer noopener'}>Войти как секретарь</a>
+                            <div className='form__checkbox'>
+                                <div className='checkbox__link-forget-pass-login-secretary'>
+                                    <span className='link-forget-pass' onClick={() => linkButtonForgot('/forget')}>Забыли пароль?</span>
+                                    <a href={config.admin_url} target="_blank" rel='noopener noreferrer'>Войти как секретарь</a>
                                 </div>
                                 <div>
-                                    <label className={'checkbox_container'}>
+                                    <label className='checkbox_container'>
                                         <input
                                             type="checkbox"
                                             checked={isRememberMe}
                                             onChange={handleRememberMe}
                                         />
-                                        <span className={'checkmark'} />
+                                        <span className='checkmark' />
                                     </label>
-                                    <span className={'auth__remember-me-checklabel'}>Запомнить меня</span>
+                                    <span className='auth__remember-me-checklabel'>Запомнить меня</span>
                                 </div>
                             </div>
-                            <div className={'form__button'}>
-                                <button className={preLoaderBtn ? 'form__button-input-btn active' : 'form__button-input-btn'}
+                            <div className='form__button'>
+                                <button
+                                    className={preLoaderBtn ? 'form__button-input-btn active' : 'form__button-input-btn'}
                                     onClick={inputHandler}
-                                    type={'button'}>{preLoaderBtn ? 'Загрузка...' : 'Войти'}</button>
-                                <a className={'form__button__link-gosuslugi'} href={'https://esia.gosuslugi.ru/login/'} target={'_blank'} rel={'nofollow noreferrer noopener'}>Войти через ЕСИА</a>
+                                    type='button'
+                                >
+                                    {preLoaderBtn ? 'Загрузка...' : 'Войти'}
+                                </button>
+                                {config.enable_esia && (
+                                    <a
+                                        className='form__button__link-gosuslugi'
+                                        href='https://esia.gosuslugi.ru/login/'
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                    >
+                                        Войти через ЕСИА
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>
-                    <div className={'main-block__reg'}>
-                        <img alt={'изображение'} className={'auth-image_4'} src={bg_image1} />
-                        <img alt={'изображение'} className={'auth-image_5'} src={bg_image2} />
-                        <div className={'auth-image_1'}>
-                            <img alt={'изображение'} src={bg_image3} />
+                    <div className='main-block__reg'>
+                        <img alt='изображение' className='auth-image_4' src={bg_image1} />
+                        <img alt='изображение' className='auth-image_5' src={bg_image2} />
+                        <div className='auth-image_1'>
+                            <img alt='изображение' src={bg_image3} />
                         </div>
-                        <div className={'auth-image_3'}>
-                            <img alt={'изображение'} src={bg_image4} />
+                        <div className='auth-image_3'>
+                            <img alt='изображение' src={bg_image4} />
                         </div>
-                        <img alt={'изображение'} className={'auth-image-mobile'} src={bg_image_mobile} />
-                        <div className={'reg__logo'}>
+                        <img alt='изображение' className='auth-image-mobile' src={bg_image_mobile} />
+                        <div className='reg__logo'>
                             <img src={logo} alt="Логотип" />
                         </div>
-                        <div className={'reg__title'}>
+                        <div className='reg__title'>
                             Система электронных голосований
                         </div>
-                        <div className={'reg__button'}>
+                        <div className='reg__button'>
                             <span>Еще нет аккаунта?</span>
                             <button onClick={() => linkButtonRegPage('/registration')}>Зарегистрироваться</button>
                         </div>
                     </div>
-                    <div className={'main-block__mobile-link-reg'}>
+                    <div className='main-block__mobile-link-reg'>
                         <span>Ещё нет аккаунта?</span><span onClick={() => linkButtonRegPage('/registration')}>Зарегистрироваться</span>
                     </div>
                 </div>
@@ -155,4 +170,5 @@ const Authorization = (props) => {
         </div>
     )
 }
+
 export default Authorization;
