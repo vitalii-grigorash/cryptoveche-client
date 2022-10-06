@@ -3,7 +3,6 @@ import './PreLoaderCallVotingPage.css';
 
 const PreLoaderCallVotingPage = () => {
 
-
     return (
         <div className={'preloader-container'}>
             <div className={'preloader-call-voting'}>
@@ -13,4 +12,5 @@ const PreLoaderCallVotingPage = () => {
         </div>
     )
 }
+
 export default PreLoaderCallVotingPage;

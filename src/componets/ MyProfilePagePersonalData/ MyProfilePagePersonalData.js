@@ -98,7 +98,6 @@ const MyProfilePagePersonalData = (props) => {
             borderErrorFirstName.current.style.border = '1px red solid';
             borderErrorLastName.current.style.border = '1px red solid';
             borderErrorSecondName.current.style.border = '1px red solid';
-            // console.log(validLastName, validFirstName, validLastName)
         } else {
             const body = {
                 userNameId: userId,
@@ -106,7 +105,6 @@ const MyProfilePagePersonalData = (props) => {
             }
             requestHelper(MyProfile.changeUserName, body)
                 .then((data) => {
-                    console.log(data);
                     if (localStorage.getItem('user')) {
                         localStorage.removeItem('user');
                         localStorage.setItem('user', JSON.stringify(data));

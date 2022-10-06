@@ -76,7 +76,7 @@ const Registration = (props) => {
                     setRegistrationByToken(true);
                 })
                 .catch((err) => {
-                    console.log(err);
+                    throw new Error(err.message);
                 })
         } else {
             setToken('');

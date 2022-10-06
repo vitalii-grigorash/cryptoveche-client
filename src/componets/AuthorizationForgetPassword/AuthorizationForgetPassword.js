@@ -31,7 +31,7 @@ const AuthorizationForgetPassword = () => {
                     setEmailErrorMessage('');
                 })
                 .catch((err) => {
-                    console.log(err);
+                    throw new Error(err.message);
                 })
         }
     }
@@ -48,7 +48,7 @@ const AuthorizationForgetPassword = () => {
                     setEmailErrorMessage('');
                 })
                 .catch((err) => {
-                    console.log(err);
+                    throw new Error(err.message);
                 })
         }
     }

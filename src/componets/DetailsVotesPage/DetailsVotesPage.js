@@ -25,7 +25,9 @@ const DetailsVotesPage = (props) => {
         isReloadDetailsPage,
         handleReloadDetailsPage,
         handleReloadPage,
-        isReloadPage
+        isReloadPage,
+        activatePreloader,
+        disactivatePreloader
     } = props;
 
     const navigate = useNavigate();
@@ -45,6 +47,7 @@ const DetailsVotesPage = (props) => {
 
     function getCurrentEvent() {
         if (localStorage.getItem('currentEvent')) {
+            activatePreloader();
             const currentEvent = localStorage.getItem('currentEvent');
             const event = JSON.parse(currentEvent);
             const body = {
@@ -63,7 +66,13 @@ const DetailsVotesPage = (props) => {
                     } else {
                         navigate('/');
                     }
-                });
+                })
+                .catch((err) => {
+                    throw new Error(err.message);
+                })
+                .finally(() => {
+                    disactivatePreloader();
+                })
         } else {
             navigate('/');
         }

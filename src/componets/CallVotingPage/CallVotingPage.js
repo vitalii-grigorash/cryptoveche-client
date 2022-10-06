@@ -76,7 +76,6 @@ const CallVotingPage = (props) => {
     }
 
     useEffect(() => {
-        console.log(isReloadPage);
         if (isReloadPage) {
             getEvent();
             handleReloadPage();

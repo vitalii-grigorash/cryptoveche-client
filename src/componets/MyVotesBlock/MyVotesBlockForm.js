@@ -23,26 +23,53 @@ const MyVotesBlockForm = React.memo((props) => {
 	const [labelText, setLabelText] = useState('');
 	const [isVoted, setVoted] = useState(false);
 	const [isNotFullyVoted, setNotFullyVoted] = useState(false);
+	const [hideStatus, setHideStatus] = useState(false);
 
 	useEffect(() => {
-		if (votesData.questions !== undefined) {
-			if (votesData.ballots !== undefined) {
-				const filteredAnswer = votesData.questions.filter(a => votesData.ballots.find(p => p.bulletinId === a.bulletinId))
-				if (filteredAnswer.length === 0) {
-					setVoted(false);
-					setNotFullyVoted(false);
-				} else {
-					if (filteredAnswer.length === votesData.questions.length) {
-						setVoted(true);
+		if (votesData.type === 'secret') {
+			if (votesData.status === 'ended') {
+				setHideStatus(true);
+			} else if (votesData.status === 'quorum_unpresant') {
+				setHideStatus(true);
+			} else {
+				if (votesData.questions !== undefined) {
+					if (votesData.ballots !== undefined) {
+						const filteredAnswer = votesData.questions.filter(a => votesData.ballots.find(p => p.bulletinId === a.bulletinId))
+						if (filteredAnswer.length === 0) {
+							setVoted(false);
+							setNotFullyVoted(false);
+						} else {
+							if (filteredAnswer.length === votesData.questions.length) {
+								setVoted(true);
+								setNotFullyVoted(false);
+							} else {
+								setNotFullyVoted(true);
+								setVoted(false);
+							}
+						}
+					}
+				}
+			}
+		} else {
+			if (votesData.questions !== undefined) {
+				if (votesData.ballots !== undefined) {
+					const filteredAnswer = votesData.questions.filter(a => votesData.ballots.find(p => p.bulletinId === a.bulletinId))
+					if (filteredAnswer.length === 0) {
+						setVoted(false);
 						setNotFullyVoted(false);
 					} else {
-						setNotFullyVoted(true);
-						setVoted(false);
+						if (filteredAnswer.length === votesData.questions.length) {
+							setVoted(true);
+							setNotFullyVoted(false);
+						} else {
+							setNotFullyVoted(true);
+							setVoted(false);
+						}
 					}
 				}
 			}
 		}
-	}, [votesData.ballots, votesData.questions]);
+	}, [votesData.ballots, votesData.questions, votesData.isVoted, votesData.status, votesData.type]);
 
 	useEffect(() => {
 		if (votesData.status === 'waiting') {
@@ -102,6 +129,7 @@ const MyVotesBlockForm = React.memo((props) => {
 							votesData={votesData}
 							isVoted={isVoted}
 							isNotFullyVoted={isNotFullyVoted}
+							hideStatus={hideStatus}
 						/>
 					</div>
 				</div>

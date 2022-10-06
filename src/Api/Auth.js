@@ -138,7 +138,7 @@ export const resetUserPassword = (token, password) => {
             if (err.status === 500) {
                 throw new Error('Сервер временно недоступен');
             } else {
-                console.log(err);
+                throw new Error(err.message);
             }
         });
 };
