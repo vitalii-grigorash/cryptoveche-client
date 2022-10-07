@@ -61,7 +61,7 @@ const MyProfilePage = (props) => {
                     <CalendarVotes
                         allEvents={allEvents}
                         formatTime={formatTime}
-                        formatDate={formatDate}/>
+                        formatDate={formatDate} />
                 </div>
                 <div className={'main-content__grid-item_4'}>
                     <MyProfilePageSetPassword
@@ -74,4 +74,5 @@ const MyProfilePage = (props) => {
         </div>
     )
 }
+
 export default MyProfilePage;

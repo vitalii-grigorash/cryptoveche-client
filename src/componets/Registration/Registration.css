@@ -395,6 +395,7 @@ a {
     display: flex;
     flex-direction: row;
     z-index: 8;
+    margin: 0 auto 0 0;
 }
 .reg-form__checkbox.active {
     display: flex;
@@ -403,6 +404,7 @@ a {
     font-size: 18px;
     line-height: 156%;
     font-weight: 400;
+    margin: 0 auto 0 0;
 }
 .reg-form__checkbox a {
     color: #0084FE;

@@ -3,9 +3,8 @@ import './VotesPage.css';
 // import VotesPageActiveVotes from "../VotesPageActiveVotes/VotesPageActiveVotes";
 // import { activeVotesData } from "../../activeVotesData";
 import VotesPagePaginationTableSearch from "../VotesPagePaginationTableSearch/VotesPagePaginationTableSearch";
-import TitleVotesDetailsCallVotingProfile
-    from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
-import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
+import TitleVotesDetailsCallVotingProfile from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
+// import qr_cod_icon from '../../img/TitleVotesDetailsQRcod.svg';
 // import VotesPageArchiveVotes from "../VotesPageArchiveVotes/VotesPageArchiveVotes";
 import VotesPageFilterSortButtons from "../VotesPageFilterSortButtons/VotesPageFilterSortButtons";
 import MyVotesBlockForm from '../MyVotesBlock/MyVotesBlockForm';
@@ -431,7 +430,7 @@ const VotesPage = (props) => {
                 titleName='Голосования'
                 mobileLetter='Назад на главную'
             />
-            <img className='votes-page-block__qr-cod' alt='qr-код' src={qr_cod_icon} />
+            {/* <img className='votes-page-block__qr-cod' alt='qr-код' src={qr_cod_icon} /> */}
             <div className='votes-page-block__navigation-menu'>
                 <VotesPageFilterSortButtons
                     checkboxFilterArrayAdd={checkboxFilterArrayAdd}

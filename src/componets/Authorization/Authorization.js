@@ -108,7 +108,7 @@ const Authorization = (props) => {
                                     <span className='link-forget-pass' onClick={() => linkButtonForgot('/forget')}>Забыли пароль?</span>
                                     <a href={config.admin_url} target="_blank" rel='noopener noreferrer'>Войти как секретарь</a>
                                 </div>
-                                <div>
+                                <div className="auth-form__checkbox-container">
                                     <label className='checkbox_container'>
                                         <input
                                             type="checkbox"

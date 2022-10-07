@@ -127,6 +127,7 @@
     align-items: center;
     cursor: pointer;
     z-index: 3;
+    margin: 0 40px 0 0;
 }
 .general-block-search-settings-lk__search.active {
      display: none;
