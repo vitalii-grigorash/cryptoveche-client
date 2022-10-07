@@ -22,8 +22,7 @@
     padding: 26px 40px;
     border-radius: 16px;
     max-height: 88px;
-    gap: 350px;
-    max-width: 1328px;
+    width: 900px;
 }
 .details-votes-success-reg-modal__content.active {
     transform: scale(1);
@@ -33,6 +32,7 @@
     color: #FFFFFF;
     line-height: 36px;
     font-weight: 400;
+    margin: auto auto auto 0;
 }
 .details-votes-success-reg-modal__button {
     height: 48px;
@@ -44,68 +44,58 @@
     font-size: 16px;
     line-height: 24px;
     cursor: pointer;
-    padding: 12px 24px;
-    /*margin-left: 320px;*/
+    margin: auto 0 auto auto;
 }
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 1320px) {
-    .details-votes-success-reg-modal__wrapper {
-        top: 760px;
-        left: 6px;
-    }
+@media (max-width: 930px) {
     .details-votes-success-reg-modal__content {
-       gap: 260px;
+        padding: 20px 30px;
+        width: 700px;
     }
 }
-@media (max-width: 900px) {
-    .details-votes-success-reg-modal__wrapper {
-        top: 740px;
-        left: 6px;
-    }
+@media (max-width: 735px) {
     .details-votes-success-reg-modal__content {
-        gap: 20px;
-        padding: 16px 16px;
+        padding: 15px 20px;
+        width: 500px;
     }
     .details-votes-success-reg-modal__content span {
-        font-size: 14px;
-        color: #FFFFFF;
-        line-height: 18px;
-        font-weight: 400;
+        font-size: 16px;
+    }
+}
+@media (max-width: 535px) {
+    .details-votes-success-reg-modal__content {
+        padding: 10px 15px;
+        width: 400px;
+    }
+    .details-votes-success-reg-modal__content span {
+        font-size: 13px;
     }
     .details-votes-success-reg-modal__button {
+        height: 40px;
+        width: 110px;
         font-size: 14px;
-    }
-
-}
-@media (max-width: 600px) {
-    .details-votes-success-reg-modal__wrapper {
-        top: 800px;
-        left: 0;
+        line-height: 22px;
     }
 }
-@media (max-width: 375px) {
-    .details-votes-success-reg-modal__wrapper {
-        top: 470px;
-        left: 0;
-    }
+@media (max-width: 435px) {
     .details-votes-success-reg-modal__content {
-        display: flex;
         flex-direction: column;
-        gap: 12px;
-        padding: 16px 16px;
-        margin: 0 16px 0 16px;
-        max-width: 343px;
-        right: 0;
-        max-height: 124px;
+        width: 350px;
+        max-height: 150px;
     }
     .details-votes-success-reg-modal__content span {
-        font-size: 12px;
-        line-height: 20px;
-        font-weight: 400;
+        font-size: 14px;
+        margin: 0 auto 0;
     }
     .details-votes-success-reg-modal__button {
-        font-size: 14px;
-        line-height: 24px;
-        width: 100%;
+        height: 45px;
+        width: 140px;
+        font-size: 15px;
+        margin: 0 auto 0;
+    }
+}
+@media (max-width: 435px) {
+    .details-votes-success-reg-modal__content {
+        width: 345px;
     }
 }

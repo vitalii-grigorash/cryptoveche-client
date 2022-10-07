@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import './Header.css';
 import search_icon from '../../img/Header_search_icon.png';
 import search_icon_mobile from '../../img/Header_search_icon_mobile.svg';
-import settings from '../../img/Header_settings_icon.png';
+// import settings from '../../img/Header_settings_icon.png';
 import icon_client from '../../img/Header_lk_icon.png';
 import logo_header from '../../img/Header_logo.svg';
 import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
 import { Link, useLocation } from "react-router-dom";
 import HeaderMyProfileModal from "./HeaderMyProfileModal/HeaderMyProfileModal";
-import HeaderSettingsModal from "./HeaderSettingsModal/HeaderSettingsModal";
+// import HeaderSettingsModal from "./HeaderSettingsModal/HeaderSettingsModal";
 import SearchModal from "../SearchModal/SearchModal";
 import { Validation } from '../../utils/Validation';
 
@@ -26,8 +26,8 @@ const Header = (props) => {
 
     const [burgerMenuActive, setBurgerMenuActive] = useState(false);
     const [modalProfileExitActive, setModalProfileExitActive] = useState(false);
-    const [modalSettings, setModalSettings] = useState(false);
-    const [showInputSearch, setShowInputSearch] = useState(false)
+    // const [modalSettings, setModalSettings] = useState(false);
+    const [showInputSearch, setShowInputSearch] = useState(false);
     const { pathname } = useLocation();
     const [showSearchModal, setShowSearchModal] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
@@ -131,10 +131,10 @@ const Header = (props) => {
                                 />
                             )}
                         </div>
-                        <div className={'general-block-search-settings-lk__settings'}>
+                        {/* <div className={'general-block-search-settings-lk__settings'}>
                             <img onClick={() => setModalSettings(!modalSettings)} alt={'settings__icon'} src={settings} />
                             <HeaderSettingsModal active={modalSettings} setActive={setModalSettings} />
-                        </div>
+                        </div> */}
                         <div className={'general-block-search-settings-lk__iconclient'}>
                             <span onClick={() => setModalProfileExitActive(!modalProfileExitActive)}><img alt={'logo_client'} src={icon_client} />{userName}</span>
                             <HeaderMyProfileModal active={modalProfileExitActive} setActive={setModalProfileExitActive} handleLogout={handleLogout} />
@@ -142,7 +142,7 @@ const Header = (props) => {
                     </div>
                 </div>
             </header>
-            <HeaderBurgerMenu active={burgerMenuActive} setActive={setBurgerMenuActive} />
+            <HeaderBurgerMenu active={burgerMenuActive} setActive={setBurgerMenuActive} handleLogout={handleLogout} />
         </div>
     )
 }

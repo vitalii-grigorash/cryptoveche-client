@@ -23,6 +23,7 @@ import * as Events from '../../Api/Events';
 import Stomp from '../../utils/stomp';
 
 function App() {
+    
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);

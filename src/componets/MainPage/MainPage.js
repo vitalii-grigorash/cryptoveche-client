@@ -5,7 +5,7 @@ import MyVotesBlock from "../MyVotesBlock/MyVotesBlock";
 import ActualBlock from "../ActualBlock/ActualBlock";
 import ScanQRMobile from "../ScanQRMobile/ScanQRMobile";
 import AmountVotesBlock from "../AmountVotesBlock/AmountVotesBlock";
-import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
+// import ObserverCryptoBlock from "../ObserverCryptoBlock/ObserverCryptoBlock";
 import CalendarVotes from "../CalendarVotes/CalendarVotes";
 import * as Stats from '../../Api/Stats';
 import EmptyStatesComponent from "../EmptyStatesComponent/EmptyStatesComponent";
@@ -83,14 +83,15 @@ const MainPage = (props) => {
 								formatTime={formatTime}
 							/>
 						)}
-						<ScanQRMobile />
+						{/* <ScanQRMobile /> */}
 					</div>
 					<div className={'main-content__amount-votes-and-calendar-votes'}>
 						<div className={'gistogramma-and-observer-cryptoveche'}>
 							<AmountVotesBlock
 								statsData={statsData}
-								formatDate={formatDate} />
-							<ObserverCryptoBlock />
+								formatDate={formatDate}
+							/>
+							{/* <ObserverCryptoBlock /> */}
 						</div>
 						<CalendarVotes
 							allEvents={allEvents}
@@ -113,10 +114,11 @@ const MainPage = (props) => {
 						/>
 					</div>
 					<div className={'main-content__empty-states-observer-amount'}>
-						<ObserverCryptoBlock />
+						{/* <ObserverCryptoBlock /> */}
 						<AmountVotesBlock
 							statsData={statsData}
-							formatDate={formatDate} />
+							formatDate={formatDate} 
+						/>
 					</div>
 					<div className={'main-content__empty-states-component'}>
 						<EmptyStatesComponent />
