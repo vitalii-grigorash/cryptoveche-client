@@ -56,7 +56,7 @@ const ActualBlock = (props) => {
         }
       }
     }
-  }, [currentVote.ballots]);
+  }, [currentVote.ballots, currentVote.questions]);
 
   useEffect(() => {
     if (currentVote && Object.keys(currentVote).length > 0) {

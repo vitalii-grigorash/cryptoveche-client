@@ -25,7 +25,7 @@ const AmountVotesBlock = (props) => {
 		}
 		return newArray;
 	}
-	
+
 	useEffect(() => {
 		if (statsData && Object.keys(statsData).length > 0) {
 			let sumVoiting = 0;
@@ -50,15 +50,15 @@ const AmountVotesBlock = (props) => {
 			let sumPrevArrayVoted = getArrayIntoTwoPart[0].reduce((acc, el) => acc + el, 0);
 			let sumLastArrayVoted = getArrayIntoTwoPart[1].reduce((acc, el) => acc + el, 0);
 			setDifference(Number(((sumLastArrayVoted * 100 / sumPrevArrayVoted) - 100).toFixed(1)))
-				// (a > b)
-				// 	?
-				// 	Number((-(((a * 100) / b) - 100)).toFixed(1))
-				// 	:
-				// 	Number((((b * 100) / a) - 100).toFixed(1))
+			// (a > b)
+			// 	?
+			// 	Number((-(((a * 100) / b) - 100)).toFixed(1))
+			// 	:
+			// 	Number((((b * 100) / a) - 100).toFixed(1))
 		} else {
 			setDifference(0)
 		}
-	}, [sortedArray])
+	}, [sortedArray, filterSortedArrayVoted])
 
 	useEffect(() => {
 		if (difference >= 0 || isNaN(difference)) {
@@ -89,9 +89,11 @@ const AmountVotesBlock = (props) => {
 				<span className={differenceStyle}>
 					{difference + '%'}
 				</span>
-				{statsData.voted && statsData.voted.length > 0 && <Gistogramma
-					statsVoted={statsData.voted}
-					formatDate={formatDate}/>}
+				{statsData.voted && statsData.voted.length > 0 &&
+					<Gistogramma
+						statsVoted={statsData.voted}
+						formatDate={formatDate}
+					/>}
 				<div className={'total-amount'}>
 					<h1>{averageValueVoiting.toFixed(0)}</h1>
 					<span>человек голосует ежедневно</span>
