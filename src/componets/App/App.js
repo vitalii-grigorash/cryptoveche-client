@@ -184,16 +184,14 @@ function App() {
             .then((data) => {
                 if (data.status === "ok") {
                     setJoinId('');
-                    setTimeout(() => {
-                        requestHelper(Events.getEvents)
-                            .then((data) => {
-                                setAllEvents(data);
-                                firstSubscribeToEvents(data);
-                            })
-                            .catch((err) => {
-                                throw new Error(err.message);
-                            })
-                    }, 3000)
+                    requestHelper(Events.getEvents)
+                        .then((data) => {
+                            setAllEvents(data);
+                            firstSubscribeToEvents(data);
+                        })
+                        .catch((err) => {
+                            throw new Error(err.message);
+                        })
                 } else if (data.status === "failure") {
                     setJoinId('');
                     if (data.text === "User has already joined") {
@@ -282,7 +280,7 @@ function App() {
 
     function hideRegisterModal() {
         setModalActive(false);
-        setPreLoaderRegBtn(false)
+        setPreLoaderRegBtn(false);
     }
 
     function handleRememberMe() {
@@ -346,26 +344,26 @@ function App() {
         setCurrentUser({});
         setUtcOffset('');
         navigate('/auth');
-        setPreloaderAuthBtn(false)
-        setPreLoaderRegBtn(false)
+        setPreloaderAuthBtn(false);
+        setPreLoaderRegBtn(false);
     }
 
     function setOffset(offset) {
         const localOffset = timeZone.find(value => value.VALUE === offset.toString())
         setUtcOffset(localOffset.LABEL);
-        setChangeUtcOffset(localOffset.VALUE)
+        setChangeUtcOffset(localOffset.VALUE);
     }
 
     function handleLogin(email, password) {
         if (email === '' || password === '') {
             setAuthError('Необходмо заполнить все поля');
-            setPreloaderAuthBtn(false)
+            setPreloaderAuthBtn(false);
         } else {
             Auth.authorize(email, password)
                 .then((res) => {
                     if (res.status === 'failure') {
                         setAuthError('Неправильное имя пользователя или пароль');
-                        setPreloaderAuthBtn(false)
+                        setPreloaderAuthBtn(false);
                     } else {
                         if (isRememberMe) {
                             localStorage.setItem('user', JSON.stringify(res));
