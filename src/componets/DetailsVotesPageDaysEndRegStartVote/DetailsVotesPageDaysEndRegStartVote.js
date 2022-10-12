@@ -67,6 +67,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
     function updateRemainingVoteTime(countStartTimeVote) {
         setRemainingVoteTime(getRemainingTimePointStartVote(countStartTimeVote));
     }
+
     function updateRemainingVoteEndTime(countStartTimeVote) {
         setRemainingEndVoteTime(getRemainingTimePointStartVote(countStartTimeVote));
     }
@@ -127,6 +128,7 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
             getIdEndRegDivStrip.style.width = '0%';
         }
     }
+
     // Функция для расчета длины в процентах для полоски таймера начало голосования
     function changeRangeInputStartVote() {
         const valPercent = (inputStartVoteRef.current.value / inputStartVoteRef.current.max) * 100;
