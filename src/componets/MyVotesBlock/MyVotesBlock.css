@@ -275,6 +275,11 @@
         height: 48px;
         font-size: 16px;
     }
+    .cancel-reg {
+        width: 100%;
+        height: 48px;
+        font-size: 16px;
+    }
     .my-votes-block__vote-form_votes-page {
         margin-bottom: 16px;
     }
