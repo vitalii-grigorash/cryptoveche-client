@@ -6,7 +6,6 @@ import filter_modal_increment_button from '../../../img/VotesPageBlockModal_incr
 import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
 import FiltersModalCheckBox from "./FiltersModalCheckBox/FiltersModalCheckBox";
 
-
 const VotesPageFiltersModal = (props) => {
 
     const {
@@ -207,5 +206,4 @@ const VotesPageFiltersModal = (props) => {
         </div>
     )
 }
-
 export default VotesPageFiltersModal;

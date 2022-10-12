@@ -55,7 +55,5 @@ const FiltersModalCheckBox = (props) => {
             <span>{nameSearchVote}</span>
         </div>
     )
-
 }
-
 export default FiltersModalCheckBox;
