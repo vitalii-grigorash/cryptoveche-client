@@ -73,10 +73,10 @@
     color: rgba(54, 59, 77, 0.6)
 }
 .header-burger-menu img {
-     position: absolute;
-     z-index: 5;
-     top: 26px;
-     left: 79px;
+    position: absolute;
+    z-index: 5;
+    top: 26px;
+    left: 79px;
 }
 /*------Стилизация блока с логотипом----------------------------------------------------------------------------------*/
 .header__logotype-block {
@@ -117,7 +117,7 @@
 /*------Стилизация общего блока с иконками поиск, настройки, личный кабинет-------------------------------------------*/
 .header__general-block-search-settings-lk {
     display: flex;
-    gap: 51px;
+    /*gap: 51px;*/
     position: relative;
 }
 /*------Стилизация блока с иконкой поиск------------------------------------------------------------------------------*/
@@ -130,8 +130,8 @@
     margin: 0 40px 0 0;
 }
 .general-block-search-settings-lk__search.active {
-     display: none;
-     cursor: inherit;
+    display: none;
+    cursor: inherit;
 }
 .general-block-search-settings-lk__search-input {
     position: absolute;
@@ -228,11 +228,11 @@
     .general-block-search-settings-lk__search span {
         display: none;
     }
-   .header__logotype-block {
+    .header__logotype-block {
 
-   }
+    }
     .header__general-block-search-settings-lk {
-        gap: 32px;
+        /*gap: 32px;*/
     }
     .general-block-search-settings-lk__search-input {
         right: 180px;
@@ -278,5 +278,4 @@
         align-items: center;
     }
 }
-
 

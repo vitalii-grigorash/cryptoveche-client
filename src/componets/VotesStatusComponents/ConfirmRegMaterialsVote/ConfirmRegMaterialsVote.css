@@ -53,7 +53,7 @@
     }
 }
 
-@media (max-width: 890px) {
+@media (max-width: 1050px) {
     .status-block__materials-vote {
         /* white-space: nowrap; */
         padding: 0 6px 0 6px;
@@ -62,12 +62,11 @@
     .materials-vote__status-icon {
         font-size: 11px;
     }
-}
-@media (max-width: 830px) {
     .status-block__materials-vote {
-       height: 37px;
+        height: 37px;
     }
 }
+
 @media (max-width: 600px) {
     .status-block__materials-vote {
         padding: 12px 0 0 0;

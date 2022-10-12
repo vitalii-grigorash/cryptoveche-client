@@ -62,7 +62,7 @@
 }
 
 /*---------Адаптивная версия-----------------------------------------------------------------------------------------*/
-@media (max-width: 890px) {
+@media (max-width: 1050px) {
     .status-block__current-status {
         padding-right: 12px;
         font-size: 10px;

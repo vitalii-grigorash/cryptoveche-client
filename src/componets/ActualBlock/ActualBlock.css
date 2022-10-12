@@ -75,11 +75,18 @@
     cursor: pointer;
     border-radius: 4px;
 }
-/*------Адаптивная версия(1156px)--------------------------------------------------------------------------------------*/
-@media (max-width: 830px) {
+/*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1270px) {
+    .actual-block-wrapper__title {
+        font-size: 21px;
+        line-height: 29px;
+        font-weight: 500;
+    }
+}
+@media (max-width: 1180px) {
     .actual-block-wrapper {
         padding: 16px 16px 16px 16px;
-        max-width: 343px;
+        max-width: 365px;
         min-height: 570px;
     }
     .actual-block-wrapper__title {
@@ -112,7 +119,7 @@
     }
 }
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
-@media (max-width: 600px) {
+@media (max-width: 815px) {
     .actual-block-wrapper {
         min-height: 496px;
         gap: 16px;

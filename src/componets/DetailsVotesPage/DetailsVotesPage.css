@@ -53,29 +53,63 @@
     flex-direction: column;
     gap: 32px;
 }
+/*------Cтилизация блока для стрелок в мобильной версии---------------------------------------------------------------*/
+.detail-votes-page__row-prev-next-btn {
+    display: none;
+}
+.row-prev-next-btn__row-prev {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    cursor: pointer;
+    transform: rotate(180deg);
+    display: none;
+}
+.row-prev-next-btn__row-prev.active {
+    display: inherit;
+}
+.row-prev-next-btn__row-next {
+    display: none;
+}
+.row-prev-next-btn__row-next.active {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    cursor: pointer;
+    display: inherit;
+}
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 1020px) {
     .details-votes-page-switch__buttons {
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 18px;
+        font-weight: 400;
         line-height: 114%;
         white-space: nowrap;
     }
 }
-@media (max-width: 800px) {
+@media (max-width: 880px) {
     .details-votes-page-switch__buttons {
-        overflow: hidden;
-        text-overflow: inherit;
+        display: flex;
+        overflow-x: hidden;
+        font-size: 16px;
     }
 }
-
+@media (max-width: 760px) {
+    .detail-votes-page__row-prev-next-btn {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+    }
+    .details-votes-page__main-content {
+        gap: 16px;
+    }
+}
 @media (max-width: 670px) {
     .details-votes-page__main-content {
         gap: 16px;
     }
     .details-votes-page__wrapper {
         gap: 16px;
-
     }
 }
 ._mobile-read-questions-bnt {
@@ -88,10 +122,9 @@
 @media (max-width: 600px) {
     .details-votes-page__main-content {
         padding: 16px 16px 24px 16px;
-        gap: 24px;
+        gap: 16px;
     }
 }
-
 @media (max-width: 420px) {
     .details-votes-page-switch__buttons {
         border-bottom: 2px #FFFFFF solid;

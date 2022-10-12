@@ -45,7 +45,7 @@
 .main-content__empty-states-qr-code {
     display: none;
 }
-/*------Адаптивная версия--------------------------------------------------------------------------------------------*/
+/*------Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 830px) {
     .main-content__my-votes-actual {
         gap: 6px;
@@ -54,7 +54,7 @@
         gap: 6px;
     }
 }
-@media (max-width: 600px) {
+@media (max-width: 815px) {
     .main-content__title {
         text-align: left;
         font-size: 26px;
@@ -86,7 +86,7 @@
         display: block;
     }
     .gistogramma-and-observer-cryptoveche {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     .main-content__empty-states-component{order: 0}
     .main-content__empty-states-observer-amount{order: 1}

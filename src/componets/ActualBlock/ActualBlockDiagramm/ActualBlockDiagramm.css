@@ -60,7 +60,7 @@
     display: none;
 }
 /*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
-@media (max-width: 830px) {
+@media (max-width: 1080px) {
     .diagramm-container {
         justify-content: center;
     }
@@ -80,13 +80,6 @@
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 600px) {
-    .diagramm-circle {
-        height: 240px;
-    }
-    .diagramm-container__info {
-    }
-}
 @media (max-width: 470px) {
     .diagramm-container__info {
 
@@ -99,5 +92,11 @@
         font-size: 10px;
     }
 }
-
+@media (max-width: 420px) {
+    .diagramm-circle {
+        height: 240px;
+    }
+    .diagramm-container__info {
+    }
+}
 

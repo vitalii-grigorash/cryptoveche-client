@@ -76,6 +76,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 7px;
+        margin-bottom: 48px;
     }
     .main-content__grid-item_1{order: 0}
     .main-content__grid-item_2{order: 3}
@@ -86,7 +87,6 @@
     .my-profile-page__wrapper {
         gap: 24px;
         padding-bottom: 48px;
-
     }
     .my-profile-page__exit-button-profile {
       display: block;

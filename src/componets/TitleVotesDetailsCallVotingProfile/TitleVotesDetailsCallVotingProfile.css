@@ -25,7 +25,15 @@
 .page-info__link-back-row img {
     padding-top: 4px;
 }
-
+.info-and-row__row-link {
+    text-decoration: none;
+    color: #363B4D;
+}
+.info-and-row__link-back-row {
+    text-decoration: none;
+    color: #363B4D;
+    opacity: 0.4;
+}
 /*------Адаптивная версия(660px)---------------------------------------------------------------------------------------*/
 @media (max-width: 810px) {
     .title-for-votes-call-profile__title {
