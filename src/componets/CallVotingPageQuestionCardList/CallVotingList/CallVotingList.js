@@ -40,7 +40,7 @@ const CallVotingList = (props) => {
                     <span className='call-voting-list__text'>{nameAnswer}</span>
                 </div>
             ) : (
-                <>
+                <div className="checkbox__main-container">
                     <label className='checkbox_container'>
                         <input
                             type="checkbox"
@@ -51,7 +51,7 @@ const CallVotingList = (props) => {
                         <span className='checkmark-row' />
                     </label>
                     <span className='call-voting-list__name-answer'>{nameAnswer}</span>
-                </>
+                </div>
             )}
         </div>
     )
