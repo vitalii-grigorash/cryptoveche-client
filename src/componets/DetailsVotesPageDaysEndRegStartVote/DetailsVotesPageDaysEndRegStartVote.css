@@ -191,7 +191,7 @@
         gap: 0;
     }
     .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
-        font-size: 18px;
+        font-size: 24px;
     }
     .end-registration__time-info, .start-vote__time-info {
         font-size: 12px;
@@ -252,6 +252,7 @@
     }
     .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
         white-space: nowrap;
+        font-size: 18px;
     }
     .end-registration__time-info, .start-vote__time-info {
         white-space: nowrap;

@@ -103,7 +103,7 @@ a {
     width: 22px;
     height: 15px;
     cursor: pointer;
-    top: 54px;
+    top: 55px;
     right: 22px;
     z-index: 22;
 }
@@ -340,11 +340,6 @@ a {
     margin: auto 0 auto 0;
 }
 /*------Адаптивная версия(1108px)--------------------------------------------------------------------------------------*/
-@media (max-height: 800px) {
-    .wrapper-auth {
-        overflow-y: auto;
-    }
-}
 @media (max-width: 1108px) {
     .container-auth {
         max-width: 800px;
@@ -396,7 +391,6 @@ a {
         font-weight: 700;
         line-height: 32px;
     }
-
     .reg__logo {
         padding-bottom: 355px;
     }
@@ -409,9 +403,15 @@ a {
     .checkbox_container {
         /*padding-top: 3px;*/
     }
+    .form__pass-show-pass-icon {
+        top: 51px;
+    }
 }
 /*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
 @media (max-width: 800px) {
+    .wrapper-auth {
+        overflow-y: auto;
+    }
     .container-auth {
         max-width: 590px;
     }
@@ -467,6 +467,9 @@ a {
     }
     .reg__logo {
         padding-bottom: 320px;
+    }
+    .form__pass-show-pass-icon {
+
     }
 }
 /*------Адаптивная версия(600px)--------------------------------------------------------------------------------------*/
@@ -573,7 +576,7 @@ a {
     }
     .auth__remember-me-checklabel {
         font-size: 16px;
-        padding-left: 24px;
+        /*padding-left: 24px;*/
     }
     .checkmark {
         height: 18px;

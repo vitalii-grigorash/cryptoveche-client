@@ -6,8 +6,20 @@
     justify-content: space-between;
     gap: 15px;
     padding-bottom: 56px;
+    overflow: hidden;
 }
-
+.count-block::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;/* ширина всей полосы прокрутки */
+}
+.count-block::-webkit-scrollbar-track {
+    background: rgba(54, 59, 77, 0.1);        /* цвет зоны отслеживания */
+}
+.count-block::-webkit-scrollbar-thumb {
+    background-color: darkgray;    /* цвет бегунка */
+    border-radius: 20px;       /* округлось бегунка */
+    /* отступ вокруг бегунка */
+}
 .count-block__style {
     display: flex;
     position: relative;
@@ -16,8 +28,8 @@
     border-radius: 16px;
     flex-direction: column;
     font-size: 16px;
-    font-weight: 600;
-    line-height: 107%;
+    font-weight: 500;
+    line-height: 127%;
     color: #FFFFFF;
     padding: 36px 56px 36px 40px;
 }
@@ -35,7 +47,6 @@
     right: 0;
     object-fit: cover;
 }
-
 ._blue {
     background-color: #0084FE;
 }
@@ -53,7 +64,6 @@
     .count-block {
         padding-bottom: 24px;
     }
-
     .count-block__style {
         font-size: 14px;
         height: 90px;
@@ -69,7 +79,7 @@
         height: 96px;
         padding: 0 15px;
         justify-content: center;
-        align-items: center;
+        /*align-items: center;*/
         flex-wrap: nowrap;
     }
     .count-block__style h3 {
@@ -77,12 +87,15 @@
     }
 }
 /*------Адаптивная версия(800px)--------------------------------------------------------------------------------------*/
-@media (max-width: 800px) {
+@media (max-width: 600px) {
     .count-block {
         position: relative;
-        display: inline-flex;
-        padding-bottom: 24px;
+        display: flex;
         gap: 8px;
+    }
+    .count-block:hover {
+        overflow: auto;
+        padding-bottom: 18px;
     }
     .count-block__style {
         display: block;

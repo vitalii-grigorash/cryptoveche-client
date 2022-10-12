@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import './DetailsVotesPage.css';
 import './DetailsVotesPageResultVotes.css';
@@ -7,6 +7,7 @@ import DetailsVotesPageGeneralInformation from "../DetailsVotesPageGeneralInform
 import DetailsVotesPageResultVotesCardQuestion from "../DetailsVotesPageResultVotesCardQuestion/DetailsVotesPageResultVotesCardQuestion";
 import TitleVotesDetailsCallVotingProfile from "../TitleVotesDetailsCallVotingProfile/TitleVotesDetailsCallVotingProfile";
 import DetailsVotesPageReadQuestions from "../DetailsVotesPageReadQuestions/DetailsVotesPageReadQuestions";
+import row_next from '../../img/MyVotes_icon_arrow.svg';
 // import DetailsVotesPageResultVotesWaitingResults from "../DetailsVotesPageResultVotesWaitingResults/DetailsVotesPageResultVotesWaitingResults";
 import * as Events from '../../Api/Events';
 
@@ -44,6 +45,9 @@ const DetailsVotesPage = (props) => {
     const [isVoted, setVoted] = useState(false);
     const [isNotFullyVoted, setNotFullyVoted] = useState(false);
     const [ballots, setBallots] = useState([]);
+    const switchButtonsRef = useRef(null);
+    const [activeRowNext, setActiveRowNext] = useState(true);
+    const [activeRowPrev, setActiveRowPrev] = useState(false)
 
     function getCurrentEvent() {
         if (localStorage.getItem('currentEvent')) {
@@ -200,6 +204,30 @@ const DetailsVotesPage = (props) => {
         }
     }, [currentEventData]);
 
+    function toggleBtnNext() {
+        switchButtonsRef.current.style.scrollBehavior = 'smooth'
+        window.location.replace('#btnMyBallots')
+        window.scrollBy(0,-500);
+        setBtnMyBulletin(true)
+        setBtnResult(false)
+        setBtnGeneralInfo(false)
+        setBtnReadQuestions(false)
+        setActiveRowPrev(true)
+        setActiveRowNext(false)
+    }
+
+    function toggleBtnPrev() {
+        switchButtonsRef.current.style.scrollBehavior = 'smooth'
+        window.location.replace('#btnGeneralInfo')
+        window.scrollBy(0,-500);
+        setBtnMyBulletin(false)
+        setBtnResult(false)
+        setBtnGeneralInfo(true)
+        setBtnReadQuestions(false)
+        setActiveRowNext(true)
+        setActiveRowPrev(false)
+    }
+
     return (
         <div className={'details-votes-page__wrapper'}>
             <TitleVotesDetailsCallVotingProfile
@@ -218,8 +246,8 @@ const DetailsVotesPage = (props) => {
                 />
             )}
             <div className={'details-votes-page__main-content'}>
-                <div className={'details-votes-page-switch__buttons'}>
-                    <h2 onClick={onGenerelInfoClick} className={btnGeneralInfo ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>Общая информация</h2>
+                <div ref={switchButtonsRef} className={'details-votes-page-switch__buttons'}>
+                    <h2 id={'btnGeneralInfo'} onClick={onGenerelInfoClick} className={btnGeneralInfo ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>Общая информация</h2>
                     <h2 onClick={onReadQuestionsClick} className={btnReadQuestions ? 'active-details-votes-page-switch-buttons__button' : 'details-votes-page-switch-buttons__button'}>
                         <span className={'_read-questions-bnt'}>Ознакомиться с вопросами</span>
                         <span className={'_mobile-read-questions-bnt'}>Вопросы</span>
@@ -227,10 +255,16 @@ const DetailsVotesPage = (props) => {
                     {isShowResults && (
                         <>
                             <h2 onClick={onResultsClick} className={btnResult ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Результат</h2>
-                            <h2 onClick={onMyBulletinClick} className={btnMyBulletin ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Мой бюллетень</h2>
+                            <h2 id={'btnMyBallots'} onClick={onMyBulletinClick} className={btnMyBulletin ? 'active-results-page-switch-buttons__button' : 'results-page-switch-buttons__button'}>Мой бюллетень</h2>
                         </>
                     )}
                 </div>
+                {isShowResults && (
+                    <div className={'detail-votes-page__row-prev-next-btn'}>
+                        <img className={activeRowPrev ? 'row-prev-next-btn__row-prev active' : 'row-prev-next-btn__row-prev'} alt={'стрелка к кнопке общ.инфа'} src={row_next} onClick={() => toggleBtnPrev()}/>
+                        <img className={activeRowNext ? 'row-prev-next-btn__row-next active' : 'row-prev-next-btn__row-next'} alt={'стрелка к кнопке бюллитень'} src={row_next} onClick={() => toggleBtnNext()}/>
+                    </div>
+                )}
                 {btnGeneralInfo && (
                     <>
                         {currentEventData.id !== undefined && (
@@ -294,9 +328,9 @@ const DetailsVotesPage = (props) => {
                         )}
                     </>
                 )}
+
             </div>
         </div>
     )
 }
-
 export default DetailsVotesPage;

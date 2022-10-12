@@ -81,10 +81,10 @@
     white-space: nowrap;
 }
 /*------Адаптивная версия(830px)--------------------------------------------------------------------------------------*/
-@media (max-width: 830px) {
+@media (max-width: 1270px) {
     .amount-votes-wrapper {
        width: 402px;
-        height: 271px;
+        /*height: 271px;*/
         padding: 16px 0 24px 16px;
     }
     .amount-votes-wrapper h3 {
@@ -113,9 +113,10 @@
     }
 }
 /*------Адаптивная версия(420px)--------------------------------------------------------------------------------------*/
-@media (max-width: 600px) {
+@media (max-width: 815px) {
     .amount-votes-wrapper {
         width: 100%;
+        max-width: 800px;
         height: 271px;
     }
     .total-amount {

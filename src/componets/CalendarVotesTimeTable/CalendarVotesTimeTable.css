@@ -18,6 +18,11 @@
     z-index: 5;
 }
 /*------Адаптивная версия---------------------------------------------------------------------------------------------*/
+@media (max-width: 1070px) {
+    .calendar-votes-timetable__hidden-border {
+        top: 72px;
+    }
+}
 @media (max-width: 840px) {
     .calendar-votes-timetable__hidden-border {
         top: 72px;

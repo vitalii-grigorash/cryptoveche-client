@@ -172,8 +172,22 @@
 .my-votes__link-arrow img {
 
 }
-
+.my-votes-block__link-votes-page {
+    pointer-events: none;
+    text-decoration: none;
+}
 /*------Адаптивная версия--------------------------------------------------------------------------------------*/
+@media (max-width: 1270px) {
+    .my-votes-block-wrapper h2 {
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 138%;
+    }
+    .my-votes-block-wrapper {
+        padding: 16px 16px;
+    }
+}
+
 @media (max-width: 1180px) {
     .my-votes-block__vote-form_votes-page {
         flex-direction: column;
@@ -233,9 +247,9 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 815px) {
     .my-votes-block-wrapper {
-        max-width: 600px;
+        max-width: 800px;
         width: 100%;
         height: 60px;
     }
@@ -267,6 +281,9 @@
     .my-votes-block__container-title-h5 {
         font-size: 16px;
         line-height: 24px;
+    }
+    .my-votes-block__link-votes-page {
+        pointer-events: auto;
     }
 }
 @media (max-width: 420px) {
