@@ -4,7 +4,6 @@ import icon_arrow from '../../img/MyVotes_icon_arrow.svg';
 import { Link } from "react-router-dom";
 import MyVotesBlockForm from './MyVotesBlockForm';
 
-
 const MyVotesBlock = (props) => {
 
   const {
@@ -45,5 +44,4 @@ const MyVotesBlock = (props) => {
     </div>
   )
 }
-
 export default MyVotesBlock;

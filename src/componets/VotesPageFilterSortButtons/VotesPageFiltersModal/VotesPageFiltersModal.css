@@ -212,8 +212,10 @@
         padding-bottom: 24px;
     }
     .filters-modal__content-checkboxes-status-vote {
-        gap: 8px;
+        gap: 12px;
         min-width: 500px;
+        display: flex;
+        flex-direction: column;
     }
     .content-checkboxes-type-vote {
         gap: 8px;
