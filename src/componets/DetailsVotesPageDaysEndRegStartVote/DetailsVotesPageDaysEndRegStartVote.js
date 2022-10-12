@@ -26,30 +26,34 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         days: '0'
     }
 
+    const defaultEndVoteTime = {
+        seconds: '00',
+        minutes: '00',
+        hours: '00',
+        days: '0'
+    }
+
     const [remainingRegTime, setRemainingRegTime] = useState(defaultRegTime);
     const [remainingVoteTime, setRemainingVoteTime] = useState(defaultVoteTime);
+    const [remainingEndVoteTime, setRemainingEndVoteTime] = useState(defaultEndVoteTime);
     const inputEndRegRef = useRef(null);
     const inputStartVoteRef = useRef(null);
-    const [activeTimerEndVote, setActiveTimerEndVote] = useState(false)
-
-    useEffect(() => {
-        if(remainingVoteTime === defaultVoteTime) {
-            setActiveTimerEndVote(false)
-        }
-
-    },[remainingVoteTime])
+    const inputEndVoteRef = useRef(null)
 
     useEffect(() => {
         updateRemainingRegTime(pointEndTimeReg);
-        updateRemainingVoteTime(activeTimerEndVote ? pointEndTimeVote : pointStartTimeVote);
+        updateRemainingVoteTime(pointStartTimeVote);
+        updateRemainingVoteEndTime(pointEndTimeVote);
         changeRangeInputRegEnd();
         changeRangeInputStartVote();
+        changeRangeInputEndVote();
     },[pointEndTimeReg, pointStartTimeVote, pointEndTimeVote])
 
     useEffect(() => {
         const intervalId = setInterval(() => {
               updateRemainingRegTime(pointEndTimeReg);
-              updateRemainingVoteTime(activeTimerEndVote ? pointEndTimeVote : pointStartTimeVote);
+              updateRemainingVoteTime(pointStartTimeVote);
+              updateRemainingVoteEndTime(pointEndTimeVote);
               changeRangeInputRegEnd();
               changeRangeInputStartVote();
         }, 1000);
@@ -62,6 +66,9 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
 
     function updateRemainingVoteTime(countStartTimeVote) {
         setRemainingVoteTime(getRemainingTimePointStartVote(countStartTimeVote));
+    }
+    function updateRemainingVoteEndTime(countStartTimeVote) {
+        setRemainingEndVoteTime(getRemainingTimePointStartVote(countStartTimeVote));
     }
 
     function differentBetweenDays(pointEndDay) {
@@ -131,6 +138,17 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
         }
     }
 
+    // Функция для расчета длины в процентах для полоски таймера конец голосования
+    function changeRangeInputEndVote() {
+        const valPercent = (inputEndVoteRef.current.value / inputEndVoteRef.current.max) * 100;
+        const getIdEndVoteDivStrip = document.getElementById('width-time-info-input-end-vote');
+        if(valPercent) {
+            getIdEndVoteDivStrip.style.width = `${valPercent}%`;
+        } else {
+            getIdEndVoteDivStrip.style.width = '0%';
+        }
+    }
+
     // Добавление правильной формы окончания слова в зависимости от числа
     const CorrectWordTimerDay = (value,  words) => {
         let cases = [2, 0, 1, 1, 1, 2];
@@ -141,7 +159,8 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
 
     return (
             <div className={remainingRegTime.hiddenBlock ? 'details-votes-page-datetime-end-reg-start-vote__wrapper active' : 'details-votes-page-datetime-end-reg-start-vote__wrapper'}>
-                    <div className={remainingRegTime.hiddenBlock ? 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg active' : 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg _hidden-block__end-registration-start-vote'}>
+{/*-----------------------Таймер до конца регистрации-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+                <div className={remainingRegTime.hiddenBlock ? 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg active' : 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg _hidden-block__end-registration-start-vote'}>
                         <div className={'datetime-info__end-registration'}>
                             <h2>{remainingRegTime.days} {CorrectWordTimerDay(remainingRegTime.days, ['день', 'дня', 'дней'])}</h2>
                             <div className={'end-registration__time-info'}>
@@ -153,18 +172,32 @@ const DetailsVotesPageDaysEndRegStartVote = (props) => {
                             <div id={'width-time-info-input-reg'} className={'time-info-input-reg__timer-strip'}></div>
                         </div>
                     </div>
-                    <div className={'details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote'}>
+{/*-----------------------Таймер до начала голосования-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+                    <div className={remainingVoteTime.changeBlock ? 'details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote active' : 'details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote'}>
                         <div className={'datetime-info__start-vote'}>
                             <h2>{remainingVoteTime.days} {CorrectWordTimerDay(remainingVoteTime.days, ['день', 'дня', 'дней'])}</h2>
                             <div className={'start-vote__time-info'}>
-                                <span className={'datetime-info__two-numbers'}>{remainingVoteTime.hours}</span> час <span className={'datetime-info__two-numbers'}>{remainingVoteTime.minutes}</span> мин <span className={'datetime-info__two-numbers'}>{remainingVoteTime.seconds}</span>сек {activeTimerEndVote ? 'до конца голосования' : 'до начала голосования'}
+                                <span className={'datetime-info__two-numbers'}>{remainingVoteTime.hours}</span> час <span className={'datetime-info__two-numbers'}>{remainingVoteTime.minutes}</span> мин <span className={'datetime-info__two-numbers'}>{remainingVoteTime.seconds}</span>сек до начала голосования
                             </div>
                         </div>
                         <div className={'start-vote__time-info-input-vote'}>
-                            <input ref={inputStartVoteRef} min={0} max={activeTimerEndVote ? getPointDaysEndVote(pointStartTimeVote, pointEndTimeVote).toString() : getPointDaysStartVote(pointStartTimeVote, pointStartTimeReg).toString()} value={differentBetweenDays(activeTimerEndVote ? pointEndTimeVote : pointStartTimeVote).toString()} onChange={e => remainingVoteTime.hours(e)} className={'datetime-info__range datetime-info__range-green'} type={'range'}/>
+                            <input ref={inputStartVoteRef} min={0} max={getPointDaysStartVote(pointStartTimeVote, pointStartTimeReg).toString()} value={differentBetweenDays(pointStartTimeVote).toString()} onChange={e => remainingVoteTime.hours(e)} className={'datetime-info__range datetime-info__range-green'} type={'range'}/>
                             <div id={'width-time-info-input-vote'} className={'time-info-input-vote__timer-strip'}></div>
                         </div>
                     </div>
+{/*-----------------------Таймер до конца голосования-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+                <div className={remainingVoteTime.changeBlock ? 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-vote active' : 'details-votes-page-datetime-end-reg-start-vote__datetime-info-end-vote'}>
+                    <div className={'datetime-info__start-vote'}>
+                        <h2>{remainingEndVoteTime.days} {CorrectWordTimerDay(remainingEndVoteTime.days, ['день', 'дня', 'дней'])}</h2>
+                        <div className={'start-vote__time-info'}>
+                            <span className={'datetime-info__two-numbers'}>{remainingEndVoteTime.hours}</span> час <span className={'datetime-info__two-numbers'}>{remainingEndVoteTime.minutes}</span> мин <span className={'datetime-info__two-numbers'}>{remainingEndVoteTime.seconds}</span>сек до конца голосования
+                        </div>
+                    </div>
+                    <div className={'start-vote__time-info-input-vote'}>
+                        <input ref={inputEndVoteRef} min={0} max={getPointDaysEndVote(pointStartTimeVote, pointEndTimeVote).toString()} value={differentBetweenDays(pointEndTimeVote).toString()} onChange={e => remainingEndVoteTime.hours(e)} className={'datetime-info__range datetime-info__range-green'} type={'range'}/>
+                        <div id={'width-time-info-input-end-vote'} className={'time-info-input-vote__timer-strip'}></div>
+                    </div>
+                </div>
             </div>
     )
 }

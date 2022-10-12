@@ -10,14 +10,16 @@ export function getRemainingTimePointStartVote(timePointStartVote) {
             seconds: '00',
             minutes: '00',
             hours: '00',
-            days: '0'
+            days: '0',
+            changeBlock: true
         }
     }
     return {
         seconds : getRemainingSeconds(nowDayjs, timePointStartVoteDayjs),
         minutes : getRemainingMinutes(nowDayjs, timePointStartVoteDayjs),
         hours : getRemainingHours(nowDayjs, timePointStartVoteDayjs),
-        days : getRemainingDays(nowDayjs, timePointStartVoteDayjs)
+        days : getRemainingDays(nowDayjs, timePointStartVoteDayjs),
+        changeBlock: false
     }
 }
 
