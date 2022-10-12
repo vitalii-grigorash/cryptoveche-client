@@ -92,10 +92,7 @@
         position: relative;
         display: flex;
         gap: 8px;
-    }
-    .count-block:hover {
         overflow: auto;
-        padding-bottom: 18px;
     }
     .count-block__style {
         display: block;

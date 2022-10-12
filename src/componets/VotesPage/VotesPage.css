@@ -100,6 +100,13 @@
         text-overflow: inherit;
     }
 }
+@media (max-width: 750px) {
+    .votes-page-block__navigation-menu {
+        flex-direction: column;
+        display: flex;
+        align-items: inherit;
+    }
+}
 @media (max-width: 670px) {
     ._mobile-active-vote-bnt {
         display: none;

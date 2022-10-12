@@ -37,6 +37,20 @@
     width: 100%;
     gap: 8px;
 }
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote.active {
+    display: none;
+}
+/*------Cтилизация контейнера для div конец голосования--------------------------------------------------------------*/
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-end-vote.active {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 8px;
+}
+.details-votes-page-datetime-end-reg-start-vote__datetime-info-end-vote {
+  display: none;
+}
 /*------Cтилизация div c информацией конца регистрации----------------------------------------------------------------*/
 .datetime-info__end-registration {
     display: flex;
@@ -187,7 +201,9 @@
     .details-votes-page-datetime-end-reg-start-vote__wrapper {
         padding: 8px 8px 8px 8px;
     }
-    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg, .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg,
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote,
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-vote.active {
         gap: 0;
     }
     .datetime-info__end-registration h2, .datetime-info__start-vote h2 {
@@ -242,7 +258,9 @@
         max-height: 79px;
         padding: 8px 7px 10px 0;
     }
-    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg, .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote {
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-reg,
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-start-vote,
+    .details-votes-page-datetime-end-reg-start-vote__datetime-info-end-vote.active {
         width: 100%;
         padding: 0 13px 5px 10px;
     }

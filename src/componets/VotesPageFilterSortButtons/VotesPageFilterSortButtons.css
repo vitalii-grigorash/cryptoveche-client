@@ -39,7 +39,6 @@
     vertical-align: middle;
 }
 /*------Cтилизация блока c кнопками фильтры и сортировка(для мобильной версии)----------------------------------------*/
-
 .select-buttons__mobile-filters-sort-button  {
     display: none;
 }
@@ -47,7 +46,10 @@
     display: none;
 }
 /*------Адаптивная версия--------------------------------------------------------------------------------------------*/
-@media (max-width: 660px) {
+@media (max-width: 820px) {
+    .navigation-menu__select-buttons {
+
+    }
     .select-buttons__filters-button, .select-buttons__sort-button {
         display: none;
     }
@@ -58,6 +60,7 @@
         line-height: 121%;
         font-weight: 400;
         color: rgba(54, 59, 77, 0.4);
+        cursor: pointer;
     }
     .select-buttons__mobile-filters-sort-button img {
         padding-right: 5px;
@@ -74,5 +77,10 @@
         display: inherit;
         top: 2px;
         left: 115px;
+    }
+}
+@media (max-width: 750px) {
+    .navigation-menu__select-buttons {
+        padding-bottom: 0;
     }
 }

@@ -38,17 +38,14 @@
     width: 20px;
     border: 1px solid #0084FE;;
 }
-
 .checkbox-status-vote_container input:checked ~ .checkbox-status-vote_checkmark {
     background-color: #0084FE;
 }
-
 .checkbox-status-vote_checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-
 .checkbox-status-vote_container input:checked ~ .checkbox-status-vote_checkmark:after {
     display: block;
 }
@@ -63,27 +60,12 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
 /*-----Адаптивная версия----------------------------------------------------------------------------------------------*/
 @media (max-width: 790px) {
-    .checkbox-status-vote_container {
-        display: none;
-    }
     .checkbox-status-vote span {
         background: #FFFFFF;
         font-size: 14px;
         line-height: 22px;
         color: #363B4D;
-        padding: 4px 12px 4px 12px;
-        border-radius: 8px;
-        box-shadow: 0 1px 8px rgba(54, 59, 77, 0.1);
-    }
-    .checkbox-status-vote span:hover {
-       background: #0075FF;
-        font-size: 14px;
-        line-height: 22px;
-        color: #FFFFFF;
-        padding: 4px 12px 4px 12px;
-        border-radius: 8px;
     }
 }
