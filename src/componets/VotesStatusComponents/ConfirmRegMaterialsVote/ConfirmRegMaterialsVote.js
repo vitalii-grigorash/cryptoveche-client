@@ -54,9 +54,15 @@ const ConfirmRegMaterialsVote = (props) => {
             setStatusClassName('status-icon__color-status_registered');
           }
         } else {
-          setStatusIcon(notRegisteredEventIcon);
-          setStatusText('Вы не зарегистрированы');
-          setStatusClassName('status-icon__color-status_not-registered');
+          if (votesData.isVoting) {
+            setStatusIcon(notRegisteredEventIcon);
+            setStatusText('Вы не проголосовали');
+            setStatusClassName('status-icon__color-status_not-registered');
+          } else {
+            setStatusIcon(notRegisteredEventIcon);
+            setStatusText('Вы не зарегистрированы');
+            setStatusClassName('status-icon__color-status_not-registered');
+          }
         }
       } else if (votesData.status === 'event waiting') {
         if (votesData.isRegistered) {

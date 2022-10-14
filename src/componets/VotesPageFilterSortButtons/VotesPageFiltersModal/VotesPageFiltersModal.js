@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import './VotesPageFiltersModal.css';
 import filter_modal_close_button_mobile from '../../../img/VotesPageBlockFilterModal_close_button_mobile.svg';
 import filter_modal_close_button from '../../../img/VotesPageBlockFilterModal_close_button.svg';
-import filter_modal_increment_button from '../../../img/VotesPageBlockModal_increment_icon.svg';
-import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
+// import filter_modal_increment_button from '../../../img/VotesPageBlockModal_increment_icon.svg';
+// import sorting_modal_decrease_btn from '../../../img/VotesPageBlockSortModal_decrease_btn.svg';
 import FiltersModalCheckBox from "./FiltersModalCheckBox/FiltersModalCheckBox";
 
 const VotesPageFiltersModal = (props) => {

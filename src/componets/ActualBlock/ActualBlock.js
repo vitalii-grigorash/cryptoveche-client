@@ -118,11 +118,21 @@ const ActualBlock = (props) => {
             {currentVote.status === "registration" && (
               <>
                 {!currentVote.isRegistered ? (
-                  <button className='reg'
-                    onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered) }}
-                  >
-                    Зарегистрироваться
-                  </button>
+                  <>
+                    {currentVote.isVoting ? (
+                      <button className='button-vote'
+                        onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered, true) }}
+                      >
+                        Проголосовать
+                      </button>
+                    ) : (
+                      <button className='reg'
+                        onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered, false) }}
+                      >
+                        Зарегистрироваться
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <>
                     {currentVote.re_registration && (
