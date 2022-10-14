@@ -18,9 +18,9 @@ const MyVotesBlock = (props) => {
 
   return (
     <div className={'my-votes-block-wrapper'}>
-     <Link className={'my-votes-block__link-votes-page'} to={'/votes-page'}>
-       <h2>Мои голосования</h2>
-     </Link>
+      <Link className={'my-votes-block__link-votes-page'} to={'/votes-page'}>
+        <h2>Мои голосования</h2>
+      </Link>
       {myVotes.length !== 0 && (
         <>
           {myVotes.slice(0, 2).map((event) => (
@@ -44,4 +44,5 @@ const MyVotesBlock = (props) => {
     </div>
   )
 }
+
 export default MyVotesBlock;

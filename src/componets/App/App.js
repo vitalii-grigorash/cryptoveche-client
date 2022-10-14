@@ -23,7 +23,7 @@ import * as Events from '../../Api/Events';
 import Stomp from '../../utils/stomp';
 
 function App() {
-    
+
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -189,6 +189,9 @@ function App() {
                         .then((data) => {
                             setAllEvents(data);
                             firstSubscribeToEvents(data);
+                            handleShowSuccessModal();
+                            setSuccessModalText('Вы были успешно добавлены к голосованию');
+                            handleCurrentEvents(body, true);
                         })
                         .catch((err) => {
                             throw new Error(err.message);
@@ -198,9 +201,23 @@ function App() {
                     if (data.text === "User has already joined") {
                         handleShowSuccessModal();
                         setSuccessModalText('Вы уже присоединились к данному голосованию');
+                        handleCurrentEvents(body, true);
                     } else if (data.text === "Registration is over") {
-                        handleShowSuccessModal();
-                        setSuccessModalText('Вы не можете быть добавлены, так как регистрация завершена или событие окончено');
+                        requestHelper(Events.getEvents)
+                            .then((data) => {
+                                const foundedEvent = data.find(event => event.id === id);
+                                if (foundedEvent !== undefined) {
+                                    handleShowSuccessModal();
+                                    setSuccessModalText('Вы уже присоединились к данному голосованию');
+                                    handleCurrentEvents(body, true);
+                                } else {
+                                    handleShowSuccessModal();
+                                    setSuccessModalText('Вы не можете быть добавлены, так как регистрация завершена или событие окончено');
+                                }
+                            })
+                            .catch((err) => {
+                                throw new Error(err.message);
+                            })
                     }
                 }
             })
@@ -540,26 +557,38 @@ function App() {
         }
     }
 
-    const toggleEventRegistration = (eventId, isRegistered) => {
+    const toggleEventRegistration = (eventId, isRegistered, skipRegistration) => {
         const body = {
             id: eventId
         }
-        requestHelper(Events.registrationUserInEvents, body)
-            .then((data) => {
-                if (data.status === 'ok') {
-                    if (!isRegistered) {
-                        handleShowSuccessModal();
-                        setSuccessModalText('Вы успешно зарегистрировались!');
-                    } else {
-                        handleShowSuccessModal();
-                        setSuccessModalText('Вы успешно отменили регистрацию!');
+        if (skipRegistration) {
+            requestHelper(Events.registrationUserInEvents, body)
+                .then((data) => {
+                    if (data.status === 'ok') {
+                        handleCurrentEvents(body, false);
                     }
-                    handleReloadDetailsPage();
-                }
-            })
-            .catch((err) => {
-                throw new Error(err.message);
-            })
+                })
+                .catch((err) => {
+                    throw new Error(err.message);
+                })
+        } else {
+            requestHelper(Events.registrationUserInEvents, body)
+                .then((data) => {
+                    if (data.status === 'ok') {
+                        if (!isRegistered) {
+                            handleShowSuccessModal();
+                            setSuccessModalText('Вы успешно зарегистрировались!');
+                        } else {
+                            handleShowSuccessModal();
+                            setSuccessModalText('Вы успешно отменили регистрацию!');
+                        }
+                        handleReloadDetailsPage();
+                    }
+                })
+                .catch((err) => {
+                    throw new Error(err.message);
+                })
+        }
     };
 
     function handleCurrentEvents(data, isDetailsClick) {

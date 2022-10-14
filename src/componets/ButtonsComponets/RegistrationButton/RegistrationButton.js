@@ -16,11 +16,21 @@ const RegistrationButton = (props) => {
             {votesData.status === "registration" && (
                 <>
                     {!votesData.isRegistered ? (
-                        <button className='reg'
-                            onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered) }}
-                        >
-                            Зарегистрироваться
-                        </button>
+                        <>
+                            {votesData.isVoting ? (
+                                <button className='button-vote'
+                                    onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered, true) }}
+                                >
+                                    Проголосовать
+                                </button>
+                            ) : (
+                                <button className='reg'
+                                    onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered, false) }}
+                                >
+                                    Зарегистрироваться
+                                </button>
+                            )}
+                        </>
                     ) : (
                         <>
                             {votesData.re_registration && (

@@ -333,4 +333,5 @@ const DetailsVotesPage = (props) => {
         </div>
     )
 }
+
 export default DetailsVotesPage;
