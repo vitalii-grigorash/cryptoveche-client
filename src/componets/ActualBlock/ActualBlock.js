@@ -119,7 +119,7 @@ const ActualBlock = (props) => {
               <>
                 {!currentVote.isRegistered ? (
                   <>
-                    {currentVote.isVoting ? (
+                    {currentVote.onButton ? (
                       <button className='button-vote'
                         onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered, true) }}
                       >
@@ -139,7 +139,7 @@ const ActualBlock = (props) => {
                       <>
                         {!currentVote.isVoting && (
                           <button className='cancel-reg'
-                            onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered) }}
+                            onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered, false) }}
                           >
                             Отменить регистрацию
                           </button>
@@ -203,7 +203,7 @@ const ActualBlock = (props) => {
                   <>
                     {currentVote.isRegistration && (
                       <button className='reg'
-                        onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered) }}
+                        onClick={() => { toggleEventRegistration(currentVote.id, currentVote.isRegistered, false) }}
                       >
                         Зарегистрироваться
                       </button>

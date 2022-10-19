@@ -1,25 +1,54 @@
 import dayjs from "dayjs";
 
-export function getRemainingTimePointEndReg (timePointEndReg) {
+export function getRemainingTimePointEndReg(timePointEndReg, onButton) {
 
     const timePointEndRegDayjs = dayjs(timePointEndReg);
     const nowDayjs = dayjs();
 
-    if(timePointEndRegDayjs.isBefore(nowDayjs)) {
-        return {
-            seconds: '00',
-            minutes: '00',
-            hours: '00',
-            days: '0',
-            hiddenBlock: true
+    if (onButton !== undefined) {
+        if (onButton) {
+            return {
+                seconds: '00',
+                minutes: '00',
+                hours: '00',
+                days: '0',
+                hiddenBlock: true
+            }
+        } else {
+            if (timePointEndRegDayjs.isBefore(nowDayjs)) {
+                return {
+                    seconds: '00',
+                    minutes: '00',
+                    hours: '00',
+                    days: '0',
+                    hiddenBlock: true
+                }
+            }
+            return {
+                seconds: getRemainingSeconds(nowDayjs, timePointEndRegDayjs),
+                minutes: getRemainingMinutes(nowDayjs, timePointEndRegDayjs),
+                hours: getRemainingHours(nowDayjs, timePointEndRegDayjs),
+                days: getRemainingDays(nowDayjs, timePointEndRegDayjs),
+                hiddenBlock: false
+            }
         }
-    }
-    return {
-        seconds : getRemainingSeconds(nowDayjs, timePointEndRegDayjs),
-        minutes : getRemainingMinutes(nowDayjs, timePointEndRegDayjs),
-        hours : getRemainingHours(nowDayjs, timePointEndRegDayjs),
-        days : getRemainingDays(nowDayjs, timePointEndRegDayjs),
-        hiddenBlock: false
+    } else {
+        if (timePointEndRegDayjs.isBefore(nowDayjs)) {
+            return {
+                seconds: '00',
+                minutes: '00',
+                hours: '00',
+                days: '0',
+                hiddenBlock: true
+            }
+        }
+        return {
+            seconds: getRemainingSeconds(nowDayjs, timePointEndRegDayjs),
+            minutes: getRemainingMinutes(nowDayjs, timePointEndRegDayjs),
+            hours: getRemainingHours(nowDayjs, timePointEndRegDayjs),
+            days: getRemainingDays(nowDayjs, timePointEndRegDayjs),
+            hiddenBlock: false
+        }
     }
 }
 
@@ -29,8 +58,8 @@ function getRemainingSeconds(nowDayjs, timePointEndRegDayjs) {
 }
 
 function getRemainingMinutes(nowDayjs, timePointEndRegDayjs) {
-        const minutes = timePointEndRegDayjs.diff(nowDayjs, 'minutes') % 60;
-        return padWithZeros(minutes, 2);
+    const minutes = timePointEndRegDayjs.diff(nowDayjs, 'minutes') % 60;
+    return padWithZeros(minutes, 2);
 }
 
 function getRemainingHours(nowDayjs, timePointEndRegDayjs) {
@@ -45,6 +74,6 @@ function getRemainingDays(nowDayjs, timePointEndRegDayjs) {
 
 function padWithZeros(number, minLength) {
     const numberString = number.toString();
-    if(numberString.length >= minLength) return numberString;
+    if (numberString.length >= minLength) return numberString;
     return '0'.repeat(minLength - numberString.length) + numberString;
 }

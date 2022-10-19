@@ -12,9 +12,11 @@ const DetailsVotesPageStatusPossibleRevoteCancelReg = (props) => {
             <div className='details-votes-page-status-possible-revote-cancelreg__possible-revote'>
                 Возможность переголосовать:<span>{voteData.re_voting ? 'есть' : 'нет'}</span>
             </div>
-            <div className='details-votes-page-status-possible-revote-cancelreg__possible-revote'>
-                Возможность отмены регистрации:<span>{voteData.re_registration ? 'есть' : 'нет'}</span>
-            </div>
+            {!voteData.onButton && (
+                <div className='details-votes-page-status-possible-revote-cancelreg__possible-revote'>
+                    Возможность отмены регистрации:<span>{voteData.re_registration ? 'есть' : 'нет'}</span>
+                </div>
+            )}
         </div>
     )
 }

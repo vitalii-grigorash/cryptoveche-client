@@ -27,10 +27,18 @@ const DetailsVotesPageGeneralInformation = (props) => {
 
     useEffect(() => {
         if (currentEventData.status === 'waiting') {
-            setLabelText('Ожидание регистрации');
+            if (currentEventData.onButton) {
+                setLabelText('Ожидание голосования');
+            } else {
+                setLabelText('Ожидание регистрации');
+            }
         } else if (currentEventData.status === 'registration') {
             if (currentEventData.isVoting) {
-                setLabelText('Регистрация и голосование');
+                if (currentEventData.onButton) {
+                    setLabelText('Идет голосование');
+                } else {
+                    setLabelText('Регистрация и голосование');
+                }
             } else {
                 setLabelText('Идет регистрация');
             }
@@ -53,16 +61,16 @@ const DetailsVotesPageGeneralInformation = (props) => {
 
     return (
         <div>
-            <div className={'details-votes-page-general-info__main-content'}>
-                <div className={'details-votes-page-general-info__main-content-current-status-vote'}>
-                    <span className={'main-content-current-status-vote__title'}>
+            <div className='details-votes-page-general-info__main-content'>
+                <div className='details-votes-page-general-info__main-content-current-status-vote'>
+                    <span className='main-content-current-status-vote__title'>
                         <VotesPageTitleTimeZone
                             voteData={currentEventData}
                             utcOffset={utcOffset}
                         />
                     </span>
-                    <div className={'main-content-current-status-vote__status-vote-possible-revote'}>
-                        <div className={'status-vote-possible-revote__width-block'}>
+                    <div className='main-content-current-status-vote__status-vote-possible-revote'>
+                        <div className='status-vote-possible-revote__width-block'>
                             <CurrentStatusVote
                                 regStatus={labelText}
                                 voteStatus={currentEventData.type === 'secret' ? 'Тайное' : 'Открытое'}
@@ -73,7 +81,7 @@ const DetailsVotesPageGeneralInformation = (props) => {
                             isVoted={isVoted}
                             isNotFullyVoted={isNotFullyVoted}
                         />
-                        <span className={'_hidden-possible-cancel-block'}>
+                        <span className='_hidden-possible-cancel-block'>
                             <DetailsVotesPageStatusPossibleRevoteCancelReg
                                 voteData={currentEventData}
                             />
@@ -85,15 +93,18 @@ const DetailsVotesPageGeneralInformation = (props) => {
                     formatDate={formatDate}
                     formatTime={formatTime}
                 />
-                <span className={'_show-possible-cancel-block'}>
+                <span className='_show-possible-cancel-block'>
                     <DetailsVotesPageStatusPossibleRevoteCancelReg
                         voteData={currentEventData}
                     />
                 </span>
             </div>
             {activeMaterials &&
-                <div className={'_hidden-materials-vote'}>
-                    <MaterialsVoteQuestion materialsVoteName={'Материалы голосования'} currentMaterialsVote={currentEventData} />
+                <div className='_hidden-materials-vote'>
+                    <MaterialsVoteQuestion
+                        materialsVoteName={'Материалы голосования'}
+                        currentMaterialsVote={currentEventData}
+                    />
                 </div>
             }
             {!currentEventData.isProcessing && (
