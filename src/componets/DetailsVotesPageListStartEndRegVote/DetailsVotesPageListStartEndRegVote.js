@@ -19,43 +19,67 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
     } = props;
 
     const titleStatusRegAndVote = [
-        {name: 'Начало регистрации:'},
-        {name: 'Конец регистрации:'},
-        {name: 'Начало голосования:'},
-        {name: 'Конец голосования:'}
+        { name: 'Начало регистрации:' },
+        { name: 'Конец регистрации:' },
+        { name: 'Начало голосования:' },
+        { name: 'Конец голосования:' }
+    ]
+
+    const titleStatusVote = [
+        { name: 'Начало голосования:' },
+        { name: 'Конец голосования:' }
     ]
 
     return (
-        <div className={'details-votes-page-list-start-end-reg-vote__wrapper'}>
+        <div className='details-votes-page-list-start-end-reg-vote__wrapper'>
             <div />
-            <div className={'details-votes-page-list-start-end-reg-vote__main-content'}>
-                <div className={'main-content__datetime-status-reg-vote'}>
-                    {React.Children.toArray(titleStatusRegAndVote.map((el) => {
-                        return <NameStatusRegAndVote
-                            nameStatusRegAndVote={el.name}
-                        />
-                        }))
-                    }
-                </div>
-                <div className={'main-content__datetime-status-reg-vote'}>
-                    <DataTime dateTimeDate={formatDate(voteData.registration_start_time)} dateTimeWatch={formatTime(voteData.registration_start_time)} />
-                    <DataTime dateTimeDate={formatDate(voteData.registration_end_time)} dateTimeWatch={formatTime(voteData.registration_end_time)} />
+            <div className='details-votes-page-list-start-end-reg-vote__main-content'>
+                {!voteData.onButton ? (
+                    <div className='main-content__datetime-status-reg-vote'>
+                        {React.Children.toArray(titleStatusRegAndVote.map((el) => {
+                            return <NameStatusRegAndVote
+                                nameStatusRegAndVote={el.name}
+                            />
+                        }))}
+                    </div>
+                ) : (
+                    <div className='main-content__datetime-status-reg-vote'>
+                        {React.Children.toArray(titleStatusVote.map((el) => {
+                            return <NameStatusRegAndVote
+                                nameStatusRegAndVote={el.name}
+                            />
+                        }))}
+                    </div>
+                )}
+                <div className='main-content__datetime-status-reg-vote'>
+                    {!voteData.onButton && (
+                        <>
+                            <DataTime dateTimeDate={formatDate(voteData.registration_start_time)} dateTimeWatch={formatTime(voteData.registration_start_time)} />
+                            <DataTime dateTimeDate={formatDate(voteData.registration_end_time)} dateTimeWatch={formatTime(voteData.registration_end_time)} />
+                        </>
+                    )}
                     <DataTime dateTimeDate={formatDate(voteData.event_start_time)} dateTimeWatch={formatTime(voteData.event_start_time)} />
                     <DataTime dateTimeDate={formatDate(voteData.event_end_time)} dateTimeWatch={formatTime(voteData.event_end_time)} />
                 </div>
-                <div className={'main-content__datetime-status-reg-vote-color-day'}>
-                    <StatusDayStartRegColorRed timeDate={voteData.registration_start_time}/>
-                    <StatusDayEndRegColorRed timeDate={voteData.registration_end_time}/>
-                    <StatusDayStartVoteColorGreen timeDate={voteData.event_start_time}/>
-                    <StatusDayEndVoteColorYellow timeDate={voteData.event_end_time}/>
+                <div className='main-content__datetime-status-reg-vote-color-day'>
+                    {!voteData.onButton && (
+                        <>
+                            <StatusDayStartRegColorRed timeDate={voteData.registration_start_time} />
+                            <StatusDayEndRegColorRed timeDate={voteData.registration_end_time} />
+                        </>
+                    )}
+                    <StatusDayStartVoteColorGreen timeDate={voteData.event_start_time} />
+                    <StatusDayEndVoteColorYellow timeDate={voteData.event_end_time} />
                 </div>
-                <ListStartEndRegMobile
-                    title={'Начало и конец регистрации:'}
-                    startDate={formatDate(voteData.registration_start_time)}
-                    startTime={formatTime(voteData.registration_start_time)}
-                    endDate={formatDate(voteData.registration_end_time)}
-                    endTime={formatTime(voteData.registration_end_time)}
-                />
+                {!voteData.onButton && (
+                    <ListStartEndRegMobile
+                        title={'Начало и конец регистрации:'}
+                        startDate={formatDate(voteData.registration_start_time)}
+                        startTime={formatTime(voteData.registration_start_time)}
+                        endDate={formatDate(voteData.registration_end_time)}
+                        endTime={formatTime(voteData.registration_end_time)}
+                    />
+                )}
                 <ListStartEndVoteMobile
                     title={'Начало и конец голосования:'}
                     startDate={formatDate(voteData.event_start_time)}
@@ -67,4 +91,5 @@ const DetailsVotesPageListStartEndRegVote = (props) => {
         </div>
     )
 }
+
 export default DetailsVotesPageListStartEndRegVote;

@@ -73,10 +73,18 @@ const MyVotesBlockForm = ((props) => {
 
 	useEffect(() => {
 		if (votesData.status === 'waiting') {
-			setLabelText('Ожидание регистрации');
+			if (votesData.onButton) {
+				setLabelText('Ожидание голосования');
+			} else {
+				setLabelText('Ожидание регистрации');
+			}
 		} else if (votesData.status === 'registration') {
 			if (votesData.isVoting) {
-				setLabelText('Регистрация и голосование');
+				if (votesData.onButton) {
+					setLabelText('Идет голосование');
+				} else {
+					setLabelText('Регистрация и голосование');
+				}
 			} else {
 				setLabelText('Идет регистрация');
 			}
@@ -94,9 +102,9 @@ const MyVotesBlockForm = ((props) => {
 	return (
 		<div className={`my-votes-block__vote-form ${pathname === '/votes-page' && 'my-votes-block__vote-form_votes-page'}`}>
 			<div className='my-votes-block__container'>
-				<div className={'my-votes-block__container-title-block'} >
-					<h3 className={'my-votes-block__container-title-h3'} onClick={() => { handleCurrentEvents(votesData, true) }}>{votesData.title}</h3>
-					<h5 className={'my-votes-block__container-title-h5'}>{votesData.owner.title}</h5>
+				<div className='my-votes-block__container-title-block'>
+					<h3 className='my-votes-block__container-title-h3' onClick={() => { handleCurrentEvents(votesData, true) }}>{votesData.title}</h3>
+					<h5 className='my-votes-block__container-title-h5'>{votesData.owner.title}</h5>
 					{pathname === '/votes-page' && (
 						<div className='my-votes-block__utc-container'>
 							<img alt='Иконка часового пояса' src={utcIcon} className='my-votes-block__utc-icon' />
@@ -107,22 +115,46 @@ const MyVotesBlockForm = ((props) => {
 				<div className={pathname === '/' ? 'vote-form__status-block' : 'status-and-start-reg-start-vote'}>
 					<CurrentStatusVote
 						regStatus={labelText}
-						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'} />
-					<div className={'status-and-start-reg-start-vote__reg-vote-date'}>
-						<div className={'reg-vote-date__border-right-mobile'}>
-							{pathname === '/votes-page' && (
-								<StartDateVote
-									dateTimeDate={formatDate(votesData.registration_start_time)}
-									dateTimeWatch={formatTime(votesData.registration_start_time)}
-									title={'Начало регистрации:'}
-								/>
+						voteStatus={votesData.type === 'secret' ? 'Тайное' : 'Открытое'}
+					/>
+					<div className='status-and-start-reg-start-vote__reg-vote-date'>
+						<>
+							{votesData.onButton ? (
+								<>
+									<div className='reg-vote-date__border-right-mobile'>
+										<StartDateVote
+											dateTimeDate={formatDate(votesData.event_start_time)}
+											dateTimeWatch={formatTime(votesData.event_start_time)}
+											title={'Начало голосования:'}
+										/>
+									</div>
+									{pathname === '/votes-page' && (
+										<StartDateVote
+											dateTimeDate={formatDate(votesData.event_end_time)}
+											dateTimeWatch={formatTime(votesData.event_end_time)}
+											title={'Конец голосования:'}
+										/>
+									)}
+								</>
+							) : (
+								<>
+									<div className='reg-vote-date__border-right-mobile'>
+										{pathname === '/votes-page' && (
+											<StartDateVote
+												dateTimeDate={formatDate(votesData.registration_start_time)}
+												dateTimeWatch={formatTime(votesData.registration_start_time)}
+												title={'Начало регистрации:'}
+											/>
+										)}
+									</div>
+									<StartDateVote
+										dateTimeDate={formatDate(votesData.event_start_time)}
+										dateTimeWatch={formatTime(votesData.event_start_time)}
+										title={'Начало голосования:'}
+									/>
+								</>
 							)}
-						</div>
-						<StartDateVote
-							dateTimeDate={formatDate(votesData.event_start_time)}
-							dateTimeWatch={formatTime(votesData.event_start_time)}
-							title={'Начало голосования:'}
-						/>
+						</>
 					</div>
 					<div className='status-and-start-reg-start-vote__add-border-left'>
 						<ConfirmRegMaterialsVote
@@ -141,7 +173,7 @@ const MyVotesBlockForm = ((props) => {
 							<>
 								{!votesData.isRegistered ? (
 									<>
-										{votesData.isVoting ? (
+										{votesData.onButton ? (
 											<button className='button-vote'
 												onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered, true) }}
 											>

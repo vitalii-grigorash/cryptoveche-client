@@ -17,7 +17,7 @@ const RegistrationButton = (props) => {
                 <>
                     {!votesData.isRegistered ? (
                         <>
-                            {votesData.isVoting ? (
+                            {votesData.onButton ? (
                                 <button className='button-vote'
                                     onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered, true) }}
                                 >
@@ -37,7 +37,7 @@ const RegistrationButton = (props) => {
                                 <>
                                     {!votesData.isVoting && (
                                         <button className='cancel-reg'
-                                            onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered) }}
+                                            onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered, false) }}
                                         >
                                             Отменить регистрацию
                                         </button>
@@ -101,7 +101,7 @@ const RegistrationButton = (props) => {
                         <>
                             {votesData.isRegistration && (
                                 <button className='reg'
-                                    onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered) }}
+                                    onClick={() => { toggleEventRegistration(votesData.id, votesData.isRegistered, false) }}
                                 >
                                     Зарегистрироваться
                                 </button>

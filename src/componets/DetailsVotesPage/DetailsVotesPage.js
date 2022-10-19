@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import './DetailsVotesPage.css';
 import './DetailsVotesPageResultVotes.css';
@@ -47,7 +47,7 @@ const DetailsVotesPage = (props) => {
     const [ballots, setBallots] = useState([]);
     const switchButtonsRef = useRef(null);
     const [activeRowNext, setActiveRowNext] = useState(true);
-    const [activeRowPrev, setActiveRowPrev] = useState(false)
+    const [activeRowPrev, setActiveRowPrev] = useState(false);
 
     function getCurrentEvent() {
         if (localStorage.getItem('currentEvent')) {
@@ -207,7 +207,7 @@ const DetailsVotesPage = (props) => {
     function toggleBtnNext() {
         switchButtonsRef.current.style.scrollBehavior = 'smooth'
         window.location.replace('#btnMyBallots')
-        window.scrollBy(0,-500);
+        window.scrollBy(0, -500);
         setBtnMyBulletin(true)
         setBtnResult(false)
         setBtnGeneralInfo(false)
@@ -219,7 +219,7 @@ const DetailsVotesPage = (props) => {
     function toggleBtnPrev() {
         switchButtonsRef.current.style.scrollBehavior = 'smooth'
         window.location.replace('#btnGeneralInfo')
-        window.scrollBy(0,-500);
+        window.scrollBy(0, -500);
         setBtnMyBulletin(false)
         setBtnResult(false)
         setBtnGeneralInfo(true)
@@ -238,7 +238,7 @@ const DetailsVotesPage = (props) => {
             />
             {isShowTimer && (
                 <DetailsVotesPageDaysEndRegStartVote
-                    formatDate={formatDate}
+                    onButton={currentEventData.onButton}
                     pointStartTimeReg={currentEventData.registration_start_time}
                     pointEndTimeReg={currentEventData.registration_end_time}
                     pointStartTimeVote={currentEventData.event_start_time}
@@ -261,8 +261,8 @@ const DetailsVotesPage = (props) => {
                 </div>
                 {isShowResults && (
                     <div className={'detail-votes-page__row-prev-next-btn'}>
-                        <img className={activeRowPrev ? 'row-prev-next-btn__row-prev active' : 'row-prev-next-btn__row-prev'} alt={'стрелка к кнопке общ.инфа'} src={row_next} onClick={() => toggleBtnPrev()}/>
-                        <img className={activeRowNext ? 'row-prev-next-btn__row-next active' : 'row-prev-next-btn__row-next'} alt={'стрелка к кнопке бюллитень'} src={row_next} onClick={() => toggleBtnNext()}/>
+                        <img className={activeRowPrev ? 'row-prev-next-btn__row-prev active' : 'row-prev-next-btn__row-prev'} alt={'стрелка к кнопке общ.инфа'} src={row_next} onClick={() => toggleBtnPrev()} />
+                        <img className={activeRowNext ? 'row-prev-next-btn__row-next active' : 'row-prev-next-btn__row-next'} alt={'стрелка к кнопке бюллитень'} src={row_next} onClick={() => toggleBtnNext()} />
                     </div>
                 )}
                 {btnGeneralInfo && (
