@@ -30,7 +30,8 @@ const Registration = (props) => {
         hideRegisterModal,
         hideRegForm,
         hideRegEmailErrors,
-        preLoaderReg
+        preLoaderReg,
+        config
     } = props;
 
     const { pathname } = useLocation();
@@ -372,7 +373,7 @@ const Registration = (props) => {
                                 />
                                 <span className={'checkmark'} />
                             </label>
-                            <span>Ознакомлен с <a href={'https://dltc.spbu.ru/confidentiality'} target="_blank" rel="noreferrer">Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
+                            <span>Ознакомлен с <a href={config.confidentiality} target="_blank" rel="noreferrer">Политикой</a>. Подтверждаю принадлежность мне указанного электронного адреса.</span>
                         </div>
                         <div className={showHideElem ? 'reg-form__button active' : 'reg-form__button _reg-block-show'}>
                             <span className={'_reg-block-hidden'}>Шаг 2 из 2, почти готово</span>

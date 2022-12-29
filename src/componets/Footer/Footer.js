@@ -10,6 +10,10 @@ import { Link } from "react-router-dom";
 
 const Footer = (props) => {
 
+    const {
+        config
+    } = props;
+
     // const {
     //     utc,
     //     setOffset,
@@ -95,7 +99,7 @@ const Footer = (props) => {
                     </div> */}
                     <div className={'items__block-support'}>
                         <h3>Поддержка</h3>
-                        <span><a href={'https://dltc.spbu.ru/confidentiality'} target="_blank" rel="noopener noreferrer">Политика конфидициальности</a></span>
+                        <span><a href={config.confidentiality} target="_blank" rel="noopener noreferrer">Политика конфидициальности</a></span>
                         <a href="mailto:support@dltc.spbu.ru">support@dltc.spbu.ru</a>
                     </div>
                 </div>
