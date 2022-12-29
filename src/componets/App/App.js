@@ -714,6 +714,7 @@ function App() {
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
                                     preLoaderReg={preLoaderRegBtn}
+                                    config={config}
                                 />}
                             />
                             <Route path='/registration/:token'
@@ -728,6 +729,7 @@ function App() {
                                     hideRegForm={hideRegForm}
                                     hideRegEmailErrors={hideRegEmailErrors}
                                     preLoaderReg={preLoaderRegBtn}
+                                    config={config}
                                 />}
                             />
                             <Route exact path='/'
@@ -807,6 +809,7 @@ function App() {
                         utc={utcOffset}
                         setOffset={setOffset}
                         requestHelper={requestHelper}
+                        config={config}
                     />
                 )}
             </div>

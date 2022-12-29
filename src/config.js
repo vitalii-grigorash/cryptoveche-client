@@ -5,4 +5,5 @@ export const config = {
     ws_pass: "client",
     ws_user: "client",
     enable_esia: false,
+    confidentiality: "https://dltc.spbu.ru/confidentiality",
 };
